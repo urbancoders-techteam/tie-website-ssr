@@ -63,7 +63,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
             {data?.title}
           </h3>
           <p className="text-xs text-[#00999E] font-semibold text-start mb-1">
-            {data?.date && moment(data?.date).format("DD MMM YYYY")}
+            {data?.date && moment(data?.date, ["DD MMM YYYY", moment.ISO_8601]).format("DD MMM YYYY")}
           </p>
           <p
             className={`text-sm text-justify ${
