@@ -3,9 +3,15 @@ import "@/app/globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import "leaflet/dist/leaflet.css";
+import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
 import CanonicalTag from "@/components/CanonicalTag";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import { Header } from "@/components/Header";
+import Footer from "@/components/Footer";
+import FloatingActions from "@/components/FloatingActions";
+import { ToastContainer } from "react-toastify";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.taksheela.com"),
@@ -44,8 +50,15 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=AW-16606653169"
         />
       </head>
-      {/* <Headers/> */}
-      <body>{children}</body>
+      <body>
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
+        <main>{children}</main>
+        <Footer />
+        <FloatingActions />
+        <ToastContainer position="top-right" autoClose={3000} />
+      </body>
       
     </html>
   );
