@@ -46,7 +46,7 @@ export default function Hero() {
               <a href="tel:+919831241212" className="btn btn-primary">
                 <i className="fas fa-phone"></i> Talk to Expert
               </a>
-              <a href="#universities" className="btn btn-secondary">
+              <a href="#dubaitopuniversities" className="btn btn-secondary">
                 View Universities
               </a>
             </div>

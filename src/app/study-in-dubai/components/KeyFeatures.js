@@ -18,7 +18,7 @@ export default function KeyFeatures() {
   ]
 
   return (
-    <section className="key-features" id="universities">
+    <section className="key-features" id="keyfeatures">
       <div className="container">
         <h2 className="section-title">Key Features & Benefits</h2>
         <p className="section-subtitle">

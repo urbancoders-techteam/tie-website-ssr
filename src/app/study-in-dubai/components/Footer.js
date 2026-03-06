@@ -24,7 +24,7 @@ export default function Footer() {
             <ul className="footer-links">
               <li><Link href="#home"><i className="fas fa-chevron-right"></i> Home</Link></li>
               <li><Link href="#about"><i className="fas fa-chevron-right"></i> About</Link></li>
-              <li><Link href="#universities"><i className="fas fa-chevron-right"></i> Universities</Link></li>
+              <li><Link href="#keyfeatures"><i className="fas fa-chevron-right"></i> Key Features</Link></li>
               <li><Link href="#dubaitopuniversities"><i className="fas fa-chevron-right"></i> Dubai Top Universities</Link></li>
               <li><Link href="#contact"><i className="fas fa-chevron-right"></i> Contact</Link></li>
             </ul>
