@@ -67,7 +67,7 @@ export default function Header() {
             padding: 0,
           }}
         >
-          {["Home", "About", "Universities", "Dubai Top Universities", "Contact"].map(
+          {["Home", "About", "Dubai Top Universities", "Contact"].map(
             (item, index) => (
               <li key={index}>
                 <Link
@@ -154,7 +154,7 @@ export default function Header() {
           paddingLeft: "20px",
         }}
       >
-        {["Home", "About", "Universities", "Dubai Top Universities", "Contact"].map(
+        {["Home", "About", "Dubai Top Universities", "Contact"].map(
           (item, index) => (
             <Link
               key={index}
