@@ -698,7 +698,7 @@ export const Header = ({ itemupdate }: any) => {
                           sx={{
                             borderBottom:
                               index < (homeSubMenues?.length ?? 1) - 1
-                                ? "1px solid #00999e"
+                                ? "0.2px solid #00999e"
                                 : "none",
                             py: 0.5,
                             px: 1.5,
@@ -778,7 +778,7 @@ export const Header = ({ itemupdate }: any) => {
                           sx={{
                             borderBottom:
                               index < (studyAbroadsubMenues?.length ?? 1) - 1
-                                ? "1px solid #00999e"
+                                ? "0.2px solid #00999e"
                                 : "none",
                             py: 0.5,
                             px: 1.5,
@@ -858,7 +858,7 @@ export const Header = ({ itemupdate }: any) => {
                           sx={{
                             borderBottom:
                               index < (iRSubMenues?.length ?? 1) - 1
-                                ? "1px solid #00999e"
+                                ? "0.2px solid #00999e"
                                 : "none",
                             py: 0.5,
                             px: 1.5,
@@ -936,7 +936,7 @@ export const Header = ({ itemupdate }: any) => {
                           sx={{
                             borderBottom:
                               index < immersionSubMenues.length - 1
-                                ? "1px solid #00999e"
+                                ? "0.2px solid #00999e"
                                 : "none",
                             py: 0.5,
                             px: 1.5,

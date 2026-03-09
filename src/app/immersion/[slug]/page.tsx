@@ -16,28 +16,35 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export default function ImmersionSlugPage() {
   const params = useParams();
-  const slug = params?.slug as string;
-
-  console.log("slug", slug);
+  const slug = params?.slug as string | undefined;
 
   const [item, setItem] = useState<any>(null);
   const [staticData, setStaticData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const immersionZone = slug
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    ? slug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    : '';
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) {
+      setLoading(false);
+      return;
+    }
+
+    const zone = slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
 
     const fetchData = async () => {
       const staticItem = immersionSlugData.find((z) => z.slug === slug);
       setStaticData(staticItem);
 
-
       try {
-        const countryRes = await immersionCountry(immersionZone);
+        const countryRes = await immersionCountry(zone);
         setItem(countryRes?.data || null);
       } catch (err) {
         console.error('Failed to fetch immersion country data:', err);
