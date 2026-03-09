@@ -95,12 +95,14 @@ interface BackRouteContainerProps {
   path: string;
   logo?: string;
   title: string;
+  currentPage?: string;
 }
 
 export const BackRouteContainer: React.FC<BackRouteContainerProps> = ({
   path,
   logo,
   title,
+  currentPage,
 }) => {
   const router = useRouter();
 
@@ -111,17 +113,36 @@ export const BackRouteContainer: React.FC<BackRouteContainerProps> = ({
 
   return (
     <ContainerWrapper>
-      
-    
-    <div
-      className="w-fit cursor-pointer flex justify-start  "
-      onClick={handleNavigation}
-    >
-      <div className="flex items-center gap-4">
-        <Image src={logo || '/images/backuniversity.png'} alt="Back" width={45} height={45} />
-        <p className="text-lg font-medium hover:text-[#00999E]">{title}</p>
-      </div>
-    </div>
+      <nav aria-label="Breadcrumb" className="flex justify-start">
+        <div
+          className="w-fit cursor-pointer flex items-center gap-2 text-gray-600 hover:text-[#00999E] transition-colors"
+          onClick={handleNavigation}
+        >
+          <Image
+            src={logo || "/images/backuniversity.png"}
+            alt="Back"
+            width={32}
+            height={32}
+            className="shrink-0"
+          />
+          <ol className="flex items-center gap-2 flex-wrap list-none m-0 p-0">
+            <li className="text-sm md:text-base font-medium">{title}</li>
+            {currentPage && (
+              <>
+                <li aria-hidden className="text-gray-400 select-none">
+                  /
+                </li>
+                <li
+                  className="text-sm md:text-base font-semibold text-[#00999E]"
+                  aria-current="page"
+                >
+                  {currentPage}
+                </li>
+              </>
+            )}
+          </ol>
+        </div>
+      </nav>
     </ContainerWrapper>
   );
 };

@@ -18,9 +18,15 @@ export default function ImmersionSlugPage() {
   const params = useParams();
   const slug = params?.slug as string;
 
+  console.log("slug", slug);
+
   const [item, setItem] = useState<any>(null);
   const [staticData, setStaticData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const immersionZone = slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 
   useEffect(() => {
     if (!slug) return;
@@ -29,10 +35,6 @@ export default function ImmersionSlugPage() {
       const staticItem = immersionSlugData.find((z) => z.slug === slug);
       setStaticData(staticItem);
 
-      const immersionZone = slug
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
 
       try {
         const countryRes = await immersionCountry(immersionZone);
@@ -56,6 +58,7 @@ export default function ImmersionSlugPage() {
           path="/immersion"
           title="Immersion Main Page"
           logo={"/images/backuniversity.png"}
+          currentPage={immersionZone}
         />
       </ContainerWrapper>
       {staticData && <About item={staticData} />}

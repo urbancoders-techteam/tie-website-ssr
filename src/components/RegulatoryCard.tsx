@@ -87,7 +87,7 @@ const RegulatoryCard: React.FC<CardProps> = ({
                 style={{
                   textAlign,
                   margin,
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: '"Roboto", sans-serif',
                 }}
               >
                 {item}

@@ -1,4 +1,5 @@
 import { imageBaseUrl } from "@/utils/config";
+import mbbsStudent from "@/assets/mbbs_student.png"
 
 const stbg = imageBaseUrl + "homestudybg.svg";
 const imbg = imageBaseUrl + "homeimmigrationbg.svg";
@@ -7,7 +8,9 @@ const tpbg = imageBaseUrl + "hometestprepbg.svg";
 const st = imageBaseUrl + "homestudyabroad.svg";
 const im = imageBaseUrl + "homeBanner/immersion.jpg";
 const mb = imageBaseUrl + "homeBanner/IR.jpg";
-const tp = imageBaseUrl + "hometest.svg";
+// const tp = imageBaseUrl + "hometest.svg";
+
+const mbbs = mbbsStudent;
 
 export const ourserviceshomedata = [
   {
@@ -36,7 +39,7 @@ export const ourserviceshomedata = [
   // },
   {
     background: tpbg,
-    image: tp,
+    image: mbbs,
     title: "MBBS",
     path: "/mbbs",
   },

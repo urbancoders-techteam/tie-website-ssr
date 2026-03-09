@@ -3,6 +3,7 @@
 
 import ContainerWrapper from "@/components/ContainerWrapper";
 import HeadingTypography from "@/components/Heading";
+import { ButtonComponent } from "@/components/study-abroad/university-finder/ViewComponents";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CulturalExploration from "./country/CulturalExploration";
@@ -11,6 +12,10 @@ import University from "./country/University";
 import ProgramHighlight from "./ProgramHighlight";
 import KeyObjectives from "./KeyObjectives";
 import { immersionCountryDetails } from "@/apis/immersion.api";
+import { Box } from "@mui/material";
+
+const WHATSAPP_NUMBER = "919831241212";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export default function Country({ item }: any) {
   const [selectedCountry, setSelectedCountry] = useState<any>(null);
@@ -38,6 +43,12 @@ export default function Country({ item }: any) {
   const handleCountryClick = (country: any) => {
     setSelectedCountry(country);
     fetchCountryData(country);
+  };
+
+  const openWhatsApp = () => {
+    if (typeof window !== "undefined") {
+      window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
+    }
   };
 
   const companyVisit = {
@@ -100,6 +111,10 @@ export default function Country({ item }: any) {
                       }}
                     />
                   )}
+                  <ButtonComponent
+                    text="Chat With Our Advisors"
+                    onClick={openWhatsApp}
+                  />
                 </div>
 
                 {countryData?.image && (
@@ -139,6 +154,13 @@ export default function Country({ item }: any) {
               {countryData?.culturalExploration?.length > 0 && (
                 <CulturalExploration data={countryData.culturalExploration} />
               )}
+
+              <Box className="flex justify-center mb-10">
+                  <ButtonComponent
+              text="Chat With Our Advisors"
+              onClick={openWhatsApp}
+            />
+            </Box>
             </>
           )}
         </>

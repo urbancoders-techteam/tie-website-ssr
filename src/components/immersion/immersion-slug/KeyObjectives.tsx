@@ -20,7 +20,7 @@ export default function KeyObjectives({ data }: any) {
                 <div className="flex justify-center mb-4">
                   <Image
                     src={item?.icon}
-                    alt={item.title}
+                    alt={item?.title ?? item?.description ?? "Key objective"}
                     width={80}
                     height={80}
                     className="object-contain"

@@ -505,47 +505,57 @@ export const Header = ({ itemupdate }: any) => {
                           </Typography>
                         </Box>
                       </AccordionSummary>
-                      <AccordionDetails sx={{ fontSize: "14px" }}>
+                      <AccordionDetails sx={{ fontSize: "12px", p: 0 }}>
                         {menuItem.subMenu.map((subItem, subIndex) => {
                           const isActive = activeSubMenu === subItem.title;
 
                           return (
-                            <Typography
-                              component="div"
+                            <Box
                               key={subIndex}
                               sx={{
-                                fontSize: "12px",
-                                color: isActive ? "#00999e" : "inherit",
-                                fontWeight: isActive ? "bold" : "normal",
+                                borderBottom:
+                                  subIndex < menuItem.subMenu.length - 1
+                                    ? "1px solid #00999e"
+                                    : "none",
+                                py: 0.75,
+                                // px: 2,
                               }}
                             >
-                              <Link
-                                href={subItem.link || "/"}
-                                key={subItem.title}
-                                className="custom-link"
-                                onClick={(e) => handleSubMenuClick(e, subItem)}
-                                style={{
-                                  color:
-                                    activeSubMenu === subItem.title
-                                      ? "#00999E"
-                                      : "",
+                              <Typography
+                                component="div"
+                                sx={{
+                                  // fontSize: "12px",
+                                  color: isActive ? "#00999e" : "inherit",
+                                  fontWeight: isActive ? "bold" : "normal",
                                 }}
                               >
-                                <HoverTypography
-                                  fontSize="12px"
-                                 
-                                  border="4px solid white"
+                                <Link
+                                  href={subItem.link || "/"}
+                                  key={subItem.title}
+                                  className="custom-link"
+                                  onClick={(e) => handleSubMenuClick(e, subItem)}
                                   style={{
                                     color:
                                       activeSubMenu === subItem.title
-                                        ? "blue"
-                                        : "inherit",
+                                        ? "#00999E"
+                                        : "",
                                   }}
                                 >
-                                  {subItem.title}
-                                </HoverTypography>
-                              </Link>
-                            </Typography>
+                                  <HoverTypography
+                                    fontSize="12px"
+                                    border="4px solid white"
+                                    style={{
+                                      color:
+                                        activeSubMenu === subItem.title
+                                          ? "blue"
+                                          : "inherit",
+                                    }}
+                                  >
+                                    {subItem.title}
+                                  </HoverTypography>
+                                </Link>
+                              </Typography>
+                            </Box>
                           );
                         })}
                       </AccordionDetails>
@@ -682,36 +692,47 @@ export const Header = ({ itemupdate }: any) => {
                       boxShadow={3}
                       zIndex={999999}
                     >
-                      {homeSubMenues?.map((subMenu) => (
-                        <Link
-                          href={subMenu?.link || "/"}
+                      {homeSubMenues?.map((subMenu, index) => (
+                        <Box
                           key={subMenu.title}
-                          className="custom-link"
-                          onClick={(e) => handleSubMenuClick(e, subMenu)}
-                          style={{
-                            color:
-                              activeSubMenu === subMenu.title ? "#00999E" : "",
+                          sx={{
+                            borderBottom:
+                              index < (homeSubMenues?.length ?? 1) - 1
+                                ? "1px solid #00999e"
+                                : "none",
+                            py: 0.5,
+                            px: 1.5,
                           }}
                         >
-                          <HoverTypography
-                            fontSize={{
-                              xs: "10px",
-                              sm: "10px",
-                              md: "13px",
-                              lg: "15px",
-                            }}
-                            
-                            border="4px solid white"
+                          <Link
+                            href={subMenu?.link || "/"}
+                            className="custom-link"
+                            onClick={(e) => handleSubMenuClick(e, subMenu)}
                             style={{
                               color:
-                                activeSubMenu === subMenu.title
-                                  ? "blue"
-                                  : "inherit",
+                                activeSubMenu === subMenu.title ? "#00999E" : "",
                             }}
                           >
-                            {subMenu.title}
-                          </HoverTypography>
-                        </Link>
+                            <HoverTypography
+                              fontSize={{
+                                xs: "10px",
+                                sm: "10px",
+                                md: "13px",
+                                lg: "15px",
+                              }}
+                              border="4px solid white"
+                              style={{
+                                color:
+                                  activeSubMenu === subMenu.title
+                                    ? "blue"
+                                    : "inherit",
+                                }}
+                              sx={{ lineHeight: '1.5' }}
+                            >
+                              {subMenu.title}
+                            </HoverTypography>
+                          </Link>
+                        </Box>
                       ))}
                     </Box>
                   )}
@@ -751,32 +772,42 @@ export const Header = ({ itemupdate }: any) => {
                       boxShadow={3}
                       zIndex={999999}
                     >
-                      {studyAbroadsubMenues?.map((subMenu) => (
-                        <Link
-                          href={subMenu?.link}
+                      {studyAbroadsubMenues?.map((subMenu, index) => (
+                        <Box
                           key={subMenu.title}
-                          className="custom-link"
-                          style={{
-                            color: location === subMenu.link ? "#00999e" : "",
+                          sx={{
+                            borderBottom:
+                              index < (studyAbroadsubMenues?.length ?? 1) - 1
+                                ? "1px solid #00999e"
+                                : "none",
+                            py: 0.5,
+                            px: 1.5,
                           }}
                         >
-                          <HoverTypography
-                            fontSize={{
-                              xs: "10px",
-                              sm: "10px",
-                              md: "13px",
-                              lg: "15px",
-                            }}
-                            component="span"
-                            
-                            border="4px solid white"
+                          <Link
+                            href={subMenu?.link}
+                            className="custom-link"
                             style={{
                               color: location === subMenu.link ? "#00999e" : "",
                             }}
                           >
-                            {subMenu?.title}
-                          </HoverTypography>
-                        </Link>
+                            <HoverTypography
+                              fontSize={{
+                                xs: "10px",
+                                sm: "10px",
+                                md: "13px",
+                                lg: "15px",
+                              }}
+                              component="span"
+                              border="4px solid white"
+                              style={{
+                                color: location === subMenu.link ? "#00999e" : "",
+                              }}
+                            >
+                              {subMenu?.title}
+                            </HoverTypography>
+                          </Link>
+                        </Box>
                       ))}
                     </Box>
                   )}
@@ -821,36 +852,46 @@ export const Header = ({ itemupdate }: any) => {
                       boxShadow={3}
                       zIndex={999999}
                     >
-                      {iRSubMenues?.map((subMenu) => (
-                        <Link
-                          href={subMenu.link}
+                      {iRSubMenues?.map((subMenu, index) => (
+                        <Box
                           key={subMenu.title}
-                          className="custom-link"
-                          onClick={(e) => handleSubMenuClick(e, subMenu)}
-                          style={{
-                            color:
-                              activeSubMenu === subMenu.title ? "#00999E" : "",
+                          sx={{
+                            borderBottom:
+                              index < (iRSubMenues?.length ?? 1) - 1
+                                ? "1px solid #00999e"
+                                : "none",
+                            py: 0.5,
+                            px: 1.5,
                           }}
                         >
-                          <HoverTypography
-                            fontSize={{
-                              xs: "10px",
-                              sm: "10px",
-                              md: "13px",
-                              lg: "15px",
-                            }}
-                            
-                            border="4px solid white"
+                          <Link
+                            href={subMenu.link}
+                            className="custom-link"
+                            onClick={(e) => handleSubMenuClick(e, subMenu)}
                             style={{
                               color:
-                                activeSubMenu === subMenu.title
-                                  ? "blue"
-                                  : "inherit",
+                                activeSubMenu === subMenu.title ? "#00999E" : "",
                             }}
                           >
-                            {subMenu.title}
-                          </HoverTypography>
-                        </Link>
+                            <HoverTypography
+                              fontSize={{
+                                xs: "10px",
+                                sm: "10px",
+                                md: "13px",
+                                lg: "15px",
+                              }}
+                              border="4px solid white"
+                              style={{
+                                color:
+                                  activeSubMenu === subMenu.title
+                                    ? "blue"
+                                    : "inherit",
+                              }}
+                            >
+                              {subMenu.title}
+                            </HoverTypography>
+                          </Link>
+                        </Box>
                       ))}
                     </Box>
                   )}
@@ -889,31 +930,41 @@ export const Header = ({ itemupdate }: any) => {
                       boxShadow={3}
                       zIndex={999999}
                     >
-                      {immersionSubMenues.map((subMenu) => (
-                        <Link
-                          href={subMenu.link}
+                      {immersionSubMenues.map((subMenu, index) => (
+                        <Box
                           key={subMenu.title}
-                          className="custom-link"
-                          style={{
-                            color: location === subMenu.link ? "#00999e" : "",
+                          sx={{
+                            borderBottom:
+                              index < immersionSubMenues.length - 1
+                                ? "1px solid #00999e"
+                                : "none",
+                            py: 0.5,
+                            px: 1.5,
                           }}
                         >
-                          <HoverTypography
-                            fontSize={{
-                              xs: "10px",
-                              sm: "10px",
-                              md: "13px",
-                              lg: "15px",
-                            }}
-                            
-                            border="4px solid white"
+                          <Link
+                            href={subMenu.link}
+                            className="custom-link"
                             style={{
                               color: location === subMenu.link ? "#00999e" : "",
                             }}
                           >
-                            {subMenu.title}
-                          </HoverTypography>
-                        </Link>
+                            <HoverTypography
+                              fontSize={{
+                                xs: "10px",
+                                sm: "10px",
+                                md: "13px",
+                                lg: "15px",
+                              }}
+                              border="4px solid white"
+                              style={{
+                                color: location === subMenu.link ? "#00999e" : "",
+                              }}
+                            >
+                              {subMenu.title}
+                            </HoverTypography>
+                          </Link>
+                        </Box>
                       ))}
                     </Box>
                   )}

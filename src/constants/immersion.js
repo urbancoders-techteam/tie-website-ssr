@@ -1,5 +1,3 @@
-// import middle_east from "../../asset/middle-east.png";
-// import northamerica from "../../asset/north-america.png"
 
 import { imageBaseUrl } from "@/utils/config";
 
@@ -74,7 +72,6 @@ export const immersionBenefits = [
 ];
 
 // immersion slug data
-
 export const immersionSlugData = [
   {
     slug: "middle-east",

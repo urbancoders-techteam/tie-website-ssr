@@ -2,12 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import ContainerWrapper from "./ContainerWrapper";
+import { Box } from "@mui/material";
 
 const Footer = () => {
 
   
   return (
-    <footer className="bg-white pb-10  text-md text-[#606060]">
+    <footer className="bg-[#effdff] pb-10 text-md text-[#606060]">
       <ContainerWrapper>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 border-[#606060] border-b-2 py-8">
           {/* Column 1 - Logo & Offices */}
@@ -88,7 +89,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2 - Services */}
-          <div>
+          <Box sx={{ mt: { xs: 0, md: 15 } }}>
             <h3 className="font-bold mb-3 text-black">SERVICES</h3>
             <ul className="space-y-2 ">
               <li><Link href={'/study-abroad'}>Study Abroad</Link></li>
@@ -96,10 +97,10 @@ const Footer = () => {
               <li><Link href={'/international-relation'}>International Engagement</Link></li>
               <li><Link href={'/immersion'}>Immersion</Link></li>
             </ul>
-          </div>
+          </Box>
 
           {/* Column 3 - Menu */}
-          <div>
+          <Box sx={{ mt: { xs: 0, md: 15 } }}>
             <h3 className="font-bold mb-3 text-black">MENU</h3>
             <ul className=" space-y-2 ">
               <li className="py-1">
@@ -155,10 +156,10 @@ const Footer = () => {
                 <Link href={`/contact`}>Contact Us</Link>
               </li>
             </ul>
-          </div>
+          </Box>
 
           {/* Column 4 - Others */}
-          <div>
+          <Box sx={{ mt: { xs: 0, md: 15 } }}>
             <h3 className="font-bold mb-3 text-black">Others</h3>
             <ul className=" space-y-2 ">
               <Link href={"/privacy-policy"}>
@@ -172,7 +173,7 @@ const Footer = () => {
                 <li className="py-1">Terms and Conditions</li>{" "}
               </Link>
             </ul>
-          </div>
+          </Box>
         </div> 
       {/* Copyright */}
       <div className="text-center pt-6 text-sm text-[#606060] border-t border-gray-300">

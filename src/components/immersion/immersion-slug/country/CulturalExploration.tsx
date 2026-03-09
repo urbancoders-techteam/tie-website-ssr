@@ -34,17 +34,24 @@ export default function CulturalExploration({ data }: any) {
         ref={gridRef}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 bg-white w-full"
       >
-        {data?.map((item: any, index: number) => (
-          <div key={index} className="overflow-hidden rounded shadow-md">
-            <Image
-              src={item}
-              alt={item.alt}
-              width={400}
-              height={300}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        ))}
+        {data?.map((item: any, index: number) => {
+          const src = typeof item === "string" ? item : item?.src ?? item?.url;
+          const alt =
+            typeof item === "object" && item?.alt
+              ? item.alt
+              : `Cultural exploration ${index + 1}`;
+          return (
+            <div key={index} className="overflow-hidden rounded shadow-md">
+              <Image
+                src={src}
+                alt={alt}
+                width={400}
+                height={300}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
