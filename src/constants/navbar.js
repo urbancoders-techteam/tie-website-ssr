@@ -3,7 +3,7 @@ export const navbarData = [
     menu: { name: "Home", link: "/" },
     subMenu: [
       {
-        title: "About us",
+        title: "About Us",
         link: "/aboutus",
       },
       {

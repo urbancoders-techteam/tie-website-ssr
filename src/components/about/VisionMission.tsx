@@ -44,13 +44,13 @@ const VisionMission = () => {
           {/* Left: Content */}
           <div className="flex-3">
             <HeadingTypography content="Mission" />
-            <p className="text-gray-800 text-lg leading-relaxed">
-             <ul className="list-disc pl-5">
-              <li>To empower 5,000+ students with tailored mentorship and profile-building, achieving a 95% success rate in top global admissions.</li>
-              <li>To design NEP-aligned internationalization strategies for 100+ institutions, elevating them to global academic standards.</li>
-              <li>To deliver 200+ global immersion and exchange programs, shaping 10,000+ culturally agile, future-ready graduates.</li>
-             </ul>
-            </p>
+            <div className="text-gray-800 text-lg leading-relaxed">
+              <ul className="list-disc pl-5">
+                <li>To empower 5,000+ students with tailored mentorship and profile-building, achieving a 95% success rate in top global admissions.</li>
+                <li>To design NEP-aligned internationalization strategies for 100+ institutions, elevating them to global academic standards.</li>
+                <li>To deliver 200+ global immersion and exchange programs, shaping 10,000+ culturally agile, future-ready graduates.</li>
+              </ul>
+            </div>
           </div>
 
           {/* Right: Image */}

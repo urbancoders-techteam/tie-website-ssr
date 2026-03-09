@@ -45,7 +45,7 @@ export const Header = ({ itemupdate }: any) => {
 
 
    const [token, setToken] = useState<string | null>(null);
-   let profileImage;
+   const profileImage: string | undefined = undefined;
 
   useEffect(() => {
     // Step 1: check from URL hash
@@ -188,9 +188,12 @@ export const Header = ({ itemupdate }: any) => {
     isActive: boolean;
   }): React.CSSProperties => ({
     color: isActive ? "#00999e" : "",
-    border: isActive ? "2px solid #00999e" : "",
-    borderRadius: isActive ? 8 : "",
+    display: "inline-block",
     position: "relative",
+    borderBottom: isActive ? "3px solid #00999e" : "3px solid transparent",
+    borderRadius: 0,
+    paddingBottom: "4px",
+    marginBottom: "-4px",
   });
 
   const handleHomeMouseEnter = () => {
@@ -223,6 +226,26 @@ export const Header = ({ itemupdate }: any) => {
   };
 
   const [selectedParentMenu, setSelectedParentMenu] = useState<any>(null);
+
+  // Sync selected menu with current pathname so correct item shows active + bottom underline
+  useEffect(() => {
+    if (location === "/" || location === "/aboutus") setSelectedParentMenu("Home");
+    else if (
+      location === "/study-abroad" ||
+      location.startsWith("/study-abroad/") ||
+      location === "/test" ||
+      location.startsWith("/test/")
+    )
+      setSelectedParentMenu("study-abroad");
+    else if (
+      location === "/international-relation" ||
+      location.startsWith("/international-relation/")
+    )
+      setSelectedParentMenu("international-relation");
+    else if (location === "/immersion" || location.startsWith("/immersion/"))
+      setSelectedParentMenu("Immersion");
+    else setSelectedParentMenu(null);
+  }, [location]);
 
   const isParentMenuSelected = (parentMenu: string | null) =>
     selectedParentMenu === parentMenu;
@@ -341,12 +364,21 @@ export const Header = ({ itemupdate }: any) => {
                     className="custom-link"
                     onClick={handleDrawerClose}
                   >
-                    <Image
-                      src={"/images/TIE_LOGO.png"}
-                      alt="Logo"
-                      width={150}
-                      height={60}
-                    />
+                    <Box
+                      sx={{
+                        position: "relative",
+                        width: { xs: 120, sm: 150 },
+                        height: { xs: 68, sm: 60 },
+                      }}
+                    >
+                      <Image
+                        src={"/images/TIE_LOGO.png"}
+                        alt="Logo"
+                        fill
+                        style={{ objectFit: "contain" }}
+                        sizes="(max-width: 600px) 120px, 150px"
+                      />
+                    </Box>
                   </Link>
                 </Box>
 
@@ -415,12 +447,21 @@ export const Header = ({ itemupdate }: any) => {
                       className="custom-link"
                       onClick={handleDrawerClose}
                     >
-                      <Image
-                        src={"/images/TIE_LOGO.png"}
-                        alt="Logo"
-                        width={150}
-                        height={60}
-                      />
+                      <Box
+                        sx={{
+                          position: "relative",
+                          width: { xs: 120, sm: 150 },
+                          height: { xs: 68, sm: 60 },
+                        }}
+                      >
+                        <Image
+                          src={"/images/TIE_LOGO.png"}
+                          alt="Logo"
+                          fill
+                          style={{ objectFit: "contain" }}
+                          sizes="(max-width: 600px) 120px, 150px"
+                        />
+                      </Box>
                     </Link>
                   )}
                   <IconButton
@@ -470,10 +511,10 @@ export const Header = ({ itemupdate }: any) => {
 
                           return (
                             <Typography
+                              component="div"
                               key={subIndex}
                               sx={{
                                 fontSize: "12px",
-                                // py: 0.5,
                                 color: isActive ? "#00999e" : "inherit",
                                 fontWeight: isActive ? "bold" : "normal",
                               }}
@@ -550,24 +591,42 @@ export const Header = ({ itemupdate }: any) => {
                       </Link>
                     </Box>
                   ) : (
-                    <Link
-                      href={`${navURL}login`}
-                      className="custom-link"
-                      onClick={handleDrawerClose}
-                    >
-                      <HoverTypography
-                        fontSize={{
-                          xs: "14px",
-                          sm: "16px",
-                          md: "16px",
-                          lg: "17px",
-                        }}
-                        
-                        sx={{ width: "60px" }}
+                    <><Link
+                        href={`${navURL}mbbs`}
+                        className="custom-link"
+                        onClick={handleDrawerClose}
                       >
-                        Login
-                      </HoverTypography>
-                    </Link>
+                        <HoverTypography
+                          fontSize={{
+                            xs: "14px",
+                            sm: "16px",
+                            md: "16px",
+                            lg: "17px",
+                          }}
+
+                          sx={{ width: "60px" }}
+                        >
+                          MBBS
+                        </HoverTypography>
+                      </Link>
+                      <Link
+                        href={`${navURL}login`}
+                        className="custom-link"
+                        onClick={handleDrawerClose}
+                      >
+                          <HoverTypography
+                            fontSize={{
+                              xs: "14px",
+                              sm: "16px",
+                              md: "16px",
+                              lg: "17px",
+                            }}
+
+                            sx={{ width: "60px" }}
+                          >
+                            Login
+                          </HoverTypography>
+                        </Link></>
                   )}
                 </List>
               </Drawer>
@@ -593,7 +652,9 @@ export const Header = ({ itemupdate }: any) => {
                     style={
                       NavLinkCss({
                         isActive:
-                          isParentMenuSelected("Home") || location === "/",
+                          isParentMenuSelected("Home") ||
+                          location === "/" ||
+                          location === "/aboutus",
                       }) as React.CSSProperties
                     }
                     onClick={() => setSelectedParentMenu("Home")}
@@ -668,19 +729,16 @@ export const Header = ({ itemupdate }: any) => {
                       NavLinkCss({
                         isActive:
                           isParentMenuSelected("study-abroad") ||
-                          location === "/study-abroad",
+                          location === "/study-abroad" ||
+                          location.startsWith("/study-abroad/") ||
+                          location === "/test" ||
+                          location.startsWith("/test/"),
                       }) as React.CSSProperties
                     }
+                    onClick={() => setSelectedParentMenu("study-abroad")}
                   >
                     <HoverTypography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "10px",
-                        md: "13px",
-                        lg: "15px",
-                      }}
-                      border="4px solid white"
-                      
+                      fontSize={{ md: "12px", lg: "13px", xl: "15px" }}
                     >
                       Study Abroad
                     </HoverTypography>
@@ -736,9 +794,11 @@ export const Header = ({ itemupdate }: any) => {
                       NavLinkCss({
                         isActive:
                           isParentMenuSelected("international-relation") ||
-                          location === "/international-relation",
+                          location === "/international-relation" ||
+                          location.startsWith("/international-relation/"),
                       }) as React.CSSProperties
                     }
+                    onClick={() => setSelectedParentMenu("international-relation")}
                   >
                     <HoverTypography
                       fontSize={{
@@ -807,20 +867,15 @@ export const Header = ({ itemupdate }: any) => {
                     style={
                       NavLinkCss({
                         isActive:
-                          isParentMenuSelected("custom-link") ||
-                          location === "/custom-link",
+                          isParentMenuSelected("Immersion") ||
+                          location === "/immersion" ||
+                          location.startsWith("/immersion/"),
                       }) as React.CSSProperties
                     }
+                    onClick={() => setSelectedParentMenu("Immersion")}
                   >
                     <HoverTypography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "10px",
-                        md: "13px",
-                        lg: "20px",
-                      }}
-                      border="4px solid white"
-                      
+                      fontSize={{ md: "13px", lg: "14px", xl: "16px" }}
                     >
                       Immersion
                     </HoverTypography>
@@ -932,24 +987,41 @@ export const Header = ({ itemupdate }: any) => {
                     </PopupState>
                   </Box>
                 ) : (
-                  <Link
-                    href={`${navURL}login`}
-                    className="custom-link"
-                    // style={NavLinkCss}
-                  >
-                    <HoverTypography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "10px",
-                        md: "13px",
-                        lg: "20px",
-                      }}
-                      border="4px solid white"
+                  <><Link
+                        href={`${navURL}mbbs`}
+                        className="custom-link"
+                      >
+                        <HoverTypography
+                          fontSize={{
+                            xs: "10px",
+                            sm: "10px",
+                            md: "13px",
+                            lg: "20px",
+                          }}
+                          border="4px solid white"
+
+                        >
+                          MBBS
+                        </HoverTypography>
+                      </Link>
                       
-                    >
-                      Login
-                    </HoverTypography>
-                  </Link>
+                      <Link
+                        href={`${navURL}login`}
+                        className="custom-link"
+                      >
+                          <HoverTypography
+                            fontSize={{
+                              xs: "10px",
+                              sm: "10px",
+                              md: "13px",
+                              lg: "20px",
+                            }}
+                            border="4px solid white"
+
+                          >
+                            Login
+                          </HoverTypography>
+                        </Link></>
                 )}
               </Stack>
             )}

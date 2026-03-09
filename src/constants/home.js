@@ -28,11 +28,17 @@ export const ourserviceshomedata = [
     title: "INTERNATIONAL ENGAGEMENT",
     path: "/international-relation",
   },
+  // {
+  //   background: tpbg,
+  //   image: tp,
+  //   title: "TEST PREP",
+  //   path: "/test",
+  // },
   {
     background: tpbg,
     image: tp,
-    title: "TEST PREP",
-    path: "/test",
+    title: "MBBS",
+    path: "/mbbs",
   },
 ];
 
