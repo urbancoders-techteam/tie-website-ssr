@@ -16,9 +16,9 @@ import WhatStudentsSaySection from "./WhatStudentsSaySection";
 
 function CampaignNavbar() {
   return (
-    <header className="sticky top-0 z-50 bg-white backdrop-blur border-b border-gray-200 shadow-md">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-[#00999E] via-[#008c91] to-[#5dd4d9] backdrop-blur border-b border-white/20 shadow-md">
       <div className="mx-auto max-w-7xl px-4 flex items-center justify-between gap-3">
-        <Link href="/" className="flex items-center gap-3" aria-label="TIE Home">
+        <Link href="/" className="flex items-center gap-3 rounded-lg bg-white/95 px-2 shadow-sm" aria-label="TIE Home">
           <Image
             src="/images/TIE_LOGO.png"
             alt="Taksheela Institute of Education"
@@ -29,34 +29,29 @@ function CampaignNavbar() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-lg font-medium text-gray-700">
-
-
-          <Link href="#why-choose-russia" className="hover:text-[#00999E] font-bold">
+        <nav className="hidden md:flex items-center gap-6 text-lg font-medium text-white/95">
+          <Link href="#why-choose-russia" className="hover:text-white font-bold">
             Highlights
           </Link>
-
-          <Link href="#why" className="hover:text-[#00999E] font-bold">
+          <Link href="#why" className="hover:text-white font-bold">
             Why Russia?
           </Link>
-
-          <Link href="#apply" className="hover:text-[#00999E] font-bold">
+          <Link href="#apply" className="hover:text-white font-bold">
             Apply
           </Link>
-
         </nav>
 
         <div className="flex items-center gap-3">
           <a
             href="tel:+919831241212"
-            className="hidden lg:inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 hover:border-gray-400"
+            className="hidden lg:inline-flex items-center gap-2 rounded-lg border border-white/40 px-3 py-2 text-sm text-white hover:bg-white/10"
           >
             <FaPhoneAlt className="shrink-0" aria-hidden />
             +91 9831241212
           </a>
           <a
             href="#apply"
-            className="inline-flex items-center rounded-lg bg-[#00999E] px-3 py-2 sm:px-4 text-sm font-semibold text-white hover:bg-[#007a7f] whitespace-nowrap"
+            className="inline-flex items-center rounded-lg bg-white px-3 py-2 sm:px-4 text-sm font-semibold text-[#00999E] hover:bg-white/90 whitespace-nowrap"
           >
             Get Guidance
           </a>
@@ -68,22 +63,24 @@ function CampaignNavbar() {
 
 function CampaignFooter() {
   return (
-    <footer className="bg-[#0b1b1c] text-white">
+    <footer className="bg-gradient-to-r from-[#00999E] via-[#008c91] to-[#5dd4d9] text-white">
       <div className="mx-auto max-w-7xl px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="space-y-3">
-          <Image
-            src="/images/TIE_LOGO.png"
-            alt="Taksheela Institute of Education"
-            width={160}
-            height={64}
-            className="h-auto w-[140px] sm:w-[160px]"
-          />
-          <p className="text-sm text-white/80">
+          <div className="inline-block rounded-lg bg-white/95 px-3 py-2 shadow-sm">
+            <Image
+              src="/images/TIE_LOGO.png"
+              alt="Taksheela Institute of Education"
+              width={160}
+              height={64}
+              className="h-auto w-[140px] sm:w-[160px]"
+            />
+          </div>
+          <p className="text-sm text-white/90">
             Get end-to-end guidance for MBBS abroad—from counselling to confirmed admits.
           </p>
         </div>
 
-        <div className="space-y-2 text-sm text-white/80">
+        <div className="space-y-2 text-sm text-white/90">
           <div className="font-semibold text-white">Contact</div>
           <a className="block hover:text-white" href="tel:+919831241212">
             +91 9831241212
@@ -93,7 +90,7 @@ function CampaignFooter() {
           </a>
         </div>
 
-        <div className="space-y-2 text-sm text-white/80">
+        <div className="space-y-2 text-sm text-white/90">
           <div className="font-semibold text-white">Links</div>
           <Link className="block hover:text-white" href="/privacy-policy">
             Privacy Policy
@@ -107,7 +104,7 @@ function CampaignFooter() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/60">
+      <div className="border-t border-white/20 py-4 text-center text-xs text-white/80">
         Copyright ©️ {new Date().getFullYear()} Taksheela Institute of Education. All rights
         reserved.
       </div>
@@ -125,7 +122,9 @@ export default function RussiaCampaignPage() {
       <HeroSection />
 
       {/* Campaign Tabs – inner content uses max-w-7xl px-4 in CampaignTabs */}
-      <CampaignTabs />
+      <div className="sticky top-23 z-50">
+        <CampaignTabs />
+      </div>
 
       {/* Overview of MBBS in Russia – tabs + content + testimonial */}
       <section id="overview" className="font-sans bg-white pt-10 md:pt-14 scroll-mt-24">
