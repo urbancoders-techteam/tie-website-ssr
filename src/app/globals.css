@@ -5,11 +5,10 @@
 @import "leaflet/dist/leaflet.css";
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings: "wdth" 100;
 }
 
 /* globals.css */
@@ -94,4 +93,53 @@ body {
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+/* Thin scrollbar, no arrows – Why Choose Russia cards section */
+.why-choose-cards-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 153, 158, 0.5) transparent;
+}
+.why-choose-cards-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.why-choose-cards-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.why-choose-cards-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 153, 158, 0.5);
+  border-radius: 3px;
+}
+.why-choose-cards-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 153, 158, 0.7);
+}
+/* Hide top/bottom arrow buttons in WebKit (Chrome, Safari, Edge) */
+.why-choose-cards-scroll::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Eligibility Criteria section – thin themed scrollbar, no arrows */
+.eligibility-criteria-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #00999E transparent;
+}
+.eligibility-criteria-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.eligibility-criteria-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.eligibility-criteria-scroll::-webkit-scrollbar-thumb {
+  background: #00999E;
+  border-radius: 3px;
+}
+.eligibility-criteria-scroll::-webkit-scrollbar-thumb:hover {
+  background: #00888a;
+}
+.eligibility-criteria-scroll::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
 }

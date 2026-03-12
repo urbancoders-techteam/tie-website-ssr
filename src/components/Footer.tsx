@@ -160,7 +160,7 @@ const Footer = () => {
 
           {/* Column 4 - Others */}
           <Box sx={{ mt: { xs: 0, md: 15 } }}>
-            <h3 className="font-bold mb-3 text-black">Others</h3>
+            <h3 className="font-bold mb-3 text-black">OTHERS</h3>
             <ul className=" space-y-2 ">
               <Link href={"/privacy-policy"}>
                 <li className="py-1">Privacy Policy</li>{" "}

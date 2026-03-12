@@ -32,20 +32,28 @@ export default function RootLayout({
         <CanonicalTag />
         <SchemaMarkup />
 
-        {/* Fonts - Roboto */}
+        {/* Fonts - Nunito */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
           rel="stylesheet"
         />
 
-        {/* Google Analytics */}
+        {/* Google tag (gtag.js) */}
         <Script
-          id="google-analytics"
+          id="google-tag"
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=AW-16606653169"
         />
+        <Script id="google-tag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16606653169');
+          `}
+        </Script>
       </head>
       <body>
         <MainLayoutWrapper>{children}</MainLayoutWrapper>

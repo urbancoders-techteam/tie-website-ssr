@@ -212,10 +212,10 @@ export default function Page() {
       </div>
 
       <ContainerWrapper className="py-12">
-        <HeadingTypography content="Countries we work with" textAlign={"center"} />
+        <HeadingTypography content="Countries We Work With" textAlign={"center"} />
         <div className="flex justify-between align-middle items-center flex-wrap"> {countryData?.map((uni, i) => (
           <div key={i} className="p-2 my-4">
-            <Link href={`/mbbs/abroad/${uni?.title?.toLowerCase()}`} target="_blank" rel="noopener noreferrer">
+            <Link href={`/mbbs/abroad/${uni?.title?.toLowerCase()}`}>
               <div className="w-[230px] h-[260px] bg-white rounded-xl shadow-lg overflow-hidden group hover:scale-105 transition-transform duration-300 mx-auto flex flex-col justify-between">
                 <div className="flex-1 flex items-center justify-center p-4">
                   <Image

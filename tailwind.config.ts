@@ -3,8 +3,10 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          roboto: ['Roboto', 'sans-serif'],
-          poppins: ['Roboto', 'sans-serif'], /* kept for existing classes, now uses Roboto */
+          sans: ['Nunito', 'sans-serif'],
+          nunito: ['Nunito', 'sans-serif'],
+          roboto: ['Nunito', 'sans-serif'], /* kept for existing classes, now uses Nunito */
+          poppins: ['Nunito', 'sans-serif'], /* kept for existing classes, now uses Nunito */
         },
         animation: {
           'spin-slow': 'spin 5s linear infinite',

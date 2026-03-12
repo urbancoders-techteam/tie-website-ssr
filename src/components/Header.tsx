@@ -602,7 +602,8 @@ export const Header = ({ itemupdate }: any) => {
                     </Box>
                   ) : (
                     <><Link
-                        href={`${navURL}mbbs`}
+                        // href={`${navURL}mbbs`}
+                        href={`/mbbs`}
                         className="custom-link"
                         onClick={handleDrawerClose}
                       >
@@ -1039,7 +1040,8 @@ export const Header = ({ itemupdate }: any) => {
                   </Box>
                 ) : (
                   <><Link
-                        href={`${navURL}mbbs`}
+                        // href={`${navURL}mbbs`}
+                        href={`/mbbs`}
                         className="custom-link"
                       >
                         <HoverTypography

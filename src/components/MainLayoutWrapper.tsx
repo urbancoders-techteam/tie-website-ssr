@@ -16,7 +16,11 @@ export default function MainLayoutWrapper({
   const pathname = usePathname();
   
   // Exclude Header/Footer for study-in-dubai pages (they have their own)
-  const excludeLayout = pathname === "/study-in-dubai" || pathname?.startsWith("/study-in-dubai/");
+  const excludeLayout =
+    pathname === "/study-in-dubai" ||
+    pathname?.startsWith("/study-in-dubai/") ||
+    pathname === "/mbbs/abroad/russia/campaign" ||
+    pathname?.startsWith("/mbbs/abroad/russia/campaign/");
 
   if (excludeLayout) {
     return <>{children}</>;
