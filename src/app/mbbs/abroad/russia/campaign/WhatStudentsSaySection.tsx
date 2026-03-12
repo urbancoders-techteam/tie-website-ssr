@@ -5,28 +5,22 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const TESTIMONIALS = [
   {
-    name: "Riddhi",
-    university: "Omsk State Medical University",
+    name: "Pratham Shrivas",
     quote:
-      "I had a seamless experience getting into Omsk University with the help of the team. The guidance was clear, paperwork was efficient, and the transition was stress-free. Highly recommended for anyone looking to pursue MBBS in Russia!",
+      "I had an excellent experience in securing my admission to study abroad with Taksheela. From the very beginning, they were incredibly knowledgeable, patient, and supportive. They took the time to understand my academic background, career goals, and personal preferences, then guided me to select programs and universities that matched my aspirations.",
+    university: "KABARDINO-BALKARIAN STATE UNIVERSITY, RUSSIA",
   },
   {
-    name: "Mahica Promod Yadav",
-    university: "Samara State Medical University",
+    name: "Rinkesh Patidar",
     quote:
-      "My experience with Taksheela has been wonderful. The support, teamwork and honesty throughout the admission process made everything smooth. I am grateful for their expert guidance and assistance.",
+      "My counselor is Anisha mam that helps me a lot. I am going to KEMSU Russia, thank you education vibes. Had a nice experience going to Kemerovo State University, Russia . Taksheela was very helpful throughout the process. The visa process was smooth, with no extra documentation hassles. Everything was well-organized, making the journey stress-free!",
+    university: "KEMEROVO STATE UNIVERSITY, RUSSIA",
   },
   {
-    name: "Sharayu Rameshwar Patil",
-    university: "Orel State Medical University",
+    name: "Vitejana Malik",
     quote:
-      "I was struggling with my NEET score and unsure about my future. I found Taksheela and they guided me to pursue MBBS in Russia. Today I am studying at Orel State Medical University. Thank you for making my dream possible!",
-  },
-  {
-    name: "Roshan",
-    university: "Omsk State Medical University",
-    quote:
-      "Taksheela exceeded my expectations. From expert counselling to personalised support, they made my MBBS admission journey smooth and transparent. I am now at Omsk State Medical University and very satisfied.",
+      "The communication between parents and the agency was very well maintained. The behaviour of the staff was also very polite. Starting from enrollment until students reached the college hostel facilities, they were very well taken care of and heard. The convenience of parents and students was their priority. I hope they keep up the good work.",
+    university: "BASHKIR STATE MEDICAL UNIVERSITY, RUSSIA",
   },
 ];
 

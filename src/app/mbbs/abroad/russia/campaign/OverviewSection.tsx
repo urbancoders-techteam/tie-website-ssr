@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaChevronRight} from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
 
 const OVERVIEW_CONTENT = {
@@ -19,56 +19,36 @@ const OVERVIEW_CONTENT = {
 
 const TESTIMONIALS = [
   {
-    name: "Aawaig Pratap Singh",
+    name: "Pratham Shrivas",
     location: "Haridwar",
-    initial: "A",
-    neetScore: "153",
     quote:
-      "I had a seamless experience getting into Tambov University with the help of Harsh Sharma from Education Vibes. The guidance was clear, paperwork was efficient, and the transition was stress-free. Highly recommended!",
-    university: "Tambov State University",
-    country: "Russia",
+      "I had an excellent experience in securing my admission to study abroad with Taksheela. From the very beginning, they were incredibly knowledgeable, patient, and supportive. They took the time to understand my academic background, career goals, and personal preferences, then guided me to select programs and universities that matched my aspirations.",
+    university: "KABARDINO-BALKARIAN STATE UNIVERSITY, RUSSIA",
   },
   {
-    name: "Priya Sharma",
+    name: "Rinkesh Patidar",
     location: "Lucknow",
-    initial: "P",
-    neetScore: "198",
     quote:
-      "Taksheela helped me secure admission at Kazan Federal University. The counselling was professional and they handled all documentation. I am now in my second year and very satisfied with the quality of education.",
-    university: "Kazan Federal University",
-    country: "Russia",
+      "My counselor is Anisha mam that helps me a lot. I am going to KEMSU Russia, thank you education vibes. Had a nice experience going to Kemerovo State University, Russia . Taksheela was very helpful throughout the process. The visa process was smooth, with no extra documentation hassles. Everything was well-organized, making the journey stress-free!",
+    university: "KEMEROVO STATE UNIVERSITY, RUSSIA",
   },
   {
-    name: "Rahul Verma",
+    name: "Vitejana Malik",
     location: "Patna",
-    initial: "R",
-    neetScore: "167",
     quote:
-      "From application to visa, everything was smooth. The team explained every step clearly. I got into RUDN University and the exposure here is amazing. Thank you Taksheela!",
-    university: "RUDN University",
-    country: "Russia",
-  },
-  {
-    name: "Anjali Gupta",
-    location: "Jaipur",
-    initial: "A",
-    neetScore: "182",
-    quote:
-      "I was confused about which country to choose. The consultants gave me a clear comparison and Russia fit my budget and goals. Now studying at Sechenov University—dream come true!",
-    university: "Sechenov University",
-    country: "Russia",
-  },
-  {
-    name: "Vikram Singh",
-    location: "Dehradun",
-    initial: "V",
-    neetScore: "145",
-    quote:
-      "Affordable fees and good recognition were my priorities. Taksheela suggested the right universities and helped with NEET counselling. Admitted to Northern State Medical University. Very grateful!",
-    university: "Northern State Medical University",
-    country: "Russia",
+      "The communication between parents and the agency was very well maintained. The behaviour of the staff was also very polite. Starting from enrollment until students reached the college hostel facilities, they were very well taken care of and heard. The convenience of parents and students was their priority. I hope they keep up the good work.",
+    university: "BASHKIR STATE MEDICAL UNIVERSITY, RUSSIA",
   },
 ];
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
 
 export default function OverviewSection() {
   const [showMore, setShowMore] = useState(false);
@@ -89,7 +69,7 @@ export default function OverviewSection() {
               <p>{OVERVIEW_CONTENT.first}</p>
               <p>{OVERVIEW_CONTENT.second}</p>
               <p>{OVERVIEW_CONTENT.third}</p>
-              
+
               {showMore && (
                 <>
                   <p>{OVERVIEW_CONTENT.fourth}</p>
@@ -112,7 +92,7 @@ export default function OverviewSection() {
           </div>
 
           {/* Right: Testimonial slider */}
-          <div className="lg:col-span-1 relative testimonial-slider-overview min-h-[460px] lg:min-h-[480px] [&_.slick-dots]:bottom-[-28px] [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
+          <div className="lg:col-span-1 relative testimonial-slider-overview min-h-[400px] lg:min-h-[420px] [&_.slick-dots]:bottom-[-28px] [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
             <Slider
               dots
               infinite
@@ -122,41 +102,39 @@ export default function OverviewSection() {
               autoplay
               autoplaySpeed={4500}
               arrows
-              // prevArrow={<PrevArrow />}
-              // nextArrow={<NextArrow />}
               responsive={[
                 { breakpoint: 1024, settings: { arrows: false, dots: true } },
               ]}
             >
               {TESTIMONIALS.map((t, i) => (
                 <div key={i} className="px-1 h-full">
-                  <div className="h-full min-h-[460px] lg:min-h-[480px] rounded-xl border-2 border-[#00999E]/40 bg-white p-5 shadow-sm flex flex-col">
-                    <div className="flex items-center gap-4">
-                      <div className="h-14 w-14 shrink-0 rounded-full bg-[#00999E]/20 flex items-center justify-center text-[#00999E] text-lg font-bold">
-                        {t.initial}
+                  <div className="h-full min-h-[400px] lg:min-h-[420px] rounded-xl border border-gray-200/80 bg-white p-6 shadow-md shadow-gray-200/50 flex flex-col overflow-hidden">
+                    {/* Quote accent */}
+                    <div className="flex items-start gap-3">
+                      <div className="h-12 w-12 shrink-0 rounded-full bg-[#00999E]/10 flex items-center justify-center text-[#00999E]">
+                        <span className="text-lg font-bold leading-none">{getInitials(t.name)}</span>
                       </div>
-                      <div className="min-w-0">
-                        <p className="font-bold text-gray-900 truncate">{t.name}</p>
-                        <p className="text-sm text-gray-500">{t.location}</p>
-                        <div className="flex gap-2 mt-1.5">
-                          <span className="inline-flex items-center rounded-md bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-700">
-                            NEET
-                          </span>
-                          <span className="inline-flex items-center rounded-md bg-[#00999E] px-2 py-0.5 text-xs font-medium text-white">
-                            {t.neetScore}
-                          </span>
-                        </div>
+                      <div className="min-w-0 flex-1 pt-0.5">
+                        <p className="font-bold text-gray-900">{t.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{t.location}</p>
+                        {/* <span className="inline-block mt-2 text-[10px] font-medium uppercase tracking-wider text-[#00999E]">
+                          MBBS Student
+                        </span> */}
                       </div>
                     </div>
-                    <p className="mt-4 text-sm text-gray-600 leading-relaxed flex-1">{t.quote}</p>
-                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
-                      <div>
-                        <p className="font-semibold text-gray-900">{t.university}</p>
-                        <p className="text-sm text-gray-500">{t.country}</p>
-                      </div>
-                      <div className="h-10 w-10 shrink-0 rounded bg-gray-100 flex items-center justify-center text-gray-400 text-xs font-medium">
-                        Logo
-                      </div>
+                    {/* Quote */}
+                    <div className="relative mt-5 flex-1">
+                      <span className="absolute left-0 top-0 text-3xl font-serif text-[#00999E]/20 leading-none" aria-hidden>&ldquo;</span>
+                      <p className="pl-5 text-sm text-gray-600 leading-relaxed">
+                        {t.quote}
+                        <span className="inline-block text-3xl font-serif text-[#00999E]/20 leading-none align-bottom ml-1" aria-hidden>&rdquo;</span>
+                      </p>
+                    </div>
+                    {/* University */}
+                    <div className="mt-5 pt-4 border-t border-gray-100">
+                      <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide leading-snug">
+                        {t.university}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -17,11 +17,6 @@ const nextConfig: NextConfig = {
         source: "/consultants-study-abroad-bhubaneswar",
         destination: "/study-abroad-consultants-bhubaneswar",
       },
-      // Short URL for Russia campaign – only this path is affected; all other pages unchanged
-      {
-        source: "/russia-campaign",
-        destination: "/mbbs/abroad/russia/campaign",
-      },
     ];
   },
   images: {
