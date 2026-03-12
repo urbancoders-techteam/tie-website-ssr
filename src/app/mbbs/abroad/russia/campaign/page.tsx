@@ -62,7 +62,7 @@ function CampaignNavbar() {
           >
             Get Guidance
           </a> */}
-          <ModalTrigger text="Get Guidance" className=" rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
+          <ModalTrigger variant="custom" text="Get Guidance" className="rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
         </div>
       </div>
     </header>

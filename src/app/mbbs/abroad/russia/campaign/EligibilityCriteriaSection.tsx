@@ -1,7 +1,12 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import doctorImage from "@/assets/doctor.png";
+
+const doctorImageSrc =
+  typeof doctorImage === "object" && doctorImage !== null && "src" in doctorImage
+    ? (doctorImage as { src: string }).src
+    : String(doctorImage);
 
 const CRITERIA_CARDS: { title: string; titleHighlight?: boolean; desc: string }[] = [
   {
@@ -25,6 +30,8 @@ const CRITERIA_CARDS: { title: string; titleHighlight?: boolean; desc: string }[
 ];
 
 export default function EligibilityCriteriaSection() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <section
       id="eligibility-criteria"
@@ -60,20 +67,18 @@ export default function EligibilityCriteriaSection() {
                 style={{ clipPath: "ellipse(75% 80% at 50% 6%)" }}
               >
                 <div className="relative w-[85%] aspect-[3/4] max-h-full rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30">
-                  <Image
-                    src={doctorImage}
-                    alt="Student pursuing MBBS in Russia"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 280px, 350px"
-                    priority={false}
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.style.display = "none";
-                      if (target.nextElementSibling) (target.nextElementSibling as HTMLElement).style.display = "flex";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30 flex items-center justify-center" style={{ display: "none" }} aria-hidden>
+                  {!imageError ? (
+                    <img
+                      src={doctorImageSrc}
+                      alt="Student pursuing MBBS in Russia"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                      onError={() => setImageError(true)}
+                    />
+                  ) : null}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30 flex items-center justify-center ${imageError ? "" : "hidden"}`}
+                    aria-hidden={!imageError}
+                  >
                     <span className="text-[#00999E] font-semibold text-sm sm:text-lg">Student</span>
                   </div>
                 </div>
