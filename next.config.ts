@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // Ensure trailing slash doesn't break – redirect /campaign/ to /campaign
+      {
+        source: "/mbbs/abroad/russia/campaign/",
+        destination: "/mbbs/abroad/russia/campaign",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

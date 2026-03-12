@@ -1,18 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useRef } from "react";
 import {
   FaChevronLeft,
   FaChevronRight,
-  FaIdCard,
   FaPassport,
   FaFileAlt,
   FaCamera,
   FaStethoscope,
-  FaSyringe,
-  FaMoneyCheckAlt,
-  FaFileMedical,
 } from "react-icons/fa";
 
 type DocItem = { title: string; icon: React.ComponentType<{ className?: string }> };
