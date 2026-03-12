@@ -122,7 +122,7 @@ export default function RussiaCampaignPage() {
       <HeroSection />
 
       {/* Campaign Tabs – inner content uses max-w-7xl px-4 in CampaignTabs */}
-      <div className="sticky top-23 z-50">
+      <div className="sticky top-24 z-50">
         <CampaignTabs />
       </div>
 
