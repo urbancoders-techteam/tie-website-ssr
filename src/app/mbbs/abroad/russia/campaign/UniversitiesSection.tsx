@@ -1,251 +1,201 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState, useCallback } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { FaChevronRight } from "react-icons/fa";
+import { imageBaseUrl } from "@/utils/config";
+
+import ksmu from "../../../../../assets/russian_universities/ksmu.webp";
+import rudn from "../../../../../assets/russian_universities/rudn.webp";
+import rnrmu from "../../../../../assets/russian_universities/rnrmu.webp";
+import msmu from "../../../../../assets/russian_universities/msmu.jpg";
+import fmsmu from "../../../../../assets/russian_universities/fmsmu.jpg";
+import nsmmu from "../../../../../assets/russian_universities/nsmu.webp";
+import tsmmu from "../../../../../assets/russian_universities/tsmu.jpg";
+import spspmu from "../../../../../assets/russian_universities/spspmu.webp";
+import bsmu from "../../../../../assets/russian_universities/bsmu.jpeg";
+import ismu from "../../../../../assets/russian_universities/ismu.jpg";
+
+const RUS_LOGO = (n: number) => `${imageBaseUrl}mbbsCollege/russia/rus${n}.png`;
 
 export type University = {
   id: string;
   name: string;
-  initial: string;
-  logoColor: string;
   founded: string;
   city: string;
   fees: string;
-  description: string;
-  image: string;
-  readMoreHref: string;
+  universityLogo: string;
+  image: StaticImageData;
 };
 
-const UNIVERSITIES: University[] = [
-  {
-    id: "omsk",
-    name: "Omsk State Medical University",
-    initial: "O",
-    logoColor: "bg-emerald-600",
-    founded: "1920",
-    city: "Omsk",
-    fees: "$4,500",
-    description:
-      "Explore MBBS admission at Omsk State Medical University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/omsk-state-medical-university",
-  },
-  {
-    id: "bashkir",
-    name: "Bashkir State Medical University",
-    initial: "B",
-    logoColor: "bg-red-700",
-    founded: "1932",
-    city: "Ufa",
-    fees: "$4,800",
-    description:
-      "Explore MBBS admission at Bashkir State Medical University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/bashkir-state-medical-university",
-  },
-  {
-    id: "kemerovo-state",
-    name: "Kemerovo State University",
-    initial: "K",
-    logoColor: "bg-amber-600",
-    founded: "1974",
-    city: "Kemerovo",
-    fees: "$4,000",
-    description:
-      "Explore MBBS admission at Kemerovo State University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1592286927505-d6d9d2c2c67a?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/kemerovo-state-university",
-  },
-  {
-    id: "north-ossetian",
-    name: "North Ossetian State Medical Academy",
-    initial: "N",
-    logoColor: "bg-slate-600",
-    founded: "1939",
-    city: "Vladikavkaz",
-    fees: "$4,200",
-    description:
-      "Explore MBBS admission at North Ossetian State Medical Academy for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/north-ossetian-state-medical-academy",
-  },
-  {
-    id: "tambov",
-    name: "Tambov State University",
-    initial: "T",
-    logoColor: "bg-blue-700",
-    founded: "1917",
-    city: "Tambov",
-    fees: "$4,200",
-    description:
-      "Explore MBBS admission at Tambov State University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/tambov-state-university",
-  },
-  {
-    id: "tver",
-    name: "Tver State Medical University",
-    initial: "T",
-    logoColor: "bg-violet-600",
-    founded: "1936",
-    city: "Tver",
-    fees: "$4,400",
-    description:
-      "Explore MBBS admission at Tver State Medical University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/tver-state-medical-university",
-  },
-  {
-    id: "north-western",
-    name: "North Western State Medical University",
-    initial: "N",
-    logoColor: "bg-cyan-600",
-    founded: "1907",
-    city: "Saint Petersburg",
-    fees: "$5,500",
-    description:
-      "Explore MBBS admission at North Western State Medical University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/north-western-state-medical-university",
-  },
-  {
-    id: "kemerovo-medical",
-    name: "Kemerovo State Medical University",
-    initial: "K",
-    logoColor: "bg-teal-600",
-    founded: "1955",
-    city: "Kemerovo",
-    fees: "$4,300",
-    description:
-      "Explore MBBS admission at Kemerovo State Medical University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1592286927505-d6d9d2c2c67a?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/kemerovo-state-medical-university",
-  },
-  {
-    id: "kazan",
-    name: "Kazan Federal University",
-    initial: "K",
-    logoColor: "bg-indigo-600",
-    founded: "1804",
-    city: "Kazan",
-    fees: "$5,200",
-    description:
-      "Explore MBBS admission at Kazan Federal University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/kazan-federal-university",
-  },
-  {
-    id: "kabardino",
-    name: "Kabardino Balkarian State University",
-    initial: "K",
-    logoColor: "bg-rose-600",
-    founded: "1957",
-    city: "Nalchik",
-    fees: "$4,100",
-    description:
-      "Explore MBBS admission at Kabardino Balkarian State University for 2026-27. Discover updated fees, global rankings, eligibility criteria, and expert guidance from Taksheela for a successful medical career.",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-    readMoreHref: "/mbbs/abroad/russia/universities/kabardino-balkarian-state-university",
-  },
+const UNIVERSITIES_RUSSIA: University[] = [
+  { id: "ksmu", name: "Kazan State Medical University (KSMU)", founded: "1814", city: "Kazan", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(1), image: ksmu },
+  { id: "pfus", name: "People's Friendship University of Russia (RUDN)", founded: "1932", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(2), image: rudn },
+  { id: "rnrmu", name: "Russian National Research Medical University (RNRMU or RSMU)", founded: "1974", city: "Moscow", fees: "₹4,00,000 - ₹6,50,000", universityLogo: RUS_LOGO(3), image: rnrmu },
+  { id: "msmu", name: "Moscow State Medical University (MSMU)", founded: "1939", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(4), image: msmu },
+  { id: "fmsmu", name: "First Moscow State Medical University (Sechenov University)", founded: "1917", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(5), image: fmsmu },
+  { id: "nsmmu", name: "Northern State Medical University (NSMU)", founded: "1936", city: "Arkhangelsk", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(6), image: nsmmu },
+  { id: "tsmu", name: "Tver State Medical University, Tver (TSMU)", founded: "1957", city: "Tver", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(7), image: tsmmu },
+  { id: "spspmu", name: "Saint Petersburg State Pediatric Medical University (SPSPMU)", founded: "1907", city: "Saint Petersburg", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(8), image: spspmu },
+  { id: "bsmu", name: "Bashkir State Medical University (BSMU)", founded: "1955", city: "Ufa", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(9), image: bsmu },
+  { id: "ismu", name: "Irkutsk State Medical University (ISMU)", founded: "1955", city: "Irkutsk", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(10), image: ismu },
 ];
 
-export default function UniversitiesSection() {
-  const [selectedId, setSelectedId] = useState<string>(UNIVERSITIES[0].id); // Tambov as default
+const LIST_BTN_BASE =
+  "w-full flex items-center gap-3 rounded-lg border px-4 py-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00999E] focus-visible:ring-offset-2 cursor-pointer";
 
-  const selected = UNIVERSITIES.find((u) => u.id === selectedId) ?? UNIVERSITIES[0];
+function UniversityDetailCard({ uni }: { uni: University }) {
+  return (
+    <>
+      <div className="relative aspect-[16/9] w-full bg-gray-100">
+        <Image
+          src={uni.image}
+          alt={uni.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 66vw"
+        />
+      </div>
+      <div className="p-4 sm:p-5 md:p-6">
+        <div className="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm">
+          <div>
+            <span className="text-gray-500">Founded</span>
+            <span className="ml-2 font-semibold text-gray-900">{uni.founded}</span>
+          </div>
+          <div>
+            <span className="text-gray-500">City</span>
+            <span className="ml-2 font-semibold text-gray-900">{uni.city}</span>
+          </div>
+          <div>
+            <span className="text-gray-500">Fees</span>
+            <span className="ml-2 font-semibold text-[#00999E]">{uni.fees}</span>
+          </div>
+        </div>
+        <h3 className="mt-3 sm:mt-4 text-lg sm:text-xl md:text-2xl font-bold text-[#00999E]">{uni.name}</h3>
+      </div>
+    </>
+  );
+}
+
+export default function UniversitiesSection() {
+  const [selectedId, setSelectedId] = useState<string | null>(UNIVERSITIES_RUSSIA[0].id);
+  const selected = UNIVERSITIES_RUSSIA.find((u) => u.id === selectedId) ?? UNIVERSITIES_RUSSIA[0];
+
+  const handleSelect = useCallback((id: string) => {
+    setSelectedId((prev) => (prev === id ? null : id));
+  }, []);
+
+  const handleSelectDesktop = useCallback((id: string) => {
+    setSelectedId(id);
+  }, []);
 
   return (
-    <section id="universities" className="font-sans py-14 md:py-18 bg-white scroll-mt-24">
+    <section id="universities" className="font-sans py-10 sm:py-14 md:py-18 bg-white scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
-          Top Medical Universities in{" "}
-          <span className="text-[#00999E]">Russia</span>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900">
+          Top Medical Universities in <span className="text-[#00999E]">Russia</span>
         </h2>
-        <p className="text-gray-600 mt-3 max-w-3xl">
+        <p className="text-gray-600 mt-2 sm:mt-3 max-w-3xl text-sm sm:text-base">
           This section highlights the top universities in Russia recognised by the WHO and
           compliant with the NMC guidelines. This list includes both high-ranking universities
           and cost-effective options to pursue an MBBS in Russia.
         </p>
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {/* Left: University list */}
-          <div className="lg:col-span-1 ">
-            {UNIVERSITIES.map((uni) => {
+        {/* Mobile & tablet: accordion */}
+        <div className="mt-6 lg:hidden">
+          {UNIVERSITIES_RUSSIA.map((uni) => {
+            const isExpanded = uni.id === selectedId;
+            return (
+              <div
+                key={uni.id}
+                className="rounded-xl border border-gray-200 overflow-hidden bg-white shadow-sm"
+              >
+                <button
+                  type="button"
+                  onClick={() => handleSelect(uni.id)}
+                  className={`${LIST_BTN_BASE} rounded-t-xl rounded-b-none ${
+                    isExpanded
+                      ? "border-[#00999E] bg-[#00999E] text-white shadow-md border-b-0"
+                      : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
+                  }`}
+                  aria-expanded={isExpanded}
+                  aria-controls={`uni-detail-${uni.id}`}
+                  id={`uni-accordion-${uni.id}`}
+                >
+                  <div
+                    className={`h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full overflow-hidden border border-white/40 bg-gray-100 flex items-center justify-center ${isExpanded ? "ring-2 ring-white/70" : ""}`}
+                  >
+                    <Image
+                      src={uni.universityLogo}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <span className="flex-1 min-w-0 font-medium truncate text-sm sm:text-base">{uni.name}</span>
+                  <FaChevronRight
+                    className={`h-4 w-4 shrink-0 transition-transform duration-200 ${isExpanded ? "text-white rotate-90" : "text-gray-400"}`}
+                    aria-hidden
+                  />
+                </button>
+                <div
+                  id={`uni-detail-${uni.id}`}
+                  role="region"
+                  aria-labelledby={`uni-accordion-${uni.id}`}
+                  className={`grid transition-[grid-template-rows] duration-200 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                >
+                  <div className="overflow-hidden">
+                    {isExpanded && (
+                      <div className="px-2 pb-2 pt-0">
+                        <div className="rounded-b-xl border border-t-0 border-gray-200 bg-white overflow-hidden shadow-sm">
+                          <UniversityDetailCard uni={uni} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Desktop: list + detail side by side */}
+        <div className="mt-8 hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="lg:col-span-1">
+            {UNIVERSITIES_RUSSIA.map((uni) => {
               const isSelected = uni.id === selectedId;
               return (
                 <button
                   key={uni.id}
                   type="button"
-                  onClick={() => setSelectedId(uni.id)}
-                  className={`
-                    w-full flex items-center gap-3 rounded-lg border px-4 py-3.5 text-left transition-colors
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00999E] focus-visible:ring-offset-2
-                    ${
-                      isSelected
-                        ? "border-[#00999E] bg-[#00999E] text-white shadow-md"
-                        : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
-                    }
-                  `}
+                  onClick={() => handleSelectDesktop(uni.id)}
+                  className={`${LIST_BTN_BASE} ${
+                    isSelected
+                      ? "border-[#00999E] bg-[#00999E] text-white shadow-md"
+                      : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
+                  }`}
                 >
                   <div
-                    className={`
-                      h-10 w-10 shrink-0 rounded-full flex items-center justify-center text-sm font-bold
-                      ${isSelected ? "bg-white/20 text-white" : `${uni.logoColor} text-white`}
-                    `}
+                    className={`h-10 w-10 shrink-0 rounded-full overflow-hidden border border-white/40 bg-gray-100 flex items-center justify-center ${isSelected ? "ring-2 ring-white/70" : ""}`}
                   >
-                    {uni.initial}
+                    <Image
+                      src={uni.universityLogo}
+                      alt={uni.name}
+                      width={40}
+                      height={40}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <span className="flex-1 min-w-0 font-medium truncate">{uni.name}</span>
-                  <FaChevronRight
-                    className={`h-4 w-4 shrink-0 ${isSelected ? "text-white" : "text-gray-400"}`}
-                    aria-hidden
-                  />
+                  <FaChevronRight className={`h-4 w-4 shrink-0 ${isSelected ? "text-white" : "text-gray-400"}`} aria-hidden />
                 </button>
               );
             })}
           </div>
-
-          {/* Right: University detail card */}
           <div className="lg:col-span-2">
             <div className="rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
-              <div className="relative aspect-[16/9] w-full bg-gray-100">
-                <Image
-                  src={selected.image}
-                  alt={selected.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                />
-              </div>
-              <div className="p-5 md:p-6">
-                <div className="flex flex-wrap gap-6 text-sm">
-                  <div>
-                    <span className="text-gray-500">Founded</span>
-                    <span className="ml-2 font-semibold text-gray-900">{selected.founded}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">City</span>
-                    <span className="ml-2 font-semibold text-gray-900">{selected.city}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Fees</span>
-                    <span className="ml-2 font-semibold text-[#00999E]">{selected.fees}</span>
-                  </div>
-                </div>
-                <h3 className="mt-4 text-xl md:text-2xl font-bold text-[#00999E]">
-                  {selected.name}
-                </h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">{selected.description}</p>
-                <Link
-                  href={selected.readMoreHref}
-                  className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#00999E] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#007a7f] transition-colors"
-                >
-                  Read more
-                  <FaChevronRight className="h-4 w-4" aria-hidden />
-                </Link>
-              </div>
+              <UniversityDetailCard uni={selected} />
             </div>
           </div>
         </div>

@@ -104,7 +104,7 @@ export default function AdmissionProcessSection() {
   return (
     <section
       id="admission-process"
-      className="font-sans py-14 md:py-18 scroll-mt-24"
+      className="font-sans"
     >
       <div
         className="relative w-full overflow-hidden"

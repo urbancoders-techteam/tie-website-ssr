@@ -13,6 +13,7 @@ import DocumentsRequiredSection from "./DocumentsRequiredSection";
 import UniversitiesSection from "./UniversitiesSection";
 import FAQSection from "./FAQSection";
 import WhatStudentsSaySection from "./WhatStudentsSaySection";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 function CampaignNavbar() {
   return (
@@ -29,14 +30,20 @@ function CampaignNavbar() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-lg font-medium text-white/95">
-          <Link href="#why-choose-russia" className="hover:text-white font-bold">
-            Highlights
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-base lg:text-lg font-medium text-white/95">
+          <Link href="#overview" className="hover:text-white font-bold whitespace-nowrap">
+            Overview
           </Link>
-          <Link href="#why" className="hover:text-white font-bold">
+          <Link href="#why-choose-russia" className="hover:text-white font-bold whitespace-nowrap">
             Why Russia?
           </Link>
-          <Link href="#apply" className="hover:text-white font-bold">
+          <Link href="#universities" className="hover:text-white font-bold whitespace-nowrap">
+            Universities
+          </Link>
+          <Link href="#eligibility-criteria" className="hover:text-white font-bold whitespace-nowrap">
+            Eligibility
+          </Link>
+          <Link href="#apply" className="hover:text-white font-bold whitespace-nowrap">
             Apply
           </Link>
         </nav>
@@ -49,12 +56,13 @@ function CampaignNavbar() {
             <FaPhoneAlt className="shrink-0" aria-hidden />
             +91 9831241212
           </a>
-          <a
+          {/* <a
             href="#apply"
             className="inline-flex items-center rounded-lg bg-white px-3 py-2 sm:px-4 text-sm font-semibold text-[#00999E] hover:bg-white/90 whitespace-nowrap"
           >
             Get Guidance
-          </a>
+          </a> */}
+          <ModalTrigger text="Get Guidance" className=" rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
         </div>
       </div>
     </header>
@@ -122,12 +130,12 @@ export default function RussiaCampaignPage() {
       <HeroSection />
 
       {/* Campaign Tabs – inner content uses max-w-7xl px-4 in CampaignTabs */}
-      <div className="sticky top-24 z-50">
+      <div className="sticky top-18.5 md:top-24 z-50">
         <CampaignTabs />
       </div>
 
       {/* Overview of MBBS in Russia – tabs + content + testimonial */}
-      <section id="overview" className="font-sans bg-white pt-10 md:pt-14 scroll-mt-24">
+      <section id="overview" className="bg-white pt-10 md:pt-14 scroll-mt-24">
         <OverviewSection />
       </section>
 
@@ -165,7 +173,7 @@ export default function RussiaCampaignPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <ModalTrigger className="bg-white text-[#0b1b1c] hover:bg-white/90" text="BOOK FREE COUNSELLING" />
+              <ModalTrigger text="BOOK FREE COUNSELLING" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
               <a
                 href="tel:+919831241212"
                 className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#0b1b1c] hover:bg-white/90"
@@ -178,6 +186,8 @@ export default function RussiaCampaignPage() {
       </section>
 
       <CampaignFooter />
+
+      <ScrollToTopButton />
     </div>
   );
 }

@@ -30,7 +30,7 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
       .required("Phone number is required"),
   });
 
-  
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -44,7 +44,7 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
         const res = await axios.post(
           `${baseUrl}student/schedule-meeting`,
           values,
-         
+
         );
 
         if (res.data.success) {
@@ -65,21 +65,21 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
 
   useEffect(() => {
     if (!open) return;
-  
+
     // Lock scroll
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-  
+
     // Auto-focus on name input
     const input = document.querySelector<HTMLInputElement>('input[name="name"]');
     input?.focus();
-  
+
     // Cleanup when modal unmounts
     return () => {
       document.body.style.overflow = originalOverflow || "auto";
     };
   }, [open]);
-  
+
 
 
   if (!open) return null;
@@ -88,11 +88,13 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/40 bg-opacity-50 flex items-center justify-center"
+      className="fixed inset-0 z-[100] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/50 p-4 sm:p-6"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
     >
       <div
-        className="bg-white p-6 rounded-lg max-w-md w-full relative shadow-md"
+        className="my-auto w-full max-w-md flex-shrink-0 rounded-lg bg-white p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -109,11 +111,10 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
                 type="text"
                 placeholder="Enter your name"
                 {...formik.getFieldProps("name")}
-                className={`w-full border ${
-                  formik.touched.name && formik.errors.name
+                className={`w-full border ${formik.touched.name && formik.errors.name
                     ? "border-red-500"
                     : "border-gray-300"
-                } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
               />
               {formik.touched.name &&
                 formik.errors.name &&
@@ -130,11 +131,10 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
                 maxLength={10}
                 placeholder="Enter 10-digit number"
                 {...formik.getFieldProps("phone")}
-                className={`w-full border ${
-                  formik.touched.phone && formik.errors.phone
+                className={`w-full border ${formik.touched.phone && formik.errors.phone
                     ? "border-red-500"
                     : "border-gray-300"
-                } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
               />
               {formik.touched.phone &&
                 formik.errors.phone &&
@@ -150,11 +150,10 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
                 type="email"
                 placeholder="Enter your email"
                 {...formik.getFieldProps("email")}
-                className={`w-full border ${
-                  formik.touched.email && formik.errors.email
+                className={`w-full border ${formik.touched.email && formik.errors.email
                     ? "border-red-500"
                     : "border-gray-300"
-                } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
               />
               {formik.touched.email &&
                 formik.errors.email &&
@@ -168,9 +167,8 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
             <button
               type="submit"
               disabled={loading}
-              className={`bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${
-                loading ? "opacity-60 cursor-not-allowed" : ""
-              }`}
+              className={`bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${loading ? "opacity-60 cursor-not-allowed" : ""
+                }`}
             >
               {loading ? "Submitting..." : "Schedule A Meeting"}
             </button>

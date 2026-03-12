@@ -1,3 +1,8 @@
+"use client";
+
+import Image from "next/image";
+import doctorImage from "@/assets/doctor.png";
+
 const CRITERIA_CARDS: { title: string; titleHighlight?: boolean; desc: string }[] = [
   {
     title: "Academic Background",
@@ -33,15 +38,15 @@ export default function EligibilityCriteriaSection() {
           </span>{" "}
           Eligibility Criteria for Indian Students
         </h2>
-        <p className="text-gray-600 mt-4 text-base md:text-lg">
+        <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
           Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Russia</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of Russian medical universities as well as the guidelines set by India’s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 lg:items-stretch lg:h-[480px]">
-          {/* Left: visual with arch and student image (ID-card size) */}
-          <div className="flex justify-center items-center w-full min-h-[450px] lg:min-h-0 lg:h-full">
-            <div className="relative w-full max-w-[350px] h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] shadow-xl shrink-0">
-              {/* Inner arch cutout area with lighter gradient */}
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 lg:items-stretch lg:h-[480px]">
+          {/* Left: visual card with student image – smaller on mobile */}
+          <div className="flex justify-center items-center w-full min-h-[280px] sm:min-h-[360px] lg:min-h-0 lg:h-full">
+            <div className="relative w-full max-w-[240px] h-[320px] sm:max-w-[300px] sm:h-[400px] lg:max-w-[350px] lg:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] shadow-xl shrink-0">
+              {/* Inner arch cutout */}
               <div
                 className="absolute inset-x-0 top-0 h-[70%] w-full"
                 style={{
@@ -49,13 +54,28 @@ export default function EligibilityCriteriaSection() {
                   background: "linear-gradient(180deg, #e0f7f8 0%, #b8e8ea 50%, rgba(0,153,158,0.3) 100%)",
                 }}
               />
-              {/* Student image container - centered in arch (replace inner div with Next/Image when you have /images/eligibility-student.jpg) */}
+              {/* Image area – centered in arch */}
               <div
-                className="absolute inset-0 flex items-center justify-center pt-[8%]"
-                style={{ clipPath: "ellipse(75% 70% at 50% 5%)" }}
+                className="absolute inset-0 flex items-center justify-center pt-[6%]"
+                style={{ clipPath: "ellipse(75% 80% at 50% 6%)" }}
               >
-                <div className="relative w-[85%] aspect-[3/4] max-h-[90%] rounded-2xl overflow-hidden bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30 flex items-center justify-center">
-                  <span className="text-[#00999E] font-semibold text-lg">Student</span>
+                <div className="relative w-[85%] aspect-[3/4] max-h-full rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30">
+                  <Image
+                    src={doctorImage}
+                    alt="Student pursuing MBBS in Russia"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 280px, 350px"
+                    priority={false}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = "none";
+                      if (target.nextElementSibling) (target.nextElementSibling as HTMLElement).style.display = "flex";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#b8e8ea] to-[#00999E]/30 flex items-center justify-center" style={{ display: "none" }} aria-hidden>
+                    <span className="text-[#00999E] font-semibold text-sm sm:text-lg">Student</span>
+                  </div>
                 </div>
               </div>
             </div>

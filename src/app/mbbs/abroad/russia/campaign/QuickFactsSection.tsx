@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import Slider from "react-slick";
 import {
   FaChevronLeft,
@@ -15,6 +14,7 @@ import {
   FaGlobe,
   FaUniversity,
 } from "react-icons/fa";
+import ModalTrigger from "@/components/ModalTrigger";
 
 const QUICK_FACTS = [
   {
@@ -118,12 +118,13 @@ export default function QuickFactsSection() {
               Explore the essential details about studying <span className="text-[#5dd4d9] font-bold">MBBS in Russia</span> for Indian students with the expert guidance of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>. Our advisors help you understand the admission process, eligibility, costs, and university options before you begin your medical journey abroad.
             </p>
             <div className="mt-8 flex justify-center lg:justify-start">
-              <Link
+              {/* <Link
                 href="#apply"
                 className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Talk to an Expert <span aria-hidden>&gt;</span>
-              </Link>
+              </Link> */}
+              <ModalTrigger text="Talk to an Expert" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
             </div>
           </div>
 

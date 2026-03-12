@@ -71,7 +71,7 @@ export default function WhyChooseRussiaSection() {
           </span>{" "}
           for MBBS
         </h2>
-        <p className="text-gray-600 mt-4 text-base md:text-lg">
+        <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
           Pursuing <span className="text-[#00999E] font-bold">MBBS in Russia</span> has become a popular option for Indian students seeking quality medical education at an affordable cost. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can access reputed Russian medical universities that offer strong <span className="text-[#00999E] font-bold">academic training</span>, <span className="text-[#00999E] font-bold">modern infrastructure</span>, and <span className="text-[#00999E] font-bold">global recognition</span>. Here are some key reasons why Russia continues to be a preferred destination for aspiring doctors.
         </p>
 
@@ -93,7 +93,7 @@ export default function WhyChooseRussiaSection() {
                       </div>
                       <h3 className="font-bold text-gray-900">{card.title}</h3>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2">{card.desc}</p>
+                    <p className="text-sm text-gray-600 mt-2 text-justify">{card.desc}</p>
                   </div>
                 );
               })}
