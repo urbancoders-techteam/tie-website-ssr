@@ -17,13 +17,14 @@ import WhatStudentsSaySection from "./WhatStudentsSaySection";
 function CampaignNavbar() {
   return (
     <header className="sticky top-0 z-50 bg-white backdrop-blur border-b border-gray-200 shadow-md">
-      <div className="mx-auto max-w-7xl px-4 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 flex items-center justify-between gap-3">
         <Link href="/" className="flex items-center gap-3" aria-label="TIE Home">
           <Image
             src="/images/TIE_LOGO.png"
             alt="Taksheela Institute of Education"
             width={140}
             height={56}
+            className="h-auto w-[110px] sm:w-[130px] md:w-[140px]"
             priority
           />
         </Link>
@@ -48,14 +49,14 @@ function CampaignNavbar() {
         <div className="flex items-center gap-3">
           <a
             href="tel:+919831241212"
-            className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 hover:border-gray-400"
+            className="hidden lg:inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 hover:border-gray-400"
           >
             <FaPhoneAlt className="shrink-0" aria-hidden />
             +91 9831241212
           </a>
           <a
             href="#apply"
-            className="inline-flex items-center rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#007a7f]"
+            className="inline-flex items-center rounded-lg bg-[#00999E] px-3 py-2 sm:px-4 text-sm font-semibold text-white hover:bg-[#007a7f] whitespace-nowrap"
           >
             Get Guidance
           </a>
@@ -75,6 +76,7 @@ function CampaignFooter() {
             alt="Taksheela Institute of Education"
             width={160}
             height={64}
+            className="h-auto w-[140px] sm:w-[160px]"
           />
           <p className="text-sm text-white/80">
             Get end-to-end guidance for MBBS abroad—from counselling to confirmed admits.
@@ -123,9 +125,7 @@ export default function RussiaCampaignPage() {
       <HeroSection />
 
       {/* Campaign Tabs – inner content uses max-w-7xl px-4 in CampaignTabs */}
-      <div className="sticky top-24 z-50 w-full scroll-mt-24 shadow-b-md">
-        <CampaignTabs />
-      </div>
+      <CampaignTabs />
 
       {/* Overview of MBBS in Russia – tabs + content + testimonial */}
       <section id="overview" className="font-sans bg-white pt-10 md:pt-14 scroll-mt-24">
@@ -147,7 +147,6 @@ export default function RussiaCampaignPage() {
       {/* Documents Required Section */}
       <DocumentsRequiredSection />
 
-      
       <UniversitiesSection />
 
       {/* What Students Say Section */}
@@ -157,11 +156,11 @@ export default function RussiaCampaignPage() {
       <FAQSection />
 
       {/* CTA */}
-      <section className="py-14 md:py-10">
+      <section className="py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4">
           <div className="rounded-2xl bg-[#00999E] text-white p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-2xl">
-              <h3 className="text-2xl font-extrabold">Ready to start your MBBS journey?</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold">Ready to start your MBBS journey?</h3>
               <p className="text-white/90 mt-2">
                 Book a free counselling call and get a personalised shortlist for Russia.
               </p>

@@ -4,7 +4,7 @@ import heroImage from "@/assets/mbbs_russia.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden min-h-[520px] md:min-h-[560px]">
+    <section className="relative overflow-hidden min-h-[480px] sm:min-h-[520px] md:min-h-[560px]">
       <div className="absolute inset-0">
         <Image
           src={heroImage}
@@ -20,17 +20,17 @@ export default function HeroSection() {
         className="absolute inset-0 bg-gradient-to-r from-gray-900/75 from-40% via-gray-900/40 to-transparent"
         aria-hidden
       />
-      <div className="mx-auto max-w-7xl px-4 py-14 md:py-20 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:py-12 md:py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <p className="text-xs tracking-widest uppercase text-[#00999E]">
               Your ambition. Our expertise. Confirmed admits.
             </p>
-            <h1 className="font-sans text-3xl md:text-5xl font-extrabold text-white leading-tight">
+            <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
               Study MBBS in <span className="text-[#5dd4d9]">Russia</span> with
               expert guidance
             </h1>
-            <p className="text-gray-200 text-base md:text-lg max-w-xl">
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg max-w-xl">
               Make your medical career aspirations a reality with{" "}
               <span className="font-bold text-[#5dd4d9]">MBBS in Russia</span>,
               guided by the experts at{" "}
@@ -46,7 +46,7 @@ export default function HeroSection() {
               <ModalTrigger text="BOOK YOUR FREE COUNSELLING" />
             </div>
 
-            <div className="flex flex-wrap gap-6 pt-2 text-sm text-gray-300">
+            <div className="flex flex-wrap gap-5 sm:gap-6 pt-2 text-xs sm:text-sm text-gray-300">
               <div>
                 <div className="font-semibold text-white">10+ years</div>
                 <div>of counselling experience</div>

@@ -31,10 +31,10 @@ export default function DocumentsRequiredSection() {
       { title: "NEET Score Card (3 years validity)", icon: FaStethoscope },
       { title: "Valid Passport (6 months of validity)", icon: FaPassport },
       { title: "5-10 Passport-sized Photographs (35mm x 45mm)", icon: FaCamera },
-      { title: "Birth Certificate", icon: FaIdCard },
-      { title: "Medical Fitness Certificate", icon: FaFileMedical },
-      { title: "HIV Test Report", icon: FaSyringe },
-      { title: "Bank Statement / Proof of Funds", icon: FaMoneyCheckAlt },
+      // { title: "Birth Certificate", icon: FaIdCard },
+      // { title: "Medical Fitness Certificate", icon: FaFileMedical },
+      // { title: "HIV Test Report", icon: FaSyringe },
+      // { title: "Bank Statement / Proof of Funds", icon: FaMoneyCheckAlt },
     ],
     []
   );
@@ -83,34 +83,6 @@ export default function DocumentsRequiredSection() {
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-          {/* Left: ID-card sized image */}
-          {/* <div className="flex justify-center items-center min-h-[400px] lg:min-h-0 w-full">
-            <div className="relative w-full max-w-[300px] h-[420px] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] shrink-0">
-              <div
-                className="absolute inset-x-0 top-0 h-[82%] w-full"
-                style={{
-                  clipPath: "ellipse(90% 85% at 50% -10%)",
-                  background:
-                    "linear-gradient(180deg, #e0f7f8 0%, #b8e8ea 50%, rgba(0,153,158,0.25) 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-0 flex items-center justify-center pt-[10%]"
-                style={{ clipPath: "ellipse(75% 70% at 50% 8%)" }}
-              >
-                <div className="relative w-[78%] aspect-[3/4] max-h-[85%] rounded-2xl overflow-hidden bg-white/10">
-                  <Image
-                    src={LEFT_IMAGE_URL}
-                    alt="Student preparing documents"
-                    fill
-                    className="object-cover object-center"
-                    sizes="300px"
-                    priority={false}
-                  />
-                </div>
-              </div>
-            </div>
-          </div> */}
 
           <div className="flex justify-center items-center w-full min-h-[450px] lg:min-h-0 lg:h-full">
             <div className="relative w-full max-w-[350px] h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] shadow-xl shrink-0">
@@ -142,11 +114,10 @@ export default function DocumentsRequiredSection() {
             </h2>
             <div className="mt-2 w-14 h-1 bg-[#00999E] rounded-full" aria-hidden />
             <p className="text-gray-600 mt-5 text-sm md:text-base leading-relaxed max-w-2xl">
-              To apply for MBBS in Russia, students must submit a set of academic,
+              To apply for <span className="text-[#00999E] font-bold">MBBS in Russia</span>, students must submit a set of academic,
               identification, and visa-related documents that comply with the
               requirements of the university and relevant government authorities,
-              especially the National Medical Commission (NMC) and the Russian
-              Ministry of Education. Here is the list of required documents.
+              especially the <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> and the <span className="text-[#00999E] font-bold">Russian Ministry of Education</span>. Here is the list of required documents.
             </p>
 
             <div className="mt-8 overflow-hidden w-full">

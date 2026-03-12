@@ -1,40 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const FAQ_ITEMS: { question: string; answer: string }[] = [
+const highlight = (text: string) => (
+  <span className="text-[#00999E] font-bold">{text}</span>
+);
+
+const FAQ_ITEMS: { question: string; answer: string | ReactNode }[] = [
   {
-    question: "Is MBBS from Russia valid in India?",
-    answer: "Yes. MBBS degrees from NMC-recognised Russian medical universities are valid in India. Graduates must clear the FMGE (Foreign Medical Graduates Examination) to practise in India.",
+    question: "What hostel and food facilities are available for Indian students in Russia?",
+    answer: (
+      <>
+        Most Russian medical universities provide dedicated {highlight("hostels for international students")} with essential amenities such as security, internet access, and study spaces. Many universities also offer {highlight("Indian food or mess facilities")}, helping students adjust comfortably to life abroad. {highlight("Taksheela Institute of Education")} guides students in selecting universities with suitable accommodation and dining options.
+      </>
+    ),
   },
   {
     question: "What is the duration of MBBS in Russia?",
     answer: "MBBS in Russia is typically 6 years, including 1 year of internship. The course is taught in English at most NMC-approved universities.",
   },
   {
-    question: "What is the fee structure for MBBS in Russia?",
-    answer: "Annual tuition ranges from approximately ₹2.5 lakh to ₹8.5 lakh depending on the university. Living and other costs are additional.",
+    question: "What is the approximate cost of studying MBBS in Russia?",
+    answer: "One of the main advantages of studying MBBS in Russia is its affordability. The total tuition fees for the entire program generally range between ₹18 lakh and ₹40 lakh, depending on the university. With guidance from Taksheela, students can explore universities that match their academic goals as well as their budget.",
   },
   {
-    question: "Is NEET required for MBBS in Russia?",
-    answer: "Yes. NEET-UG qualification with 3-year validity is mandatory for Indian students who wish to practise in India after completing MBBS abroad.",
+    question: "Is Russia safe for Indian students pursuing MBBS?",
+    answer: "Russia is considered a safe destination for international students, including those from India. Many universities have well-developed campuses, student hostels, and support services for international students. Taksheela also assists students with pre-departure guidance so they can adapt smoothly to their new environment.",
   },
   {
-    question: "How is the Hostel and Food Facility for Indian Students in Russia?",
-    answer: "Most universities offer on-campus hostels and mess facilities. Indian food options are available in many cities. Universities often assist with accommodation.",
+    question: "Is MBBS in Russia taught in English",
+    answer: "Yes. Many reputed Russian medical universities offer MBBS programs in English for international students. Students may also learn basic Russian during the course, which helps with communication during clinical training and daily life.",
   },
   {
-    question: "When does the academic session start?",
-    answer: "The primary intake is in September. Some universities also have a February intake. Applications usually open several months before the session.",
+    question: "What is the duration of MBBS in Russia?",
+    answer: "The MBBS program in Russia typically lasts 6 years, including academic study and clinical training in hospitals affiliated with the university.",
   },
   {
-    question: "Are Russian medical degrees recognised globally?",
-    answer: "Yes. Degrees from WHO and ECFMG-listed Russian universities are recognised globally, enabling graduates to pursue further studies or practice in many countries.",
+    question: "How many Indian students study MBBS in Russia?",
+    answer: "Russia hosts thousands of Indian medical students every year, making it one of the most popular destinations for studying MBBS abroad.",
   },
   {
-    question: "What documents are required for admission?",
-    answer: "You typically need 10th & 12th mark sheets, NEET score card, valid passport, passport-sized photographs, birth certificate, and other documents as specified by the university.",
+    question: "Is an MBBS degree from Russia valid in India?",
+    answer: "Yes, an MBBS degree from Russia can be recognised in India if the university is approved by the National Medical Commission (NMC). After completing the program, graduates must qualify the required licensing examination in India, such as FMGE or NExT, according to current regulations",
   },
   {
     question: "Can I get education loan for MBBS in Russia?",
@@ -107,9 +115,8 @@ export default function FAQSection() {
                   id={`faq-answer-${index}`}
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
-                  className={`grid transition-[grid-template-rows] duration-200 ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                  }`}
+                  className={`grid transition-[grid-template-rows] duration-200 ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
                 >
                   <div className="overflow-hidden">
                     <p className="px-5 pb-4 pt-0 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100">

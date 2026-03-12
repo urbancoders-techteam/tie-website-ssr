@@ -85,7 +85,7 @@ export default function OverviewSection() {
             </h2>
             <div className="mt-2 w-16 h-0.5 bg-gray-800 rounded" aria-hidden />
 
-            <div className="mt-6 space-y-4 text-gray-600 text-base leading-relaxed">
+            <div className="mt-6 space-y-3 text-gray-600 text-base leading-relaxed">
               <p>{OVERVIEW_CONTENT.first}</p>
               <p>{OVERVIEW_CONTENT.second}</p>
               <p>{OVERVIEW_CONTENT.third}</p>
@@ -112,7 +112,7 @@ export default function OverviewSection() {
           </div>
 
           {/* Right: Testimonial slider */}
-          <div className="lg:col-span-1 relative testimonial-slider-overview [&_.slick-dots]:bottom-[-28px]">
+          <div className="lg:col-span-1 relative testimonial-slider-overview min-h-[460px] lg:min-h-[480px] [&_.slick-dots]:bottom-[-28px] [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
             <Slider
               dots
               infinite
@@ -129,8 +129,8 @@ export default function OverviewSection() {
               ]}
             >
               {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="px-1">
-                  <div className="rounded-xl border-2 border-[#00999E]/40 bg-white p-5 shadow-sm">
+                <div key={i} className="px-1 h-full">
+                  <div className="h-full min-h-[460px] lg:min-h-[480px] rounded-xl border-2 border-[#00999E]/40 bg-white p-5 shadow-sm flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="h-14 w-14 shrink-0 rounded-full bg-[#00999E]/20 flex items-center justify-center text-[#00999E] text-lg font-bold">
                         {t.initial}
@@ -148,7 +148,7 @@ export default function OverviewSection() {
                         </div>
                       </div>
                     </div>
-                    <p className="mt-4 text-sm text-gray-600 leading-relaxed">{t.quote}</p>
+                    <p className="mt-4 text-sm text-gray-600 leading-relaxed flex-1">{t.quote}</p>
                     <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
                       <div>
                         <p className="font-semibold text-gray-900">{t.university}</p>

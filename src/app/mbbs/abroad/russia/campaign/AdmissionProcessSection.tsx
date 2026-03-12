@@ -131,29 +131,9 @@ export default function AdmissionProcessSection() {
                   <span className="text-[#00999E]">Step-by-Step with Taksheela {" "}</span>
                 </h2>
                 <p className="text-white/85 mt-3 max-w-4xl text-sm md:text-base leading-relaxed">
-                  The admission process for MBBS in Russia is simple and transparent compared to many private medical colleges in India. Russian universities generally do not require additional entrance examinations or capitation fees. With the expert support of Taksheela Institute of Education, students can complete the entire process smoothly and confidently.
+                  The admission process for <span className="text-[#00999E] font-bold">MBBS in Russia</span> is simple and transparent compared to many private medical colleges in India. Russian universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
                 </p>
               </div>
-
-              {/* Controls (match reference placement) */}
-              {/* <div className="hidden md:flex items-center gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={() => scrollByCards("left")}
-                  className="h-9 w-9 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center backdrop-blur"
-                  aria-label="Previous steps"
-                >
-                  <FaArrowLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollByCards("right")}
-                  className="h-9 w-9 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center backdrop-blur"
-                  aria-label="Next steps"
-                >
-                  <FaArrowRight className="h-4 w-4" />
-                </button>
-              </div> */}
             </div>
 
             {/* Timeline */}

@@ -61,11 +61,11 @@ export default function WhatStudentsSaySection() {
               What Students Say About Us
             </h2>
             <p className="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">
-              Taksheela Institute of Education has helped thousands of Indian
+              <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> has helped thousands of Indian
               students to pursue their MBBS in Russia. Take a look at some of the
               success stories of students who sought our expert guidance,
               professional consultation and assistance services to apply to
-              Russian MBBS universities.
+              <span className="text-[#00999E] font-bold">Russian MBBS universities</span> .
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
@@ -107,13 +107,13 @@ export default function WhatStudentsSaySection() {
                       className="absolute left-3 top-2 text-white/30 text-4xl font-serif leading-none"
                       aria-hidden
                     >
-                      "
+                      &quot;
                     </span>
                     <span
                       className="absolute right-3 bottom-2 text-white/30 text-4xl font-serif leading-none"
                       aria-hidden
                     >
-                      "
+                      &quot;
                     </span>
                     <p className="relative text-white text-sm leading-relaxed line-clamp-4 pr-2">
                       {t.quote}

@@ -58,32 +58,32 @@ export default function CampaignTabs() {
       }`}
       style={{ top: NAVBAR_HEIGHT_PX }}
     >
-      <div className="flex flex-wrap gap-1 md:gap-2 max-w-7xl mx-auto  px-4">
-      {TABS.map(({ label, href }) => (
-        <Link
-          key={href}
-          href={href}
-          onClick={(e) => {
-            const el = document.querySelector(href);
-            if (el) {
-              e.preventDefault();
-              el.scrollIntoView({ behavior: "smooth", block: "start" });
-              window.history.pushState(null, "", href);
-              setActiveHref(href);
-            }
-          }}
-          className={`
-            shrink-0 px-3 py-3 md:px-4 md:py-3 text-sm font-semibold rounded-t-lg transition-colors
-            ${
-              activeHref === href
-                ? "bg-gray-800 text-white border-b-2 mb-px rounded-lg"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            }
-          `}
-        >
-          {label}
-        </Link>
-      ))}
+      <div className="flex gap-1 md:gap-2 max-w-7xl mx-auto px-4 min-w-max md:min-w-0">
+        {TABS.map(({ label, href }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={(e) => {
+              const el = document.querySelector(href);
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+                window.history.pushState(null, "", href);
+                setActiveHref(href);
+              }
+            }}
+            className={`
+              shrink-0 px-3 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold rounded-lg transition-colors whitespace-nowrap
+              ${
+                activeHref === href
+                  ? "bg-gray-800 text-white"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }
+            `}
+          >
+            {label}
+          </Link>
+        ))}
       </div>
     </div>
   );

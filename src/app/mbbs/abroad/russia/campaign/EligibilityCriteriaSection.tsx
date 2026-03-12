@@ -33,10 +33,8 @@ export default function EligibilityCriteriaSection() {
           </span>{" "}
           Eligibility Criteria for Indian Students
         </h2>
-        <p className="text-gray-600 mt-4 text-base md:text-lg max-w-3xl">
-          Meeting the eligibility criteria for pursuing the MBBS in Russia is a
-          basic entry requirement for Indian students. Ensure you fulfil the
-          following before applying.
+        <p className="text-gray-600 mt-4 text-base md:text-lg">
+          Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Russia</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of Russian medical universities as well as the guidelines set by India’s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
         </p>
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 lg:items-stretch lg:h-[480px]">
