@@ -19,7 +19,7 @@ function CampaignNavbar() {
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-[#00999E] via-[#008c91] to-[#5dd4d9] backdrop-blur border-b border-white/20 shadow-md">
       <div className="mx-auto max-w-7xl px-4 flex items-center justify-between gap-3">
-        <Link href="/" className="flex items-center gap-3 rounded-lg bg-white/95 px-2 shadow-sm" aria-label="TIE Home">
+        <Link href="/" className="flex items-center bg-white/95 px-2" aria-label="TIE Home">
           <Image
             src="/images/TIE_LOGO.png"
             alt="Taksheela Institute of Education"

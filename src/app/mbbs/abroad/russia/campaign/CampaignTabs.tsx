@@ -121,7 +121,7 @@ export default function CampaignTabs() {
   return (
     <div
       ref={tabsRef}
-      className={`sticky bg-white border-b border-gray-200 shadow-sm py-2 overflow-x-auto ${
+      className={`sticky bg-white border-b border-gray-200 shadow-sm py-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
         isAttached ? "z-[49]" : "z-40"
       }`}
       style={{ top: NAVBAR_HEIGHT_PX }}
