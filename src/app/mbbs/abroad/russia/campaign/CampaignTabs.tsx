@@ -23,7 +23,7 @@ function getActiveHref(): string {
 }
 
 export default function CampaignTabs() {
-  const [activeHref, setActiveHref] = useState("#overview");
+  const [activeHref, setActiveHref] = useState<string>("#overview");
   const [isAttached, setIsAttached] = useState(false);
   const tabsRef = useRef<HTMLDivElement>(null);
   const rafIdRef = useRef<number | null>(null);
@@ -39,18 +39,72 @@ export default function CampaignTabs() {
     });
   }, []);
 
+  const updateActiveHrefOnScroll = useCallback(() => {
+    const viewportMiddle = NAVBAR_HEIGHT_PX + (window.innerHeight - NAVBAR_HEIGHT_PX) / 2;
+
+    let bestHref = "#overview";
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    for (const { href } of TABS) {
+      const el = document.querySelector<HTMLElement>(href);
+      if (!el) continue;
+
+      const rect = el.getBoundingClientRect();
+      const sectionMiddle = rect.top + rect.height / 2;
+      const distance = Math.abs(sectionMiddle - viewportMiddle);
+
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestHref = href;
+      }
+    }
+
+    setActiveHref(bestHref);
+  }, []);
+
+  const scrollActiveTabIntoView = useCallback((href: string) => {
+    const container = tabsRef.current;
+    if (!container) return;
+
+    const link = container.querySelector<HTMLAnchorElement>(`a[href="${href}"]`);
+    if (!link) return;
+
+    const linkLeft = link.offsetLeft;
+    const linkRight = linkLeft + link.offsetWidth;
+    const visibleStart = container.scrollLeft;
+    const visibleEnd = visibleStart + container.clientWidth;
+
+    if (linkLeft >= visibleStart && linkRight <= visibleEnd) return;
+
+    const targetScrollLeft = linkLeft - container.clientWidth / 2 + link.offsetWidth / 2;
+    container.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     setActiveHref(getActiveHref());
+
     const onHashChange = () => setActiveHref(getActiveHref());
+
+    const handleScroll = () => {
+      checkAttach();
+      updateActiveHrefOnScroll();
+    };
+
     window.addEventListener("hashchange", onHashChange);
-    window.addEventListener("scroll", checkAttach, { passive: true });
-    checkAttach();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    handleScroll();
+
     return () => {
       window.removeEventListener("hashchange", onHashChange);
-      window.removeEventListener("scroll", checkAttach);
+      window.removeEventListener("scroll", handleScroll);
       if (rafIdRef.current !== null) cancelAnimationFrame(rafIdRef.current);
     };
-  }, [checkAttach]);
+  }, [checkAttach, updateActiveHrefOnScroll]);
+
+  useEffect(() => {
+    scrollActiveTabIntoView(activeHref);
+  }, [activeHref, scrollActiveTabIntoView]);
 
   const handleTabClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     const el = document.querySelector(href);
@@ -67,7 +121,9 @@ export default function CampaignTabs() {
   return (
     <div
       ref={tabsRef}
-      className={`sticky bg-white border-b border-gray-200 shadow-sm py-2 overflow-x-auto ${isAttached ? "z-[49]" : "z-40"}`}
+      className={`sticky bg-white border-b border-gray-200 shadow-sm py-2 overflow-x-auto ${
+        isAttached ? "z-[49]" : "z-40"
+      }`}
       style={{ top: NAVBAR_HEIGHT_PX }}
     >
       <div className="flex gap-1 md:gap-2 max-w-7xl mx-auto px-4 min-w-max md:min-w-0">
