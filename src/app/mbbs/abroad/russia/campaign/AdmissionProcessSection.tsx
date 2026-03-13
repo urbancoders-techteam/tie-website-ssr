@@ -104,7 +104,7 @@ export default function AdmissionProcessSection() {
   return (
     <section
       id="admission-process"
-      className="font-sans py-14 md:py-18 scroll-mt-24"
+      className="py-14 md:py-18 scroll-mt-24"
     >
       <div
         className="relative w-full overflow-hidden"
@@ -123,15 +123,15 @@ export default function AdmissionProcessSection() {
           <div className=" rounded-3xl p-6 md:p-10">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white">
+                <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
                   MBBS in Russia {" "}
                 </h2>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white">
+                <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
                   Admission Process{" "}
-                  <span className="text-[#00999E]">Step-by-Step with Taksheela {" "}</span>
+                  <span className="text-[#5dd4d9]">Step-by-Step with Taksheela {" "}</span>
                 </h2>
                 <p className="text-white/85 mt-3 max-w-4xl text-sm md:text-base leading-relaxed">
-                  The admission process for <span className="text-[#00999E] font-bold">MBBS in Russia</span> is simple and transparent compared to many private medical colleges in India. Russian universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
+                  The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in Russia</span> is simple and transparent compared to many private medical colleges in India. Russian universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
                 </p>
               </div>
             </div>
@@ -235,14 +235,14 @@ export default function AdmissionProcessSection() {
                     >
                       <div className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                         <div className="flex items-start gap-3">
-                          <div className="h-11 w-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                          <div className="h-11 w-11 rounded-xl bg-white/10 border border-[#5dd4d9]/15 flex items-center justify-center shrink-0">
                             <Icon className="h-5 w-5 text-white" />
                           </div>
                           <div>
                             <div className="text-white/70 text-xs">
                               {s.stepLabel}
                             </div>
-                            <h3 className="text-white font-bold leading-snug mt-1">
+                            <h3 className="text-[#5dd4d9] font-bold leading-snug mt-1">
                               {s.title}
                             </h3>
                           </div>

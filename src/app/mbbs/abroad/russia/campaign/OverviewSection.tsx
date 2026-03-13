@@ -67,11 +67,11 @@ export default function OverviewSection() {
   const toggleShowMore = useCallback(() => setShowMore((prev) => !prev), []);
 
   return (
-    <section id="why" className="font-sans pt-0 pb-8 md:pb-14 bg-white">
+    <section id="why" className=" pt-0 pb-8 md:pb-14 bg-white">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
           <div className="lg:col-span-2">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
               Overview of MBBS in <span className="text-[#00999E]">Russia</span>
             </h2>
 

@@ -43,8 +43,8 @@ function CampaignNavbar() {
           <Link href="#eligibility-criteria" className="hover:text-white font-bold whitespace-nowrap">
             Eligibility
           </Link>
-          <Link href="#apply" className="hover:text-white font-bold whitespace-nowrap">
-            Apply
+          <Link href="#faq" className="hover:text-white font-bold whitespace-nowrap">
+            FAQ
           </Link>
         </nav>
 
@@ -113,7 +113,7 @@ function CampaignFooter() {
       </div>
 
       <div className="border-t border-white/20 py-4 text-center text-xs text-white/80">
-        Copyright ©️ {new Date().getFullYear()} Taksheela Institute of Education. All rights
+        Copyright <span className="text-white text-[15px]">©</span> {new Date().getFullYear()} Taksheela Institute of Education. All rights
         reserved.
       </div>
     </footer>

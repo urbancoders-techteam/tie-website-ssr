@@ -90,15 +90,15 @@ export default function UniversitiesSection() {
   }, []);
 
   return (
-    <section id="universities" className="font-sans py-10 sm:py-14 md:py-18 bg-white scroll-mt-24">
+    <section id="universities" className="py-10 sm:py-14 md:py-18 bg-white scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900">
+        <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
           Top Medical Universities in <span className="text-[#00999E]">Russia</span>
         </h2>
-        <p className="text-gray-600 mt-2 sm:mt-3 max-w-3xl text-sm sm:text-base">
-          This section highlights the top universities in Russia recognised by the WHO and
-          compliant with the NMC guidelines. This list includes both high-ranking universities
-          and cost-effective options to pursue an MBBS in Russia.
+        <p className="text-gray-600 mt-2 sm:mt-3 max-w-3xl text-sm sm:text-lg">
+          This section highlights the top universities in Russia recognised by the <span className="text-[#00999E] font-bold">WHO</span> and
+          compliant with the <span className="text-[#00999E] font-bold">NMC</span> guidelines. This list includes both high-ranking universities
+          and cost-effective options to pursue an <span className="text-[#00999E] font-bold">MBBS in Russia</span>  .
         </p>
 
         {/* Mobile & tablet: accordion */}

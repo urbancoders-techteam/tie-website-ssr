@@ -11,6 +11,8 @@ const TABS: { label: string; href: string }[] = [
   { label: "Admission Process", href: "#admission-process" },
   { label: "Documents Required", href: "#documents-required" },
   { label: "Universities", href: "#universities" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const NAVBAR_HEIGHT_PX = 72;

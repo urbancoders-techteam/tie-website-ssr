@@ -46,12 +46,12 @@ export default function WhatStudentsSaySection() {
   return (
     <section
       id="testimonials"
-      className="font-sans py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
+      className=" py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
               What Students Say About Us
             </h2>
             <p className="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">
@@ -59,7 +59,7 @@ export default function WhatStudentsSaySection() {
               students to pursue their MBBS in Russia. Take a look at some of the
               success stories of students who sought our expert guidance,
               professional consultation and assistance services to apply to
-              <span className="text-[#00999E] font-bold">Russian MBBS universities</span> .
+              <span className="text-[#00999E] font-bold"> Russian MBBS universities</span> .
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">

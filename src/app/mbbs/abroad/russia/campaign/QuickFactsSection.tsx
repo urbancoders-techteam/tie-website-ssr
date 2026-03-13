@@ -102,16 +102,15 @@ export default function QuickFactsSection() {
   };
 
   return (
-    <section id="quick-facts" className="font-sans py-14 md:py-18 bg-gradient-to-br from-[#5dd4d9] via-[#0f172a]/90 to-[#5dd4d9]/40 scroll-mt-24">
+    <section id="quick-facts" className=" py-14 md:py-18 bg-gradient-to-br from-[#5dd4d9] via-[#0f172a]/90 to-[#5dd4d9]/40 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
           {/* Left: Title, description, CTA */}
           <div className="lg:pt-2">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-sans text-xl md:text-2xl lg:text-4xl font-[700] text-white">
               MBBS in Russia -{" "}
               <span className="relative inline-block pb-1 text-[#5dd4d9]">
                 Quick Facts
-                <span className="absolute left-0 bottom-0 w-full h-1 bg-[#5dd4d9] rounded-full" aria-hidden />
               </span>
             </h2>
             <p className="text-white/90 mt-4 text-base md:text-lg max-w-xl">

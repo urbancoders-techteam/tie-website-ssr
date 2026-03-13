@@ -61,12 +61,12 @@ export default function WhyChooseRussiaSection() {
   return (
     <section
       id="why-choose-russia"
-      className="font-sans py-14 md:py-18 bg-white scroll-mt-24"
+      className="py-14 md:py-18 bg-white scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
           Why Choose{" "}
-          <span className="relative inline-block border-b-2 border-[#00999E] pb-0.5">
+          <span className="relative inline-block border-[#00999E] pb-0.5">
             <span className="text-[#00999E]">Russia</span>
           </span>{" "}
           for MBBS

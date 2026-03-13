@@ -20,7 +20,7 @@ export default function DocumentsRequiredSection() {
   return (
     <section
       id="documents-required"
-      className="font-sans py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
+      className=" py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -52,11 +52,10 @@ export default function DocumentsRequiredSection() {
           </div>
 
           <div className="lg:pt-2">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">
+            <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
               Documents Required to{" "}
               <span className="text-[#00999E]">Study</span> MBBS in Russia
             </h2>
-            <div className="mt-2 w-14 h-1 bg-[#00999E] rounded-full" aria-hidden />
             <p className="text-gray-600 mt-5 text-sm md:text-base leading-relaxed max-w-2xl">
               To apply for <span className="text-[#00999E] font-bold">MBBS in Russia</span>, students must submit a set of academic,
               identification, and visa-related documents that comply with the

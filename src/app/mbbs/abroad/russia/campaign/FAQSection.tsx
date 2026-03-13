@@ -64,18 +64,14 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="font-sans py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
+      className="py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
           <span className="relative inline-block pb-1">
-            Frequently asked
-            <span
-              className="absolute left-0 bottom-0 w-full h-0.5 bg-[#00999E] rounded-full"
-              aria-hidden
-            />
+            Frequently asked{" "}
+            <span className="text-[#00999E]">Questions</span>
           </span>{" "}
-          <span className="text-[#00999E]">Questions</span>
         </h2>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">

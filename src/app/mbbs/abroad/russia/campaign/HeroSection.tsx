@@ -24,7 +24,7 @@ export default function HeroSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12 md:py-20 relative z-10 flex flex-col justify-center min-h-[520px] sm:min-h-[540px] md:min-h-[560px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div className="space-y-4 sm:space-y-6">
-            <p className="text-[11px] sm:text-xs tracking-widest uppercase text-[#00999E] font-medium">
+            <p className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">
               Your ambition. Our expertise. Confirmed admits.
             </p>
             <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
@@ -44,7 +44,7 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-1" id="apply">
-              <ModalTrigger text="BOOK YOUR FREE COUNSELLING" />
+              <ModalTrigger text="BOOK YOUR FREE COUNSELLING" className="text-white" />
             </div>
 
             <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-2 text-xs sm:text-sm text-gray-300">
