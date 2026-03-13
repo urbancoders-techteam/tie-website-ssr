@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -90,23 +91,23 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
 
   if (!open) return null;
 
-
-
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-[999] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/50 p-4 sm:p-6"
+      className="fixed inset-0 z-[99999] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/50 p-4 sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="my-auto w-full max-w-md flex-shrink-0 rounded-lg bg-white p-6 shadow-xl"
+        className="relative my-auto w-full max-w-md flex-shrink-0 rounded-lg bg-white p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute cursor-pointer top-2 right-3 text-gray-500 hover:text-red-600 text-xl font-bold"
+          className="absolute right-3 top-2 cursor-pointer text-xl font-bold text-gray-500 hover:text-red-600"
+          aria-label="Close"
         >
           &times;
         </button>
@@ -183,6 +184,10 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
       </div>
     </div>
   );
+
+  return typeof document !== "undefined"
+    ? createPortal(modalContent, document.body)
+    : modalContent;
 };
 
 export default RegistrationModal;
