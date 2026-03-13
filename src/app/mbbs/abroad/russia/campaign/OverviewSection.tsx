@@ -105,14 +105,11 @@ export default function OverviewSection() {
               {TESTIMONIALS.map((t) => (
                 <div key={t.name} className="px-1 h-full">
                   <div className="h-full min-h-[360px] sm:min-h-[400px] lg:min-h-[420px] rounded-xl border border-gray-200/80 bg-white p-4 sm:p-6 shadow-md shadow-gray-200/50 flex flex-col overflow-hidden">
-                    <div className="flex items-start gap-3 pb-4 border-b border-[#00999E]">
+                    <div className="flex items-center gap-3 pb-4 border-b border-[#00999E]">
                       <div className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-full bg-[#00999E]/10 flex items-center justify-center text-[#00999E]">
                         <span className="text-sm sm:text-lg font-bold leading-none">{getInitials(t.name)}</span>
                       </div>
-                      <div className="min-w-0 flex-1 pt-0.5">
-                        <p className="font-bold text-gray-900 text-sm sm:text-base">{t.name}</p>
-                        <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">{t.location}</p>
-                      </div>
+                      <p className="font-bold text-gray-900 text-sm sm:text-base">{t.name}</p>
                     </div>
                     <div className="relative mt-4 sm:mt-5 flex-1">
                       <span className="absolute left-0 top-0 text-2xl sm:text-3xl font-serif text-[#00999E]/20 leading-none" aria-hidden>&ldquo;</span>

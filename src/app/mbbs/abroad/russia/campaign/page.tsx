@@ -74,7 +74,7 @@ function CampaignFooter() {
     <footer className="bg-gradient-to-r from-[#00999E] via-[#008c91] to-[#5dd4d9] text-white">
       <div className="mx-auto max-w-7xl px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="space-y-3">
-          <div className="inline-block rounded-lg bg-white/95 px-3 py-2 shadow-sm">
+          <div className="inline-block rounded-lg bg-white/95 px-3 shadow-sm">
             <Image
               src="/images/TIE_LOGO.png"
               alt="Taksheela Institute of Education"

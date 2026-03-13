@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ModalTrigger from "@/components/ModalTrigger";
-import heroImage from "@/assets/bg-imge.jpg";
+import heroImage from "@/assets/mbbs_russia.png";
 
 export default function HeroSection() {
   return (
