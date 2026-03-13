@@ -15,12 +15,13 @@ export default function MainLayoutWrapper({
 }) {
   const pathname = usePathname();
   
-  // Exclude Header/Footer for study-in-dubai pages (they have their own)
+  // Exclude Header/Footer for standalone pages (they have their own or are full-page)
   const excludeLayout =
     pathname === "/study-in-dubai" ||
     pathname?.startsWith("/study-in-dubai/") ||
     pathname === "/mbbs/abroad/russia/campaign" ||
-    pathname?.startsWith("/mbbs/abroad/russia/campaign/");
+    pathname?.startsWith("/mbbs/abroad/russia/campaign/") ||
+    pathname === "/thankyou";
 
   if (excludeLayout) {
     return <>{children}</>;

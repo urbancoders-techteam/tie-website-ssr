@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
@@ -15,6 +16,7 @@ interface ModalProps {
 
 const RegistrationModal = ({ open, onClose }: ModalProps) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
 
 
@@ -50,7 +52,10 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
         if (res.data.success) {
           toast.success("Successfully created Unlock Your Dreams");
           formik.resetForm();
-          setTimeout(onClose, 100);
+          setTimeout(() => {
+            onClose();
+            router.push("/thankyou");
+          }, 100);
         } else {
           toast.error("Failed to schedule meeting");
           formik.resetForm();
@@ -88,7 +93,7 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/50 p-4 sm:p-6"
+      className="fixed inset-0 z-[999] flex min-h-[100dvh] items-center justify-center overflow-y-auto bg-black/50 p-4 sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -170,7 +175,7 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
               className={`bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${loading ? "opacity-60 cursor-not-allowed" : ""
                 }`}
             >
-              {loading ? "Submitting..." : "Schedule A Meeting"}
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>
