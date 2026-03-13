@@ -12,9 +12,10 @@ import { baseUrl } from "@/utils/config";
 interface ModalProps {
   open: boolean;
   onClose: () => void;
+  redirectPath?: string;
 }
 
-const RegistrationModal = ({ open, onClose }: ModalProps) => {
+const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -54,7 +55,7 @@ const RegistrationModal = ({ open, onClose }: ModalProps) => {
           formik.resetForm();
           setTimeout(() => {
             onClose();
-            router.push("/thankyou");
+            router.push(redirectPath);
           }, 100);
         } else {
           toast.error("Failed to schedule meeting");

@@ -123,7 +123,7 @@ export default function QuickFactsSection() {
               >
                 Talk to an Expert <span aria-hidden>&gt;</span>
               </Link> */}
-              <ModalTrigger text="Talk to an Expert" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
+              <ModalTrigger text="Talk to an Expert" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" redirectPath="/mbbs/abroad/russia/campaign/thankyou" />
             </div>
           </div>
 

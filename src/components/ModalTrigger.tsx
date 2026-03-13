@@ -24,6 +24,8 @@ interface ModalTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement
   variant?: "default" | "custom";
   /** Button class names. With variant="default" these are merged with defaults; with variant="custom" only these apply. */
   className?: string;
+  /** Optional path to redirect to after successful registration. Defaults to "/thankyou". */
+  redirectPath?: string;
 }
 
 const ModalTrigger = ({
@@ -32,6 +34,7 @@ const ModalTrigger = ({
   variant = "default",
   className = "",
   onClick,
+  redirectPath,
   ...rest
 }: ModalTriggerProps) => {
   const [open, setOpen] = useState(false);
@@ -63,7 +66,7 @@ const ModalTrigger = ({
         {children ?? text ?? "Register Now"}
       </button>
 
-      {open && <RegistrationModal open={open} onClose={handleClose} />}
+      {open && <RegistrationModal open={open} onClose={handleClose} redirectPath={redirectPath} />}
     </>
   );
 };

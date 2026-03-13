@@ -119,7 +119,7 @@ export default function AdmissionProcessSection() {
         <div className="pointer-events-none absolute inset-0 bg-black/10" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
 
-        <div className="relative mx-auto max-w-7xl px-4">
+        <div className="relative mx-auto max-w-7xl ">
           <div className=" rounded-3xl p-6 md:p-10">
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -233,7 +233,7 @@ export default function AdmissionProcessSection() {
                       key={s.stepLabel}
                       className="min-w-[320px] max-w-[360px] w-[360px] snap-start lg:min-w-0 lg:max-w-none lg:w-auto"
                     >
-                      <div className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                      <div className="rounded-2xl border min-h-[260px] border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                         <div className="flex items-start gap-3">
                           <div className="h-11 w-11 rounded-xl bg-white/10 border border-[#5dd4d9]/15 flex items-center justify-center shrink-0">
                             <Icon className="h-5 w-5 text-white" />

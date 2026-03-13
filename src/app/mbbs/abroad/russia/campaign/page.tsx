@@ -56,13 +56,13 @@ function CampaignNavbar() {
             <FaPhoneAlt className="shrink-0" aria-hidden />
             +91 9831241212
           </a>
-          {/* <a
-            href="#apply"
-            className="inline-flex items-center rounded-lg bg-white px-3 py-2 sm:px-4 text-sm font-semibold text-[#00999E] hover:bg-white/90 whitespace-nowrap"
-          >
-            Get Guidance
-          </a> */}
-          <ModalTrigger variant="custom" text="Get Guidance" className="rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
+        
+          <ModalTrigger
+            variant="custom"
+            text="Get Guidance"
+            redirectPath="/mbbs/abroad/russia/campaign/thankyou"
+            className="rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+          />
         </div>
       </div>
     </header>
@@ -173,7 +173,11 @@ export default function RussiaCampaignPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <ModalTrigger text="BOOK FREE COUNSELLING" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" />
+              <ModalTrigger
+                text="BOOK FREE COUNSELLING"
+                redirectPath="/mbbs/abroad/russia/campaign/thankyou"
+                className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+              />
               <a
                 href="tel:+919831241212"
                 className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#0b1b1c] hover:bg-white/90"
