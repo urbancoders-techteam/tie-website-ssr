@@ -8,28 +8,17 @@ const doctorImageSrc =
     ? (doctorImage as { src: string }).src
     : String(doctorImage);
 
-const CRITERIA_CARDS: { title: string; titleHighlight?: boolean; desc: string }[] = [
-  {
-    title: "Academic Background",
-    titleHighlight: true,
-    desc: "Students must have a scientific senior secondary education (10+2) with physics, chemistry, and biology (PCB) as the core subjects.",
-  },
-  {
-    title: "Academic Qualifications",
-    desc: "Students from the general category must have scored at least 50% in PCB, and the reserved categories (SC/ST/OBC) are eligible for admission at 40% aggregate.",
-  },
-  {
-    title: "Age Limit",
-    titleHighlight: true,
-    desc: "There is no upper age limit for pursuing an MBBS in Russia, but the minimum age is 17 years old (as of 31st December of the admission year).",
-  },
-  {
-    title: "NEET Qualifications",
-    desc: "Qualification of the NEET-UG (3-year validity) is mandatory for all Indian medical students who wish to practise their profession in India after graduation.",
-  },
-];
+export interface EligibilityCriteriaSectionProps {
+  criteriaCards: { title: string; titleHighlight?: boolean; desc: string }[];
+  countryName?: string;
+  countryAdjective?: string;
+}
 
-export default function EligibilityCriteriaSection() {
+export default function EligibilityCriteriaSection({
+  criteriaCards,
+  countryName = "Russia",
+  countryAdjective = "Russian",
+}: EligibilityCriteriaSectionProps) {
   const [imageError, setImageError] = useState(false);
 
   return (
@@ -41,12 +30,12 @@ export default function EligibilityCriteriaSection() {
         <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
           MBBS in{" "}
           <span className="relative inline-block  border-[#00999E] pb-0.5">
-            <span className="text-[#00999E]">Russia</span>
+            <span className="text-[#00999E]">{countryName}</span>
           </span>{" "}
           Eligibility Criteria for Indian Students
         </h2>
         <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
-          Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Russia</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of Russian medical universities as well as the guidelines set by India’s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
+          Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in {countryName}</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of {countryAdjective} medical universities as well as the guidelines set by India’s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
         </p>
 
         <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 lg:items-stretch lg:h-[480px]">
@@ -68,7 +57,7 @@ export default function EligibilityCriteriaSection() {
                     // eslint-disable-next-line @next/next/no-img-element -- native img required for reliable onError fallback
                     <img
                       src={doctorImageSrc}
-                      alt="Student pursuing MBBS in Russia"
+                      alt={`Student pursuing MBBS in ${countryName}`}
                       className="absolute inset-0 h-full w-full object-cover object-center"
                       onError={() => setImageError(true)}
                     />
@@ -86,7 +75,7 @@ export default function EligibilityCriteriaSection() {
 
           <div className="eligibility-criteria-scroll h-[420px] lg:h-full min-h-[360px] overflow-y-auto rounded-xl border border-gray-200 bg-gray-50/50 p-5">
             <div className="space-y-4 pr-2">
-              {CRITERIA_CARDS.map((card) => (
+              {criteriaCards.map((card) => (
                 <div
                   key={card.title}
                   className="rounded-xl bg-white border border-gray-200 shadow-sm p-6"

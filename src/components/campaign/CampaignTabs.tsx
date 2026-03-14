@@ -3,10 +3,22 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 
-const TABS: { label: string; href: string }[] = [
+export const RUSSIA_CAMPAIGN_TABS: { label: string; href: string }[] = [
   { label: "Overview", href: "#overview" },
   { label: "Quick Facts", href: "#quick-facts" },
   { label: "Why to Choose", href: "#why-choose-russia" },
+  { label: "Eligibility Criteria", href: "#eligibility-criteria" },
+  { label: "Admission Process", href: "#admission-process" },
+  { label: "Documents Required", href: "#documents-required" },
+  { label: "Universities", href: "#universities" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
+];
+
+export const GEORGIA_CAMPAIGN_TABS: { label: string; href: string }[] = [
+  { label: "Overview", href: "#overview" },
+  { label: "Quick Facts", href: "#quick-facts" },
+  { label: "Why to Choose", href: "#why-choose-georgia" },
   { label: "Eligibility Criteria", href: "#eligibility-criteria" },
   { label: "Admission Process", href: "#admission-process" },
   { label: "Documents Required", href: "#documents-required" },
@@ -22,7 +34,11 @@ function getActiveHref(): string {
   return window.location.hash || "#overview";
 }
 
-export default function CampaignTabs() {
+export interface CampaignTabsProps {
+  tabs?: { label: string; href: string }[];
+}
+
+export default function CampaignTabs({ tabs = RUSSIA_CAMPAIGN_TABS }: CampaignTabsProps) {
   const [activeHref, setActiveHref] = useState<string>("#overview");
   const [isAttached, setIsAttached] = useState(false);
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -45,7 +61,7 @@ export default function CampaignTabs() {
     let bestHref = "#overview";
     let bestDistance = Number.POSITIVE_INFINITY;
 
-    for (const { href } of TABS) {
+    for (const { href } of tabs) {
       const el = document.querySelector<HTMLElement>(href);
       if (!el) continue;
 
@@ -60,7 +76,7 @@ export default function CampaignTabs() {
     }
 
     setActiveHref(bestHref);
-  }, []);
+  }, [tabs]);
 
   const scrollActiveTabIntoView = useCallback((href: string) => {
     const container = tabsRef.current;
@@ -127,7 +143,7 @@ export default function CampaignTabs() {
       style={{ top: NAVBAR_HEIGHT_PX }}
     >
       <div className="flex gap-1 md:gap-2 max-w-7xl mx-auto px-4 min-w-max md:min-w-0">
-        {TABS.map(({ label, href }) => (
+        {tabs.map(({ label, href }) => (
           <Link
             key={href}
             href={href}

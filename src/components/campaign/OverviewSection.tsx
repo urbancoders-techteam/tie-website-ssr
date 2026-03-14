@@ -4,42 +4,26 @@ import { useState, useCallback } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
 
-const OVERVIEW_CONTENT = {
-  first:
-    "MBBS (Bachelor of Medicine and Bachelor of Surgery) is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on clinical training to develop skilled and ethical medical professionals.",
-  second:
-    "Russia has become one of the most preferred destinations for Indian students pursuing MBBS abroad. According to data shared by the Ministry of External Affairs (MEA) in the Winter Session of Parliament in December 2025, over 27,000 Indian students are studying overseas, with a large number choosing Russia for medical education due to its affordable tuition fees and high academic standards.",
-  third:
-    "With over 50 NMC-compliant medical universities and recognition from global organisations such as ECFMG, FAIMER, and WFME, Russia offers internationally accepted medical education along with extensive clinical exposure.",
-  fourth:
-    "At Taksheela Institute of Education, we help students confidently pursue their MBBS in Russia by guiding them through university selection, admission procedures, documentation, and visa support—ensuring a smooth and transparent journey toward a successful medical career.",
-  fifth:
-    "Students graduating from NMC-recognised universities in Russia are eligible to appear for licensing examinations in India such as FMGE/NExT, subject to the applicable regulations.",
-};
+export interface OverviewContent {
+  first: string;
+  second: string;
+  third: string;
+  fourth: string;
+  fifth: string;
+}
 
-const TESTIMONIALS = [
-  {
-    name: "Pratham Shrivas",
-    location: "Haridwar",
-    quote:
-      "I had an excellent experience in securing my admission to study abroad with Taksheela. From the very beginning, they were incredibly knowledgeable, patient, and supportive. They took the time to understand my academic background, career goals, and personal preferences, then guided me to select programs and universities that matched my aspirations.",
-    university: "KABARDINO-BALKARIAN STATE UNIVERSITY, RUSSIA",
-  },
-  {
-    name: "Rinkesh Patidar",
-    location: "Lucknow",
-    quote:
-      "My counselor is Anisha mam that helps me a lot. I am going to KEMSU Russia, thank you education vibes. Had a nice experience going to Kemerovo State University, Russia . Taksheela was very helpful throughout the process. The visa process was smooth, with no extra documentation hassles. Everything was well-organized, making the journey stress-free!",
-    university: "KEMEROVO STATE UNIVERSITY, RUSSIA",
-  },
-  {
-    name: "Vitejana Malik",
-    location: "Patna",
-    quote:
-      "The communication between parents and the agency was very well maintained. The behaviour of the staff was also very polite. Starting from enrollment until students reached the college hostel facilities, they were very well taken care of and heard. The convenience of parents and students was their priority. I hope they keep up the good work.",
-    university: "BASHKIR STATE MEDICAL UNIVERSITY, RUSSIA",
-  },
-];
+export interface OverviewTestimonial {
+  name: string;
+  location: string;
+  quote: string;
+  university: string;
+}
+
+export interface OverviewSectionProps {
+  overviewContent: OverviewContent;
+  testimonials: OverviewTestimonial[];
+  countryName?: string;
+}
 
 const SLIDER_SETTINGS = {
   dots: true,
@@ -62,7 +46,7 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-export default function OverviewSection() {
+export default function OverviewSection({ overviewContent, testimonials, countryName = "Russia" }: OverviewSectionProps) {
   const [showMore, setShowMore] = useState(false);
   const toggleShowMore = useCallback(() => setShowMore((prev) => !prev), []);
 
@@ -72,17 +56,17 @@ export default function OverviewSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
           <div className="lg:col-span-2">
             <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
-              Overview of MBBS in <span className="text-[#00999E]">Russia</span>
+              Overview of MBBS in <span className="text-[#00999E]">{countryName}</span>
             </h2>
 
             <div className="mt-4 sm:mt-6 space-y-3 text-gray-600 text-sm sm:text-base text-justify leading-relaxed">
-              <p>{OVERVIEW_CONTENT.first}</p>
-              <p>{OVERVIEW_CONTENT.second}</p>
-              <p>{OVERVIEW_CONTENT.third}</p>
+              <p>{overviewContent.first}</p>
+              <p>{overviewContent.second}</p>
+              <p>{overviewContent.third}</p>
               {showMore && (
                 <>
-                  <p>{OVERVIEW_CONTENT.fourth}</p>
-                  <p>{OVERVIEW_CONTENT.fifth}</p>
+                  <p>{overviewContent.fourth}</p>
+                  <p>{overviewContent.fifth}</p>
                 </>
               )}
             </div>
@@ -102,7 +86,7 @@ export default function OverviewSection() {
 
           <div className="lg:col-span-1 relative testimonial-slider-overview min-h-[360px] sm:min-h-[400px] lg:min-h-[420px] [&_.slick-dots]:bottom-[-28px] [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
             <Slider {...SLIDER_SETTINGS}>
-              {TESTIMONIALS.map((t) => (
+              {testimonials.map((t) => (
                 <div key={t.name} className="px-1 h-full">
                   <div className="h-full min-h-[360px] sm:min-h-[400px] lg:min-h-[420px] rounded-xl border border-gray-200/80 bg-white p-4 sm:p-6 shadow-md shadow-gray-200/50 flex flex-col overflow-hidden">
                     <div className="flex items-center gap-3 pb-4 border-b border-[#00999E]">

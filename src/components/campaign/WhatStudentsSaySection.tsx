@@ -3,26 +3,17 @@
 import { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const TESTIMONIALS = [
-  {
-    name: "Pratham Shrivas",
-    quote:
-      "I had an excellent experience in securing my admission to study abroad with Taksheela. From the very beginning, they were incredibly knowledgeable, patient, and supportive. They took the time to understand my academic background, career goals, and personal preferences, then guided me to select programs and universities that matched my aspirations.",
-    university: "KABARDINO-BALKARIAN STATE UNIVERSITY, RUSSIA",
-  },
-  {
-    name: "Rinkesh Patidar",
-    quote:
-      "My counselor is Anisha mam that helps me a lot. I am going to KEMSU Russia, thank you education vibes. Had a nice experience going to Kemerovo State University, Russia . Taksheela was very helpful throughout the process. The visa process was smooth, with no extra documentation hassles. Everything was well-organized, making the journey stress-free!",
-    university: "KEMEROVO STATE UNIVERSITY, RUSSIA",
-  },
-  {
-    name: "Vitejana Malik",
-    quote:
-      "The communication between parents and the agency was very well maintained. The behaviour of the staff was also very polite. Starting from enrollment until students reached the college hostel facilities, they were very well taken care of and heard. The convenience of parents and students was their priority. I hope they keep up the good work.",
-    university: "BASHKIR STATE MEDICAL UNIVERSITY, RUSSIA",
-  },
-];
+export interface WhatStudentsSayTestimonial {
+  name: string;
+  quote: string;
+  university: string;
+  location?: string;
+}
+
+export interface WhatStudentsSaySectionProps {
+  testimonials: WhatStudentsSayTestimonial[];
+  countryName?: string;
+}
 
 function getInitials(name: string) {
   return name
@@ -33,7 +24,7 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function WhatStudentsSaySection() {
+export default function WhatStudentsSaySection({ testimonials, countryName = "Russia" }: WhatStudentsSaySectionProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -56,10 +47,10 @@ export default function WhatStudentsSaySection() {
             </h2>
             <p className="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">
               <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> has helped thousands of Indian
-              students to pursue their MBBS in Russia. Take a look at some of the
+              students to pursue their MBBS in {countryName}. Take a look at some of the
               success stories of students who sought our expert guidance,
               professional consultation and assistance services to apply to
-              <span className="text-[#00999E] font-bold"> Russian MBBS universities</span> .
+              <span className="text-[#00999E] font-bold"> {countryName} MBBS universities</span> .
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
@@ -89,7 +80,7 @@ export default function WhatStudentsSaySection() {
             role="region"
             aria-label="Student testimonials"
           >
-            {TESTIMONIALS.map((t, index) => (
+            {testimonials.map((t, index) => (
               <div
                 key={index}
                 className="snap-start shrink-0 w-[min(100%,320px)] sm:w-[320px]"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -11,37 +11,30 @@ import {
 
 const BG_IMAGE_URL = "/images/universityViewBanner.png";
 
-type Step = {
+const ADMISSION_STEP_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  FaUserFriends,
+  FaListAlt,
+  FaFileSignature,
+};
+
+export interface AdmissionStepItem {
   stepLabel: string;
   title: string;
   desc: string;
-  icon: React.ComponentType<{ className?: string }>;
-};
+  icon: string;
+}
 
-export default function AdmissionProcessSection() {
-  const steps = useMemo<Step[]>(
-    () => [
-      {
-        stepLabel: "Step 1",
-        title: "Personalised Counselling",
-        desc: "Our experienced advisors at Taksheela begin with a counselling session to understand your academic background, career goals, and preferences. Based on this discussion, we guide you on the most suitable pathway for pursuing MBBS in Russia.",
-        icon: FaUserFriends,
-      },
-      {
-        stepLabel: "Step 2",
-        title: "Profile Assessment and University Selection",
-        desc: "Our team carefully reviews your academic profile, eligibility, and budget to help you shortlist NMC-compliant and globally recognised Russian medical universities that match your goals.",
-        icon: FaListAlt,
-      },
-      {
-        stepLabel: "Step 3",
-        title: "Application and Documentation",
-        desc: "Once the university is selected, Taksheela assists you with the complete application process. We help organise, verify, and prepare the required documents before submitting the application to the chosen university.",
-        icon: FaFileSignature,
-      },
-    ],
-    []
-  );
+export interface AdmissionProcessSectionProps {
+  steps: AdmissionStepItem[];
+  countryName?: string;
+  countryAdjective?: string;
+}
+
+export default function AdmissionProcessSection({
+  steps,
+  countryName = "Russia",
+  countryAdjective = "Russian",
+}: AdmissionProcessSectionProps) {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const dragStateRef = useRef<{
@@ -124,14 +117,14 @@ export default function AdmissionProcessSection() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
-                  MBBS in Russia {" "}
+                  MBBS in {countryName} {" "}
                 </h2>
                 <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
                   Admission Process{" "}
                   <span className="text-[#5dd4d9]">Step-by-Step with Taksheela {" "}</span>
                 </h2>
                 <p className="text-white/85 mt-3 max-w-4xl text-sm md:text-base leading-relaxed">
-                  The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in Russia</span> is simple and transparent compared to many private medical colleges in India. Russian universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
+                  The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in {countryName}</span> is simple and transparent compared to many private medical colleges in India. {countryAdjective} universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
                 </p>
               </div>
             </div>
@@ -227,7 +220,7 @@ export default function AdmissionProcessSection() {
                 aria-label="Admission process steps"
               >
                 {steps.map((s) => {
-                  const Icon = s.icon;
+                  const Icon = ADMISSION_STEP_ICONS[s.icon];
                   return (
                     <div
                       key={s.stepLabel}
@@ -236,7 +229,7 @@ export default function AdmissionProcessSection() {
                       <div className="rounded-2xl border min-h-[260px] border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                         <div className="flex items-start gap-3">
                           <div className="h-11 w-11 rounded-xl bg-white/10 border border-[#5dd4d9]/15 flex items-center justify-center shrink-0">
-                            <Icon className="h-5 w-5 text-white" />
+                            {Icon ? <Icon className="h-5 w-5 text-white" /> : null}
                           </div>
                           <div>
                             <div className="text-white/70 text-xs">

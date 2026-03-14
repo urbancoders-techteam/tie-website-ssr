@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         destination: "/mbbs/abroad/russia/campaign",
         permanent: true,
       },
+      {
+        source: "/mbbs/abroad/georgia/campaign/",
+        destination: "/mbbs/abroad/georgia/campaign",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

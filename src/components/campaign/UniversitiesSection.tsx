@@ -5,18 +5,41 @@ import Image, { type StaticImageData } from "next/image";
 import { FaChevronRight } from "react-icons/fa";
 import { imageBaseUrl } from "@/utils/config";
 
-import ksmu from "../../../../../assets/russian_universities/ksmu.webp";
-import rudn from "../../../../../assets/russian_universities/rudn.webp";
-import rnrmu from "../../../../../assets/russian_universities/rnrmu.webp";
-import msmu from "../../../../../assets/russian_universities/msmu.jpg";
-import fmsmu from "../../../../../assets/russian_universities/fmsmu.jpg";
-import nsmmu from "../../../../../assets/russian_universities/nsmu.webp";
-import tsmmu from "../../../../../assets/russian_universities/tsmu.jpg";
-import spspmu from "../../../../../assets/russian_universities/spspmu.webp";
-import bsmu from "../../../../../assets/russian_universities/bsmu.jpeg";
-import ismu from "../../../../../assets/russian_universities/ismu.jpg";
+import ksmu from "@/assets/russian_universities/ksmu.webp";
+import rudn from "@/assets/russian_universities/rudn.webp";
+import rnrmu from "@/assets/russian_universities/rnrmu.webp";
+import msmu from "@/assets/russian_universities/msmu.jpg";
+import fmsmu from "@/assets/russian_universities/fmsmu.jpg";
+import nsmmu from "@/assets/russian_universities/nsmu.webp";
+import tsmmu from "@/assets/russian_universities/tsmu.jpg";
+import spspmu from "@/assets/russian_universities/spspmu.webp";
+import bsmu from "@/assets/russian_universities/bsmu.jpeg";
+import ismu from "@/assets/russian_universities/ismu.jpg";
 
 const RUS_LOGO = (n: number) => `${imageBaseUrl}mbbsCollege/russia/rus${n}.png`;
+
+const RUSSIA_UNIVERSITY_IMAGES: Record<string, StaticImageData> = {
+  ksmu,
+  rudn,
+  rnrmu,
+  msmu,
+  fmsmu,
+  nsmmu,
+  tsmmu,
+  spspmu,
+  bsmu,
+  ismu,
+};
+
+export type UniversityBase = {
+  id: string;
+  name: string;
+  founded: string;
+  city: string;
+  fees: string;
+  logoIndex: number;
+  imageKey: string;
+};
 
 export type University = {
   id: string;
@@ -28,18 +51,28 @@ export type University = {
   image: StaticImageData;
 };
 
-const UNIVERSITIES_RUSSIA: University[] = [
-  { id: "ksmu", name: "Kazan State Medical University (KSMU)", founded: "1814", city: "Kazan", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(1), image: ksmu },
-  { id: "pfus", name: "People's Friendship University of Russia (RUDN)", founded: "1932", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(2), image: rudn },
-  { id: "rnrmu", name: "Russian National Research Medical University (RNRMU or RSMU)", founded: "1974", city: "Moscow", fees: "₹4,00,000 - ₹6,50,000", universityLogo: RUS_LOGO(3), image: rnrmu },
-  { id: "msmu", name: "Moscow State Medical University (MSMU)", founded: "1939", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(4), image: msmu },
-  { id: "fmsmu", name: "First Moscow State Medical University (Sechenov University)", founded: "1917", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", universityLogo: RUS_LOGO(5), image: fmsmu },
-  { id: "nsmmu", name: "Northern State Medical University (NSMU)", founded: "1936", city: "Arkhangelsk", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(6), image: nsmmu },
-  { id: "tsmu", name: "Tver State Medical University, Tver (TSMU)", founded: "1957", city: "Tver", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(7), image: tsmmu },
-  { id: "spspmu", name: "Saint Petersburg State Pediatric Medical University (SPSPMU)", founded: "1907", city: "Saint Petersburg", fees: "₹3,00,000 - ₹5,00,000", universityLogo: RUS_LOGO(8), image: spspmu },
-  { id: "bsmu", name: "Bashkir State Medical University (BSMU)", founded: "1955", city: "Ufa", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(9), image: bsmu },
-  { id: "ismu", name: "Irkutsk State Medical University (ISMU)", founded: "1955", city: "Irkutsk", fees: "₹2,50,000 - ₹4,50,000", universityLogo: RUS_LOGO(10), image: ismu },
-];
+function resolveUniversities(
+  base: UniversityBase[],
+  logoUrlPattern: (n: number) => string = RUS_LOGO,
+  imageMap: Record<string, StaticImageData> = RUSSIA_UNIVERSITY_IMAGES
+): University[] {
+  return base.map((u) => ({
+    id: u.id,
+    name: u.name,
+    founded: u.founded,
+    city: u.city,
+    fees: u.fees,
+    universityLogo: logoUrlPattern(u.logoIndex),
+    image: imageMap[u.imageKey] ?? ({} as StaticImageData),
+  }));
+}
+
+export interface UniversitiesSectionProps {
+  universitiesBase: UniversityBase[];
+  countryName?: string;
+  logoUrlPattern?: (n: number) => string;
+  imageMap?: Record<string, StaticImageData>;
+}
 
 const LIST_BTN_BASE =
   "w-full flex items-center gap-3 rounded-lg border px-4 py-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00999E] focus-visible:ring-offset-2 cursor-pointer";
@@ -77,9 +110,15 @@ function UniversityDetailCard({ uni }: { uni: University }) {
   );
 }
 
-export default function UniversitiesSection() {
-  const [selectedId, setSelectedId] = useState<string | null>(UNIVERSITIES_RUSSIA[0].id);
-  const selected = UNIVERSITIES_RUSSIA.find((u) => u.id === selectedId) ?? UNIVERSITIES_RUSSIA[0];
+export default function UniversitiesSection({
+  universitiesBase,
+  countryName = "Russia",
+  logoUrlPattern = RUS_LOGO,
+  imageMap = RUSSIA_UNIVERSITY_IMAGES,
+}: UniversitiesSectionProps) {
+  const universities = resolveUniversities(universitiesBase, logoUrlPattern, imageMap);
+  const [selectedId, setSelectedId] = useState<string | null>(universities[0]?.id ?? null);
+  const selected = universities.find((u) => u.id === selectedId) ?? universities[0];
 
   const handleSelect = useCallback((id: string) => {
     setSelectedId((prev) => (prev === id ? null : id));
@@ -93,17 +132,17 @@ export default function UniversitiesSection() {
     <section id="universities" className="py-10 sm:py-14 md:py-18 bg-white scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
-          Top Medical Universities in <span className="text-[#00999E]">Russia</span>
+          Top Medical Universities in <span className="text-[#00999E]">{countryName}</span>
         </h2>
         <p className="text-gray-600 mt-2 sm:mt-3 max-w-3xl text-sm sm:text-lg">
-          This section highlights the top universities in Russia recognised by the <span className="text-[#00999E] font-bold">WHO</span> and
+          This section highlights the top universities in {countryName} recognised by the <span className="text-[#00999E] font-bold">WHO</span> and
           compliant with the <span className="text-[#00999E] font-bold">NMC</span> guidelines. This list includes both high-ranking universities
-          and cost-effective options to pursue an <span className="text-[#00999E] font-bold">MBBS in Russia</span>  .
+          and cost-effective options to pursue an <span className="text-[#00999E] font-bold">MBBS in {countryName}</span>  .
         </p>
 
         {/* Mobile & tablet: accordion */}
         <div className="mt-6 lg:hidden">
-          {UNIVERSITIES_RUSSIA.map((uni) => {
+          {universities.map((uni) => {
             const isExpanded = uni.id === selectedId;
             return (
               <div
@@ -163,7 +202,7 @@ export default function UniversitiesSection() {
         {/* Desktop: list + detail side by side */}
         <div className="mt-8 hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           <div className="lg:col-span-1">
-            {UNIVERSITIES_RUSSIA.map((uni) => {
+            {universities.map((uni) => {
               const isSelected = uni.id === selectedId;
               return (
                 <button
@@ -194,9 +233,11 @@ export default function UniversitiesSection() {
             })}
           </div>
           <div className="lg:col-span-2">
-            <div className="rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
-              <UniversityDetailCard uni={selected} />
-            </div>
+            {selected && (
+              <div className="rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                <UniversityDetailCard uni={selected} />
+              </div>
+            )}
           </div>
         </div>
       </div>

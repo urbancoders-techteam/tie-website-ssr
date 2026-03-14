@@ -7,16 +7,29 @@ import {
   FaStethoscope,
 } from "react-icons/fa";
 
-type DocItem = { title: string; icon: React.ComponentType<{ className?: string }> };
+const DOC_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  FaFileAlt,
+  FaStethoscope,
+  FaPassport,
+  FaCamera,
+};
 
-const DOC_ITEMS: DocItem[] = [
-  { title: "10th & 12th Mark Sheets", icon: FaFileAlt },
-  { title: "NEET Score Card (3 years validity)", icon: FaStethoscope },
-  { title: "Valid Passport (6 months of validity)", icon: FaPassport },
-  { title: "5-10 Passport-sized Photographs (35mm x 45mm)", icon: FaCamera },
-];
+export interface DocItemBase {
+  title: string;
+  icon: string;
+}
 
-export default function DocumentsRequiredSection() {
+export interface DocumentsRequiredSectionProps {
+  docItems: DocItemBase[];
+  countryName?: string;
+  countryAdjective?: string;
+}
+
+export default function DocumentsRequiredSection({
+  docItems,
+  countryName = "Russia",
+  countryAdjective = "Russian",
+}: DocumentsRequiredSectionProps) {
   return (
     <section
       id="documents-required"
@@ -54,25 +67,25 @@ export default function DocumentsRequiredSection() {
           <div className="lg:pt-2">
             <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
               Documents Required to{" "}
-              <span className="text-[#00999E]">Study</span> MBBS in Russia
+              <span className="text-[#00999E]">Study</span> MBBS in {countryName}
             </h2>
             <p className="text-gray-600 mt-5 text-sm md:text-base leading-relaxed max-w-2xl">
-              To apply for <span className="text-[#00999E] font-bold">MBBS in Russia</span>, students must submit a set of academic,
+              To apply for <span className="text-[#00999E] font-bold">MBBS in {countryName}</span>, students must submit a set of academic,
               identification, and visa-related documents that comply with the
               requirements of the university and relevant government authorities,
-              especially the <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> and the <span className="text-[#00999E] font-bold">Russian Ministry of Education</span>. Here is the list of required documents.
+              especially the <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> and the <span className="text-[#00999E] font-bold">{countryAdjective} Ministry of Education</span>. Here is the list of required documents.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
-              {DOC_ITEMS.map((doc) => {
-                const Icon = doc.icon;
+              {docItems.map((doc) => {
+                const Icon = DOC_ICONS[doc.icon];
                 return (
                   <div
                     key={doc.title}
                     className="rounded-xl bg-white border border-gray-200 shadow-sm px-4 py-4 flex items-center gap-3 min-h-[88px]"
                   >
                     <div className="h-10 w-10 rounded-lg bg-[#e0f7f8] text-[#00999E] flex items-center justify-center shrink-0">
-                      <Icon className="h-5 w-5" />
+                      {Icon ? <Icon className="h-5 w-5" /> : null}
                     </div>
                     <div className="font-semibold text-gray-800 text-sm">
                       {doc.title}
