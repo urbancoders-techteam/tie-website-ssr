@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-black md:min-h-[560px]">
       {/* Mobile only: tagline + heading above the image */}
-      <div className="md:hidden relative z-10 bg-gray-900 px-4 pt-6 pb-4">
+      <div className="md:hidden relative z-10 bg-gray-900 px-4 pt-4 pb-3">
         <p className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">
           Your ambition. Our expertise. Confirmed admits.
         </p>
@@ -15,13 +15,13 @@ export default function HeroSection() {
           expert guidance
         </h1>
       </div>
-      {/* Image: on mobile = below the text block; on md+ = full background with overlay */}
-      <div className="relative h-[42vh] min-h-[260px] max-h-[340px] md:absolute md:inset-0 md:h-auto md:min-h-0 md:max-h-none">
+      {/* Image: on mobile = aspect-ratio + object-contain to minimize letterbox; on md+ = full background */}
+      <div className="relative w-full aspect-[3/2] min-h-[200px] max-h-[280px] bg-gray-900 md:absolute md:inset-0 md:aspect-auto md:h-auto md:min-h-0 md:max-h-none md:bg-transparent">
         <Image
           src={heroImage}
           alt=""
           fill
-          className="object-cover object-top md:object-center"
+          className="object-contain object-top md:object-cover md:object-center"
           sizes="100vw"
           priority
           aria-hidden
@@ -31,9 +31,9 @@ export default function HeroSection() {
           aria-hidden
         />
       </div>
-      {/* Content: on mobile below image with solid bg; on md+ over image */}
-      <div className="relative z-10 flex flex-col justify-center bg-gray-900 md:bg-transparent md:absolute md:inset-0 md:min-h-[560px]">
-        <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 py-8 sm:py-12 md:py-20">
+      {/* Content: on mobile pulled up into letterbox space below image; on md+ over image */}
+      <div className="relative z-10 -mt-24 flex flex-col justify-center bg-gray-900 pt-2 md:mt-0 md:bg-transparent md:absolute md:inset-0 md:min-h-[560px] md:pt-0">
+        <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 py-5 sm:py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div className="space-y-4 sm:space-y-6">
             {/* Tagline + heading: hidden on mobile (shown above image); visible md+ */}
