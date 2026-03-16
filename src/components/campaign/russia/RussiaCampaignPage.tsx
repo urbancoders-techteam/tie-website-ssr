@@ -54,7 +54,22 @@ export default function RussiaCampaignPage({
       <CampaignNavbar redirectPath={redirectPath} navLinks={RUSSIA_NAV_LINKS} />
 
       {/* Hero */}
-      <HeroSection {...RUSSIA_HERO} redirectPath={redirectPath} />
+      <HeroSection
+        tagline={RUSSIA_HERO.tagline}
+        title={RUSSIA_HERO.title}
+        titleHighlight={RUSSIA_HERO.titleHighlight}
+        description={RUSSIA_HERO.description}
+        stats={
+          Array.isArray(RUSSIA_HERO.stats)
+            ? RUSSIA_HERO.stats.map((stat) => ({
+                value: typeof stat.value !== "string" ? stat.value : "",
+                label: stat.label,
+              }))
+            : []
+        }
+        ctaText={RUSSIA_HERO.ctaText}
+        redirectPath={redirectPath}
+      />
 
       {/* Campaign Tabs */}
       <div className="sticky top-18.5 md:top-24 z-50">

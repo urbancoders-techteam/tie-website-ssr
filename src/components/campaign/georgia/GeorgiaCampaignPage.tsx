@@ -71,7 +71,7 @@ export default function GeorgiaCampaignPage({
         description={GEORGIA_HERO.description}
         stats={
           GEORGIA_HERO.stats.map((stat) => ({
-            value: typeof stat.value === "string" ? stat.value : "",
+            value: typeof stat.value !== "string" ? stat.value : "",
             label: stat.label,
           }))
         }

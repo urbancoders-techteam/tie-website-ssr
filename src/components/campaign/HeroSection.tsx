@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import ModalTrigger from "@/components/ModalTrigger";
 import defaultHeroImage from "@/assets/mbbs_russia.png";
 
-export type HeroStat = { value: string; label: string };
+export type HeroStat = { value: ReactNode; label: string };
 
 export interface HeroSectionProps {
   /** Hero background image. */
@@ -99,7 +99,7 @@ export default function HeroSection({
               </div>
 
               {description != null && description !== "" && (
-                <div className="text-gray-200 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+                <div className="text-gray-200 text-justify text-sm sm:text-base md:text-lg max-w-xl leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
                   {typeof description === "string" ? <p>{description}</p> : description}
                 </div>
               )}
@@ -108,7 +108,7 @@ export default function HeroSection({
                 <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-2 text-xs sm:text-sm text-gray-300">
                   {stats.map((s) => (
                     <div key={s.label}>
-                      <div className="font-semibold text-white">{s.value}</div>
+                      <div className="text-lg font-semibold text-white">{s.value}</div>
                       <div>{s.label}</div>
                     </div>
                   ))}
