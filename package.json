@@ -6,11 +6,11 @@
     "dev": "next dev --hostname 127.0.0.1",
     "dev:3000": "next dev -p 3000 --hostname 127.0.0.1",
     "dev:turbo": "next dev --turbopack --hostname 127.0.0.1",
-    "build": "next build",  
-    "build:dev": "NODE_ENV=development next build",
-    "start:dev": "NODE_ENV=development next start",
-    "build:prod": "NODE_ENV=production next build",
-    "start:prod": "NODE_ENV=production next start",
+    "build": "next build",
+    "build:dev": "cross-env NODE_ENV=development next build",
+    "start:dev": "cross-env NODE_ENV=development next start",
+    "build:prod": "cross-env NODE_ENV=production next build",
+    "start:prod": "cross-env NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import {
   FaRubleSign,
   FaUniversity,
@@ -15,14 +16,15 @@ export interface WhyChooseRussiaSectionProps {
   cards: { icon: string; iconBg: string; iconColor: string; title: string; desc: string }[];
   countryName?: string;
   sectionId?: string;
-  countryAdjective?: string;
+  /** Intro paragraph below the title. Each campaign passes its own (e.g. RUSSIA_WHY_CHOOSE_INTRO, GEORGIA_WHY_CHOOSE_INTRO). */
+  introParagraph: ReactNode;
 }
 
 export default function WhyChooseRussiaSection({
   cards,
   countryName = "Russia",
   sectionId = "why-choose-russia",
-  countryAdjective = "Russian",
+  introParagraph,
 }: WhyChooseRussiaSectionProps) {
   return (
     <section
@@ -38,7 +40,7 @@ export default function WhyChooseRussiaSection({
           for MBBS
         </h2>
         <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
-          Pursuing <span className="text-[#00999E] font-bold">MBBS in {countryName}</span> has become a popular option for Indian students seeking quality medical education at an affordable cost. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can access reputed {countryAdjective} medical universities that offer strong <span className="text-[#00999E] font-bold">academic training</span>, <span className="text-[#00999E] font-bold">modern infrastructure</span>, and <span className="text-[#00999E] font-bold">global recognition</span>. Here are some key reasons why {countryName} continues to be a preferred destination for aspiring doctors.
+          {introParagraph}
         </p>
 
         <div className=" mt-10 rounded-xl bg-gradient-to-b from-gray-50 to-[#00999E] mx-auto max-w-7xl p-4">

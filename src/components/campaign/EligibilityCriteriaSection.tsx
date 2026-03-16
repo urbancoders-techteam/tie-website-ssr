@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import doctorImage from "@/assets/doctor.png";
 
 const doctorImageSrc =
@@ -11,13 +11,14 @@ const doctorImageSrc =
 export interface EligibilityCriteriaSectionProps {
   criteriaCards: { title: string; titleHighlight?: boolean; desc: string }[];
   countryName?: string;
-  countryAdjective?: string;
+  /** Intro paragraph below the title. Each campaign passes its own (e.g. RUSSIA_ELIGIBILITY_INTRO, GEORGIA_ELIGIBILITY_INTRO). */
+  introParagraph: ReactNode;
 }
 
 export default function EligibilityCriteriaSection({
   criteriaCards,
   countryName = "Russia",
-  countryAdjective = "Russian",
+  introParagraph,
 }: EligibilityCriteriaSectionProps) {
   const [imageError, setImageError] = useState(false);
 
@@ -35,7 +36,7 @@ export default function EligibilityCriteriaSection({
           Eligibility Criteria for Indian Students
         </h2>
         <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
-          Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in {countryName}</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of {countryAdjective} medical universities as well as the guidelines set by India’s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
+          {introParagraph}
         </p>
 
         <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 lg:items-stretch lg:h-[480px]">
