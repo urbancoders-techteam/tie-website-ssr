@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export interface WhatStudentsSayTestimonial {
@@ -13,6 +13,8 @@ export interface WhatStudentsSayTestimonial {
 export interface WhatStudentsSaySectionProps {
   testimonials: WhatStudentsSayTestimonial[];
   countryName?: string;
+  /** Intro paragraph below the title. Each campaign passes its own (e.g. RUSSIA_WHAT_STUDENTS_SAY_INTRO, GEORGIA_WHAT_STUDENTS_SAY_INTRO). */
+  introParagraph: ReactNode;
 }
 
 function getInitials(name: string) {
@@ -24,7 +26,7 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function WhatStudentsSaySection({ testimonials, countryName = "Russia" }: WhatStudentsSaySectionProps) {
+export default function WhatStudentsSaySection({ testimonials, introParagraph }: WhatStudentsSaySectionProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -46,11 +48,7 @@ export default function WhatStudentsSaySection({ testimonials, countryName = "Ru
               What Students Say About Us
             </h2>
             <p className="text-gray-600 mt-3 text-sm md:text-base leading-relaxed">
-              <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> has helped thousands of Indian
-              students to pursue their MBBS in {countryName}. Take a look at some of the
-              success stories of students who sought our expert guidance,
-              professional consultation and assistance services to apply to
-              <span className="text-[#00999E] font-bold"> {countryName} MBBS universities</span> .
+              {introParagraph}
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">

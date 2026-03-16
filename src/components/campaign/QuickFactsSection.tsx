@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import Slider from "react-slick";
 import {
   FaChevronLeft,
@@ -33,18 +33,21 @@ interface QuickFacts {
   iconBg: string;
   iconColor: string;
   title: string;
-  desc: string;
+  desc: ReactNode;
 }
 
+/** Props for QuickFactsSection. Campaigns can define a section config (e.g. GEORGIA_QUICK_FACTS_SECTION) and spread it: <QuickFactsSection {...SECTION} redirectPath={redirectPath} /> */
 export interface QuickFactsSectionProps {
   quickFacts: QuickFacts[];
   countryName?: string;
+  introParagraph: ReactNode;
   redirectPath?: string;
 }
 
 export default function QuickFactsSection({
   quickFacts,
   countryName = "Russia",
+  introParagraph,
   redirectPath = "/mbbs/abroad/russia/campaign/thankyou",
 }: QuickFactsSectionProps) {
   const sliderRef = useRef<Slider | null>(null);
@@ -85,7 +88,7 @@ export default function QuickFactsSection({
               </span>
             </h2>
             <p className="text-white/90 mt-4 text-base md:text-lg max-w-xl">
-              Explore the essential details about studying <span className="text-[#5dd4d9] font-bold">MBBS in {countryName}</span> for Indian students with the expert guidance of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>. Our advisors help you understand the admission process, eligibility, costs, and university options before you begin your medical journey abroad.
+              {introParagraph}
             </p>
             <div className="mt-8 flex justify-center lg:justify-start">
               <ModalTrigger text="Talk to an Expert" className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" redirectPath={redirectPath} />

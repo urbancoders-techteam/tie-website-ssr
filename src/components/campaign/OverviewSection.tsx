@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, type ReactNode } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
 
 export interface OverviewContent {
-  first: string;
-  second: string;
-  third: string;
-  fourth: string;
-  fifth: string;
+  first: ReactNode;
+  second: ReactNode;
+  third: ReactNode;
+  fourth: ReactNode;
+  fifth: ReactNode;
 }
 
 export interface OverviewTestimonial {
@@ -65,8 +65,12 @@ export default function OverviewSection({ overviewContent, testimonials, country
               <p>{overviewContent.third}</p>
               {showMore && (
                 <>
-                  <p>{overviewContent.fourth}</p>
-                  <p>{overviewContent.fifth}</p>
+                  {overviewContent.fourth != null && overviewContent.fourth !== "" && (
+                    <p>{overviewContent.fourth}</p>
+                  )}
+                  {overviewContent.fifth != null && overviewContent.fifth !== "" && (
+                    <p>{overviewContent.fifth}</p>
+                  )}
                 </>
               )}
             </div>

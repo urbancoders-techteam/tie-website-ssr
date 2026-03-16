@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import fDoctorImage from "@/assets/f-doctor.png";
 import {
@@ -22,13 +23,14 @@ export interface DocItemBase {
 export interface DocumentsRequiredSectionProps {
   docItems: DocItemBase[];
   countryName?: string;
-  countryAdjective?: string;
+  /** Intro paragraph below the title. Each campaign passes its own (e.g. RUSSIA_DOCUMENTS_INTRO, GEORGIA_DOCUMENTS_INTRO). */
+  introParagraph: ReactNode;
 }
 
 export default function DocumentsRequiredSection({
   docItems,
   countryName = "Russia",
-  countryAdjective = "Russian",
+  introParagraph,
 }: DocumentsRequiredSectionProps) {
   return (
     <section
@@ -70,10 +72,7 @@ export default function DocumentsRequiredSection({
               <span className="text-[#00999E]">Study</span> MBBS in {countryName}
             </h2>
             <p className="text-gray-600 mt-5 text-sm md:text-base leading-relaxed max-w-2xl">
-              To apply for <span className="text-[#00999E] font-bold">MBBS in {countryName}</span>, students must submit a set of academic,
-              identification, and visa-related documents that comply with the
-              requirements of the university and relevant government authorities,
-              especially the <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> and the <span className="text-[#00999E] font-bold">{countryAdjective} Ministry of Education</span>. Here is the list of required documents.
+              {introParagraph}
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">

@@ -107,7 +107,7 @@ export default function HeroSection({
               {stats.length > 0 && (
                 <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-2 text-xs sm:text-sm text-gray-300">
                   {stats.map((s) => (
-                    <div key={s.value}>
+                    <div key={s.label}>
                       <div className="font-semibold text-white">{s.value}</div>
                       <div>{s.label}</div>
                     </div>

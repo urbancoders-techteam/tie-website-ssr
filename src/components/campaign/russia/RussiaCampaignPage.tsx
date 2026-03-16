@@ -16,10 +16,14 @@ import ScrollToTopButton from "@/components/campaign/ScrollToTopButton";
 import {
   RUSSIA_OVERVIEW_CONTENT,
   RUSSIA_TESTIMONIALS,
-  RUSSIA_QUICK_FACTS,
+  RUSSIA_WHAT_STUDENTS_SAY_INTRO,
+  RUSSIA_QUICK_FACTS_SECTION,
   RUSSIA_WHY_CHOOSE_CARDS,
+  RUSSIA_WHY_CHOOSE_INTRO,
   RUSSIA_ELIGIBILITY_CRITERIA,
+  RUSSIA_ELIGIBILITY_INTRO,
   RUSSIA_ADMISSION_STEPS,
+  RUSSIA_DOCUMENTS_INTRO,
   RUSSIA_DOCUMENTS_REQUIRED,
   RUSSIA_UNIVERSITIES,
   RUSSIA_FAQ_ITEMS,
@@ -62,13 +66,25 @@ export default function RussiaCampaignPage({
         <OverviewSection overviewContent={RUSSIA_OVERVIEW_CONTENT} testimonials={RUSSIA_TESTIMONIALS} />
       </section>
 
-      <QuickFactsSection quickFacts={RUSSIA_QUICK_FACTS} />
-      <WhyChooseRussiaSection cards={RUSSIA_WHY_CHOOSE_CARDS} />
-      <EligibilityCriteriaSection criteriaCards={RUSSIA_ELIGIBILITY_CRITERIA} />
+      <QuickFactsSection {...RUSSIA_QUICK_FACTS_SECTION} />
+      <WhyChooseRussiaSection
+        cards={RUSSIA_WHY_CHOOSE_CARDS}
+        introParagraph={RUSSIA_WHY_CHOOSE_INTRO}
+      />
+      <EligibilityCriteriaSection
+        criteriaCards={RUSSIA_ELIGIBILITY_CRITERIA}
+        introParagraph={RUSSIA_ELIGIBILITY_INTRO}
+      />
       <AdmissionProcessSection steps={RUSSIA_ADMISSION_STEPS} />
-      <DocumentsRequiredSection docItems={RUSSIA_DOCUMENTS_REQUIRED} />
+      <DocumentsRequiredSection
+        docItems={RUSSIA_DOCUMENTS_REQUIRED}
+        introParagraph={RUSSIA_DOCUMENTS_INTRO}
+      />
       <UniversitiesSection universitiesBase={RUSSIA_UNIVERSITIES} />
-      <WhatStudentsSaySection testimonials={RUSSIA_TESTIMONIALS} />
+      <WhatStudentsSaySection
+        testimonials={RUSSIA_TESTIMONIALS}
+        introParagraph={RUSSIA_WHAT_STUDENTS_SAY_INTRO}
+      />
       <FAQSection items={RUSSIA_FAQ_ITEMS} />
 
       {/* CTA */}

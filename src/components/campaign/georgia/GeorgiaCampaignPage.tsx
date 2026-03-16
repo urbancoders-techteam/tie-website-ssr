@@ -17,10 +17,14 @@ import ScrollToTopButton from "@/components/campaign/ScrollToTopButton";
 import {
   GEORGIA_OVERVIEW_CONTENT,
   GEORGIA_TESTIMONIALS,
-  GEORGIA_QUICK_FACTS,
+  GEORGIA_WHAT_STUDENTS_SAY_INTRO,
+  GEORGIA_QUICK_FACTS_SECTION,
   GEORGIA_WHY_CHOOSE_CARDS,
+  GEORGIA_WHY_CHOOSE_INTRO,
   GEORGIA_ELIGIBILITY_CRITERIA,
+  GEORGIA_ELIGIBILITY_INTRO,
   GEORGIA_ADMISSION_STEPS,
+  GEORGIA_DOCUMENTS_INTRO,
   GEORGIA_DOCUMENTS_REQUIRED,
   GEORGIA_UNIVERSITIES,
   GEORGIA_FAQ_ITEMS,
@@ -60,7 +64,20 @@ export default function GeorgiaCampaignPage({
     <div className="min-h-screen bg-white">
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
-      <HeroSection {...GEORGIA_HERO} redirectPath={redirectPath} />
+      <HeroSection
+        tagline={GEORGIA_HERO.tagline}
+        title={GEORGIA_HERO.title}
+        titleHighlight={GEORGIA_HERO.titleHighlight}
+        description={GEORGIA_HERO.description}
+        stats={
+          GEORGIA_HERO.stats.map((stat) => ({
+            value: typeof stat.value === "string" ? stat.value : "",
+            label: stat.label,
+          }))
+        }
+        ctaText={GEORGIA_HERO.ctaText}
+        redirectPath={redirectPath}
+      />
 
       <div className="sticky top-18.5 md:top-24 z-50">
         <CampaignTabs tabs={GEORGIA_CAMPAIGN_TABS} />
@@ -74,22 +91,21 @@ export default function GeorgiaCampaignPage({
         />
       </section>
 
-      <QuickFactsSection
-        quickFacts={GEORGIA_QUICK_FACTS}
-        countryName="Georgia"
-        redirectPath={redirectPath}
-      />
+      <QuickFactsSection {...GEORGIA_QUICK_FACTS_SECTION} redirectPath={redirectPath} />
+
       <WhyChooseRussiaSection
         cards={GEORGIA_WHY_CHOOSE_CARDS}
         countryName="Georgia"
         sectionId="why-choose-georgia"
-        countryAdjective="Georgian"
+        introParagraph={GEORGIA_WHY_CHOOSE_INTRO}
       />
+
       <EligibilityCriteriaSection
         criteriaCards={GEORGIA_ELIGIBILITY_CRITERIA}
         countryName="Georgia"
-        countryAdjective="Georgian"
+        introParagraph={GEORGIA_ELIGIBILITY_INTRO}
       />
+      
       <AdmissionProcessSection
         steps={GEORGIA_ADMISSION_STEPS}
         countryName="Georgia"
@@ -98,7 +114,7 @@ export default function GeorgiaCampaignPage({
       <DocumentsRequiredSection
         docItems={GEORGIA_DOCUMENTS_REQUIRED}
         countryName="Georgia"
-        countryAdjective="Georgian"
+        introParagraph={GEORGIA_DOCUMENTS_INTRO}
       />
       <UniversitiesSection
         universitiesBase={GEORGIA_UNIVERSITIES}
@@ -108,6 +124,7 @@ export default function GeorgiaCampaignPage({
       <WhatStudentsSaySection
         testimonials={GEORGIA_TESTIMONIALS}
         countryName="Georgia"
+        introParagraph={GEORGIA_WHAT_STUDENTS_SAY_INTRO}
       />
       <FAQSection items={GEORGIA_FAQ_ITEMS} />
 

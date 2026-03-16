@@ -1,15 +1,29 @@
+// ---------------- Hero (campaign landing) ----------------
+export const GEORGIA_HERO = {
+  tagline: "Your ambition. Our expertise. Confirmed admits.",
+  title: "Study MBBS in Georgia with expert guidance",
+  titleHighlight: "Georgia",
+  description:
+    <>Turn your dream of becoming a doctor into reality by studying <span className="text-[#5dd4d9]">MBBS in Georgia</span> with trusted support from Taksheela Institute of Education. Our certified study-abroad consultants provide personalised guidance to help you secure admission to reputed Georgian medical universities.</>,
+  stats: [
+    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
+    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
+    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
+  ],
+  ctaText: "BOOK YOUR FREE COUNSELLING",
+};
+
 // ---------------- Overview Content ----------------
 export const GEORGIA_OVERVIEW_CONTENT = {
   first:
-    "MBBS (Bachelor of Medicine and Bachelor of Surgery) is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on clinical training to develop skilled and ethical medical professionals.",
+    <>Pursuing <span className="text-[#00999E] font-bold">MBBS in Georgia</span> has become an increasingly popular choice for Indian students who are looking for internationally recognised medical education and strong clinical training opportunities. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can explore reputable Georgian medical universities that offer modern learning environments, experienced faculty, and globally recognised degrees at comparatively affordable tuition fees.</>,
   second:
-    "Georgia has emerged as a preferred destination for Indian students pursuing MBBS abroad. The country offers affordable tuition fees, English-medium programs, and NMC-recognised medical universities with modern infrastructure and a safe environment for international students.",
+    <>In recent years, Georgia has witnessed a significant increase in the number of Indian medical students. Reports from the <span className="text-[#00999E] font-bold">Ministry of External Affairs (India)</span> and the <span className="text-[#00999E] font-bold">National Statistics Office of Georgia</span> indicate that <span className="text-[#00999E] font-bold">more than 15,000 Indian students</span> are currently studying in Georgia, with the majority enrolled in medical programs.</>,
   third:
-    "With NMC-compliant medical universities and recognition from global organisations such as WHO, ECFMG, and FAIMER, Georgia offers internationally accepted medical education along with practical clinical exposure.",
+  <>The <span className="text-[#00999E] font-bold">MBBS program in Georgia (commonly awarded as an MD degree)</span> usually has a <span className="text-[#00999E] font-bold">duration of six years</span>, including academic study, clinical training, and hospital-based practical exposure. The average tuition fees for MBBS in Georgia are approximately <span className="text-[#00999E] font-bold">$5,000 per year</span>, making it a relatively cost-effective option for students seeking medical education abroad.</>,
   fourth:
-    "At Taksheela Institute of Education, we help students confidently pursue their MBBS in Georgia by guiding them through university selection, admission procedures, documentation, and visa support—ensuring a smooth and transparent journey toward a successful medical career.",
-  fifth:
-    "Students graduating from NMC-recognised universities in Georgia are eligible to appear for licensing examinations in India such as FMGE/NExT, subject to the applicable regulations.",
+  <>Medical education in Georgia is monitored by the <span className="text-[#00999E] font-bold">National Centre for Educational Quality Enhancement (NCEQE)</span>, and many universities are recognised by international bodies such as the <span className="text-[#00999E] font-bold">World Federation for Medical Education (WFME)</span>. With the expert support of <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> , Indian students can confidently navigate the admission process and begin their journey toward a global medical career.</>,
+  fifth:"",
 };
 
 // ---------------- Testimonials ----------------
@@ -37,113 +51,146 @@ export const GEORGIA_TESTIMONIALS = [
   },
 ];
 
+export const GEORGIA_WHAT_STUDENTS_SAY_INTRO = (
+  <>
+    Over the years, <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> has guided many Indian students in pursuing their <span className="text-[#00999E] font-bold">MBBS in Georgia</span> by providing reliable counselling, admission support, and personalised guidance throughout the process.
+    {" "}
+    Here are some experiences and success stories from students who chose Taksheela for expert advice, professional consultation, and end-to-end assistance while applying to reputed <span className="text-[#00999E] font-bold">medical universities in Georgia</span>.
+  </>
+);
+
 // ---------------- Quick Facts ----------------
+export const GEORGIA_QUICK_FACTS_INTRO = (
+  <>
+    Explore the essential details about studying <span className="text-[#5dd4d9] font-bold">MBBS in Georgia</span> for Indian students with the expert guidance of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>. Our advisors help you understand the admission process, eligibility, costs, and university options before you begin your medical journey abroad.
+  </>
+);
+
 export const GEORGIA_QUICK_FACTS = [
   {
     icon: "FaUserGraduate",
     iconBg: "bg-[#bfdbfe]",
     iconColor: "text-[#1e40af]",
     title: "Students",
-    desc: "A growing number of Indian students are choosing Georgia for MBBS due to its affordable fees, English-medium programs, and NMC recognition.",
+    desc: <>More than <span className="text-[#00999E] font-bold">13,000 Indian students</span> are currently pursuing medical education in Georgia, making it a growing destination for MBBS abroad.</>,
   },
   {
     icon: "FaClock",
     iconBg: "bg-[#bfdbfe]",
     iconColor: "text-[#1e40af]",
     title: "Course Duration",
-    desc: "The MBBS program in Georgia typically spans 6 years, which includes academic study along with practical clinical training.",
+    desc: <>The <span className="text-[#00999E] font-bold">MBBS (MD) program in Georgia generally takes 6 years</span>, which includes academic study along with clinical training.</>,
   },
   {
     icon: "FaCalendarAlt",
     iconBg: "bg-[#fed7aa]",
     iconColor: "text-[#c2410c]",
     title: "Admission Intakes",
-    desc: "Most Georgian medical universities offer intakes in September and February, giving students flexibility in planning their admission.",
+    desc: <>Most universities offer their <span className="text-[#00999E] font-bold">main intake in October</span>, while some institutions may also provide a <span className="text-[#00999E] font-bold">secondary intake in March or May</span>.</>,
   },
   {
     icon: "FaClipboardCheck",
     iconBg: "bg-[#d1fae5]",
     iconColor: "text-[#047857]",
     title: "Eligibility",
-    desc: "Students must have at least 50% in Physics, Chemistry, and Biology in 10+2, be 17 years or older, and qualify NEET as per current regulations.",
+    desc: <>Students must have <span className="text-[#00999E] font-bold">at least 50% marks in Physics, Chemistry, and Biology in 10+2</span>, be <span className="text-[#00999E] font-bold">17 years or older</span>, and qualify <span className="text-[#00999E] font-bold">NEET</span> as per current regulations.</>,
   },
   {
     icon: "FaBook",
     iconBg: "bg-[#e0e7ff]",
     iconColor: "text-[#3730a3]",
     title: "Medium of Instruction",
-    desc: "Most universities in Georgia offer MBBS programs in English, making it easier for Indian students to adapt academically.",
+    desc: <>Medical programs in Georgia are commonly offered in <span className="text-[#00999E] font-bold">English</span>, while basic <span className="text-[#00999E] font-bold">Georgian language training</span> may be provided for clinical interactions.</>,
   },
   {
     icon: "FaRubleSign",
     iconBg: "bg-[#fce7f3]",
     iconColor: "text-[#9d174d]",
-    title: "Tuition Range",
-    desc: "The average tuition fee in Georgia ranges from ₹3 lakh to ₹5.5 lakh per year, depending on the university.",
+    title: "Tuition Fees",
+    desc:<> The average tuition fees range between <span className="text-[#00999E] font-bold">₹3.5 lakh and ₹8 lakh per year</span>, depending on the university.</>,
   },
   {
     icon: "FaGlobe",
     iconBg: "bg-[#d1fae5]",
     iconColor: "text-[#047857]",
-    title: "Recognition",
-    desc: "Georgian medical universities are recognised by WHO, NMC, and the Georgian Ministry of Education, ensuring globally accepted qualifications.",
+    title: "Cost of Living",
+    desc: <>Students typically spend around <span className="text-[#00999E] font-bold">₹4–5 lakh per year</span> on living expenses, depending on the city and lifestyle choices.</>,
   },
   {
     icon: "FaUniversity",
     iconBg: "bg-[#fef3c7]",
     iconColor: "text-[#b45309]",
-    title: "Top Universities",
-    desc: "Tbilisi State Medical University, Batumi Shota Rustaveli State University, and others are among the preferred choices for Indian students.",
+    title: "Accreditations",
+    desc: <>Many Georgian medical universities are recognised by <span className="text-[#00999E] font-bold">WDOMS, NCEQE, WFME, WHO, and NMC</span>, ensuring international academic standards.</>,
   },
 ];
 
+/** Quick Facts section config for campaign pages. Spread into <QuickFactsSection /> with redirectPath. */
+export const GEORGIA_QUICK_FACTS_SECTION = {
+  quickFacts: GEORGIA_QUICK_FACTS,
+  countryName: "Georgia",
+  introParagraph: GEORGIA_QUICK_FACTS_INTRO,
+};
+
 // ---------------- Why Choose Georgia ----------------
+export const GEORGIA_WHY_CHOOSE_INTRO = (
+  <>
+    <span className="text-[#00999E] font-bold">Georgia</span> has emerged as a popular destination for Indian students looking to pursue MBBS abroad due to its affordable education, English-medium programs, and globally recognised universities. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can explore leading Georgian medical universities that offer modern infrastructure, strong academic standards, and valuable clinical training opportunities. With the expert support of <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students receive personalised counselling, university selection assistance, and complete guidance throughout their MBBS journey in Georgia.
+  </>
+);
+
 export const GEORGIA_WHY_CHOOSE_CARDS = [
   {
     icon: "FaRubleSign",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Affordable Tuition Fees",
-    desc: "Compared to private medical colleges in India, MBBS in Georgia offers the entire 6-year program at approximately ₹18–₹35 lakh, making it an affordable pathway to a medical career.",
+    title: "Affordable Tuition Fees & Living Costs",
+    desc: "Compared to private medical colleges in India, where the overall cost can reach ₹80 lakh or more, studying MBBS in Georgia is considerably more affordable. The total program cost typically ranges between ₹21 lakh and ₹48 lakh for the full 6-year course, while the average monthly living expenses are around ₹36,000, depending on lifestyle and city.",
   },
   {
     icon: "FaUniversity",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "NMC-Compliant Universities",
-    desc: "Several medical universities in Georgia follow the guidelines set by the National Medical Commission (NMC), allowing Indian students to maintain eligibility for licensing examinations in India.",
+    title: "Globally Recognised Medical Universities",
+    desc: "Many Georgian medical universities are recognised by major international and national medical bodies such as the World Health Organization (WHO), National Medical Commission (NMC) of India, and the World Federation for Medical Education (WFME). With support from Taksheela, students can choose accredited institutions that meet international standards.",
   },
   {
     icon: "FaClipboardCheck",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Simple Admission Process",
-    desc: "With Taksheela's expert guidance, the admission process for MBBS in Georgia is straightforward and transparent, without capitation fees or donations.",
+    title: "Structured and Regulated Medical Curriculum",
+    desc: "Medical education in Georgia is supervised by the National Centre for Educational Quality Enhancement (NCEQE), which ensures that universities maintain high academic standards. Many institutions also align with NMC guidelines, making them a suitable option for Indian students planning their medical careers.",
   },
   {
     icon: "FaHospital",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Clinical Training and Infrastructure",
-    desc: "Georgian medical universities offer well-developed medical facilities and extensive clinical exposure through affiliated hospitals.",
+    title: "Advanced Clinical Training and Infrastructure",
+    desc: "Georgian universities provide early clinical exposure and hands-on training through affiliated hospitals equipped with modern medical technology. This practical learning environment helps students develop the skills and confidence required for a successful medical career.",
+  },
+  {
+    icon: "FaUniversity",
+    iconBg: "bg-[#e0f7f8]",
+    iconColor: "text-[#00999E]",
+    title: "English-Medium Medical Programs",
+    desc: "Most universities offer MBBS programs fully taught in English, making it easier for international students to adapt academically. Students may also learn basic Georgian language skills to communicate effectively with patients during clinical rotations.",
   },
   {
     icon: "FaHospital",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "English-Medium Programs",
-    desc: "Most universities in Georgia offer MBBS programs taught in English, making it easier for international students to adapt academically.",
-  },
-  {
-    icon: "FaHospital",
-    iconBg: "bg-[#e0f7f8]",
-    iconColor: "text-[#00999E]",
-    title: "Supportive Student Community",
-    desc: "With Taksheela Institute of Education, students receive personalised counselling, university selection assistance, and complete admission guidance for their MBBS journey in Georgia.",
+    title: "Safe and Supportive Environment",
+    desc: "Georgia is considered a safe and welcoming destination for international students. With a friendly culture, modern infrastructure, and supportive campus environments, Indian students can focus on their medical studies while experiencing a comfortable lifestyle abroad.",
   },
 ];
 
 // ---------------- Eligibility Criteria ----------------
+export const GEORGIA_ELIGIBILITY_INTRO = (
+  <>
+    Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Georgia</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements are based on the admission standards of Georgian medical universities as well as the guidelines set by India&apos;s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>.
+  </>
+);
+
 export const GEORGIA_ELIGIBILITY_CRITERIA = [
   {
     title: "Academic Background",
@@ -188,73 +235,103 @@ export const GEORGIA_ADMISSION_STEPS = [
 ];
 
 // ---------------- Documents Required ----------------
+export const GEORGIA_DOCUMENTS_INTRO = (
+  <>
+    Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Georgia</span> must submit a set of essential academic and identification documents during the admission and visa process. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students receive complete support in preparing and verifying all required documents according to the guidelines of the <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span>, Georgian authorities, and the relevant embassy requirements. With the assistance of <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students are guided through the complete documentation process to ensure a smooth application and visa procedure for studying <span className="text-[#00999E] font-bold">MBBS in Georgia</span>.
+  </>
+);
+
 export const GEORGIA_DOCUMENTS_REQUIRED = [
-  { title: "10th & 12th Mark Sheets", icon: "FaFileAlt" },
-  { title: "NEET Score Card (3 years validity)", icon: "FaStethoscope" },
-  { title: "Valid Passport (6 months of validity)", icon: "FaPassport" },
-  { title: "5-10 Passport-sized Photographs (35mm x 45mm)", icon: "FaCamera" },
+  { title: "10th and 12th mark sheets from a recognised board", icon: "FaFileAlt" },
+  { title: "NEET scorecard (valid as per current regulations)", icon: "FaStethoscope" },
+  { title: "Valid passport with at least six months of validity", icon: "FaPassport" },
+  { title: "5–10 recent passport-sized photographs (35mm × 45mm)", icon: "FaCamera" },
+  { title: "Birth certificate (required in some cases, especially for minor applicants)", icon: "FaFileAlt" },
+  { title: "Police clearance certificate (required for certain visa processes)", icon: "FaFileAlt" },
+  { title: "Official admission letter issued by the selected university", icon: "FaFileAlt" },
+  { title: "Visa invitation letter from the university or relevant authorities", icon: "FaFileAlt" },
 ];
 
 // ---------------- Universities ----------------
 // logoIndex: 1–3 for geo logos; imageKey: resolved via imageMap passed from page
 export const GEORGIA_UNIVERSITIES = [
-  { id: "tsmu", name: "Tbilisi State Medical University (TSMU)", founded: "1918", city: "Tbilisi", fees: "₹3,50,000 - ₹5,00,000", logoIndex: 1, imageKey: "tsmu" },
-  { id: "batumi", name: "Batumi Shota Rustaveli State University", founded: "1895", city: "Batumi", fees: "₹3,00,000 - ₹4,50,000", logoIndex: 2, imageKey: "batumi" },
-  { id: "davidtvili", name: "David Tvilis Medical University", founded: "1992", city: "Tbilisi", fees: "₹3,50,000 - ₹5,50,000", logoIndex: 3, imageKey: "davidtvili" },
+  {
+    id: "tsmu",
+    name: "Tbilisi State Medical University (TSMU)",
+    founded: "1918",
+    city: "Tbilisi",
+    fees: "₹3,50,000 - ₹5,00,000",
+    logoIndex: 1,
+    imageKey: "tsmu",
+  },
+  {
+    id: "batumi",
+    name: "Batumi Shota Rustaveli State University",
+    founded: "1895",
+    city: "Batumi",
+    fees: "₹3,00,000 - ₹4,50,000",
+    logoIndex: 2,
+    imageKey: "batumi",
+  },
+  {
+    id: "davidtvili",
+    name: "David Tvilis Medical University",
+    founded: "1992",
+    city: "Tbilisi",
+    fees: "₹3,50,000 - ₹5,50,000",
+    logoIndex: 3,
+    imageKey: "davidtvili",
+  },
 ];
 
 // ---------------- FAQ ----------------
 export const GEORGIA_FAQ_ITEMS = [
   {
-    question: "What hostel and food facilities are available for Indian students in Georgia?",
-    answer: "Most Georgian medical universities provide dedicated hostels for international students with essential amenities such as security, internet access, and study spaces. Many universities also offer Indian food or mess facilities. Taksheela Institute of Education guides students in selecting universities with suitable accommodation and dining options.",
-    highlightTerms: ["hostels for international students", "Indian food or mess facilities", "Taksheela Institute of Education"],
+    question: "Is MBBS in Georgia approved for Indian students?",
+    answer:
+      "Many medical universities in Georgia are recognised by the appropriate international bodies and may align with NMC regulations, depending on the institution and current guidelines. Taksheela Institute of Education helps students shortlist universities that meet the required standards for Indian students.",
+    highlightTerms: ["Taksheela Institute of Education"],
+  },
+  {
+    question: "Is studying MBBS in Georgia a good option?",
+    answer:
+      "Yes, MBBS in Georgia is considered a popular option for students looking for quality medical education, English-medium instruction, and affordable tuition fees. With support from Taksheela, students can choose universities that match their academic goals and budget.",
+  },
+  {
+    question: "How much does MBBS in Georgia cost?",
+    answer:
+      "The cost of studying MBBS in Georgia usually varies by university. In general, tuition fees can range from approximately ₹6 lakh to ₹12.5 lakh per year, with additional expenses for accommodation, food, insurance, and personal living costs.",
+  },
+  {
+    question: "Is NEET compulsory for MBBS in Georgia?",
+    answer:
+      "For Indian students, qualifying NEET is important if they plan to pursue medical education abroad and later practise in India, as per current NMC requirements. Taksheela guides students on the latest eligibility criteria before they apply.",
+  },
+  {
+    question: "Is an MBBS degree from Georgia recognised in India?",
+    answer:
+      "An MBBS/MD degree from Georgia may be accepted in India if the university meets the required recognition norms and the student fulfils the necessary licensing requirements applicable at that time. Taksheela Institute of Education helps students identify universities that are better aligned with these requirements.",
+  },
+  {
+    question: "What is the FMGE passing outlook for students graduating from Georgia?",
+    answer:
+      "FMGE performance can differ from one university to another and also depends on the student's preparation, academic foundation, and individual effort. Rather than relying only on broad percentages, Taksheela advises students to evaluate the university's academic quality, clinical exposure, and support systems before making a decision.",
   },
   {
     question: "What is the duration of MBBS in Georgia?",
-    answer: "MBBS in Georgia is typically 6 years, including 1 year of internship. The course is taught in English at most NMC-approved universities.",
+    answer:
+      "The medical program in Georgia generally has a duration of 6 years, which includes academic learning and practical clinical exposure as part of the course structure.",
   },
   {
-    question: "What is the approximate cost of studying MBBS in Georgia?",
-    answer: "The total tuition fees for the entire MBBS program in Georgia generally range between ₹18 lakh and ₹35 lakh, depending on the university. With guidance from Taksheela, students can explore universities that match their academic goals and budget.",
+    question: "Is Georgia a safe country for Indian students?",
+    answer:
+      "Georgia is often regarded as a student-friendly destination with a welcoming environment for international students. With the right university selection and guidance from Taksheela, students can prepare better for a safe and comfortable study experience abroad.",
   },
   {
-    question: "Is Georgia safe for Indian students pursuing MBBS?",
-    answer: "Georgia is considered a safe destination for international students, including those from India. Many universities have well-developed campuses, student hostels, and support services. Taksheela also assists students with pre-departure guidance.",
-  },
-  {
-    question: "Is MBBS in Georgia taught in English?",
-    answer: "Yes. Most reputed Georgian medical universities offer MBBS programs in English for international students.",
-  },
-  {
-    question: "How many Indian students study MBBS in Georgia?",
-    answer: "Georgia is increasingly popular among Indian medical students due to its affordability, English-medium programs, and NMC recognition.",
-  },
-  {
-    question: "Is an MBBS degree from Georgia valid in India?",
-    answer: "Yes, an MBBS degree from Georgia can be recognised in India if the university is approved by the National Medical Commission (NMC). After completing the program, graduates must qualify the required licensing examination in India, such as FMGE or NExT.",
-  },
-  {
-    question: "Can I get education loan for MBBS in Georgia?",
-    answer: "Yes. Many Indian banks offer education loans for studying MBBS abroad. Eligibility and terms depend on the bank and the university you choose.",
-  },
-  {
-    question: "How does Taksheela help with admission?",
-    answer: "Taksheela provides end-to-end support: counselling, profile evaluation, university shortlisting, application and documentation assistance, and visa guidance.",
+    question: "How do I choose the right university for MBBS in Georgia?",
+    answer:
+      "The best university depends on factors such as recognition, tuition fees, medium of instruction, clinical exposure, location, and overall student support. Taksheela Institute of Education helps students compare suitable options and choose a university that fits their academic plans and budget.",
   },
 ];
 
-// ---------------- Hero (campaign landing) ----------------
-export const GEORGIA_HERO = {
-  tagline: "Your ambition. Our expertise. Confirmed admits.",
-  title: "Study MBBS in Georgia with expert guidance",
-  titleHighlight: "Georgia",
-  description:
-    "Make your medical career aspirations a reality with MBBS in Georgia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
-  stats: [
-    { value: "10+ years", label: "of counselling experience" },
-    { value: "Trusted", label: "by 1M+ aspirants" },
-    { value: "Step-by-step", label: "admission support" },
-  ],
-  ctaText: "BOOK YOUR FREE COUNSELLING",
-};
+
