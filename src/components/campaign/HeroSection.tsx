@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import ModalTrigger from "@/components/ModalTrigger";
-import defaultHeroImage from "@/assets/mbbs_russia.png";
+import defaultHeroImage from "@/assets/georgia/georgia_hero_img.png";
 
 export type HeroStat = { value: ReactNode; label: string };
 

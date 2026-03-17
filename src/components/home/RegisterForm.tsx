@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
@@ -18,6 +19,7 @@ const RegisterForm = ({
 }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const source = window.location.href;
   const time = new Date().toLocaleString();
@@ -53,25 +55,29 @@ const RegisterForm = ({
           const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
           const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-          if (!serviceId || !templateId || !publicKey) {
-            toast.error("Email service is not configured");
-            return;
+          if (serviceId && templateId && publicKey) {
+            try {
+              await emailjs.send(
+                serviceId,
+                templateId,
+                { ...values, from_name: "TIE", source, time },
+                { publicKey }
+              );
+            } catch {
+              // Email is best-effort; don't block form success flow.
+            }
           }
-
-          await emailjs.send(
-            serviceId,
-            templateId,
-            { ...values, from_name: "TIE", source, time },
-            { publicKey }
-          );
 
           toast.success("Successfully created Unlock Your Dreams");
           setShowDownloadButton(true);
+          formik.resetForm();
+          router.push("/thankyou");
         } else {
           toast.error("Failed to schedule meeting");
           formik.resetForm();
         }
-      } catch (err: any) {
+      } catch (error: unknown) {
+        const err = error as { response?: { data?: { message?: string } } };
         toast.error(err?.response?.data?.message || "Something went wrong");
       } finally {
         setLoading(false);
