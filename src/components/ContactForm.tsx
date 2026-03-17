@@ -2,7 +2,9 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { baseUrl } from "@/utils/config";
 
 
 const ContactForm = () => {
@@ -25,39 +27,45 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    try {
+      const res = await axios.post(`${baseUrl}student/schedule-meeting`, formData);
 
-    if (!serviceId || !templateId || !publicKey) {
-      toast.error("Email service is not configured");
-      setLoading(false);
-      return;
-    }
+      if (!res.data?.success) {
+        toast.error("Failed to schedule meeting");
+        return;
+      }
 
-    const source = window.location.href;
-    const time = new Date().toLocaleString();
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    emailjs
-      .send(
+      if (!serviceId || !templateId || !publicKey) {
+        toast.error("Email service is not configured");
+        return;
+      }
+
+      const source = window.location.href;
+      const time = new Date().toLocaleString();
+
+      await emailjs.send(
         serviceId,
         templateId,
         { ...formData, from_name: "TIE", source, time },
         { publicKey }
-      )
-      .then(() => {
-        toast.success("Message sent successfully");
-        setFormData({ name: "", email: "", message: "", phone: "" , from_name: "TIE"});
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        toast.error("Failed to send message");
-      })
-      .finally(() => setLoading(false));
+      );
+
+      toast.success("Message sent successfully");
+      setFormData({ name: "", email: "", message: "", phone: "", from_name: "TIE" });
+    } catch (error: unknown) {
+      const err = error as { response?: { data?: { message?: string } } };
+      toast.error(err?.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
