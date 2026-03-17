@@ -29,12 +29,26 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    const serviceId = "service_i9rs2hj";
-    const templateId = "template_roqvyei";
-    const publicKey = "ncDIHkoEOeITGgzJI";
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("Email service is not configured");
+      setLoading(false);
+      return;
+    }
+
+    const source = window.location.href;
+    const time = new Date().toLocaleString();
 
     emailjs
-      .send(serviceId, templateId, formData, publicKey)
+      .send(
+        serviceId,
+        templateId,
+        { ...formData, from_name: "TIE", source, time },
+        { publicKey }
+      )
       .then(() => {
         toast.success("Message sent successfully");
         setFormData({ name: "", email: "", message: "", phone: "" , from_name: "TIE"});
