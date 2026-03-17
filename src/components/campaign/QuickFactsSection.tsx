@@ -87,7 +87,7 @@ export default function QuickFactsSection({
                 Quick Facts
               </span>
             </h2>
-            <p className="text-white/90 mt-4 text-base md:text-lg max-w-xl">
+            <p className="text-white/90 mt-4 text-base md:text-lg max-w-xl text-justify">
               {introParagraph}
             </p>
             <div className="mt-8 flex justify-center lg:justify-start">
@@ -108,7 +108,7 @@ export default function QuickFactsSection({
                           {Icon ? <Icon className="w-6 h-6" /> : null}
                         </div>
                         <h3 className="font-bold text-gray-900">{item.title}</h3> </div>
-                      <p className="text-sm text-gray-600 mt-1 flex-1">{item.desc}</p>
+                      <p className="text-sm text-gray-600 mt-1 flex-1 text-justify">{item.desc}</p>
                     </div>
                   </div>
                 );

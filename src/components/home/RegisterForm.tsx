@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
 const RegisterForm = ({
@@ -18,6 +19,9 @@ const RegisterForm = ({
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const source = window.location.href;
+  const time = new Date().toLocaleString();
+
   const validationSchema = yup.object({
     name: yup.string().required("Name is required"),
     email: yup
@@ -28,6 +32,7 @@ const RegisterForm = ({
       .string()
       .matches(/^\d{10}$/, "Phone number must be 10 digits")
       .required("Phone number is required"),
+    message: yup.string().required("Message is required"),
   });
 
   const formik = useFormik({
@@ -35,17 +40,31 @@ const RegisterForm = ({
       name: "",
       email: "",
       phone: "",
+      message: "",
     },
     validationSchema,
     onSubmit: async (values: any) => {
       setLoading(true);
       try {
-        const res = await axios.post(
-          `${baseUrl}student/schedule-meeting`,
-          values
-        );
+        const res = await axios.post(`${baseUrl}student/schedule-meeting`, values);
 
         if (res.data.success) {
+          const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+          const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+          if (!serviceId || !templateId || !publicKey) {
+            toast.error("Email service is not configured");
+            return;
+          }
+
+          await emailjs.send(
+            serviceId,
+            templateId,
+            { ...values, from_name: "TIE", source, time },
+            { publicKey }
+          );
+
           toast.success("Successfully created Unlock Your Dreams");
           setShowDownloadButton(true);
         } else {
@@ -78,11 +97,10 @@ const RegisterForm = ({
             type="text"
             placeholder="Enter your name"
             {...formik.getFieldProps("name")}
-            className={`w-full border ${
-              formik.touched.name && formik.errors.name
+            className={`w-full border ${formik.touched.name && formik.errors.name
                 ? "border-red-500"
                 : "border-gray-300"
-            } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+              } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
           />
           {formik.touched.name &&
             formik.errors.name &&
@@ -97,11 +115,10 @@ const RegisterForm = ({
             maxLength={10}
             placeholder="Enter 10-digit number"
             {...formik.getFieldProps("phone")}
-            className={`w-full border ${
-              formik.touched.phone && formik.errors.phone
+            className={`w-full border ${formik.touched.phone && formik.errors.phone
                 ? "border-red-500"
                 : "border-gray-300"
-            } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+              } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
           />
           {formik.touched.phone &&
             formik.errors.phone &&
@@ -115,11 +132,10 @@ const RegisterForm = ({
             type="email"
             placeholder="Enter your email"
             {...formik.getFieldProps("email")}
-            className={`w-full border ${
-              formik.touched.email && formik.errors.email
+            className={`w-full border ${formik.touched.email && formik.errors.email
                 ? "border-red-500"
                 : "border-gray-300"
-            } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+              } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
           />
           {formik.touched.email &&
             formik.errors.email &&
@@ -128,12 +144,28 @@ const RegisterForm = ({
             )}
         </div>
 
+        <div>
+          <textarea
+            placeholder="Enter your message"
+            rows={3}
+            {...formik.getFieldProps("message")}
+            className={`w-full border ${formik.touched.message && formik.errors.message
+                ? "border-red-500"
+                : "border-gray-300"
+              } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+          />
+          {formik.touched.message &&
+            formik.errors.message &&
+            typeof formik.errors.message === "string" && (
+              <p className="text-red-500 text-sm mt-1">{formik.errors.message}</p>
+            )}
+        </div>
+
         <button
           type="submit"
           disabled={loading}
-          className={`bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${
-            loading ? "opacity-60 cursor-not-allowed" : ""
-          }`}
+          className={`bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${loading ? "opacity-60 cursor-not-allowed" : ""
+            }`}
         >
           {loading ? "Submitting..." : "Schedule A Meeting"}
         </button>

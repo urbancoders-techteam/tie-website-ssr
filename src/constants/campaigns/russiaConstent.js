@@ -322,9 +322,9 @@ export const RUSSIA_HERO = {
   description:
     "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
   stats: [
-    { value: "10+ years", label: "of counselling experience" },
-    { value: "Trusted", label: "by 1M+ aspirants" },
-    { value: "Step-by-step", label: "admission support" },
+    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
+    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
+    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
   ],
   ctaText: "BOOK YOUR FREE COUNSELLING",
 };

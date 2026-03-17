@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
 interface ModalProps {
@@ -45,13 +46,28 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
     onSubmit: async (values: any) => {
       setLoading(true);
       try {
-        const res = await axios.post(
-          `${baseUrl}student/schedule-meeting`,
-          values,
-
-        );
+        const res = await axios.post(`${baseUrl}student/schedule-meeting`, values);
 
         if (res.data.success) {
+          const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+          const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+          if (!serviceId || !templateId || !publicKey) {
+            toast.error("Email service is not configured");
+            return;
+          }
+
+          const source = window.location.href;
+          const time = new Date().toLocaleString();
+
+          await emailjs.send(
+            serviceId,
+            templateId,
+            { ...values, from_name: "TIE", source, time },
+            { publicKey }
+          );
+
           toast.success("Successfully created Unlock Your Dreams");
           formik.resetForm();
           setTimeout(() => {
