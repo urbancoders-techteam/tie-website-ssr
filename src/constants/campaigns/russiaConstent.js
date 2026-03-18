@@ -1,15 +1,57 @@
+import { imageBaseUrl } from "@/utils/config";
+
+// -------------------- University Logos --------------------
+const osmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/OMSU_logo.webp`;
+const ismuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/ISMU_logo.jpg`;
+const nosmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NOSMA_logo.webp`;
+const nwsmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NWSMU_logo.png`;
+const nrnuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NRNU_logo.png`;
+const mephiLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/MEPhI_logo.png`;
+const ksmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KSMU_logo.png`;
+const kfuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KFU_logo.png`;
+const ksuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KSU_logo.png`;
+const bsmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/BSMU_logo.png`;
+
+// -------------------- University Images --------------------
+const osmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/omsu.jpg`;
+const ismu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ismu.png`;
+const nosmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nosmu.webp`;
+const nwsmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nwsmu.png`;
+const nrnu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nrnu.png`;
+const mephi =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`;
+const ksmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ksmu.jpg`;
+const kfu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/kfu.jpg`;
+const ksu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ksu.jpg`;
+const bsmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/bsmu.jpeg`;
+
+
+// ---------------- Hero (campaign landing) ----------------
+export const RUSSIA_HERO = {
+  tagline: "Your ambition. Our expertise. Confirmed admits.",
+  title: "Study MBBS in Russia with expert guidance",
+  titleHighlight: "Russia",
+  description:
+    "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
+  stats: [
+    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
+    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
+    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
+  ],
+  ctaText: "BOOK YOUR FREE COUNSELLING",
+};
+
 // ---------------- Overview Content ----------------
 export const RUSSIA_OVERVIEW_CONTENT = {
   first:
-    "MBBS (Bachelor of Medicine and Bachelor of Surgery) is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on clinical training to develop skilled and ethical medical professionals.",
+    <> <span className="text-[#00999E] font-bold">MBBS (Bachelor of Medicine and Bachelor of Surgery)</span> is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on <span className="text-[#00999E] font-bold">hands-on clinical training</span> to develop skilled and <span className="text-[#00999E] font-bold">ethical medical professionals</span>.</>,
   second:
-    "Russia has become one of the most preferred destinations for Indian students pursuing MBBS abroad. According to data shared by the Ministry of External Affairs (MEA) in the Winter Session of Parliament in December 2025, over 27,000 Indian students are studying overseas, with a large number choosing Russia for medical education due to its affordable tuition fees and high academic standards.",
+    <> Russia has become one of the most preferred destinations for Indian students pursuing MBBS abroad. According to data shared by the <span className="text-[#00999E] font-bold">Ministry of External Affairs (MEA)</span> in the Winter Session of Parliament in <span className="text-[#00999E] font-bold">December 2025</span>, <span className="text-[#00999E] font-bold">over 27,000 Indian students</span> are studying overseas, with a large number choosing Russia for medical education due to its <span className="text-[#00999E] font-bold">affordable tuition fees</span> and <span className="text-[#00999E] font-bold">high academic standards</span>.</>,
   third:
-    "With over 50 NMC-compliant medical universities and recognition from global organisations such as ECFMG, FAIMER, and WFME, Russia offers internationally accepted medical education along with extensive clinical exposure.",
+    <> With over 50 NMC-compliant medical universities and recognition from global organisations such as <span className="text-[#00999E] font-bold">ECFMG</span>, <span className="text-[#00999E] font-bold">FAIMER</span>, and <span className="text-[#00999E] font-bold">WFME</span>, Russia offers internationally accepted medical education along with extensive clinical exposure.</>,
   fourth:
-    "At Taksheela Institute of Education, we help students confidently pursue their MBBS in Russia by guiding them through university selection, admission procedures, documentation, and visa support—ensuring a smooth and transparent journey toward a successful medical career.",
+    <> At <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, we help students confidently pursue their <span className="text-[#00999E] font-bold">MBBS in Russia</span> by guiding them through university selection, <span className="text-[#00999E] font-bold">admission procedures</span>, <span className="text-[#00999E] font-bold">documentation</span>, and <span className="text-[#00999E] font-bold">visa support</span>—ensuring a smooth and <span className="text-[#00999E] font-bold">transparent journey</span> toward a <span className="text-[#00999E] font-bold">successful medical career</span>.</>,
   fifth:
-    "Students graduating from NMC-recognised universities in Russia are eligible to appear for licensing examinations in India such as FMGE/NExT, subject to the applicable regulations.",
+    <> Students graduating from NMC-recognised universities in Russia are eligible to appear for licensing examinations in India such as <span className="text-[#00999E] font-bold">FMGE/NExT</span>, subject to the applicable <span className="text-[#00999E] font-bold">regulations</span>.</>,
 };
 
 // ---------------- Testimonials ----------------
@@ -246,16 +288,96 @@ export const RUSSIA_DOCUMENTS_REQUIRED = [
 // ---------------- Universities ----------------
 // logoIndex: 1–10 for rus1.png … rus10.png; imageKey: resolved to StaticImageData in component
 export const RUSSIA_UNIVERSITIES = [
-  { id: "ksmu", name: "Kazan State Medical University (KSMU)", founded: "1814", city: "Kazan", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 1, imageKey: "ksmu" },
-  { id: "pfus", name: "People's Friendship University of Russia (RUDN)", founded: "1932", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 2, imageKey: "rudn" },
-  { id: "rnrmu", name: "Russian National Research Medical University (RNRMU or RSMU)", founded: "1974", city: "Moscow", fees: "₹4,00,000 - ₹6,50,000", logoIndex: 3, imageKey: "rnrmu" },
-  { id: "msmu", name: "Moscow State Medical University (MSMU)", founded: "1939", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 4, imageKey: "msmu" },
-  { id: "fmsmu", name: "First Moscow State Medical University (Sechenov University)", founded: "1917", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 5, imageKey: "fmsmu" },
-  { id: "nsmmu", name: "Northern State Medical University (NSMU)", founded: "1936", city: "Arkhangelsk", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 6, imageKey: "nsmmu" },
-  { id: "tsmu", name: "Tver State Medical University, Tver (TSMU)", founded: "1957", city: "Tver", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 7, imageKey: "tsmmu" },
-  { id: "spspmu", name: "Saint Petersburg State Pediatric Medical University (SPSPMU)", founded: "1907", city: "Saint Petersburg", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 8, imageKey: "spspmu" },
-  { id: "bsmu", name: "Bashkir State Medical University (BSMU)", founded: "1955", city: "Ufa", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 9, imageKey: "bsmu" },
-  { id: "ismu", name: "Irkutsk State Medical University (ISMU)", founded: "1955", city: "Irkutsk", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 10, imageKey: "ismu" },
+  {
+    id: "omsu",
+    name: "Omsk State Medical University",
+    founded: "1920",
+    city: "Omsk",
+    fees: "$3,000 – $4,500/year (₹2.5 – ₹3.8 lakh)",
+    logoIndex: osmuLogo,
+    imageKey: osmu,
+  },
+  {
+    id: "ismu",
+    name: "Irkutsk State Medical University",
+    founded: "1919",
+    city: "Irkutsk",
+    fees: "$4,000 – 5,000/year (₹3.5 – ₹5 lakh)",
+    logoIndex: ismuLogo,
+    imageKey: ismu,
+  },
+  {
+    id: "nosma",
+    name: "North Ossetian State Medical Academy",
+    founded: "1939",
+    city: "Vladikavkaz",
+    fees: "$4,000 – 5,000/year (₹3.5 – ₹4.5 lakh)",
+    logoIndex: nosmuLogo,
+    imageKey: nosmu,
+  },
+  {
+    id: "bsmu",
+    name: "Bashkir State Medical University",
+    founded: "1932",
+    city: "Ufa",
+    fees: "$4,500 – $6,000/year (₹4.5 – ₹5.5 lakh)",
+    logoIndex: bsmuLogo,
+    imageKey: bsmu,
+  },
+  {
+    id: "ksu",
+    name: "Kemerovo State University",
+    founded: "1974",
+    city: "Kemerovo",
+    fees: "$3,500 – $4,500/year (₹3 – ₹4 lakh)",
+    logoIndex: ksuLogo,
+    imageKey: ksu,
+  },
+  {
+    id: "nwsmu",
+    name: "North-Western State Medical University",
+    founded: "2011",
+    city: "Saint Petersburg",
+    fees: "$6,000 – $7,000/year (₹5.5 – ₹6.5 lakh)",
+    logoIndex: nwsmuLogo,
+    imageKey: nwsmu,
+  },
+  {
+    id: "nrnu",
+    name: "National Research Nuclear University MEPhI",
+    founded: "1942",
+    city: "Moscow",
+    fees: "$5,000 – $6,500/year (₹4.5 – ₹6 lakh)",
+    logoIndex: nrnuLogo,
+    imageKey: nrnu,
+  },
+  {
+    id: "mephi",
+    name: "MEPhI Obninsk Campus",
+    founded: "1953",
+    city: "Obninsk",
+    fees: "$4,000 – $5,200/year (₹3.5 – ₹4.5 lakh)",
+    logoIndex: mephiLogo,
+    imageKey: mephi,
+  },
+  {
+    id: "ksmu",
+    name: "Kemerovo State Medical University",
+    founded: "1955",
+    city: "Kemerovo",
+    fees: "$3,000 – $4,000/year (₹2.5 – ₹3.5 lakh)",
+    logoIndex: ksmuLogo,
+    imageKey: ksmu,
+  },
+  {
+    id: "kfu",
+    name: "Kazan Federal University",
+    founded: "1804",
+    city: "Kazan",
+    fees: "$6,500 – $8,000/year (₹5.5 – ₹7 lakh)",
+    logoIndex: kfuLogo,
+    imageKey: kfu,
+  },
 ];
 
 // ---------------- FAQ ----------------
@@ -271,61 +393,57 @@ export const RUSSIA_FAQ_ITEMS = [
     question: "What is the approximate cost of studying MBBS in Russia?",
     answer:
       "One of the main advantages of studying MBBS in Russia is its affordability. The total tuition fees for the entire program generally range between ₹18 lakh and ₹40 lakh, depending on the university. With guidance from Taksheela, students can explore universities that match their academic goals as well as their budget.",
+    highlightTerms: ["advantages", "studying MBBS in Russia","affordability", "₹18 lakh and ₹40 lakh"],
   },
   {
     question: "Is Russia safe for Indian students pursuing MBBS?",
     answer:
       "Russia is considered a safe destination for international students, including those from India. Many universities have well-developed campuses, student hostels, and support services for international students. Taksheela also assists students with pre-departure guidance so they can adapt smoothly to their new environment.",
+    highlightTerms: ["safe destination for international students", "well-developed campuses", "student hostels", "support services", "Taksheela"],
   },
   {
     question: "Is MBBS in Russia taught in English?",
     answer:
       "Yes. Many reputed Russian medical universities offer MBBS programs in English for international students. Students may also learn basic Russian during the course, which helps with communication during clinical training and daily life.",
+    highlightTerms: ["MBBS programs in English","international students" ],
   },
   {
     question: "What is the duration of MBBS in Russia?",
     answer:
       "The MBBS program in Russia typically lasts 6 years, including academic study and clinical training in hospitals affiliated with the university.",
+      highlightTerms: ["MBBS program in Russia","6 years", "academic study", "clinical training"],
   },
   {
     question: "How many Indian students study MBBS in Russia?",
     answer:
       "Russia hosts thousands of Indian medical students every year, making it one of the most popular destinations for studying MBBS abroad.",
+      highlightTerms: ["thousands of Indian medical students", "popular destinations", "MBBS abroad"],
   },
   {
     question: "Is an MBBS degree from Russia valid in India?",
     answer:
       "Yes, an MBBS degree from Russia can be recognised in India if the university is approved by the National Medical Commission (NMC). After completing the program, graduates must qualify the required licensing examination in India, such as FMGE or NExT, according to current regulations.",
+      highlightTerms: ["MBBS degree from Russia","National Medical Commission (NMC)", "FMGE or NExT", "current regulations"],
   },
   {
     question: "What NEET score is required to study MBBS in Russia?",
     answer:
       "Indian students must qualify the NEET-UG examination to be eligible to study MBBS abroad and practise in India later. The minimum required score depends on the NEET qualifying cutoff of the respective year.",
+      highlightTerms: ["NEET-UG examination", "eligible to study MBBS abroad", "practise in India later"],
   },
   {
     question: "Are hostels separate for male and female students?",
     answer:
       "Yes. Most universities provide separate hostel facilities for male and female students with security and essential amenities such as Wi-Fi, study areas, and common facilities.",
+      highlightTerms: ["separate hostel facilities", "security and essential amenities", "Wi-Fi", "study areas", "common facilities"],
   },
   {
     question: "Can I practise in India after completing MBBS in Russia?",
     answer:
       "Indian students who complete their MBBS from an NMC-recognised Russian university can practise in India after clearing the required licensing examination such as FMGE or NExT, as per current medical regulations.",
+      highlightTerms: ["NMC-recognised Russian university", "FMGE or NExT", "current medical regulations"],
   },
 ];
 
-// ---------------- Hero (campaign landing) ----------------
-export const RUSSIA_HERO = {
-  tagline: "Your ambition. Our expertise. Confirmed admits.",
-  title: "Study MBBS in Russia with expert guidance",
-  titleHighlight: "Russia",
-  description:
-    "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
-  stats: [
-    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
-    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
-    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
-  ],
-  ctaText: "BOOK YOUR FREE COUNSELLING",
-};
+
 

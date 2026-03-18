@@ -1,13 +1,13 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import ModalTrigger from "@/components/ModalTrigger";
-import defaultHeroImage from "@/assets/georgia/georgia_hero_img.png";
 
 export type HeroStat = { value: ReactNode; label: string };
 
 export interface HeroSectionProps {
-  /** Hero background image. */
-  heroImage?: StaticImageData;
+  /** Hero background image (from campaign content e.g. GEORGIA_HERO.heroImage, RUSSIA_HERO.heroImage). */
+  heroImage: StaticImageData | string;
   /** Redirect path after CTA (e.g. thank-you page). */
   redirectPath?: string;
   /** Short tagline above the title. */
@@ -43,7 +43,7 @@ function renderTitle(title: string, titleHighlight?: string) {
 const DEFAULT_CTA = "BOOK YOUR FREE COUNSELLING";
 
 export default function HeroSection({
-  heroImage = defaultHeroImage,
+  heroImage,
   redirectPath = "/thankyou",
   tagline = "",
   title = "",
@@ -105,11 +105,18 @@ export default function HeroSection({
               )}
 
               {stats.length > 0 && (
-                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-2 text-xs sm:text-sm text-gray-300">
+                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-6 pt-4 sm:pt-2 text-gray-300">
                   {stats.map((s) => (
-                    <div key={s.label}>
-                      <div className="text-lg font-semibold text-white">{s.value}</div>
-                      <div>{s.label}</div>
+                    <div
+                      key={s.label}
+                      className="min-w-0 rounded-lg bg-white/5 px-3 py-2.5 sm:bg-transparent sm:px-0 sm:py-0 sm:rounded-none"
+                    >
+                      <div className="text-base sm:text-lg font-semibold text-white break-words">
+                        {s.value}
+                      </div>
+                      <div className="text-[11px] sm:text-sm mt-0.5 leading-snug line-clamp-2 sm:line-clamp-none">
+                        {s.label}
+                      </div>
                     </div>
                   ))}
                 </div>

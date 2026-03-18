@@ -3,33 +3,8 @@
 import { useState, useCallback } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { FaChevronRight } from "react-icons/fa";
-import { imageBaseUrl } from "@/utils/config";
 
-import ksmu from "@/assets/russian_universities/ksmu.webp";
-import rudn from "@/assets/russian_universities/rudn.webp";
-import rnrmu from "@/assets/russian_universities/rnrmu.webp";
-import msmu from "@/assets/russian_universities/msmu.jpg";
-import fmsmu from "@/assets/russian_universities/fmsmu.jpg";
-import nsmmu from "@/assets/russian_universities/nsmu.webp";
-import tsmmu from "@/assets/russian_universities/tsmu.jpg";
-import spspmu from "@/assets/russian_universities/spspmu.webp";
-import bsmu from "@/assets/russian_universities/bsmu.jpeg";
-import ismu from "@/assets/russian_universities/ismu.jpg";
-
-const RUS_LOGO = (n: number) => `${imageBaseUrl}mbbsCollege/russia/rus${n}.png`;
-
-const RUSSIA_UNIVERSITY_IMAGES: Record<string, StaticImageData> = {
-  ksmu,
-  rudn,
-  rnrmu,
-  msmu,
-  fmsmu,
-  nsmmu,
-  tsmmu,
-  spspmu,
-  bsmu,
-  ismu,
-};
+type UniversityImage = StaticImageData | string;
 
 export type UniversityBase = {
   id: string;
@@ -37,8 +12,8 @@ export type UniversityBase = {
   founded: string;
   city: string;
   fees: string;
-  logoIndex: number;
-  imageKey: string;
+  logoIndex: UniversityImage;
+  imageKey: UniversityImage;
 };
 
 export type University = {
@@ -47,31 +22,25 @@ export type University = {
   founded: string;
   city: string;
   fees: string;
-  universityLogo: string;
-  image: StaticImageData;
+  universityLogo: UniversityImage;
+  image: UniversityImage;
 };
 
-function resolveUniversities(
-  base: UniversityBase[],
-  logoUrlPattern: (n: number) => string = RUS_LOGO,
-  imageMap: Record<string, StaticImageData> = RUSSIA_UNIVERSITY_IMAGES
-): University[] {
+function resolveUniversities(base: UniversityBase[]): University[] {
   return base.map((u) => ({
     id: u.id,
     name: u.name,
     founded: u.founded,
     city: u.city,
     fees: u.fees,
-    universityLogo: logoUrlPattern(u.logoIndex),
-    image: imageMap[u.imageKey] ?? ({} as StaticImageData),
+    universityLogo: u.logoIndex,
+    image: u.imageKey,
   }));
 }
 
 export interface UniversitiesSectionProps {
   universitiesBase: UniversityBase[];
   countryName?: string;
-  logoUrlPattern?: (n: number) => string;
-  imageMap?: Record<string, StaticImageData>;
 }
 
 const LIST_BTN_BASE =
@@ -113,10 +82,8 @@ function UniversityDetailCard({ uni }: { uni: University }) {
 export default function UniversitiesSection({
   universitiesBase,
   countryName = "Russia",
-  logoUrlPattern = RUS_LOGO,
-  imageMap = RUSSIA_UNIVERSITY_IMAGES,
 }: UniversitiesSectionProps) {
-  const universities = resolveUniversities(universitiesBase, logoUrlPattern, imageMap);
+  const universities = resolveUniversities(universitiesBase);
   const [selectedId, setSelectedId] = useState<string | null>(universities[0]?.id ?? null);
   const selected = universities.find((u) => u.id === selectedId) ?? universities[0];
 
@@ -152,11 +119,10 @@ export default function UniversitiesSection({
                 <button
                   type="button"
                   onClick={() => handleSelect(uni.id)}
-                  className={`${LIST_BTN_BASE} rounded-t-xl rounded-b-none ${
-                    isExpanded
+                  className={`${LIST_BTN_BASE} rounded-t-xl rounded-b-none ${isExpanded
                       ? "border-[#00999E] bg-[#00999E] text-white shadow-md border-b-0"
                       : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
-                  }`}
+                    }`}
                   aria-expanded={isExpanded}
                   aria-controls={`uni-detail-${uni.id}`}
                   id={`uni-accordion-${uni.id}`}
@@ -166,7 +132,7 @@ export default function UniversitiesSection({
                   >
                     <Image
                       src={uni.universityLogo}
-                      alt=""
+                      alt={`${uni.name} logo`}
                       width={40}
                       height={40}
                       className="h-full w-full object-cover"
@@ -209,11 +175,10 @@ export default function UniversitiesSection({
                   key={uni.id}
                   type="button"
                   onClick={() => handleSelectDesktop(uni.id)}
-                  className={`${LIST_BTN_BASE} ${
-                    isSelected
+                  className={`${LIST_BTN_BASE} ${isSelected
                       ? "border-[#00999E] bg-[#00999E] text-white shadow-md"
                       : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   <div
                     className={`h-10 w-10 shrink-0 rounded-full overflow-hidden border border-white/40 bg-gray-100 flex items-center justify-center ${isSelected ? "ring-2 ring-white/70" : ""}`}

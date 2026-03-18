@@ -30,12 +30,11 @@ import {
   GEORGIA_FAQ_ITEMS,
   GEORGIA_HERO,
 } from "@/constants/campaigns/georgiaConstent";
-import type { StaticImageData } from "next/image";
-import tsmmu from "@/assets/russian_universities/tsmu.jpg";
-import bsmu from "@/assets/russian_universities/bsmu.jpeg";
-import rnrmu from "@/assets/russian_universities/rnrmu.webp";
+import { imageBaseUrl } from "@/utils/config";
 
 const GEORGIA_THANKYOU = "/mbbs/abroad/georgia/campaign/thankyou";
+
+const georgia_hero_img =  `${imageBaseUrl}mbbsCollege/georgia/campaign/georgia_hero_img.png`;
 
 const GEORGIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },
@@ -45,17 +44,11 @@ const GEORGIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#faq", label: "FAQ" },
 ];
 
-/** Placeholder images for Georgia universities (no Georgia-specific assets yet). */
-const GEORGIA_UNIVERSITY_IMAGES: Record<string, StaticImageData> = {
-  tsmu: tsmmu,
-  batumi: bsmu,
-  davidtvili: rnrmu,
-};
-
 export interface GeorgiaCampaignPageProps {
   /** Redirect path after registration. Defaults to Georgia campaign thank-you page. */
   redirectPath?: string;
 }
+
 
 export default function GeorgiaCampaignPage({
   redirectPath = GEORGIA_THANKYOU,
@@ -65,6 +58,7 @@ export default function GeorgiaCampaignPage({
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
       <HeroSection
+        heroImage={georgia_hero_img}
         tagline={GEORGIA_HERO.tagline}
         title={GEORGIA_HERO.title}
         titleHighlight={GEORGIA_HERO.titleHighlight}
@@ -116,11 +110,7 @@ export default function GeorgiaCampaignPage({
         countryName="Georgia"
         introParagraph={GEORGIA_DOCUMENTS_INTRO}
       />
-      <UniversitiesSection
-        universitiesBase={GEORGIA_UNIVERSITIES}
-        countryName="Georgia"
-        imageMap={GEORGIA_UNIVERSITY_IMAGES}
-      />
+      <UniversitiesSection universitiesBase={GEORGIA_UNIVERSITIES} countryName="Georgia" />
       <WhatStudentsSaySection
         testimonials={GEORGIA_TESTIMONIALS}
         countryName="Georgia"

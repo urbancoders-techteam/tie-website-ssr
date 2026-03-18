@@ -1,3 +1,33 @@
+import { imageBaseUrl } from "@/utils/config";
+// import georgia_hero_img from "@/assets/georgia/georgia_hero_img.png";
+
+// -------------------- Hero Image --------------------
+
+
+// -------------------- University Logos --------------------
+const Geomedi_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/geomedi_logo.png`;
+const DTMU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/DTMU_logo.png`;
+const UOG_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/UOG_logo.png`;
+const ABMU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/ABMU_logo.jpeg`;
+const ISU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/ISU_logo.jpg`;
+const GNU_SEU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/GNU_SEU_logo.jpg`;
+const EWTU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/EWTU_logo.jpg`;
+const CIU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/CIU_logo.jpg`;
+const EEU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/EEU_logo.png`;
+const Alte_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/Alte_logo.jpg`;
+
+// -------------------- University Images --------------------
+const geomedi =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/geomedi.jpg`;
+const dtmu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/dtmu.jpg`;
+const uog =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/uog.png`;
+const abmu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/abmu.jpeg`;
+const isu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/isu.jpg`;
+const gnuseu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/gnuseu.jpg`;
+const ewtu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/ewtu.webp`;
+const ciu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/ciu.jpg`;
+const eeu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/eeu.png`;
+const alte =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/alte.webp`;
+
 // ---------------- Hero (campaign landing) ----------------
 export const GEORGIA_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
@@ -256,31 +286,94 @@ export const GEORGIA_DOCUMENTS_REQUIRED = [
 // logoIndex: 1–3 for geo logos; imageKey: resolved via imageMap passed from page
 export const GEORGIA_UNIVERSITIES = [
   {
-    id: "tsmu",
-    name: "Tbilisi State Medical University (TSMU)",
-    founded: "1918",
+    id: "geomedi",
+    name: "University Geomedi (Teaching University Geomedi)",
+    founded: "1998",
     city: "Tbilisi",
-    fees: "₹3,50,000 - ₹5,00,000",
-    logoIndex: 1,
-    imageKey: "tsmu",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: Geomedi_logo,
+    imageKey: geomedi,
   },
   {
-    id: "batumi",
-    name: "Batumi Shota Rustaveli State University",
-    founded: "1895",
+    id: "dtmu",
+    name: "David Tvildiani Medical University",
+    founded: "1989",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹6,00,000",
+    logoIndex: DTMU_logo,
+    imageKey: dtmu,
+  },
+  {
+    id: "uog",
+    name: "University of Georgia",
+    founded: "2004",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹6,00,000",
+    logoIndex: UOG_logo,
+    imageKey: uog,
+  },
+  {
+    id: "abmu",
+    name: "Avicenna Batumi Medical University",
+    founded: "~2022",
     city: "Batumi",
-    fees: "₹3,00,000 - ₹4,50,000",
-    logoIndex: 2,
-    imageKey: "batumi",
+    fees: "₹3,50,000 - ₹4,50,000",
+    logoIndex: ABMU_logo,
+    imageKey: abmu,
   },
   {
-    id: "davidtvili",
-    name: "David Tvilis Medical University",
+    id: "isu",
+    name: "Ilia State University",
+    founded: "2006",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹5,50,000",
+    logoIndex: ISU_logo,
+    imageKey: isu,
+  },
+  {
+    id: "gnu_seu",
+    name: "Georgian National University SEU",
+    founded: "2001",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: GNU_SEU_logo,
+    imageKey: gnuseu,
+  },
+  {
+    id: "ewtu",
+    name: "East-West Teaching University",
     founded: "1992",
     city: "Tbilisi",
-    fees: "₹3,50,000 - ₹5,50,000",
-    logoIndex: 3,
-    imageKey: "davidtvili",
+    fees: "₹4,00,000 - ₹4,50,000",
+    logoIndex: EWTU_logo,
+    imageKey: ewtu,
+  },
+  {
+    id: "ciu",
+    name: "Caucasus International University",
+    founded: "1995",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹5,50,000",
+    logoIndex: CIU_logo,
+    imageKey: ciu,
+  },
+  {
+    id: "eeu",
+    name: "East European University (EEU)",
+    founded: "1980",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: EEU_logo,
+    imageKey: eeu,
+  },
+  {
+    id: "alte",
+    name: "Alte University",
+    founded: "2002",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: Alte_logo,
+    imageKey: alte,
   },
 ];
 
@@ -290,47 +383,55 @@ export const GEORGIA_FAQ_ITEMS = [
     question: "Is MBBS in Georgia approved for Indian students?",
     answer:
       "Many medical universities in Georgia are recognised by the appropriate international bodies and may align with NMC regulations, depending on the institution and current guidelines. Taksheela Institute of Education helps students shortlist universities that meet the required standards for Indian students.",
-    highlightTerms: ["Taksheela Institute of Education"],
+    highlightTerms: ["Taksheela Institute of Education", "NMC regulations", "shortlist universities"],
   },
   {
     question: "Is studying MBBS in Georgia a good option?",
     answer:
       "Yes, MBBS in Georgia is considered a popular option for students looking for quality medical education, English-medium instruction, and affordable tuition fees. With support from Taksheela, students can choose universities that match their academic goals and budget.",
+    highlightTerms: ["MBBS in Georgia", "popular option", "English-medium instruction", "affordable tuition fees", "Taksheela"],
   },
   {
     question: "How much does MBBS in Georgia cost?",
     answer:
       "The cost of studying MBBS in Georgia usually varies by university. In general, tuition fees can range from approximately ₹6 lakh to ₹12.5 lakh per year, with additional expenses for accommodation, food, insurance, and personal living costs.",
+      highlightTerms: ["cost of studying MBBS in Georgia", "₹6 lakh to ₹12.5 lakh", "tuition fees", "accommodation", "food", "insurance", "personal living costs"],
   },
   {
     question: "Is NEET compulsory for MBBS in Georgia?",
     answer:
       "For Indian students, qualifying NEET is important if they plan to pursue medical education abroad and later practise in India, as per current NMC requirements. Taksheela guides students on the latest eligibility criteria before they apply.",
+      highlightTerms: ["NEET", "NMC requirements", "practise in India later"],
   },
   {
     question: "Is an MBBS degree from Georgia recognised in India?",
     answer:
       "An MBBS/MD degree from Georgia may be accepted in India if the university meets the required recognition norms and the student fulfils the necessary licensing requirements applicable at that time. Taksheela Institute of Education helps students identify universities that are better aligned with these requirements.",
+      highlightTerms: ["MBBS/MD degree from Georgia", "required recognition norms", "necessary licensing requirements", "Taksheela Institute of Education"],
   },
   {
     question: "What is the FMGE passing outlook for students graduating from Georgia?",
     answer:
       "FMGE performance can differ from one university to another and also depends on the student's preparation, academic foundation, and individual effort. Rather than relying only on broad percentages, Taksheela advises students to evaluate the university's academic quality, clinical exposure, and support systems before making a decision.",
+      highlightTerms: ["FMGE performance", "student's preparation", "academic foundation", "individual effort", "university's academic quality", "clinical exposure", "support systems"],
   },
   {
     question: "What is the duration of MBBS in Georgia?",
     answer:
       "The medical program in Georgia generally has a duration of 6 years, which includes academic learning and practical clinical exposure as part of the course structure.",
+      highlightTerms: ["medical program in Georgia","6 years", "academic learning", "practical clinical exposure"],
   },
   {
     question: "Is Georgia a safe country for Indian students?",
     answer:
       "Georgia is often regarded as a student-friendly destination with a welcoming environment for international students. With the right university selection and guidance from Taksheela, students can prepare better for a safe and comfortable study experience abroad.",
+      highlightTerms: ["student-friendly destination", "welcoming environment", "university selection", "Taksheela"],
   },
   {
     question: "How do I choose the right university for MBBS in Georgia?",
     answer:
       "The best university depends on factors such as recognition, tuition fees, medium of instruction, clinical exposure, location, and overall student support. Taksheela Institute of Education helps students compare suitable options and choose a university that fits their academic plans and budget.",
+      highlightTerms: ["best university", "recognition", "tuition fees", "medium of instruction", "clinical exposure", "location", "overall student support", "Taksheela Institute of Education", "plans and budget"],
   },
 ];
 
