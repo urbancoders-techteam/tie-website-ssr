@@ -30,8 +30,11 @@ import {
   RUSSIA_HERO,
 } from "@/constants/campaigns/russiaConstent";
 import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
+import { imageBaseUrl } from "@/utils/config";
 
 const RUSSIA_THANKYOU = "/mbbs/abroad/russia/campaign/thankyou";
+
+const russia_hero_img =  `${imageBaseUrl}mbbsCollege/russia/campaign/mbbs_russia.png`;
 
 const RUSSIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },
@@ -55,7 +58,7 @@ export default function RussiaCampaignPage({
 
       {/* Hero */}
       <HeroSection
-        heroImage={RUSSIA_HERO.heroImage}
+        heroImage={russia_hero_img}
         tagline={RUSSIA_HERO.tagline}
         title={RUSSIA_HERO.title}
         titleHighlight={RUSSIA_HERO.titleHighlight}
@@ -82,25 +85,40 @@ export default function RussiaCampaignPage({
         <OverviewSection overviewContent={RUSSIA_OVERVIEW_CONTENT} testimonials={RUSSIA_TESTIMONIALS} />
       </section>
 
+      {/* Quick Facts */}
       <QuickFactsSection {...RUSSIA_QUICK_FACTS_SECTION} />
+
+      {/* Why Choose Russia */}
       <WhyChooseRussiaSection
         cards={RUSSIA_WHY_CHOOSE_CARDS}
         introParagraph={RUSSIA_WHY_CHOOSE_INTRO}
       />
+
+      {/* Eligibility Criteria */}
       <EligibilityCriteriaSection
         criteriaCards={RUSSIA_ELIGIBILITY_CRITERIA}
         introParagraph={RUSSIA_ELIGIBILITY_INTRO}
       />
+
+      {/* Admission Process */}
       <AdmissionProcessSection steps={RUSSIA_ADMISSION_STEPS} />
+
+      {/* Documents Required */}
       <DocumentsRequiredSection
         docItems={RUSSIA_DOCUMENTS_REQUIRED}
         introParagraph={RUSSIA_DOCUMENTS_INTRO}
       />
+
+      {/* Universities */}
       <UniversitiesSection universitiesBase={RUSSIA_UNIVERSITIES} countryName="Russia" />
+
+      {/* Testimonials */}
       <WhatStudentsSaySection
         testimonials={RUSSIA_TESTIMONIALS}
         introParagraph={RUSSIA_WHAT_STUDENTS_SAY_INTRO}
       />
+
+      {/* FAQ */}
       <FAQSection items={RUSSIA_FAQ_ITEMS} />
 
       {/* CTA */}

@@ -1,4 +1,3 @@
-import mbbs_russia from "@/assets/mbbs_russia.png";
 import { imageBaseUrl } from "@/utils/config";
 
 // -------------------- University Logos --------------------
@@ -31,7 +30,6 @@ export const RUSSIA_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
   title: "Study MBBS in Russia with expert guidance",
   titleHighlight: "Russia",
-  heroImage: mbbs_russia,
   description:
     "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
   stats: [

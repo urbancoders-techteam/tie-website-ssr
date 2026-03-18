@@ -12,8 +12,6 @@ export type UniversityBase = {
   founded: string;
   city: string;
   fees: string;
-  // Kept as `logoIndex` / `imageKey` to match existing constants shape.
-  // They can be either imported static images or remote URLs.
   logoIndex: UniversityImage;
   imageKey: UniversityImage;
 };
@@ -121,11 +119,10 @@ export default function UniversitiesSection({
                 <button
                   type="button"
                   onClick={() => handleSelect(uni.id)}
-                  className={`${LIST_BTN_BASE} rounded-t-xl rounded-b-none ${
-                    isExpanded
+                  className={`${LIST_BTN_BASE} rounded-t-xl rounded-b-none ${isExpanded
                       ? "border-[#00999E] bg-[#00999E] text-white shadow-md border-b-0"
                       : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
-                  }`}
+                    }`}
                   aria-expanded={isExpanded}
                   aria-controls={`uni-detail-${uni.id}`}
                   id={`uni-accordion-${uni.id}`}
@@ -178,11 +175,10 @@ export default function UniversitiesSection({
                   key={uni.id}
                   type="button"
                   onClick={() => handleSelectDesktop(uni.id)}
-                  className={`${LIST_BTN_BASE} ${
-                    isSelected
+                  className={`${LIST_BTN_BASE} ${isSelected
                       ? "border-[#00999E] bg-[#00999E] text-white shadow-md"
                       : "border-gray-200 bg-gray-50 text-gray-900 hover:border-gray-300 hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   <div
                     className={`h-10 w-10 shrink-0 rounded-full overflow-hidden border border-white/40 bg-gray-100 flex items-center justify-center ${isSelected ? "ring-2 ring-white/70" : ""}`}

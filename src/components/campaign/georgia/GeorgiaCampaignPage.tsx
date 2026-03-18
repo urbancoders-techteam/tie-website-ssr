@@ -30,12 +30,11 @@ import {
   GEORGIA_FAQ_ITEMS,
   GEORGIA_HERO,
 } from "@/constants/campaigns/georgiaConstent";
-import type { StaticImageData } from "next/image";
-import tsmmu from "@/assets/russian_universities/tsmu.jpg";
-import bsmu from "@/assets/russian_universities/bsmu.jpeg";
-import rnrmu from "@/assets/russian_universities/rnrmu.webp";
+import { imageBaseUrl } from "@/utils/config";
 
 const GEORGIA_THANKYOU = "/mbbs/abroad/georgia/campaign/thankyou";
+
+const georgia_hero_img =  `${imageBaseUrl}mbbsCollege/georgia/campaign/georgia_hero_img.png`;
 
 const GEORGIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },
@@ -45,35 +44,21 @@ const GEORGIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#faq", label: "FAQ" },
 ];
 
-/** Placeholder images for Georgia universities (no Georgia-specific assets yet). */
-const GEORGIA_UNIVERSITY_IMAGES: Record<string, StaticImageData> = {
-  tsmu: tsmmu,
-  batumi: bsmu,
-  davidtvili: rnrmu,
-};
-
 export interface GeorgiaCampaignPageProps {
   /** Redirect path after registration. Defaults to Georgia campaign thank-you page. */
   redirectPath?: string;
 }
 
+
 export default function GeorgiaCampaignPage({
   redirectPath = GEORGIA_THANKYOU,
 }: GeorgiaCampaignPageProps) {
-  const universitiesBase = GEORGIA_UNIVERSITIES.map((u) => ({
-    ...u,
-    // Convert legacy `{ logoIndex: number, imageKey: string }` to the
-    // reusable `UniversitiesSection` format `{ logoIndex: image, imageKey: image }`.
-    logoIndex: GEORGIA_UNIVERSITY_IMAGES[u.imageKey] ?? tsmmu,
-    imageKey: GEORGIA_UNIVERSITY_IMAGES[u.imageKey] ?? tsmmu,
-  }));
-
   return (
     <div className="min-h-screen bg-white">
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
       <HeroSection
-        heroImage={GEORGIA_HERO.heroImage}
+        heroImage={georgia_hero_img}
         tagline={GEORGIA_HERO.tagline}
         title={GEORGIA_HERO.title}
         titleHighlight={GEORGIA_HERO.titleHighlight}
@@ -125,10 +110,7 @@ export default function GeorgiaCampaignPage({
         countryName="Georgia"
         introParagraph={GEORGIA_DOCUMENTS_INTRO}
       />
-      <UniversitiesSection
-        universitiesBase={universitiesBase}
-        countryName="Georgia"
-      />
+      <UniversitiesSection universitiesBase={GEORGIA_UNIVERSITIES} countryName="Georgia" />
       <WhatStudentsSaySection
         testimonials={GEORGIA_TESTIMONIALS}
         countryName="Georgia"

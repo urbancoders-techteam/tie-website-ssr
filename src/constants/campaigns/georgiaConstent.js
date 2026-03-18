@@ -1,11 +1,38 @@
-import georgia_hero_img from "@/assets/georgia/georgia_hero_img.png";
+import { imageBaseUrl } from "@/utils/config";
+// import georgia_hero_img from "@/assets/georgia/georgia_hero_img.png";
+
+// -------------------- Hero Image --------------------
+
+
+// -------------------- University Logos --------------------
+const Geomedi_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/geomedi_logo.png`;
+const DTMU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/DTMU_logo.png`;
+const UOG_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/UOG_logo.png`;
+const ABMU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/ABMU_logo.jpeg`;
+const ISU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/ISU_logo.jpg`;
+const GNU_SEU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/GNU_SEU_logo.jpg`;
+const EWTU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/EWTU_logo.jpg`;
+const CIU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/CIU_logo.jpg`;
+const EEU_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/EEU_logo.png`;
+const Alte_logo =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/Alte_logo.jpg`;
+
+// -------------------- University Images --------------------
+const geomedi =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/geomedi.jpg`;
+const dtmu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/dtmu.jpg`;
+const uog =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/uog.png`;
+const abmu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/abmu.jpeg`;
+const isu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/isu.jpg`;
+const gnuseu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/gnuseu.jpg`;
+const ewtu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/ewtu.webp`;
+const ciu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/ciu.jpg`;
+const eeu =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/eeu.png`;
+const alte =  `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/alte.webp`;
 
 // ---------------- Hero (campaign landing) ----------------
 export const GEORGIA_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
   title: "Study MBBS in Georgia with expert guidance",
   titleHighlight: "Georgia",
-  heroImage: georgia_hero_img,
   description:
     <>Turn your dream of becoming a doctor into reality by studying <span className="text-[#5dd4d9]">MBBS in Georgia</span> with trusted support from Taksheela Institute of Education. Our certified study-abroad consultants provide personalised guidance to help you secure admission to reputed Georgian medical universities.</>,
   stats: [
@@ -259,31 +286,94 @@ export const GEORGIA_DOCUMENTS_REQUIRED = [
 // logoIndex: 1–3 for geo logos; imageKey: resolved via imageMap passed from page
 export const GEORGIA_UNIVERSITIES = [
   {
-    id: "tsmu",
-    name: "Tbilisi State Medical University (TSMU)",
-    founded: "1918",
+    id: "geomedi",
+    name: "University Geomedi (Teaching University Geomedi)",
+    founded: "1998",
     city: "Tbilisi",
-    fees: "₹3,50,000 - ₹5,00,000",
-    logoIndex: 1,
-    imageKey: "tsmu",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: Geomedi_logo,
+    imageKey: geomedi,
   },
   {
-    id: "batumi",
-    name: "Batumi Shota Rustaveli State University",
-    founded: "1895",
+    id: "dtmu",
+    name: "David Tvildiani Medical University",
+    founded: "1989",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹6,00,000",
+    logoIndex: DTMU_logo,
+    imageKey: dtmu,
+  },
+  {
+    id: "uog",
+    name: "University of Georgia",
+    founded: "2004",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹6,00,000",
+    logoIndex: UOG_logo,
+    imageKey: uog,
+  },
+  {
+    id: "abmu",
+    name: "Avicenna Batumi Medical University",
+    founded: "~2022",
     city: "Batumi",
-    fees: "₹3,00,000 - ₹4,50,000",
-    logoIndex: 2,
-    imageKey: "batumi",
+    fees: "₹3,50,000 - ₹4,50,000",
+    logoIndex: ABMU_logo,
+    imageKey: abmu,
   },
   {
-    id: "davidtvili",
-    name: "David Tvilis Medical University",
+    id: "isu",
+    name: "Ilia State University",
+    founded: "2006",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹5,50,000",
+    logoIndex: ISU_logo,
+    imageKey: isu,
+  },
+  {
+    id: "gnu_seu",
+    name: "Georgian National University SEU",
+    founded: "2001",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: GNU_SEU_logo,
+    imageKey: gnuseu,
+  },
+  {
+    id: "ewtu",
+    name: "East-West Teaching University",
     founded: "1992",
     city: "Tbilisi",
-    fees: "₹3,50,000 - ₹5,50,000",
-    logoIndex: 3,
-    imageKey: "davidtvili",
+    fees: "₹4,00,000 - ₹4,50,000",
+    logoIndex: EWTU_logo,
+    imageKey: ewtu,
+  },
+  {
+    id: "ciu",
+    name: "Caucasus International University",
+    founded: "1995",
+    city: "Tbilisi",
+    fees: "₹5,00,000 - ₹5,50,000",
+    logoIndex: CIU_logo,
+    imageKey: ciu,
+  },
+  {
+    id: "eeu",
+    name: "East European University (EEU)",
+    founded: "1980",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: EEU_logo,
+    imageKey: eeu,
+  },
+  {
+    id: "alte",
+    name: "Alte University",
+    founded: "2002",
+    city: "Tbilisi",
+    fees: "₹4,50,000 - ₹5,00,000",
+    logoIndex: Alte_logo,
+    imageKey: alte,
   },
 ];
 
