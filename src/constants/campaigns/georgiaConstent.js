@@ -1,8 +1,11 @@
+import georgia_hero_img from "@/assets/georgia/georgia_hero_img.png";
+
 // ---------------- Hero (campaign landing) ----------------
 export const GEORGIA_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
   title: "Study MBBS in Georgia with expert guidance",
   titleHighlight: "Georgia",
+  heroImage: georgia_hero_img,
   description:
     <>Turn your dream of becoming a doctor into reality by studying <span className="text-[#5dd4d9]">MBBS in Georgia</span> with trusted support from Taksheela Institute of Education. Our certified study-abroad consultants provide personalised guidance to help you secure admission to reputed Georgian medical universities.</>,
   stats: [

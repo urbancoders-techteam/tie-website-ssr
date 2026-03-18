@@ -60,11 +60,20 @@ export interface GeorgiaCampaignPageProps {
 export default function GeorgiaCampaignPage({
   redirectPath = GEORGIA_THANKYOU,
 }: GeorgiaCampaignPageProps) {
+  const universitiesBase = GEORGIA_UNIVERSITIES.map((u) => ({
+    ...u,
+    // Convert legacy `{ logoIndex: number, imageKey: string }` to the
+    // reusable `UniversitiesSection` format `{ logoIndex: image, imageKey: image }`.
+    logoIndex: GEORGIA_UNIVERSITY_IMAGES[u.imageKey] ?? tsmmu,
+    imageKey: GEORGIA_UNIVERSITY_IMAGES[u.imageKey] ?? tsmmu,
+  }));
+
   return (
     <div className="min-h-screen bg-white">
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
       <HeroSection
+        heroImage={GEORGIA_HERO.heroImage}
         tagline={GEORGIA_HERO.tagline}
         title={GEORGIA_HERO.title}
         titleHighlight={GEORGIA_HERO.titleHighlight}
@@ -117,9 +126,8 @@ export default function GeorgiaCampaignPage({
         introParagraph={GEORGIA_DOCUMENTS_INTRO}
       />
       <UniversitiesSection
-        universitiesBase={GEORGIA_UNIVERSITIES}
+        universitiesBase={universitiesBase}
         countryName="Georgia"
-        imageMap={GEORGIA_UNIVERSITY_IMAGES}
       />
       <WhatStudentsSaySection
         testimonials={GEORGIA_TESTIMONIALS}

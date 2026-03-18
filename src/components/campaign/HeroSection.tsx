@@ -1,13 +1,12 @@
 import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import ModalTrigger from "@/components/ModalTrigger";
-import defaultHeroImage from "@/assets/georgia/georgia_hero_img.png";
 
 export type HeroStat = { value: ReactNode; label: string };
 
 export interface HeroSectionProps {
-  /** Hero background image. */
-  heroImage?: StaticImageData;
+  /** Hero background image (from campaign content e.g. GEORGIA_HERO.heroImage, RUSSIA_HERO.heroImage). */
+  heroImage: StaticImageData;
   /** Redirect path after CTA (e.g. thank-you page). */
   redirectPath?: string;
   /** Short tagline above the title. */
@@ -43,7 +42,7 @@ function renderTitle(title: string, titleHighlight?: string) {
 const DEFAULT_CTA = "BOOK YOUR FREE COUNSELLING";
 
 export default function HeroSection({
-  heroImage = defaultHeroImage,
+  heroImage,
   redirectPath = "/thankyou",
   tagline = "",
   title = "",

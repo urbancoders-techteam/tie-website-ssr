@@ -55,6 +55,7 @@ export default function RussiaCampaignPage({
 
       {/* Hero */}
       <HeroSection
+        heroImage={RUSSIA_HERO.heroImage}
         tagline={RUSSIA_HERO.tagline}
         title={RUSSIA_HERO.title}
         titleHighlight={RUSSIA_HERO.titleHighlight}
@@ -95,7 +96,7 @@ export default function RussiaCampaignPage({
         docItems={RUSSIA_DOCUMENTS_REQUIRED}
         introParagraph={RUSSIA_DOCUMENTS_INTRO}
       />
-      <UniversitiesSection universitiesBase={RUSSIA_UNIVERSITIES} />
+      <UniversitiesSection universitiesBase={RUSSIA_UNIVERSITIES} countryName="Russia" />
       <WhatStudentsSaySection
         testimonials={RUSSIA_TESTIMONIALS}
         introParagraph={RUSSIA_WHAT_STUDENTS_SAY_INTRO}

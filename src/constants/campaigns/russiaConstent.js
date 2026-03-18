@@ -1,3 +1,47 @@
+import mbbs_russia from "@/assets/mbbs_russia.png";
+import { imageBaseUrl } from "@/utils/config";
+
+// -------------------- University Logos --------------------
+const osmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/OMSU_logo.webp`;
+const ismuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/ISMU_logo.jpg`;
+const nosmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NOSMA_logo.webp`;
+const nwsmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NWSMU_logo.png`;
+const nrnuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/NRNU_logo.png`;
+const mephiLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/MEPhI_logo.png`;
+const ksmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KSMU_logo.png`;
+const kfuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KFU_logo.png`;
+const ksuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/KSU_logo.png`;
+const bsmuLogo =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/BSMU_logo.png`;
+
+// -------------------- University Images --------------------
+const osmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/omsu.jpg`;
+const ismu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ismu.png`;
+const nosmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nosmu.webp`;
+const nwsmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nwsmu.png`;
+const nrnu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/nrnu.png`;
+const mephi =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`;
+const ksmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ksmu.jpg`;
+const kfu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/kfu.jpg`;
+const ksu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/ksu.jpg`;
+const bsmu =  `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/bsmu.jpeg`;
+
+
+// ---------------- Hero (campaign landing) ----------------
+export const RUSSIA_HERO = {
+  tagline: "Your ambition. Our expertise. Confirmed admits.",
+  title: "Study MBBS in Russia with expert guidance",
+  titleHighlight: "Russia",
+  heroImage: mbbs_russia,
+  description:
+    "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
+  stats: [
+    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
+    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
+    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
+  ],
+  ctaText: "BOOK YOUR FREE COUNSELLING",
+};
+
 // ---------------- Overview Content ----------------
 export const RUSSIA_OVERVIEW_CONTENT = {
   first:
@@ -246,16 +290,96 @@ export const RUSSIA_DOCUMENTS_REQUIRED = [
 // ---------------- Universities ----------------
 // logoIndex: 1–10 for rus1.png … rus10.png; imageKey: resolved to StaticImageData in component
 export const RUSSIA_UNIVERSITIES = [
-  { id: "ksmu", name: "Kazan State Medical University (KSMU)", founded: "1814", city: "Kazan", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 1, imageKey: "ksmu" },
-  { id: "pfus", name: "People's Friendship University of Russia (RUDN)", founded: "1932", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 2, imageKey: "rudn" },
-  { id: "rnrmu", name: "Russian National Research Medical University (RNRMU or RSMU)", founded: "1974", city: "Moscow", fees: "₹4,00,000 - ₹6,50,000", logoIndex: 3, imageKey: "rnrmu" },
-  { id: "msmu", name: "Moscow State Medical University (MSMU)", founded: "1939", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 4, imageKey: "msmu" },
-  { id: "fmsmu", name: "First Moscow State Medical University (Sechenov University)", founded: "1917", city: "Moscow", fees: "₹3,50,000 - ₹6,00,000", logoIndex: 5, imageKey: "fmsmu" },
-  { id: "nsmmu", name: "Northern State Medical University (NSMU)", founded: "1936", city: "Arkhangelsk", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 6, imageKey: "nsmmu" },
-  { id: "tsmu", name: "Tver State Medical University, Tver (TSMU)", founded: "1957", city: "Tver", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 7, imageKey: "tsmmu" },
-  { id: "spspmu", name: "Saint Petersburg State Pediatric Medical University (SPSPMU)", founded: "1907", city: "Saint Petersburg", fees: "₹3,00,000 - ₹5,00,000", logoIndex: 8, imageKey: "spspmu" },
-  { id: "bsmu", name: "Bashkir State Medical University (BSMU)", founded: "1955", city: "Ufa", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 9, imageKey: "bsmu" },
-  { id: "ismu", name: "Irkutsk State Medical University (ISMU)", founded: "1955", city: "Irkutsk", fees: "₹2,50,000 - ₹4,50,000", logoIndex: 10, imageKey: "ismu" },
+  {
+    id: "omsu",
+    name: "Omsk State Medical University",
+    founded: "1920",
+    city: "Omsk",
+    fees: "$3,000 – $4,500/year (₹2.5 – ₹3.8 lakh)",
+    logoIndex: osmuLogo,
+    imageKey: osmu,
+  },
+  {
+    id: "ismu",
+    name: "Irkutsk State Medical University",
+    founded: "1919",
+    city: "Irkutsk",
+    fees: "$4,000 – 5,000/year (₹3.5 – ₹5 lakh)",
+    logoIndex: ismuLogo,
+    imageKey: ismu,
+  },
+  {
+    id: "nosma",
+    name: "North Ossetian State Medical Academy",
+    founded: "1939",
+    city: "Vladikavkaz",
+    fees: "$4,000 – 5,000/year (₹3.5 – ₹4.5 lakh)",
+    logoIndex: nosmuLogo,
+    imageKey: nosmu,
+  },
+  {
+    id: "bsmu",
+    name: "Bashkir State Medical University",
+    founded: "1932",
+    city: "Ufa",
+    fees: "$4,500 – $6,000/year (₹4.5 – ₹5.5 lakh)",
+    logoIndex: bsmuLogo,
+    imageKey: bsmu,
+  },
+  {
+    id: "ksu",
+    name: "Kemerovo State University",
+    founded: "1974",
+    city: "Kemerovo",
+    fees: "$3,500 – $4,500/year (₹3 – ₹4 lakh)",
+    logoIndex: ksuLogo,
+    imageKey: ksu,
+  },
+  {
+    id: "nwsmu",
+    name: "North-Western State Medical University",
+    founded: "2011",
+    city: "Saint Petersburg",
+    fees: "$6,000 – $7,000/year (₹5.5 – ₹6.5 lakh)",
+    logoIndex: nwsmuLogo,
+    imageKey: nwsmu,
+  },
+  {
+    id: "nrnu",
+    name: "National Research Nuclear University MEPhI",
+    founded: "1942",
+    city: "Moscow",
+    fees: "$5,000 – $6,500/year (₹4.5 – ₹6 lakh)",
+    logoIndex: nrnuLogo,
+    imageKey: nrnu,
+  },
+  {
+    id: "mephi",
+    name: "MEPhI Obninsk Campus",
+    founded: "1953",
+    city: "Obninsk",
+    fees: "$4,000 – $5,200/year (₹3.5 – ₹4.5 lakh)",
+    logoIndex: mephiLogo,
+    imageKey: mephi,
+  },
+  {
+    id: "ksmu",
+    name: "Kemerovo State Medical University",
+    founded: "1955",
+    city: "Kemerovo",
+    fees: "$3,000 – $4,000/year (₹2.5 – ₹3.5 lakh)",
+    logoIndex: ksmuLogo,
+    imageKey: ksmu,
+  },
+  {
+    id: "kfu",
+    name: "Kazan Federal University",
+    founded: "1804",
+    city: "Kazan",
+    fees: "$6,500 – $8,000/year (₹5.5 – ₹7 lakh)",
+    logoIndex: kfuLogo,
+    imageKey: kfu,
+  },
 ];
 
 // ---------------- FAQ ----------------
@@ -314,18 +438,5 @@ export const RUSSIA_FAQ_ITEMS = [
   },
 ];
 
-// ---------------- Hero (campaign landing) ----------------
-export const RUSSIA_HERO = {
-  tagline: "Your ambition. Our expertise. Confirmed admits.",
-  title: "Study MBBS in Russia with expert guidance",
-  titleHighlight: "Russia",
-  description:
-    "Make your medical career aspirations a reality with MBBS in Russia, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
-  stats: [
-    { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
-    { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
-    { value: <span className="text-[#5dd4d9]">Step-by-step</span>, label: "admission support" },
-  ],
-  ctaText: "BOOK YOUR FREE COUNSELLING",
-};
+
 

@@ -3,33 +3,8 @@
 import { useState, useCallback } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { FaChevronRight } from "react-icons/fa";
-import { imageBaseUrl } from "@/utils/config";
 
-import ksmu from "@/assets/russian_universities/ksmu.webp";
-import rudn from "@/assets/russian_universities/rudn.webp";
-import rnrmu from "@/assets/russian_universities/rnrmu.webp";
-import msmu from "@/assets/russian_universities/msmu.jpg";
-import fmsmu from "@/assets/russian_universities/fmsmu.jpg";
-import nsmmu from "@/assets/russian_universities/nsmu.webp";
-import tsmmu from "@/assets/russian_universities/tsmu.jpg";
-import spspmu from "@/assets/russian_universities/spspmu.webp";
-import bsmu from "@/assets/russian_universities/bsmu.jpeg";
-import ismu from "@/assets/russian_universities/ismu.jpg";
-
-const RUS_LOGO = (n: number) => `${imageBaseUrl}mbbsCollege/russia/rus${n}.png`;
-
-const RUSSIA_UNIVERSITY_IMAGES: Record<string, StaticImageData> = {
-  ksmu,
-  rudn,
-  rnrmu,
-  msmu,
-  fmsmu,
-  nsmmu,
-  tsmmu,
-  spspmu,
-  bsmu,
-  ismu,
-};
+type UniversityImage = StaticImageData | string;
 
 export type UniversityBase = {
   id: string;
@@ -37,8 +12,10 @@ export type UniversityBase = {
   founded: string;
   city: string;
   fees: string;
-  logoIndex: number;
-  imageKey: string;
+  // Kept as `logoIndex` / `imageKey` to match existing constants shape.
+  // They can be either imported static images or remote URLs.
+  logoIndex: UniversityImage;
+  imageKey: UniversityImage;
 };
 
 export type University = {
@@ -47,31 +24,25 @@ export type University = {
   founded: string;
   city: string;
   fees: string;
-  universityLogo: string;
-  image: StaticImageData;
+  universityLogo: UniversityImage;
+  image: UniversityImage;
 };
 
-function resolveUniversities(
-  base: UniversityBase[],
-  logoUrlPattern: (n: number) => string = RUS_LOGO,
-  imageMap: Record<string, StaticImageData> = RUSSIA_UNIVERSITY_IMAGES
-): University[] {
+function resolveUniversities(base: UniversityBase[]): University[] {
   return base.map((u) => ({
     id: u.id,
     name: u.name,
     founded: u.founded,
     city: u.city,
     fees: u.fees,
-    universityLogo: logoUrlPattern(u.logoIndex),
-    image: imageMap[u.imageKey] ?? ({} as StaticImageData),
+    universityLogo: u.logoIndex,
+    image: u.imageKey,
   }));
 }
 
 export interface UniversitiesSectionProps {
   universitiesBase: UniversityBase[];
   countryName?: string;
-  logoUrlPattern?: (n: number) => string;
-  imageMap?: Record<string, StaticImageData>;
 }
 
 const LIST_BTN_BASE =
@@ -113,10 +84,8 @@ function UniversityDetailCard({ uni }: { uni: University }) {
 export default function UniversitiesSection({
   universitiesBase,
   countryName = "Russia",
-  logoUrlPattern = RUS_LOGO,
-  imageMap = RUSSIA_UNIVERSITY_IMAGES,
 }: UniversitiesSectionProps) {
-  const universities = resolveUniversities(universitiesBase, logoUrlPattern, imageMap);
+  const universities = resolveUniversities(universitiesBase);
   const [selectedId, setSelectedId] = useState<string | null>(universities[0]?.id ?? null);
   const selected = universities.find((u) => u.id === selectedId) ?? universities[0];
 
@@ -166,7 +135,7 @@ export default function UniversitiesSection({
                   >
                     <Image
                       src={uni.universityLogo}
-                      alt=""
+                      alt={`${uni.name} logo`}
                       width={40}
                       height={40}
                       className="h-full w-full object-cover"
