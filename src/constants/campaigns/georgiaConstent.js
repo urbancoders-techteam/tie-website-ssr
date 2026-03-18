@@ -383,47 +383,55 @@ export const GEORGIA_FAQ_ITEMS = [
     question: "Is MBBS in Georgia approved for Indian students?",
     answer:
       "Many medical universities in Georgia are recognised by the appropriate international bodies and may align with NMC regulations, depending on the institution and current guidelines. Taksheela Institute of Education helps students shortlist universities that meet the required standards for Indian students.",
-    highlightTerms: ["Taksheela Institute of Education"],
+    highlightTerms: ["Taksheela Institute of Education", "NMC regulations", "shortlist universities"],
   },
   {
     question: "Is studying MBBS in Georgia a good option?",
     answer:
       "Yes, MBBS in Georgia is considered a popular option for students looking for quality medical education, English-medium instruction, and affordable tuition fees. With support from Taksheela, students can choose universities that match their academic goals and budget.",
+    highlightTerms: ["MBBS in Georgia", "popular option", "English-medium instruction", "affordable tuition fees", "Taksheela"],
   },
   {
     question: "How much does MBBS in Georgia cost?",
     answer:
       "The cost of studying MBBS in Georgia usually varies by university. In general, tuition fees can range from approximately ₹6 lakh to ₹12.5 lakh per year, with additional expenses for accommodation, food, insurance, and personal living costs.",
+      highlightTerms: ["cost of studying MBBS in Georgia", "₹6 lakh to ₹12.5 lakh", "tuition fees", "accommodation", "food", "insurance", "personal living costs"],
   },
   {
     question: "Is NEET compulsory for MBBS in Georgia?",
     answer:
       "For Indian students, qualifying NEET is important if they plan to pursue medical education abroad and later practise in India, as per current NMC requirements. Taksheela guides students on the latest eligibility criteria before they apply.",
+      highlightTerms: ["NEET", "NMC requirements", "practise in India later"],
   },
   {
     question: "Is an MBBS degree from Georgia recognised in India?",
     answer:
       "An MBBS/MD degree from Georgia may be accepted in India if the university meets the required recognition norms and the student fulfils the necessary licensing requirements applicable at that time. Taksheela Institute of Education helps students identify universities that are better aligned with these requirements.",
+      highlightTerms: ["MBBS/MD degree from Georgia", "required recognition norms", "necessary licensing requirements", "Taksheela Institute of Education"],
   },
   {
     question: "What is the FMGE passing outlook for students graduating from Georgia?",
     answer:
       "FMGE performance can differ from one university to another and also depends on the student's preparation, academic foundation, and individual effort. Rather than relying only on broad percentages, Taksheela advises students to evaluate the university's academic quality, clinical exposure, and support systems before making a decision.",
+      highlightTerms: ["FMGE performance", "student's preparation", "academic foundation", "individual effort", "university's academic quality", "clinical exposure", "support systems"],
   },
   {
     question: "What is the duration of MBBS in Georgia?",
     answer:
       "The medical program in Georgia generally has a duration of 6 years, which includes academic learning and practical clinical exposure as part of the course structure.",
+      highlightTerms: ["medical program in Georgia","6 years", "academic learning", "practical clinical exposure"],
   },
   {
     question: "Is Georgia a safe country for Indian students?",
     answer:
       "Georgia is often regarded as a student-friendly destination with a welcoming environment for international students. With the right university selection and guidance from Taksheela, students can prepare better for a safe and comfortable study experience abroad.",
+      highlightTerms: ["student-friendly destination", "welcoming environment", "university selection", "Taksheela"],
   },
   {
     question: "How do I choose the right university for MBBS in Georgia?",
     answer:
       "The best university depends on factors such as recognition, tuition fees, medium of instruction, clinical exposure, location, and overall student support. Taksheela Institute of Education helps students compare suitable options and choose a university that fits their academic plans and budget.",
+      highlightTerms: ["best university", "recognition", "tuition fees", "medium of instruction", "clinical exposure", "location", "overall student support", "Taksheela Institute of Education", "plans and budget"],
   },
 ];
 

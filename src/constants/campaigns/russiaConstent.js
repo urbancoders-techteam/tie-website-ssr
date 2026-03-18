@@ -43,15 +43,15 @@ export const RUSSIA_HERO = {
 // ---------------- Overview Content ----------------
 export const RUSSIA_OVERVIEW_CONTENT = {
   first:
-    "MBBS (Bachelor of Medicine and Bachelor of Surgery) is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on clinical training to develop skilled and ethical medical professionals.",
+    <> <span className="text-[#00999E] font-bold">MBBS (Bachelor of Medicine and Bachelor of Surgery)</span> is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on <span className="text-[#00999E] font-bold">hands-on clinical training</span> to develop skilled and <span className="text-[#00999E] font-bold">ethical medical professionals</span>.</>,
   second:
-    "Russia has become one of the most preferred destinations for Indian students pursuing MBBS abroad. According to data shared by the Ministry of External Affairs (MEA) in the Winter Session of Parliament in December 2025, over 27,000 Indian students are studying overseas, with a large number choosing Russia for medical education due to its affordable tuition fees and high academic standards.",
+    <> Russia has become one of the most preferred destinations for Indian students pursuing MBBS abroad. According to data shared by the <span className="text-[#00999E] font-bold">Ministry of External Affairs (MEA)</span> in the Winter Session of Parliament in <span className="text-[#00999E] font-bold">December 2025</span>, <span className="text-[#00999E] font-bold">over 27,000 Indian students</span> are studying overseas, with a large number choosing Russia for medical education due to its <span className="text-[#00999E] font-bold">affordable tuition fees</span> and <span className="text-[#00999E] font-bold">high academic standards</span>.</>,
   third:
-    "With over 50 NMC-compliant medical universities and recognition from global organisations such as ECFMG, FAIMER, and WFME, Russia offers internationally accepted medical education along with extensive clinical exposure.",
+    <> With over 50 NMC-compliant medical universities and recognition from global organisations such as <span className="text-[#00999E] font-bold">ECFMG</span>, <span className="text-[#00999E] font-bold">FAIMER</span>, and <span className="text-[#00999E] font-bold">WFME</span>, Russia offers internationally accepted medical education along with extensive clinical exposure.</>,
   fourth:
-    "At Taksheela Institute of Education, we help students confidently pursue their MBBS in Russia by guiding them through university selection, admission procedures, documentation, and visa support—ensuring a smooth and transparent journey toward a successful medical career.",
+    <> At <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, we help students confidently pursue their <span className="text-[#00999E] font-bold">MBBS in Russia</span> by guiding them through university selection, <span className="text-[#00999E] font-bold">admission procedures</span>, <span className="text-[#00999E] font-bold">documentation</span>, and <span className="text-[#00999E] font-bold">visa support</span>—ensuring a smooth and <span className="text-[#00999E] font-bold">transparent journey</span> toward a <span className="text-[#00999E] font-bold">successful medical career</span>.</>,
   fifth:
-    "Students graduating from NMC-recognised universities in Russia are eligible to appear for licensing examinations in India such as FMGE/NExT, subject to the applicable regulations.",
+    <> Students graduating from NMC-recognised universities in Russia are eligible to appear for licensing examinations in India such as <span className="text-[#00999E] font-bold">FMGE/NExT</span>, subject to the applicable <span className="text-[#00999E] font-bold">regulations</span>.</>,
 };
 
 // ---------------- Testimonials ----------------
@@ -393,46 +393,55 @@ export const RUSSIA_FAQ_ITEMS = [
     question: "What is the approximate cost of studying MBBS in Russia?",
     answer:
       "One of the main advantages of studying MBBS in Russia is its affordability. The total tuition fees for the entire program generally range between ₹18 lakh and ₹40 lakh, depending on the university. With guidance from Taksheela, students can explore universities that match their academic goals as well as their budget.",
+    highlightTerms: ["advantages", "studying MBBS in Russia","affordability", "₹18 lakh and ₹40 lakh"],
   },
   {
     question: "Is Russia safe for Indian students pursuing MBBS?",
     answer:
       "Russia is considered a safe destination for international students, including those from India. Many universities have well-developed campuses, student hostels, and support services for international students. Taksheela also assists students with pre-departure guidance so they can adapt smoothly to their new environment.",
+    highlightTerms: ["safe destination for international students", "well-developed campuses", "student hostels", "support services", "Taksheela"],
   },
   {
     question: "Is MBBS in Russia taught in English?",
     answer:
       "Yes. Many reputed Russian medical universities offer MBBS programs in English for international students. Students may also learn basic Russian during the course, which helps with communication during clinical training and daily life.",
+    highlightTerms: ["MBBS programs in English","international students" ],
   },
   {
     question: "What is the duration of MBBS in Russia?",
     answer:
       "The MBBS program in Russia typically lasts 6 years, including academic study and clinical training in hospitals affiliated with the university.",
+      highlightTerms: ["MBBS program in Russia","6 years", "academic study", "clinical training"],
   },
   {
     question: "How many Indian students study MBBS in Russia?",
     answer:
       "Russia hosts thousands of Indian medical students every year, making it one of the most popular destinations for studying MBBS abroad.",
+      highlightTerms: ["thousands of Indian medical students", "popular destinations", "MBBS abroad"],
   },
   {
     question: "Is an MBBS degree from Russia valid in India?",
     answer:
       "Yes, an MBBS degree from Russia can be recognised in India if the university is approved by the National Medical Commission (NMC). After completing the program, graduates must qualify the required licensing examination in India, such as FMGE or NExT, according to current regulations.",
+      highlightTerms: ["MBBS degree from Russia","National Medical Commission (NMC)", "FMGE or NExT", "current regulations"],
   },
   {
     question: "What NEET score is required to study MBBS in Russia?",
     answer:
       "Indian students must qualify the NEET-UG examination to be eligible to study MBBS abroad and practise in India later. The minimum required score depends on the NEET qualifying cutoff of the respective year.",
+      highlightTerms: ["NEET-UG examination", "eligible to study MBBS abroad", "practise in India later"],
   },
   {
     question: "Are hostels separate for male and female students?",
     answer:
       "Yes. Most universities provide separate hostel facilities for male and female students with security and essential amenities such as Wi-Fi, study areas, and common facilities.",
+      highlightTerms: ["separate hostel facilities", "security and essential amenities", "Wi-Fi", "study areas", "common facilities"],
   },
   {
     question: "Can I practise in India after completing MBBS in Russia?",
     answer:
       "Indian students who complete their MBBS from an NMC-recognised Russian university can practise in India after clearing the required licensing examination such as FMGE or NExT, as per current medical regulations.",
+      highlightTerms: ["NMC-recognised Russian university", "FMGE or NExT", "current medical regulations"],
   },
 ];
 
