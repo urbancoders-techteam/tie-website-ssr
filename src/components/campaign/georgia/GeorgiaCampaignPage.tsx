@@ -30,11 +30,13 @@ import {
   GEORGIA_FAQ_ITEMS,
   GEORGIA_HERO,
 } from "@/constants/campaigns/georgiaConstent";
-import { imageBaseUrl } from "@/utils/config";
+// import { imageBaseUrl } from "@/utils/config";
+import georgia_hero_img from "@/assets/georgia_banner.png";
+// import transparentbg from "@/assets/transparentbg.png";
 
 const GEORGIA_THANKYOU = "/mbbs/abroad/georgia/campaign/thankyou";
 
-const georgia_hero_img =  `${imageBaseUrl}mbbsCollege/georgia/campaign/georgia_hero_img.png`;
+// const georgia_hero_img =  `${imageBaseUrl}mbbsCollege/georgia/campaign/georgia_hero_img.png`;
 
 const GEORGIA_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },
@@ -54,7 +56,7 @@ export default function GeorgiaCampaignPage({
   redirectPath = GEORGIA_THANKYOU,
 }: GeorgiaCampaignPageProps) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" >
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
       <HeroSection
@@ -99,12 +101,13 @@ export default function GeorgiaCampaignPage({
         countryName="Georgia"
         introParagraph={GEORGIA_ELIGIBILITY_INTRO}
       />
-      
+
       <AdmissionProcessSection
         steps={GEORGIA_ADMISSION_STEPS}
         countryName="Georgia"
         countryAdjective="Georgian"
       />
+
       <DocumentsRequiredSection
         docItems={GEORGIA_DOCUMENTS_REQUIRED}
         countryName="Georgia"

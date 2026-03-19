@@ -29,7 +29,7 @@ export default function WhyChooseRussiaSection({
   return (
     <section
       id={sectionId}
-      className="py-14 md:py-18 bg-white scroll-mt-24"
+      className="py-14 md:py-18 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
