@@ -179,6 +179,8 @@ export const Header = ({ itemupdate }: any) => {
       component="div"
       color="inherit"
       sx={{
+        fontFamily: '"Nunito", sans-serif',
+        fontWeight: { xs: 400, sm: 400, md: 400, lg: 600 },
         textDecoration: "none",
         underline: "none",
         border: "2px solid white",
@@ -376,7 +378,10 @@ export const Header = ({ itemupdate }: any) => {
       <AppBar
         position="static"
         color="default"
-        sx={{ backgroundColor: "white" }}
+        sx={{
+          backgroundColor: "white",
+          fontFamily: "Nunito",
+        }}
       >
         <Container maxWidth={"xl"}>
           <Box

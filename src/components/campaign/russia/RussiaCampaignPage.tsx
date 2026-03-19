@@ -33,6 +33,7 @@ import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
 import { imageBaseUrl } from "@/utils/config";
 
 const RUSSIA_THANKYOU = "/mbbs/abroad/russia/campaign/thankyou";
+const RUSSIA_PHONE_NUMBER = "+919831241212";
 
 const russia_hero_img =  `${imageBaseUrl}mbbsCollege/russia/campaign/mbbs_russia.png`;
 
@@ -45,7 +46,6 @@ const RUSSIA_NAV_LINKS: CampaignNavLink[] = [
 ];
 
 export interface RussiaCampaignPageProps {
-  /** Redirect path after registration. Defaults to Russia campaign thank-you page. */
   redirectPath?: string;
 }
 
@@ -149,7 +149,7 @@ export default function RussiaCampaignPage({
       </section>
 
       <CampaignFooter />
-      <ScrollToTopButton />
+      <ScrollToTopButton phoneNumber={RUSSIA_PHONE_NUMBER} />
     </div>
   );
 }

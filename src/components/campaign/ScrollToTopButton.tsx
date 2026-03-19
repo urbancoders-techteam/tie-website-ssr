@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaChevronUp } from "react-icons/fa";
+import { FaChevronUp, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 const SCROLL_THRESHOLD = 400;
 const DURATION_MS = 800;
@@ -26,7 +26,15 @@ function smoothScrollToTop() {
   requestAnimationFrame(step);
 }
 
-export default function ScrollToTopButton() {
+export default function ScrollToTopButton({
+  phoneNumber,
+}: {
+  phoneNumber?: string;
+}) {
+  const DEFAULT_PHONE_NUMBER = "+919831241212";
+  const activePhoneNumber = phoneNumber ?? DEFAULT_PHONE_NUMBER;
+
+  // Floating Call + WhatsApp buttons (uses default phone; can be overridden via prop).
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -38,16 +46,51 @@ export default function ScrollToTopButton() {
 
   const scrollToTop = () => smoothScrollToTop();
 
-  if (!visible) return null;
+  const floatingCallWhatsApp = activePhoneNumber ? (
+    <div
+      className={`fixed bottom-21 right-5 z-50 flex flex-col items-end gap-3 sm:${
+        visible ? "bottom-22" : "bottom-10"
+      }`}
+    >
+      <a
+        href={`tel:${activePhoneNumber.replace(/\s/g, "")}`}
+        aria-label={`Call ${activePhoneNumber}`}
+        className="inline-flex items-center justify-center rounded-full bg-white/95 border border-[#fa1212] shadow-[0_4px_14px_0_rgba(0,153,158,0.4)] p-3 hover:bg-white hover:shadow-[0_6px_20px_0_rgba(0,153,158,0.5)] transition-colors"
+      >
+        <FaPhoneAlt
+          className="w-5 h-5 text-[#fa1212]"
+          aria-hidden
+        />
+      </a>
+
+      <a
+        href={`https://wa.me/${activePhoneNumber.replace(/\D/g, "")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Chat on WhatsApp: ${activePhoneNumber}`}
+        className="inline-flex items-center justify-center rounded-full bg-white/95 border border-[#00999E] shadow-[0_4px_14px_0_rgba(0,153,158,0.4)] p-2 hover:bg-white hover:shadow-[0_6px_20px_0_rgba(0,153,158,0.5)] transition-colors"
+      >
+        <FaWhatsapp
+          className="w-7 h-7 text-[#25D366]"
+          aria-hidden
+        />
+      </a>
+    </div>
+  ) : null;
 
   return (
-    <button
-      type="button"
-      onClick={scrollToTop}
-      aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#00999E] text-white shadow-[0_4px_14px_0_rgba(0,153,158,0.4)] transition hover:bg-[#008c91] hover:shadow-[0_6px_20px_0_rgba(0,153,158,0.5)] focus:outline-none focus:ring-2 focus:ring-[#00999E] focus:ring-offset-2"
-    >
-      <FaChevronUp className="h-5 w-5" aria-hidden />
-    </button>
+    <>
+      {floatingCallWhatsApp}
+      {visible && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#00999E] text-white shadow-[0_4px_14px_0_rgba(0,153,158,0.4)] transition hover:bg-[#008c91] hover:shadow-[0_6px_20px_0_rgba(0,153,158,0.5)] focus:outline-none focus:ring-2 focus:ring-[#00999E] focus:ring-offset-2"
+        >
+          <FaChevronUp className="h-5 w-5" aria-hidden />
+        </button>
+      )}
+    </>
   );
 }

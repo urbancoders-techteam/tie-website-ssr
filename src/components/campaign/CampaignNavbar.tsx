@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ModalTrigger from "@/components/ModalTrigger";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 export type CampaignNavLink = { href: string; label: string };
 
@@ -76,20 +76,31 @@ export default function CampaignNavbar({
 
         <div className="flex items-center gap-3">
           {phoneNumber !== false && phoneNumber && (
-            <a
-              href={`tel:${phoneNumber.replace(/\s/g, "")}`}
-              className="hidden lg:inline-flex items-center gap-2 rounded-lg border border-white/40 px-3 py-2 text-sm text-white hover:bg-white/10"
-            >
-              <FaPhoneAlt className="shrink-0" aria-hidden />
-              {phoneNumber}
-            </a>
+            <div className="flex items-center gap-2 sm:gap-3 text-white">
+              <a
+                href={`tel:${phoneNumber.replace(/\s/g, "")}`}
+                className="p-1 sm:p-1.5 text-white/90 hover:text-white hover:opacity-100 opacity-90 transition-opacity"
+                aria-label={`Call ${phoneNumber}`}
+              >
+                <FaPhoneAlt className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden />
+              </a>
+              <a
+                href={`https://wa.me/${phoneNumber.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 sm:p-1.5 text-white/90 hover:text-white hover:opacity-100 opacity-90 transition-opacity"
+                aria-label={`Chat on WhatsApp: ${phoneNumber}`}
+              >
+                <FaWhatsapp className="w-6 h-6 sm:w-8 sm:h-8" aria-hidden />
+              </a>
+            </div>
           )}
 
           <ModalTrigger
             variant="custom"
             text={ctaText}
             redirectPath={redirectPath}
-            className="rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            className="rounded-lg bg-white border border-gray-300 px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
           />
         </div>
       </div>
