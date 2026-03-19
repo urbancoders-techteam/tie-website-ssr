@@ -33,6 +33,7 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
       .string()
       .matches(/^\d{10}$/, "Phone number must be 10 digits")
       .required("Phone number is required"),
+    message: yup.string().required("Message is required"),
   });
 
 
@@ -41,6 +42,7 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
       name: "",
       email: "",
       phone: "",
+      message: "",
     },
     validationSchema,
     onSubmit: async (values: any) => {
@@ -183,6 +185,25 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
                 typeof formik.errors.email === "string" && (
                   <p className="text-red-500 text-sm mt-1  text-left">
                     {formik.errors.email}
+                  </p>
+                )}
+            </div>
+
+            <div>
+              <textarea
+                placeholder="Enter your message"
+                rows={3}
+                {...formik.getFieldProps("message")}
+                className={`w-full border ${formik.touched.message && formik.errors.message
+                    ? "border-red-500"
+                    : "border-gray-300"
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+              />
+              {formik.touched.message &&
+                formik.errors.message &&
+                typeof formik.errors.message === "string" && (
+                  <p className="text-red-500 text-sm mt-1  text-left">
+                    {formik.errors.message}
                   </p>
                 )}
             </div>

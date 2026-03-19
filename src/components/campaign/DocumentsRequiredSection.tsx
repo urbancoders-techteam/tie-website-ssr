@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import Slider from "react-slick";
 import Image from "next/image";
 import fDoctorImage from "@/assets/f-doctor.png";
 import {
@@ -32,6 +35,30 @@ export default function DocumentsRequiredSection({
   countryName = "Russia",
   introParagraph,
 }: DocumentsRequiredSectionProps) {
+  const sliderSettings: React.ComponentProps<typeof Slider> = {
+    dots: false,
+    arrows: false,
+    infinite: docItems.length > 4,
+    speed: 500,
+    autoplay: docItems.length > 4,
+    autoplaySpeed: 1500,
+    pauseOnHover: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    rows: 2,
+    slidesPerRow: 2,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          rows: 2,
+          slidesPerRow: 1,
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <section
       id="documents-required"
@@ -75,23 +102,22 @@ export default function DocumentsRequiredSection({
               {introParagraph}
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
-              {docItems.map((doc) => {
-                const Icon = DOC_ICONS[doc.icon];
-                return (
-                  <div
-                    key={doc.title}
-                    className="rounded-xl bg-white border border-gray-200 shadow-sm px-4 py-4 flex items-center gap-3 min-h-[88px]"
-                  >
-                    <div className="h-10 w-10 rounded-lg bg-[#e0f7f8] text-[#00999E] flex items-center justify-center shrink-0">
-                      {Icon ? <Icon className="h-5 w-5" /> : null}
+            <div className="mt-8">
+              <Slider {...sliderSettings}>
+                {docItems.map((doc) => {
+                  const Icon = DOC_ICONS[doc.icon];
+                  return (
+                    <div key={doc.title} className="px-2 sm:px-2.5 pb-4 sm:pb-5">
+                      <div className="rounded-xl bg-white border border-gray-200 shadow-sm px-4 py-4 flex items-center gap-3 min-h-[88px]">
+                        <div className="h-10 w-10 rounded-lg bg-[#e0f7f8] text-[#00999E] flex items-center justify-center shrink-0">
+                          {Icon ? <Icon className="h-5 w-5" /> : null}
+                        </div>
+                        <div className="font-semibold text-gray-800 text-sm">{doc.title}</div>
+                      </div>
                     </div>
-                    <div className="font-semibold text-gray-800 text-sm">
-                      {doc.title}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>

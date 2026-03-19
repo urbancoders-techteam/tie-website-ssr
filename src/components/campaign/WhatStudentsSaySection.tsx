@@ -81,7 +81,7 @@ export default function WhatStudentsSaySection({ testimonials, introParagraph }:
             {testimonials.map((t, index) => (
               <div
                 key={index}
-                className="snap-start shrink-0 w-[min(100%,320px)] sm:w-[320px]"
+                className="snap-start shrink-0 w-[min(100%,320px)] sm:w-[390px]"
               >
                 <div className="rounded-2xl bg-white shadow-lg overflow-hidden border border-gray-100">
                   {/* Upper: gradient + quote */}
