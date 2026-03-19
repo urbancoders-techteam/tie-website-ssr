@@ -141,6 +141,26 @@ export const Header = ({ itemupdate }: any) => {
   const [immersionOpen, setImmersionOpen] = useState(false);
   const [iROpen, setIROpen] = useState(false);
 
+  // Close all submenus on route change so they don't stay open on other pages
+  useEffect(() => {
+    setHomeSubMenuOpen(false);
+    setStudyAbroadOpen(false);
+    setImmersionOpen(false);
+    setIROpen(false);
+  }, [location]);
+
+  // Close all submenus when clicking outside (backup for missed mouseLeave)
+  useEffect(() => {
+    const closeAllSubmenus = () => {
+      setHomeSubMenuOpen(false);
+      setStudyAbroadOpen(false);
+      setImmersionOpen(false);
+      setIROpen(false);
+    };
+    document.addEventListener("click", closeAllSubmenus);
+    return () => document.removeEventListener("click", closeAllSubmenus);
+  }, []);
+
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -159,6 +179,8 @@ export const Header = ({ itemupdate }: any) => {
       component="div"
       color="inherit"
       sx={{
+        fontFamily: '"Nunito", sans-serif',
+        fontWeight: { xs: 400, sm: 400, md: 400, lg: 600 },
         textDecoration: "none",
         underline: "none",
         border: "2px solid white",
@@ -196,7 +218,25 @@ export const Header = ({ itemupdate }: any) => {
     marginBottom: "-4px",
   });
 
+  // Fast submenu: quick open animation, immediate close on leave
+  const submenuDropDownSx = {
+    animation: "headerSubmenuIn 0.1s ease-out",
+    "@keyframes headerSubmenuIn": {
+      from: { opacity: 0, transform: "translateY(-4px)" },
+      to: { opacity: 1, transform: "translateY(0)" },
+    },
+  };
+
+  const closeAllDesktopSubmenus = () => {
+    setHomeSubMenuOpen(false);
+    setStudyAbroadOpen(false);
+    setImmersionOpen(false);
+    setIROpen(false);
+  };
+
+  // Ensure only ONE submenu is open at a time (fixes sticky/multiple-open cases)
   const handleHomeMouseEnter = () => {
+    closeAllDesktopSubmenus();
     setHomeSubMenuOpen(true);
   };
 
@@ -205,6 +245,7 @@ export const Header = ({ itemupdate }: any) => {
   };
 
   const handleStudyAbroadEnter = () => {
+    closeAllDesktopSubmenus();
     setStudyAbroadOpen(true);
   };
   const handleStudyAbroadLeave = () => {
@@ -212,6 +253,7 @@ export const Header = ({ itemupdate }: any) => {
   };
 
   const handleImmersionEnter = () => {
+    closeAllDesktopSubmenus();
     setImmersionOpen(true);
   };
   const handleImmersionLeave = () => {
@@ -219,6 +261,7 @@ export const Header = ({ itemupdate }: any) => {
   };
 
   const handleIREnter = () => {
+    closeAllDesktopSubmenus();
     setIROpen(true);
   };
   const handleIRLeave = () => {
@@ -335,7 +378,10 @@ export const Header = ({ itemupdate }: any) => {
       <AppBar
         position="static"
         color="default"
-        sx={{ backgroundColor: "white" }}
+        sx={{
+          backgroundColor: "white",
+          fontFamily: "Nunito",
+        }}
       >
         <Container maxWidth={"xl"}>
           <Box
@@ -651,6 +697,7 @@ export const Header = ({ itemupdate }: any) => {
                 flexGrow={1}
                 paddingTop={1}
                 paddingBottom={1}
+                onMouseLeave={closeAllDesktopSubmenus}
               >
                 <div
                   onMouseEnter={handleHomeMouseEnter}
@@ -692,6 +739,7 @@ export const Header = ({ itemupdate }: any) => {
                       bgcolor="white"
                       boxShadow={3}
                       zIndex={999999}
+                      sx={submenuDropDownSx}
                     >
                       {homeSubMenues?.map((subMenu, index) => (
                         <Box
@@ -772,6 +820,7 @@ export const Header = ({ itemupdate }: any) => {
                       bgcolor="white"
                       boxShadow={3}
                       zIndex={999999}
+                      sx={submenuDropDownSx}
                     >
                       {studyAbroadsubMenues?.map((subMenu, index) => (
                         <Box
@@ -852,6 +901,7 @@ export const Header = ({ itemupdate }: any) => {
                       bgcolor="white"
                       boxShadow={3}
                       zIndex={999999}
+                      sx={submenuDropDownSx}
                     >
                       {iRSubMenues?.map((subMenu, index) => (
                         <Box
@@ -930,6 +980,7 @@ export const Header = ({ itemupdate }: any) => {
                       bgcolor="white"
                       boxShadow={3}
                       zIndex={999999}
+                      sx={submenuDropDownSx}
                     >
                       {immersionSubMenues.map((subMenu, index) => (
                         <Box
