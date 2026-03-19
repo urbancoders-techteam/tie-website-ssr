@@ -51,7 +51,7 @@ export default function OverviewSection({ overviewContent, testimonials, country
   const toggleShowMore = useCallback(() => setShowMore((prev) => !prev), []);
 
   return (
-    <section id="why" className=" pt-0 pb-8 md:pb-14 bg-white">
+    <section id="why" className=" pt-0 pb-8 md:pb-14">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
           <div className="lg:col-span-2">
