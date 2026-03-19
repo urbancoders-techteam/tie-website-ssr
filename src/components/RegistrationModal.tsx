@@ -21,8 +21,6 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-
-
   const validationSchema = yup.object({
     name: yup.string().required("Name is required"),
     email: yup
