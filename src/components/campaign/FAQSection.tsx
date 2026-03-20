@@ -9,7 +9,13 @@ const highlight = (text: string) => (
 
 export interface FAQItem {
   question: string;
-  answer: string;
+  /** Single-block answer (default). */
+  answer?: string;
+  /** When set with `answerBullets`, shows intro paragraph + list + closing instead of `answer`. */
+  answerIntro?: string;
+  answerBullets?: string[];
+  /** Text after bullets; `highlightTerms` apply to this (and `answer` when used). */
+  answerClosing?: string;
   highlightTerms?: string[];
 }
 
@@ -99,9 +105,27 @@ export default function FAQSection({ items }: FAQSectionProps) {
                     }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 pt-0 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100">
-                      {renderAnswer(item.answer, item.highlightTerms)}
-                    </p>
+                    <div className="px-5 pb-4 pt-0 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 space-y-3">
+                      {item.answerBullets?.length ? (
+                        <>
+                          {item.answerIntro ? (
+                            <p className="mb-0">{item.answerIntro}</p>
+                          ) : null}
+                          <ul className="list-disc pl-5 space-y-1.5 marker:text-gray-400">
+                            {item.answerBullets.map((line, i) => (
+                              <li key={i}>{line}</li>
+                            ))}
+                          </ul>
+                          {item.answerClosing ? (
+                            <p className="mb-0">
+                              {renderAnswer(item.answerClosing, item.highlightTerms)}
+                            </p>
+                          ) : null}
+                        </>
+                      ) : (
+                        <p className="mb-0">{renderAnswer(item.answer ?? "", item.highlightTerms)}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

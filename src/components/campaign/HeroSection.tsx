@@ -92,7 +92,7 @@ export default function HeroSection({
                   <p className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">{tagline}</p>
                 )}
                 {titleContent && (
-                  <h1 className="font-sans text-2xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                  <h1 className="font-sans text-2xl sm:text-4xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                     {titleContent}
                   </h1>
                 )}

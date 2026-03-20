@@ -16,6 +16,8 @@ export interface WhyChooseRussiaSectionProps {
   cards: { icon: string; iconBg: string; iconColor: string; title: string; desc: string }[];
   countryName?: string;
   sectionId?: string;
+  /** Appended after “for MBBS” in the heading (e.g. “ with TIE” for Kazakhstan). */
+  headingSuffix?: ReactNode;
   /** Intro paragraph below the title. Each campaign passes its own (e.g. RUSSIA_WHY_CHOOSE_INTRO, GEORGIA_WHY_CHOOSE_INTRO). */
   introParagraph: ReactNode;
 }
@@ -24,6 +26,7 @@ export default function WhyChooseRussiaSection({
   cards,
   countryName = "Russia",
   sectionId = "why-choose-russia",
+  headingSuffix = "",
   introParagraph,
 }: WhyChooseRussiaSectionProps) {
   return (
@@ -38,6 +41,7 @@ export default function WhyChooseRussiaSection({
             <span className="text-[#00999E]">{countryName}</span>
           </span>{" "}
           for MBBS
+          {headingSuffix}
         </h2>
         <p className="text-gray-600 mt-4 text-base md:text-lg text-justify">
           {introParagraph}

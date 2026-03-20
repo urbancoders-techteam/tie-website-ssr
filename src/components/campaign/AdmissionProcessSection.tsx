@@ -1,20 +1,34 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import Slider from "react-slick";
 import {
-  FaArrowLeft,
-  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
   FaUserFriends,
   FaListAlt,
   FaFileSignature,
+  FaCheckCircle,
+  FaStamp,
+  FaPassport,
+  FaPlaneDeparture,
+  FaHandsHelping,
 } from "react-icons/fa";
 
 const BG_IMAGE_URL = "/images/universityViewBanner.png";
+
+/** Few steps (e.g. Russia/Georgia): show as a static grid. More steps (e.g. Kazakhstan): use react-slick. */
+const SLIDER_MIN_STEPS = 4;
 
 const ADMISSION_STEP_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   FaUserFriends,
   FaListAlt,
   FaFileSignature,
+  FaCheckCircle,
+  FaStamp,
+  FaPassport,
+  FaPlaneDeparture,
+  FaHandsHelping,
 };
 
 export interface AdmissionStepItem {
@@ -28,77 +42,168 @@ export interface AdmissionProcessSectionProps {
   steps: AdmissionStepItem[];
   countryName?: string;
   countryAdjective?: string;
+  /** Replaces the default paragraph under the heading (e.g. Kazakhstan + TIE). */
+  introOverride?: ReactNode;
+  /** Replaces the teal accent after “Admission Process” (default: “Step-by-Step with Taksheela”). */
+  admissionAccent?: ReactNode;
+}
+
+function StepCard({
+  step,
+  className = "",
+  hideStepLabel = false,
+}: {
+  step: AdmissionStepItem;
+  className?: string;
+  /** Hide “Step N” line when shown above the card (timeline column). */
+  hideStepLabel?: boolean;
+}) {
+  const Icon = ADMISSION_STEP_ICONS[step.icon];
+  return (
+    <div
+      className={`rounded-2xl border min-h-[260px] border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] ${className}`}
+    >
+      <div className="flex items-start gap-3">
+        <div className="h-11 w-11 rounded-xl bg-white/10 border border-[#5dd4d9]/15 flex items-center justify-center shrink-0">
+          {Icon ? <Icon className="h-5 w-5 text-white" /> : null}
+        </div>
+        <div>
+          {!hideStepLabel && <div className="text-white/70 text-xs">{step.stepLabel}</div>}
+          <h3 className={`text-[#5dd4d9] font-bold leading-snug ${hideStepLabel ? "" : "mt-1"}`}>{step.title}</h3>
+        </div>
+      </div>
+      <p className="text-white/80 text-sm mt-3 leading-relaxed">{step.desc}</p>
+    </div>
+  );
+}
+
+/** Tailwind sm/lg ke saath align: 1 / 2 / 3 columns */
+function useAdmissionGridColumns(): 1 | 2 | 3 {
+  const [cols, setCols] = useState<1 | 2 | 3>(1);
+  useEffect(() => {
+    const mqLg = window.matchMedia("(min-width: 1024px)");
+    const mqSm = window.matchMedia("(min-width: 640px)");
+    const update = () => {
+      if (mqLg.matches) setCols(3);
+      else if (mqSm.matches) setCols(2);
+      else setCols(1);
+    };
+    update();
+    mqLg.addEventListener("change", update);
+    mqSm.addEventListener("change", update);
+    return () => {
+      mqLg.removeEventListener("change", update);
+      mqSm.removeEventListener("change", update);
+    };
+  }, []);
+  return cols;
+}
+
+/** Dot + step label + card; padosi dots se line — gap/padding bridge se continuous. */
+function StepTimelineColumn({
+  step,
+  className = "",
+  layout,
+  index,
+  total,
+  gridCols,
+}: {
+  step: AdmissionStepItem;
+  className?: string;
+  layout: "grid" | "slider";
+  index: number;
+  total: number;
+  /** Sirf layout === "grid" */
+  gridCols: 1 | 2 | 3;
+}) {
+  let lineLeft = false;
+  let lineRight = false;
+  if (layout === "slider") {
+    lineLeft = index > 0;
+    lineRight = index < total - 1;
+  } else {
+    const isFirstInRow = index % gridCols === 0;
+    const isLastInRow = index === total - 1 || (index + 1) % gridCols === 0;
+    lineLeft = !isFirstInRow;
+    lineRight = !isLastInRow;
+  }
+
+  const isGrid = layout === "grid";
+
+  return (
+    <div className={`flex flex-col items-stretch ${className}`}>
+      <div className="relative flex h-10 w-full shrink-0 items-center justify-center">
+        {lineLeft && (
+          <div
+            className={
+              isGrid
+                ? "absolute top-1/2 z-0 h-px -translate-y-1/2 bg-white/25 left-[-0.75rem] w-[calc(50%+0.75rem)]"
+                : "absolute top-1/2 z-0 h-px -translate-y-1/2 bg-white/25 left-[-0.5rem] w-[calc(50%+0.5rem)] md:left-[-0.75rem] md:w-[calc(50%+0.75rem)]"
+            }
+            aria-hidden
+          />
+        )}
+        {lineRight && (
+          <div
+            className={
+              isGrid
+                ? "absolute left-1/2 top-1/2 z-0 h-px -translate-y-1/2 bg-white/25 w-[calc(50%+0.75rem)]"
+                : "absolute left-1/2 top-1/2 z-0 h-px -translate-y-1/2 bg-white/25 w-[calc(50%+0.5rem)] md:w-[calc(50%+0.75rem)]"
+            }
+            aria-hidden
+          />
+        )}
+        <div
+          className="relative z-10 h-3 w-3 shrink-0 rounded-full bg-[#00999E] ring-4 ring-[#00999E]/25"
+          aria-hidden
+        />
+      </div>
+      <p className="mt-2 text-center text-xs font-semibold tracking-wide text-white/90">{step.stepLabel}</p>
+      <StepCard step={step} hideStepLabel className="mt-4 h-full w-full flex-1" />
+    </div>
+  );
 }
 
 export default function AdmissionProcessSection({
   steps,
   countryName = "Russia",
   countryAdjective = "Russian",
+  introOverride,
+  admissionAccent,
 }: AdmissionProcessSectionProps) {
+  const accentNode =
+    admissionAccent ?? (
+      <span className="text-[#5dd4d9]">Step-by-Step with Taksheela{" "}</span>
+    );
 
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const dragStateRef = useRef<{
-    isDragging: boolean;
-    startX: number;
-    startScrollLeft: number;
-    lastX: number;
-    lastT: number;
-    velocity: number; // px per ms (positive = scroll right)
-    rafId: number | null;
-  }>({
-    isDragging: false,
-    startX: 0,
-    startScrollLeft: 0,
-    lastX: 0,
-    lastT: 0,
-    velocity: 0,
-    rafId: null,
-  });
+  const stepCount = steps.length;
+  const useSlider = stepCount >= SLIDER_MIN_STEPS;
+  const sliderRef = useRef<Slider | null>(null);
+  const gridCols = useAdmissionGridColumns();
 
-  // Momentum/glide after drag release
-  const startMomentum = (initialVelocity: number) => {
-    if (!scrollRef.current) return;
-    const state = dragStateRef.current;
-    if (state.rafId) cancelAnimationFrame(state.rafId);
-
-    let v = initialVelocity;
-    const friction = 0.0025; // higher = stops sooner
-    let last = performance.now();
-
-    const tick = (now: number) => {
-      if (!scrollRef.current) return;
-      if (dragStateRef.current.isDragging) return; // stop if user starts dragging again
-
-      const dt = now - last;
-      last = now;
-
-      // Apply friction
-      const decay = Math.exp(-friction * dt);
-      v *= decay;
-
-      if (Math.abs(v) < 0.02) {
-        dragStateRef.current.rafId = null;
-        return;
-      }
-
-      scrollRef.current.scrollLeft += v * dt;
-      dragStateRef.current.rafId = requestAnimationFrame(tick);
-    };
-
-    dragStateRef.current.rafId = requestAnimationFrame(tick);
-  };
-
-  const scrollByCards = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const delta = dir === "left" ? -420 : 420;
-    scrollRef.current.scrollBy({ left: delta, behavior: "smooth" });
+  const sliderSettings: React.ComponentProps<typeof Slider> = {
+    dots: false,
+    infinite: false,
+    speed: 400,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    swipeToSlide: true,
+    touchThreshold: 8,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
   };
 
   return (
-    <section
-      id="admission-process"
-      className="py-14 md:py-18 scroll-mt-24"
-    >
+    <section id="admission-process" className="py-14 md:py-18 scroll-mt-24">
       <div
         className="relative w-full overflow-hidden"
         style={{
@@ -108,7 +213,6 @@ export default function AdmissionProcessSection({
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Dark overlay (only over the background image area) */}
         <div className="pointer-events-none absolute inset-0 bg-black/10" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
 
@@ -117,162 +221,83 @@ export default function AdmissionProcessSection({
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
-                  MBBS in {countryName} {" "}
+                  MBBS in {countryName}{" "}
                 </h2>
                 <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-white">
-                  Admission Process{" "}
-                  <span className="text-[#5dd4d9]">Step-by-Step with Taksheela {" "}</span>
+                  Admission Process {accentNode}
                 </h2>
                 <p className="text-white/85 mt-3 max-w-4xl text-sm md:text-base leading-relaxed">
-                  The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in {countryName}</span> is simple and transparent compared to many private medical colleges in India. {countryAdjective} universities generally do not require additional entrance examinations or capitation fees. With the expert support of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>, students can complete the entire process smoothly and confidently.
+                  {introOverride ?? (
+                    <>
+                      The admission process for{" "}
+                      <span className="text-[#5dd4d9] font-bold">MBBS in {countryName}</span> is simple and transparent
+                      compared to many private medical colleges in India. {countryAdjective} universities generally do
+                      not require additional entrance examinations or capitation fees. With the expert support of{" "}
+                      <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>, students can
+                      complete the entire process smoothly and confidently.
+                    </>
+                  )}
                 </p>
               </div>
             </div>
 
-            {/* Timeline */}
+            {/* Dot + step number + card per column (grid ya slider) */}
             <div className="mt-10">
-              <div className="mx-auto max-w-5xl px-4">
-                <div className="relative h-6">
-                  {/* Inset line (prevents awkward edge-to-edge look) */}
-                  <div className="absolute left-[10%] right-[10%] top-1/2 -translate-y-1/2 h-px bg-white/25" />
-
-                  {/* Dots */}
-                  <div className="absolute left-[10%] top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-[#00999E] ring-4 ring-[#00999E]/25" />
-                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-[#00999E] ring-4 ring-[#00999E]/25" />
-                  <div className="absolute left-[90%] top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-[#00999E] ring-4 ring-[#00999E]/25" />
-                </div>
-
-                {/* Step labels under dots */}
-                <div className="relative mt-2 h-5 text-white/70 text-xs md:text-sm">
-                  <div className="absolute left-[10%] -translate-x-1/2 whitespace-nowrap">
-                    {steps[0]?.stepLabel}
-                  </div>
-                  <div className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    {steps[1]?.stepLabel}
-                  </div>
-                  <div className="absolute left-[90%] -translate-x-1/2 whitespace-nowrap">
-                    {steps[2]?.stepLabel}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Cards */}
-            <div className="mt-6">
-              <div
-                ref={scrollRef}
-                onWheel={(e) => {
-                  // Translate vertical wheel scrolling into horizontal scrolling.
-                  // This keeps the scrollbar hidden but still allows intuitive scrolling.
-                  if (!scrollRef.current) return;
-                  if (e.shiftKey) return; // allow normal horizontal wheel behavior
-                  if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-                  e.preventDefault();
-                  scrollRef.current.scrollBy({ left: e.deltaY, behavior: "smooth" });
-                }}
-                onPointerDown={(e) => {
-                  if (!scrollRef.current) return;
-                  // Only left click / primary pointer
-                  if (e.button !== 0) return;
-                  // Stop any ongoing momentum
-                  if (dragStateRef.current.rafId) {
-                    cancelAnimationFrame(dragStateRef.current.rafId);
-                    dragStateRef.current.rafId = null;
-                  }
-                  dragStateRef.current.isDragging = true;
-                  dragStateRef.current.startX = e.clientX;
-                  dragStateRef.current.startScrollLeft = scrollRef.current.scrollLeft;
-                  dragStateRef.current.lastX = e.clientX;
-                  dragStateRef.current.lastT = performance.now();
-                  dragStateRef.current.velocity = 0;
-                  scrollRef.current.setPointerCapture?.(e.pointerId);
-                }}
-                onPointerMove={(e) => {
-                  if (!scrollRef.current) return;
-                  if (!dragStateRef.current.isDragging) return;
-                  e.preventDefault();
-                  const dx = e.clientX - dragStateRef.current.startX;
-                  scrollRef.current.scrollLeft =
-                    dragStateRef.current.startScrollLeft - dx;
-
-                  const now = performance.now();
-                  const dt = Math.max(1, now - dragStateRef.current.lastT);
-                  const ddx = e.clientX - dragStateRef.current.lastX;
-                  // Convert pointer movement to scroll velocity (invert to match scroll direction)
-                  dragStateRef.current.velocity = (-ddx) / dt;
-                  dragStateRef.current.lastX = e.clientX;
-                  dragStateRef.current.lastT = now;
-                }}
-                onPointerUp={(e) => {
-                  if (!scrollRef.current) return;
-                  dragStateRef.current.isDragging = false;
-                  scrollRef.current.releasePointerCapture?.(e.pointerId);
-                  startMomentum(dragStateRef.current.velocity);
-                }}
-                onPointerCancel={() => {
-                  dragStateRef.current.isDragging = false;
-                }}
-                onPointerLeave={() => {
-                  dragStateRef.current.isDragging = false;
-                }}
-                className="flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing select-none touch-pan-x overscroll-x-contain lg:grid lg:grid-cols-3 lg:overflow-visible lg:snap-none lg:cursor-default lg:select-auto"
-                role="region"
-                aria-label="Admission process steps"
-              >
-                {steps.map((s) => {
-                  const Icon = ADMISSION_STEP_ICONS[s.icon];
-                  return (
-                    <div
-                      key={s.stepLabel}
-                      className="min-w-[320px] max-w-[360px] w-[360px] snap-start lg:min-w-0 lg:max-w-none lg:w-auto"
-                    >
-                      <div className="rounded-2xl border min-h-[260px] border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-                        <div className="flex items-start gap-3">
-                          <div className="h-11 w-11 rounded-xl bg-white/10 border border-[#5dd4d9]/15 flex items-center justify-center shrink-0">
-                            {Icon ? <Icon className="h-5 w-5 text-white" /> : null}
-                          </div>
-                          <div>
-                            <div className="text-white/70 text-xs">
-                              {s.stepLabel}
-                            </div>
-                            <h3 className="text-[#5dd4d9] font-bold leading-snug mt-1">
-                              {s.title}
-                            </h3>
-                          </div>
+              {useSlider ? (
+                <>
+                  <div className="admission-process-slider -mx-2 md:-mx-3 [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full [&_.slick-track]:flex [&_.slick-track]:items-stretch">
+                    <Slider ref={sliderRef} {...sliderSettings}>
+                      {steps.map((s, i) => (
+                        <div key={s.stepLabel} className="px-2 md:px-3 h-full">
+                          <StepTimelineColumn
+                            step={s}
+                            className="h-full"
+                            layout="slider"
+                            index={i}
+                            total={stepCount}
+                            gridCols={gridCols}
+                          />
                         </div>
-                        <p className="text-white/80 text-sm mt-3 leading-relaxed">
-                          {s.desc}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Mobile controls */}
-              <div className="md:hidden mt-4 flex items-center justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => scrollByCards("left")}
-                  className="h-9 w-9 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center backdrop-blur"
-                  aria-label="Previous steps"
-                >
-                  <FaArrowLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollByCards("right")}
-                  className="h-9 w-9 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center backdrop-blur"
-                  aria-label="Next steps"
-                >
-                  <FaArrowRight className="h-4 w-4" />
-                </button>
-              </div>
+                      ))}
+                    </Slider>
+                  </div>
+                  <div className="mt-6 flex justify-center gap-3">
+                    <button
+                      type="button"
+                      aria-label="Previous admission steps"
+                      onClick={() => sliderRef.current?.slickPrev()}
+                      className="h-10 w-10 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur transition-colors"
+                    >
+                      <FaChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Next admission steps"
+                      onClick={() => sliderRef.current?.slickNext()}
+                      className="h-10 w-10 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur transition-colors"
+                    >
+                      <FaChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+                  {steps.map((s, i) => (
+                    <StepTimelineColumn
+                      key={s.stepLabel}
+                      step={s}
+                      layout="grid"
+                      index={i}
+                      total={stepCount}
+                      gridCols={gridCols}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 }
-
