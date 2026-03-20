@@ -23,6 +23,8 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/mbbs/abroad/russia/campaign/") ||
     pathname === "/mbbs/abroad/georgia/campaign" ||
     pathname?.startsWith("/mbbs/abroad/georgia/campaign/") ||
+    pathname === "/mbbs/abroad/kazakhstan/campaign" ||
+    pathname?.startsWith("/mbbs/abroad/kazakhstan/campaign/") ||
     pathname === "/thankyou";
 
   if (excludeLayout) {

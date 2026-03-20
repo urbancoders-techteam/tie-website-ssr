@@ -75,17 +75,19 @@ export default function OverviewSection({ overviewContent, testimonials, country
               )}
             </div>
 
-            <button
+            {overviewContent.fourth != null && overviewContent.fourth !== "" && (
+              <button
               type="button"
               onClick={toggleShowMore}
-              className="mt-4 sm:mt-6 inline-flex items-center gap-2 rounded-lg bg-[#00999E] px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-[#007a7f] transition-colors"
-            >
-              {showMore ? "Show Less" : "Show More"}
-              <FaChevronRight
-                className={`h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform ${showMore ? "rotate-90" : ""}`}
-                aria-hidden
-              />
-            </button>
+                className="mt-4 sm:mt-6 inline-flex items-center gap-2 rounded-lg bg-[#00999E] px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-[#007a7f] transition-colors"
+              >
+                {showMore ? "Show Less" : "Show More"}
+                <FaChevronRight
+                  className={`h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform ${showMore ? "rotate-90" : ""}`}
+                  aria-hidden
+                />
+              </button>
+            )}
           </div>
 
           <div className="lg:col-span-1 relative testimonial-slider-overview min-h-[360px] sm:min-h-[400px] lg:min-h-[420px] [&_.slick-dots]:bottom-[-28px] [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
