@@ -36,6 +36,8 @@ const fetchEvents = async (): Promise<EventData[]> => {
       next: { revalidate: 60 },
     });
 
+    console.log('res', res)
+
     const json = await res.json();
     return (json?.data || [])?.map((item: any) => ({
       title: item.title,
