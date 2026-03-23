@@ -55,30 +55,6 @@ export const KAZAKHSTAN_OVERVIEW_CONTENT = {
 };
 
 // ---------------- Testimonials ----------------
-export const KAZAKHSTAN_TESTIMONIALS = [
-  {
-    name: "Aarav Mehta",
-    location: "Mumbai",
-    quote:
-      "I had a very positive experience with Taksheela while planning my MBBS in Kazakhstan. The counsellors explained English-medium options, fee structure, and documentation step by step. They helped me shortlist Astana Medical University and supported me until I received my admission letter.",
-    university: "ASTANA MEDICAL UNIVERSITY, KAZAKHSTAN",
-  },
-  {
-    name: "Priya Nair",
-    location: "Delhi",
-    quote:
-      "From university selection to visa guidance, Taksheela kept everything organised. I liked their honest advice on NEET requirements and what to expect after graduation. I am now studying at Kazakh National Medical University and feel well prepared for the journey ahead.",
-    university: "KAZAKH NATIONAL MEDICAL UNIVERSITY, KAZAKHSTAN",
-  },
-  {
-    name: "Karthik Reddy",
-    location: "Bangalore",
-    quote:
-      "The team maintained clear communication with my parents and me throughout the process. They helped us prepare documents on time and answered all our questions about hostel, food, and life in Kazakhstan. I would recommend Taksheela to anyone considering MBBS abroad.",
-    university: "SEMEY STATE MEDICAL UNIVERSITY, KAZAKHSTAN",
-  },
-];
-
 export const KAZAKHSTAN_WHAT_STUDENTS_SAY_INTRO = (
   <>
     Over the years, <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> has supported many Indian students exploring{" "}
@@ -87,11 +63,34 @@ export const KAZAKHSTAN_WHAT_STUDENTS_SAY_INTRO = (
   </>
 );
 
+export const KAZAKHSTAN_TESTIMONIALS = [
+  {
+    name: "Aditya Malhotra",
+    location: "Delhi",
+    university: "ASTANA MEDICAL UNIVERSITY, KAZAKHSTAN",
+    quote:
+      "My journey with Taksheela Institute of Education (TIE) has been extremely well-managed and stress-free. From the very beginning, their team guided me step-by-step—right from selecting the right university to completing all the formalities. The entire process was smooth, transparent, and professionally handled. I always felt supported and informed at every stage. I would confidently recommend TIE to any student planning to pursue MBBS abroad.",
+  },
+    {
+    name: "Rohan Mehta",
+    location: "Mumbai",
+    university: "Al Farabi Kazakh National University, Kazakhstan",
+    quote:
+      "I would like to sincerely thank Taksheela Institute of Education for their consistent support and expert guidance throughout my admission process. From shortlisting universities to visa processing, everything was handled in a clear and professional manner. Their structured approach and transparency helped me secure my MBBS admission at Al Farabi Kazakh National University without any confusion or delays. The entire experience with TIE has been very reassuring.",
+  },
+  {
+    name: "Kritika Jain",
+    location: "Delhi",
+    university: "South Kazakh Medical Academy, Kazakhstan",
+    quote:
+      "My experience with Taksheela Institute of Education (TIE) has been truly positive and smooth. They supported me through every stage—from choosing the right country and university to completing my admission and travel arrangements. Whether it was visa assistance, accommodation guidance, or financial planning, everything was handled efficiently. The team was always approachable and supportive, making my MBBS abroad journey comfortable and hassle-free.",
+  },
+];
+
 // ---------------- Quick Facts ----------------
 export const KAZAKHSTAN_QUICK_FACTS_INTRO = (
   <>
-    Explore key facts about studying <span className="text-[#5dd4d9] font-bold">MBBS in Kazakhstan</span> for Indian students with{" "}
-    <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>. Our advisors help you understand eligibility, intakes, costs, and university choices before you apply.
+    Get a quick overview of studying <span className="text-[#00999E] font-bold">MBBS in Kazakhstan</span> with guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education (TIE)</span>.
   </>
 );
 
@@ -100,7 +99,7 @@ export const KAZAKHSTAN_QUICK_FACTS = [
     icon: "FaUserGraduate",
     iconBg: "bg-[#bfdbfe]",
     iconColor: "text-[#1e40af]",
-    title: "Students",
+    title: "Number of Indian Students",
     desc: (
       <>
         Kazakhstan hosts a growing community of <span className="text-[#00999E] font-bold">international medical students</span>, including many from India, in English-medium programs across major cities.
@@ -283,6 +282,14 @@ export const KAZAKHSTAN_ELIGIBILITY_CRITERIA = [
 ];
 
 // ---------------- Admission Process Steps ----------------
+/** Intro paragraph for Admission Process section (replaces default copy when passed to AdmissionProcessSection). */
+export const KAZAKHSTAN_ADMISSION_PROCESS_INTRO = (
+  <>
+    The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in Kazakhstan</span> is simple and streamlined with{" "}
+    <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education (TIE)</span>:
+  </>
+);
+
 export const KAZAKHSTAN_ADMISSION_STEPS = [
   {
     stepLabel: "Step 1",
@@ -334,13 +341,7 @@ export const KAZAKHSTAN_ADMISSION_STEPS = [
   },
 ];
 
-/** Intro paragraph for Admission Process section (replaces default copy when passed to AdmissionProcessSection). */
-export const KAZAKHSTAN_ADMISSION_PROCESS_INTRO = (
-  <>
-    The admission process for <span className="text-[#5dd4d9] font-bold">MBBS in Kazakhstan</span> is simple and streamlined with{" "}
-    <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education (TIE)</span>:
-  </>
-);
+
 
 // ---------------- Documents Required ----------------
 export const KAZAKHSTAN_DOCUMENTS_INTRO = (

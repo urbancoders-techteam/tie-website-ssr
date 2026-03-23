@@ -26,7 +26,8 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function WhatStudentsSaySection({ testimonials, introParagraph }: WhatStudentsSaySectionProps) {
+export default function 
+WhatStudentsSaySection({ testimonials, introParagraph }: WhatStudentsSaySectionProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -83,27 +84,27 @@ export default function WhatStudentsSaySection({ testimonials, introParagraph }:
                 key={index}
                 className="snap-start shrink-0 w-[min(100%,320px)] sm:w-[390px]"
               >
-                <div className="rounded-2xl bg-white shadow-lg overflow-hidden border border-gray-100">
+                <div className="rounded-2xl bg-white shadow-lg overflow-hidden border border-gray-100 min-h-[300px] max-h-[300px] flex flex-col">
                   {/* Upper: gradient + quote */}
-                  <div className="relative bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] px-5 py-6 min-h-[140px] flex items-center">
+                  <div className="relative bg-gradient-to-br from-[#0b1b1c] via-[#0a3d40] to-[#00999E] px-5 py-6 min-h-[190px] max-h-[190px] flex items-start overflow-y-auto">
                     <span
                       className="absolute left-3 top-2 text-white/30 text-4xl font-serif leading-none"
                       aria-hidden
                     >
                       &quot;
                     </span>
-                    <span
-                      className="absolute right-3 bottom-2 text-white/30 text-4xl font-serif leading-none"
-                      aria-hidden
-                    >
-                      &quot;
-                    </span>
-                    <p className="relative text-white text-sm leading-relaxed line-clamp-4 pr-2">
+                    <p className="relative text-white text-sm leading-relaxed pr-2 break-words whitespace-pre-line">
                       {t.quote}
+                      <span
+                        className="ml-1 text-white/30 text-3xl font-serif leading-none align-[-0.2em]"
+                        aria-hidden
+                      >
+                        &quot;
+                      </span>
                     </p>
                   </div>
                   {/* Lower: white + avatar, name, university */}
-                  <div className="px-5 py-4 flex items-center gap-3 bg-white">
+                  <div className="px-5 py-4 flex items-center gap-3 bg-white mt-auto">
                     <div className="w-12 h-12 rounded-full bg-[#e0f7f8] text-[#00999E] font-bold text-sm flex items-center justify-center shrink-0">
                       {getInitials(t.name)}
                     </div>
