@@ -1,24 +1,25 @@
 import { imageBaseUrl } from "@/utils/config";
 
-// -------------------- University images (aligned with mbbs country listing) --------------------
-const uz1 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz1.png`;
-const uz2 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz2.png`;
-const uz3 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz3.png`;
-const uz4 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz4.png`;
-const uz5 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz5.png`;
-const uz6 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz6.png`;
-const uz7 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz7.png`;
-const uz8 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz8.png`;
-const uz9 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz9.png`;
-const uz10 = `${imageBaseUrl}mbbsCollege/uzbekistan/uz10.png`;
+// ---------------------- University Images ----------------------
+const tma = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/tma.png`;
+const ssmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/ssmi.webp`;
+const asmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/asmi.png`;
+const bsmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/bsmi.webp`;
+const ksmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/ksmi.png`;
+const fsumf = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/fsu.jpeg`;
+const nsmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/nsmi.webp`;
+const tsumf = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/tsmu.webp`;
+const usumf = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/usu.webp`;
+const tpmi = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/university/tpmi.webp`;
+
 
 // ---------------- Hero (campaign landing) ----------------
 export const UZBEKISTAN_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
-  title: "Study MBBS in Uzbekistan with expert guidance",
+  title: "MBBS in Uzbekistan",
   titleHighlight: "Uzbekistan",
   description:
-    "Make your medical career aspirations a reality with MBBS in Uzbekistan, guided by the experts at Taksheela Institute of Education. With years of experience in international education counselling, our team helps you navigate the admission process and choose the right university for your future.",
+    "Build your medical career with confidence by pursuing MBBS in Uzbekistan, supported by expert guidance from Taksheela Institute of Education (TIE). Experience a smooth and well-planned journey towards studying medicine abroad.",
   stats: [
     { value: <span className="text-[#5dd4d9]">10+ years</span>, label: "of counselling experience" },
     { value: <span className="text-[#5dd4d9]">Trusted</span>, label: "by 1M+ aspirants" },
@@ -30,39 +31,38 @@ export const UZBEKISTAN_HERO = {
 // ---------------- Overview Content ----------------
 export const UZBEKISTAN_OVERVIEW_CONTENT = {
   first:
-    <> <span className="text-[#00999E] font-bold">MBBS (Bachelor of Medicine and Bachelor of Surgery)</span> is a globally recognised undergraduate medical degree that prepares students for careers in medicine and clinical practice. The program combines strong academic learning with hands-on <span className="text-[#00999E] font-bold">hands-on clinical training</span> to develop skilled and <span className="text-[#00999E] font-bold">ethical medical professionals</span>.</>,
+    <>Uzbekistan has become a preferred destination for Indian students looking for affordable and English-medium MBBS programs abroad. The course is typically structured over 6 years, including academic learning and compulsory clinical training, ensuring a balanced approach to theory and practical exposure.</>,
   second:
-    <> Uzbekistan has emerged as a preferred destination for Indian students pursuing MBBS abroad, offering <span className="text-[#00999E] font-bold">affordable tuition</span>, <span className="text-[#00999E] font-bold">English-medium programs</span> at many institutions, and a <span className="text-[#00999E] font-bold">student-friendly environment</span> in cities such as Tashkent and Samarkand.</>,
+    <>Medical universities in Uzbekistan operate under strict regulations set by national authorities such as the Ministry of Health and higher education bodies. This ensures a well-structured and globally aligned curriculum for international students.</>,
   third:
-    <> Medical universities in Uzbekistan are increasingly recognised globally, with many listed in <span className="text-[#00999E] font-bold">WDOMS</span> and pathways toward eligibility for licensing exams when combined with <span className="text-[#00999E] font-bold">NMC</span> guidelines for Indian students. Degrees align with international standards alongside practical hospital training.</>,
+    <>Many universities are recognised by international organisations such as <span className="text-[#00999E] font-bold">WHO and FAIMER</span>, making graduates eligible to appear for licensing exams in India, subject to <span className="text-[#00999E] font-bold">NMC guidelines</span>. With support from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can select recognised universities that meet global standards.</>,
   fourth:
-    <> At <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, we help students confidently pursue their <span className="text-[#00999E] font-bold">MBBS in Uzbekistan</span> by guiding them through university selection, <span className="text-[#00999E] font-bold">admission procedures</span>, <span className="text-[#00999E] font-bold">documentation</span>, and <span className="text-[#00999E] font-bold">visa support</span>—ensuring a smooth and <span className="text-[#00999E] font-bold">transparent journey</span> toward a <span className="text-[#00999E] font-bold">successful medical career</span>.</>,
-  fifth:
-    <> Students graduating from NMC-recognised universities abroad, including in Uzbekistan, are eligible to appear for licensing examinations in India such as <span className="text-[#00999E] font-bold">FMGE/NExT</span>, subject to the applicable <span className="text-[#00999E] font-bold">regulations</span>.</>,
+    <>The medium of instruction in most universities is English, making it easier for Indian students to follow the curriculum. However, students are also introduced to local languages like Uzbek or Russian to communicate effectively during clinical training.</>,
+  fifth: "",
 };
 
 // ---------------- Testimonials ----------------
 export const UZBEKISTAN_TESTIMONIALS = [
   {
-    name: "Aarav Mehta",
-    location: "Indore",
+    name: "Piya Reddy",
+    location: "Hyderabad",
     quote:
-      "Taksheela helped me shortlist the right Uzbekistan university for my budget and NEET profile. The team was clear about documents and timelines, and I always knew what to do next.",
-    university: "TASHKENT MEDICAL ACADEMY, UZBEKISTAN",
+      "Partnering with Taksheela Institute of Education made my MBBS abroad journey simple and well-planned. From understanding the process to settling into Andijan State Medical Institute, every step felt guided and stress-free.",
+    university: "Andijan State Medical Institute",
   },
   {
-    name: "Priya Nair",
-    location: "Kochi",
+    name: "Riya Sharma",
+    location: "Pune, Maharashtra",
     quote:
-      "From counselling to visa guidance, the process was organised. I appreciated the regular follow-ups and honest advice about living costs and course structure in Uzbekistan.",
-    university: "SAMARKAND STATE MEDICAL INSTITUTE, UZBEKISTAN",
+      "I was exploring different options for studying MBBS abroad when I came across Taksheela Institute of Education. From the very first interaction, their counselling team guided me with clarity and honesty, helping me understand my options beyond India. Today, as I begin my journey at Samarkand State Medical University, I feel confident about my decision. TIE supported me throughout-from counselling to application-making the entire process smooth and stress-free. I'm excited to move closer to my dream of becoming a doctor.",
+    university: "Samarkand State Medical University",
   },
   {
-    name: "Karan Singh",
-    location: "Chandigarh",
+    name: "Aarav Khan",
+    location: "Delhi, India",
     quote:
-      "The admission support was smooth and transparent. TIE answered my parents' questions patiently and helped us prepare everything without last-minute stress.",
-    university: "ANDIJAN STATE MEDICAL INSTITUTE, UZBEKISTAN",
+      "Choosing Taksheela Institute of Education (TIE) for my MBBS abroad journey turned out to be one of the best decisions I've made. The team clearly explained every step-from eligibility to budgeting-which made the entire process much easier to understand. Studying at Bukhara State Medical University has been a rewarding experience so far. The learning environment is engaging, and I've been able to adjust to a completely new country and academic system with confidence. Thanks to the support from TIE, I feel more prepared and motivated than I initially expected.",
+    university: "Bukhara State Medical University",
   },
 ];
 
@@ -79,7 +79,7 @@ export const UZBEKISTAN_WHAT_STUDENTS_SAY_INTRO = (
 // ---------------- Quick Facts ----------------
 export const UZBEKISTAN_QUICK_FACTS_INTRO = (
   <>
-    Explore the essential details about studying <span className="text-[#5dd4d9] font-bold">MBBS in Uzbekistan</span> for Indian students with the expert guidance of <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>. Our advisors help you understand the admission process, eligibility, costs, and university options before you begin your medical journey abroad.
+    Here&apos;s a quick snapshot for students planning to study MBBS in Uzbekistan with guidance from <span className="text-[#5dd4d9] font-bold">Taksheela Institute of Education</span>.
   </>
 );
 
@@ -88,57 +88,57 @@ export const UZBEKISTAN_QUICK_FACTS = [
     icon: "FaUserGraduate",
     iconBg: "bg-[#bfdbfe]",
     iconColor: "text-[#1e40af]",
-    title: "Students",
-    desc: "A growing number of Indian students choose Uzbekistan for affordable, English-friendly medical programs and a welcoming study environment.",
+    title: "Number of Indian Students",
+    desc: "16,000+ (approx.)",
   },
   {
     icon: "FaClock",
     iconBg: "bg-[#bfdbfe]",
     iconColor: "text-[#1e40af]",
     title: "Course Duration",
-    desc: "The MBBS program in Uzbekistan typically spans 5–6 years, including academic study and clinical training as per university curriculum.",
+    desc: "6 years (including internship)",
   },
   {
     icon: "FaCalendarAlt",
     iconBg: "bg-[#fed7aa]",
     iconColor: "text-[#c2410c]",
-    title: "Admission Intakes",
-    desc: "Most universities offer a primary intake in September; some may offer an additional spring intake depending on the institution.",
+    title: "Intakes",
+    desc: "September (primary) & February (secondary)",
   },
   {
     icon: "FaClipboardCheck",
     iconBg: "bg-[#d1fae5]",
     iconColor: "text-[#047857]",
     title: "Eligibility",
-    desc: "Students must have at least 50% in Physics, Chemistry, and Biology in 10+2, be 17 years or older, and qualify NEET as per current regulations.",
+    desc: "Minimum 50% in PCB (40% for reserved categories), 17+ years",
   },
   {
     icon: "FaBook",
     iconBg: "bg-[#e0e7ff]",
     iconColor: "text-[#3730a3]",
     title: "Medium of Instruction",
-    desc: "Many universities offer English-medium MBBS; local language exposure may be included for clinical interactions.",
+    desc: "English (with local language exposure)",
   },
   {
     icon: "FaRubleSign",
     iconBg: "bg-[#fce7f3]",
     iconColor: "text-[#9d174d]",
-    title: "Tuition Range",
-    desc: "Annual tuition often falls in an affordable range compared to Indian private colleges, typically roughly ₹1.5 lakh–₹4 lakh depending on the university.",
+    title: "Tuition Fees",
+    desc: "₹2.7 – ₹4.5 Lakhs per year",
   },
   {
     icon: "FaGlobe",
     iconBg: "bg-[#d1fae5]",
     iconColor: "text-[#047857]",
     title: "Cost of Living",
-    desc: "Living costs in Uzbekistan are generally moderate, with expenses varying by city and lifestyle.",
+    desc: "Budget-friendly, varies by city and lifestyle",
   },
   {
     icon: "FaUniversity",
     iconBg: "bg-[#fef3c7]",
     iconColor: "text-[#b45309]",
-    title: "Recognition",
-    desc: "Choose universities aligned with NMC guidelines and global listings (e.g. WDOMS) with TIE's counselling support.",
+    title: "Accreditations",
+    desc: "WHO, NMC, FAIMER, UNESCO, WDOMS",
   },
 ];
 
@@ -151,7 +151,7 @@ export const UZBEKISTAN_QUICK_FACTS_SECTION = {
 // ---------------- Why Choose Uzbekistan ----------------
 export const UZBEKISTAN_WHY_CHOOSE_INTRO = (
   <>
-    Pursuing <span className="text-[#00999E] font-bold">MBBS in Uzbekistan</span> is an attractive option for Indian students seeking quality medical education at a reasonable cost. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can explore reputed Uzbek medical universities that offer strong <span className="text-[#00999E] font-bold">academic training</span>, <span className="text-[#00999E] font-bold">modern facilities</span>, and <span className="text-[#00999E] font-bold">global recognition pathways</span>. Here are some key reasons why Uzbekistan is gaining popularity among aspiring doctors.
+    Uzbekistan is a preferred option for Indian students due to affordability, quality education, and globally aligned medical programs. With support from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, students can select the right university with confidence.
   </>
 );
 
@@ -160,50 +160,50 @@ export const UZBEKISTAN_WHY_CHOOSE_CARDS = [
     icon: "FaRubleSign",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Affordable Tuition Fees",
-    desc: "Compared to private medical colleges in India, many Uzbekistan universities offer competitive annual fees, making the total cost of the program more accessible for middle-income families.",
+    title: "Global Recognition & Accreditation",
+    desc: "Medical universities in Uzbekistan follow internationally accepted standards and are recognised by global medical bodies. This ensures that graduates can pursue further opportunities globally, including India, after qualifying required exams.",
   },
   {
     icon: "FaUniversity",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "NMC-Aware Counselling",
-    desc: "Taksheela helps you evaluate universities with an eye on India's National Medical Commission (NMC) norms so you can plan eligibility for licensing exams after graduation.",
+    title: "Affordable Education & Living",
+    desc: "Compared to private medical colleges in India, Uzbekistan offers cost-effective MBBS programs without compromising on education quality. With guidance from TIE, students can find the best universities within their budget.",
   },
   {
     icon: "FaClipboardCheck",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Simple and Transparent Admission Process",
-    desc: "With structured guidance, the admission process is straightforward—focused on academic eligibility and complete documentation rather than capitation fees.",
+    title: "English-Medium Programs",
+    desc: "Most universities offer MBBS courses entirely in English, reducing language barriers for Indian students. Basic local language training is provided to help during clinical interactions.",
   },
   {
     icon: "FaHospital",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Clinical Training",
-    desc: "Programs combine theoretical learning with hospital exposure so students build practical skills alongside classroom teaching.",
+    title: "Strong Clinical Exposure",
+    desc: "Students gain hands-on experience through clinical training in affiliated hospitals. This helps in developing practical skills and real-world medical understanding.",
   },
   {
     icon: "FaHospital",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "English-Medium Options",
-    desc: "Several institutions offer English-taught MBBS tracks, helping Indian students adapt academically while building local language familiarity over time.",
+    title: "Modern Infrastructure",
+    desc: "Universities are equipped with advanced labs, simulation centres, and updated learning resources, ensuring students receive quality education aligned with global standards.",
   },
   {
     icon: "FaHospital",
     iconBg: "bg-[#e0f7f8]",
     iconColor: "text-[#00999E]",
-    title: "Supportive Student Journey",
-    desc: "Taksheela Institute of Education provides counselling, shortlisting, and admission assistance so you can start your MBBS journey in Uzbekistan with clarity.",
+    title: "Safe & Student-Friendly Environment",
+    desc: "Uzbekistan offers a comfortable and secure environment for international students. Cultural similarities, availability of Indian food, and supportive communities make it easier to adapt.",
   },
 ];
 
 // ---------------- Eligibility Criteria ----------------
 export const UZBEKISTAN_ELIGIBILITY_INTRO = (
   <>
-    Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Uzbekistan</span> must meet certain academic and regulatory requirements. With guidance from <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span>, Indian students can clearly understand these eligibility conditions and prepare their applications accordingly. These requirements reflect common admission standards of Uzbek medical universities as well as India&apos;s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> norms for studying abroad.
+    Students planning to pursue <span className="text-[#00999E] font-bold">MBBS in Uzbekistan</span> must meet the following requirements.
   </>
 );
 
@@ -211,20 +211,27 @@ export const UZBEKISTAN_ELIGIBILITY_CRITERIA = [
   {
     title: "Academic Background",
     titleHighlight: true,
-    desc: "Students must have a scientific senior secondary education (10+2) with physics, chemistry, and biology (PCB) as the core subjects.",
+    desc: "Candidates must have completed 10+2 in the science stream with Physics, Chemistry, and Biology.",
   },
   {
-    title: "Academic Qualifications",
-    desc: "Students from the general category must have scored at least 50% in PCB, and the reserved categories (SC/ST/OBC) are eligible for admission at 40% aggregate.",
-  },
-  {
-    title: "Age Limit",
+    title: "Academic Qualification",
     titleHighlight: true,
-    desc: "The minimum age is typically 17 years (as of 31st December of the admission year); specific universities may publish additional rules.",
+    desc: "A minimum of 50% aggregate in PCB is required for general category students, while 40% is applicable for reserved categories.",
   },
   {
-    title: "NEET Qualifications",
-    desc: "Qualification of the NEET-UG (per validity rules) is mandatory for Indian medical students who wish to practise their profession in India after graduation.",
+    title: "Age Requirement",
+    titleHighlight: true,
+    desc: "Applicants must be at least 17 years old by 31st December of the admission year.",
+  },
+  {
+    title: "NEET Qualification",
+    titleHighlight: true,
+    desc: "Qualifying NEET is mandatory as per Indian regulations. Students must meet the minimum cutoff score of the respective year.",
+  },
+  {
+    title: "Documentation",
+    titleHighlight: true,
+    desc: "Students must submit all required documents as per university guidelines. This includes translation and legalisation procedures. Taksheela Institute of Education (TIE) provides complete assistance in document preparation and verification to ensure a smooth admission process.",
   },
 ];
 
@@ -232,195 +239,216 @@ export const UZBEKISTAN_ELIGIBILITY_CRITERIA = [
 export const UZBEKISTAN_ADMISSION_STEPS = [
   {
     stepLabel: "Step 1",
-    title: "Personalised Counselling",
-    desc: "Our experienced advisors at Taksheela begin with a counselling session to understand your academic background, career goals, and preferences. Based on this discussion, we guide you on the most suitable pathway for pursuing MBBS in Uzbekistan.",
+    title: "Personalised Counselling Session",
+    desc: "Your journey begins with a one-on-one counselling session at Taksheela Institute of Education, where our experts understand your academic background, career goals, and preferred destination to guide you in the right direction.",
     icon: "FaUserFriends",
   },
   {
     stepLabel: "Step 2",
-    title: "Profile Assessment and University Selection",
-    desc: "Our team carefully reviews your academic profile, eligibility, and budget to help you shortlist universities that match your goals and compliance expectations.",
+    title: "Profile Assessment & University Shortlisting",
+    desc: "At TIE, your profile is carefully evaluated based on academics, NEET score, budget, and preferences. Based on this, we shortlist the most suitable NMC-recognised universities for you.",
     icon: "FaListAlt",
   },
   {
     stepLabel: "Step 3",
-    title: "Application and Documentation",
-    desc: "Once the university is selected, Taksheela assists you with the complete application process. We help organise, verify, and prepare the required documents before submitting the application to the chosen university.",
+    title: "Application Submission",
+    desc: "Our admissions team handles the complete application process on your behalf. From filling out forms to submitting documents (including translations), everything is managed seamlessly.",
     icon: "FaFileSignature",
+  },
+  {
+    stepLabel: "Step 4",
+    title: "Admission Letter Issuance",
+    desc: "Once your application is reviewed and approved by the university, you will receive an official admission letter confirming your MBBS seat.",
+    icon: "FaCheckCircle",
+  },
+  {
+    stepLabel: "Step 5",
+    title: "Fee Payment & Document Legalisation",
+    desc: "After confirmation, the initial tuition fee is paid as per university guidelines. Simultaneously, Taksheela Institute of Education (TIE) assists in getting your documents properly apostilled through the Ministry of External Affairs (MEA), India.",
+    icon: "FaPassport",
+  },
+  {
+    stepLabel: "Step 6",
+    title: "Visa Processing",
+    desc: "Our dedicated visa team supports you throughout the visa process, including obtaining the invitation letter, completing visa formalities, and ensuring compliance with embassy requirements.",
+    icon: "FaPassport",
+  },
+  {
+    stepLabel: "Step 7",
+    title: "Pre-Departure Assistance",
+    desc: "Before departure, TIE provides complete support including travel arrangements, checklist guidance, and a detailed pre-departure briefing to prepare you for your journey.",
+    icon: "FaPlaneDeparture",
+  },
+  {
+    stepLabel: "Step 8",
+    title: "Post-Arrival Support",
+    desc: "After reaching Uzbekistan, our local support team ensures a smooth transition by assisting with airport pickup, accommodation, and settling into university life.",
+    icon: "FaHandsHelping",
   },
 ];
 
 // ---------------- Documents Required ----------------
 export const UZBEKISTAN_DOCUMENTS_INTRO = (
   <>
-    To apply for <span className="text-[#00999E] font-bold">MBBS in Uzbekistan</span>, students must submit a set of academic,
-    identification, and visa-related documents that comply with the
-    requirements of the university and relevant authorities,
-    including India&apos;s <span className="text-[#00999E] font-bold">National Medical Commission (NMC)</span> norms for overseas medical education. Here is the list of required documents.
+    To ensure a smooth admission process, students must prepare and organise all necessary documents in advance. <span className="text-[#00999E] font-bold">Taksheela Institute of Education</span> guides students at every step to ensure proper documentation and verification.
+    <br />
+    <br />
+    <span className="font-semibold text-gray-900">Essential documents include:</span>
+    <br />
+    <br />
+    All documents must be submitted in the required format, translated (if needed), and properly attested as per university and government regulations. With the assistance of <span className="text-[#00999E] font-bold">TIE</span>, students can complete this process without confusion or delays.
   </>
 );
 
 export const UZBEKISTAN_DOCUMENTS_REQUIRED = [
   { title: "10th & 12th Mark Sheets", icon: "FaFileAlt" },
-  { title: "NEET Score Card (per validity rules)", icon: "FaStethoscope" },
-  { title: "Valid Passport (adequate validity for visa)", icon: "FaPassport" },
-  { title: "5-10 Passport-sized Photographs (35mm x 45mm)", icon: "FaCamera" },
+  { title: "NEET scorecard (valid as per current guidelines)", icon: "FaStethoscope" },
+  { title: "Valid passport (minimum 6 months validity)", icon: "FaPassport" },
+  { title: "Birth certificate", icon: "FaFileAlt" },
+  { title: "Passport-size photographs (as per specifications)", icon: "FaCamera" },
+  { title: "Medical test reports (including required health screenings)", icon: "FaFileAlt" },
+  { title: "Medical fitness certificate", icon: "FaFileAlt" },
+  { title: "University admission letter", icon: "FaFileAlt" },
+  { title: "Official invitation letter", icon: "FaFileAlt" },
+  { title: "First-year tuition fee payment receipt (if applicable)", icon: "FaFileAlt" },
 ];
 
 // ---------------- Universities ----------------
 export const UZBEKISTAN_UNIVERSITIES = [
   {
     id: "tma",
-    name: "Tashkent Medical Academy",
-    founded: "1935",
-    city: "Tashkent",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz1,
-    imageKey: uz1,
+    name: "Tashkent Medical Academy (Termez Branch)",
+    founded: "2005 (Branch) / 1919 (Main)",
+    city: "Termez",
+    fees: "$3,500 – $5,000",
+    logoIndex: tma,
+    imageKey: tma,
   },
   {
     id: "ssmi",
     name: "Samarkand State Medical Institute",
     founded: "1930",
     city: "Samarkand",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz2,
-    imageKey: uz2,
+    fees: "$3,500 – $5,500",
+    logoIndex: ssmi,
+    imageKey: ssmi,
   },
   {
     id: "asmi",
     name: "Andijan State Medical Institute",
     founded: "1955",
     city: "Andijan",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz3,
-    imageKey: uz3,
+    fees: "$3,000 – $4,500",
+    logoIndex: asmi,
+    imageKey: asmi,
   },
   {
     id: "bsmi",
     name: "Bukhara State Medical Institute",
-    founded: "1995",
+    founded: "1990",
     city: "Bukhara",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz4,
-    imageKey: uz4,
+    fees: "$3,500 – $5,000",
+    logoIndex: bsmi,
+    imageKey: bsmi,
   },
   {
     id: "ksmi",
-    name: "Karakalpak State Medical Institute",
-    founded: "1972",
+    name: "Karakalpak State Medical Institute / Karakalpak State University (Medical Faculty)",
+    founded: "~1976",
     city: "Nukus",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz5,
-    imageKey: uz5,
+    fees: "$3,000 – $4,000",
+    logoIndex: ksmi,
+    imageKey: ksmi,
   },
   {
     id: "fsumf",
-    name: "Fergana State University Medical Faculty",
+    name: "Fergana State University (Medical Faculty)",
     founded: "1930",
     city: "Fergana",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz6,
-    imageKey: uz6,
+    fees: "$3,000 – $4,000",
+    logoIndex: fsumf,
+    imageKey: fsumf,
   },
   {
     id: "nsmi",
     name: "Namangan State Medical Institute",
-    founded: "1993",
+    founded: "2019",
     city: "Namangan",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz7,
-    imageKey: uz7,
+    fees: "$3,000 – $4,500",
+    logoIndex: nsmi,
+    imageKey: nsmi,
   },
   {
     id: "tsumf",
-    name: "Termez State University Medical Faculty",
-    founded: "1992",
-    city: "Termez",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz8,
-    imageKey: uz8,
+    name: "Tashkent State Medical University / Tashkent Medical Academy (Main Campus)",
+    founded: "1919",
+    city: "Tashkent",
+    fees: "$4,000 – $6,000",
+    logoIndex: tsumf,
+    imageKey: tsumf,
   },
   {
     id: "usumf",
-    name: "Urgench State University Medical Faculty",
+    name: "Urgench State University (Medical Faculty)",
     founded: "1992",
     city: "Urgench",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz9,
-    imageKey: uz9,
+    fees: "$3,000 – $4,000",
+    logoIndex: usumf,
+    imageKey: usumf,
   },
   {
     id: "tpmi",
     name: "Tashkent Pediatric Medical Institute",
     founded: "1972",
     city: "Tashkent",
-    fees: "₹1,50,000 – ₹3,75,000/year (approx.)",
-    logoIndex: uz10,
-    imageKey: uz10,
+    fees: "$3,500 – $5,500",
+    logoIndex: tpmi,
+    imageKey: tpmi,
   },
 ];
 
 // ---------------- FAQ ----------------
 export const UZBEKISTAN_FAQ_ITEMS = [
   {
-    question: "What hostel and food facilities are available for Indian students in Uzbekistan?",
+    question: "Is Indian food available in Uzbekistan?",
     answer:
-      "Many universities offer hostel accommodation for international students with basic amenities. Indian food may be available in larger cities or through private mess options. Taksheela Institute of Education helps you evaluate housing and dining choices during university selection.",
-    highlightTerms: ["hostel accommodation", "Indian food", "Taksheela Institute of Education"],
-  },
-  {
-    question: "What is the approximate cost of studying MBBS in Uzbekistan?",
-    answer:
-      "Tuition and living costs are generally affordable compared to Indian private medical colleges. Exact fees vary by university and city; Taksheela helps you compare options that fit your budget.",
-    highlightTerms: ["affordable", "tuition", "Taksheela"],
-  },
-  {
-    question: "Is Uzbekistan safe for Indian students pursuing MBBS?",
-    answer:
-      "Uzbekistan welcomes international students, and universities often provide campus support services. Taksheela also shares pre-departure guidance so students and parents know what to expect.",
-    highlightTerms: ["international students", "campus support", "Taksheela"],
-  },
-  {
-    question: "Is MBBS in Uzbekistan taught in English?",
-    answer:
-      "Many programs offer English-medium instruction for international students. Some clinical rotations may introduce local language basics for patient communication.",
-    highlightTerms: ["English-medium", "international students"],
+      "Yes, Indian students will find familiar food options in Uzbekistan, especially in major cities like Tashkent. There are Indian restaurants, grocery stores, and campus food facilities catering to Indian tastes. With the guidance of Taksheela Institute of Education, students are also assisted in choosing universities where Indian food availability is convenient, making the transition smoother.",
+    highlightTerms: ["Indian food", "Tashkent", "Taksheela Institute of Education"],
   },
   {
     question: "What is the duration of MBBS in Uzbekistan?",
     answer:
-      "The program typically lasts about 5–6 years depending on the university curriculum, including academic study and clinical training.",
-    highlightTerms: ["5–6 years", "clinical training"],
+      "The MBBS program in Uzbekistan typically spans around 6 years. This includes approximately 5 years of academic learning combined with clinical exposure, followed by a mandatory 1-year internship at affiliated hospitals. At TIE (Taksheela Institute of Education), students receive complete clarity on course structure before enrollment.",
+    highlightTerms: ["6 years", "1-year internship", "TIE"],
   },
   {
-    question: "How many Indian students study MBBS in Uzbekistan?",
+    question: "What is the age requirement for MBBS admission in Uzbekistan?",
     answer:
-      "The Indian student community in Uzbekistan has been growing as more students discover affordable, quality medical education in the region.",
-    highlightTerms: ["Indian student community", "affordable"],
+      "Students applying for MBBS in Uzbekistan must be at least 17 years old by the end of the admission year. While there is generally no strict upper age restriction, specific university policies may vary. Taksheela Institute of Education (TIE) ensures students meet all eligibility requirements before proceeding with applications.",
+    highlightTerms: ["17 years old", "Taksheela Institute of Education (TIE)"],
+  },
+  {
+    question: "What are the MBBS fees in Uzbekistan?",
+    answer:
+      "The cost of studying MBBS in Uzbekistan is considered budget-friendly for Indian students. On average, tuition fees range between USD 3,000 to USD 5,000 per year, depending on the university. Along with affordable living expenses, this makes Uzbekistan a cost-effective destination. Taksheela Institute of Education (TIE) helps students choose universities that offer the best value for their investment.",
+    highlightTerms: ["USD 3,000 to USD 5,000 per year", "budget-friendly", "TIE"],
+  },
+  {
+    question: "Is Uzbekistan safe for Indian students?",
+    answer:
+      "Yes, Uzbekistan is regarded as a safe and student-friendly country for Indian aspirants. The environment is secure, with well-managed campus facilities and accommodation options. Through TIE (Taksheela Institute of Education), students are guided towards universities and cities that ensure a comfortable and secure living experience.",
+    highlightTerms: ["safe and student-friendly", "secure", "TIE"],
   },
   {
     question: "Is an MBBS degree from Uzbekistan valid in India?",
     answer:
-      "Graduates may pursue licensing in India if their university meets NMC criteria applicable at the time of admission and graduation. After the course, graduates must clear the required exam such as FMGE or NExT per current regulations.",
-    highlightTerms: ["NMC criteria", "FMGE or NExT", "current regulations"],
+      "Yes, many medical universities in Uzbekistan follow the guidelines set by the National Medical Commission (NMC). Degrees obtained from recognised institutions are valid in India, provided students qualify the required licensing exams such as FMGE/NExT. Taksheela Institute of Education ensures students are enrolled in approved universities to safeguard their future.",
+    highlightTerms: ["National Medical Commission (NMC)", "FMGE/NExT", "approved universities"],
   },
   {
-    question: "What NEET score is required to study MBBS in Uzbekistan?",
+    question: "Is studying MBBS in Uzbekistan worth it?",
     answer:
-      "Indian students should qualify NEET-UG as required for overseas medical education and future practice in India. Cutoffs vary by year; we help you interpret eligibility in context.",
-    highlightTerms: ["NEET-UG", "overseas medical education"],
-  },
-  {
-    question: "Are hostels separate for male and female students?",
-    answer:
-      "Most universities provide separate hostel blocks or floors for male and female students with security arrangements. Availability may vary by campus.",
-    highlightTerms: ["separate hostel", "security"],
-  },
-  {
-    question: "Can I practise in India after completing MBBS in Uzbekistan?",
-    answer:
-      "Yes, subject to NMC rules and clearing the prescribed licensing examination (e.g. FMGE/NExT) as per regulations in force when you apply.",
-    highlightTerms: ["NMC rules", "FMGE/NExT"],
+      "Pursuing MBBS in Uzbekistan is a practical and rewarding option for Indian students. It offers quality education, global recognition, and modern clinical exposure at an affordable cost. With expert guidance from Taksheela Institute of Education (TIE), students can make informed decisions and build a strong medical career pathway.",
+    highlightTerms: ["quality education", "global recognition", "TIE"],
   },
 ];
