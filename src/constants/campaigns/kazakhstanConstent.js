@@ -12,6 +12,19 @@ const kz8 = `${imageBaseUrl}mbbsCollege/kazakhstan/kz8.png`;
 const kz9 = `${imageBaseUrl}mbbsCollege/kazakhstan/kz9.png`;
 const kz10 = `${imageBaseUrl}mbbsCollege/kazakhstan/kz10.png`;
 
+// ---------------------- University Images ----------------------
+const ksmu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/ksmu.jpg`;
+const amu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/amu.webp`;
+const smu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/smu.jpg`;
+const wkmu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/wkmu.jpg`;
+const skma = `${imageBaseUrl}mbbsCollege/kazakhstan/university/skma.webp`;
+const knmu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/knmu.jpg`;
+const koksu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/koksu.webp`;
+const kmu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/kmu.webp`;
+const krmu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/krmu.webp`;
+const nksu = `${imageBaseUrl}mbbsCollege/kazakhstan/university/nksu.png`;
+
+
 // Hero: use confirmed CDN asset; replace with mbbsCollege/kazakhstan/campaign/mbbs_kazakhstan.png when uploaded
 // const kazakhstanHeroImg = `${imageBaseUrl}mbbsCollege/kazakhstan/kz6.png`;
 
@@ -342,7 +355,6 @@ export const KAZAKHSTAN_ADMISSION_STEPS = [
 ];
 
 
-
 // ---------------- Documents Required ----------------
 export const KAZAKHSTAN_DOCUMENTS_INTRO = (
   <>
@@ -370,7 +382,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Karaganda",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz1,
-    imageKey: kz1,
+    imageKey: ksmu,
   },
   {
     id: "amu",
@@ -379,7 +391,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Nur-Sultan",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz2,
-    imageKey: kz2,
+    imageKey: amu,
   },
   {
     id: "ssmu",
@@ -388,7 +400,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Semey",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz3,
-    imageKey: kz3,
+    imageKey: smu,
   },
   {
     id: "wkmu",
@@ -397,7 +409,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Aktobe",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz4,
-    imageKey: kz4,
+    imageKey: wkmu,
   },
   {
     id: "skma",
@@ -406,7 +418,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Shymkent",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz5,
-    imageKey: kz5,
+    imageKey: skma,
   },
   {
     id: "knmu",
@@ -415,7 +427,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Almaty",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz6,
-    imageKey: kz6,
+    imageKey: knmu,
   },
   {
     id: "koksu",
@@ -424,7 +436,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Kokshetau",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz7,
-    imageKey: kz7,
+    imageKey: koksu,
   },
   {
     id: "kmu",
@@ -433,7 +445,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Karaganda",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz8,
-    imageKey: kz8,
+    imageKey: kmu,
   },
   {
     id: "krmu",
@@ -442,7 +454,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Almaty",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz9,
-    imageKey: kz9,
+    imageKey: krmu,
   },
   {
     id: "nksu",
@@ -451,7 +463,7 @@ export const KAZAKHSTAN_UNIVERSITIES = [
     city: "Petropavl",
     fees: "₹2,25,000 - ₹5,25,000 / year (approx.)",
     logoIndex: kz10,
-    imageKey: kz10,
+    imageKey: nksu,
   },
 ];
 
