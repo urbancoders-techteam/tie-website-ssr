@@ -60,7 +60,7 @@ export const KYRGYZSTAN_OVERVIEW_CONTENT = {
   ),
   third: (
     <>
-      Medical programs in Kyrgyzstan typically follow international standards and are aligned with <span className="text-[#00999E] font-bold"> NMC guidelines</span>. The MBBS course duration is generally 6 years, including clinical training. Degrees are recognised by organisations such as <span className="text-[#00999E] font-bold"> WHO, FAIMER, ECFMG, and UNESCO, </span> allowing students to explore global career opportunities after graduation.
+      Medical programs in Kyrgyzstan typically follow international standards and are aligned with <span className="text-[#00999E] font-bold"> NMC guidelines</span>. The MBBS course duration is generally 6 years, including clinical training. Degrees are recognised by organisations such as <span className="text-[#00999E] font-bold"> WHO, FAIMER, ECFMG, and UNESCO </span> allowing students to explore global career opportunities after graduation.
     </>
   ),
   fourth: "",
@@ -104,11 +104,9 @@ export const KYRGYZSTAN_WHAT_STUDENTS_SAY_INTRO = (
 
 export const KYRGYZSTAN_QUICK_FACTS_INTRO = (
   <>
-    Explore key details about{" "}
-    <span className="text-[#5dd4d9] font-bold">MBBS in Kyrgyzstan</span> for
-    Indian students with guidance from{" "}
+    Here&apos;s a quick snapshot for students planning to study with{" "}
     <span className="text-[#5dd4d9] font-bold">
-      Taksheela Institute of Education
+      TIE
     </span>
     .
   </>
@@ -245,7 +243,7 @@ export const KYRGYZSTAN_ELIGIBILITY_CRITERIA = [
   {
     title: "Minimum Marks",
     titleHighlight: true,
-    desc: "Generally 50% in PCB for general category and Reserved Category Minimum 40% in PCB.",
+    desc: "General Category: Minimum 50% in PCB. Reserved Category: Minimum 40% in PCB.",
   },
   {
     title: "Age Requirement",
@@ -255,7 +253,7 @@ export const KYRGYZSTAN_ELIGIBILITY_CRITERIA = [
   {
     title: "NEET Qualification",
     titleHighlight: true,
-    desc: "NEET qualification is required for Indian students planning to practise in India.",
+    desc: "A valid NEET score is required for Indian students.",
   },
 ];
 
@@ -337,6 +335,7 @@ export const KYRGYZSTAN_DOCUMENTS_REQUIRED = [
   { title: "Medical Fitness Certificate", icon: "FaFileAlt" },
   { title: "Recent Passport-size Photographs", icon: "FaCamera" },
   { title: "Official Admission/Invitation Letter from the University", icon: "FaFileAlt" },
+  { title: "Required document attestation/legalisation", icon: "FaFileAlt" },
 ];
 
 export const KYRGYZSTAN_UNIVERSITIES = [
