@@ -34,7 +34,7 @@ import { imageBaseUrl } from "@/utils/config";
 
 const KYRGYZSTAN_THANKYOU = "/mbbs/abroad/kyrgyzstan/campaign/thankyou";
 const KYRGYZSTAN_PHONE_NUMBER = "+919831241212";
-const kyrgyzstanHeroImg = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/mbbs_kyrgyzstan.png`;
+const kyrgyzstanHeroImg = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/kyrgyzstan_hero_img.png`;
 
 const KYRGYZSTAN_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },

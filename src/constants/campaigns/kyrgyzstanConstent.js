@@ -11,6 +11,19 @@ const ky8 = `${imageBaseUrl}mbbsCollege/kyrgyzstan/ky8.png`;
 const ky9 = `${imageBaseUrl}mbbsCollege/kyrgyzstan/ky9.png`;
 const ky10 = `${imageBaseUrl}mbbsCollege/kyrgyzstan/ky10.png`;
 
+
+// ---------------------- University Images ----------------------
+const ism = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/ism.jpg`;
+const ksma = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/ksma.jpg`;
+const jsu = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/jasu.webp`;
+const osu = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/osu.webp`;
+const ami = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/ami.png`;
+const imu = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/imu.png`;
+const krsu = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/krsu.webp`;
+const ksmi = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/ksmi.png`;
+const knu = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/knu.webp`;
+const ksapcs = `${imageBaseUrl}mbbsCollege/kyrgyzstan/campaign/university/ksapcs.jpg`;
+
 export const KYRGYZSTAN_HERO = {
   tagline: "Your ambition. Our expertise. Confirmed admits.",
   title: "Study MBBS in Kyrgyzstan with expert guidance",
@@ -334,7 +347,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,500 – $6,000",
     logoIndex: ky1,
-    imageKey: ky1,
+    imageKey: ism,
   },
   {
     id: "ksma",
@@ -343,7 +356,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$4,000 – $5,500",
     logoIndex: ky2,
-    imageKey: ky2,
+    imageKey: ksma,
   },
   {
     id: "jsu",
@@ -352,7 +365,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Jalal-Abad",
     fees: "$3,000 – $4,000",
     logoIndex: ky3,
-    imageKey: ky3,
+    imageKey: jsu,
   },
   {
     id: "osu",
@@ -361,7 +374,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Osh",
     fees: "$3,500 – $4,500",
     logoIndex: ky4,
-    imageKey: ky4,
+    imageKey: osu,
   },
   {
     id: "ami",
@@ -370,7 +383,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Kant",
     fees: "$3,000 – $4,000",
     logoIndex: ky5,
-    imageKey: ky5,
+    imageKey: ami,
   },
   {
     id: "imu",
@@ -379,7 +392,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,500 – $5,000",
     logoIndex: ky6,
-    imageKey: ky6,
+    imageKey: imu,
   },
   {
     id: "krsu",
@@ -388,7 +401,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,500 – $4,500",
     logoIndex: ky7,
-    imageKey: ky7,
+    imageKey: krsu,
   },
   {
     id: "ksmi",
@@ -397,7 +410,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,000 – $4,000",
     logoIndex: ky8,
-    imageKey: ky8,
+    imageKey: ksmi,
   },
   {
     id: "knu",
@@ -406,7 +419,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,000 – $4,000",
     logoIndex: ky9,
-    imageKey: ky9,
+    imageKey: knu,
   },
   {
     id: "ksapcs",
@@ -415,7 +428,7 @@ export const KYRGYZSTAN_UNIVERSITIES = [
     city: "Bishkek",
     fees: "$3,000 – $3,500",
     logoIndex: ky10,
-    imageKey: ky10,
+    imageKey: ksapcs,
   },
 ];
 
