@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
         destination: "/mbbs/abroad/kazakhstan/campaign",
         permanent: true,
       },
+      {
+        source: "/mbbs/abroad/uzbekistan/campaign/",
+        destination: "/mbbs/abroad/uzbekistan/campaign",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

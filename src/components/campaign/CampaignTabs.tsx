@@ -51,6 +51,18 @@ export const KYRGYZSTAN_CAMPAIGN_TABS: { label: string; href: string }[] = [
   { label: "FAQ", href: "#faq" },
 ];
 
+export const UZBEKISTAN_CAMPAIGN_TABS: { label: string; href: string }[] = [
+  { label: "Overview", href: "#overview" },
+  { label: "Quick Facts", href: "#quick-facts" },
+  { label: "Why to Choose", href: "#why-choose-uzbekistan" },
+  { label: "Eligibility Criteria", href: "#eligibility-criteria" },
+  { label: "Admission Process", href: "#admission-process" },
+  { label: "Documents Required", href: "#documents-required" },
+  { label: "Universities", href: "#universities" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
+];
+
 const NAVBAR_HEIGHT_PX = 72;
 
 function getActiveHref(): string {
