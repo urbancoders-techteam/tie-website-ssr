@@ -3,37 +3,41 @@ import { imageBaseUrl } from "@/utils/config";
 export const faqData = [
   {
     title: "Why should I consider studying MBBS abroad?",
-    Desc: "Studying MBBS abroad offers access to high-quality education, exposure to diverse medical practices, and potential career opportunities worldwide.",
+    Desc: "Studying MBBS abroad is no longer a fallback — it is a strategic career decision. With 23 lakh students competing for 1.18 lakh seats in India, the odds are brutal. Abroad, you access NMC-approved universities at a fraction of Indian private college costs — ₹18 to 30 lakh total versus ₹50 lakh to 1.5 crore domestically — in full English, with globally recognised degrees. Over 30,000 Indian students made this choice in 2024 alone.",
   },
   {
     title: "What entrance exams do I need to take to study MBBS abroad?",
-    Desc: "The specific exams vary by country and university. Common exams include the NEET for Indian students and the MCAT for some countries.",
+    Desc: "NEET is mandatory for Indian students who wish to eventually practice medicine in India. Beyond NEET, most budget destinations — Russia, Philippines, Kazakhstan, Bangladesh, Kyrgyzstan, Uzbekistan, Nepal — do not require any additional entrance exam. Premium destinations like Germany require language proficiency (B2/C1 German), while UK, Australia, and Canada may require IELTS/TOEFL and aptitude tests such as BMAT, UCAT, or MCAT.",
   },
   {
     title: "How long does it take to complete MBBS abroad?",
-    Desc: "The duration varies by country but is typically around 5 to 6 years, including both academic study and practical training.",
+    Desc: "Most programs are 5 to 6 years including the mandatory internship. Russia, Bangladesh, Kyrgyzstan, Kazakhstan, and Uzbekistan run 6-year programs with a 1-year clinical internship. The Philippines runs a 5-year BS+MD program. The UK is a 5-year MBBChB. The USA offers a 4-year MD for post-undergraduate students. As per NMC guidelines, a minimum of 54 months of study plus 12 months of internship is required for FMGE eligibility.",
   },
   {
     title: "Are the degrees recognized internationally?",
-    Desc: "Yes, most countries offer degrees that are recognized globally, but it's essential to check the recognition status in the country where you plan to practice.",
+    Desc: "Yes. Degrees from WHO-listed, NMC-compliant universities are recognised globally. To practice in India: FMGE/NExT required. For the UK: PLAB exam. For the USA: USMLE Steps 1, 2, and 3. For Australia: AMC exam. Taksheela helps you select universities that best prepare you for these licensing pathways based on your long-term career destination.",
   },
   {
     title: "What is the medium of instruction?",
-    Desc: "The medium of instruction varies by university and country. Some countries offer English-taught programs, while others may require proficiency in the local language.",
+    Desc: "Russia, Philippines, Kazakhstan, Kyrgyzstan, Uzbekistan, Bangladesh, and Nepal all offer MBBS programs fully in English. Germany requires German language proficiency at B2/C1 level for clinical years. UK, USA, Canada, and Australia are entirely English-medium. For most budget destinations popular among Indian, Nepali, and Bangladeshi students, English is the sole medium — no local language is required.",
   },
 
   {
     title: "Are scholarships available for international students?",
-    Desc: "Some universities and governments offer scholarships and financial aid to international students. It's advisable to check with the universities for specific details.",
+    Desc: "Several universities in Russia, Kazakhstan, and Germany offer merit-based scholarships or tuition waivers for academically strong international students. Germany's public university system itself operates at near-zero tuition for all students — essentially a scholarship-level cost built into the system. Taksheela advises on available scholarship options during the counselling process and assists with scholarship applications where applicable.",
   },
   {
-    title: "Can I work part-time while studying MBBS abroad?",
-    Desc: "It depends on the country's regulations and your visa status. Some countries allow international students to work part-time during their studies",
+    title: "What are the living costs for students abroad? (India, Nepal, Bangladesh context)",
+    Desc: "Living costs vary significantly by country and city. Budget destinations — Kyrgyzstan, Uzbekistan, Bangladesh, Nepal — average ₹8,000 to ₹15,000 per month including accommodation, food, and transport. For Nepali students: multiply by approximately 1.6 for NPR equivalent. For Bangladeshi students: multiply by approximately 1.35 for BDT equivalent. Mid-range destinations like Russia, Kazakhstan, and Philippines average ₹12,000 to ₹22,000 per month. Premium destinations — UK, USA, Canada, Australia — range from ₹60,000 to ₹1.5 lakh per month.",
   },
   {
-    title: "What are the living costs for international students?",
-    Desc: "Living costs vary by country and city. It's essential to consider expenses such as accommodation, food, transportation, and health insurance.",
+    title: "Can students from Nepal and Bangladesh apply for MBBS abroad through Taksheela?",
+    Desc: "Absolutely. Taksheela Institute of Education serves students from India, Nepal, and Bangladesh with dedicated counsellors who understand each country's specific entry exam requirements, visa pathways, and NMC bilateral regulations. Nepali students can apply visa-free for MBBS in Nepal or explore Russia, Bangladesh, Kyrgyzstan, and other options with full support. Bangladeshi students are guided through Russia, Kazakhstan, Philippines, and more with complete end-to-end visa assistance.",
   },
+
+
+
+
   {
     title: "What are the visa requirements for studying MBBS abroad?",
     Desc: "Visa requirements vary by country. Generally, you'll need to obtain a student visa or permit to study abroad. The process may include providing proof of acceptance from a university, financial documents, and health insurance.",

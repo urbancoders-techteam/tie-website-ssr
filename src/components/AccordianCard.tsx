@@ -41,7 +41,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ data, i }) => {
         </div>
         <div
           className={`p-2 rounded-md ${
-            isOpen ? "bg-[#00999E]" : "bg-[#F7F7FF]"
+            isOpen ? "bg-[#525560]" : "bg-[#F7F7FF]"
           }`}
         >
           <Icon

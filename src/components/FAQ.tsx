@@ -18,7 +18,7 @@ const FAQ: React.FC<Props> = ({ faqData, heading }) => {
     <div className="container mx-auto px-4 py-10">
       <HeadingTypography content={headingText} textAlign="center" as="h2" />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 sm:gap-4 mt-10">
         {visibleFaqs?.map((item: any, index: number) => (
           <AccordionCard key={index} data={item} i={index} />
         ))}
