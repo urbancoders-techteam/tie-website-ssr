@@ -25,6 +25,10 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/mbbs/abroad/georgia/campaign/") ||
     pathname === "/mbbs/abroad/kazakhstan/campaign" ||
     pathname?.startsWith("/mbbs/abroad/kazakhstan/campaign/") ||
+    pathname === "/mbbs/abroad/kyrgyzstan/campaign" ||
+    pathname?.startsWith("/mbbs/abroad/kyrgyzstan/campaign/") ||
+    pathname === "/mbbs/abroad/uzbekistan/campaign" ||
+    pathname?.startsWith("/mbbs/abroad/uzbekistan/campaign/") ||
     pathname === "/thankyou";
 
   if (excludeLayout) {

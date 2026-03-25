@@ -33,8 +33,12 @@ const fetchEvents = async (): Promise<EventData[]> => {
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60 },
+      // event.image is a pre-signed S3 URL with short expiry.
+      // Disable Next caching so we don't render expired signatures.
+      cache: "no-store",
     });
+
+    console.log('res', res)
 
     const json = await res.json();
     return (json?.data || [])?.map((item: any) => ({
@@ -51,6 +55,8 @@ const fetchEvents = async (): Promise<EventData[]> => {
 
 export default async function WebinarEvent() {
   const eventData = await fetchEvents();
+
+  console.log('eventData', eventData)
 
   return (
     <section className="bg-[#effdff] py-12 w-full overflow-hidden">

@@ -7,10 +7,10 @@
     "dev:3000": "next dev -p 3000 --hostname 127.0.0.1",
     "dev:turbo": "next dev --turbopack --hostname 127.0.0.1",
     "build": "next build",
-    "build:dev": "cross-env NODE_ENV=development next build",
-    "start:dev": "cross-env NODE_ENV=development next start",
-    "build:prod": "cross-env NODE_ENV=production next build",
-    "start:prod": "cross-env NODE_ENV=production next start",
+    "build:dev": "dotenv -e .env.development -- next build",
+    "start:dev": "dotenv -e .env.development -- next start",
+    "build:prod": "next build",
+    "start:prod": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "@types/react-dom": "^19",
     "@types/react-slick": "^0.23.13",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4",

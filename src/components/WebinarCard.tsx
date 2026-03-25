@@ -54,6 +54,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
             src={data?.image}
             alt="event"
             fill
+            unoptimized
             className="object-cover rounded-t-lg"
           />
         </div>

@@ -10,6 +10,11 @@ import Testimonial from "@/components/home/Testimonials";
 import WebinarEvent from "@/components/home/Webinar";
 import type { Metadata } from "next";
 
+// Ensure the home page isn't statically cached.
+// The API returns pre-signed S3 image URLs with short expiry,
+// so caching can render already-expired signatures after deploy.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Best Study Abroad & Test Prep Experts | Taksheela Institute",
   description:

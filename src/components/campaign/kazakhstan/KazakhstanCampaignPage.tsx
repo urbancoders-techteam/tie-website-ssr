@@ -122,11 +122,13 @@ export default function KazakhstanCampaignPage({
         introParagraph={KAZAKHSTAN_DOCUMENTS_INTRO}
       />
       <UniversitiesSection universitiesBase={KAZAKHSTAN_UNIVERSITIES} countryName="Kazakhstan" />
+
       <WhatStudentsSaySection
         testimonials={KAZAKHSTAN_TESTIMONIALS}
         countryName="Kazakhstan"
         introParagraph={KAZAKHSTAN_WHAT_STUDENTS_SAY_INTRO}
       />
+      
       <FAQSection items={KAZAKHSTAN_FAQ_ITEMS} />
 
       <section className="py-10 md:py-14">
