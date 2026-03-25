@@ -9,8 +9,8 @@
     "build": "next build",
     "build:dev": "dotenv -e .env.development -- next build",
     "start:dev": "dotenv -e .env.development -- next start",
-    "build:prod": "dotenv -e .env.production -- next build",
-    "start:prod": "dotenv -e .env.production -- next start",
+    "build:prod": "next build",
+    "start:prod": "next start",
     "lint": "next lint"
   },
   "dependencies": {

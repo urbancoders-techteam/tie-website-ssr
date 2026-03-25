@@ -51,6 +51,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ data }) => {
         alt="news"
         width={360}
         height={300}
+        unoptimized
         className="object-cover"
       />
 

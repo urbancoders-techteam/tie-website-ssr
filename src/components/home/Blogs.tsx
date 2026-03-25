@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     "Explore insightful blogs and newsletters from Taksheela Institute on study abroad trends, academic news, student journeys, and global education updates.",
 };
 
-// Optional: ISR setup
-export const revalidate = 1800; // revalidate every 30 min
+// Don't cache: `item.image` is a pre-signed S3 URL with short expiry.
+// If we cache this fetch result, the page can render already-expired signatures.
 
 interface BlogData {
   image: string;
@@ -30,7 +30,7 @@ interface BlogData {
 async function fetchBlogs(): Promise<BlogData[]> {
   try {
     const res = await fetch(`${baseUrl}blogs/web`, {
-      cache: "force-cache",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
         Authorization: "",

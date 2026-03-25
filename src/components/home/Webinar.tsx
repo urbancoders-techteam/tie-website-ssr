@@ -33,7 +33,9 @@ const fetchEvents = async (): Promise<EventData[]> => {
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60 },
+      // event.image is a pre-signed S3 URL with short expiry.
+      // Disable Next caching so we don't render expired signatures.
+      cache: "no-store",
     });
 
     console.log('res', res)
