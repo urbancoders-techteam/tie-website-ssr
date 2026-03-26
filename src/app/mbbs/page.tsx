@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeadingTypography from "@/components/Heading";
 import MainContainer from "@/components/MainContainer";
 // import HeroSection from "@/components/mbbs/HeroSection";
@@ -8,7 +9,7 @@ import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import {
-  // countryData,
+  countryData,
   faqData
 } from "@/constants/mbbs";
 import LetsStart from "@/components/immersion/LetsStart";
@@ -22,6 +23,37 @@ import EligibilityCriteria from "@/components/mbbs/EligibilityCriteria";
 import NeetToWhiteCoat from "@/components/mbbs/NeetToWhiteCoat";
 import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
+
+export const metadata: Metadata = {
+  title: "MBBS in Russia 2026-27 | NMC Approved Universities, Fees, Admission | Taksheela Institute",
+  description:
+    "Study MBBS in Russia 2026-27 with Taksheela. Total fees Rs 18-36L, 50+ NMC-approved universities, English medium, FMGE-eligible. Complete guide for Indian, Nepali and Bangladeshi students - eligibility, admission, documents, universities, costs. Free counselling today.",
+  keywords: [
+    "MBBS in Russia",
+    "MBBS in Russia for Indian students",
+    "MBBS in Russia fees",
+    "MBBS in Russia 2026",
+    "MBBS in Russia 2026-27",
+    "NMC approved universities Russia",
+    "MBBS Russia eligibility",
+    "MBBS Russia total cost",
+    "MBBS Russia Nepali students",
+    "MBBS Russia Bangladeshi students",
+    "Russia MBBS FMGE pass rate",
+    "Taksheela MBBS Russia",
+    "cheap MBBS Russia",
+    "best medical universities Russia",
+  ],
+  alternates: {
+    canonical: "https://www.taksheela.com/mbbs/abroad/russia",
+    languages: {
+      "en-IN": "https://www.taksheela.com/mbbs/abroad/russia",
+      "en-NP": "https://www.taksheela.com/mbbs/abroad/russia",
+      "en-BD": "https://www.taksheela.com/mbbs/abroad/russia",
+      "x-default": "https://www.taksheela.com/mbbs/abroad/russia",
+    },
+  },
+};
 
 export default function Page() {
   // const mbbsImg1 = imageBaseUrl + "mbbsinindia.png";
@@ -77,8 +109,111 @@ export default function Page() {
     { value: <span className="text-[#5dd4d9]" >IN • NP • BD</span>, label: "Students Served" },
   ];
 
+  const pageUrl = "https://www.taksheela.com/mbbs/abroad/russia";
+  const siteUrl = "https://www.taksheela.com";
+  const russiaCountry = countryData.find((item) => item.title === "Russia");
+  const topRussiaUniversities = (russiaCountry?.colleges ?? []).slice(0, 10);
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "MBBS in Russia 2026-27: NMC Approved Universities, Fees, Admission",
+    description:
+      "Complete MBBS in Russia guide for Indian, Nepali and Bangladeshi students - fees, eligibility, admission, top universities and FMGE-focused planning.",
+    mainEntityOfPage: pageUrl,
+    author: {
+      "@type": "Organization",
+      name: "Taksheela Institute",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Taksheela Institute",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/favicon.ico`,
+      },
+    },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqData.slice(0, 11).map((item) => ({
+      "@type": "Question",
+      name: item.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.Desc,
+      },
+    })),
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "Taksheela Institute",
+    url: siteUrl,
+    sameAs: [siteUrl],
+    areaServed: ["IN", "NP", "BD"],
+    description:
+      "Taksheela Institute helps students from India, Nepal and Bangladesh with MBBS abroad counselling, admission support and university shortlisting.",
+  };
+
+  const universityItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Top 10 Russian Universities for MBBS",
+    itemListElement: topRussiaUniversities.map((college, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: college.items?.[0] ?? college.title ?? `Russian Medical University ${index + 1}`,
+    })),
+  };
+
+  const breadcrumbListSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "MBBS Abroad",
+        item: `${siteUrl}/mbbs/abroad`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "MBBS in Russia",
+        item: pageUrl,
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(universityItemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
+      />
+
       {/* Hero Section */}
       <HeroSection
         heroImage={heroImage}
@@ -237,7 +372,7 @@ export default function Page() {
             </div>
 
           </div>
-            <div className="flex flex-wrap md:flex-nowrap gap-4 pt-2 justify-end w-full">
+            <div className="flex gap-4 pt-2 justify-right w-full">
               {imageList.map((item, index) => (
                 <Link
                   key={index}
@@ -372,7 +507,9 @@ export default function Page() {
 
       {/* FAQ Section */}
       <section className="bg-[#effdff]">
-        <FAQ faqData={faqData} />
+        <ContainerWrapper>
+          <FAQ faqData={faqData} />
+        </ContainerWrapper>
       </section>
 
       <LetsStart />
