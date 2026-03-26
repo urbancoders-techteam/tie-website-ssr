@@ -316,8 +316,6 @@ export default function Page() {
 
       <WhyChooseTaksheela />
 
-
-
       {/* FAQ Section */}
       <section className="bg-[#effdff]">
         <FAQ faqData={faqData} />
