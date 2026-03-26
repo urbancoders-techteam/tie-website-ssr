@@ -372,7 +372,7 @@ export default function Page() {
             </div>
 
           </div>
-            <div className="flex gap-4 pt-2 justify-right w-full">
+            <div className="ml-auto flex flex-wrap md:flex-nowrap gap-4 pt-2 justify-end w-full">
               {imageList.map((item, index) => (
                 <Link
                   key={index}
