@@ -28,6 +28,10 @@ export default function Page() {
   const mbbsicon1 = imageBaseUrl + "mbbsIcon1.svg";
   const mbbsicon2 = imageBaseUrl + "mbbsIcon2.svg";
 
+  const mbbsicons1 = imageBaseUrl + "mbbsIcon1.svg";
+  const mbbsicons2 = imageBaseUrl + "mbbsIcon2.svg";
+  const mbbsicons3 = imageBaseUrl + "mbbsIcon3.svg";
+
   const heroImage = imageBaseUrl + "mbbsCollege/India/mbbsIndiahero.png";
   const collegeImage = imageBaseUrl + "mbbsCollege/India/mbbsIndia.webp";
 
@@ -41,6 +45,28 @@ export default function Page() {
       image: mbbsicon2,
       title: "Top 10 Colleges",
       href: "/mbbs/india#colleges",
+    },
+  ];
+
+
+  const imageList = [
+    {
+      image: mbbsicons1,
+      title: "Eligibility Criteria",
+      page: "/mbbs/abroad",
+      section: "#abroadCriteria",
+    },
+    {
+      image: mbbsicons2,
+      title: "MBBS UG & PG",
+      page: "/mbbs/abroad",
+      section: "#ug-pg",
+    },
+    {
+      image: mbbsicons3,
+      title: "NMC Rules",
+      page: "/mbbs/abroad",
+      section: "#mbbsRules",
     },
   ];
 
@@ -134,6 +160,7 @@ export default function Page() {
         }
       />
 
+      {/* Why Study MBBS Abroad Section */}
       <section className="bg-[#f5f7fb] py-12 md:py-14">
         <ContainerWrapper>
           <div className="max-w-7xl mx-auto">
@@ -208,7 +235,34 @@ export default function Page() {
                 </div>
               ))}
             </div>
+
           </div>
+            <div className="flex flex-wrap md:flex-nowrap gap-4 pt-2 justify-end w-full">
+              {imageList.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.page + item.section}
+                  title={item.title}
+                  className="cursor-pointer"
+                >
+                  <div className="flex justify-center items-center w-[100px] md:w-[80px] h-[50px]">
+                    <Image
+                      src={item.image}
+                      alt={`Icon ${index + 1}`}
+                      width={40}
+                      height={40}
+                    />
+                  </div>
+                </Link>
+              ))}
+
+              <Link
+                href="/mbbs/abroad"
+                className="cursor-pointer bg-[#00999E] text-white px-10 py-3 text-sm rounded-lg w-52 font-medium hover:bg-[#007a7f] transition flex items-center justify-center gap-2"
+              >
+                Read More <FaArrowRight className="text-white text-sm" />
+              </Link>
+            </div>
         </ContainerWrapper>
       </section>
 
