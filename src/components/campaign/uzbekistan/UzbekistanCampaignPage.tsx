@@ -35,7 +35,7 @@ import { imageBaseUrl } from "@/utils/config";
 const UZBEKISTAN_THANKYOU = "/mbbs/abroad/uzbekistan/campaign/thankyou";
 const UZBEKISTAN_PHONE_NUMBER = "+919831241212";
 
-const uzbekistan_hero_img = `${imageBaseUrl}mbbsCollege/uzbekistan/campaign/kyrgyzstan_hero_img.png`;
+const uzbekistan_hero_img = `${imageBaseUrl}mbbsCollege/India/mbbsIndiahero.png`;
 
 const UZBEKISTAN_NAV_LINKS: CampaignNavLink[] = [
   { href: "#overview", label: "Overview" },

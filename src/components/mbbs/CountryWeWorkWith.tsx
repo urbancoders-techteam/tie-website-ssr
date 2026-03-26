@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import ContainerWrapper from "@/components/ContainerWrapper";
+import { countryData } from "@/constants/mbbs";
 
 type CountryCard = {
   code: string;
@@ -9,6 +11,21 @@ type CountryCard = {
   chips: string[];
   href: string;
 };
+
+type CountryDataItem = {
+  title: string;
+  image: string;
+};
+
+const countryFlags = new Map(
+  (countryData as CountryDataItem[]).map((item) => [item.title, item.image])
+);
+
+const getFlagUrl = (countryCode: string) =>
+  `https://flagcdn.com/w160/${countryCode.toLowerCase()}.png`;
+
+const getCountryFlag = (countryName: string, countryCode: string) =>
+  countryFlags.get(countryName) ?? getFlagUrl(countryCode);
 
 const countries: CountryCard[] = [
   {
@@ -146,7 +163,16 @@ export default function CountryWeWorkWith() {
                   href={item.href}
                   className="snap-start shrink-0 w-[85%] sm:w-[60%] block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]"
                 >
-                  <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={getCountryFlag(item.country, item.code)}
+                      alt={`${item.country} flag`}
+                      width={50}
+                      height={50}
+                      className="h-[50px] w-[50px] rounded-lg object-cover border border-[#D9E2EF]"
+                    />
+                    <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+                  </div>
                   <h3 className="text-[31px] text-[#173A73] font-semibold mt-3 leading-tight">{item.country}</h3>
                   <p className="text-[11px] tracking-[0.5px] text-[#FF8A00] font-semibold mt-2 uppercase leading-relaxed">
                     {item.tagline}
@@ -180,7 +206,16 @@ export default function CountryWeWorkWith() {
                 href={item.href}
                 className="block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]"
               >
-                <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={getCountryFlag(item.country, item.code)}
+                    alt={`${item.country} flag`}
+                    width={50}
+                    height={50}
+                    className="h-[50px] w-[50px] rounded-xl object-cover border border-[#D9E2EF]"
+                  />
+                  <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+                </div>
                 <h3 className="text-[31px] text-[#173A73] font-semibold mt-3 leading-tight">{item.country}</h3>
                 <p className="text-[11px] tracking-[0.5px] text-[#FF8A00] font-semibold mt-2 uppercase leading-relaxed">
                   {item.tagline}
