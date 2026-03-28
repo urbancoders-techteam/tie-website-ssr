@@ -44,7 +44,7 @@ function DonationCell({
           className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-100"
           aria-hidden
         >
-          ✕
+          ✓
         </span>
         <span className={`leading-snug ${isRussiaColumn ? "text-[#00999E]" : "text-[#143C83]"}`}>{children}</span>
       </span>
@@ -56,7 +56,7 @@ function DonationCell({
         className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-red-50 text-[11px] font-semibold text-red-700 ring-1 ring-red-100"
         aria-hidden
       >
-        ✓
+        ✕
       </span>
       <span className="leading-snug text-[#143C83]">{children}</span>
     </span>

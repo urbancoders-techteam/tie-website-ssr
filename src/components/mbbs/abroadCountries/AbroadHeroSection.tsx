@@ -76,7 +76,10 @@ function getShortDescription(text: string, maxLength = 260) {
   if (text.length <= maxLength) return text;
   const clipped = text.slice(0, maxLength);
   const lastSpace = clipped.lastIndexOf(" ");
-  return `${clipped.slice(0, Math.max(lastSpace, 0)).trim()}...`;
+  if (lastSpace > 0) {
+    return `${clipped.slice(0, lastSpace).trimEnd()}...`;
+  }
+  return `${clipped.trimEnd()}...`;
 }
 
 interface AbroadHeroSectionProps {

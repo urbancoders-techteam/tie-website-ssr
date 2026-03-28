@@ -14,8 +14,17 @@ import {
 import { useCallback, useMemo, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+const DEFAULT_SECTION_ID = "teaching-methodology";
+const DEFAULT_HEADING_ID = "teaching-methodology-heading";
+
 interface TeachingMethodologyAbroadProps {
   content: AbroadTeachingMethodologyContent;
+  /** Section root `id` for anchors; must be unique when this block appears more than once on a page. */
+  sectionId?: string;
+  /** Heading `id` for `aria-labelledby`; must be unique when this block appears more than once on a page. */
+  headingId?: string;
+  /** Accessible name for the mobile carousel region. */
+  carouselAriaLabel?: string;
 }
 
 function splitIntoTwoRows<T>(items: T[]): [T[], T[]] {
@@ -112,7 +121,12 @@ function MethodologyCard({
   );
 }
 
-export default function TeachingMethodologyAbroad({ content }: TeachingMethodologyAbroadProps) {
+export default function TeachingMethodologyAbroad({
+  content,
+  sectionId = DEFAULT_SECTION_ID,
+  headingId = DEFAULT_HEADING_ID,
+  carouselAriaLabel = "Teaching methodology",
+}: TeachingMethodologyAbroadProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollSlide = useCallback((direction: "prev" | "next") => {
@@ -132,8 +146,8 @@ export default function TeachingMethodologyAbroad({ content }: TeachingMethodolo
   return (
     <section
       className="bg-[#F4F6FB] py-12 md:py-16"
-      aria-labelledby="teaching-methodology-heading"
-      id="teaching-methodology"
+      aria-labelledby={headingId}
+      id={sectionId}
     >
       <ContainerWrapper>
         <div className="mx-auto max-w-7xl">
@@ -141,10 +155,7 @@ export default function TeachingMethodologyAbroad({ content }: TeachingMethodolo
             <p className={ABROAD_SECTION_EYEBROW}>
               {content.eyebrow}
             </p>
-            <h2
-              id="teaching-methodology-heading"
-              className={ABROAD_SECTION_TITLE}
-            >
+            <h2 id={headingId} className={ABROAD_SECTION_TITLE}>
               {content.titlePrimary}{" "}
               <span className={ABROAD_SECTION_ACCENT}>{content.titleAccent}</span>
             </h2>
@@ -187,7 +198,7 @@ export default function TeachingMethodologyAbroad({ content }: TeachingMethodolo
               ref={scrollRef}
               role="region"
               aria-roledescription="carousel"
-              aria-label="Teaching methodology"
+              aria-label={carouselAriaLabel}
               className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {items.map((item) => (

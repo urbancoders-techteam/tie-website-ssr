@@ -184,7 +184,12 @@ export default function Page() {
       {isRussia ? <ScholarshipsAbroad content={russiaAbroadScholarshipsContent} /> : null}
       {isRussia ? <EducationLoanAbroad content={russiaAbroadEducationLoanContent} /> : null}
       {isRussia ? (
-        <TeachingMethodologyAbroad content={russiaAbroadCareerOpportunitiesContent} />
+        <TeachingMethodologyAbroad
+          content={russiaAbroadCareerOpportunitiesContent}
+          sectionId="career-opportunities-abroad"
+          headingId="career-opportunities-heading"
+          carouselAriaLabel="Career opportunities"
+        />
       ) : null}
       {isRussia ? <WhyChooseTaksheelaAbroad content={russiaAbroadWhyChooseTaksheelaContent} /> : null}
 
