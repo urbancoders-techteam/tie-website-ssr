@@ -2,10 +2,10 @@
 
 import { useState, type ReactNode, Fragment } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-
-const highlight = (text: string) => (
-  <span className="text-[#00999E] font-bold">{text}</span>
-);
+import {
+  ABROAD_SECTION_ACCENT,
+  ABROAD_SECTION_TITLE,
+} from "@/constants/abroadSectionTheme";
 
 export interface FAQItem {
   question: string;
@@ -19,7 +19,11 @@ export interface FAQItem {
   highlightTerms?: string[];
 }
 
-function renderAnswer(answer: string, highlightTerms?: string[]): ReactNode {
+function renderAnswer(
+  answer: string,
+  highlightTerms: string[] | undefined,
+  renderHighlight: (text: string) => ReactNode
+): ReactNode {
   if (!highlightTerms?.length) return answer;
   const matches: { start: number; end: number; term: string }[] = [];
   for (const term of highlightTerms) {
@@ -31,7 +35,7 @@ function renderAnswer(answer: string, highlightTerms?: string[]): ReactNode {
   let lastEnd = 0;
   for (const m of matches) {
     if (m.start > lastEnd) parts.push(answer.slice(lastEnd, m.start));
-    parts.push(highlight(m.term));
+    parts.push(renderHighlight(m.term));
     lastEnd = m.end;
   }
   if (lastEnd < answer.length) parts.push(answer.slice(lastEnd));
@@ -42,14 +46,21 @@ function renderAnswer(answer: string, highlightTerms?: string[]): ReactNode {
 
 export interface FAQSectionProps {
   items: FAQItem[];
+  /** `abroad` uses TIE navy + serif title (MBBS abroad pages). Accent teal matches site theme. */
+  variant?: "default" | "abroad";
 }
 
 function formatNumber(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export default function FAQSection({ items }: FAQSectionProps) {
+export default function FAQSection({ items, variant = "default" }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const accentClass = "text-[#00999E]";
+  const renderHighlight = (text: string) => (
+    <span className={`${accentClass} font-bold`}>{text}</span>
+  );
 
   return (
     <section
@@ -57,12 +68,18 @@ export default function FAQSection({ items }: FAQSectionProps) {
       className="py-14 md:py-18 bg-[#f9fafb] scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
-          <span className="relative inline-block pb-1">
-            Frequently asked{" "}
-            <span className="text-[#00999E]">Questions</span>
-          </span>{" "}
-        </h2>
+        {variant === "abroad" ? (
+          <h2 className={`text-center ${ABROAD_SECTION_TITLE}`}>
+            Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
+          </h2>
+        ) : (
+          <h2 className="font-sans text-xl sm:text-2xl md:text-4xl font-[700] text-gray-900">
+            <span className="relative inline-block pb-1">
+              Frequently asked{" "}
+              <span className="text-[#00999E]">Questions</span>
+            </span>{" "}
+          </h2>
+        )}
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {items.map((item, index) => {
@@ -83,11 +100,15 @@ export default function FAQSection({ items }: FAQSectionProps) {
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 text-gray-600 text-sm font-medium flex items-center justify-center">
                     {formatNumber(index + 1)}
                   </span>
-                  <span className="flex-1 font-medium text-gray-800 text-sm md:text-base leading-snug pr-2">
+                  <span
+                    className={`flex-1 font-medium text-sm md:text-base leading-snug pr-2 ${
+                      variant === "abroad" ? "text-[#143C83]" : "text-gray-800"
+                    }`}
+                  >
                     {item.question}
                   </span>
                   <span
-                    className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[#00999E]"
+                    className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${accentClass}`}
                     aria-hidden
                   >
                     {isOpen ? (
@@ -118,12 +139,12 @@ export default function FAQSection({ items }: FAQSectionProps) {
                           </ul>
                           {item.answerClosing ? (
                             <p className="mb-0">
-                              {renderAnswer(item.answerClosing, item.highlightTerms)}
+                              {renderAnswer(item.answerClosing, item.highlightTerms, renderHighlight)}
                             </p>
                           ) : null}
                         </>
                       ) : (
-                        <p className="mb-0">{renderAnswer(item.answer ?? "", item.highlightTerms)}</p>
+                        <p className="mb-0">{renderAnswer(item.answer ?? "", item.highlightTerms, renderHighlight)}</p>
                       )}
                     </div>
                   </div>
