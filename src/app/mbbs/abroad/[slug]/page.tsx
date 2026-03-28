@@ -170,7 +170,12 @@ export default function Page() {
 
       {isRussia ? <IntakePeriodAbroad content={russiaAbroadIntakePeriodContent} /> : null}
       {isRussia ? (
-        <TeachingMethodologyAbroad content={russiaAbroadTeachingMethodologyContent} />
+        <TeachingMethodologyAbroad
+          content={russiaAbroadTeachingMethodologyContent}
+          sectionId="teaching-methodology"
+          headingId="teaching-methodology-heading"
+          carouselAriaLabel="Teaching methodology"
+        />
       ) : null}
       {isRussia ? <MbbsSylabusAbroad content={russiaAbroadMbbsSyllabusContent} /> : null}
       {isRussia ? (
