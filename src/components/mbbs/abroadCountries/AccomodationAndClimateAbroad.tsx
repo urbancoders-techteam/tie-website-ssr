@@ -59,7 +59,7 @@ function ClimateCard({ content }: { content: AbroadAccommodationClimateContent["
       </div>
       <p className="mt-5 text-[14px] leading-relaxed text-[#5B6475] md:text-[15px]">{content.intro}</p>
       <div className="mt-5 flex min-h-0 flex-1 flex-col border-t border-[#E8ECF2] pt-1">
-        {content.rows.map((row, i) => (
+        {content.rows.map((row) => (
           <div
             key={row.city}
             className="flex flex-col gap-1 border-b border-[#EEF2F7] py-3 last:border-b-0 sm:flex-row sm:items-start sm:justify-between sm:gap-4"

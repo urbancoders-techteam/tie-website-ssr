@@ -36,7 +36,6 @@ function splitIntoThreeRows<T>(items: T[]): [T[], T[], T[]] {
   const n = items.length;
   const r1 = Math.ceil(n / 3);
   const r2 = Math.ceil((n - r1) / 2);
-  const r3 = n - r1 - r2;
   return [
     items.slice(0, r1),
     items.slice(r1, r1 + r2),
