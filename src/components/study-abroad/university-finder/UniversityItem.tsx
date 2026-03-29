@@ -50,7 +50,7 @@ const UniversityItem: React.FC<UniversityItemProps> = ({
           [
             {
               label: "Courses:",
-              value: university.courses?.join(", ") ?? "N/A",
+              value: university.courses?.map((course: any) => course.name).join(", ") ?? "N/A",
               icon: "carbon:course",
             },
             {
@@ -84,7 +84,7 @@ const UniversityItem: React.FC<UniversityItemProps> = ({
               <div className="bg-[#00999E] h-5 w-5 flex items-center justify-center rounded-full shadow mt-0.5">
                 <Icon icon={item.icon} className="text-white text-xs" />
               </div>
-              <span className="font-medium text-gray-600">{item.label}</span>
+              <span className="font-semibold text-gray-700">{item.label}</span>
               <span className="text-black">{item.value}</span>
             </div>
           ))}
@@ -98,7 +98,7 @@ const UniversityItem: React.FC<UniversityItemProps> = ({
                 onChange={onShortlist}
                 className="accent-[#00999E]"
               />
-              <span className="text-sm">Shortlist</span>
+              <span className="text-sm font-semibold text-gray-800">Shortlist</span>
             </label>
 
             <label className="inline-flex items-center gap-2 cursor-pointer">
@@ -108,7 +108,7 @@ const UniversityItem: React.FC<UniversityItemProps> = ({
                 onChange={onCompare}
                 className="accent-[#00999E]"
               />
-              <span className="text-sm">Compare</span>
+              <span className="text-sm font-semibold text-gray-800">Compare</span>
             </label>
           </div>
 

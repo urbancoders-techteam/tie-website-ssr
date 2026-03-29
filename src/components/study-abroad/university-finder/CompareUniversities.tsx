@@ -9,7 +9,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface University {
-  universityId: string;
+  universityId?: string;
+  _id?: string;
   universityName: string;
   countryName?: string;
   Intake?: string[];
@@ -20,6 +21,12 @@ interface University {
   Duration?: string;
   URL?: string;
   [key: string]: any;
+}
+
+function rowKeyForUniversity(u: University, index: number): string {
+  const id = u?.universityId ?? u?._id;
+  if (id != null && String(id) !== "") return String(id);
+  return `compare-col-${index}`;
 }
 
 const UniversityComparison: React.FC = () => {
@@ -55,7 +62,7 @@ const fetchComparisonData = async (ids: string[]) => {
   const details = [
     { label: "Country", key: "countryName" },
     { label: "Intake", key: "Intake" },
-    { label: "Courses", key: "countryName" },
+    { label: "Courses", key: "Courses" },
     { label: "Tuition Fees", key: "TutionFee" },
     { label: "Language", key: "Language" },
     { label: "QS Ranking", key: "QSRanking" },
@@ -89,9 +96,9 @@ const fetchComparisonData = async (ids: string[]) => {
                   <th className="font-semibold text-lg px-4 py-3 border-r border-[#00999E] text-left">
                     University Name
                   </th>
-                  {universities.map((university) => (
+                  {universities.map((university, uIndex) => (
                     <th
-                      key={university.universityId}
+                      key={rowKeyForUniversity(university, uIndex)}
                       className="px-4 py-3 border-r border-[#00999E] text-center text-[#00999E] font-semibold"
                     >
                       {university.universityName}
@@ -102,7 +109,7 @@ const fetchComparisonData = async (ids: string[]) => {
               <tbody>
                 {details.map((detail, index) => (
                   <tr
-                    key={detail.key}
+                    key={detail.label}
                     className={`${
                       index % 2 === 0 ? "bg-[#effdff]" : "bg-white"
                     } border-b border-[#00999E]`}
@@ -110,14 +117,21 @@ const fetchComparisonData = async (ids: string[]) => {
                     <td className="px-4 py-2 font-semibold border-r border-[#00999E] max-w-xs">
                       {detail.label}
                     </td>
-                    {universities.map((university) => {
-                      let value: string | number | null = Array.isArray(
-                        university[detail.key]
-                      )
-                        ? university[detail.key].join(", ") || "-"
-                        : university[detail.key] || "-";
+                    {universities.map((university, uIndex) => {
+                      const raw = university[detail.key];
+                      let value: string | number | null = Array.isArray(raw)
+                        ? raw
+                            .map((item: unknown) =>
+                              typeof item === "object" &&
+                              item !== null &&
+                              "name" in item
+                                ? String((item as { name?: string }).name ?? "")
+                                : String(item ?? "")
+                            )
+                            .filter(Boolean)
+                            .join(", ") || "-"
+                        : raw ?? "-";
 
-                      // Append currency for Tuition Fee
                       if (detail.key === "TutionFee") {
                         const currency = university.Currency || "";
                         value =
@@ -126,14 +140,16 @@ const fetchComparisonData = async (ids: string[]) => {
                             : "-";
                       }
 
+                      const cellKey = `${detail.label}-${rowKeyForUniversity(university, uIndex)}`;
+
                       return (
                         <td
-                          key={university.universityId + detail.key}
+                          key={cellKey}
                           className="px-4 py-2 text-center border-r border-[#00999E] max-w-xs break-words"
                         >
                           {detail.key === "webLink" && value !== "-" ? (
                             <a
-                              href={value as string}
+                              href={String(value)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-[#00999E] underline hover:text-[#007b8f]"

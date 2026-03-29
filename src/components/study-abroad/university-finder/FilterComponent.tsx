@@ -4,28 +4,42 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Icon } from "@iconify/react";
+import { toast } from "react-toastify";
 
 import DropdownComponent from "@/components/DropdownComponent";
 import TextField from "@/components/TextFiled";
 import { baseUrl } from "@/utils/config";
+import {
+  clearUniFinderMetaFromStorage,
+  deriveTotalPages,
+  type UniversityFilterResult,
+  writeUniFinderMetaToStorage,
+} from "@/utils/universityFinderFilters";
 
 interface FilterComponentProps {
   filterData: any;
-   page: number,
-  limit: number,
-  onFilterChange: (data: any[], filters: any) => void;
+  limit: number;
+  onFilterChange: (result: UniversityFilterResult) => void;
   setIsLoader: (val: boolean) => void;
+}
+
+function parseFilterResponse(res: any, filterPayload: any): UniversityFilterResult {
+  const inner = res?.data?.data;
+  const list = inner?.data;
+  return {
+    universityData: Array.isArray(list) ? list : [],
+    filterPayload,
+    count: typeof inner?.count === "number" ? inner.count : 0,
+    totalPages: typeof inner?.totalPages === "number" ? inner.totalPages : 0,
+  };
 }
 
 const FilterComponent: React.FC<FilterComponentProps> = ({
   filterData,
-  page,
   limit = 3,
   onFilterChange,
   setIsLoader,
 }) => {
-
-    
   const [countries, setCountries] = useState<any[]>([]);
 
   const [selectedCountry, setSelectedCountry] = useState<string[]>(
@@ -56,31 +70,58 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
       ? filterData.highestQualification
       : ""
   );
-  const [selectedFee, setSelectedFee] = useState<string>(
-    typeof filterData.tutionFee === "string" ? filterData.tutionFee : ""
-  );
+  const [selectedFee, setSelectedFee] = useState<string>(() => {
+    const tf = filterData.tutionFee;
+    if (typeof tf === "string") return tf;
+    if (tf != null && tf !== "") return String(tf);
+    return "";
+  });
   const [selectedAdmission, setSelectedAdmission] = useState<string[]>(
     Array.isArray(filterData.admissionRequirement)
       ? filterData.admissionRequirement
       : []
   );
 
-    // Sync filterData props with state when they update
-    useEffect(() => {
-        setSelectedCountry(Array.isArray(filterData.countryId) ? filterData.countryId : []);
-        setSelectedPursue(typeof filterData.pursue === "string" ? filterData.pursue : "");
-        setSelectedYear(Array.isArray(filterData.year) ? filterData.year : []);
-        setSelectedDuration(Array.isArray(filterData.duration) ? filterData.duration : []);
-        setSelectedIntake(Array.isArray(filterData.intake) ? filterData.intake : []);
-        setSelectedCourses(typeof filterData.courses === "string" ? filterData.courses : "");
-        setSelectedScholarship(Array.isArray(filterData.scholarAvailability) ? filterData.scholarAvailability : []);
-        setSelectedQualification(typeof filterData.highestQualification === "string" ? filterData.highestQualification : "");
-        setSelectedFee(typeof filterData.tutionFee === "string" ? filterData.tutionFee : "");
-        setSelectedAdmission(Array.isArray(filterData.admissionRequirement) ? filterData.admissionRequirement : []);
-      }, [filterData]);
-      
+  useEffect(() => {
+    setSelectedCountry(
+      Array.isArray(filterData.countryId) ? filterData.countryId : []
+    );
+    setSelectedPursue(
+      typeof filterData.pursue === "string" ? filterData.pursue : ""
+    );
+    setSelectedYear(Array.isArray(filterData.year) ? filterData.year : []);
+    setSelectedDuration(
+      Array.isArray(filterData.duration) ? filterData.duration : []
+    );
+    setSelectedIntake(Array.isArray(filterData.intake) ? filterData.intake : []);
+    setSelectedCourses(
+      typeof filterData.courses === "string" ? filterData.courses : ""
+    );
+    setSelectedScholarship(
+      Array.isArray(filterData.scholarAvailability)
+        ? filterData.scholarAvailability
+        : []
+    );
+    setSelectedQualification(
+      typeof filterData.highestQualification === "string"
+        ? filterData.highestQualification
+        : ""
+    );
+    const tf = filterData.tutionFee;
+    setSelectedFee(
+      typeof tf === "string"
+        ? tf
+        : tf != null && tf !== ""
+          ? String(tf)
+          : ""
+    );
+    setSelectedAdmission(
+      Array.isArray(filterData.admissionRequirement)
+        ? filterData.admissionRequirement
+        : []
+    );
+  }, [filterData]);
 
-  // Fetch countries
   useEffect(() => {
     axios
       .get(`${baseUrl}university/countryList`)
@@ -109,21 +150,39 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     if (selectedQualification)
       filterPayload.highestQualification = selectedQualification;
 
+    const applyPage = 1;
     axios
-      .post(`${baseUrl}university/universityFilter?page=${page}&limit=${limit}`, filterPayload)
+      .post(
+        `${baseUrl}university/universityFilter?page=${applyPage}&limit=${limit}`,
+        filterPayload
+      )
       .then((res) => {
-        console.log('res',res)
-        onFilterChange(res.data.data.data, filterPayload);
+        const parsed = parseFilterResponse(res, filterPayload);
+        const totalPages = deriveTotalPages(
+          parsed.count,
+          parsed.totalPages,
+          limit
+        );
+        const result: UniversityFilterResult = {
+          ...parsed,
+          totalPages,
+        };
+        onFilterChange(result);
         setIsLoader(false);
 
         sessionStorage.setItem(
           "formattedData",
-          JSON.stringify(res.data.data.data)
+          JSON.stringify(result.universityData)
         );
         sessionStorage.setItem("filterData", JSON.stringify(filterPayload));
+        writeUniFinderMetaToStorage({
+          count: result.count,
+          totalPages: result.totalPages,
+        });
       })
       .catch((err) => {
         console.error("Error applying filter:", err);
+        toast.error("Could not apply filters. Please try again.");
         setIsLoader(false);
       });
   };
@@ -132,7 +191,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     window.scrollTo({ top: 500, behavior: "smooth" });
     setIsLoader(true);
 
-    // Reset all filter states
     setSelectedCountry([]);
     setSelectedPursue("");
     setSelectedYear([]);
@@ -144,32 +202,51 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     setSelectedFee("");
     setSelectedAdmission([]);
 
+    const resetPage = 1;
+    const emptyBody = {
+      type: "filter",
+      countryId: "",
+      courses: "",
+      stateId: "",
+      pursue: "",
+      year: "",
+      tutionFee: "",
+      duration: "",
+      intake: "",
+      admissionRequirement: "",
+      scholarAvailability: "",
+      language: "",
+      highestQualification: "",
+    };
+
     axios
-      .post(`${baseUrl}university/universityFilter?page=${page}&limit=${limit}`, {
-        type: "filter",
-        countryId: "",
-        courses: "",
-        stateId: "",
-        pursue: "",
-        year: "",
-        tutionFee: "",
-        duration: "",
-        intake: "",
-        admissionRequirement: "",
-        scholarAvailability: "",
-        language: "",
-        highestQualification: "",
-      })
+      .post(
+        `${baseUrl}university/universityFilter?page=${resetPage}&limit=${limit}`,
+        emptyBody
+      )
       .then((res) => {
-        console.log('res',res.data.data.data)
-        onFilterChange(res.data.data.data, {});
+        const parsed = parseFilterResponse(res, {});
+        const totalPages = deriveTotalPages(
+          parsed.count,
+          parsed.totalPages,
+          limit
+        );
+        const result: UniversityFilterResult = {
+          universityData: parsed.universityData,
+          filterPayload: {},
+          count: parsed.count,
+          totalPages,
+        };
+        onFilterChange(result);
         setIsLoader(false);
 
         sessionStorage.removeItem("formattedData");
         sessionStorage.removeItem("filterData");
+        clearUniFinderMetaFromStorage();
       })
       .catch((err) => {
         console.error("Error resetting filters:", err);
+        toast.error("Could not reset filters. Please try again.");
         setIsLoader(false);
       });
   };
@@ -293,6 +370,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         />
 
         <button
+          type="button"
           onClick={handleApplyFilter}
           className="w-full mt-4 bg-[#00999E] text-white font-medium py-2 rounded cursor-pointer"
         >
@@ -300,6 +378,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         </button>
 
         <button
+          type="button"
           onClick={handleResetFilter}
           className="w-full mt-2 text-[#00999E] border-2 border-[#00999E] font-medium py-2 rounded cursor-pointer"
         >

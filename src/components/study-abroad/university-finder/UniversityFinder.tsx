@@ -13,18 +13,22 @@ import {
   RegisterYourself,
 } from "./Components";
 import ContainerWrapper from "@/components/ContainerWrapper";
+import {
+  deriveTotalPages,
+  writeUniFinderMetaToStorage,
+} from "@/utils/universityFinderFilters";
 
 interface Filters {
-  country?: string;
+  country?: string[];
   pursue?: string;
-  year?: string;
-  intake?: string;
-  duration?: string;
-  tutionfee?: string;
+  year?: string[];
+  intake?: string[];
+  duration?: string[];
+  tutionfee?: string | number;
   courses?: string;
-  admission?: string;
+  admission?: string[];
   qualification?: string;
-  scholarship?: string;
+  scholarship?: string[];
   name?: string;
   phone?: string;
   email?: string;
@@ -38,6 +42,26 @@ const steps = [
   "Field of Study",
   "Prerequisites",
 ];
+
+/** Same shape as FilterComponent handleApplyFilter — used for sessionStorage + view page filters */
+function buildFilterPayloadFromFilters(filters: Filters): Record<string, unknown> {
+  const filterPayload: Record<string, unknown> = {
+    type: "filter",
+    courses: filters.courses || "",
+  };
+  if (filters.country?.length) filterPayload.countryId = filters.country;
+  if (filters.pursue) filterPayload.pursue = filters.pursue;
+  if (filters.year?.length) filterPayload.year = filters.year;
+  if (filters.duration?.length) filterPayload.duration = filters.duration;
+  if (filters.intake?.length) filterPayload.intake = filters.intake;
+  if (filters.tutionfee != null && filters.tutionfee !== "" && Number(filters.tutionfee) > 0) {
+    filterPayload.tutionFee = String(filters.tutionfee);
+  }
+  if (filters.admission?.length) filterPayload.admissionRequirement = filters.admission;
+  if (filters.scholarship?.length) filterPayload.scholarAvailability = filters.scholarship;
+  if (filters.qualification) filterPayload.highestQualification = filters.qualification;
+  return filterPayload;
+}
 
 const UniversityFinder: React.FC = () => {
   const router = useRouter();
@@ -116,19 +140,18 @@ const UniversityFinder: React.FC = () => {
         body: JSON.stringify(payload),
       });
 
-     
       const data = await res.json();
 
       if (res.ok) {
-        // ✅ Save to sessionStorage
-        sessionStorage.setItem(
-          "formattedData",
-          JSON.stringify(data.data.data)
-        );
-        sessionStorage.setItem(
-          "filterData",
-          JSON.stringify(data.data.filterData)
-        );
+        const filterPayload = buildFilterPayloadFromFilters(filters);
+        const inner = data?.data;
+        const totalCount = inner?.count ?? 0;
+        const apiTotalPages = inner?.totalPages ?? 0;
+        const pages = deriveTotalPages(totalCount, apiTotalPages, 3);
+
+        sessionStorage.setItem("formattedData", JSON.stringify(data.data.data));
+        sessionStorage.setItem("filterData", JSON.stringify(filterPayload));
+        writeUniFinderMetaToStorage({ count: totalCount, totalPages: pages });
 
         router.push("/study-abroad/university-finder/view");
       }
