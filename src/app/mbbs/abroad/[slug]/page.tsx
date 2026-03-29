@@ -52,6 +52,7 @@ import {
 import { countryData } from "@/constants/mbbs";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { imageBaseUrl } from "@/utils/config";
 // import DocumentsRequiredSection from "@/components/campaign/DocumentsRequiredSection";
 
 export default function Page() {
@@ -74,6 +75,8 @@ export default function Page() {
   const russiaOverview = isRussia ? russiaAbroadOverviewContent : undefined;
   const russiaFears = isRussia ? russiaAbroadFearsContent : undefined;
 
+  const mephi = `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`;
+
   return (
     <>
     
@@ -82,7 +85,11 @@ export default function Page() {
 
       <AbroadHeroSection country={country} hero={russiaHero} />
       
-      <OverviewAbroad country={country} overview={russiaOverview} />
+      <OverviewAbroad
+        country={country}
+        overview={russiaOverview}
+        mediaImageSrc={isRussia ? mephi : undefined}
+      />
       <QuickFactsAbroad country={country} />
       <CommonFearsSection country={country} fears={russiaFears} />
       <WhyChooseMbbs country={country} />

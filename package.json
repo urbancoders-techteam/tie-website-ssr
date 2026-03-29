@@ -13,7 +13,8 @@
     "build:dev": "dotenv -e .env.development -- next build",
     "build:staging": "dotenv -e .env.staging -- next build",
     "build:prod": "dotenv -e .env.production -- next build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rimraf .next"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -52,6 +53,7 @@
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

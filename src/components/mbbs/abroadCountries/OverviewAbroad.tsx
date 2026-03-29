@@ -4,11 +4,14 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import type { AbroadCountry } from "@/components/mbbs/abroadCountries/AbroadHeroSection";
 import type { AbroadOverviewContent } from "@/constants/abroad/russiaAbroadConstent";
 import { ABROAD_SECTION_EYEBROW, ABROAD_SECTION_TITLE } from "@/constants/abroadSectionTheme";
+import Image from "next/image";
 
 interface OverviewAbroadProps {
   country: AbroadCountry;
   /** When set, all overview copy is driven from this object (fully custom). */
   overview?: AbroadOverviewContent;
+  /** When set, shown in the media card instead of the emoji placeholder (e.g. Russia campus photo). */
+  mediaImageSrc?: string;
 }
 
 function applyOverviewPlaceholders(
@@ -91,9 +94,11 @@ function buildOverviewView(
   };
 }
 
-export default function OverviewAbroad({ country, overview }: OverviewAbroadProps) {
+export default function OverviewAbroad({ country, overview, mediaImageSrc }: OverviewAbroadProps) {
   const universityCount = country.colleges?.length ?? 10;
   const view = buildOverviewView(country, overview, universityCount);
+  /** Descriptive alt — replaces the former "[Country] Medical University Campus Image" placeholder copy. */
+  const campusImageAlt = `Medical university campus, ${country.title}`;
 
   return (
     <section className="bg-white py-10 md:py-14" id="overview-abroad">
@@ -121,10 +126,24 @@ export default function OverviewAbroad({ country, overview }: OverviewAbroadProp
           </div>
 
           <div className="pt-1">
-            <div className="rounded-2xl border border-[#E8ECF3] bg-gradient-to-b from-[#F1F3F8] to-[#F7F8FB] px-8 py-12 text-center min-h-[248px] flex flex-col justify-center">
-              <div className="text-6xl text-[#8E93A8] leading-none">{view.media.emoji}</div>
-              <p className="mt-6 text-[#646D7F] text-[20px]">{view.media.title}</p>
-              <p className="mt-1 text-[#8E96A8] text-sm">{view.media.subtitle}</p>
+            <div className="rounded-2xl border border-[#E8ECF3] bg-gradient-to-b from-[#F1F3F8] to-[#F7F8FB] px-8 py-12 text-center min-h-[248px] flex flex-col justify-center overflow-hidden">
+              {mediaImageSrc ? (
+                <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-xl shadow-sm">
+                  <Image
+                    src={mediaImageSrc}
+                    alt={campusImageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                  />
+                </div>
+              ) : (
+                <>
+                  <div className="text-6xl text-[#8E93A8] leading-none">{view.media.emoji}</div>
+                  <p className="mt-6 text-[#646D7F] text-[20px]">{view.media.title}</p>
+                  <p className="mt-1 text-[#8E96A8] text-sm">{view.media.subtitle}</p>
+                </>
+              )}
             </div>
 
             <div className="mt-4 rounded-2xl border border-[#F0DBDF] bg-[#FFF8F8] px-5 py-4">
