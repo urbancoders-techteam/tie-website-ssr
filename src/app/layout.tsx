@@ -3,8 +3,8 @@ import "@/app/globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import "leaflet/dist/leaflet.css";
-import Script from "next/script";
 import CanonicalTag from "@/components/CanonicalTag";
+import CampaignGoogleAdsScripts from "@/components/campaign/CampaignGoogleAdsScripts";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 
@@ -40,20 +40,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        {/* Google tag (gtag.js) */}
-        <Script
-          id="google-tag"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16606653169"
-        />
-        <Script id="google-tag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-16606653169');
-          `}
-        </Script>
+        <CampaignGoogleAdsScripts />
       </head>
       <body>
         <MainLayoutWrapper>{children}</MainLayoutWrapper>
