@@ -15,6 +15,12 @@ import {
   UniversityFinderBanner,
 } from "@/components/study-abroad/university-finder/ViewComponents";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
+import {
+  deriveTotalPages,
+  readUniFinderMetaFromStorage,
+  type UniversityFilterResult,
+  writeUniFinderMetaToStorage,
+} from "@/utils/universityFinderFilters";
 
 const UniversityView: React.FC = () => {
   const router = useRouter();
@@ -23,29 +29,57 @@ const UniversityView: React.FC = () => {
 
   const [universityData, setUniversityData] = useState<any[]>([]);
   const [filterData, setFilterData] = useState<any>({});
+  const [hydrated, setHydrated] = useState(false);
+
   const [shortlisted, setShortlisted] = useState<string[]>([]);
   const [compared, setCompared] = useState<string[]>([]);
   const [allShortlisted, setAllShortlisted] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  // ✅ Pagination states
   const [page, setPage] = useState(1);
-  const [limit] = useState(3); 
+  const [limit] = useState(4);
   const [totalPages, setTotalPages] = useState(1);
 
   const scrollToTop = () => window.scrollTo({ top: 530, behavior: "smooth" });
 
   useEffect(() => {
-    fetchFilteredData(page, limit);
-  }, [ limit, page]);
+    const storedFilters = sessionStorage.getItem("filterData");
+    const storedData = sessionStorage.getItem("formattedData");
+    const meta = readUniFinderMetaFromStorage();
 
-  // ✅ Fetch data with pagination
-  const fetchFilteredData = async (page: number, limit: number) => {
+    if (storedFilters) {
+      try {
+        setFilterData(JSON.parse(storedFilters));
+      } catch {
+        /* ignore */
+      }
+    }
+    if (storedData) {
+      try {
+        const parsed = JSON.parse(storedData);
+        if (Array.isArray(parsed)) setUniversityData(parsed);
+      } catch {
+        /* ignore */
+      }
+    }
+    if (meta) {
+      setCount(meta.count);
+      setTotalPages(deriveTotalPages(meta.count, meta.totalPages, limit));
+    }
+    setHydrated(true);
+  }, [limit]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    fetchFilteredData(page, limit);
+  }, [hydrated, limit, page]);
+
+  const fetchFilteredData = async (pageNum: number, pageLimit: number) => {
     setIsLoader(true);
     try {
       const response = await fetch(
-        `${baseUrl}university/universityFilter?page=${page}&limit=${limit}`,
+        `${baseUrl}university/universityFilter?page=${pageNum}&limit=${pageLimit}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -55,14 +89,18 @@ const UniversityView: React.FC = () => {
 
       const data = await response.json();
       const formatted = data?.data?.data || [];
-      const totalCount = data?.data?.count || 0
-      const totalPages = data?.data?.totalPages || 0
+      const totalCount = data?.data?.count ?? 0;
+      const apiTotalPages = data?.data?.totalPages ?? 0;
+      const pages = deriveTotalPages(totalCount, apiTotalPages, pageLimit);
 
       setUniversityData(formatted);
-      setTotalPages(totalPages);
-      setCount(totalCount)
+      setTotalPages(pages);
+      setCount(totalCount);
+      if (totalCount === 0) setPage(1);
+
       sessionStorage.setItem("formattedData", JSON.stringify(formatted));
       sessionStorage.setItem("filterData", JSON.stringify(filterData));
+      writeUniFinderMetaToStorage({ count: totalCount, totalPages: pages });
     } catch (error) {
       console.error("Failed to fetch universities:", error);
     } finally {
@@ -75,12 +113,24 @@ const UniversityView: React.FC = () => {
     scrollToTop();
   };
 
-  const handleFilterChange = (newUniversityData: any[], newFilterData: any) => {
-    setUniversityData(newUniversityData);
-    setFilterData(newFilterData);
-    setPage(1); 
-    sessionStorage.setItem("formattedData", JSON.stringify(newUniversityData));
-    sessionStorage.setItem("filterData", JSON.stringify(newFilterData));
+  const handleFilterChange = (result: UniversityFilterResult) => {
+    setUniversityData(result.universityData);
+    setFilterData(result.filterPayload);
+    setPage(1);
+    setCount(result.count);
+    setTotalPages(
+      deriveTotalPages(result.count, result.totalPages, limit)
+    );
+
+    sessionStorage.setItem(
+      "formattedData",
+      JSON.stringify(result.universityData)
+    );
+    sessionStorage.setItem("filterData", JSON.stringify(result.filterPayload));
+    writeUniFinderMetaToStorage({
+      count: result.count,
+      totalPages: deriveTotalPages(result.count, result.totalPages, limit),
+    });
   };
 
   const handleShortlist = (id: string) => {
@@ -123,50 +173,66 @@ const UniversityView: React.FC = () => {
     );
   };
 
- const handleCompareClick = async () => {
-  try {
-    console.log("compared", compared);
+  const handleCompareClick = async () => {
+    try {
+      const res = await fetch(`${baseUrl}university/compareUniveristy`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: compared }),
+      });
 
-    const res = await fetch(`${baseUrl}university/compareUniveristy`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ids: compared }), // 👈 compared is already an array
-    });
-
-    if (res.ok) {
-      const ids = compared.join(",");
-      router.push(`/study-abroad/university-finder/view/compare?ids=${ids}`);
-      scrollToTop();
-    } else {
-      alert("Comparison failed.");
+      if (res.ok) {
+        const ids = compared.join(",");
+        router.push(`/study-abroad/university-finder/view/compare?ids=${ids}`);
+        scrollToTop();
+      } else {
+        alert("Comparison failed.");
+      }
+    } catch (err) {
+      console.error("Compare error:", err);
     }
-  } catch (err) {
-    console.error("Compare error:", err);
-  }
-};
+  };
 
+  const listLoading = !hydrated || isLoader;
+  const rangeStart =
+    count === 0 ? 0 : Math.min((page - 1) * limit + 1, count);
+  const rangeEnd = count === 0 ? 0 : Math.min(page * limit, count);
+  const countLabel =
+    count === 1 ? "1 university found" : `${count} Universities found`;
 
   return (
     <>
       <UniversityFinderBanner />
-       <BreadcrumbSchema />
+      <BreadcrumbSchema />
       <div className="bg-[#00999E] py-4 text-white font-semibold">
-        <p className="max-w-7xl mx-auto px-4">
-          {count} University Found
-        </p>
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p>
+            {!hydrated ? (
+              <span className="opacity-90">Loading…</span>
+            ) : listLoading ? (
+              <span className="opacity-90">Updating results…</span>
+            ) : (
+              countLabel
+            )}
+          </p>
+          {!listLoading && count > 0 && totalPages > 1 && (
+            <p className="text-sm font-medium opacity-95">
+              Showing {rangeStart}–{rangeEnd} of {count}
+            </p>
+          )}
+        </div>
       </div>
 
       <ContainerWrapper>
         <div className="flex justify-start gap-4 px-4 mt-4 ">
-          <ButtonComponent text="Back" width={100} onClick={handleBack}  />
-         <div >
-           <BackRouteContainer
-            logo={"/images/backuniversity.png"}
-            path="/study-abroad/university-finder"
-            title="Study Abroad Page"
-            
-          />
-         </div>
+          <ButtonComponent text="Back" width={100} onClick={handleBack} />
+          <div>
+            <BackRouteContainer
+              logo={"/images/backuniversity.png"}
+              path="/study-abroad/university-finder"
+              title="Study Abroad Page"
+            />
+          </div>
         </div>
 
         {compared.length > 0 && (
@@ -204,13 +270,13 @@ const UniversityView: React.FC = () => {
 
           <div className="flex flex-wrap justify-between gap-4 mt-12">
             <button
+              type="button"
               className="md:hidden w-full self-end px-4 py-2 bg-[#00999E] text-white text-sm rounded shadow"
               onClick={() => setShowMobileFilter((prev) => !prev)}
             >
               {showMobileFilter ? "Hide Filters" : "Show Filters"}
             </button>
 
-            {/* Filter Component */}
             <div
               className={`flex-1 ${showMobileFilter ? "block" : "hidden"} md:block`}
             >
@@ -218,14 +284,12 @@ const UniversityView: React.FC = () => {
                 setIsLoader={setIsLoader}
                 filterData={filterData}
                 onFilterChange={handleFilterChange}
-                page={page}
                 limit={limit}
               />
             </div>
 
-            {/* Universities */}
             <div className="flex-2 w-full">
-              {isLoader ? (
+              {listLoading ? (
                 <div className="flex items-center justify-center py-8 text-gray-600">
                   <svg
                     className="animate-spin h-5 w-5 mr-2 text-cyan-600"
@@ -271,14 +335,13 @@ const UniversityView: React.FC = () => {
             </div>
           </div>
 
-          {/* ✅ Pagination controls */}
-          {totalPages > 1 && (
-            <div className="flex justify-end items-center gap-2 ">
+          {!listLoading && (totalPages > 1 || totalPages === 0) && (
+            <div className="flex flex-wrap justify-end items-center gap-2 mt-6">
               <button
+                type="button"
                 className="px-10 py-2 border rounded disabled:opacity-50 cursor-pointer bg-[#00999e] text-white hover:bg-[#00777A] text-sm"
                 onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                disabled={page === 1}
-                
+                disabled={page <= 1 || totalPages === 0}
               >
                 Prev
               </button>
@@ -286,9 +349,16 @@ const UniversityView: React.FC = () => {
                 Page {page} of {totalPages}
               </span>
               <button
+                type="button"
                 className="px-10 py-2 border rounded disabled:opacity-50 cursor-pointer bg-[#00999e] text-white hover:bg-[#00777A] text-sm"
-                onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-                disabled={page === totalPages}
+                onClick={() =>
+                  setPage((prev) =>
+                    totalPages <= 0
+                      ? prev
+                      : Math.min(prev + 1, totalPages)
+                  )
+                }
+                disabled={totalPages === 0 || page >= totalPages}
               >
                 Next
               </button>
