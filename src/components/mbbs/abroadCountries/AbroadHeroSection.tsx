@@ -175,7 +175,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
           <div>
             <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.18em] text-white uppercase font-semibold">
-              {code} MBBS in {country.title} 2025-26 - Admissions Open
+              {code} MBBS in {country.title} 2026-27 - Admissions Open
             </p>
             <h1 className="mt-3 text-white font-bold leading-tight text-[34px] sm:text-[42px] md:text-[46px]">
               Study MBBS in {country.title}

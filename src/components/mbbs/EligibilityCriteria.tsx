@@ -28,7 +28,7 @@ const eligibilityData: Record<"indian" | "npbd", CriteriaRow[]> = {
     {
       label: "Language Tests",
       value:
-        "UK, Australia, Canada, Germany require IELTS/TOEFL. Russia, Philippines, Kazakhstan, Bangladesh, Kyrgyzstan, Uzbekistan, Nepal - no additional language test required.",
+        "Russia, Philippines, Kazakhstan, Bangladesh, Kyrgyzstan, Uzbekistan, Nepal - no additional language test required.",
     },
     {
       label: "Post-Degree Licensing",

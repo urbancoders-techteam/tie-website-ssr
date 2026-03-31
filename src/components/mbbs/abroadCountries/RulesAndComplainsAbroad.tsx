@@ -9,27 +9,34 @@ import {
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
 import Link from "next/link";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaLink } from "react-icons/fa";
 
 interface RulesAndComplainsAbroadProps {
   content: AbroadRegulatoryFrameworkContent;
 }
 
+const MOBILE_RULES_AUTOPLAY_MS = 5000;
+
 function RuleCard({
   icon,
   title,
   description,
   gridClassName,
+  className,
+  descriptionClassName,
 }: {
   icon: string;
   title: string;
   description: string;
   gridClassName?: string;
+  /** Extra classes (e.g. mobile slider: shadow-none, larger type) */
+  className?: string;
+  descriptionClassName?: string;
 }) {
   return (
     <article
-      className={`flex h-full w-full min-w-0 flex-col rounded-xl border border-[#E5E9F2] border-l-[5px] border-l-[#143C83] bg-white px-4 py-4 shadow-sm ${gridClassName ?? ""}`}
+      className={`flex h-full w-full min-w-0 flex-col rounded-xl border border-[#E5E9F2] border-l-[5px] border-l-[#143C83] bg-white px-4 py-4 shadow-sm ${gridClassName ?? ""} ${className ?? ""}`}
     >
       <div className="flex gap-3">
         <span className="shrink-0 text-2xl leading-none" aria-hidden>
@@ -37,7 +44,11 @@ function RuleCard({
         </span>
         <div className="min-w-0 flex-1">
           <h3 className="text-[15px] font-bold leading-snug text-[#143C83] md:text-[15px]">{title}</h3>
-          <p className="mt-2 text-[12px] leading-relaxed text-[#4B5563]">{description}</p>
+          <p
+            className={`mt-2 text-[12px] leading-relaxed text-[#4B5563] ${descriptionClassName ?? ""}`}
+          >
+            {description}
+          </p>
         </div>
       </div>
     </article>
@@ -48,18 +59,39 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
   const firstRow = content.rules.slice(0, 4);
   const secondRow = content.rules.slice(4, 6);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const ruleCount = content.rules.length;
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  const scrollSlide = useCallback((direction: "prev" | "next") => {
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [ruleCount]);
+
+  useEffect(() => {
     const el = scrollRef.current;
-    if (!el) return;
-    const slide = el.querySelector<HTMLElement>("[data-reg-slide]");
-    const gap = 16;
-    const delta = (slide?.offsetWidth ?? el.clientWidth * 0.92) + gap;
-    el.scrollBy({
-      left: direction === "next" ? delta : -delta,
-      behavior: "smooth",
+    if (!el || ruleCount === 0) return;
+    const slides = el.querySelectorAll<HTMLElement>("[data-reg-slide]");
+    const slide = slides[slideIndex];
+    if (!slide) return;
+    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  }, [slideIndex, ruleCount]);
+
+  useEffect(() => {
+    if (ruleCount <= 1) return;
+    const tick = () => {
+      if (typeof document !== "undefined" && document.visibilityState === "hidden") return;
+      setSlideIndex((i) => (i + 1) % ruleCount);
+    };
+    const id = setInterval(tick, MOBILE_RULES_AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [ruleCount]);
+
+  const goSlide = useCallback((direction: "prev" | "next") => {
+    if (ruleCount <= 1) return;
+    setSlideIndex((i) => {
+      if (direction === "next") return (i + 1) % ruleCount;
+      return (i - 1 + ruleCount) % ruleCount;
     });
-  }, []);
+  }, [ruleCount]);
 
   return (
     <section
@@ -84,20 +116,12 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
             </p>
           </div>
 
-          {/* Mobile: horizontal snap slider */}
-          <div className="relative mt-10 md:hidden">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent"
-              aria-hidden
-            />
-            <div className="mb-2 flex items-center justify-end gap-2">
+          {/* Mobile: horizontal snap slider (full-bleed scroll; no edge fades) */}
+          <div className="relative mt-10 md:hidden -mx-4">
+            <div className="mb-2 flex items-center justify-end gap-2 px-4">
               <button
                 type="button"
-                onClick={() => scrollSlide("prev")}
+                onClick={() => goSlide("prev")}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
                 aria-label="Previous rule"
               >
@@ -105,7 +129,7 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
               </button>
               <button
                 type="button"
-                onClick={() => scrollSlide("next")}
+                onClick={() => goSlide("next")}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
                 aria-label="Next rule"
               >
@@ -117,19 +141,30 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
               role="region"
               aria-roledescription="carousel"
               aria-label="NMC rules"
-              className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto overflow-y-visible scroll-smooth px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {content.rules.map((rule, i) => (
                 <div
                   key={i}
                   data-reg-slide
-                  className="flex w-[min(100%,calc(100vw-2.5rem))] max-w-[min(420px,calc(100vw-2rem))] shrink-0 snap-center"
+                  className="flex w-[calc(100vw-2rem)] max-w-[32rem] shrink-0 snap-center"
                 >
-                  <RuleCard icon={rule.icon} title={rule.title} description={rule.description} />
+                  <RuleCard
+                    icon={rule.icon}
+                    title={rule.title}
+                    description={rule.description}
+                    className="!shadow-none"
+                    descriptionClassName="text-[13px] leading-[1.6]"
+                  />
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-center text-xs text-[#8B93A4]">Swipe or use arrows to browse rules</p>
+            <p className="mt-2 px-4 text-center text-xs text-[#8B93A4]">
+              Auto-advances every few seconds — swipe or use arrows to browse
+            </p>
+            <p className="sr-only" aria-live="polite">
+              Rule {slideIndex + 1} of {ruleCount}
+            </p>
           </div>
 
           {/* Tablet & desktop: grid */}

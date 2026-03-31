@@ -23,6 +23,7 @@ import EligibilityCriteria from "@/components/mbbs/EligibilityCriteria";
 import NeetToWhiteCoat from "@/components/mbbs/NeetToWhiteCoat";
 import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
+import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
 
 export const metadata: Metadata = {
   title: "MBBS in Russia 2026-27 | NMC Approved Universities, Fees, Admission | Taksheela Institute",
@@ -219,11 +220,20 @@ export default function Page() {
         heroImage={heroImage}
         tagline="Admissions Open — 2026-27 Session"
         title="MBBS Abroad 2026–27: Your Medical Dream, Globally Achieved."
-        description=<> Over <span className="text-[#5dd4d9]">23 lakh</span> students compete for just <span className="text-[#5dd4d9]" >1.18 lakh</span> MBBS seats in India. Taksheela guides students from India, Nepal & Bangladesh into NMC-approved medical universities across <span className="text-[#5dd4d9]" >12 countries</span> — with fees starting at just <span className="text-[#5dd4d9]" >₹3 lakh per year</span>.</>
+        description={
+          <>
+            Over <span className="text-[#5dd4d9]">23 lakh</span> students compete for just{" "}
+            <span className="text-[#5dd4d9]">1.18 lakh</span> MBBS seats in India. Taksheela guides students from
+            India, Nepal & Bangladesh into NMC-approved medical universities across{" "}
+            <span className="text-[#5dd4d9]">12 countries</span> — with fees starting at just{" "}
+            <span className="text-[#5dd4d9]">₹3 lakh per year</span>.
+          </>
+        }
         stats={mbbsHeroStats}
         ctaText="Book Your Free Demo Session"
       />
-      <BreadcrumbSchema />
+
+      <BreadcrumbSchema/>
 
       {/* What is MBBS Section */}
       <MainContainer
@@ -513,6 +523,8 @@ export default function Page() {
       </section>
 
       <LetsStart />
+
+      <MbbsRegistrationIntervalModal />
     </>
   );
 }

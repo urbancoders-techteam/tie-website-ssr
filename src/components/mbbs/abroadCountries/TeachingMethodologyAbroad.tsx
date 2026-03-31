@@ -11,11 +11,12 @@ import {
   ABROAD_SECTION_SUBTITLE,
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const DEFAULT_SECTION_ID = "teaching-methodology";
 const DEFAULT_HEADING_ID = "teaching-methodology-heading";
+const MOBILE_TEACHING_AUTOPLAY_MS = 5000;
 
 interface TeachingMethodologyAbroadProps {
   content: AbroadTeachingMethodologyContent;
@@ -127,20 +128,43 @@ export default function TeachingMethodologyAbroad({
   carouselAriaLabel = "Teaching methodology",
 }: TeachingMethodologyAbroadProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollSlide = useCallback((direction: "prev" | "next") => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const slide = el.querySelector<HTMLElement>("[data-teaching-slide]");
-    const gap = 16;
-    const delta = (slide?.offsetWidth ?? el.clientWidth * 0.92) + gap;
-    el.scrollBy({
-      left: direction === "next" ? delta : -delta,
-      behavior: "smooth",
-    });
-  }, []);
-
   const { items } = content;
+  const itemCount = items.length;
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [itemCount]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || itemCount === 0) return;
+    const slides = el.querySelectorAll<HTMLElement>("[data-teaching-slide]");
+    const slide = slides[slideIndex];
+    if (!slide) return;
+    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  }, [slideIndex, itemCount]);
+
+  useEffect(() => {
+    if (itemCount <= 1) return;
+    const tick = () => {
+      if (typeof document !== "undefined" && document.visibilityState === "hidden") return;
+      setSlideIndex((i) => (i + 1) % itemCount);
+    };
+    const id = setInterval(tick, MOBILE_TEACHING_AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [itemCount]);
+
+  const goSlide = useCallback(
+    (direction: "prev" | "next") => {
+      if (itemCount <= 1) return;
+      setSlideIndex((i) => {
+        if (direction === "next") return (i + 1) % itemCount;
+        return (i - 1 + itemCount) % itemCount;
+      });
+    },
+    [itemCount]
+  );
 
   return (
     <section
@@ -167,18 +191,10 @@ export default function TeachingMethodologyAbroad({
 
           {/* Mobile: horizontal slider */}
           <div className="relative mt-9 md:hidden">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#F4F6FB] to-transparent"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#F4F6FB] to-transparent"
-              aria-hidden
-            />
             <div className="mb-2 flex items-center justify-end gap-2">
               <button
                 type="button"
-                onClick={() => scrollSlide("prev")}
+                onClick={() => goSlide("prev")}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
                 aria-label="Previous card"
               >
@@ -186,7 +202,7 @@ export default function TeachingMethodologyAbroad({
               </button>
               <button
                 type="button"
-                onClick={() => scrollSlide("next")}
+                onClick={() => goSlide("next")}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
                 aria-label="Next card"
               >
@@ -210,7 +226,32 @@ export default function TeachingMethodologyAbroad({
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-center text-xs text-[#8B93A4]">Swipe or use arrows to browse</p>
+
+            {itemCount > 1 ? (
+              <div
+                className="mt-4 flex items-center justify-center gap-2"
+                role="tablist"
+                aria-label={`${carouselAriaLabel} slides`}
+              >
+                {items.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    role="tab"
+                    aria-selected={i === slideIndex}
+                    aria-label={`Slide ${i + 1} of ${itemCount}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === slideIndex ? "w-7 bg-[#143C83]" : "w-2 bg-[#C5CCD8] hover:bg-[#9CA3AF]"
+                    }`}
+                    onClick={() => setSlideIndex(i)}
+                  />
+                ))}
+              </div>
+            ) : null}
+
+            <p className="sr-only" aria-live="polite">
+              Card {slideIndex + 1} of {itemCount}
+            </p>
           </div>
 
           {/* Tablet & desktop: ≤8 items → 2 rows (first row max 5); &gt;8 → 3 rows */}

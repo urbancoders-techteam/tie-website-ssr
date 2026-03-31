@@ -106,11 +106,26 @@ export default function OverviewAbroad({ country, overview, mediaImageSrc }: Ove
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1.55fr_1fr] gap-8 lg:gap-12 items-start">
           <div>
             <p className={ABROAD_SECTION_EYEBROW}>{view.eyebrow}</p>
-            <h2 className={ABROAD_SECTION_TITLE}>
+            <h2 className={`${ABROAD_SECTION_TITLE} max-lg:leading-snug`}>
               {view.heading}
             </h2>
 
-            <div className="mt-5 space-y-3.5 text-[15px] leading-relaxed text-[#5B6475] md:text-[16px] md:leading-[1.7]">
+            {mediaImageSrc ? (
+              <Image
+                src={mediaImageSrc}
+                alt={campusImageAlt}
+                width={800}
+                height={600}
+                className="mx-auto my-4 block h-auto w-full max-w-md lg:hidden"
+                sizes="(max-width: 1024px) min(100vw, 28rem), 28rem"
+              />
+            ) : null}
+
+            <div
+              className={`space-y-3.5 text-[15px] text-justify leading-relaxed text-[#5B6475] md:text-[16px] md:leading-[1.7] ${
+                mediaImageSrc ? "mt-2 lg:mt-5" : "mt-5"
+              }`}
+            >
               {view.paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -126,25 +141,22 @@ export default function OverviewAbroad({ country, overview, mediaImageSrc }: Ove
           </div>
 
           <div className="pt-1">
-            <div className="rounded-2xl border border-[#E8ECF3] bg-gradient-to-b from-[#F1F3F8] to-[#F7F8FB] px-8 py-12 text-center min-h-[248px] flex flex-col justify-center overflow-hidden">
-              {mediaImageSrc ? (
-                <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-xl shadow-sm">
-                  <Image
-                    src={mediaImageSrc}
-                    alt={campusImageAlt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                  />
-                </div>
-              ) : (
-                <>
-                  <div className="text-6xl text-[#8E93A8] leading-none">{view.media.emoji}</div>
-                  <p className="mt-6 text-[#646D7F] text-[20px]">{view.media.title}</p>
-                  <p className="mt-1 text-[#8E96A8] text-sm">{view.media.subtitle}</p>
-                </>
-              )}
-            </div>
+            {mediaImageSrc ? (
+              <Image
+                src={mediaImageSrc}
+                alt={campusImageAlt}
+                width={800}
+                height={600}
+                className="mx-auto hidden h-auto w-full max-w-md lg:block"
+                sizes="(max-width: 1024px) min(100vw, 28rem), 28rem"
+              />
+            ) : (
+              <div className="rounded-2xl border border-[#E8ECF3] bg-gradient-to-b from-[#F1F3F8] to-[#F7F8FB] px-8 py-12 text-center min-h-[248px] flex flex-col justify-center overflow-hidden">
+                <div className="text-6xl text-[#8E93A8] leading-none">{view.media.emoji}</div>
+                <p className="mt-6 text-[#646D7F] text-[20px]">{view.media.title}</p>
+                <p className="mt-1 text-[#8E96A8] text-sm">{view.media.subtitle}</p>
+              </div>
+            )}
 
             <div className="mt-4 rounded-2xl border border-[#F0DBDF] bg-[#FFF8F8] px-5 py-4">
               <p className="text-[15px] leading-[1.6] text-[#525B6F]">

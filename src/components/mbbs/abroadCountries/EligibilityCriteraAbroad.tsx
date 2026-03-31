@@ -293,10 +293,6 @@ export default function EligibilityCriteraAbroad({ country }: EligibilityCritera
                   NP BD Nepal & Bangladesh
                 </button>
               </div>
-              <div className="flex flex-col text-[#A5ACBA] leading-none select-none" aria-hidden>
-                <span className="text-[11px]">▲</span>
-                <span className="text-[11px] mt-0.5">▼</span>
-              </div>
             </div>
 
             <div>

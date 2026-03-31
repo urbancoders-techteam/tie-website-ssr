@@ -15,9 +15,16 @@ interface ModalProps {
   open: boolean;
   onClose: () => void;
   redirectPath?: string;
+  /** Called after API + email flow succeeds (before redirect). Use to disable repeat popups. */
+  onSubmitSuccess?: () => void;
 }
 
-const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalProps) => {
+const RegistrationModal = ({
+  open,
+  onClose,
+  redirectPath = "/thankyou",
+  onSubmitSuccess,
+}: ModalProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -69,6 +76,7 @@ const RegistrationModal = ({ open, onClose, redirectPath = "/thankyou" }: ModalP
           );
 
           toast.success("Successfully created Unlock Your Dreams");
+          onSubmitSuccess?.();
           formik.resetForm();
           setTimeout(() => {
             onClose();

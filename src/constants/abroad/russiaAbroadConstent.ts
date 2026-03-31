@@ -52,7 +52,7 @@ export type AbroadHeroContent = {
 };
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
-  eyebrow: "RU MBBS in Russia 2025-26 - Admissions Open",
+  eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
   headline: {
     line1: "Study MBBS in Russia",
     line2Accent: "Where Affordability Meets",
@@ -1827,7 +1827,7 @@ export type AbroadFaqPageContent = {
 
 export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
   eyebrow: "Frequently asked questions",
-  title: "MBBS in Russia 2025-26 — FAQs for India, Nepal and Bangladesh Students",
+  title: "MBBS in Russia 2026-27 — FAQs for India, Nepal and Bangladesh Students",
   subtitle:
     "Structured for FAQPage rich results and natural-language queries — including INR, NPR, and BDT-specific cost questions.",
   items: [
@@ -1878,12 +1878,12 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
         "GOZZ is Russia's State Final Attestation exam at end of Year 5, conducted in Russian language. Passing GOZZ is mandatory to receive the Russian medical degree and Russian medical licence. This Russian medical licence is a prerequisite before applying for FMGE or NExT in India. Without it the degree cannot be converted into an Indian medical licence. This is why Russian language training from Year 1 is essential, not optional.",
     },
     {
-      question: "What is the total MBBS fee in Russia in Nepali Rupees (NPR) for 2025-26?",
+      question: "What is the total MBBS fee in Russia in Nepali Rupees (NPR) for 2026-27?",
       answer:
         "For Nepali students, total 6-year cost approximately NPR 29-58 lakh (~1 INR = 1.6 NPR). Budget universities NSMU and ISMU: NPR 29-39 lakh. Kazan KSMU mid-range: ~NPR 46-67 lakh. Premium institutions Sechenov and RUDN: NPR 80-88 lakh. Taksheela provides personalised NPR breakdown for Nepali students during free counselling.",
     },
     {
-      question: "What is the total MBBS fee in Russia in Bangladeshi Taka (BDT) for 2025-26?",
+      question: "What is the total MBBS fee in Russia in Bangladeshi Taka (BDT) for 2026-27?",
       answer:
         "For Bangladeshi students, total 6-year cost approximately BDT 24-49 lakh (~1 INR = 1.35 BDT). NSMU and ISMU (budget): BDT 24-32 lakh. Tver TSMU and BSMU (mid-range): BDT 28-36 lakh. Sechenov and RUDN (premium): BDT 67-74 lakh. All 10 featured universities satisfy DGME Bangladesh compliance requirements.",
     },

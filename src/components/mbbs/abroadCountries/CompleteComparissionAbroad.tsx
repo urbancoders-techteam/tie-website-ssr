@@ -198,7 +198,7 @@ export default function CompleteComparissionAbroad({ content }: CompleteComparis
                 role="region"
                 aria-label="MBBS comparison table. Scroll horizontally; on large screens the first two columns stay visible while you scroll."
                 tabIndex={0}
-                className="w-full touch-pan-x overflow-x-auto rounded-xl outline-none motion-safe:scroll-smooth focus-visible:ring-2 focus-visible:ring-[#143C83]/20 focus-visible:ring-offset-2 [-ms-overflow-style:none] [overscroll-behavior-x:contain] [scrollbar-color:#CBD5E1_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#CBD5E1] [&::-webkit-scrollbar-thumb]:hover:bg-[#94A3B8] [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#F1F5F9]"
+                className="w-full overflow-x-auto rounded-xl outline-none motion-safe:scroll-smooth [touch-action:pan-x_pan-y] focus-visible:ring-2 focus-visible:ring-[#143C83]/20 focus-visible:ring-offset-2 [-ms-overflow-style:none] [overscroll-behavior-x:contain] [scrollbar-color:#CBD5E1_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#CBD5E1] [&::-webkit-scrollbar-thumb]:hover:bg-[#94A3B8] [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#F1F5F9]"
               >
                 <table className="w-full min-w-[92rem] border-separate border-spacing-0 text-left">
                   <caption className="sr-only">

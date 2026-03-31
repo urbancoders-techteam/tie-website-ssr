@@ -328,11 +328,10 @@ export default function TopTenUniversityAbroad({ content }: TopTenUniversityAbro
                   key={f.id}
                   type="button"
                   onClick={() => setActiveFilter(f.id)}
-                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition md:px-4 md:py-1.5 md:text-[13px] lg:text-xs ${
-                    isActive
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition md:px-4 md:py-1.5 md:text-[13px] lg:text-xs ${isActive
                       ? "bg-[#00999E] text-white shadow-md"
                       : "border border-[#D1D5DB] bg-white text-[#374151] hover:border-[#00999E]/40"
-                  }`}
+                    }`}
                 >
                   {f.label}
                 </button>
@@ -379,8 +378,6 @@ export default function TopTenUniversityAbroad({ content }: TopTenUniversityAbro
                 </div>
               ))}
             </div>
-
-            <p className="mt-2 text-center text-xs text-[#8B93A4] md:hidden">Swipe or use arrows to browse</p>
           </div>
 
           {visible.length === 0 ? (

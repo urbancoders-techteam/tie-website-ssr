@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useId, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import {
   ABROAD_SECTION_ACCENT,
@@ -115,6 +117,13 @@ function getSlugFromPath(path: string) {
 export default function AdmissionProcessAbroad({ country }: AdmissionProcessAbroadProps) {
   const slug = getSlugFromPath(country.path);
   const steps = STEPS_BY_COUNTRY[slug] ?? DEFAULT_STEPS;
+  const uid = useId();
+  /** Only one step open at a time on mobile; first step open by default */
+  const [openIndex, setOpenIndex] = useState(0);
+
+  useEffect(() => {
+    setOpenIndex(0);
+  }, [slug]);
 
   return (
     <section className="bg-[#F4F6FB] py-12 md:py-16" id="admission-process-abroad">
@@ -132,7 +141,62 @@ export default function AdmissionProcessAbroad({ country }: AdmissionProcessAbro
             </p>
           </div>
 
-          <div className="mt-9 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {/* Mobile: accordion — step 1 open by default */}
+          <div className="mt-9 space-y-3 md:hidden">
+            {steps.map((step, index) => {
+              const isOpen = openIndex === index;
+              const headerId = `${uid}-admission-h-${index}`;
+              const panelId = `${uid}-admission-p-${index}`;
+              return (
+                <div
+                  key={`${step.title}-${index}`}
+                  className="overflow-hidden rounded-2xl border border-[#E3E8F1] bg-white shadow-[0_2px_12px_rgba(15,40,95,0.06)]"
+                >
+                  <button
+                    type="button"
+                    id={headerId}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => setOpenIndex(index)}
+                    className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-[#F8FAFC]"
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#00999E] text-[14px] font-semibold text-white shadow-sm"
+                      aria-hidden
+                    >
+                      {index + 1}
+                    </div>
+                    <span className="min-w-0 flex-1 pt-1.5 text-[16px] font-semibold leading-snug text-[#143C83]">
+                      {step.title}
+                    </span>
+                    <FaChevronDown
+                      className={`mt-2 h-4 w-4 shrink-0 text-[#8B93A4] transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden
+                    />
+                  </button>
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={headerId}
+                    className={`grid transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="border-t border-[#EEF1F6] pb-4 pl-[4.25rem] pr-4 pt-3 text-[15px] font-medium leading-[1.65] text-[#6A7384]">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Tablet & desktop: full cards */}
+          <div className="mt-9 hidden grid-cols-1 gap-5 md:grid md:grid-cols-2 md:gap-6">
             {steps.map((step, index) => (
               <article
                 key={step.title}
@@ -145,10 +209,10 @@ export default function AdmissionProcessAbroad({ country }: AdmissionProcessAbro
                   {index + 1}
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-[#143C83] text-[18px] md:text-[20px] font-semibold leading-[1.35]">
+                  <h3 className="text-[18px] font-semibold leading-[1.35] text-[#143C83] md:text-[20px]">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-[#6A7384] text-[15px] md:text-[16px] leading-[1.65] font-medium">
+                  <p className="mt-2 text-[15px] font-medium leading-[1.65] text-[#6A7384] md:text-[16px]">
                     {step.description}
                   </p>
                 </div>
