@@ -38,6 +38,15 @@ const countries: CountryCard[] = [
     href: "/mbbs/abroad/russia",
   },
   {
+    code: "GE",
+    country: "Georgia",
+    tagline: "EUROPEAN MD — ENGLISH MEDIUM",
+    description:
+      "Affordable English-taught MD programmes in Tbilisi and Batumi, NMC-screened universities, and total 6-year costs often ₹21–48 lakhs — with a fast-growing Indian student community.",
+    chips: ["₹4-6L/year", "6 years", "WHO Listed"],
+    href: "/mbbs/abroad/georgia",
+  },
+  {
     code: "BD",
     country: "Bangladesh",
     tagline: "HIGHEST FMGE ALIGNMENT - CULTURALLY CLOSEST",

@@ -40,6 +40,7 @@ const DEFAULT_METRICS: HeroMetrics = {
 
 const COUNTRY_METRICS: Record<string, HeroMetrics> = {
   russia: { students: "27,000+", universities: "50+", feesFrom: "Rs. 2.7L", tradition: "200+" },
+  georgia: { students: "15,000+", universities: "15+", feesFrom: "₹4L", tradition: "30+" },
   bangladesh: { students: "8,000+", universities: "25+", feesFrom: "Rs. 8L", tradition: "75+" },
   canada: { students: "5,000+", universities: "30+", feesFrom: "CAD 20K", tradition: "100+" },
   germany: { students: "6,000+", universities: "35+", feesFrom: "Low Tuition", tradition: "120+" },
@@ -55,6 +56,7 @@ const COUNTRY_METRICS: Record<string, HeroMetrics> = {
 
 const COUNTRY_CODES: Record<string, string> = {
   russia: "RU",
+  georgia: "GE",
   bangladesh: "BD",
   canada: "CA",
   germany: "DE",

@@ -52,7 +52,7 @@ function matchesFilter(
   }
 }
 
-function UniversityCard({ card }: { card: AbroadTopUniversityCard }) {
+function UniversityCard({ card, watermarkCode }: { card: AbroadTopUniversityCard; watermarkCode: string }) {
   const subline =
     card.subtitle ?? `${card.abbreviation} • Est. ${card.established} • ${card.locationLine}`;
 
@@ -98,7 +98,7 @@ function UniversityCard({ card }: { card: AbroadTopUniversityCard }) {
           className="pointer-events-none absolute bottom-0.5 right-1.5 select-none font-serif text-[3rem] font-black leading-none text-white/10 md:text-[2.75rem] lg:text-[2.25rem]"
           aria-hidden
         >
-          RU
+          {watermarkCode}
         </div>
       </div>
 
@@ -374,7 +374,7 @@ export default function TopTenUniversityAbroad({ content }: TopTenUniversityAbro
                   data-uni-slide
                   className="flex w-[min(100%,calc(100vw-2.5rem))] max-w-[420px] shrink-0 snap-center md:max-w-none md:min-h-0 md:w-auto md:snap-none"
                 >
-                  <UniversityCard card={card} />
+                  <UniversityCard card={card} watermarkCode={content.cardWatermarkCode} />
                 </div>
               ))}
             </div>

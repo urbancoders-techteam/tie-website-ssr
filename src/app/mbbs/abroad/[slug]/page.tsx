@@ -1,6 +1,6 @@
 // app/university/[slug]/page.tsx
 
-'use client';
+"use client";
 
 import AbroadHeroSection from "@/components/mbbs/abroadCountries/AbroadHeroSection";
 import CommonFearsSection from "@/components/mbbs/abroadCountries/CommonFearsSection";
@@ -30,36 +30,19 @@ import HeadingTypography from "@/components/Heading";
 import FAQSection from "@/components/campaign/FAQSection";
 import LetsStart from "@/components/immersion/LetsStart";
 import {
-  russiaAbroadConsiderBeforeContent,
-  russiaAbroadCompleteComparisonContent,
-  russiaAbroadCostBreakdownContent,
-  russiaAbroadFearsContent,
-  russiaAbroadHeroFeaturedCount,
-  russiaAbroadIntakePeriodContent,
-  russiaAbroadMbbsSyllabusContent,
-  russiaAbroadOurStoriesContent,
-  russiaAbroadAccommodationClimateContent,
-  russiaAbroadKeyFactsContent,
-  russiaAbroadScholarshipsContent,
-  russiaAbroadEducationLoanContent,
-  russiaAbroadOverviewContent,
-  russiaAbroadRegulatoryFrameworkContent,
-  russiaAbroadTeachingMethodologyContent,
-  russiaAbroadTopUniversitiesContent,
-  russiaAbroadCareerOpportunitiesContent,
-  russiaAbroadWhyChooseTaksheelaContent,
-  russiaAbroadFaqPageContent,
-} from "@/constants/abroad/russiaAbroadConstent";
+  getAbroadFullPageCopy,
+  getAbroadOverviewMediaSrc,
+} from "@/constants/abroad/abroadFullPageRegistry";
 import { countryData } from "@/constants/mbbs";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { imageBaseUrl } from "@/utils/config";
 import About from "@/components/immersion/immersion-slug/about";
 import ModalTrigger from "@/components/ModalTrigger";
 
 export default function Page() {
   const params = useParams();
   const slug = params?.slug as string;
+  const slugLower = slug?.toLowerCase() ?? "";
 
   const country = countryData.find((item) => {
     const pathSlug = item.path.split("/").pop();
@@ -70,58 +53,52 @@ export default function Page() {
     return <div className="p-10 text-red-500">Country not found</div>;
   }
 
-
-  const isRussia = slug?.toLowerCase() === "russia";
-  const russiaHero = isRussia
-    ? russiaAbroadHeroFeaturedCount(country.colleges?.length ?? 0)
-    : undefined;
-  const russiaOverview = isRussia ? russiaAbroadOverviewContent : undefined;
-  const russiaFears = isRussia ? russiaAbroadFearsContent : undefined;
-
-  const mephi = `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`;
+  const featuredCount = country.colleges?.length ?? 0;
+  const abroadCopy = getAbroadFullPageCopy(slugLower, featuredCount);
+  const overviewMediaSrc = getAbroadOverviewMediaSrc(slugLower);
 
   return (
     <>
-      {isRussia ? (
+      {abroadCopy ? (
         <>
-          <AbroadHeroSection country={country} hero={russiaHero} />
+          <AbroadHeroSection country={country} hero={abroadCopy.hero} />
 
           <OverviewAbroad
             country={country}
-            overview={russiaOverview}
-            mediaImageSrc={mephi}
+            overview={abroadCopy.overview}
+            mediaImageSrc={overviewMediaSrc}
           />
-          <QuickFactsAbroad country={country} />
-          <CommonFearsSection country={country} fears={russiaFears} />
-          <WhyChooseMbbs country={country} />
-          <EligibilityCriteraAbroad country={country} />
-          <AdmissionProcessAbroad country={country} />
-          <TopTenUniversityAbroad content={russiaAbroadTopUniversitiesContent} />
-          <CostBreakdownAbroad content={russiaAbroadCostBreakdownContent} />
-          <ConsiderBeforeAbroad content={russiaAbroadConsiderBeforeContent} />
-          <RulesAndComplainsAbroad content={russiaAbroadRegulatoryFrameworkContent} />
-          <IntakePeriodAbroad content={russiaAbroadIntakePeriodContent} />
+          <QuickFactsAbroad country={country} facts={abroadCopy.quickFacts} />
+          <CommonFearsSection country={country} fears={abroadCopy.fears} />
+          <WhyChooseMbbs country={country} content={abroadCopy.whyChooseMbbs} />
+          <EligibilityCriteraAbroad country={country} eligibility={abroadCopy.eligibility} />
+          <AdmissionProcessAbroad country={country} process={abroadCopy.admissionProcess} />
+          <TopTenUniversityAbroad content={abroadCopy.topUniversities} />
+          <CostBreakdownAbroad content={abroadCopy.cost} />
+          <ConsiderBeforeAbroad content={abroadCopy.consider} />
+          <RulesAndComplainsAbroad content={abroadCopy.regulatory} />
+          <IntakePeriodAbroad content={abroadCopy.intake} />
           <TeachingMethodologyAbroad
-            content={russiaAbroadTeachingMethodologyContent}
+            content={abroadCopy.teaching}
             sectionId="teaching-methodology"
             headingId="teaching-methodology-heading"
             carouselAriaLabel="Teaching methodology"
           />
-          <MbbsSylabusAbroad content={russiaAbroadMbbsSyllabusContent} />
-          <CompleteComparissionAbroad content={russiaAbroadCompleteComparisonContent} />
-          <AccomodationAndClimateAbroad content={russiaAbroadAccommodationClimateContent} />
-          <OurStoriesAbroad content={russiaAbroadOurStoriesContent} />
-          <KeyFactsAbroad content={russiaAbroadKeyFactsContent} />
-          <ScholarshipsAbroad content={russiaAbroadScholarshipsContent} />
-          <EducationLoanAbroad content={russiaAbroadEducationLoanContent} />
+          <MbbsSylabusAbroad content={abroadCopy.syllabus} />
+          <CompleteComparissionAbroad content={abroadCopy.comparison} />
+          <AccomodationAndClimateAbroad content={abroadCopy.accommodation} />
+          <OurStoriesAbroad content={abroadCopy.stories} />
+          <KeyFactsAbroad content={abroadCopy.keyFacts} />
+          <ScholarshipsAbroad content={abroadCopy.scholarships} />
+          <EducationLoanAbroad content={abroadCopy.educationLoan} />
           <TeachingMethodologyAbroad
-            content={russiaAbroadCareerOpportunitiesContent}
+            content={abroadCopy.career}
             sectionId="career-opportunities-abroad"
             headingId="career-opportunities-heading"
             carouselAriaLabel="Career opportunities"
           />
-          <WhyChooseTaksheelaAbroad content={russiaAbroadWhyChooseTaksheelaContent} />
-          <FAQSection items={russiaAbroadFaqPageContent.items} variant="abroad" />
+          <WhyChooseTaksheelaAbroad content={abroadCopy.whyTaksheela} />
+          <FAQSection items={abroadCopy.faq.items} variant="abroad" />
         </>
       ) : (
         <>
@@ -163,15 +140,11 @@ export default function Page() {
                     />
 
                     <div className="absolute bottom-0 left-0 w-full bg-[#0A9DA2] text-white rounded-b-xl p-2 flex flex-col justify-start items-center transition-all duration-500 ease-in-out h-14 group-hover:h-full overflow-hidden">
-                      <h3 className="text-lg font-medium text-center mb-2">
-                        {college.title}
-                      </h3>
+                      <h3 className="text-lg font-medium text-center mb-2">{college.title}</h3>
 
                       <div className="mt-1 px-2 overflow-y-auto max-h-[calc(100%-3rem)] w-full">
                         {college.items && !Array.isArray(college.items) ? (
-                          <p className="text-sm text-center mb-2">
-                            {college.items}
-                          </p>
+                          <p className="text-sm text-center mb-2">{college.items}</p>
                         ) : (
                           <ul className="list-disc ml-4 space-y-1">
                             {college.items?.map((item, i) => (
