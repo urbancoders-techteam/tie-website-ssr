@@ -40,6 +40,7 @@ const DEFAULT_METRICS: HeroMetrics = {
 
 const COUNTRY_METRICS: Record<string, HeroMetrics> = {
   russia: { students: "27,000+", universities: "50+", feesFrom: "Rs. 2.7L", tradition: "200+" },
+  georgia: { students: "15,000+", universities: "15+", feesFrom: "₹4L", tradition: "30+" },
   bangladesh: { students: "8,000+", universities: "25+", feesFrom: "Rs. 8L", tradition: "75+" },
   canada: { students: "5,000+", universities: "30+", feesFrom: "CAD 20K", tradition: "100+" },
   germany: { students: "6,000+", universities: "35+", feesFrom: "Low Tuition", tradition: "120+" },
@@ -55,6 +56,7 @@ const COUNTRY_METRICS: Record<string, HeroMetrics> = {
 
 const COUNTRY_CODES: Record<string, string> = {
   russia: "RU",
+  georgia: "GE",
   bangladesh: "BD",
   canada: "CA",
   germany: "DE",
@@ -175,7 +177,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
           <div>
             <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.18em] text-white uppercase font-semibold">
-              {code} MBBS in {country.title} 2025-26 - Admissions Open
+              {code} MBBS in {country.title} 2026-27 - Admissions Open
             </p>
             <h1 className="mt-3 text-white font-bold leading-tight text-[34px] sm:text-[42px] md:text-[46px]">
               Study MBBS in {country.title}

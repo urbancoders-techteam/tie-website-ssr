@@ -198,7 +198,7 @@ const UniversityView: React.FC = () => {
     count === 0 ? 0 : Math.min((page - 1) * limit + 1, count);
   const rangeEnd = count === 0 ? 0 : Math.min(page * limit, count);
   const countLabel =
-    count === 1 ? "1 university found" : `${count} Universities found`;
+    count === 1 ? "1 university found" : `${count} Courses found`;
 
   return (
     <>

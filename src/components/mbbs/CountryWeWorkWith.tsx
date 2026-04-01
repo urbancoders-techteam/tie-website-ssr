@@ -38,6 +38,15 @@ const countries: CountryCard[] = [
     href: "/mbbs/abroad/russia",
   },
   {
+    code: "GE",
+    country: "Georgia",
+    tagline: "EUROPEAN MD — ENGLISH MEDIUM",
+    description:
+      "Affordable English-taught MD programmes in Tbilisi and Batumi, NMC-screened universities, and total 6-year costs often ₹21–48 lakhs — with a fast-growing Indian student community.",
+    chips: ["₹4-6L/year", "6 years", "WHO Listed"],
+    href: "/mbbs/abroad/georgia",
+  },
+  {
     code: "BD",
     country: "Bangladesh",
     tagline: "HIGHEST FMGE ALIGNMENT - CULTURALLY CLOSEST",
@@ -138,6 +147,63 @@ const countries: CountryCard[] = [
   },
 ];
 
+/** Canada, Germany, Philippines, Australia, USA, UK — no “Read more” on cards */
+const COUNTRY_CODES_WITHOUT_READ_MORE = new Set([
+  "CA",
+  "DE",
+  "PH",
+  "AU",
+  "US",
+  "GB",
+]);
+
+function showReadMore(code: string) {
+  return !COUNTRY_CODES_WITHOUT_READ_MORE.has(code);
+}
+
+function CountryCardBody({ item }: { item: CountryCard }) {
+  return (
+    <>
+      <div className="flex items-center gap-4">
+        <Image
+          src={getCountryFlag(item.country, item.code)}
+          alt={`${item.country} flag`}
+          width={50}
+          height={50}
+          className="h-[50px] w-[50px] rounded-lg object-cover border border-[#D9E2EF] lg:rounded-xl"
+        />
+        <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+      </div>
+      <h3 className="text-[31px] text-[#173A73] font-semibold mt-3 leading-tight">{item.country}</h3>
+      <p className="text-[11px] tracking-[0.5px] text-[#FF8A00] font-semibold mt-2 uppercase leading-relaxed">
+        {item.tagline}
+      </p>
+      <p className="text-[13px] text-[#5B667A] leading-relaxed mt-3">{item.description}</p>
+
+      <div className="flex flex-wrap gap-2 mt-4">
+        {item.chips.map((chip) => (
+          <span
+            key={chip}
+            className="inline-flex items-center rounded-full bg-[#E8F0FF] text-[#2D62CC] text-[11px] font-medium px-2.5 py-1"
+          >
+            {chip}
+          </span>
+        ))}
+      </div>
+
+      {showReadMore(item.code) ? (
+        <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
+          Read More →
+        </span>
+      ) : null}
+    </>
+  );
+}
+
+const cardInteractiveClass =
+  "transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]";
+const cardStaticClass = "cursor-default";
+
 export default function CountryWeWorkWith() {
   return (
     <section className="bg-white py-12 md:py-16">
@@ -157,87 +223,41 @@ export default function CountryWeWorkWith() {
           {/* Mobile + tablet slider */}
           <div className="lg:hidden mt-10 -mx-1 px-1 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex gap-4 pb-1">
-              {countries.map((item) => (
-                <Link
-                  key={item.code}
-                  href={item.href}
-                  className="snap-start shrink-0 w-[85%] sm:w-[60%] block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]"
-                >
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src={getCountryFlag(item.country, item.code)}
-                      alt={`${item.country} flag`}
-                      width={50}
-                      height={50}
-                      className="h-[50px] w-[50px] rounded-lg object-cover border border-[#D9E2EF]"
-                    />
-                    <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+              {countries.map((item) => {
+                const linked = showReadMore(item.code);
+                const shellClass = `snap-start shrink-0 w-[85%] sm:w-[60%] block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${
+                  linked ? cardInteractiveClass : cardStaticClass
+                }`;
+                return linked ? (
+                  <Link key={item.code} href={item.href} className={shellClass}>
+                    <CountryCardBody item={item} />
+                  </Link>
+                ) : (
+                  <div key={item.code} className={shellClass}>
+                    <CountryCardBody item={item} />
                   </div>
-                  <h3 className="text-[31px] text-[#173A73] font-semibold mt-3 leading-tight">{item.country}</h3>
-                  <p className="text-[11px] tracking-[0.5px] text-[#FF8A00] font-semibold mt-2 uppercase leading-relaxed">
-                    {item.tagline}
-                  </p>
-                  <p className="text-[13px] text-[#5B667A] leading-relaxed mt-3">{item.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {item.chips.map((chip) => (
-                      <span
-                        key={chip}
-                        className="inline-flex items-center rounded-full bg-[#E8F0FF] text-[#2D62CC] text-[11px] font-medium px-2.5 py-1"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-
-                  <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
-                    Read More →
-                  </span>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Laptop + desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-10">
-            {countries.map((item) => (
-              <Link
-                key={item.code}
-                href={item.href}
-                className="block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]"
-              >
-                <div className="flex items-center gap-4">
-                  <Image
-                    src={getCountryFlag(item.country, item.code)}
-                    alt={`${item.country} flag`}
-                    width={50}
-                    height={50}
-                    className="h-[50px] w-[50px] rounded-xl object-cover border border-[#D9E2EF]"
-                  />
-                  <div className="text-[30px] leading-none text-[#00999E] font-semibold">{item.code}</div>
+            {countries.map((item) => {
+              const linked = showReadMore(item.code);
+              const shellClass = `block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${
+                linked ? cardInteractiveClass : cardStaticClass
+              }`;
+              return linked ? (
+                <Link key={item.code} href={item.href} className={shellClass}>
+                  <CountryCardBody item={item} />
+                </Link>
+              ) : (
+                <div key={item.code} className={shellClass}>
+                  <CountryCardBody item={item} />
                 </div>
-                <h3 className="text-[31px] text-[#173A73] font-semibold mt-3 leading-tight">{item.country}</h3>
-                <p className="text-[11px] tracking-[0.5px] text-[#FF8A00] font-semibold mt-2 uppercase leading-relaxed">
-                  {item.tagline}
-                </p>
-                <p className="text-[13px] text-[#5B667A] leading-relaxed mt-3">{item.description}</p>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {item.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="inline-flex items-center rounded-full bg-[#E8F0FF] text-[#2D62CC] text-[11px] font-medium px-2.5 py-1"
-                    >
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-
-                <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
-                  Read More →
-                </span>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </ContainerWrapper>

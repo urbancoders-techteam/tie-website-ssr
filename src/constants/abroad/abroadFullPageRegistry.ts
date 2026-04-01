@@ -1,0 +1,188 @@
+/**
+ * Single registry for `/mbbs/abroad/[slug]` full-layout pages.
+ * Add a new country: implement copy in `*AbroadConstent.ts`, add a builder below, and add `overviewMedia` in `ABROAD_OVERVIEW_MEDIA_SRC`.
+ */
+
+import { imageBaseUrl } from "@/utils/config";
+import type {
+  AbroadAdmissionProcessContent,
+  AbroadCompleteComparisonContent,
+  AbroadConsiderBeforeContent,
+  AbroadCostBreakdownContent,
+  AbroadEligibilityContent,
+  AbroadFaqPageContent,
+  AbroadFearsContent,
+  AbroadHeroContent,
+  AbroadIntakePeriodContent,
+  AbroadKeyFactsContent,
+  AbroadMbbsSyllabusContent,
+  AbroadOurStoriesContent,
+  AbroadOverviewContent,
+  AbroadQuickFactItem,
+  AbroadRegulatoryFrameworkContent,
+  AbroadScholarshipsContent,
+  AbroadTeachingMethodologyContent,
+  AbroadTopUniversitiesContent,
+  AbroadWhyChooseMbbsContent,
+  AbroadWhyChooseTaksheelaContent,
+  AbroadAccommodationClimateContent,
+  AbroadEducationLoanContent,
+} from "@/constants/abroad/russiaAbroadConstent";
+import {
+  russiaAbroadAdmissionProcessContent,
+  russiaAbroadCompleteComparisonContent,
+  russiaAbroadConsiderBeforeContent,
+  russiaAbroadCostBreakdownContent,
+  russiaAbroadEligibilityContent,
+  russiaAbroadFaqPageContent,
+  russiaAbroadFearsContent,
+  russiaAbroadHeroFeaturedCount,
+  russiaAbroadIntakePeriodContent,
+  russiaAbroadKeyFactsContent,
+  russiaAbroadMbbsSyllabusContent,
+  russiaAbroadOurStoriesContent,
+  russiaAbroadOverviewContent,
+  russiaAbroadRegulatoryFrameworkContent,
+  russiaAbroadScholarshipsContent,
+  russiaAbroadTeachingMethodologyContent,
+  russiaAbroadTopUniversitiesContent,
+  russiaAbroadCareerOpportunitiesContent,
+  russiaAbroadWhyChooseTaksheelaContent,
+  russiaAbroadQuickFactsContent,
+  russiaAbroadWhyChooseMbbsContent,
+  russiaAbroadAccommodationClimateContent,
+  russiaAbroadEducationLoanContent,
+} from "@/constants/abroad/russiaAbroadConstent";
+import {
+  georgiaAbroadAdmissionProcessContent,
+  georgiaAbroadCompleteComparisonContent,
+  georgiaAbroadConsiderBeforeContent,
+  georgiaAbroadCostBreakdownContent,
+  georgiaAbroadEligibilityContent,
+  georgiaAbroadFaqPageContent,
+  georgiaAbroadFearsContent,
+  georgiaAbroadHeroFeaturedCount,
+  georgiaAbroadIntakePeriodContent,
+  georgiaAbroadKeyFactsContent,
+  georgiaAbroadMbbsSyllabusContent,
+  georgiaAbroadOurStoriesContent,
+  georgiaAbroadOverviewContent,
+  georgiaAbroadRegulatoryFrameworkContent,
+  georgiaAbroadScholarshipsContent,
+  georgiaAbroadTeachingMethodologyContent,
+  georgiaAbroadTopUniversitiesContent,
+  georgiaAbroadCareerOpportunitiesContent,
+  georgiaAbroadWhyChooseTaksheelaContent,
+  georgiaAbroadQuickFactsContent,
+  georgiaAbroadWhyChooseMbbsContent,
+  georgiaAbroadAccommodationClimateContent,
+  georgiaAbroadEducationLoanContent,
+} from "@/constants/abroad/georgiaAbroadConstent";
+
+/** All section payloads passed to the “full stack” abroad page for one country. */
+export type AbroadFullPageCopy = {
+  hero: AbroadHeroContent;
+  overview: AbroadOverviewContent;
+  fears: AbroadFearsContent;
+  topUniversities: AbroadTopUniversitiesContent;
+  cost: AbroadCostBreakdownContent;
+  consider: AbroadConsiderBeforeContent;
+  regulatory: AbroadRegulatoryFrameworkContent;
+  intake: AbroadIntakePeriodContent;
+  teaching: AbroadTeachingMethodologyContent;
+  syllabus: AbroadMbbsSyllabusContent;
+  comparison: AbroadCompleteComparisonContent;
+  accommodation: AbroadAccommodationClimateContent;
+  stories: AbroadOurStoriesContent;
+  keyFacts: AbroadKeyFactsContent;
+  scholarships: AbroadScholarshipsContent;
+  educationLoan: AbroadEducationLoanContent;
+  career: AbroadTeachingMethodologyContent;
+  whyTaksheela: AbroadWhyChooseTaksheelaContent;
+  faq: AbroadFaqPageContent;
+  quickFacts: AbroadQuickFactItem[];
+  whyChooseMbbs: AbroadWhyChooseMbbsContent;
+  eligibility: AbroadEligibilityContent;
+  admissionProcess: AbroadAdmissionProcessContent;
+};
+
+function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
+  return {
+    hero: russiaAbroadHeroFeaturedCount(featuredCount),
+    overview: russiaAbroadOverviewContent,
+    fears: russiaAbroadFearsContent,
+    topUniversities: russiaAbroadTopUniversitiesContent,
+    cost: russiaAbroadCostBreakdownContent,
+    consider: russiaAbroadConsiderBeforeContent,
+    regulatory: russiaAbroadRegulatoryFrameworkContent,
+    intake: russiaAbroadIntakePeriodContent,
+    teaching: russiaAbroadTeachingMethodologyContent,
+    syllabus: russiaAbroadMbbsSyllabusContent,
+    comparison: russiaAbroadCompleteComparisonContent,
+    accommodation: russiaAbroadAccommodationClimateContent,
+    stories: russiaAbroadOurStoriesContent,
+    keyFacts: russiaAbroadKeyFactsContent,
+    scholarships: russiaAbroadScholarshipsContent,
+    educationLoan: russiaAbroadEducationLoanContent,
+    career: russiaAbroadCareerOpportunitiesContent,
+    whyTaksheela: russiaAbroadWhyChooseTaksheelaContent,
+    faq: russiaAbroadFaqPageContent,
+    quickFacts: russiaAbroadQuickFactsContent,
+    whyChooseMbbs: russiaAbroadWhyChooseMbbsContent,
+    eligibility: russiaAbroadEligibilityContent,
+    admissionProcess: russiaAbroadAdmissionProcessContent,
+  };
+}
+
+function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
+  return {
+    hero: georgiaAbroadHeroFeaturedCount(featuredCount),
+    overview: georgiaAbroadOverviewContent,
+    fears: georgiaAbroadFearsContent,
+    topUniversities: georgiaAbroadTopUniversitiesContent,
+    cost: georgiaAbroadCostBreakdownContent,
+    consider: georgiaAbroadConsiderBeforeContent,
+    regulatory: georgiaAbroadRegulatoryFrameworkContent,
+    intake: georgiaAbroadIntakePeriodContent,
+    teaching: georgiaAbroadTeachingMethodologyContent,
+    syllabus: georgiaAbroadMbbsSyllabusContent,
+    comparison: georgiaAbroadCompleteComparisonContent,
+    accommodation: georgiaAbroadAccommodationClimateContent,
+    stories: georgiaAbroadOurStoriesContent,
+    keyFacts: georgiaAbroadKeyFactsContent,
+    scholarships: georgiaAbroadScholarshipsContent,
+    educationLoan: georgiaAbroadEducationLoanContent,
+    career: georgiaAbroadCareerOpportunitiesContent,
+    whyTaksheela: georgiaAbroadWhyChooseTaksheelaContent,
+    faq: georgiaAbroadFaqPageContent,
+    quickFacts: georgiaAbroadQuickFactsContent,
+    whyChooseMbbs: georgiaAbroadWhyChooseMbbsContent,
+    eligibility: georgiaAbroadEligibilityContent,
+    admissionProcess: georgiaAbroadAdmissionProcessContent,
+  };
+}
+
+const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPageCopy> = {
+  russia: russiaFullPage,
+  georgia: georgiaFullPage,
+};
+
+/** Slugs that render the full abroad component stack (single source of truth with `FULL_PAGE_BY_SLUG`). */
+export const ABROAD_FULL_LAYOUT_SLUGS = new Set(Object.keys(FULL_PAGE_BY_SLUG));
+
+/** Resolves all section copy for a full-layout abroad page, or `null` if the slug has no bundle yet. */
+export function getAbroadFullPageCopy(slug: string, featuredCount: number): AbroadFullPageCopy | null {
+  const key = slug.toLowerCase();
+  const build = FULL_PAGE_BY_SLUG[key];
+  return build ? build(featuredCount) : null;
+}
+
+/** Optional hero/overview image path keyed by slug — extend when adding a country. */
+const ABROAD_OVERVIEW_MEDIA_SRC: Record<string, string> = {
+  russia: `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`,
+  georgia: `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/geomedi.jpg`,
+};
+
+export function getAbroadOverviewMediaSrc(slug: string): string | undefined {
+  return ABROAD_OVERVIEW_MEDIA_SRC[slug.toLowerCase()];
+}

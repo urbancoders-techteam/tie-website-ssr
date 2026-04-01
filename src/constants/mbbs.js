@@ -122,6 +122,17 @@ const rus7 = imageBaseUrl + "mbbsCollege/russia/rus7.png";
 const rus8 = imageBaseUrl + "mbbsCollege/russia/rus8.png";
 const rus9 = imageBaseUrl + "mbbsCollege/russia/rus9.png";
 const rus10 = imageBaseUrl + "mbbsCollege/russia/rus10.png";
+const geoBase = imageBaseUrl + "mbbsCollege/georgia/campaign/universities/clg_images/";
+const geo1 = geoBase + "geomedi.jpg";
+const geo2 = geoBase + "dtmu.jpg";
+const geo3 = geoBase + "uog.png";
+const geo4 = geoBase + "abmu.jpeg";
+const geo5 = geoBase + "isu.jpg";
+const geo6 = geoBase + "gnuseu.jpg";
+const geo7 = geoBase + "ewtu.webp";
+const geo8 = geoBase + "ciu.jpg";
+const geo9 = geoBase + "eeu.png";
+const geo10 = geoBase + "alte.webp";
 const n1 = imageBaseUrl + "mbbsCollege/nepal/n1.png";
 const n2 = imageBaseUrl + "mbbsCollege/nepal/n2.png";
 const n3 = imageBaseUrl + "mbbsCollege/nepal/n3.png";
@@ -380,6 +391,106 @@ export const countryData = [
           "Annual Fee:- ₹2,50,000 - ₹4,50,000",
         ],
         Image: rus10,
+      },
+    ],
+  },
+
+  {
+    title: "Georgia",
+    image: "https://flagcdn.com/w160/ge.png",
+    path: "/mbbs/abroad/georgia",
+    content:
+      "Georgia offers English-medium MD programmes, European lifestyle in Tbilisi and Batumi, and total costs typically ₹21–48 lakhs — a strategic choice for Indian students seeking NMC-aligned medical degrees abroad with transparent fees and growing Indian student communities.",
+
+    aspectAndFacts: [
+      {
+        title: "Duration",
+        items: ["6 years including clinical training and internship blocks"],
+        image: Aspect1,
+      },
+      {
+        title: "Eligibility",
+        items: [
+          "10+2 with PCB (50% aggregate for general category) and NEET qualification for India-return pathway",
+        ],
+        image: Aspect2,
+      },
+      {
+        title: "Test Accepted",
+        items: ["NEET (India); national eligibility tests for Nepal and Bangladesh as applicable"],
+        image: Aspect3,
+      },
+      {
+        title: "Tuition Fees",
+        items: ["Approximately ₹4–6.5 lakh per year at featured universities (varies by campus)"],
+        image: Aspect4,
+      },
+      {
+        title: "Average Salary",
+        items: ["Graduate salaries depend on licensing country — FMGE clearance unlocks Indian practice pathways"],
+        image: Aspect5,
+      },
+      {
+        title: "Cost of Living",
+        items: ["₹25,000–45,000/month including shared accommodation in Tbilisi (approximate)"],
+        image: Aspect6,
+      },
+      {
+        title: "Scholarships",
+        items: ["Merit waivers and early-bird discounts offered by select private universities"],
+        Image: Aspect7,
+      },
+    ],
+    colleges: [
+      {
+        title: "Geomedi",
+        items: ["Teaching University Geomedi", "Location: Tbilisi", "Annual Fee: ₹4,50,000 - ₹5,00,000"],
+        Image: geo1,
+      },
+      {
+        title: "DTMU",
+        items: ["David Tvildiani Medical University", "Location: Tbilisi", "Annual Fee: ₹5,00,000 - ₹6,00,000"],
+        Image: geo2,
+      },
+      {
+        title: "UoG",
+        items: ["University of Georgia", "Location: Tbilisi", "Annual Fee: ₹5,00,000 - ₹6,00,000"],
+        Image: geo3,
+      },
+      {
+        title: "ABMU",
+        items: ["Avicenna Batumi Medical University", "Location: Batumi", "Annual Fee: ₹3,50,000 - ₹4,50,000"],
+        Image: geo4,
+      },
+      {
+        title: "ISU",
+        items: ["Ilia State University", "Location: Tbilisi", "Annual Fee: ₹5,00,000 - ₹5,50,000"],
+        Image: geo5,
+      },
+      {
+        title: "SEU",
+        items: ["Georgian National University SEU", "Location: Tbilisi", "Annual Fee: ₹4,50,000 - ₹5,00,000"],
+        Image: geo6,
+      },
+      {
+        title: "EWTU",
+        items: ["East-West Teaching University", "Location: Tbilisi", "Annual Fee: ₹4,00,000 - ₹4,50,000"],
+        Image: geo7,
+      },
+      {
+        title: "CIU",
+        items: ["Caucasus International University", "Location: Tbilisi", "Annual Fee: ₹5,00,000 - ₹5,50,000"],
+        Image: geo8,
+      },
+      {
+        title: "EEU",
+        items: ["East European University", "Location: Tbilisi", "Annual Fee: ₹4,50,000 - ₹5,00,000"],
+        Image: geo9,
+      },
+      {
+        title: "Alte",
+        items: ["Alte University", "Location: Tbilisi", "Annual Fee: ₹4,50,000 - ₹5,00,000"],
+        Image: geo10,
       },
     ],
   },

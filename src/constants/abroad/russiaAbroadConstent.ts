@@ -2,9 +2,173 @@
  * Russia MBBS abroad — single source of truth for `/mbbs/abroad/russia` UI copy and structured data.
  * Keep all new section payloads (JSON-shaped objects, arrays, labels) here — do not add
  * separate Russia data files; extend types and exports below as needed.
+ * Slug-page wiring (which countries use the full stack) lives in `abroadFullPageRegistry.ts`.
  */
 
 import { imageBaseUrl } from "@/utils/config";
+
+/** Quick Facts grid (`QuickFactsAbroad`) — one card per item. */
+export type AbroadQuickFactItem = {
+  icon: string;
+  label: string;
+  value: string;
+  /** Short label + value for mobile 2×2 */
+  mLabel?: string;
+  mValue?: string;
+};
+
+/** Generic quick facts when a country page does not pass a `facts` prop (other destinations). */
+export const abroadDefaultQuickFactsContent: AbroadQuickFactItem[] = [
+  {
+    icon: "🎓",
+    label: "Degree Awarded",
+    value: "Equivalent MBBS/MD medical degree",
+    mLabel: "Degree",
+    mValue: "MBBS/MD equivalent",
+  },
+  {
+    icon: "⏱️",
+    label: "Course Duration",
+    value: "5-6 years (including internship)",
+    mLabel: "Duration",
+    mValue: "5–6 yrs + internship",
+  },
+  {
+    icon: "📅",
+    label: "Intakes",
+    value: "Primary and secondary intakes by university",
+    mLabel: "Intakes",
+    mValue: "Primary & secondary",
+  },
+  {
+    icon: "📋",
+    label: "Eligibility",
+    value: "10+2 PCB + NEET (as applicable)",
+    mLabel: "Eligibility",
+    mValue: "10+2 PCB + NEET",
+  },
+  {
+    icon: "🌐",
+    label: "Medium of Instruction",
+    value: "English medium available",
+    mLabel: "Medium",
+    mValue: "English medium",
+  },
+  {
+    icon: "💰",
+    label: "Annual Tuition (Range)",
+    value: "Varies by university and country",
+    mLabel: "Tuition / yr",
+    mValue: "Varies by uni",
+  },
+  {
+    icon: "🏠",
+    label: "Annual Living Cost",
+    value: "Affordable student living options",
+    mLabel: "Living / yr",
+    mValue: "Affordable",
+  },
+  {
+    icon: "✅",
+    label: "Recognised By",
+    value: "WHO · NMC · ECFMG · FAIMER",
+    mLabel: "Recognised",
+    mValue: "WHO · NMC · ECFMG…",
+  },
+  {
+    icon: "📊",
+    label: "FMGE/NExT Readiness",
+    value: "NMC-aligned curriculum pathways",
+    mLabel: "FMGE/NExT",
+    mValue: "NMC-aligned",
+  },
+  {
+    icon: "👩‍🎓",
+    label: "International Students",
+    value: "Strong IN · NP · BD presence",
+    mLabel: "Students",
+    mValue: "IN · NP · BD",
+  },
+];
+
+/** Why Choose MBBS section (`WhyChooseMbbs`) — one card per item. */
+export type AbroadWhyChooseMbbsItem = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+/** Eyebrow, main heading (split around accented `country.title`), and subtitle. Use `{country}` where the live country name should appear. */
+export type AbroadWhyChooseMbbsSectionContent = {
+  eyebrow: string;
+  titleLead: string;
+  titleTrail: string;
+  subtitle: string;
+};
+
+export type AbroadWhyChooseMbbsContent = {
+  section: AbroadWhyChooseMbbsSectionContent;
+  reasons: AbroadWhyChooseMbbsItem[];
+};
+
+/** Default heading copy when `WhyChooseMbbs` is rendered without a full `content` bundle. */
+export const abroadDefaultWhyChooseMbbsSectionContent: AbroadWhyChooseMbbsSectionContent = {
+  eyebrow: "Why Choose {country}",
+  titleLead: "Why Study MBBS in ",
+  titleTrail: "?",
+  subtitle:
+    "Eight evidence-backed reasons why {country} is a top MBBS abroad destination for students from India, Nepal and Bangladesh.",
+};
+
+/** Generic reasons when `WhyChooseMbbs` is rendered without a `reasons` prop. */
+export const abroadDefaultWhyChooseMbbsContent: AbroadWhyChooseMbbsItem[] = [
+  {
+    icon: "🎯",
+    title: "Affordable and Transparent Costs",
+    description:
+      "Tuition and living costs remain significantly lower than many private alternatives, with clear fee structures.",
+  },
+  {
+    icon: "✅",
+    title: "Recognised Universities",
+    description:
+      "Students can target institutions listed under globally accepted frameworks and aligned with NMC pathways.",
+  },
+  {
+    icon: "🌐",
+    title: "English-Medium Learning",
+    description:
+      "Most popular destinations provide full English-medium programs for international medical aspirants.",
+  },
+  {
+    icon: "🏥",
+    title: "Clinical Exposure",
+    description:
+      "Teaching hospitals and practical rotations build patient-facing confidence and real-world readiness.",
+  },
+  {
+    icon: "🚫",
+    title: "Merit-Based Admissions",
+    description:
+      "No donation or capitation model in many destinations, making admission outcomes cleaner and fair.",
+  },
+  {
+    icon: "👩‍🎓",
+    title: "Strong Student Communities",
+    description: "Indian, Nepali, and Bangladeshi student networks help smoother transition and peer support.",
+  },
+  {
+    icon: "🎓",
+    title: "Global Degree Mobility",
+    description: "Graduates can pursue licensing pathways such as FMGE/NExT, USMLE, PLAB, or AMC as applicable.",
+  },
+  {
+    icon: "📚",
+    title: "Long-Term Career Foundation",
+    description:
+      "Structured curriculum, internships, and mentoring support students toward PG and specialist goals.",
+  },
+];
 
 export type AbroadHeroHeadline = {
   line1: string;
@@ -52,7 +216,7 @@ export type AbroadHeroContent = {
 };
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
-  eyebrow: "RU MBBS in Russia 2025-26 - Admissions Open",
+  eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
   headline: {
     line1: "Study MBBS in Russia",
     line2Accent: "Where Affordability Meets",
@@ -164,14 +328,115 @@ export type AbroadFearsItem = {
   description: string;
 };
 
+/** Hero lines above the two columns. `title` = `country.title` is inserted between `titleLead` and `titleMiddle`. */
+export type AbroadFearsSectionContent = {
+  eyebrow: string;
+  titleLead: string;
+  titleMiddle: string;
+  titleAccent: string;
+  titleTrail: string;
+  subtitle: string;
+};
+
 export type AbroadFearsContent = {
+  section: AbroadFearsSectionContent;
   painTitle: string;
   solutionTitle: string;
   painPoints: AbroadFearsItem[];
   solutions: AbroadFearsItem[];
 };
 
+export const abroadDefaultFearsSectionContent: AbroadFearsSectionContent = {
+  eyebrow: "Challenges & Solutions",
+  titleLead: "Common Fears About MBBS in ",
+  titleMiddle: " — ",
+  titleAccent: "And the Real Answers",
+  titleTrail: "",
+  subtitle:
+    "Every aspiring student carries genuine concerns. Here is an honest breakdown of each challenge and exactly how Taksheela resolves it.",
+};
+
+/** Generic fallback when `CommonFearsSection` is rendered without country-specific `fears` from `*AbroadConstent`. */
+export const abroadDefaultFearsContent: AbroadFearsContent = {
+  section: abroadDefaultFearsSectionContent,
+  painTitle: "Common Pain Points",
+  solutionTitle: "Taksheela's Solutions",
+  painPoints: [
+    {
+      icon: "🎯",
+      title: "Admission Uncertainty",
+      description:
+        "Students are unsure which universities are reliable and genuinely aligned with licensing goals.",
+    },
+    {
+      icon: "💰",
+      title: "Budget Planning Stress",
+      description:
+        "Families worry about hidden tuition, hostel, and forex costs while planning the full MBBS journey.",
+    },
+    {
+      icon: "🧭",
+      title: "Country Selection Confusion",
+      description:
+        "Choosing between multiple destinations without clear performance benchmarks creates indecision.",
+    },
+    {
+      icon: "📚",
+      title: "Licensing Exam Anxiety",
+      description:
+        "Students fear whether their university training will prepare them for FMGE/NExT pathways.",
+    },
+    {
+      icon: "🍛",
+      title: "Lifestyle Adjustment",
+      description:
+        "Questions around food, climate, language, and student support communities remain major concerns.",
+    },
+  ],
+  solutions: [
+    {
+      icon: "✅",
+      title: "Verified University Matching",
+      description:
+        "We shortlist only vetted, NMC-aligned universities based on your budget, profile, and career goals.",
+    },
+    {
+      icon: "📊",
+      title: "Transparent Cost Planning",
+      description:
+        "You get a clear, line-by-line fee and living-cost projection before any decision is finalized.",
+    },
+    {
+      icon: "🧠",
+      title: "Data-Backed Counselling",
+      description:
+        "Every recommendation is driven by outcomes, compliance, and student-fit instead of commission bias.",
+    },
+    {
+      icon: "🎓",
+      title: "FMGE/NExT-Oriented Guidance",
+      description:
+        "From day one, we align students with institutions and study systems that improve exam readiness.",
+    },
+    {
+      icon: "🤝",
+      title: "On-Ground Student Support",
+      description:
+        "Pre-departure orientation and active student communities help faster adaptation in new environments.",
+    },
+  ],
+};
+
 export const russiaAbroadFearsContent: AbroadFearsContent = {
+  section: {
+    eyebrow: "Challenges & Solutions",
+    titleLead: "Common Fears About MBBS in ",
+    titleMiddle: " — ",
+    titleAccent: "And the Real Answers",
+    titleTrail: "",
+    subtitle:
+      "Cold, language, FMGE, fees — real questions for Russia MBBS. Below is an honest look at each worry and how Taksheela supports you with data and on-ground networks.",
+  },
   painTitle: "Common Pain Points",
   solutionTitle: "Taksheela's Solutions",
   painPoints: [
@@ -248,6 +513,380 @@ export const russiaAbroadFearsContent: AbroadFearsContent = {
       title: "Indian Mess + Active Communities",
       description:
         "Kazan, Saratov, Volgograd, Moscow have Indian restaurants, Indian grocery stores, and Indian mess facilities. Halal food available in Kazan and other Muslim-majority cities.",
+    },
+  ],
+};
+
+// --- Eligibility (EligibilityCriteraAbroad) ----------------------------------------
+
+export type AbroadEligibilityRow = {
+  label: string;
+  value: string;
+};
+
+export type AbroadEligibilitySpecialNoteCard = {
+  code: string;
+  heading: string;
+  title: string;
+  points: string[];
+  footerTitle: string;
+  footerText: string;
+  accentClass: string;
+  noteBgClass: string;
+};
+
+export type AbroadEligibilityContent = {
+  eyebrow: string;
+  /** Text before the country name (accent). */
+  titleLead: string;
+  titleTrail: string;
+  /** Use `{country}` for `country.title` where needed. */
+  subtitle: string;
+  tabIndian: string;
+  tabNpbd: string;
+  indian: AbroadEligibilityRow[];
+  npbd: AbroadEligibilityRow[];
+  nepali: AbroadEligibilityRow[];
+  specialNotes: AbroadEligibilitySpecialNoteCard[];
+};
+
+export const abroadDefaultEligibilityContent: AbroadEligibilityContent = {
+  eyebrow: "Who Can Apply",
+  titleLead: "Eligibility Criteria for MBBS in ",
+  titleTrail: "",
+  subtitle:
+    "Requirements for students from India, Nepal and Bangladesh - based on NMC guidelines and university requirements.",
+  tabIndian: "IN Indian Students",
+  tabNpbd: "NP BD Nepal & Bangladesh",
+  indian: [
+    {
+      label: "Academic Qualification",
+      value: "10+2 (HSC) with Physics, Chemistry, Biology and English from a recognised board.",
+    },
+    {
+      label: "Minimum Marks in PCB",
+      value: "General: 50% aggregate in PCB. Reserved categories: as per current NMC criteria.",
+    },
+    {
+      label: "NEET Score",
+      value: "Valid NEET-UG qualifying score is mandatory for students planning to practice in India.",
+    },
+    {
+      label: "Age Requirement",
+      value: "Minimum 17 years on or before 31st December of the admission year.",
+    },
+    {
+      label: "Documents",
+      value: "Passport, marksheets, transfer certificate, medical fitness, and visa documentation.",
+    },
+    {
+      label: "Language Tests",
+      value: "IELTS/TOEFL only for select countries. Most MBBS abroad destinations do not require it.",
+    },
+    {
+      label: "Post-Degree Licensing",
+      value: "Graduates must clear required licensing pathways (FMGE/NExT, USMLE, PLAB, AMC etc.)",
+    },
+  ],
+  npbd: [
+    {
+      label: "Academic Qualification",
+      value: "Equivalent higher secondary qualification with PCB from a recognised board.",
+    },
+    {
+      label: "Minimum Marks in PCB",
+      value: "Universities generally require strong science scores; exact cutoff varies by destination.",
+    },
+    {
+      label: "Entry Examination",
+      value: "NEET or equivalent national eligibility route as applicable to student citizenship pathway.",
+    },
+    {
+      label: "Age Requirement",
+      value: "Minimum 17 years at the time of admission in most universities.",
+    },
+    {
+      label: "Documentation",
+      value: "Passport, academics, embassy forms, financial documents, and attestation as required.",
+    },
+    {
+      label: "Language Tests",
+      value: "Most English-medium MBBS destinations do not require IELTS/TOEFL at admission stage.",
+    },
+    {
+      label: "Post-Degree Licensing",
+      value: "Graduates must follow licensing rules in home country / intended practice destination.",
+    },
+  ],
+  nepali: [],
+  specialNotes: [
+    {
+      code: "NP",
+      heading: "Special Note - Nepali Students",
+      title: "Why this is the right choice for Nepal students",
+      points: [
+        "English-medium universities with affordable fee structures and supportive hostels.",
+        "Eligibility and documentation aligned with destination-country admission requirements.",
+        "Student communities and on-ground support help faster adaptation after arrival.",
+        "Licensing planning is mapped based on intended country of medical practice.",
+      ],
+      footerTitle: "Nepal Licensing Note:",
+      footerText:
+        "Graduates must follow Nepal Medical Council (NMC-Nepal) licensing pathway before clinical practice in Nepal.",
+      accentClass: "border-[#00B94A] text-[#2C9B5D]",
+      noteBgClass: "bg-[#F1FAF4] border-[#D6EEDF]",
+    },
+    {
+      code: "BD",
+      heading: "Special Note - Bangladeshi Students",
+      title: "Why this is the right choice for Bangladesh students",
+      points: [
+        "Universities selected for international recognition, safety, and curriculum quality.",
+        "Admission support includes document compliance, visa support, and travel planning.",
+        "City-level food and community insights are shared before final university shortlisting.",
+        "Licensing guidance is provided based on Bangladesh and global career pathways.",
+      ],
+      footerTitle: "Bangladesh Licensing Note:",
+      footerText:
+        "Graduates must follow Bangladesh Medical and Dental Council (BMDC) licensing requirements for local practice.",
+      accentClass: "border-[#0066FF] text-[#285F9A]",
+      noteBgClass: "bg-[#F2F7FE] border-[#D6E3F5]",
+    },
+  ],
+};
+
+export const russiaAbroadEligibilityContent: AbroadEligibilityContent = {
+  eyebrow: "Who Can Apply",
+  titleLead: "Eligibility Criteria for MBBS in ",
+  titleTrail: "",
+  subtitle:
+    "Requirements for students from India, Nepal and Bangladesh - based on NMC guidelines and university requirements.",
+  tabIndian: "IN Indian Students",
+  tabNpbd: "NP BD Nepal & Bangladesh",
+  indian: [
+    {
+      label: "Academic Qualification",
+      value:
+        "10+2 (HSC) with Physics, Chemistry, Biology and English as core subjects from a recognised board.",
+    },
+    {
+      label: "Minimum Marks in PCB",
+      value:
+        "General category: minimum 50% aggregate in Physics, Chemistry and Biology. SC/ST/OBC: minimum 40% aggregate.",
+    },
+    {
+      label: "NEET Score",
+      value:
+        "Valid NEET-UG qualifying score mandatory (NMC regulations, effective March 2019). Score valid for 3 years from result date. No minimum score set by Russian universities - NEET qualification only.",
+    },
+    {
+      label: "Age Requirement",
+      value:
+        "Minimum 17 years on or before 31st December of the admission year. No maximum age limit at most Russian universities.",
+    },
+    {
+      label: "MEA Apostille",
+      value:
+        "All academic documents must be apostilled by Ministry of External Affairs (MEA), India - mandatory for visa and university admission.",
+    },
+    {
+      label: "Language Tests",
+      value: "No IELTS or TOEFL required for any of the 10 featured Russian medical universities.",
+    },
+    {
+      label: "Post-Degree Licensing",
+      value: "Must clear GOZZ (Russian state medical licensing exam) then FMGE or NExT to practice medicine in India.",
+    },
+  ],
+  npbd: [
+    {
+      label: "Academic Qualification",
+      value: "Equivalent higher secondary (science stream) with Biology, Chemistry, Physics and English.",
+    },
+    {
+      label: "Minimum Marks in PCB",
+      value: "Recommended 50%+ aggregate in PCB for smoother admissions and stronger university options.",
+    },
+    {
+      label: "Entry Pathway",
+      value: "Students should meet national eligibility norms applicable to eventual licensing destination.",
+    },
+    {
+      label: "Age Requirement",
+      value: "Minimum 17 years by year of admission in line with university and regulatory requirements.",
+    },
+    {
+      label: "Document Legalisation",
+      value:
+        "Academic records, passport, and required documents must be properly attested/legalised before visa filing.",
+    },
+    {
+      label: "Language Tests",
+      value: "IELTS/TOEFL not required for Russia MBBS admissions in most universities.",
+    },
+    {
+      label: "Post-Degree Licensing",
+      value:
+        "Graduates must clear licensing examination process of their home/target practice country after graduation.",
+    },
+  ],
+  nepali: [],
+  specialNotes: [
+    {
+      code: "NP",
+      heading: "Special Note - Nepali Students",
+      title: "Why Russia is the Right Choice for Nepal Students",
+      points: [
+        "No IELTS/TOEFL required - all 10 featured universities admit Nepali students without English proficiency tests.",
+        "NEET or equivalent accepted - valid NEET score or Nepali national medical entry test both qualify for admission.",
+        "Fees in NPR - total 6-year program ~ NPR 29-58 lakh (Rs. 18-36L x ~1.6 NPR/INR rate, varies by university).",
+        "Established Nepali communities at Kazan KSMU, NSMU Arkhangelsk, and Tver TSMU - peer support from Day 1.",
+        "Nepal NMC licensing pathway - Taksheela advises on both FMGE/NExT (India) and Nepal Medical Council exam routes after graduation.",
+      ],
+      footerTitle: "Nepal Licensing Note:",
+      footerText:
+        "Graduates must clear the Nepal Medical Council (NMC-Nepal) licensing examination to practice in Nepal. Taksheela counsels on both the Indian FMGE/NExT and the Nepal NMC pathways based on each student's career plan.",
+      accentClass: "border-[#00B94A] text-[#2C9B5D]",
+      noteBgClass: "bg-[#F1FAF4] border-[#D6EEDF]",
+    },
+    {
+      code: "BD",
+      heading: "Special Note - Bangladeshi Students",
+      title: "Why Russia is the Right Choice for Bangladesh Students",
+      points: [
+        "Full DGME alignment - all 10 featured universities satisfy DGME Bangladesh requirements - English medium, WHO-listed, 6-year duration, government recognised.",
+        "DGME entry test accepted - Bangladeshi students qualifying the national DGME-administered medical entry test are eligible - Taksheela confirms eligibility documentation.",
+        "Fees in BDT - total 6-year program ~ BDT 24-49 lakh (Rs. 18-36L x ~1.35 BDT/INR rate, varies by university).",
+        "Halal food confirmed at Kazan (large Muslim-majority Tatar population), Ufa/BSMU (Bashkortostan), and Moscow - key cities for Bangladeshi students.",
+        "Taksheela BD support - DGME document compliance, Russian Embassy visa from Dhaka, certified translation, and full on-ground support after arrival.",
+      ],
+      footerTitle: "Bangladesh Licensing Note:",
+      footerText:
+        "BMDC (Bangladesh Medical and Dental Council) recognises degrees from WHO-listed, DGME-compliant universities. Graduates must clear the BMDC licensing exam to practice in Bangladesh. Taksheela advises on both BMDC and Indian FMGE pathways.",
+      accentClass: "border-[#0066FF] text-[#285F9A]",
+      noteBgClass: "bg-[#F2F7FE] border-[#D6E3F5]",
+    },
+  ],
+};
+
+// --- Admission process (AdmissionProcessAbroad) ------------------------------------
+
+export type AbroadAdmissionProcessStep = {
+  title: string;
+  description: string;
+};
+
+export type AbroadAdmissionProcessContent = {
+  eyebrow: string;
+  /** Text before `country.title` in the main heading. */
+  titleLead: string;
+  /** Accent segment (e.g. "— Admission Process"). */
+  titleAccent: string;
+  /** Optional text after the accent span. */
+  titleTrail: string;
+  /** Use `{country}` for `country.title` where needed. */
+  subtitle: string;
+  steps: AbroadAdmissionProcessStep[];
+};
+
+export const abroadDefaultAdmissionProcessContent: AbroadAdmissionProcessContent = {
+  eyebrow: "Step by Step",
+  titleLead: "MBBS in ",
+  titleAccent: "— Admission Process",
+  titleTrail: "",
+  subtitle:
+    "No donation, no entrance test beyond NEET, no management quota. Fully merit-based and completely guided by Taksheela from start to arrival.",
+  steps: [
+    {
+      title: "Free Counselling Session",
+      description:
+        "One-on-one session with a Taksheela specialist to assess your profile, budget, and shortlist suitable NMC-compliant universities.",
+    },
+    {
+      title: "University Shortlist",
+      description:
+        "2–3 universities shortlisted with transparent fee breakdowns and track record so you can compare options clearly.",
+    },
+    {
+      title: "Document Preparation",
+      description:
+        "Academic records, passport, photographs, medical certificate — compiled and verified as per embassy and university requirements.",
+    },
+    {
+      title: "University Application",
+      description:
+        "We submit your application to the selected university and follow up until you receive a response.",
+    },
+    {
+      title: "Admission Offer Letter",
+      description:
+        "Official offer letter received — your confirmed MBBS seat, secured through merit-based admission.",
+    },
+    {
+      title: "Fee Payment",
+      description:
+        "Guided fee remittance through authorised channels directly to the university with full transparency.",
+    },
+    {
+      title: "Visa Application",
+      description:
+        "Invitation and complete student visa support — documentation, medical tests, and embassy requirements.",
+    },
+    {
+      title: "Pre-Departure & Arrival",
+      description:
+        "Orientation, travel checklist, and on-ground support after arrival for a smooth start abroad.",
+    },
+  ],
+};
+
+export const russiaAbroadAdmissionProcessContent: AbroadAdmissionProcessContent = {
+  eyebrow: "Step by Step",
+  titleLead: "MBBS in ",
+  titleAccent: "— Admission Process",
+  titleTrail: "",
+  subtitle:
+    "No donation, no entrance test beyond NEET, no management quota. Fully merit-based and completely guided by Taksheela from start to arrival.",
+  steps: [
+    {
+      title: "Free Counselling Session",
+      description:
+        "1:1 session with a Taksheela Russia specialist — assesses NEET score, budget, city preference, and maps the ideal NMC-compliant university for your profile.",
+    },
+    {
+      title: "University Shortlist",
+      description:
+        "2-3 NMC-compliant, WHO-listed universities shortlisted with complete, transparent fee breakdowns and FMGE track record for each option.",
+    },
+    {
+      title: "Document Preparation & Apostille",
+      description:
+        "10th/12th marksheets, NEET scorecard, passport, photographs, medical certificate — compiled and apostilled for Indian students. Nepal/BD students receive equivalent guidance.",
+    },
+    {
+      title: "University Application",
+      description:
+        "We submit your application directly to the selected university and handle all follow-ups until confirmation is received.",
+    },
+    {
+      title: "Admission Offer Letter",
+      description:
+        "Official Offer Letter received — your confirmed MBBS seat in Russia, secured without any donation or intermediary payment.",
+    },
+    {
+      title: "Fee Payment",
+      description:
+        "Guided fee remittance through RBI-authorised channels directly to the university. No hidden fees, no agent commissions, no surprises.",
+    },
+    {
+      title: "Visa Application",
+      description:
+        "University issues visa invitation. Taksheela prepares complete student visa package — medical tests, insurance, SOP compliant with Russian Embassy requirements.",
+    },
+    {
+      title: "Pre-Departure & Arrival",
+      description:
+        "Pre-departure orientation covering forex, winter checklist, and flight planning. Airport pickup and first-week support by a local Taksheela representative in Russia.",
     },
   ],
 };
@@ -1314,6 +1953,8 @@ export type AbroadTopUniversitiesContent = {
   titlePrimary: string;
   titleAccent: string;
   intro: string;
+  /** Large decorative letters on each card header (e.g. RU, GE). */
+  cardWatermarkCode: string;
   filters: { id: AbroadTopUniversitiesFilterId; label: string }[];
   universities: AbroadTopUniversityCard[];
   /**
@@ -1710,6 +2351,7 @@ export const russiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = 
   titleAccent: "for Indian Students 2026-27",
   intro:
     "Hand-picked NMC-compliant, WHO-listed institutions with transparent fee bands, FMGE track signals, and city fit — filter by Moscow, value, or FMGE strength to shortlist faster.",
+  cardWatermarkCode: "RU",
   filters: [
     { id: "all", label: "All Universities" },
     { id: "moscow", label: "Moscow" },
@@ -1827,7 +2469,7 @@ export type AbroadFaqPageContent = {
 
 export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
   eyebrow: "Frequently asked questions",
-  title: "MBBS in Russia 2025-26 — FAQs for India, Nepal and Bangladesh Students",
+  title: "MBBS in Russia 2026-27 — FAQs for India, Nepal and Bangladesh Students",
   subtitle:
     "Structured for FAQPage rich results and natural-language queries — including INR, NPR, and BDT-specific cost questions.",
   items: [
@@ -1878,12 +2520,12 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
         "GOZZ is Russia's State Final Attestation exam at end of Year 5, conducted in Russian language. Passing GOZZ is mandatory to receive the Russian medical degree and Russian medical licence. This Russian medical licence is a prerequisite before applying for FMGE or NExT in India. Without it the degree cannot be converted into an Indian medical licence. This is why Russian language training from Year 1 is essential, not optional.",
     },
     {
-      question: "What is the total MBBS fee in Russia in Nepali Rupees (NPR) for 2025-26?",
+      question: "What is the total MBBS fee in Russia in Nepali Rupees (NPR) for 2026-27?",
       answer:
         "For Nepali students, total 6-year cost approximately NPR 29-58 lakh (~1 INR = 1.6 NPR). Budget universities NSMU and ISMU: NPR 29-39 lakh. Kazan KSMU mid-range: ~NPR 46-67 lakh. Premium institutions Sechenov and RUDN: NPR 80-88 lakh. Taksheela provides personalised NPR breakdown for Nepali students during free counselling.",
     },
     {
-      question: "What is the total MBBS fee in Russia in Bangladeshi Taka (BDT) for 2025-26?",
+      question: "What is the total MBBS fee in Russia in Bangladeshi Taka (BDT) for 2026-27?",
       answer:
         "For Bangladeshi students, total 6-year cost approximately BDT 24-49 lakh (~1 INR = 1.35 BDT). NSMU and ISMU (budget): BDT 24-32 lakh. Tver TSMU and BSMU (mid-range): BDT 28-36 lakh. Sechenov and RUDN (premium): BDT 67-74 lakh. All 10 featured universities satisfy DGME Bangladesh compliance requirements.",
     },
@@ -1893,5 +2535,156 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
         "September 2025 intake: Applications open May-June 2025, deadline July-August 2025. Taksheela recommends starting by May to complete university shortlisting, MEA apostille (takes 2-4 weeks), and visa processing before August. All 10 featured universities participate in September intake. A secondary February intake exists at select universities for students who miss September.",
     },
   ],
+};
+
+export const russiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
+  {
+    icon: "🎓",
+    label: "Degree Awarded",
+    value: "MD Physician (equivalent to MBBS)",
+    mLabel: "Degree",
+    mValue: "MD (MBBS equiv.)",
+  },
+  {
+    icon: "⏱️",
+    label: "Course Duration",
+    value: "6 Years (5 academic + 1 internship)",
+    mLabel: "Duration",
+    mValue: "6 yrs (5+1 intern)",
+  },
+  {
+    icon: "🗓️",
+    label: "Intakes",
+    value: "September (primary) · February (secondary)",
+    mLabel: "Intakes",
+    mValue: "Sep · Feb",
+  },
+  {
+    icon: "🧾",
+    label: "Eligibility",
+    value: "50% PCB in 10+2 + NEET qualified",
+    mLabel: "Eligibility",
+    mValue: "50% PCB + NEET",
+  },
+  {
+    icon: "🌐",
+    label: "Medium of Instruction",
+    value: "English + Russian (clinical year subject)",
+    mLabel: "Medium",
+    mValue: "English + Russian",
+  },
+  {
+    icon: "💰",
+    label: "Annual Tuition (Range)",
+    value: "Rs. 2.7L - Rs. 8L / year",
+    mLabel: "Tuition / yr",
+    mValue: "₹2.7L–₹8L",
+  },
+  {
+    icon: "🏠",
+    label: "Annual Living Cost",
+    value: "Rs. 1.2 - Rs. 2.4 Lakhs / year",
+    mLabel: "Living / yr",
+    mValue: "₹1.2L–₹2.4L",
+  },
+  {
+    icon: "✅",
+    label: "Recognised By",
+    value: "WHO · NMC · ECFMG · FAIMER · WFME",
+    mLabel: "Recognised",
+    mValue: "WHO · NMC · WFME…",
+  },
+  {
+    icon: "📊",
+    label: "FMGE Pass Rate 2024",
+    value: "~29.5% overall · Up to 45.45% top unis",
+    mLabel: "FMGE 2024",
+    mValue: "~29.5% · top ~45%",
+  },
+  {
+    icon: "👩‍🎓",
+    label: "Indian Students",
+    value: "27,000+ (MEA, Dec 2025)",
+    mLabel: "Indians",
+    mValue: "27,000+",
+  },
+  {
+    icon: "🏛️",
+    label: "NMC-Compliant Universities",
+    value: "50+ government medical universities",
+    mLabel: "NMC unis",
+    mValue: "50+ govt. colleges",
+  },
+  {
+    icon: "📝",
+    label: "IELTS / TOEFL",
+    value: "Not required for admission",
+    mLabel: "IELTS/TOEFL",
+    mValue: "Not required",
+  },
+];
+
+const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
+  {
+    icon: "🔥",
+    title: "Government-Subsidised Affordable Fees",
+    description:
+      "Annual tuition from Rs. 2.7 lakh at government universities - total 6-year program Rs. 18-36L versus Rs. 50L-1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
+  },
+  {
+    icon: "✅",
+    title: "50+ NMC-Compliant Universities",
+    description:
+      "The largest pool of NMC-compliant medical institutions in any single country - maximum choice across cities, fee levels, and specialisations for students from all three target countries.",
+  },
+  {
+    icon: "🌐",
+    title: "English-Medium Programs, No IELTS",
+    description:
+      "All 10 featured universities offer MBBS entirely in English. Russian language is taught as a compulsory subject. No IELTS or TOEFL required for admission - accessible for all NEET-qualified students.",
+  },
+  {
+    icon: "🏥",
+    title: "World-Class Clinical Training",
+    description:
+      "Clinical rotations at large government teaching hospitals from Year 3. High patient volumes and diverse disease exposure - a significant advantage for FMGE preparation and real-world competence.",
+  },
+  {
+    icon: "🚫",
+    title: "Zero Donation or Capitation",
+    description:
+      "Admission is purely merit-based and transparent. No donation, no capitation, no management quota. You pay only the published fee, directly to the university - a stark contrast to Indian private colleges.",
+  },
+  {
+    icon: "👥",
+    title: "Largest Indian Student Community",
+    description:
+      "27,000+ Indians enrolled - the most developed Indian student ecosystem of any MBBS abroad destination. Peer mentorship, Indian food, Diwali celebrations, Holi on campus - a genuine home away from home.",
+  },
+  {
+    icon: "🏅",
+    title: "Globally Recognised Degrees",
+    description:
+      "WHO-listed, NMC-compliant degrees qualify graduates for FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia) - a genuinely global medical career from one degree.",
+  },
+  {
+    icon: "🧪",
+    title: "200+ Years of Medical Heritage",
+    description:
+      "Sechenov University founded 1758. Kazan State Medical University 1814. Russian medical education has been a global benchmark for over two centuries - producing Nobel laureates and internationally respected clinicians.",
+  },
+];
+
+const russiaAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent = {
+  eyebrow: "Why Choose MBBS in {country}",
+  titleLead: "Why Study MBBS in ",
+  titleTrail: "?",
+  subtitle:
+    "Eight reasons government universities, NMC compliance, and India’s largest MBBS-abroad community make {country} a strategic choice for students from India, Nepal and Bangladesh.",
+};
+
+export const russiaAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent = {
+  section: russiaAbroadWhyChooseMbbsSection,
+  reasons: russiaAbroadWhyChooseMbbsReasons,
 };
 
