@@ -1,7 +1,7 @@
 "use client";
 
 import ContainerWrapper from "@/components/ContainerWrapper";
-import type { AbroadCostBreakdownContent } from "@/constants/abroad/russiaAbroadConstent";
+import type { AbroadFullPageCopy } from "@/constants/abroad/abroadFullPageRegistry";
 import {
   ABROAD_SECTION_ACCENT,
   ABROAD_SECTION_EYEBROW,
@@ -10,7 +10,8 @@ import {
 } from "@/constants/abroadSectionTheme";
 
 interface CostBreakdownAbroadProps {
-  content: AbroadCostBreakdownContent;
+  /** Same shape as `abroadCopy.cost` from `getAbroadFullPageCopy` on the abroad slug page. */
+  content: AbroadFullPageCopy["cost"];
 }
 
 export default function CostBreakdownAbroad({ content }: CostBreakdownAbroadProps) {

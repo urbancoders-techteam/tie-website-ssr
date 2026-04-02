@@ -1,25 +1,56 @@
 "use client";
 
 import ContainerWrapper from "@/components/ContainerWrapper";
-import type {
-  AbroadTeachingMethodologyContent,
-  AbroadTeachingMethodologyItem,
-} from "@/constants/abroad/russiaAbroadConstent";
+import type { AbroadFullPageCopy } from "@/constants/abroad/abroadFullPageRegistry";
 import {
   ABROAD_SECTION_ACCENT,
   ABROAD_SECTION_EYEBROW,
   ABROAD_SECTION_SUBTITLE,
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
 const DEFAULT_SECTION_ID = "teaching-methodology";
 const DEFAULT_HEADING_ID = "teaching-methodology-heading";
 const MOBILE_TEACHING_AUTOPLAY_MS = 5000;
+/** Matches Tailwind `md:hidden` for the carousel — effects must not run on md+ or `scrollIntoView` jumps the page. */
+const MOBILE_CAROUSEL_MQ = "(max-width: 767px)";
+
+function subscribeMobileCarouselMq(onChange: () => void) {
+  const mq = window.matchMedia(MOBILE_CAROUSEL_MQ);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getMobileCarouselVisibleSnapshot() {
+  return window.matchMedia(MOBILE_CAROUSEL_MQ).matches;
+}
+
+function useMobileCarouselVisible() {
+  return useSyncExternalStore(subscribeMobileCarouselMq, getMobileCarouselVisibleSnapshot, () => false);
+}
+
+/** Same object shape as `abroadCopy.teaching` or `abroadCopy.career` from `getAbroadFullPageCopy`. */
+type TeachingSectionContent = AbroadFullPageCopy["teaching"];
+type MethodologyItem = TeachingSectionContent["items"][number];
+
+const SCROLLER_CLASS =
+  "flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [touch-action:pan-x] [&::-webkit-scrollbar]:hidden";
+
+const SLIDE_WRAP =
+  "flex w-[min(100%,calc(100vw-2.5rem))] max-w-[min(400px,calc(100vw-2rem))] shrink-0 snap-center";
 
 interface TeachingMethodologyAbroadProps {
-  content: AbroadTeachingMethodologyContent;
+  content: TeachingSectionContent;
   /** Section root `id` for anchors; must be unique when this block appears more than once on a page. */
   sectionId?: string;
   /** Heading `id` for `aria-labelledby`; must be unique when this block appears more than once on a page. */
@@ -37,11 +68,7 @@ function splitIntoThreeRows<T>(items: T[]): [T[], T[], T[]] {
   const n = items.length;
   const r1 = Math.ceil(n / 3);
   const r2 = Math.ceil((n - r1) / 2);
-  return [
-    items.slice(0, r1),
-    items.slice(r1, r1 + r2),
-    items.slice(r1 + r2),
-  ];
+  return [items.slice(0, r1), items.slice(r1, r1 + r2), items.slice(r1 + r2)];
 }
 
 /** Grid classes for a single row by number of cards (tablet & desktop). */
@@ -65,7 +92,7 @@ function rowGridClass(rowLength: number): string {
   return "grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-5";
 }
 
-function DesktopRows({ items }: { items: AbroadTeachingMethodologyItem[] }) {
+function DesktopRows({ items }: { items: MethodologyItem[] }) {
   const rows = useMemo(() => {
     if (items.length > 8) {
       const [a, b, c] = splitIntoThreeRows(items);
@@ -82,7 +109,7 @@ function DesktopRows({ items }: { items: AbroadTeachingMethodologyItem[] }) {
           <div className={rowGridClass(row.length)}>
             {row.map((item) => (
               <div key={item.title} className="min-h-0 min-w-0">
-                <MethodologyCard icon={item.icon} title={item.title} description={item.description} />
+                <MethodologyCard item={item} />
               </div>
             ))}
           </div>
@@ -92,15 +119,8 @@ function DesktopRows({ items }: { items: AbroadTeachingMethodologyItem[] }) {
   );
 }
 
-function MethodologyCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: string;
-  title: string;
-  description: string;
-}) {
+const MethodologyCard = memo(function MethodologyCard({ item }: { item: MethodologyItem }) {
+  const { icon, title, description } = item;
   const isLetterBadge = /^[A-Z]{2}$/.test(icon.trim());
 
   return (
@@ -119,7 +139,7 @@ function MethodologyCard({
       </p>
     </article>
   );
-}
+});
 
 export default function TeachingMethodologyAbroad({
   content,
@@ -127,126 +147,122 @@ export default function TeachingMethodologyAbroad({
   headingId = DEFAULT_HEADING_ID,
   carouselAriaLabel = "Teaching methodology",
 }: TeachingMethodologyAbroadProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollSyncObserverRef = useRef<IntersectionObserver | null>(null);
   const { items } = content;
   const itemCount = items.length;
   const [slideIndex, setSlideIndex] = useState(0);
+  const mobileCarouselVisible = useMobileCarouselVisible();
 
   useEffect(() => {
     setSlideIndex(0);
-  }, [itemCount]);
+  }, [content.titlePrimary, content.titleAccent, itemCount]);
+
+  useLayoutEffect(() => {
+    if (!mobileCarouselVisible || itemCount === 0) return;
+    slideRefs.current[slideIndex]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "nearest",
+      block: "nearest",
+    });
+  }, [slideIndex, itemCount, mobileCarouselVisible]);
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || itemCount === 0) return;
-    const slides = el.querySelectorAll<HTMLElement>("[data-teaching-slide]");
-    const slide = slides[slideIndex];
-    if (!slide) return;
-    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
-  }, [slideIndex, itemCount]);
-
-  useEffect(() => {
-    if (itemCount <= 1) return;
+    if (!mobileCarouselVisible || itemCount <= 1) return;
     const tick = () => {
       if (typeof document !== "undefined" && document.visibilityState === "hidden") return;
       setSlideIndex((i) => (i + 1) % itemCount);
     };
     const id = setInterval(tick, MOBILE_TEACHING_AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [itemCount]);
+  }, [itemCount, mobileCarouselVisible]);
 
-  const goSlide = useCallback(
-    (direction: "prev" | "next") => {
-      if (itemCount <= 1) return;
-      setSlideIndex((i) => {
-        if (direction === "next") return (i + 1) % itemCount;
-        return (i - 1 + itemCount) % itemCount;
-      });
-    },
-    [itemCount]
-  );
+  /** Keep active dot in sync when the user swipes the track (not only autoplay / dot taps). */
+  useLayoutEffect(() => {
+    if (!mobileCarouselVisible || itemCount <= 1) return;
+    const raf = requestAnimationFrame(() => {
+      scrollSyncObserverRef.current?.disconnect();
+      const root = scrollerRef.current;
+      if (!root) return;
+      const slides = slideRefs.current.slice(0, itemCount).filter(Boolean) as HTMLDivElement[];
+      if (slides.length !== itemCount) return;
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          let best: IntersectionObserverEntry | undefined;
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+          }
+          if (!best?.target) return;
+          const idx = slides.indexOf(best.target as HTMLDivElement);
+          if (idx >= 0) setSlideIndex(idx);
+        },
+        { root, rootMargin: "0px", threshold: [0.35, 0.55, 0.75, 1] }
+      );
+      scrollSyncObserverRef.current = io;
+      slides.forEach((el) => io.observe(el));
+    });
+    return () => {
+      cancelAnimationFrame(raf);
+      scrollSyncObserverRef.current?.disconnect();
+      scrollSyncObserverRef.current = null;
+    };
+  }, [itemCount, mobileCarouselVisible]);
+
+  const setSlideEl = useCallback((index: number) => (node: HTMLDivElement | null) => {
+    slideRefs.current[index] = node;
+  }, []);
 
   return (
-    <section
-      className="bg-[#F4F6FB] py-12 md:py-16"
-      aria-labelledby={headingId}
-      id={sectionId}
-    >
+    <section className="bg-[#F4F6FB] py-12 md:py-16" aria-labelledby={headingId} id={sectionId}>
       <ContainerWrapper>
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <p className={ABROAD_SECTION_EYEBROW}>
-              {content.eyebrow}
-            </p>
+            <p className={ABROAD_SECTION_EYEBROW}>{content.eyebrow}</p>
             <h2 id={headingId} className={ABROAD_SECTION_TITLE}>
               {content.titlePrimary}{" "}
               <span className={ABROAD_SECTION_ACCENT}>{content.titleAccent}</span>
             </h2>
-            {content.intro ? (
-              <p className={ABROAD_SECTION_SUBTITLE}>
-                {content.intro}
-              </p>
-            ) : null}
+            {content.intro ? <p className={ABROAD_SECTION_SUBTITLE}>{content.intro}</p> : null}
           </div>
 
-          {/* Mobile: horizontal slider */}
-          <div className="relative mt-9 md:hidden">
-            <div className="mb-2 flex items-center justify-end gap-2">
-              <button
-                type="button"
-                onClick={() => goSlide("prev")}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
-                aria-label="Previous card"
-              >
-                <FaChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => goSlide("next")}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
-                aria-label="Next card"
-              >
-                <FaChevronRight className="h-4 w-4" />
-              </button>
-            </div>
+          <div className="relative mt-9 min-w-0 md:hidden">
             <div
-              ref={scrollRef}
+              ref={scrollerRef}
               role="region"
               aria-roledescription="carousel"
               aria-label={carouselAriaLabel}
-              className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className={SCROLLER_CLASS}
             >
-              {items.map((item) => (
-                <div
-                  key={item.title}
-                  data-teaching-slide
-                  className="flex w-[min(100%,calc(100vw-2.5rem))] max-w-[min(400px,calc(100vw-2rem))] shrink-0 snap-center"
-                >
-                  <MethodologyCard icon={item.icon} title={item.title} description={item.description} />
+              {items.map((item, i) => (
+                <div key={`${item.title}-${i}`} ref={setSlideEl(i)} className={SLIDE_WRAP}>
+                  <MethodologyCard item={item} />
                 </div>
               ))}
             </div>
 
             {itemCount > 1 ? (
-              <div
-                className="mt-4 flex items-center justify-center gap-2"
-                role="tablist"
-                aria-label={`${carouselAriaLabel} slides`}
+              <nav
+                className="mt-5 flex flex-wrap items-center justify-center gap-2 px-2"
+                aria-label={`${carouselAriaLabel} pagination`}
               >
-                {items.map((_, i) => (
+                {items.map((item, i) => (
                   <button
-                    key={i}
+                    key={`dot-${item.title}-${i}`}
                     type="button"
-                    role="tab"
-                    aria-selected={i === slideIndex}
-                    aria-label={`Slide ${i + 1} of ${itemCount}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === slideIndex ? "w-7 bg-[#143C83]" : "w-2 bg-[#C5CCD8] hover:bg-[#9CA3AF]"
-                    }`}
                     onClick={() => setSlideIndex(i)}
+                    className={`h-2 shrink-0 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#143C83]/40 ${
+                      slideIndex === i
+                        ? "w-8 bg-[#143C83]"
+                        : "w-2 bg-[#C5CCD8] hover:bg-[#94A3B8]"
+                    }`}
+                    aria-label={`Go to slide ${i + 1} of ${itemCount}`}
+                    aria-current={slideIndex === i ? "true" : undefined}
                   />
                 ))}
-              </div>
+              </nav>
             ) : null}
 
             <p className="sr-only" aria-live="polite">
@@ -254,7 +270,6 @@ export default function TeachingMethodologyAbroad({
             </p>
           </div>
 
-          {/* Tablet & desktop: ≤8 items → 2 rows (first row max 5); &gt;8 → 3 rows */}
           <DesktopRows items={items} />
         </div>
       </ContainerWrapper>

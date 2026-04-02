@@ -27,6 +27,7 @@ import type {
   AbroadWhyChooseTaksheelaContent,
   AbroadAccommodationClimateContent,
   AbroadEducationLoanContent,
+  AbroadCtaBannerContent,
 } from "@/constants/abroad/russiaAbroadConstent";
 import {
   russiaAbroadAdmissionProcessContent,
@@ -52,6 +53,7 @@ import {
   russiaAbroadWhyChooseMbbsContent,
   russiaAbroadAccommodationClimateContent,
   russiaAbroadEducationLoanContent,
+  russiaAbroadCtaBannerContent,
 } from "@/constants/abroad/russiaAbroadConstent";
 import {
   georgiaAbroadAdmissionProcessContent,
@@ -77,6 +79,7 @@ import {
   georgiaAbroadWhyChooseMbbsContent,
   georgiaAbroadAccommodationClimateContent,
   georgiaAbroadEducationLoanContent,
+  georgiaAbroadCtaBannerContent,
 } from "@/constants/abroad/georgiaAbroadConstent";
 
 /** All section payloads passed to the “full stack” abroad page for one country. */
@@ -104,6 +107,8 @@ export type AbroadFullPageCopy = {
   whyChooseMbbs: AbroadWhyChooseMbbsContent;
   eligibility: AbroadEligibilityContent;
   admissionProcess: AbroadAdmissionProcessContent;
+  /** Red strip CTA before FAQ — copy is per-country in `*AbroadConstent`. */
+  ctaBanner: AbroadCtaBannerContent;
 };
 
 function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
@@ -131,6 +136,7 @@ function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
     whyChooseMbbs: russiaAbroadWhyChooseMbbsContent,
     eligibility: russiaAbroadEligibilityContent,
     admissionProcess: russiaAbroadAdmissionProcessContent,
+    ctaBanner: russiaAbroadCtaBannerContent,
   };
 }
 
@@ -159,6 +165,7 @@ function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
     whyChooseMbbs: georgiaAbroadWhyChooseMbbsContent,
     eligibility: georgiaAbroadEligibilityContent,
     admissionProcess: georgiaAbroadAdmissionProcessContent,
+    ctaBanner: georgiaAbroadCtaBannerContent,
   };
 }
 

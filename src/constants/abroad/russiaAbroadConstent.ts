@@ -1164,6 +1164,8 @@ export type AbroadMbbsSyllabusYearItem = {
   yearLabel: string;
   title: string;
   description: string;
+  /** Optional subject chips (e.g. Georgia year-by-year syllabus infographic). */
+  subjectTags?: string[];
   /** Years 1–5: red badge; final year: dark blue */
   badgeTone: "primary" | "internship";
 };
@@ -1173,6 +1175,8 @@ export type AbroadMbbsSyllabusContent = {
   titlePrimary: string;
   titleAccent: string;
   subtitle: string;
+  /** Optional closing line below the year accordions. */
+  footerNote?: string;
   years: AbroadMbbsSyllabusYearItem[];
 };
 
@@ -1232,7 +1236,8 @@ export const russiaAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
 
 export type AbroadComparisonTableRow = {
   parameter: string;
-  russia: string;
+  /** Primary destination on this page (Russia, Georgia, etc.) */
+  featured: string;
   indiaGovt: string;
   indiaPrivate: string;
   bangladesh: string;
@@ -1250,7 +1255,7 @@ export type AbroadCompleteComparisonContent = {
   subtitle: string;
   blockHeading: string;
   colParameter: string;
-  colRussia: string;
+  colFeatured: string;
   colIndiaGovt: string;
   colIndiaPrivate: string;
   colBangladesh: string;
@@ -1266,7 +1271,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     "Data-driven comparisons for students asking 'Is Russia better than India, Bangladesh, or Philippines for MBBS?' — structured for AI-assisted decision-making.",
   blockHeading: "Russia · India · Bangladesh · Philippines — MBBS snapshot",
   colParameter: "Parameter",
-  colRussia: "RU MBBS in Russia",
+  colFeatured: "RU MBBS in Russia",
   colIndiaGovt: "IN India (Govt. College)",
   colIndiaPrivate: "IN India (Private College)",
   colBangladesh: "🇧🇩 BD Bangladesh",
@@ -1274,7 +1279,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
   rows: [
     {
       parameter: "Total 6-Year Cost",
-      russia: "₹18–36 Lakhs (all-in)",
+      featured: "₹18–36 Lakhs (all-in)",
       indiaGovt: "₹5–15 Lakhs",
       indiaPrivate: "₹50L – ₹1.5 Crore",
       bangladesh: "₹15–30 Lakhs (typical all-in)",
@@ -1282,7 +1287,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "For Nepal (NPR equiv.)",
-      russia: "NPR 29–58 Lakh",
+      featured: "NPR 29–58 Lakh",
       indiaGovt: "NPR 8–24 Lakh",
       indiaPrivate: "NPR 80L – 2.4 Crore",
       bangladesh: "NPR 24–48 Lakh (approx.)",
@@ -1290,7 +1295,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "For Bangladesh (BDT equiv.)",
-      russia: "BDT 24–49 Lakh",
+      featured: "BDT 24–49 Lakh",
       indiaGovt: "BDT 7–20 Lakh",
       indiaPrivate: "BDT 67L – 2 Crore",
       bangladesh: "Domestic fee bands; BDT 15–35 L common range",
@@ -1298,7 +1303,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Seat Availability",
-      russia: "High — 50+ NMC-compliant universities",
+      featured: "High — 50+ NMC-compliant universities",
       indiaGovt: "Very limited — 1.18L seats for 23L+ aspirants",
       indiaPrivate: "Limited, donation-dependent",
       bangladesh: "~8–10 NMC-listed institutions; widely available",
@@ -1306,7 +1311,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Admission Process",
-      russia: "Merit-based, no donation, no capitation",
+      featured: "Merit-based, no donation, no capitation",
       indiaGovt: "Pure NEET merit, very competitive",
       indiaPrivate: "Opaque, capitation ₹20–80L common",
       bangladesh: "NEET + merit; transparent vs many private India routes",
@@ -1314,7 +1319,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "NEET Requirement",
-      russia: "Qualifying score (any percentile)",
+      featured: "Qualifying score (any percentile)",
       indiaGovt: "Very high rank essential",
       indiaPrivate: "Moderate rank + large payment",
       bangladesh: "Qualifying score mandatory (NMC)",
@@ -1322,7 +1327,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Program Duration",
-      russia: "6 years (5 academic + 1 internship)",
+      featured: "6 years (5 academic + 1 internship)",
       indiaGovt: "5.5 years (4.5 + 1 internship)",
       indiaPrivate: "5.5 years",
       bangladesh: "5 years + 1-year internship (typical pathway)",
@@ -1330,7 +1335,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Medium of Instruction",
-      russia: "English (full) + Russian (clinical subject)",
+      featured: "English (full) + Russian (clinical subject)",
       indiaGovt: "English + regional languages",
       indiaPrivate: "English",
       bangladesh: "Bengali + English (programme-dependent)",
@@ -1338,7 +1343,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Licensing Exam (India)",
-      russia: "GOZZ (Russia) → FMGE or NExT (India)",
+      featured: "GOZZ (Russia) → FMGE or NExT (India)",
       indiaGovt: "NExT only",
       indiaPrivate: "NExT only",
       bangladesh: "FMGE / NExT after BMDC registration pathway",
@@ -1346,7 +1351,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Global Recognition",
-      russia: "WHO, NMC, ECFMG, FAIMER, WFME",
+      featured: "WHO, NMC, ECFMG, FAIMER, WFME",
       indiaGovt: "NMC — globally recognised",
       indiaPrivate: "NMC — varies by institution",
       bangladesh: "WHO, NMC, BMDC alignment for Indian students",
@@ -1354,7 +1359,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Clinical Exposure",
-      russia: "High — large govt. hospitals, Year 3+",
+      featured: "High — large govt. hospitals, Year 3+",
       indiaGovt: "Very High",
       indiaPrivate: "Moderate — varies by college",
       bangladesh: "Strong at approved teaching hospitals",
@@ -1362,7 +1367,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Donation / Capitation",
-      russia: "None",
+      featured: "None",
       indiaGovt: "None",
       indiaPrivate: "₹20–80L typically",
       bangladesh: "None",
@@ -1371,7 +1376,7 @@ export const russiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCont
     },
     {
       parameter: "Best For",
-      russia: "Students needing a seat with NMC compliance at low cost",
+      featured: "Students needing a seat with NMC compliance at low cost",
       indiaGovt: "Top-rank NEET students with score for govt. seat",
       indiaPrivate: "Students willing to pay premium for India-based degree",
       bangladesh: "Students prioritising proximity, cultural fit & moderate budget",
@@ -1633,6 +1638,8 @@ export type AbroadEducationLoanSupportCard = {
 export type AbroadEducationLoanContent = {
   eyebrow: string;
   title: string;
+  /** Optional lead paragraph below the section title (e.g. Georgia infographic). */
+  intro?: string;
   nationalised: AbroadEducationLoanPairCard;
   privateNbfc: AbroadEducationLoanPairCard;
   support: AbroadEducationLoanSupportCard;
@@ -2535,6 +2542,27 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
         "September 2025 intake: Applications open May-June 2025, deadline July-August 2025. Taksheela recommends starting by May to complete university shortlisting, MEA apostille (takes 2-4 weeks), and visa processing before August. All 10 featured universities participate in September intake. A secondary February intake exists at select universities for students who miss September.",
     },
   ],
+};
+
+// --- Pre-FAQ CTA banner (AbroadMbbsCtaBanner) ----------------------------------------
+
+export type AbroadCtaBannerContent = {
+  /** Shown in: Ready to Begin Your MBBS in {countryLabel} Journey? */
+  countryLabel: string;
+  subtitle: string;
+  primaryCtaLabel: string;
+  phoneDisplay: string;
+  /** Value for <a href={`tel:${phoneTel}`}> — e.g. +919831241212 */
+  phoneTel: string;
+};
+
+export const russiaAbroadCtaBannerContent: AbroadCtaBannerContent = {
+  countryLabel: "Russia",
+  subtitle:
+    "Book your free counselling session. Get a personalised university shortlist, fee breakdown, and eligibility confirmation in 24 hours.",
+  primaryCtaLabel: "Book Free Counselling",
+  phoneDisplay: "+91 9831241212",
+  phoneTel: "+919831241212",
 };
 
 export const russiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [

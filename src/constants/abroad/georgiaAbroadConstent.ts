@@ -5,6 +5,7 @@
 
 import { imageBaseUrl } from "@/utils/config";
 import type {
+  AbroadCtaBannerContent,
   AbroadQuickFactItem,
   AbroadWhyChooseMbbsContent,
   AbroadWhyChooseMbbsItem,
@@ -517,76 +518,96 @@ export type AbroadCostBreakdownContent = {
 export const georgiaAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
   eyebrow: "Financial planning",
   titlePrimary: "MBBS in Georgia",
-  titleAccent: "— Complete Cost Breakdown",
+  titleAccent: "— Complete Fee Structure & Cost of Living",
   subtitle:
     "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2025–26.",
-  tuitionTableTitle: "University Tuition",
+  tuitionTableTitle: "University tuition (indicative)",
   tuitionColAnnual: "Annual Tuition",
   tuitionColSixYear: "6-Year Total",
   tuitionRows: [
     {
-      university: "David Tvildiani Medical University (DTMU)",
-      annualTuition: "~₹5–6L",
-      sixYearTotal: "~₹30–38L",
+      university: "Geomedi Medical University",
+      annualTuition: "~₹4.8L",
+      sixYearTotal: "~₹28–33L",
     },
     {
-      university: "Caucasus International University (CIU)",
-      annualTuition: "~₹5–5.5L",
-      sixYearTotal: "~₹32–36L",
+      university: "David Tvildiani Medical University (DTMU)",
+      annualTuition: "~₹5.3L",
+      sixYearTotal: "~₹31–36L",
     },
     {
       university: "University of Georgia",
-      annualTuition: "~₹5–6L",
-      sixYearTotal: "~₹30–38L",
+      annualTuition: "~₹5.3L",
+      sixYearTotal: "~₹31–36L",
     },
     {
-      university: "East-West Teaching University",
-      annualTuition: "~₹4–4.5L",
-      sixYearTotal: "~₹25–30L",
+      university: "Georgian American University (GAU)",
+      annualTuition: "~₹4.8L",
+      sixYearTotal: "~₹28–33L",
     },
     {
-      university: "Avicenna Batumi Medical University",
-      annualTuition: "~₹3.5–4.5L",
-      sixYearTotal: "~₹22–30L",
+      university: "Caucasus International University (CIU)",
+      annualTuition: "~₹1.9L",
+      sixYearTotal: "~₹11–13L",
     },
   ],
-  livingTableTitle: "Living Expense",
-  livingColMonthly: "Monthly",
+  livingTableTitle: "Annual expense breakdown (non-tuition)",
+  livingColMonthly: "Monthly (est.)",
   livingColAnnual: "Annual",
   livingRows: [
     {
-      item: "University Hostel / shared flat",
-      monthly: "₹25,000–45,000",
-      annual: "₹3–5.4L",
+      item: "University hostel",
+      monthly: "~₹10,800–14,600",
+      annual: "₹1.3L–1.75L",
     },
     {
-      item: "Food (Indian mess + groceries)",
-      monthly: "₹8,000–12,000",
-      annual: "₹96,000–1.44L",
+      item: "Food / mess",
+      monthly: "~₹7,300–10,800",
+      annual: "₹88K–1.3L",
     },
     {
-      item: "Local transport & mobile",
-      monthly: "₹2,000–4,000",
-      annual: "₹24,000–48,000",
+      item: "Health insurance",
+      monthly: "~₹750–1,100",
+      annual: "₹9K–13K",
     },
     {
-      item: "Insurance & misc.",
-      monthly: "₹2,000–4,000 (avg.)",
-      annual: "₹24,000–48,000",
+      item: "Visa / TRP extension",
+      monthly: "~₹750–1,500",
+      annual: "₹9K–17.5K",
+    },
+    {
+      item: "Personal expenses",
+      monthly: "~₹5,800–8,750",
+      annual: "₹70K–1.05L",
     },
   ],
-  summaryCardTitle: "Total 6-Year Cost (Mid-Tier University)",
+  summaryCardTitle: "Total 6-year investment",
   summaryLines: [
-    { label: "Tuition (6 years)", value: "₹25–38L" },
-    { label: "Hostel (6 years)", value: "₹18–32L" },
-    { label: "Food & living", value: "₹6–9L" },
-    { label: "Insurance & misc.", value: "₹1–2L" },
-    { label: "One-time visa & travel", value: "₹80K–1.5L" },
+    {
+      label: "Typical annual all-in (tuition + living heads)",
+      value: "~₹6.5L–11.5L",
+    },
+    {
+      label: "Nepal (NPR, using ₹ × ~1.6)",
+      value: "~NPR 62L–112L total (indicative)",
+    },
+    {
+      label: "Bangladesh (BDT, using ₹ × ~1.35)",
+      value: "~BDT 53L–95L total (indicative)",
+    },
+    {
+      label: "vs Indian private MBBS (incl. capitation & donation)",
+      value: "often ₹80L–₹1.2 Cr",
+    },
+    {
+      label: "Georgia advantage",
+      value: "zero capitation · zero donation",
+    },
   ],
-  summaryTotalLabel: "TOTAL (Typical Georgia MBBS)",
-  summaryTotalValue: "₹21–48 Lakhs",
+  summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
+  summaryTotalValue: "₹39–70L",
   summaryFootnote:
-    "Indian private medical college MBBS costs ₹50L – ₹1.5Cr — Georgia remains 2–4× more affordable for many families.",
+    "Includes six years of tuition, hostel, food, insurance, visa extensions, personal expenses, and one-time setup. A comparable NMC-recognised pathway is often roughly 2–3× more affordable than leading Indian private colleges at these ranges. * One-time: flight ₹40–60K, visa processing, apostille, initial setup ~₹50K. Exchange rates are indicative for 2025.",
 };
 
 // --- Intake periods (IntakePeriodAbroad) ------------------------------------------
@@ -613,35 +634,37 @@ export type AbroadIntakePeriodContent = {
 
 export const georgiaAbroadIntakePeriodContent: AbroadIntakePeriodContent = {
   eyebrow: "Application timeline",
-  titlePrimary: "MBBS in Georgia —",
-  titleAccent: "Intake Periods",
+  titlePrimary: "MBBS Intakes in Georgia",
+  titleAccent: "2025–26",
   primaryCard: {
-    icon: "🎯",
-    title: "September Intake (Primary)",
+    icon: "⭐",
+    title: "Primary intake — recommended",
     rows: [
-      { label: "Application Opens", value: "April – June 2026" },
-      { label: "Application Deadline", value: "July – August 2026" },
-      { label: "Offer Letter", value: "July – August 2026" },
-      { label: "Visa Application", value: "August – September 2026" },
-      { label: "Classes Begin", value: "September / October 2026" },
-      { label: "Availability", value: "All 10 Featured Universities" },
+      { label: "Intake period", value: "September / October 2025" },
+      { label: "Application opens", value: "March – May 2025" },
+      { label: "Application deadline", value: "June – July 2025" },
+      { label: "Admission letters issued", value: "July – August 2025" },
+      { label: "Visa processing", value: "August 2025" },
+      { label: "Classes begin", value: "September – October 2025" },
+      { label: "Availability", value: "All universities" },
     ],
     footerNote:
-      "Recommended for most fresh 12th pass students. Apply early for CIU, DTMU, and University of Georgia — seats fill fast.",
+      "Two annual admission windows — September is strongly preferred for wider university choice and maximum seat availability. Important for Indian students: NMC requires your NEET score to be within its 3-year validity window at the time of application. If your NEET score is from 2022 or earlier, verify your eligibility window before applying. Contact Taksheela for a free eligibility check.",
   },
   secondaryCard: {
     icon: "📅",
-    title: "February / March Intake (Secondary)",
+    title: "Secondary intake — limited",
     rows: [
-      { label: "Application Opens", value: "September – November" },
-      { label: "Application Deadline", value: "December – January" },
-      { label: "Offer Letter", value: "January" },
-      { label: "Visa Application", value: "January – February" },
-      { label: "Classes Begin", value: "February – March" },
-      { label: "Availability", value: "Select Universities Only" },
+      { label: "Intake period", value: "February / March 2026" },
+      { label: "Application opens", value: "November – December 2025" },
+      { label: "Application deadline", value: "December 2025" },
+      { label: "Admission letters issued", value: "December – January" },
+      { label: "Visa processing", value: "January 2026" },
+      { label: "Classes begin", value: "February – March 2026" },
+      { label: "Availability", value: "Select universities only" },
     ],
     footerNote:
-      "For students who missed autumn intake. Fewer partner universities. Confirm February availability with Taksheela before paying registration fees.",
+      "For students who missed the autumn intake — fewer partner universities and limited seats. Confirm February / March 2026 availability with Taksheela before paying registration fees. Indian students should also verify NEET validity against NMC rules at application time.",
   },
 };
 
@@ -663,44 +686,64 @@ export type AbroadTeachingMethodologyContent = {
 
 export const georgiaAbroadTeachingMethodologyContent: AbroadTeachingMethodologyContent = {
   eyebrow: "How you learn",
-  titlePrimary: "Teaching Methodology at",
-  titleAccent: "Georgian Medical Universities",
+  titlePrimary: "Teaching Methodology &",
+  titleAccent: "Practical Training",
+  intro:
+    "Georgian medical universities follow NCEQE-mandated academic standards aligned with the European Bologna Process. All Taksheela-recommended universities meet NMC’s curriculum requirements under Schedule 1.",
   items: [
     {
-      icon: "📖",
-      title: "Lecture-Based Instruction",
+      icon: "🧬",
+      title: "Years 1–2 — Pre-clinical",
       description:
-        "Pre-clinical subjects — anatomy, biochemistry, physiology — delivered in English with small-group seminars and continuous assessment.",
+        "Core biomedical sciences — Anatomy, Physiology, Biochemistry, Biology & Genetics.",
     },
     {
-      icon: "🔬",
-      title: "Laboratory & Skills Labs",
+      icon: "🧪",
+      title: "Years 3–4 — Para-clinical",
       description:
-        "Simulation manikins, microbiology labs, and procedural skills rooms from Year 1. Universities in Tbilisi invest heavily in modern equipment.",
+        "Bridge to clinical work — Pathology, Pharmacology, Microbiology, Immunology, Radiology.",
     },
     {
       icon: "🏥",
-      title: "Hospital Clinical Rotations",
+      title: "Years 5–6 — Clinical",
       description:
-        "From Year 3, rotations through affiliated public and private hospitals. Exposure to internal medicine, surgery, paediatrics, OBG, and emergency care.",
+        "Full hospital rotations — Surgery, Internal Medicine, OBG, Paediatrics, Psychiatry & more.",
     },
     {
-      icon: "🗣️",
-      title: "Georgian Language Training",
+      icon: "📖",
+      title: "Bologna ECTS credits",
       description:
-        "Georgian is taught alongside English so students can take histories and consent patients during clinical years — essential for local licensing exams too.",
+        "360 ECTS credits aligned with European Higher Education Area standards. Credit transfers to European institutions for PG are supported.",
     },
     {
-      icon: "💻",
-      title: "Digital & E-Learning",
+      icon: "🔬",
+      title: "Problem-based learning (PBL)",
       description:
-        "Learning management systems, recorded lectures, and question banks help students revise for Georgian state exams and FMGE parallel prep.",
+        "Real clinical case studies from Year 1 develop diagnostic reasoning, critical thinking, and evidence-based decision making.",
+    },
+    {
+      icon: "🩺",
+      title: "High-fidelity simulation labs",
+      description:
+        "Anatomical mannequins, patient simulators, laparoscopic trainers, and virtual anatomy tables for risk-free procedural practice.",
+    },
+    {
+      icon: "⚕️",
+      title: "Supervised clinical rotations",
+      description:
+        "From Year 3, rotations through departments including Surgery, Internal Medicine, OBG, Paediatrics, Emergency Medicine, and Neurology.",
     },
     {
       icon: "📝",
-      title: "Assessment Formats",
+      title: "Assessment formats",
       description:
-        "Written exams, OSCE-style practicals, and oral vivas each semester. English remains the primary exam language for international cohorts.",
+        "Written exams, oral viva sessions, OSCE formats, and practical competency evaluations — all conducted in English.",
+    },
+    {
+      icon: "🌐",
+      title: "Digital learning resources",
+      description:
+        "Leading universities offer digital libraries, virtual anatomy tables, and online patient simulation systems to supplement in-person instruction.",
     },
   ],
 };
@@ -711,6 +754,8 @@ export type AbroadMbbsSyllabusYearItem = {
   yearLabel: string;
   title: string;
   description: string;
+  /** Optional subject chips (e.g. Georgia year-by-year syllabus infographic). */
+  subjectTags?: string[];
   /** Years 1–5: red badge; final year: dark blue */
   badgeTone: "primary" | "internship";
 };
@@ -720,6 +765,8 @@ export type AbroadMbbsSyllabusContent = {
   titlePrimary: string;
   titleAccent: string;
   subtitle: string;
+  /** Optional closing line below the year accordions. */
+  footerNote?: string;
   years: AbroadMbbsSyllabusYearItem[];
 };
 
@@ -728,48 +775,104 @@ export const georgiaAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
   titlePrimary: "MBBS Syllabus in Georgia",
   titleAccent: "— Year by Year",
   subtitle:
-    "The 6-year MD Physician program — meeting NMC's minimum 54-month academic requirement plus 12-month internship.",
+    "The 6-year MD Physician program meets NMC's minimum 54-month academic requirement plus 12-month mandatory internship. Covers all 19+ compulsory subjects under NMC Schedule 1.",
+  footerNote:
+    "All clinical rotations are supervised by licensed practitioners at university-affiliated multi-speciality teaching hospitals. Completion qualifies graduates for NExT (India).",
   years: [
     {
       yearLabel: "Year 1",
       title: "Pre-Clinical Sciences I",
-      description:
-        "Anatomy, Medical Biology, Chemistry, Physics, Introduction to Clinical Skills, Georgian Language I. Builds foundational medical science in English.",
+      description: "",
+      subjectTags: [
+        "Human Anatomy",
+        "Medical Biochemistry",
+        "Medical Biology & Genetics",
+        "Medical Physics",
+        "Medical Chemistry",
+        "Introduction to Medical Psychology",
+        "Medical Latin",
+        "Physical Education",
+      ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 2",
       title: "Pre-Clinical Sciences II",
-      description:
-        "Histology, Biochemistry, Physiology, Microbiology basics, Research methods, Georgian Language II.",
+      description: "",
+      subjectTags: [
+        "Histology & Embryology",
+        "Normal Physiology",
+        "Biophysics",
+        "Microbiology (Introduction)",
+        "Sociology & Medical Ethics",
+        "Georgian Language (Basic)",
+        "Medical Informatics",
+      ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 3",
-      title: "Para-Clinical + Clinical Start",
-      description:
-        "Pathology, Pharmacology, Community Medicine intro, early bedside training. Clinical rotations begin with supervised patient contact.",
+      title: "Para-Clinical Sciences",
+      description: "",
+      subjectTags: [
+        "General Pathology",
+        "Pathophysiology",
+        "Pharmacology I",
+        "Medical Microbiology (Full)",
+        "Immunology",
+        "Biostatistics",
+        "Introductory Clinical Medicine",
+        "First Aid & Emergency Medicine",
+      ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 4",
-      title: "Clinical Sciences I",
-      description:
-        "Internal Medicine, General Surgery, OBG intro, Paediatrics intro, Neurology, Primary care blocks in affiliated hospitals.",
+      title: "Advanced Para-Clinical Sciences",
+      description: "",
+      subjectTags: [
+        "Systemic Pathology",
+        "Advanced Pharmacology II",
+        "Radiology & Medical Imaging",
+        "Introduction to Surgery",
+        "Introduction to Internal Medicine",
+        "Clinical Diagnostics",
+        "Ophthalmology",
+        "ENT",
+      ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 5",
-      title: "Clinical Sciences II + State Exam Prep",
-      description:
-        "Advanced surgery, emergency medicine, infectious diseases, psychiatry, national licensing coursework, Georgian medical jurisprudence.",
+      title: "Clinical Core",
+      description: "",
+      subjectTags: [
+        "Internal Medicine",
+        "General Surgery",
+        "Obstetrics & Gynaecology",
+        "Paediatrics",
+        "Infectious Disease",
+        "Psychiatry & Medical Psychology",
+        "Neurology",
+        "Dermatology & Venereology",
+        "Oncology",
+      ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 6",
-      title: "Mandatory Internship (12 Months)",
-      description:
-        "Full-time internship across medicine, surgery, OBG, paediatrics, and allied departments. Completion unlocks Georgian registration and FMGE/NExT eligibility steps for India.",
+      title: "Mandatory Clinical Internship (12 Months)",
+      description: "",
+      subjectTags: [
+        "General Medicine (Rotations)",
+        "General Surgery (Rotations)",
+        "Obstetrics & Gynaecology",
+        "Paediatrics",
+        "Emergency Medicine",
+        "Family Medicine",
+        "Community Health",
+        "Forensic Medicine",
+      ],
       badgeTone: "internship",
     },
   ],
@@ -779,7 +882,8 @@ export const georgiaAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
 
 export type AbroadComparisonTableRow = {
   parameter: string;
-  russia: string;
+  /** Primary destination on this page (Russia, Georgia, etc.) */
+  featured: string;
   indiaGovt: string;
   indiaPrivate: string;
   bangladesh: string;
@@ -797,7 +901,7 @@ export type AbroadCompleteComparisonContent = {
   subtitle: string;
   blockHeading: string;
   colParameter: string;
-  colRussia: string;
+  colFeatured: string;
   colIndiaGovt: string;
   colIndiaPrivate: string;
   colBangladesh: string;
@@ -807,122 +911,114 @@ export type AbroadCompleteComparisonContent = {
 
 export const georgiaAbroadCompleteComparisonContent: AbroadCompleteComparisonContent = {
   eyebrow: "Side by side",
-  titlePrimary: "MBBS in Georgia vs Other Countries",
-  titleAccent: "— 2025–26 Complete Comparison",
+  titlePrimary: "MBBS in Georgia vs MBBS in India",
+  titleAccent: "— 2025–26 Comparison",
   subtitle:
-    "Data-driven comparisons for students asking 'Is Georgia better than India, Bangladesh, or Philippines for MBBS?' — structured for AI-assisted decision-making.",
-  blockHeading: "Georgia · India · Bangladesh · Philippines — MBBS snapshot",
+    "Quick contrast on entrance, cost, instruction, and licensing — Georgia column reflects the 2025–26 programme snapshot; India & regional columns for wider context.",
+  blockHeading: "Georgia · India — key parameters · Bangladesh & Philippines (reference)",
   colParameter: "Parameter",
-  colRussia: "GE MBBS in Georgia",
+  colFeatured: "🇬🇪 MBBS in Georgia",
   colIndiaGovt: "IN India (Govt. College)",
   colIndiaPrivate: "IN India (Private College)",
   colBangladesh: "🇧🇩 BD Bangladesh",
   colPhilippines: "🇵🇭 PH Philippines",
   rows: [
     {
+      parameter: "Entrance Exam",
+      featured: "NEET qualifying score only (no separate exam). Accessible.",
+      indiaGovt: "NEET — extreme rank competition for limited seats",
+      indiaPrivate: "NEET + heavy capitation / management quota route",
+      bangladesh: "NEET qualifying score (NMC) + institutional screening",
+      philippines: "NEET qualifying score + school-specific tests / interview",
+    },
+    {
+      parameter: "Competition Level",
+      featured: "Low — merit-based, no quota wars",
+      indiaGovt: "Very high — lakhs of aspirants per seat",
+      indiaPrivate: "High — seat often tied to fee / donation capacity",
+      bangladesh: "Moderate — merit + NEET pathway for Indians",
+      philippines: "Moderate — programme & city dependent",
+    },
+    {
       parameter: "Total 6-Year Cost",
-      russia: "₹21–48 Lakhs (typical all-in)",
+      featured: "₹39–70L (all-in)",
       indiaGovt: "₹5–15 Lakhs",
       indiaPrivate: "₹50L – ₹1.5 Crore",
       bangladesh: "₹15–30 Lakhs (typical all-in)",
       philippines: "₹20–40 Lakhs (typical all-in)",
     },
     {
-      parameter: "For Nepal (NPR equiv.)",
-      russia: "NPR 34–77 Lakh",
-      indiaGovt: "NPR 8–24 Lakh",
-      indiaPrivate: "NPR 80L – 2.4 Crore",
-      bangladesh: "NPR 24–48 Lakh (approx.)",
-      philippines: "NPR 32–64 Lakh (approx.)",
+      parameter: "Capitation / Donation",
+      featured: "Zero. None. Ever.",
+      indiaGovt: "None (govt. merit seat)",
+      indiaPrivate: "₹20–80L typically",
+      bangladesh: "None (typical NMC-listed route)",
+      philippines: "None (typical pathway)",
+      isDonationRow: true,
     },
     {
-      parameter: "For Bangladesh (BDT equiv.)",
-      russia: "BDT 28–65 Lakh",
-      indiaGovt: "BDT 7–20 Lakh",
-      indiaPrivate: "BDT 67L – 2 Crore",
-      bangladesh: "Domestic fee bands; BDT 15–35 L common range",
-      philippines: "PHP-based fees — BDT 20–45 L (equiv. estimate)",
-    },
-    {
-      parameter: "Seat Availability",
-      russia: "Moderate — 15+ active NMC-listed Georgian options",
-      indiaGovt: "Very limited — 1.18L seats for 23L+ aspirants",
-      indiaPrivate: "Limited, donation-dependent",
-      bangladesh: "~8–10 NMC-listed institutions; widely available",
-      philippines: "~8–10 recognised options; limited in some cities",
-    },
-    {
-      parameter: "Admission Process",
-      russia: "Merit-based, no donation, no capitation",
-      indiaGovt: "Pure NEET merit, very competitive",
-      indiaPrivate: "Opaque, capitation ₹20–80L common",
-      bangladesh: "NEET + merit; transparent vs many private India routes",
-      philippines: "NEET + academic screening; no donation route typical",
-    },
-    {
-      parameter: "NEET Requirement",
-      russia: "Qualifying score (any percentile)",
-      indiaGovt: "Very high rank essential",
-      indiaPrivate: "Moderate rank + large payment",
-      bangladesh: "Qualifying score mandatory (NMC)",
-      philippines: "Qualifying score mandatory (NMC)",
-    },
-    {
-      parameter: "Program Duration",
-      russia: "6 years (5 academic + 1 internship)",
+      parameter: "Course Duration",
+      featured: "6 years (5 academic + 1 internship in Georgia)",
       indiaGovt: "5.5 years (4.5 + 1 internship)",
       indiaPrivate: "5.5 years",
-      bangladesh: "5 years + 1-year internship (typical pathway)",
-      philippines: "4 yrs pre-med + 4 yrs MD + 1-yr internship (typical)",
+      bangladesh: "5 years + 1-year internship (typical)",
+      philippines: "4 yrs pre-med + 4 yrs MD + internship (typical)",
     },
     {
       parameter: "Medium of Instruction",
-      russia: "English (theory) + Georgian (clinical communication)",
+      featured: "100% English",
       indiaGovt: "English + regional languages",
-      indiaPrivate: "English",
+      indiaPrivate: "English (majority of colleges)",
       bangladesh: "Bengali + English (programme-dependent)",
-      philippines: "English only (majority of programmes)",
+      philippines: "English (majority of programmes)",
     },
     {
-      parameter: "Licensing Exam (India)",
-      russia: "Georgian state exam → registration → FMGE/NExT (India)",
-      indiaGovt: "NExT only",
-      indiaPrivate: "NExT only",
-      bangladesh: "FMGE / NExT after BMDC registration pathway",
-      philippines: "FMGE / NExT; strong USMLE prep culture at many schools",
+      parameter: "Seat Availability",
+      featured: "Flexible — no national cap",
+      indiaGovt: "Very limited — 1.18L seats for 23L+ aspirants",
+      indiaPrivate: "Limited — fee-led intake",
+      bangladesh: "~8–10 NMC-listed institutions; widely available",
+      philippines: "~8–10 recognised options; city-limited in places",
+    },
+    {
+      parameter: "Reservation / Quota",
+      featured: "None — merit only",
+      indiaGovt: "All India + state / category quotas",
+      indiaPrivate: "Management / NRI quota common",
+      bangladesh: "Institution-specific intake bands",
+      philippines: "Foreign-student quotas vary by school",
     },
     {
       parameter: "Global Recognition",
-      russia: "WHO, NMC, NCEQE, WFME-aligned pathways",
+      featured: "WHO · NMC · WFME · NCEQE",
       indiaGovt: "NMC — globally recognised",
       indiaPrivate: "NMC — varies by institution",
       bangladesh: "WHO, NMC, BMDC alignment for Indian students",
       philippines: "WHO, NMC; USMLE pathway widely advertised",
     },
     {
-      parameter: "Clinical Exposure",
-      russia: "Strong in Tbilisi teaching hospitals, Year 3+",
-      indiaGovt: "Very High",
-      indiaPrivate: "Moderate — varies by college",
-      bangladesh: "Strong at approved teaching hospitals",
-      philippines: "Varies — strong at established universities",
+      parameter: "Licensing Exam (India)",
+      featured: "NExT (after internship in Georgia + 12-month India internship)",
+      indiaGovt: "NExT only",
+      indiaPrivate: "NExT only",
+      bangladesh: "FMGE / NExT after BMDC registration pathway",
+      philippines: "FMGE / NExT; strong USMLE prep at many schools",
     },
     {
-      parameter: "Donation / Capitation",
-      russia: "None",
-      indiaGovt: "None",
-      indiaPrivate: "₹20–80L typically",
-      bangladesh: "None",
-      philippines: "None",
-      isDonationRow: true,
+      parameter: "International Career",
+      featured: "PLAB (UK) · USMLE (USA) · Gulf · Germany",
+      indiaGovt: "NExT → UK / Gulf pathways; USMLE at select peers",
+      indiaPrivate: "USMLE / Gulf common where college supports",
+      bangladesh: "Gulf · UK PLAB (case-by-case) · home licensing",
+      philippines: "USMLE culture strong · Gulf · UK routes",
     },
     {
       parameter: "Best For",
-      russia: "Students wanting English MD + European lifestyle at mid-range cost",
-      indiaGovt: "Top-rank NEET students with score for govt. seat",
-      indiaPrivate: "Students willing to pay premium for India-based degree",
-      bangladesh: "Students prioritising proximity, cultural fit & moderate budget",
-      philippines: "Students wanting English-only campus & US-style / USMLE tilt",
+      featured: "Students wanting NEET-only entry, English MD, zero capitation, and EU-aligned recognition",
+      indiaGovt: "Top-rank NEET students targeting subsidised India seat",
+      indiaPrivate: "Students prioritising India campus + budget for capitation",
+      bangladesh: "Proximity, cultural fit & moderate budget",
+      philippines: "English-medium campus & US-style / USMLE tilt",
       isSummaryRow: true,
     },
   ],
@@ -956,34 +1052,50 @@ export const georgiaAbroadOurStoriesContent: AbroadOurStoriesContent = {
     {
       rating: 5,
       quote:
-        "Tbilisi felt like a European city with affordable costs. My university’s English faculty cleared basics fast, and Taksheela helped me line up hostel and forex before departure.",
-      name: "Ananya Krishnan",
-      meta: "MBBS Year 2, CIU Tbilisi | Chennai, India",
-      initial: "A",
-    },
-    {
-      rating: 5,
-      quote:
-        "I picked DTMU for its hospital tie-ups. Clinical rotations are busy — you learn to communicate with patients in Georgian, but seniors share phrase cards and coaching notes for FMGE.",
-      name: "Rahul Verma",
-      meta: "MBBS Year 4, DTMU Tbilisi | Lucknow, India",
+        "When private college quotes were ₹90 lakhs with donation, I was completely lost. Taksheela showed me Georgia — two years in, I can confidently say it was the right call. GAU has modern labs, full English classes, and senior students who genuinely help you settle in.",
+      name: "Ravi Sharma",
+      meta: "NEET 285 · Georgian American University | Patna, Bihar",
       initial: "R",
     },
     {
       rating: 5,
       quote:
-        "No donation pressure — fees went straight to the university account. Indian mess near my hostel makes food easy. I’d still tell everyone to double-check NMC screening every intake.",
-      name: "Priya Shah",
-      meta: "MBBS Year 3, University of Georgia | Surat, India",
+        "As a Nepali student, I wasn't sure if Georgia was even an option. Taksheela clarified everything — visa, eligibility, which universities accept Nepali students. The clinical exposure in Year 1 surprised me — we started observing hospital cases much earlier than expected.",
+      name: "Priya Gurung",
+      meta: "Geomedi Medical University | Dharan, Nepal",
       initial: "P",
     },
     {
       rating: 5,
       quote:
-        "Batumi’s weather suits me better than North India winters. Smaller batch, more attention in labs — and weekend trips to the mountains keep stress low.",
-      name: "Imran Khan",
-      meta: "MBBS Year 1, ABMU Batumi | Hyderabad, India",
-      initial: "I",
+        "EEU has been great. The faculty is excellent and there are hundreds of Bangladeshi students here already — settling in was easy. Taksheela did something different — they showed me the NMC approval list in writing. No vague promises, just facts.",
+      name: "Mohammed Rafi",
+      meta: "East European University | Dhaka, Bangladesh",
+      initial: "M",
+    },
+    {
+      rating: 5,
+      quote:
+        "Year 4 done. Looking back, Georgia was the right call. Yes, the winter was a shock — I bought my first proper winter jacket here. But the clinical rotations starting Year 3 gave me confidence I don't think I'd have gotten at a private college in India.",
+      name: "Ananya Desai",
+      meta: "NEET 312 · Georgian National University SEU | Surat, Gujarat",
+      initial: "A",
+    },
+    {
+      rating: 5,
+      quote:
+        "Taksheela did end-to-end for me — from apostille to airport pickup. The counsellor was honest about the challenges too, not just the good parts. That transparency made me trust the process. I'm in Geomedi now and very happy with the decision.",
+      name: "Komal Bhati",
+      meta: "NEET 235 · Geomedi Medical University | Greater Noida, India",
+      initial: "K",
+    },
+    {
+      rating: 5,
+      quote:
+        "My case had complications — loan issues and documentation errors. My Taksheela counsellor stayed with us until every single issue was resolved. Starting Semester 2 soon. I'm genuinely excited about my future here.",
+      name: "Kavya Gaur",
+      meta: "NEET 231 · Georgian American University | Delhi, India",
+      initial: "Ka",
     },
   ],
 };
@@ -1019,32 +1131,45 @@ export type AbroadAccommodationClimateContent = {
 
 export const georgiaAbroadAccommodationClimateContent: AbroadAccommodationClimateContent = {
   eyebrow: "Campus life",
-  titlePrimary: "Accommodation &",
-  titleAccent: "Climate",
+  titlePrimary: "Hostel Accommodation & Climate",
+  titleAccent: "in Georgia",
   hostel: {
     title: "Hostel Accommodation",
     bullets: [
-      "Georgian universities typically offer dormitories or verified private apartments within 20–30 minutes of campuses.",
-      "Twin and triple rooms are common; utilities may be bundled or metered separately — read contracts carefully.",
-      "Indian mess operators serve vegetarian and non-vegetarian thalis in Tbilisi; Batumi has coastal cuisine plus North Indian outlets.",
-      "Wi‑Fi, security desks, and laundry are standard in most international student hostels.",
-      "Summers are mild; winters are cold but not Russian-scale — still pack insulated jackets for January.",
-      "Taksheela shares vetted landlords, roommate matching, and police-registration checklists after arrival.",
+      "University hostels: Most NMC-listed universities offer on-campus or university-managed hostels for international students.",
+      "Room features: Typically double or triple occupancy with study desks, wardrobes, and shared or attached bathrooms.",
+      "Standard amenities: 24-hour security, Wi-Fi, laundry, and central heating are standard at university hostels.",
+      "Annual fees: USD 1,500–2,000 (approximately ₹1.3L–₹1.75L per year).",
+      "Food / mess: Many hostels have dedicated mess facilities with Indian dietary options — dal, roti, rice, sabzi, and vegetarian menus.",
+      "Private housing: From Year 3, many students move to private apartments in Tbilisi; a shared 2-bedroom costs USD 400–700/month (approximately ₹35–61K/month).",
+      "Taksheela coordinates verified hostel options before the student’s arrival date.",
     ],
   },
   climate: {
-    title: "Climate Conditions in University Cities",
+    title: "Climate in Tbilisi",
     intro:
-      "Georgia mixes subtropical Black Sea weather with continental mountain air — Tbilisi sees four distinct seasons, while Batumi stays humid and mild.",
+      "Four distinct seasons — plan layers for cold winters, mild springs and autumns, and hot dry summers in the capital.",
     rows: [
-      { city: "Tbilisi (most universities)", ranges: "Winter: 0 to -5°C | Summer: 24–32°C" },
-      { city: "Batumi (ABMU)", ranges: "Winter: 5–10°C | Summer: 25–30°C (humid)" },
-      { city: "Kutaisi", ranges: "Winter: 2–7°C | Summer: 22–30°C" },
-      { city: "Rustavi", ranges: "Winter: -2 to 3°C | Summer: 25–33°C" },
+      {
+        city: "Summer (Jun–Aug)",
+        ranges: "28–35°C — Hot, sunny, and dry. Very pleasant for outdoor exploration.",
+      },
+      {
+        city: "Autumn (Sep–Nov)",
+        ranges: "12–22°C — Ideal weather. Admission season. Excellent for settling in.",
+      },
+      {
+        city: "Winter (Dec–Feb)",
+        ranges: "-2 to 8°C — Cold, occasional snow in Jan. Heavy jackets and thermals essential.",
+      },
+      {
+        city: "Spring (Mar–May)",
+        ranges: "10–20°C — Beautiful season. Blooming city. Most students’ favourite time.",
+      },
     ],
     tipLabel: "Taksheela Tip",
     tipBody:
-      "Carry light thermals for winter and breathable cotton for humid Batumi summers. Umbrellas help in spring — Tbilisi’s old town is hilly, so comfortable shoes matter more than heavy snow boots.",
+      "Pack thermals, a quality winter jacket, and waterproof boots before departure. Most hostels have central heating, but the streets can be very cold from late October. Our pre-departure checklist covers everything.",
   },
 };
 
@@ -1070,19 +1195,19 @@ export type AbroadKeyFactsContent = {
 
 export const georgiaAbroadKeyFactsContent: AbroadKeyFactsContent = {
   eyebrow: "Georgia at a glance",
-  titlePrimary: "Key Facts for",
+  titlePrimary: "Key Facts About Georgia for",
   titleAccent: "Medical Students",
   items: [
-    { icon: "🌍", value: "69.7k km²", label: "COUNTRY SIZE" },
+    { icon: "🌍", value: "Tbilisi", label: "CAPITAL CITY" },
     { icon: "👥", value: "3.7M", label: "POPULATION" },
-    { icon: "🏙️", value: "Tbilisi", label: "CAPITAL CITY" },
-    { icon: "💱", value: "Lari (₾)", label: "CURRENCY" },
-    { icon: "🏛️", value: "15+", label: "MEDICAL UNIS (SHORTLIST)" },
-    { icon: "✈️", value: "~5–7 hrs", label: "DELHI TO TBILISI" },
-    { icon: "🍽️", value: "Available", label: "INDIAN FOOD ACCESS" },
-    { icon: "🤝", value: "Growing", label: "INDIA-GEORGIA TIES" },
-    { icon: "🛡️", value: "Safe", label: "STUDENT CITIES" },
-    { icon: "📡", value: "English", label: "MEDIUM AT FEATURED UNIS" },
+    { icon: "💱", value: "GEL (₾)", label: "CURRENCY" },
+    { icon: "🕐", value: "GMT +4", label: "TIME ZONE (IST - 1.5H)" },
+    { icon: "✈️", value: "7-10h", label: "DELHI TO TBILISI (1 STOP)" },
+    { icon: "🛡️", value: "Top 20", label: "GLOBALLY SAFE" },
+    { icon: "🍽️", value: "Excellent", label: "INDIAN FOOD ACCESS" },
+    { icon: "📡", value: "English", label: "MEDIUM AT ALL UNIVERSITIES" },
+    { icon: "🏛️", value: "10+", label: "NMC-APPROVED UNIS" },
+    { icon: "🎓", value: "13,000+", label: "INDIAN STUDENTS (2024-25)" },
   ],
 };
 
@@ -1108,52 +1233,54 @@ export const georgiaAbroadScholarshipsContent: AbroadScholarshipsContent = {
   eyebrow: "Financial aid",
   title: "Scholarships for MBBS in Georgia",
   subtitle:
-    "Explore university merit awards, Georgian government programmes, and India-based funding — quotas change yearly; verify deadlines with each issuing body.",
+    "Georgian MBBS is already among the world's most affordable medical degrees. These scholarship routes can reduce costs further. Taksheela helps identify and apply for eligible schemes.",
   cards: [
     {
       iconKey: "building",
-      title: "Georgian State & Institutional Grants",
-      description:
-        "Some universities advertise merit seats or early-bird tuition discounts for international MD students. Awards are usually processed through the admissions office.",
-      bullets: [
-        "Often linked to NEET score bands or Class 12 PCB percentage.",
-        "May require maintaining a minimum GPA each semester.",
-        "Rarely cover full six years — plan for partial self-funding.",
-        "Confirm the offer letter states the discount in USD/EUR for visa filings.",
-      ],
-    },
-    {
-      iconKey: "graduation",
       title: "University Merit Scholarships",
       description:
-        "Private universities such as CIU, DTMU, or University of Georgia occasionally run promotional waivers for high NEET performers.",
+        "Merit-based tuition relief at Taksheela-partnered Georgian universities — typically processed through the admissions office after you qualify.",
       bullets: [
-        "Typically ₹50,000–₹1,50,000 off Year 1 tuition when eligible.",
-        "May need timely acceptance fee payment to lock the waiver.",
-        "Renewable waivers depend on academic performance — read the fine print.",
-        "Taksheela tracks partner universities with live schemes each intake.",
+        "10–25% fee waiver for students with 75%+ in Class 12 PCB or strong NEET scores.",
+        "Awarded in Year 1, renewable based on academic performance.",
+        "Available at most Taksheela-partnered Georgian universities.",
+        "Processed after admission — confirm availability during shortlisting.",
       ],
     },
     {
       iconKey: "books",
-      title: "Indian Government Scholarships",
+      title: "Government of India Schemes",
       description:
-        "Central / state schemes for overseas study may apply (category, domicile, income). Each programme has separate forms and timelines.",
+        "Central and state programmes that can subsidise education loans or interest for eligible Indian students heading abroad for MBBS.",
       bullets: [
-        "Keep NEET scorecard, admission letter, and fee schedule attested.",
-        "Disbursement may trail Georgia’s fee deadlines — maintain forex buffer.",
-        "TIE assists with documentation; final approval rests with the granting authority.",
+        "Central Sector Interest Subsidy (CSIS) — interest subsidy on education loans for EWS students (family income < ₹4.5L).",
+        "Padho Pardesh Scheme — interest subsidy for minority community students studying abroad.",
+        "State government merit scholarships (varies by state — check your state education dept.).",
+        "Apply before departure — Taksheela assists with documentation.",
+      ],
+    },
+    {
+      iconKey: "graduation",
+      title: "Georgian Government Scholarship",
+      description:
+        "NCEQE administers limited scholarships for international students in select programmes — availability and rules can change each intake.",
+      bullets: [
+        "NCEQE administers limited scholarships for international students in select programs.",
+        "Availability varies year to year — confirm current status with Taksheela before applying.",
+        "Requires strong academic profile and early application.",
+        "Taksheela advises on current eligibility and documentation.",
       ],
     },
     {
       iconKey: "globe",
-      title: "EU Mobility & Electives",
+      title: "Taksheela Merit Initiative",
       description:
-        "Georgia’s EU association agenda opens elective rotations or research collaborations in Europe — usually limited seats.",
+        "Our internal scholarship-style support for meritorious students from economically weaker backgrounds — limited seats each cycle.",
       bullets: [
-        "Typically for high-performing students after Year 3.",
-        "Requires English proficiency and faculty recommendations.",
-        "Useful for CV building, not a substitute for tuition funding.",
+        "Internal scholarship initiative for meritorious students from economically weaker backgrounds.",
+        "Speak to a Taksheela counsellor to check your eligibility.",
+        "Covers partial counselling and documentation fees.",
+        "Limited seats — apply early.",
       ],
     },
   ],
@@ -1175,6 +1302,8 @@ export type AbroadEducationLoanSupportCard = {
 export type AbroadEducationLoanContent = {
   eyebrow: string;
   title: string;
+  /** Optional lead paragraph below the section title (e.g. Georgia infographic). */
+  intro?: string;
   nationalised: AbroadEducationLoanPairCard;
   privateNbfc: AbroadEducationLoanPairCard;
   support: AbroadEducationLoanSupportCard;
@@ -1183,36 +1312,36 @@ export type AbroadEducationLoanContent = {
 export const georgiaAbroadEducationLoanContent: AbroadEducationLoanContent = {
   eyebrow: "Financing your MBBS",
   title: "Education Loans for MBBS in Georgia",
+  intro:
+    "Financing a Georgian MBBS is straightforward. Multiple nationalised banks, private lenders, and government schemes are available. Taksheela helps you build a lender-ready document file.",
   nationalised: {
     title: "Nationalised Banks (India)",
-    description:
-      "Major Indian public-sector banks offer IBA-aligned overseas education loan products for MBBS abroad, including Georgia, subject to eligibility, margin money, and collateral as per policy.",
+    description: "Best for lower interest rates; collateral often required above ₹7.5L",
     bullets: [
       "SBI Global Ed-Vantage — up to ₹1.5 crore (eligibility-based)",
-      "Bank of Baroda Baroda Scholar scheme for study abroad",
-      "Punjab National Bank Saraswati scheme for higher education overseas",
-      "Interest: typically 8.5–11% p.a. (floating; bank-specific)",
-      "Moratorium: study period plus commonly 6–12 months after course",
-      "Collateral often required above ~₹7.5L — confirm slab with the branch",
+      "Bank of Baroda Baroda Scholar Scheme for study abroad",
+      "Union Bank of India overseas education loan",
+      "Punjab National Bank Saraswati scheme",
+      "Interest: 9.5–11% p.a. (floating, bank-specific)",
+      "Moratorium: course period + 6–12 months after completion",
     ],
   },
   privateNbfc: {
     title: "Private Banks & NBFCs",
-    description:
-      "Private lenders and NBFCs may offer quicker decisions and tailored products for overseas MBBS, including partial non-collateral limits for strong co-borrowers.",
+    description: "Faster processing; flexible collateral structures available",
     bullets: [
-      "HDFC Credila — study-abroad education loans",
-      "Avanse Financial Services — education loans for global programmes",
-      "Auxilo Finserve — specialist options for MBBS abroad",
-      "InCred Finance — flexible collateral and co-borrower structures",
-      "Up to ₹40–60L without collateral possible (income & profile-based)",
-      "Taksheela connects students with partner lenders where applicable — sanction subject to lender policy",
+      "HDFC Credila — specialist study abroad education loans",
+      "Avanse Financial Services — MBBS abroad coverage",
+      "Auxilo Finserve — flexible MBBS abroad loan products",
+      "InCred Finance — flexible co-borrower structures",
+      "Up to ₹40–60L possible without collateral (profile-based)",
+      "Interest: 10.5–14% p.a. (NBFC rates vary)",
     ],
   },
   support: {
     title: "Taksheela Loan Documentation Support",
     description:
-      "Our team helps you organise a lender-ready file: provisional admission / offer letter, fee structure and payment schedule, course duration letter, KYC and co-borrower proofs, and university contact for verification — so you can approach banks or NBFCs with fewer back-and-forth queries.",
+      "We help you organise a lender-ready file — provisional admission letter, fee structure and payment schedule, course duration letter, university verification contacts, KYC and co-borrower proofs — so your loan application moves faster with fewer rejections.",
   },
 };
 
@@ -1224,55 +1353,55 @@ export const georgiaAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyC
   titlePrimary: "Career Opportunities After MBBS in",
   titleAccent: "Georgia",
   intro:
-    "An NMC-compliant Georgian MD degree, combined with FMGE/NExT clearance, opens genuine pathways in India and globally.",
+    "An NMC-compliant Georgian MD degree, combined with NExT clearance, opens genuine pathways in India and globally. Here is what your options look like.",
   items: [
     {
       icon: "🏥",
       title: "Practice in India",
       description:
-        "Clear FMGE/NExT, register with State Medical Council, practice as a licensed physician anywhere in India.",
+        "Clear NExT, complete 12-month India internship, register with State Medical Council — and practice anywhere in India as a licensed physician.",
     },
     {
       icon: "🎓",
       title: "MD/MS Postgraduate",
       description:
-        "Pursue MD/MS specialisation through NEET-PG (NExT Step 2) in India or residency abroad.",
+        "Appear for NEET-PG (NExT Step 2) and pursue postgraduate specialisation in surgery, medicine, OBG, paediatrics, radiology, and more.",
     },
     {
-      icon: "🌍",
+      icon: "GB",
       title: "Practice in UK (PLAB)",
       description:
-        "Clear PLAB 1 and PLAB 2 for GMC registration and NHS employment in the United Kingdom.",
+        "Clear PLAB 1 and PLAB 2 for GMC registration and employment in the NHS — one of the world's most respected healthcare systems.",
     },
     {
       icon: "US",
       title: "Practice in USA (USMLE)",
       description:
-        "Pass USMLE Steps 1, 2CK, 2CS for US residency through ERAS/NRMP match system.",
+        "Pass USMLE Steps 1 and 2 to enter residency programs in the USA via the ERAS/NRMP match. Requires strong preparation from Year 1.",
     },
     {
-      icon: "🦘",
-      title: "Practice in Australia (AMC)",
+      icon: "🌍",
+      title: "Gulf Countries",
       description:
-        "Clear AMC CAT MCQ and clinical exam for Medical Board of Australia registration.",
+        "DHA (Dubai), HAAD (Abu Dhabi), and SCHS (Saudi Arabia) licensing exams open to WHO-recognised Georgian MBBS graduates.",
+    },
+    {
+      icon: "DE",
+      title: "Germany & Europe",
+      description:
+        "German Approbation exam + B2/C1 German language proficiency opens German medical registration. Other EU pathways also available.",
     },
     {
       icon: "🔬",
       title: "Medical Research",
       description:
-        "Georgia’s EU-oriented curriculum helps graduates pursue research fellowships in Europe or the Gulf.",
+        "Georgia's European academic framework opens PhD programs and medical research fellowships in Europe, India, and internationally.",
     },
     {
       icon: "🏢",
       title: "Healthcare Administration",
       description:
-        "MBA/MHA alongside MBBS for hospital management, healthcare policy, and pharmaceutical management.",
-    },
-    {
-      icon: "GE",
-      title: "Practice in Georgia / EU",
-      description:
-        "Clear Georgian licensing exams and language requirements to work in local hospitals or apply for Blue Card pathways inside the EU.",
+        "Combine MBBS with an MBA/MHA for careers in hospital management, healthcare policy, pharmaceutical management, and health tech.",
     },
   ],
 };
@@ -1298,43 +1427,61 @@ export const georgiaAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheelaCon
   titlePrimary: "Why Choose Taksheela for",
   titleAccent: "MBBS in Georgia?",
   subtitle:
-    "Not just a consultancy — your end-to-end medical career partner from NEET score to Georgian registration and FMGE readiness.",
+    "Not just a consultancy — your end-to-end medical career partner from NEET score to Georgian medical licence. Here is what makes Taksheela genuinely different.",
   items: [
     {
       icon: "🎯",
       title: "Georgia-Specialist Counsellors",
       description:
-        "Advisors trained on Georgian medical universities, NMC screening updates, Tbilisi vs Batumi living costs, and realistic FMGE timelines — not generic abroad talk.",
+        "Advisors trained specifically on Georgian universities, NMC compliance, city-wise living costs, and realistic NExT preparation timelines — not generic abroad counselling.",
     },
     {
-      icon: "📊",
-      title: "Data-Backed Shortlisting",
+      icon: "🔍",
+      title: "Real-Time NMC Verification",
       description:
-        "Fee bands, intake windows, hostel options, and FMGE-relevant signals compared transparently so you pick universities that fit your budget and goals.",
+        "We cross-check every university against the NMC's current approved list before shortlisting. We share the official NMC document with you — not our word, but the government's.",
+    },
+    {
+      icon: "⚖️",
+      title: "Zero Commission Bias",
+      description:
+        "Our shortlisting is driven by NMC compliance, fee transparency, hostel quality, and clinical exposure — never by university commission. Our recommendations are in writing.",
     },
     {
       icon: "📋",
-      title: "Documentation & Compliance",
+      title: "End-to-End Documentation",
       description:
-        "Structured checklists for admission letters, MEA apostille, translations, and embassy paperwork — fewer rejections and last-minute panic.",
+        "From apostille to Rector's Order to TRP application — structured checklists, zero missed steps, fewer rejections. We've done this for hundreds of students.",
     },
     {
       icon: "🛂",
       title: "Visa & Travel Hand-Holding",
       description:
-        "Invitation letters, visa filing guidance, pre-departure briefings, and travel coordination so your first landing in Tbilisi feels planned, not chaotic.",
+        "Complete student visa package preparation — invitation letters, visa filing, medical tests, insurance, SOP — and travel coordination so your first landing in Tbilisi feels planned.",
     },
     {
       icon: "🤝",
-      title: "Post-Arrival Student Care",
+      title: "Local Tbilisi Team — Year-Round",
       description:
-        "Hostel coordination, local orientation, and peer connects — support that continues after fee payment, through clinical years and licensing prep.",
+        "Airport pickup, hostel onboarding, university registration, and TRP application — our Tbilisi-based team is available to students 365 days a year, not just at admission time.",
+    },
+    {
+      icon: "🌏",
+      title: "NPBD: Dedicated Nepal & Bangladesh Support",
+      description:
+        "Specialist counsellors who understand visa, documentation, and licensing requirements for Nepali and Bangladeshi students — not a one-size-fits-all India process.",
+    },
+    {
+      icon: "💳",
+      title: "Loan Documentation Assistance",
+      description:
+        "We help you build a lender-ready file for SBI, BoB, HDFC Credila, Avanse, and other banks — so your education loan application moves faster with fewer back-and-forth queries.",
     },
     {
       icon: "🧩",
-      title: "FMGE & Career Roadmap",
+      title: "NExT / Career Roadmap from Day 1",
       description:
-        "Early orientation to FMGE/NExT, study resources, and alumni touchpoints — so licensing and PG planning start before internship ends.",
+        "Early orientation to NExT, study resources, and alumni touchpoints — so licensing and PG planning start well before Year 6, not after graduation.",
     },
   ],
 };
@@ -1369,43 +1516,43 @@ export const georgiaAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkC
   titlePrimary: "NMC Gazette Rules &",
   titleAccent: "Georgia Compliance",
   subtitle:
-    "These 6 NMC rules determine whether your Georgian MD degree can be used to practice medicine in India. Taksheela shortlists universities structured to satisfy all 6 when rules are met in letter and spirit.",
+    "These are the rules that determine whether your Georgian MBBS degree allows you to practise medicine in India. All Taksheela-recommended universities comply with all 6 rules.",
   rules: [
     {
-      icon: "📅",
+      icon: "🧮",
       title: "Rule 1 — Minimum 54 Months",
       description:
-        "The programme must include at least 54 months (4.5 years) of full-time medical education, excluding the one-year internship. Georgia’s standard 6-year MD track meets this when delivered as five academic years plus internship.",
+        "The programme must include at least 54 months of full-time medical education, excluding the 12-month internship. All Georgian private universities run a 5-academic-year + 1-internship programme.",
     },
     {
       icon: "🏥",
       title: "Rule 2 — 12-Month Internship",
       description:
-        "A compulsory 12-month internship is required, completed at the same institution or its affiliated teaching hospitals. Verified Georgian programmes integrate internship blocks aligned with NMC expectations.",
+        "A compulsory 12-month internship must be completed at the same institution or its affiliated teaching hospitals in Georgia before returning to India.",
     },
     {
       icon: "🌐",
       title: "Rule 3 — English Medium",
       description:
-        "The entire course, including theory and clinical training, must be delivered in English for the full duration. Recommended universities offer English-medium instruction aligned with NMC’s abroad-MBBS guidelines.",
+        "The entire MBBS course must be delivered in English for the full duration. Georgian private universities are among the few MBBS abroad destinations where this is comprehensively met.",
     },
     {
       icon: "🪪",
-      title: "Rule 4 — Georgian Medical Licence",
+      title: "Rule 4 — Valid Degree for Local Practice",
       description:
-        "Graduates must be eligible to obtain registration / licensing to practise in Georgia (state exams + language requirements). This local licence is part of proving a complete, recognised medical qualification before FMGE/NExT in India.",
+        "Graduates must receive a degree that grants the right to practise medicine in Georgia. All NMC-listed Georgian universities satisfy this condition, making graduates eligible for NExT in India.",
     },
     {
       icon: "📋",
       title: "Rule 5 — NEET Mandatory",
       description:
-        "A valid NEET-UG score is mandatory for Indian students seeking admission to foreign medical colleges, as per NMC norms. Admission and documentation must reflect NEET eligibility for the relevant academic year.",
+        "All Indian students must have a valid NEET-UG qualifying score at the time of admission to a foreign medical college. Score validity: 3 years from result date.",
     },
     {
       icon: "✅",
-      title: "Rule 6 — WHO Listing",
+      title: "Rule 6 — WHO / WDOMS Listing",
       description:
-        "The university must be listed in the World Directory of Medical Schools (WDOMS). Taksheela shortlists institutions that appear on WHO’s directory and satisfy NMC’s screening / FMGE pathway requirements.",
+        "The university must be listed in the World Directory of Medical Schools (WDOMS). Taksheela shortlists only institutions confirmed in the WDOMS directory and current NMC approved list.",
     },
   ],
   officialSourcesLabel: "Official Sources",
@@ -1513,7 +1660,7 @@ const geoImg = (file: string) => `${imageBaseUrl ?? ""}mbbsCollege/georgia/campa
 export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
   {
     id: "geomedi",
-    name: "Teaching University Geomedi",
+    name: "Geomedi Medical University",
     abbreviation: "Geomedi",
     established: "1998",
     locationLine: "Tbilisi",
@@ -1521,16 +1668,16 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     budgetFriendly: false,
     fmgePercent: 30,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "English MD", variant: "amber" },
+      { label: "Simulation Labs", variant: "amber" },
     ],
     rankTag: "Established clinical school — Tbilisi",
     headerEmoji: "🏛️",
     imageSrc: geoImg("geomedi.jpg"),
     stats: [
-      { label: "Annual fees", value: "~₹4.5–5L/yr" },
-      { label: "6-year total", value: "~₹27–32L" },
+      { label: "Annual fees", value: "~₹4.8L/yr" },
+      { label: "6-year total", value: "~₹28–33L" },
       { label: "Duration", value: "6 Years" },
       { label: "Medium", value: "English" },
     ],
@@ -1539,8 +1686,7 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
       text: "FMGE outcomes vary by cohort; strong Indian peer groups and coaching ecosystems in Tbilisi.",
     },
     description: [
-      "Geomedi offers a structured English-medium MD pathway with modern simulation labs and growing Indian student representation.",
-      "Tbilisi campus life is compact and walkable — easy for first-time international students to settle.",
+      "One of Georgia's oldest dedicated medical universities. Known for advanced simulation labs, strong faculty, and hospital affiliations delivering robust clinical rotations.",
     ],
     featureTags: ["Tbilisi", "English Program", "Clinical Rotations", "Indian Community"],
     applyHref: "/contact",
@@ -1550,34 +1696,32 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     id: "dtmu",
     name: "David Tvildiani Medical University",
     abbreviation: "DTMU",
-    established: "1989",
+    established: "1992",
     locationLine: "Tbilisi",
     region: "moscow",
     budgetFriendly: false,
     fmgePercent: 34,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "Strong FMGE", variant: "amber" },
+      { label: "Research-Aligned", variant: "amber" },
     ],
     rankTag: "Research-led private medical university",
     subtitle: "DTMU – Tbilisi, Georgia",
     headerEmoji: "🔬",
     imageSrc: geoImg("dtmu.jpg"),
     stats: [
-      { label: "Annual fees", value: "~₹5–6L/yr" },
-      { label: "6-year total", value: "~₹30–38L" },
+      { label: "Annual fees", value: "~₹5.3L/yr" },
+      { label: "6-year total", value: "~₹31–36L" },
       { label: "Duration", value: "6 Years" },
-      { label: "Location", value: "Tbilisi (Central)" },
+      { label: "Founded", value: "1992" },
     ],
     fmge: {
-      type: "bar",
-      barLabel: "~32–36% — Strong cohort signals (selected years)",
-      barPercent: 72,
+      type: "text",
+      text: "Structured clinical exposure and a research-aligned MBBS curriculum under NCEQE standards — pair with disciplined FMGE prep.",
     },
     description: [
-      "DTMU is widely marketed to Indian students for transparent admissions and English-medium delivery.",
-      "Clinical exposure through affiliated hospitals in Tbilisi; seniors often organise FMGE study groups.",
+      "One of Georgia's most established dedicated medical universities. Well-regarded for structured clinical exposure and a research-aligned MBBS curriculum under NCEQE standards.",
     ],
     featureTags: ["English Medium", "Hospital Network", "Peer Support", "NMC Aligned"],
     applyHref: "/contact",
@@ -1586,69 +1730,67 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
   {
     id: "uog",
     name: "University of Georgia",
-    abbreviation: "UoG",
+    abbreviation: "UG",
     established: "2004",
     locationLine: "Tbilisi",
     region: "moscow",
     budgetFriendly: false,
     fmgePercent: 31,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
+      { label: "Multidisciplinary", variant: "amber" },
     ],
     rankTag: "Large private university — multiple faculties",
     headerEmoji: "🎓",
     imageSrc: geoImg("uog.png"),
     stats: [
-      { label: "Annual fees", value: "~₹5–6L/yr" },
-      { label: "6-year total", value: "~₹30–38L" },
+      { label: "Annual fees", value: "~₹5.3L/yr" },
+      { label: "6-year total", value: "~₹31–36L" },
       { label: "Duration", value: "6 Years" },
-      { label: "Campus", value: "Tbilisi" },
+      { label: "City", value: "Tbilisi" },
     ],
     fmge: {
       type: "text",
       text: "FMGE performance depends on self-discipline; verify latest NMC screening list before admission.",
     },
     description: [
-      "University of Georgia runs an English-taught medical track with diverse international students.",
-      "Good fit for students who want a private-university environment with modern amenities.",
+      "One of Georgia's largest private universities with a multidisciplinary environment. Medical faculty equipped with advanced simulation facilities and strong teaching hospital network.",
     ],
     featureTags: ["International Mix", "English Track", "Tbilisi", "Hostel Options"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
   {
-    id: "abmu",
-    name: "Avicenna Batumi Medical University",
-    abbreviation: "ABMU",
-    established: "2022",
-    locationLine: "Batumi, Adjara",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 28,
+    id: "gau",
+    name: "Georgian American University",
+    abbreviation: "GAU",
+    established: "2001",
+    locationLine: "Tbilisi",
+    region: "moscow",
+    budgetFriendly: false,
+    fmgePercent: 30,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "Budget + Sea City", variant: "rose" },
+      { label: "WFME", variant: "amber" },
     ],
-    rankTag: "Black Sea coast — milder climate",
-    headerEmoji: "🌊",
-    imageSrc: geoImg("abmu.jpeg"),
+    rankTag: "American-aligned curriculum — Tbilisi",
+    headerEmoji: "🏛️",
     stats: [
-      { label: "Annual fees", value: "~₹3.5–4.5L/yr" },
-      { label: "6-year total", value: "~₹22–30L" },
+      { label: "Annual fees", value: "~₹4.8L/yr" },
+      { label: "6-year total", value: "~₹28–33L" },
       { label: "Duration", value: "6 Years" },
-      { label: "City", value: "Batumi" },
+      { label: "Medium", value: "English" },
     ],
     fmge: {
       type: "text",
-      text: "Newer institution — confirm internship mapping and NMC compliance with Taksheela before enrolling.",
+      text: "FMGE outcomes vary by cohort; strong Indian peer groups and coaching ecosystems in Tbilisi.",
     },
     description: [
-      "Batumi offers a resort-city lifestyle with lower living costs than many EU capitals.",
-      "Best for students prioritising climate and cost while meeting NMC programme structure.",
+      "American-aligned curriculum with strong clinical training infrastructure. One of the largest Indian student communities in Georgia. NMC, WHO, and WFME recognised.",
     ],
-    featureTags: ["Batumi", "Affordable Living", "English Program", "Tourism Hub"],
+    featureTags: ["Tbilisi", "English Program", "Clinical Rotations", "Indian Community"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1662,25 +1804,25 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     budgetFriendly: false,
     fmgePercent: 29,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
+      { label: "Research-Oriented", variant: "amber" },
     ],
     rankTag: "Public research university — medical faculty",
     headerEmoji: "📚",
     imageSrc: geoImg("isu.jpg"),
     stats: [
-      { label: "Annual fees", value: "~₹5–5.5L/yr" },
+      { label: "Annual fees", value: "~₹5.4L/yr" },
       { label: "6-year total", value: "~₹32–36L" },
       { label: "Duration", value: "6 Years" },
-      { label: "Medium", value: "English" },
+      { label: "City", value: "Tbilisi" },
     ],
     fmge: {
       type: "text",
       text: "FMGE prep benefits from ISU’s academic support services and Tbilisi coaching networks.",
     },
     description: [
-      "ISU combines broader university resources with a dedicated health sciences pathway.",
-      "Strong student services and city connectivity make Tbilisi a practical base for six years.",
+      "A research-oriented institution with strong academic reputation integrating Georgian and European academic frameworks with a disciplined clinical training approach.",
     ],
     featureTags: ["Research Culture", "Student Services", "Tbilisi", "NMC Pathway"],
     applyHref: "/contact",
@@ -1696,14 +1838,15 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     budgetFriendly: false,
     fmgePercent: 30,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
+      { label: "NCEQE", variant: "amber" },
     ],
     rankTag: "Private national university — central Tbilisi",
     headerEmoji: "🏫",
     imageSrc: geoImg("gnuseu.jpg"),
     stats: [
-      { label: "Annual fees", value: "~₹4.5–5L/yr" },
+      { label: "Annual fees", value: "~₹4.8L/yr" },
       { label: "6-year total", value: "~₹28–33L" },
       { label: "Duration", value: "6 Years" },
       { label: "Medium", value: "English" },
@@ -1713,45 +1856,43 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
       text: "Mid-tier FMGE signals; selection should pair with disciplined licensing preparation from Year 1.",
     },
     description: [
-      "SEU offers English-medium medicine with a focus on employability skills and clinical blocks.",
-      "Popular with South Asian students for hostel support and city-centre access.",
+      "European curriculum framework with one of Georgia's largest Indian student populations. Early clinical exposure and strong academic delivery under Bologna standards.",
     ],
     featureTags: ["Central Tbilisi", "English MD", "Hostel", "Peer Network"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
   {
-    id: "ewtu",
-    name: "East-West Teaching University",
-    abbreviation: "EWTU",
-    established: "1992",
+    id: "kwiu",
+    name: "Ken Walker International University",
+    abbreviation: "KWIU",
+    established: "2019",
     locationLine: "Tbilisi",
     region: "moscow",
-    budgetFriendly: true,
+    budgetFriendly: false,
     fmgePercent: 28,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "Value Fees", variant: "rose" },
+      { label: "Modern Infra", variant: "amber" },
     ],
-    rankTag: "Affordable English track",
+    rankTag: "Newer institution — hands-on clinical focus",
     headerEmoji: "⚖️",
     imageSrc: geoImg("ewtu.webp"),
     stats: [
-      { label: "Annual fees", value: "~₹4–4.5L/yr" },
-      { label: "6-year total", value: "~₹25–30L" },
+      { label: "Annual fees", value: "~₹5.3L/yr" },
+      { label: "6-year total", value: "~₹31–36L" },
       { label: "Duration", value: "6 Years" },
-      { label: "Medium", value: "English" },
+      { label: "Founded", value: "2019" },
     ],
     fmge: {
       type: "text",
-      text: "Budget-friendly option — pair early FMGE mentoring with consistent academics.",
+      text: "Newer cohort — track NMC listing each intake and pair with structured FMGE mentoring from Year 1.",
     },
     description: [
-      "EWTU balances cost and English delivery for international MBBS aspirants.",
-      "Smaller cohorts can mean more personalised attention in pre-clinical years.",
+      "A newer institution gaining rapid recognition for its modern teaching infrastructure and strong hands-on clinical training approach aligned with NCEQE standards.",
     ],
-    featureTags: ["Value", "English", "Tbilisi", "International"],
+    featureTags: ["English", "Tbilisi", "Clinical Training", "NCEQE"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1762,33 +1903,31 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     established: "1995",
     locationLine: "Tbilisi",
     region: "moscow",
-    budgetFriendly: false,
+    budgetFriendly: true,
     fmgePercent: 33,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "FMGE Focus", variant: "amber" },
+      { label: "Budget-Friendly", variant: "rose" },
     ],
-    rankTag: "Large Indian cohort — Tbilisi",
+    rankTag: "Affordable NMC-approved option — Tbilisi",
     subtitle: "CIU – Tbilisi, Georgia",
     headerEmoji: "🌍",
     imageSrc: geoImg("ciu.jpg"),
     stats: [
-      { label: "Annual fees", value: "~₹5–5.5L/yr" },
-      { label: "6-year total", value: "~₹32–36L" },
+      { label: "Annual fees", value: "~₹1.9L/yr" },
+      { label: "6-year total", value: "~₹11–13L" },
       { label: "Duration", value: "6 Years" },
-      { label: "Medium", value: "English" },
+      { label: "Students", value: "7,400+" },
     ],
     fmge: {
-      type: "bar",
-      barLabel: "~30–34% — Popular with Indian applicants",
-      barPercent: 68,
+      type: "text",
+      text: "Popular with Indian applicants — verify latest NMC listing and plan FMGE prep alongside clinical years.",
     },
     description: [
-      "CIU is among the most discussed Georgian universities in the Indian market — verify latest NMC listing each intake.",
-      "Strong mess and peer ecosystem; clinical years require Georgian language basics for patient communication.",
+      "One of Georgia's most affordable NMC-approved options. CIU has enrolled 7,400+ students as of early 2025 and maintains full WHO listing and NCEQE accreditation.",
     ],
-    featureTags: ["High Demand", "Indian Mess", "Clinical Hospitals", "FMGE Prep"],
+    featureTags: ["Tbilisi", "Affordable", "Indian Community", "NCEQE"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1796,65 +1935,65 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     id: "eeu",
     name: "East European University",
     abbreviation: "EEU",
-    established: "1980",
+    established: "2012",
     locationLine: "Tbilisi",
     region: "moscow",
     budgetFriendly: false,
     fmgePercent: 29,
     headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
+      { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
+      { label: "Modern Campus", variant: "amber" },
     ],
     rankTag: "Modern campus — English medicine",
     headerEmoji: "🩺",
     imageSrc: geoImg("eeu.png"),
     stats: [
-      { label: "Annual fees", value: "~₹4.5–5L/yr" },
-      { label: "6-year total", value: "~₹28–33L" },
-      { label: "Duration", value: "6 Years" },
-      { label: "Recognition", value: "NMC · WHO" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Outcomes linked to individual preparation — Taksheela maps coaching from semester one.",
-    },
-    description: [
-      "EEU emphasises digital learning tools alongside bedside teaching in Tbilisi hospitals.",
-      "Suitable for students seeking a contemporary campus experience in Georgia’s capital.",
-    ],
-    featureTags: ["Modern Campus", "English", "Tbilisi", "Clinical Skills"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "alte",
-    name: "Alte University",
-    abbreviation: "Alte",
-    established: "2002",
-    locationLine: "Tbilisi",
-    region: "moscow",
-    budgetFriendly: false,
-    fmgePercent: 28,
-    headerTags: [
-      { label: "NMC Compliant", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-    ],
-    rankTag: "Private university — skills-focused medicine",
-    headerEmoji: "✨",
-    imageSrc: geoImg("alte.webp"),
-    stats: [
-      { label: "Annual fees", value: "~₹4.5–5L/yr" },
+      { label: "Annual fees", value: "~₹4.8L/yr" },
       { label: "6-year total", value: "~₹28–33L" },
       { label: "Duration", value: "6 Years" },
       { label: "City", value: "Tbilisi" },
     ],
     fmge: {
       type: "text",
+      text: "Outcomes linked to individual preparation — Taksheela maps coaching from semester one.",
+    },
+    description: [
+      "Newer institution with a modern campus and strong focus on integrating European teaching methodologies with hands-on clinical training. Growing Indian student cohort.",
+    ],
+    featureTags: ["Modern Campus", "English", "Tbilisi", "Clinical Skills"],
+    applyHref: "/contact",
+    availabilityText: "Seats Available 2026-27",
+  },
+  {
+    id: "ibsu",
+    name: "International Black Sea University",
+    abbreviation: "IBSU",
+    established: "1995",
+    locationLine: "Tbilisi",
+    region: "moscow",
+    budgetFriendly: false,
+    fmgePercent: 28,
+    headerTags: [
+      { label: "NMC Approved", variant: "emerald" },
+      { label: "WHO Listed", variant: "sky" },
+      { label: "International Heritage", variant: "amber" },
+    ],
+    rankTag: "Private university — international academic heritage",
+    headerEmoji: "✨",
+    imageSrc: geoImg("alte.webp"),
+    stats: [
+      { label: "Annual fees", value: "~₹3.9L/yr" },
+      { label: "6-year total", value: "~₹23–24L" },
+      { label: "Duration", value: "6 Years" },
+      { label: "Founded", value: "1995" },
+    ],
+    fmge: {
+      type: "text",
       text: "FMGE data varies — combine university shortlist with structured licensing roadmap.",
     },
     description: [
-      "Alte promotes small-group learning and early patient-contact exposure in line with Georgian accreditation norms.",
-      "Good option when matched to budget and career goals after documentary verification.",
+      "A private university with strong international academic heritage offering a balanced academic and clinical program with a growing South Asian student community.",
     ],
     featureTags: ["Tbilisi", "English MD", "Student Support", "NMC Screening"],
     applyHref: "/contact",
@@ -1876,7 +2015,7 @@ export const georgiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent =
     { id: "budget", label: "Budget-Friendly" },
     { id: "top_fmge", label: "Top FMGE Rate" },
   ],
-  topFmgeFilterIds: ["dtmu", "ciu"],
+  topFmgeFilterIds: ["dtmu", "isu"],
   universities: georgiaTopUniversityCards,
   quickComparison: {
     title: "Quick Comparison — All 10 Universities",
@@ -1887,42 +2026,43 @@ export const georgiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent =
         university: "Geomedi",
         city: "Tbilisi",
         established: "1998",
-        annualFees: "~₹4.7L/yr",
+        annualFees: "~₹4.8L/yr",
         fmgeRate: "~30%",
-        bestFor: "Clinical foundation + city life",
+        bestFor: "Simulation labs + clinical rotations",
       },
       {
         university: "DTMU",
         city: "Tbilisi",
-        established: "1989",
-        annualFees: "~₹5.5L/yr",
-        fmgeRate: "~32–36%",
+        established: "1992",
+        annualFees: "~₹5.3L/yr",
+        fmgeRate: "Research-aligned",
         fmgeHighlight: true,
-        bestFor: "FMGE signals + research",
+        bestFor: "Established medical faculty + NCEQE",
       },
       {
         university: "University of Georgia",
         city: "Tbilisi",
         established: "2004",
-        annualFees: "~₹5.5L/yr",
+        annualFees: "~₹5.3L/yr",
         fmgeRate: "Moderate",
-        bestFor: "Private campus + diversity",
+        bestFor: "Multidisciplinary + large campus",
       },
       {
-        university: "ABMU",
-        city: "Batumi",
-        established: "2022",
-        annualFees: "~₹4.0L/yr",
-        fmgeRate: "New cohort",
-        bestFor: "Sea city + budget",
+        university: "GAU",
+        city: "Tbilisi",
+        established: "2001",
+        annualFees: "~₹4.8L/yr",
+        fmgeRate: "Moderate",
+        bestFor: "American-aligned curriculum + WFME",
       },
       {
         university: "Ilia State Univ.",
         city: "Tbilisi",
         established: "2006",
-        annualFees: "~₹5.2L/yr",
+        annualFees: "~₹5.4L/yr",
         fmgeRate: "Moderate",
-        bestFor: "Public uni ecosystem",
+        fmgeHighlight: true,
+        bestFor: "Research-oriented public uni",
       },
       {
         university: "SEU",
@@ -1930,40 +2070,39 @@ export const georgiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent =
         established: "2001",
         annualFees: "~₹4.8L/yr",
         fmgeRate: "Moderate",
-        bestFor: "Central Tbilisi",
+        bestFor: "Bologna framework + Indian cohort",
       },
       {
-        university: "EWTU",
+        university: "KWIU",
         city: "Tbilisi",
-        established: "1992",
-        annualFees: "~₹4.2L/yr",
-        fmgeRate: "Good value",
-        bestFor: "Affordable fees",
+        established: "2019",
+        annualFees: "~₹5.3L/yr",
+        fmgeRate: "New cohort",
+        bestFor: "Modern infra + clinical training",
       },
       {
         university: "CIU",
         city: "Tbilisi",
         established: "1995",
-        annualFees: "~₹5.3L/yr",
-        fmgeRate: "~30–34%",
-        fmgeHighlight: true,
-        bestFor: "Indian peer network",
+        annualFees: "~₹1.9L/yr",
+        fmgeRate: "Budget option",
+        bestFor: "Lowest fees + 7,400+ students",
       },
       {
         university: "EEU",
         city: "Tbilisi",
-        established: "1980",
+        established: "2012",
         annualFees: "~₹4.8L/yr",
         fmgeRate: "Moderate",
-        bestFor: "Modern campus",
+        bestFor: "Modern campus + EU-style teaching",
       },
       {
-        university: "Alte",
+        university: "IBSU",
         city: "Tbilisi",
-        established: "2002",
-        annualFees: "~₹4.8L/yr",
+        established: "1995",
+        annualFees: "~₹3.9L/yr",
         fmgeRate: "Moderate",
-        bestFor: "Skills-focused delivery",
+        bestFor: "International heritage + South Asian cohort",
       },
     ],
   },
@@ -1984,73 +2123,83 @@ export type AbroadFaqPageContent = {
 };
 
 export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
-  eyebrow: "Frequently asked questions",
-  title: "MBBS in Georgia 2026-27 — FAQs for India, Nepal and Bangladesh Students",
+  eyebrow: "Frequently Asked questions",
+  title: "Everything You Need to Know About MBBS in Georgia",
   subtitle:
-    "Structured for FAQPage rich results and natural-language queries — including INR, NPR, and BDT-specific cost questions.",
+    "Answers for Indian, Nepali, and Bangladeshi students — NMC compliance, NExT, costs in INR/NPR/BDT, universities, safety, and timelines.",
   items: [
     {
-      question: "Which are the best NMC-listed universities in Georgia for Indian students in 2026?",
+      question:
+        "Is MBBS in Georgia valid in India? Can I practise medicine in India after graduating from Georgia?",
       answer:
-        "Taksheela’s featured 10 include: (1) Teaching University Geomedi, (2) David Tvildiani Medical University (DTMU), (3) University of Georgia, (4) Avicenna Batumi Medical University, (5) Ilia State University, (6) Georgian National University SEU, (7) East-West Teaching University, (8) Caucasus International University (CIU), (9) East European University, (10) Alte University. Always verify the latest NMC screening list before fee payment.",
+        "Yes — provided you study at an NMC-approved Georgian university, complete the full 6-year program (including the mandatory 12-month clinical internship in Georgia), and subsequently clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before obtaining State Medical Council registration. Taksheela only recommends NMC-approved institutions.",
     },
     {
-      question: "Is MBBS in Georgia better than Bangladesh for Indian students?",
+      question: "Is NEET mandatory for MBBS in Georgia for Indian students?",
       answer:
-        "Georgia offers English-medium MD in a European setting with total costs often ₹21–48 lakhs; Bangladesh offers proximity and cultural familiarity with strong FMGE outcomes at select colleges. The right choice depends on NEET score, budget, climate preference, and FMGE preparation plan — Taksheela compares both destinations side-by-side.",
+        "Yes, for Indian students who intend to return and practise medicine in India. As per NMC regulations (effective 2019), a valid NEET-UG qualifying score (within its 3-year validity) is mandatory before admission to any foreign medical university. Georgian universities do not set a minimum NEET percentile or score — only that you have qualified. Nepali and Bangladeshi students should confirm equivalent requirements with Taksheela.",
     },
     {
       question:
         "What is the total cost of MBBS in Georgia in Indian Rupees, Nepali Rupees (NPR), and Bangladeshi Taka (BDT)?",
       answer:
-        "Total 6-year all-inclusive cost: Indian Rupees: approximately ₹21–48 lakhs. Nepal NPR: roughly NPR 34–77 lakh (₹ × ~1.6). Bangladesh BDT: roughly BDT 28–65 lakh (₹ × ~1.35). Batumi and budget-friendly universities sit at the lower end; premium Tbilisi campuses at the higher end.",
+        "Total 6-year all-inclusive cost: INR: ₹39–70 lakhs (tuition + hostel + food + insurance + visa + personal expenses). Nepal NPR: approximately NPR 62–112 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 53–95 lakh (₹ × ~1.35). Budget university (like CIU at $2,200/year): total around ₹25–35L all-in. Premium institutions (around $6,000–6,200/year): total ₹50–70L all-in. No capitation. No donation. Zero hidden fees.",
     },
     {
-      question: "What FMGE pass rate can I expect after MBBS in Georgia?",
+      question: "Can students from Nepal and Bangladesh study MBBS in Georgia?",
       answer:
-        "FMGE outcomes vary by university and cohort — not as high as top Bangladesh colleges for every student. Success depends on disciplined preparation, coaching, and clinical exposure. Taksheela shares historical trend data during counselling and never promises guaranteed pass rates.",
+        "Absolutely. Georgian universities welcome students of all nationalities. Nepali students must show their NEB certificate or A-Level equivalent, and Bangladeshi students must show their HSC certificate with DGME compliance. Both nationalities require a Georgian student visa and must meet individual university eligibility criteria. Taksheela has dedicated counsellors for Nepal and Bangladesh who understand the specific visa, documentation, and licensing pathways for each country.",
     },
     {
-      question: "Is MBBS in Georgia valid in India? What are the requirements to practice in India?",
+      question: "Which are the best NMC-approved universities in Georgia for Indian students in 2025-26?",
       answer:
-        "Yes, when the university meets NMC rules: (1) Valid NEET-UG qualifying score before admission; (2) 54 months academic training + 12-month internship; (3) English-medium delivery; (4) Registration/licence in Georgia; (5) WHO-listed institution; (6) Clear FMGE/NExT in India. Taksheela verifies each criterion before you pay tuition.",
+        "Top Taksheela-recommended NMC-compliant universities: (1) Georgian American University (GAU, est. 2001), (2) Georgian National University SEU (est. 2001), (3) Geomedi Medical University (est. 1998), (4) East European University (est. 2012), (5) University of Georgia (est. 2004), (6) Caucasus International University (est. 1995 — most affordable), (7) International Black Sea University (est. 1995), (8) David Tvildiani Medical University (est. 1992), (9) Ilia State University (est. 2006), (10) Ken Walker International University (est. 2019). All are WHO-listed, NMC-compliant, and NCEQE-accredited.",
     },
     {
-      question: "Is NEET mandatory for MBBS in Georgia?",
+      question: "Is MBBS in Georgia better than Russia, Kyrgyzstan, or Bangladesh for Indian students?",
       answer:
-        "For Indian students who intend to practise in India, NEET-UG qualification is mandatory (NMC regulations). Georgian universities may admit students without NEET for academic study, but you cannot register in India without a valid NEET score issued in the relevant admission window.",
+        "Georgia has three key advantages over most alternatives: (1) 100% English medium — unlike Russia or Kyrgyzstan where a second language is required for clinical years. (2) European Bologna Process alignment — making the degree more globally portable. (3) Warmer climate than Russia or Kyrgyzstan, with better cultural adjustment for South Asian students. Fees are slightly higher than Russia's budget options but comparable to mid-range Russian universities. Compared to Bangladesh, Georgia offers more English-medium university options and a larger Indian student community. The right choice depends on your budget, career goals, and personal preferences — Taksheela provides personalised advice based on your specific profile.",
     },
     {
-      question: "Do I need to learn Georgian language?",
+      question: "What is the NExT exam and how does it affect Georgian MBBS graduates?",
       answer:
-        "The MD programme is taught in English, but Georgian is introduced for patient communication and for national licensing exams. Expect conversational Georgian by clinical years — universities include language classes in the curriculum.",
+        "NExT (National Exit Test) has replaced the old FMGE for all Indian medical graduates returning from abroad (and for Indian graduates too). It is a two-part exam conducted by the NMC: NExT Step 1 (knowledge-based) and NExT Step 2 (clinical skills). Passing NExT is mandatory for Georgian MBBS graduates who want to practise medicine in India or pursue PG admissions. Unlike the old FMGE, NExT applies to all MBBS graduates — not just foreign graduates. Taksheela provides early NExT orientation to students from Year 1.",
     },
     {
-      question: "Can students from Nepal and Bangladesh study MBBS in Georgia through Taksheela?",
+      question: "Can I do my internship in India after MBBS in Georgia?",
       answer:
-        "Yes. Nepal: NEET or national eligibility pathway; NPR budgeting; Kathmandu documentation support. Bangladesh: DGME rules apply for return pathways; BDT budgeting; Dhaka visa support. Halal food is available in Tbilisi and Batumi through certified kitchens.",
+        "The mandatory 12-month clinical rotation (internship) must be completed in Georgia at the affiliated teaching hospital, as per NMC regulations. This is a non-negotiable requirement. After completing this and returning to India, graduates must complete a separate 12-month internship at an NMC-recognised hospital in India before obtaining permanent medical registration. This two-internship pathway is clearly stipulated in the NMC Gazette.",
     },
     {
-      question: "What is the Georgian medical licensing exam and why does it matter?",
+      question: "Is Georgia safe for female students studying alone?",
       answer:
-        "Georgian medical graduates must clear national licensing requirements (including language skills) to obtain a local medical licence. That licence is part of proving your primary qualification before you sit for FMGE/NExT in India.",
+        "Yes. Georgia consistently ranks among the world's top 20 safest countries. Tbilisi has a strong police presence, very low violent crime rates, and an extremely welcoming culture towards international students. Most universities offer on-campus hostels with 24-hour security and CCTV coverage. Additionally, the large Indian student community (13,000+) means there are always senior students available to guide and support newcomers, including female students living independently for the first time. Taksheela's Tbilisi team provides year-round local support.",
     },
     {
-      question: "What is the total MBBS fee in Georgia in Nepali Rupees (NPR) for 2026-27?",
+      question: "When should I apply for MBBS in Georgia for the September 2025 intake?",
       answer:
-        "Expect roughly NPR 34–77 lakh for the full programme depending on university and lifestyle. Taksheela provides a personalised NPR worksheet during counselling.",
+        "For September 2025 intake: begin the counselling and university shortlisting process by March–April 2025. Applications should be submitted by June–July 2025. Admission letters are typically issued by July–August. Visa processing takes 4–6 weeks, so applications should be submitted by August at the latest. Taksheela strongly recommends starting by April to ensure MEA apostille (2–4 weeks), university application, and visa processing all align without deadline pressure. Contact Taksheela now to check seat availability.",
     },
     {
-      question: "What is the total MBBS fee in Georgia in Bangladeshi Taka (BDT) for 2026-27?",
+      question: "How do I verify if a Georgian university is NMC-approved?",
       answer:
-        "Expect roughly BDT 28–65 lakh all-in for six years, depending on university tier and city. Taksheela assists Bangladeshi families with DGME documentation and forex planning.",
+        "Visit the official NMC website at nmc.org.in and check the published list of approved foreign medical universities. Also verify the university on the WHO's World Directory of Medical Schools at wdoms.org. Taksheela conducts this verification in real time before every shortlisting and shares the official NMC document with every student — so you never rely solely on our word. Never pay any fee to a university without independently verifying its NMC status first.",
     },
     {
-      question: "When should I apply for MBBS in Georgia for September 2026 intake?",
+      question: "Are there scholarships available for MBBS in Georgia?",
       answer:
-        "Start applications by April–June 2026 for September intake. You need time for offer letters, MEA apostille on academic documents, student visa, and housing. Taksheela recommends starting at least 12 weeks before classes begin.",
+        "Yes — several routes exist. University merit scholarships (10–25% fee waiver for strong academic profiles), the Government of India's Central Sector Interest Subsidy (CSIS) scheme for EWS students, the Padho Pardesh Scheme for minority community students, and limited Georgian government scholarships via NCEQE. Taksheela identifies which schemes you are eligible for and assists with application documentation. Scholarship availability and seat quotas change yearly — always verify deadlines with the issuing body.",
     },
   ],
+};
+
+export const georgiaAbroadCtaBannerContent: AbroadCtaBannerContent = {
+  countryLabel: "Georgia",
+  subtitle:
+    "Book your free counselling session. Get a personalised university shortlist, fee breakdown, and eligibility confirmation in 24 hours.",
+  primaryCtaLabel: "Book Free Counselling",
+  phoneDisplay: "+91 9831241212",
+  phoneTel: "+919831241212",
 };
 
 export const georgiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
