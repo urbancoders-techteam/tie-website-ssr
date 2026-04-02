@@ -11,6 +11,13 @@ import axios from "axios";
 import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
+/** Last path segment only, e.g. `/mbbs/abroad/georgia` → `georgia` */
+function getPathEndpoint(): string {
+  if (typeof window === "undefined") return "";
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  return parts.length > 0 ? parts[parts.length - 1]! : "";
+}
+
 interface ModalProps {
   open: boolean;
   onClose: () => void;
@@ -72,6 +79,7 @@ const RegistrationModal = ({
                   email: values.email,
                   detail1: values.message,
                   detail2: `${source} | ${time}`,
+                  location: getPathEndpoint(),
                 },
                 { headers: { "Content-Type": "application/json" } }
               );

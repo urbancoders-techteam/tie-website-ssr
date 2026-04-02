@@ -10,6 +10,13 @@ import axios from "axios";
 import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
+/** Last path segment only, e.g. `/mbbs/abroad/georgia` → `georgia` */
+function getPathEndpoint(): string {
+  if (typeof window === "undefined") return "";
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  return parts.length > 0 ? parts[parts.length - 1]! : "";
+}
+
 const RegisterForm = ({
   brochureUrl,
   showBrochure = false,
@@ -20,9 +27,6 @@ const RegisterForm = ({
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  const source = window.location.href;
-  const time = new Date().toLocaleString();
 
   const validationSchema = yup.object({
     name: yup.string().required("Name is required"),
@@ -51,6 +55,31 @@ const RegisterForm = ({
         const res = await axios.post(`${baseUrl}student/schedule-meeting`, values);
 
         if (res.data.success) {
+          const source = window.location.href;
+          const time = new Date().toLocaleString();
+
+          try {
+            const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
+            if (!neodoveUrl) {
+              console.warn("NEXT_PUBLIC_NEODOVE_LEADS_URL is not set");
+            } else {
+              await axios.post(
+                neodoveUrl,
+                {
+                  name: values.name,
+                  mobile: parseInt(values.phone, 10),
+                  email: values.email,
+                  detail1: values.message,
+                  detail2: `${source} | ${time}`,
+                  location: getPathEndpoint(),
+                },
+                { headers: { "Content-Type": "application/json" } }
+              );
+            }
+          } catch (neodoveErr) {
+            console.error("Neodove lead sync failed", neodoveErr);
+          }
+
           const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
           const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
           const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
