@@ -6,6 +6,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { baseUrl } from "@/utils/config";
 
+/** Last path segment only, e.g. `/mbbs/abroad/georgia` → `georgia` */
+function getPathEndpoint(): string {
+  if (typeof window === "undefined") return "";
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  return parts.length > 0 ? parts[parts.length - 1]! : "";
+}
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +45,31 @@ const ContactForm = () => {
         return;
       }
 
+      const source = window.location.href;
+      const time = new Date().toLocaleString();
+
+      try {
+        const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
+        if (!neodoveUrl) {
+          console.warn("NEXT_PUBLIC_NEODOVE_LEADS_URL is not set");
+        } else {
+          await axios.post(
+            neodoveUrl,
+            {
+              name: formData.name,
+              mobile: parseInt(formData.phone, 10),
+              email: formData.email,
+              detail1: formData.message,
+              detail2: `${source} | ${time}`,
+              location: getPathEndpoint(),
+            },
+            { headers: { "Content-Type": "application/json" } }
+          );
+        }
+      } catch (neodoveErr) {
+        console.error("Neodove lead sync failed", neodoveErr);
+      }
+
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -47,9 +78,6 @@ const ContactForm = () => {
         toast.error("Email service is not configured");
         return;
       }
-
-      const source = window.location.href;
-      const time = new Date().toLocaleString();
 
       await emailjs.send(
         serviceId,
