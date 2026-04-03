@@ -81,6 +81,32 @@ import {
   georgiaAbroadEducationLoanContent,
   georgiaAbroadCtaBannerContent,
 } from "@/constants/abroad/georgiaAbroadConstent";
+import {
+  kazakhstanAbroadAdmissionProcessContent,
+  kazakhstanAbroadCompleteComparisonContent,
+  kazakhstanAbroadConsiderBeforeContent,
+  kazakhstanAbroadCostBreakdownContent,
+  kazakhstanAbroadEligibilityContent,
+  kazakhstanAbroadFaqPageContent,
+  kazakhstanAbroadFearsContent,
+  kazakhstanAbroadHeroFeaturedCount,
+  kazakhstanAbroadIntakePeriodContent,
+  kazakhstanAbroadKeyFactsContent,
+  kazakhstanAbroadMbbsSyllabusContent,
+  kazakhstanAbroadOurStoriesContent,
+  kazakhstanAbroadOverviewContent,
+  kazakhstanAbroadRegulatoryFrameworkContent,
+  kazakhstanAbroadScholarshipsContent,
+  kazakhstanAbroadTeachingMethodologyContent,
+  kazakhstanAbroadTopUniversitiesContent,
+  kazakhstanAbroadCareerOpportunitiesContent,
+  kazakhstanAbroadWhyChooseTaksheelaContent,
+  kazakhstanAbroadQuickFactsContent,
+  kazakhstanAbroadWhyChooseMbbsContent,
+  kazakhstanAbroadAccommodationClimateContent,
+  kazakhstanAbroadEducationLoanContent,
+  kazakhstanAbroadCtaBannerContent,
+} from "@/constants/abroad/kazakhstanAbroadConstent";
 
 /** All section payloads passed to the “full stack” abroad page for one country. */
 export type AbroadFullPageCopy = {
@@ -169,9 +195,39 @@ function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
+function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
+  return {
+    hero: kazakhstanAbroadHeroFeaturedCount(featuredCount),
+    overview: kazakhstanAbroadOverviewContent,
+    fears: kazakhstanAbroadFearsContent,
+    topUniversities: kazakhstanAbroadTopUniversitiesContent,
+    cost: kazakhstanAbroadCostBreakdownContent,
+    consider: kazakhstanAbroadConsiderBeforeContent,
+    regulatory: kazakhstanAbroadRegulatoryFrameworkContent,
+    intake: kazakhstanAbroadIntakePeriodContent,
+    teaching: kazakhstanAbroadTeachingMethodologyContent,
+    syllabus: kazakhstanAbroadMbbsSyllabusContent,
+    comparison: kazakhstanAbroadCompleteComparisonContent,
+    accommodation: kazakhstanAbroadAccommodationClimateContent,
+    stories: kazakhstanAbroadOurStoriesContent,
+    keyFacts: kazakhstanAbroadKeyFactsContent,
+    scholarships: kazakhstanAbroadScholarshipsContent,
+    educationLoan: kazakhstanAbroadEducationLoanContent,
+    career: kazakhstanAbroadCareerOpportunitiesContent,
+    whyTaksheela: kazakhstanAbroadWhyChooseTaksheelaContent,
+    faq: kazakhstanAbroadFaqPageContent,
+    quickFacts: kazakhstanAbroadQuickFactsContent,
+    whyChooseMbbs: kazakhstanAbroadWhyChooseMbbsContent,
+    eligibility: kazakhstanAbroadEligibilityContent,
+    admissionProcess: kazakhstanAbroadAdmissionProcessContent,
+    ctaBanner: kazakhstanAbroadCtaBannerContent,
+  };
+}
+
 const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPageCopy> = {
   russia: russiaFullPage,
   georgia: georgiaFullPage,
+  kazakhstan: kazakhstanFullPage,
 };
 
 /** Slugs that render the full abroad component stack (single source of truth with `FULL_PAGE_BY_SLUG`). */
@@ -188,6 +244,7 @@ export function getAbroadFullPageCopy(slug: string, featuredCount: number): Abro
 const ABROAD_OVERVIEW_MEDIA_SRC: Record<string, string> = {
   russia: `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`,
   georgia: `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/geomedi.jpg`,
+  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/university/knmu.jpg`,
 };
 
 export function getAbroadOverviewMediaSrc(slug: string): string | undefined {
