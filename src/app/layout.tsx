@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import "leaflet/dist/leaflet.css";
 import CanonicalTag from "@/components/CanonicalTag";
 import CampaignGoogleAdsScripts from "@/components/campaign/CampaignGoogleAdsScripts";
+import EducationalOrganizationSchema from "@/components/EducationalOrganizationSchema";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <head>
         <CanonicalTag />
         <SchemaMarkup />
+        <EducationalOrganizationSchema />
 
         {/* Fonts - Nunito */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
