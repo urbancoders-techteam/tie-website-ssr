@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import ModalTrigger from "@/components/ModalTrigger";
+import { countryData } from "@/constants/mbbs";
 import type { AbroadHeroContent } from "@/constants/abroad/russiaAbroadConstent";
 
 type AspectItem = {
@@ -70,6 +72,33 @@ const COUNTRY_CODES: Record<string, string> = {
   uzbekistan: "UZ",
 };
 
+/** Same pattern as CountryWeWorkWith: local asset from countryData, else flagcdn. */
+const COUNTRY_TITLE_TO_FLAG_IMAGE = new Map<string, string>(
+  (countryData as { title: string; image: string }[]).map((item) => [item.title, item.image])
+);
+
+function getCountryFlagImageSrc(countryTitle: string, isoCode: string | undefined): string | null {
+  const local = COUNTRY_TITLE_TO_FLAG_IMAGE.get(countryTitle);
+  if (local) return local;
+  if (isoCode && isoCode.length >= 2) return `https://flagcdn.com/w160/${isoCode.toLowerCase()}.png`;
+  return null;
+}
+
+function HeroCountryFlagImage({ src, countryTitle }: { src: string; countryTitle: string }) {
+  return (
+    <div className="mb-4 w-full overflow-hidden rounded-xl border border-[#B8F2F4]/55 bg-black/5 shadow-[0_8px_22px_rgba(0,0,0,0.22)]">
+      <Image
+        src={src}
+        alt={`${countryTitle} national flag`}
+        width={800}
+        height={480}
+        className="h-auto w-full max-h-52 object-contain object-center sm:max-h-56"
+        sizes="(max-width: 1023px) 100vw, 40vw"
+      />
+    </div>
+  );
+}
+
 function getSlugFromPath(path: string) {
   return path.split("/").filter(Boolean).pop()?.toLowerCase() ?? "";
 }
@@ -95,6 +124,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
   const metrics = COUNTRY_METRICS[slug] ?? DEFAULT_METRICS;
   const code = COUNTRY_CODES[slug] ?? country.title.slice(0, 2).toUpperCase();
   const featuredUniversities = country.colleges?.length ?? 10;
+  const flagImageSrc = getCountryFlagImageSrc(country.title, COUNTRY_CODES[slug]);
 
   if (hero) {
     const maxLen = hero.descriptionMaxLength ?? 260;
@@ -106,14 +136,15 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
         <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-10 md:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-8 md:gap-12 items-start">
+            {/* Left Side ~60% */}
+            <div className="min-w-0 lg:pr-2">
               <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.18em] text-white uppercase font-semibold">
                 {hero.eyebrow}
               </p>
               <h1 className="mt-3 text-white font-bold leading-tight text-[34px] sm:text-[42px] md:text-[46px]">
-                {hero.headline.line1}
-                <span className="block text-[#FFD465] italic">{hero.headline.line2Accent}</span>
+                {hero.headline.line1}{" "}
+                <span className="text-[#FFD465]">{ hero.headline.line2Accent}</span>
                 <span className="block">{hero.headline.line3}</span>
               </h1>
               <p className="mt-5 text-sm sm:text-base md:text-lg leading-relaxed text-white max-w-2xl">{description}</p>
@@ -145,19 +176,21 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
               </div>
             </div>
 
-            <div className="w-full max-w-[420px] lg:ml-auto">
-              <div className="rounded-2xl border border-[#B8F2F4]/60 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-6 text-center shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm">
-                <p className="text-4xl sm:text-5xl font-extrabold text-[#FFD465]">{hero.spotlight.value}</p>
-                <p className="text-sm sm:text-base text-white/85 mt-2">{hero.spotlight.caption}</p>
+            {/* Right Side ~40% (compact, vertically centered vs left on lg) */}
+            <div className="flex w-full min-w-0 flex-col lg:pl-2">
+              {flagImageSrc ? <HeroCountryFlagImage src={flagImageSrc} countryTitle={country.title} /> : null}
+              <div className="rounded-xl border border-[#B8F2F4]/60 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-4 py-3.5 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
+                <p className="text-3xl sm:text-4xl font-extrabold leading-tight text-[#FFD465]">{hero.spotlight.value}</p>
+                <p className="text-xs sm:text-sm text-white/85 mt-1.5 leading-snug">{hero.spotlight.caption}</p>
               </div>
-              <div className="grid grid-cols-2 gap-4 mt-4">
+              <div className="mt-3 grid grid-cols-2 gap-2.5">
                 {hero.statGrid.map((card) => (
                   <div
                     key={`${card.label}-${card.value}`}
-                    className="rounded-xl border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-4 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm"
+                    className="rounded-lg border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-2.5 py-2.5 text-center shadow-[0_8px_18px_rgba(0,0,0,0.14)] backdrop-blur-sm"
                   >
-                    <p className="text-2xl sm:text-3xl font-bold text-white">{card.value}</p>
-                    <p className="text-xs text-white/75 mt-1">{card.label}</p>
+                    <p className="text-lg sm:text-xl font-bold leading-tight text-white">{card.value}</p>
+                    <p className="text-[10px] sm:text-[11px] text-white/75 mt-0.5 leading-tight">{card.label}</p>
                   </div>
                 ))}
               </div>
@@ -174,8 +207,9 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
       <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:34px_34px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-10 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-8 md:gap-12 items-start">
+          {/* Left Side ~60% */}
+          <div className="min-w-0 lg:pr-2">
             <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.18em] text-white uppercase font-semibold">
               {code} MBBS in {country.title} 2026-27 - Admissions Open
             </p>
@@ -222,29 +256,31 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
             </div>
           </div>
 
-          <div className="w-full max-w-[420px] lg:ml-auto">
-            <div className="rounded-2xl border border-[#B8F2F4]/60 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-6 text-center shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm">
-              <p className="text-4xl sm:text-5xl font-extrabold text-[#FFD465]">{metrics.students}</p>
-              <p className="text-sm sm:text-base text-white/85 mt-2">
+          {/* Right Side ~40% (compact, vertically centered vs left on lg) */}
+          <div className="flex w-full min-w-0 flex-col lg:pl-2">
+            {flagImageSrc ? <HeroCountryFlagImage src={flagImageSrc} countryTitle={country.title} /> : null}
+            <div className="rounded-xl border border-[#B8F2F4]/60 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-4 py-3.5 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
+              <p className="text-3xl sm:text-4xl font-extrabold leading-tight text-[#FFD465]">{metrics.students}</p>
+              <p className="text-xs sm:text-sm text-white/85 mt-1.5 leading-snug">
                 Students currently pursuing MBBS in {country.title}
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <div className="rounded-xl border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-4 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
-                <p className="text-2xl sm:text-3xl font-bold text-white">{metrics.universities}</p>
-                <p className="text-xs text-white/75 mt-1">NMC-Compliant Universities</p>
+            <div className="mt-3 grid grid-cols-2 gap-2.5">
+              <div className="rounded-lg border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-2.5 py-2.5 text-center shadow-[0_8px_18px_rgba(0,0,0,0.14)] backdrop-blur-sm">
+                <p className="text-lg sm:text-xl font-bold leading-tight text-white">{metrics.universities}</p>
+                <p className="text-[10px] sm:text-[11px] text-white/75 mt-0.5 leading-tight">NMC-Compliant Universities</p>
               </div>
-              <div className="rounded-xl border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-4 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
-                <p className="text-2xl sm:text-3xl font-bold text-white">{metrics.feesFrom}</p>
-                <p className="text-xs text-white/75 mt-1">Annual Fees From</p>
+              <div className="rounded-lg border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-2.5 py-2.5 text-center shadow-[0_8px_18px_rgba(0,0,0,0.14)] backdrop-blur-sm">
+                <p className="text-lg sm:text-xl font-bold leading-tight text-white">{metrics.feesFrom}</p>
+                <p className="text-[10px] sm:text-[11px] text-white/75 mt-0.5 leading-tight">Annual Fees From</p>
               </div>
-              <div className="rounded-xl border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-4 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
-                <p className="text-2xl sm:text-3xl font-bold text-white">{metrics.tradition}</p>
-                <p className="text-xs text-white/75 mt-1">Years Medical Tradition</p>
+              <div className="rounded-lg border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-2.5 py-2.5 text-center shadow-[0_8px_18px_rgba(0,0,0,0.14)] backdrop-blur-sm">
+                <p className="text-lg sm:text-xl font-bold leading-tight text-white">{metrics.tradition}</p>
+                <p className="text-[10px] sm:text-[11px] text-white/75 mt-0.5 leading-tight">Years Medical Tradition</p>
               </div>
-              <div className="rounded-xl border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 p-4 text-center shadow-[0_10px_22px_rgba(0,0,0,0.16)] backdrop-blur-sm">
-                <p className="text-2xl sm:text-3xl font-bold text-white">{featuredUniversities}</p>
-                <p className="text-xs text-white/75 mt-1">Featured Universities</p>
+              <div className="rounded-lg border border-[#B8F2F4]/55 bg-gradient-to-b from-[#35AEB3]/30 to-[#188A90]/24 px-2.5 py-2.5 text-center shadow-[0_8px_18px_rgba(0,0,0,0.14)] backdrop-blur-sm">
+                <p className="text-lg sm:text-xl font-bold leading-tight text-white">{featuredUniversities}</p>
+                <p className="text-[10px] sm:text-[11px] text-white/75 mt-0.5 leading-tight">Featured Universities</p>
               </div>
             </div>
           </div>

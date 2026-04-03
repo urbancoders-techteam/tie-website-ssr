@@ -1,4 +1,5 @@
 import KazakhstanCampaignPage from "@/components/campaign/kazakhstan/KazakhstanCampaignPage";
+import CampaignGoogleAdsScripts from "@/components/campaign/CampaignGoogleAdsScripts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function KazakhstanCampaignRoute() {
-  return <KazakhstanCampaignPage />;
+  return (
+    <>
+      <CampaignGoogleAdsScripts />
+      <KazakhstanCampaignPage />
+    </>
+  );
 }
