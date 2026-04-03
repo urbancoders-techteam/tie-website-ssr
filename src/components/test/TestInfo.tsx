@@ -3,7 +3,6 @@
 import Image from "next/image";
 import React from "react";
 import ModalTrigger from "../ModalTrigger";
-import { BackRouteContainer } from "../study-abroad/university-finder/ViewComponents";
 import ContainerWrapper from "../ContainerWrapper";
 
 interface TestInfoProps {
@@ -19,11 +18,6 @@ const TestInfo: React.FC<TestInfoProps> = ({ testInfo }) => {
   return (
     <div className="bg-[#effdff] w-full pt-10">
       <ContainerWrapper>
-        <BackRouteContainer
-          path="/test"
-          title="Test Main Page"
-          logo={"/images/backuniversity.png"}
-        />
         <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-10">
           {/* Text Section */}
           <div className="w-full md:w-[60%] flex justify-center">

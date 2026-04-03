@@ -8,10 +8,7 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
-import {
-  countryData,
-  faqData
-} from "@/constants/mbbs";
+import { faqData } from "@/constants/mbbs";
 import LetsStart from "@/components/immersion/LetsStart";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
@@ -25,39 +22,73 @@ import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
 import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
 
+const MBBS_URL = "https://www.taksheela.com/mbbs";
+const SITE_URL = "https://www.taksheela.com";
+
+/** First 8 FAQs match the default accordion on this page (see FAQ component). */
+const MBBS_HUB_FAQ_FOR_SCHEMA = faqData.slice(0, 8);
+
 export const metadata: Metadata = {
-  title: "MBBS in Russia 2026-27 | NMC Approved Universities, Fees, Admission | Taksheela Institute",
+  title: "MBBS Abroad 2026-27 | NMC Approved Universities, Fees & Admission | Taksheela",
   description:
-    "Study MBBS in Russia 2026-27 with Taksheela. Total fees Rs 18-36L, 50+ NMC-approved universities, English medium, FMGE-eligible. Complete guide for Indian, Nepali and Bangladeshi students - eligibility, admission, documents, universities, costs. Free counselling today.",
+    "Study MBBS abroad in 12 NMC-approved countries — Russia, Bangladesh, Philippines, Kyrgyzstan & more. Fees from ₹3L/year. Expert guidance for students from India, Nepal & Bangladesh. Free counselling by Taksheela.",
   keywords: [
+    "MBBS abroad",
+    "MBBS abroad 2026",
+    "NMC approved MBBS abroad",
+    "MBBS abroad fees",
+    "MBBS abroad for Indian students",
+    "MBBS Nepal Bangladesh",
     "MBBS in Russia",
-    "MBBS in Russia for Indian students",
-    "MBBS in Russia fees",
-    "MBBS in Russia 2026",
-    "MBBS in Russia 2026-27",
-    "NMC approved universities Russia",
-    "MBBS Russia eligibility",
-    "MBBS Russia total cost",
-    "MBBS Russia Nepali students",
-    "MBBS Russia Bangladeshi students",
-    "Russia MBBS FMGE pass rate",
-    "Taksheela MBBS Russia",
-    "cheap MBBS Russia",
-    "best medical universities Russia",
+    "study MBBS abroad Taksheela",
   ],
-  alternates: {
-    canonical: "https://www.taksheela.com/mbbs/abroad/russia",
-    languages: {
-      "en-IN": "https://www.taksheela.com/mbbs/abroad/russia",
-      "en-NP": "https://www.taksheela.com/mbbs/abroad/russia",
-      "en-BD": "https://www.taksheela.com/mbbs/abroad/russia",
-      "x-default": "https://www.taksheela.com/mbbs/abroad/russia",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
     },
+  },
+  alternates: {
+    canonical: MBBS_URL,
+    languages: {
+      "en-IN": MBBS_URL,
+      "en-NP": MBBS_URL,
+      "en-BD": MBBS_URL,
+      "x-default": MBBS_URL,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: MBBS_URL,
+    siteName: "Taksheela Institute of Education",
+    locale: "en_IN",
+    title: "MBBS Abroad 2026-27 | NMC Approved Universities & Fees | Taksheela",
+    description:
+      "Study MBBS abroad in 12 NMC-approved countries. Fees from ₹3L/year. Free counselling for students from India, Nepal & Bangladesh.",
+    images: [
+      {
+        url: "/images/og-mbbs-abroad.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MBBS abroad — Taksheela Institute of Education",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MBBS Abroad 2026-27 | NMC Approved Universities & Fees | Taksheela",
+    description:
+      "Study MBBS abroad in 12 NMC-approved countries. Fees from ₹3L/year. Free counselling for India, Nepal & Bangladesh students.",
+    images: ["/images/og-mbbs-abroad.jpg"],
   },
 };
 
 export default function Page() {
-  // const mbbsImg1 = imageBaseUrl + "mbbsinindia.png";
   const mbbsicon1 = imageBaseUrl + "mbbsIcon1.svg";
   const mbbsicon2 = imageBaseUrl + "mbbsIcon2.svg";
 
@@ -81,7 +112,6 @@ export default function Page() {
     },
   ];
 
-
   const imageList = [
     {
       image: mbbsicons1,
@@ -104,44 +134,47 @@ export default function Page() {
   ];
 
   const mbbsHeroStats = [
-    { value: <span className="text-[#5dd4d9]" >12+</span>, label: "Countries" },
-    { value: <span className="text-[#5dd4d9]" >₹3L</span>, label: "Fees / Year" },
-    { value: <span className="text-[#5dd4d9]" >NMC</span>, label: "Approved Only" },
-    { value: <span className="text-[#5dd4d9]" >IN • NP • BD</span>, label: "Students Served" },
+    { value: <span className="text-[#5dd4d9]">12+</span>, label: "Countries" },
+    { value: <span className="text-[#5dd4d9]">₹3L</span>, label: "Fees / Year" },
+    { value: <span className="text-[#5dd4d9]">NMC</span>, label: "Approved Only" },
+    { value: <span className="text-[#5dd4d9]">IN • NP • BD</span>, label: "Students Served" },
   ];
 
-  const pageUrl = "https://www.taksheela.com/mbbs/abroad/russia";
-  const siteUrl = "https://www.taksheela.com";
-  const russiaCountry = countryData.find((item) => item.title === "Russia");
-  const topRussiaUniversities = (russiaCountry?.colleges ?? []).slice(0, 10);
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "MBBS in Russia 2026-27: NMC Approved Universities, Fees, Admission",
+  const webPageEntity = {
+    "@type": "WebPage",
+    "@id": MBBS_URL,
+    url: MBBS_URL,
+    name: "MBBS Abroad 2026-27 | NMC Approved Universities, Fees & Admission",
     description:
-      "Complete MBBS in Russia guide for Indian, Nepali and Bangladeshi students - fees, eligibility, admission, top universities and FMGE-focused planning.",
-    mainEntityOfPage: pageUrl,
-    author: {
-      "@type": "Organization",
-      name: "Taksheela Institute",
-      url: siteUrl,
+      "Comprehensive guide to studying MBBS abroad across 12 NMC-approved countries, with fees, eligibility, and step-by-step admission process for students from India, Nepal, and Bangladesh.",
+    inLanguage: "en",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Taksheela Institute of Education",
+      url: SITE_URL,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Taksheela Institute",
-      url: siteUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/favicon.ico`,
-      },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "MBBS Abroad",
+          item: MBBS_URL,
+        },
+      ],
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
+  const faqEntity = {
     "@type": "FAQPage",
-    mainEntity: faqData.slice(0, 11).map((item) => ({
+    mainEntity: MBBS_HUB_FAQ_FOR_SCHEMA.map((item) => ({
       "@type": "Question",
       name: item.title,
       acceptedAnswer: {
@@ -151,73 +184,24 @@ export default function Page() {
     })),
   };
 
-  const organizationSchema = {
+  const structuredDataGraph = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    name: "Taksheela Institute",
-    url: siteUrl,
-    sameAs: [siteUrl],
-    areaServed: ["IN", "NP", "BD"],
-    description:
-      "Taksheela Institute helps students from India, Nepal and Bangladesh with MBBS abroad counselling, admission support and university shortlisting.",
-  };
-
-  const universityItemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Top 10 Russian Universities for MBBS",
-    itemListElement: topRussiaUniversities.map((college, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: college.items?.[0] ?? college.title ?? `Russian Medical University ${index + 1}`,
-    })),
-  };
-
-  const breadcrumbListSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "MBBS Abroad",
-        item: `${siteUrl}/mbbs/abroad`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "MBBS in Russia",
-        item: pageUrl,
-      },
-    ],
+    "@graph": [webPageEntity, faqEntity],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(universityItemListSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph) }}
       />
 
       {/* Hero Section */}
       <HeroSection
         heroImage={heroImage}
+        heroImageAlt="MBBS abroad students at NMC-approved university campus"
+        imageSizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+        imagePriority={true}
         tagline="Admissions Open — 2026-27 Session"
         title="MBBS Abroad 2026–27: Your Medical Dream, Globally Achieved."
         description={
@@ -233,7 +217,7 @@ export default function Page() {
         ctaText="Book Your Free Demo Session"
       />
 
-      <BreadcrumbSchema/>
+      <BreadcrumbSchema />
 
       {/* What is MBBS Section */}
       <MainContainer
@@ -252,8 +236,9 @@ export default function Page() {
           <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/images/whatismbbs.png"
-              alt="What is MBBS?"
+              alt="Medical students in a classroom — understanding the MBBS degree"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -300,7 +285,13 @@ export default function Page() {
         }
         com2={
           <div className="relative w-full h-64 md:h-[350px] shadow-lg overflow-hidden rounded-lg">
-            <Image src={collegeImage} alt="MBBS in India" fill className="object-cover" priority />
+            <Image
+              src={collegeImage}
+              alt="MBBS in India — government and private medical college seats overview"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+              className="object-cover"
+            />
           </div>
         }
       />
@@ -380,95 +371,25 @@ export default function Page() {
                 </div>
               ))}
             </div>
-
           </div>
-            <div className="ml-auto flex flex-wrap md:flex-nowrap gap-4 pt-2 justify-end w-full">
-              {imageList.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.page + item.section}
-                  title={item.title}
-                  className="cursor-pointer"
-                >
-                  <div className="flex justify-center items-center w-[100px] md:w-[80px] h-[50px]">
-                    <Image
-                      src={item.image}
-                      alt={`Icon ${index + 1}`}
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                </Link>
-              ))}
-
-              <Link
-                href="/mbbs/abroad"
-                className="cursor-pointer bg-[#00999E] text-white px-10 py-3 text-sm rounded-lg w-52 font-medium hover:bg-[#007a7f] transition flex items-center justify-center gap-2"
-              >
-                Read More <FaArrowRight className="text-white text-sm" />
+          <div className="ml-auto flex flex-wrap md:flex-nowrap gap-4 pt-2 justify-end w-full">
+            {imageList.map((item, index) => (
+              <Link key={index} href={item.page + item.section} title={item.title} className="cursor-pointer">
+                <div className="flex justify-center items-center w-[100px] md:w-[80px] h-[50px]">
+                  <Image src={item.image} alt={`Icon ${index + 1}`} width={40} height={40} />
+                </div>
               </Link>
-            </div>
+            ))}
+
+            <Link
+              href="/mbbs/abroad"
+              className="cursor-pointer bg-[#00999E] text-white px-10 py-3 text-sm rounded-lg w-52 font-medium hover:bg-[#007a7f] transition flex items-center justify-center gap-2"
+            >
+              Read More <FaArrowRight className="text-white text-sm" />
+            </Link>
+          </div>
         </ContainerWrapper>
       </section>
-
-      {/* Why Study MBBS Abroad Section */}
-      {/*
-      <MainContainer
-        com1={
-          <div className="w-full space-y-3 px-4">
-            <HeadingTypography content="Why Study MBBS Abroad?" />
-            <p className="text-[#525560] text-base leading-relaxed">
-              Despite several advantages of studying MBBS in India, various
-              limiting factors such as overall cost of education, shortage of
-              seats, limited clinical exposure, studying MBBS abroad has come
-              out as a very attractive option for the aspirants. It not only
-              provides a culturally enriching environment, fostering
-              cross-cultural understanding and communication skills crucial for
-              today&apos;s interconnected world but additionally, it often
-              presents cost-effective alternatives compared to some domestic
-              medical education programs.
-            </p>
-            <div className="flex gap-4 pt-2">
-              {imageList.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.page + item.section}
-                  title={item.title}
-                  className="cursor-pointer"
-                >
-                  <div className="flex justify-center items-center w-[100px] md:w-[80px] h-[50px]">
-                    <Image
-                      src={item.image}
-                      alt={`Icon ${index + 1}`}
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                </Link>
-              ))}
-
-              <Link
-                href="/mbbs/abroad"
-                className="cursor-pointer bg-[#00999E] text-white px-10 py-3 text-sm rounded-lg w-52 font-medium hover:bg-[#007a7f] transition flex items-center justify-center gap-2"
-              >
-                Read More <FaArrowRight className="text-white text-sm" />
-              </Link>
-            </div>
-          </div>
-        }
-        com2={
-          <div className="relative w-full h-64 md:h-[350px] shadow-lg overflow-hidden rounded-lg">
-            <Image
-              src={mbbsImg2}
-              alt="Why Study MBBS Abroad?"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        }
-      />
-      */}
 
       {/* Country Comparison Section */}
       <CountryComparison />
@@ -477,33 +398,6 @@ export default function Page() {
       <div className="text-white flex justify-center py-10 mx-auto">
         <ModalTrigger text="BOOK YOUR FREE DEMO SESSION" />
       </div>
-
-      {/*
-     <ContainerWrapper className="py-12">
-        <HeadingTypography content="Countries We Work With" textAlign={"center"} />
-        <div className="flex justify-between align-middle items-center flex-wrap">
-          {countryData?.map((uni, i) => (
-            <div key={i} className="p-2 my-4">
-              <Link href={`/mbbs/abroad/${uni?.title?.toLowerCase()}`}>
-                <div className="w-[230px] h-[260px] bg-white rounded-xl shadow-lg overflow-hidden group hover:scale-105 transition-transform duration-300 mx-auto flex flex-col justify-between">
-                  <div className="flex-1 flex items-center justify-center p-4">
-                    <Image
-                      src={uni?.image}
-                      alt={uni?.title}
-                      width={160}
-                      height={100}
-                      className="object-contain max-h-[100px]"
-                    />
-                  </div>
-                  <div className="bg-[#0A9DA2] text-white py-3 px-2 text-sm font-semibold text-center">
-                    {uni.title}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}</div>
-      </ContainerWrapper>
-      */}
 
       <TaksheelaSolution />
 

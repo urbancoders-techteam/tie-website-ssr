@@ -4,7 +4,6 @@
 import FAQ from "@/components/FAQ";
 import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import WhyStudySection from "@/components/study-abroad/country/WhyStudySection";
 import TwoColumnContent from "@/components/TwoColumnContent";
 import { mapJsonData } from "@/constants/map";
@@ -116,8 +115,6 @@ export default function Page() {
 
   return (
     <div className="mt-5">
-      <BackRouteContainer title="Country Page" path="/study-abroad/country" />
-
       {/* banner section */}
       <TwoColumnContent
         heading={pageData?.info?.title || ""}

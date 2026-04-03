@@ -9,7 +9,7 @@ import {
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaLink } from "react-icons/fa";
 
 interface RulesAndComplainsAbroadProps {
@@ -18,7 +18,17 @@ interface RulesAndComplainsAbroadProps {
 
 const MOBILE_RULES_AUTOPLAY_MS = 5000;
 
-function RuleCard({
+const NAV_BTN_CLASS =
+  "inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]";
+
+const SCROLLER_CLASS =
+  "flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto overflow-y-visible scroll-smooth px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+
+function stripUrlProtocol(href: string) {
+  return href.replace(/^https?:\/\//, "");
+}
+
+const RuleCard = memo(function RuleCard({
   icon,
   title,
   description,
@@ -30,7 +40,6 @@ function RuleCard({
   title: string;
   description: string;
   gridClassName?: string;
-  /** Extra classes (e.g. mobile slider: shadow-none, larger type) */
   className?: string;
   descriptionClassName?: string;
 }) {
@@ -53,26 +62,44 @@ function RuleCard({
       </div>
     </article>
   );
+});
+
+function CarouselNavButton({
+  direction,
+  onClick,
+  label,
+}: {
+  direction: "prev" | "next";
+  onClick: () => void;
+  label: string;
+}) {
+  const Icon = direction === "prev" ? FaChevronLeft : FaChevronRight;
+  return (
+    <button type="button" onClick={onClick} className={NAV_BTN_CLASS} aria-label={label}>
+      <Icon className="h-4 w-4" />
+    </button>
+  );
 }
 
 export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAbroadProps) {
-  const firstRow = content.rules.slice(0, 4);
-  const secondRow = content.rules.slice(4, 6);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const ruleCount = content.rules.length;
+  const rules = content.rules;
+  const ruleCount = rules.length;
+  const desktopRules = useMemo(() => rules.slice(0, 6), [rules]);
+
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     setSlideIndex(0);
   }, [ruleCount]);
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || ruleCount === 0) return;
-    const slides = el.querySelectorAll<HTMLElement>("[data-reg-slide]");
-    const slide = slides[slideIndex];
-    if (!slide) return;
-    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  useLayoutEffect(() => {
+    if (ruleCount === 0) return;
+    slideRefs.current[slideIndex]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "nearest",
+      block: "nearest",
+    });
   }, [slideIndex, ruleCount]);
 
   useEffect(() => {
@@ -85,68 +112,49 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
     return () => clearInterval(id);
   }, [ruleCount]);
 
-  const goSlide = useCallback((direction: "prev" | "next") => {
-    if (ruleCount <= 1) return;
-    setSlideIndex((i) => {
-      if (direction === "next") return (i + 1) % ruleCount;
-      return (i - 1 + ruleCount) % ruleCount;
-    });
-  }, [ruleCount]);
+  const goSlide = useCallback(
+    (direction: "prev" | "next") => {
+      if (ruleCount <= 1) return;
+      setSlideIndex((i) => {
+        if (direction === "next") return (i + 1) % ruleCount;
+        return (i - 1 + ruleCount) % ruleCount;
+      });
+    },
+    [ruleCount]
+  );
+
+  const setSlideEl = useCallback((index: number) => (node: HTMLDivElement | null) => {
+    slideRefs.current[index] = node;
+  }, []);
 
   return (
-    <section
-      className="bg-white py-12 md:py-14"
-      aria-labelledby="regulatory-framework-heading"
-    >
+    <section className="bg-white py-12 md:py-14" aria-labelledby="regulatory-framework-heading">
       <ContainerWrapper>
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <p className={ABROAD_SECTION_EYEBROW}>
-              {content.eyebrow}
-            </p>
-            <h2
-              id="regulatory-framework-heading"
-              className={ABROAD_SECTION_TITLE}
-            >
+            <p className={ABROAD_SECTION_EYEBROW}>{content.eyebrow}</p>
+            <h2 id="regulatory-framework-heading" className={ABROAD_SECTION_TITLE}>
               {content.titlePrimary}{" "}
               <span className={ABROAD_SECTION_ACCENT}>{content.titleAccent}</span>
             </h2>
-            <p className={ABROAD_SECTION_SUBTITLE}>
-              {content.subtitle}
-            </p>
+            <p className={ABROAD_SECTION_SUBTITLE}>{content.subtitle}</p>
           </div>
 
-          {/* Mobile: horizontal snap slider (full-bleed scroll; no edge fades) */}
           <div className="relative mt-10 md:hidden -mx-4">
             <div className="mb-2 flex items-center justify-end gap-2 px-4">
-              <button
-                type="button"
-                onClick={() => goSlide("prev")}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
-                aria-label="Previous rule"
-              >
-                <FaChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => goSlide("next")}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D1D5DB] bg-white text-[#143C83] shadow-sm transition hover:bg-[#F3F4F6]"
-                aria-label="Next rule"
-              >
-                <FaChevronRight className="h-4 w-4" />
-              </button>
+              <CarouselNavButton direction="prev" onClick={() => goSlide("prev")} label="Previous rule" />
+              <CarouselNavButton direction="next" onClick={() => goSlide("next")} label="Next rule" />
             </div>
             <div
-              ref={scrollRef}
               role="region"
               aria-roledescription="carousel"
               aria-label="NMC rules"
-              className="flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto overflow-y-visible scroll-smooth px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className={SCROLLER_CLASS}
             >
-              {content.rules.map((rule, i) => (
+              {rules.map((rule, i) => (
                 <div
-                  key={i}
-                  data-reg-slide
+                  key={`${rule.title}-${i}`}
+                  ref={setSlideEl(i)}
                   className="flex w-[calc(100vw-2rem)] max-w-[32rem] shrink-0 snap-center"
                 >
                   <RuleCard
@@ -167,21 +175,14 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
             </p>
           </div>
 
-          {/* Tablet & desktop: grid */}
           <div className="mt-10 hidden md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-5">
-            {firstRow.map((rule, i) => (
-              <RuleCard key={i} icon={rule.icon} title={rule.title} description={rule.description} />
-            ))}
-          </div>
-
-          <div className="mt-4 hidden md:grid md:grid-cols-2 md:gap-4 lg:mt-4 lg:grid-cols-4 lg:gap-5">
-            {secondRow.map((rule, i) => (
+            {desktopRules.map((rule, i) => (
               <RuleCard
-                key={i + 4}
+                key={`${rule.title}-desktop-${i}`}
                 icon={rule.icon}
                 title={rule.title}
                 description={rule.description}
-                gridClassName={i === 0 ? "lg:col-start-2" : "lg:col-start-3"}
+                gridClassName={i === 4 ? "lg:col-start-2" : i === 5 ? "lg:col-start-3" : undefined}
               />
             ))}
           </div>
@@ -210,7 +211,7 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
                       rel="noopener noreferrer"
                       className="font-semibold text-[#0E4797] underline decoration-[#0E4797]/30 underline-offset-2 transition hover:text-[#143C83]"
                     >
-                      {item.href.replace(/^https?:\/\//, "")}
+                      {stripUrlProtocol(item.href)}
                     </Link>
                   </span>
                 ))}

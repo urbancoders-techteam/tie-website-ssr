@@ -8,6 +8,12 @@ export type HeroStat = { value: ReactNode; label: string };
 export interface HeroSectionProps {
   /** Hero background image (from campaign content e.g. GEORGIA_HERO.heroImage, RUSSIA_HERO.heroImage). */
   heroImage: StaticImageData | string;
+  /** Descriptive alt for SEO/a11y (omit to treat image as decorative). */
+  heroImageAlt?: string;
+  /** Responsive `sizes` for next/image (LCP performance). */
+  imageSizes?: string;
+  /** Set false when hero is not the LCP image on the page. Default true. */
+  imagePriority?: boolean;
   /** Redirect path after CTA (e.g. thank-you page). */
   redirectPath?: string;
   /** Short tagline above the title. */
@@ -44,6 +50,9 @@ const DEFAULT_CTA = "BOOK YOUR FREE COUNSELLING";
 
 export default function HeroSection({
   heroImage,
+  heroImageAlt = "",
+  imageSizes = "100vw",
+  imagePriority = true,
   redirectPath = "/thankyou",
   tagline = "",
   title = "",
@@ -54,28 +63,36 @@ export default function HeroSection({
   sectionId = "apply",
 }: HeroSectionProps) {
   const titleContent = title ? renderTitle(title, titleHighlight) : null;
+  const titleVisualClassMobile =
+    "font-sans text-2xl sm:text-4xl font-extrabold text-white leading-tight mt-1";
+  const titleVisualClassDesktop =
+    "font-sans text-2xl sm:text-4xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]";
 
   return (
     <section className="relative overflow-hidden bg-black md:min-h-[560px]">
+      {/* Single semantic h1 for the page; visible titles below are presentation-only (avoids duplicate h1 in DOM). */}
+      {title ? <h1 className="sr-only">{title}</h1> : null}
       {/* Mobile: tagline + heading above the image */}
       <div className="md:hidden relative z-10 bg-gray-900 px-4 pt-4 pb-3">
         {tagline && (
           <p className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">{tagline}</p>
         )}
         {titleContent && (
-          <h1 className="font-sans text-2xl sm:text-4xl font-extrabold text-white leading-tight mt-1">{titleContent}</h1>
+          <p className={titleVisualClassMobile} aria-hidden="true">
+            {titleContent}
+          </p>
         )}
       </div>
       {/* Image */}
       <div className="relative w-full aspect-[3/2] min-h-[200px] max-h-[280px] bg-gray-900 md:absolute md:inset-0 md:aspect-auto md:h-auto md:min-h-0 md:max-h-none md:bg-transparent">
         <Image
           src={heroImage}
-          alt=""
+          alt={heroImageAlt || ""}
           fill
           className="object-contain object-top md:object-cover md:object-center"
-          sizes="100vw"
-          priority
-          aria-hidden
+          sizes={imageSizes}
+          priority={imagePriority}
+          aria-hidden={heroImageAlt ? undefined : true}
         />
         <div
           className="hidden md:block absolute inset-0 bg-gradient-to-r from-gray-900/75 from-40% via-gray-900/40 to-transparent"
@@ -92,9 +109,9 @@ export default function HeroSection({
                   <p className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">{tagline}</p>
                 )}
                 {titleContent && (
-                  <h1 className="font-sans text-2xl sm:text-4xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                  <p className={titleVisualClassDesktop} aria-hidden="true">
                     {titleContent}
-                  </h1>
+                  </p>
                 )}
               </div>
 

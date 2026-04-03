@@ -1,75 +1,153 @@
 "use client";
 
 import ContainerWrapper from "@/components/ContainerWrapper";
-import type { AbroadMbbsSyllabusContent, AbroadMbbsSyllabusYearItem } from "@/constants/abroad/russiaAbroadConstent";
+import type { AbroadFullPageCopy } from "@/constants/abroad/abroadFullPageRegistry";
 import {
   ABROAD_SECTION_ACCENT,
   ABROAD_SECTION_EYEBROW,
   ABROAD_SECTION_SUBTITLE,
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
+import { memo, useCallback, useId, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+
+/** Same shape as `abroadCopy.syllabus` from `getAbroadFullPageCopy`. */
+type SyllabusSectionContent = AbroadFullPageCopy["syllabus"];
+type SyllabusYearItem = SyllabusSectionContent["years"][number];
 
 interface MbbsSylabusAbroadProps {
-  content: AbroadMbbsSyllabusContent;
+  content: SyllabusSectionContent;
 }
 
-function SyllabusYearCard({ item }: { item: AbroadMbbsSyllabusYearItem }) {
+const SyllabusAccordionItem = memo(function SyllabusAccordionItem({
+  item,
+  index,
+  isOpen,
+  onToggle,
+  baseId,
+}: {
+  item: SyllabusYearItem;
+  index: number;
+  isOpen: boolean;
+  onToggle: (index: number) => void;
+  baseId: string;
+}) {
   const isInternship = item.badgeTone === "internship";
+  const triggerId = `${baseId}-trigger-${index}`;
+  const panelId = `${baseId}-panel-${index}`;
 
   return (
-    <article className="flex h-full min-h-0 gap-3 rounded-2xl border border-[#E3E8F1] bg-white p-4 shadow-[0_2px_12px_rgba(15,40,95,0.06)] transition-shadow duration-200 hover:border-[#D8E0ED] hover:shadow-[0_8px_28px_rgba(15,40,95,0.09)] sm:gap-5 sm:p-5 md:p-6 lg:gap-3 lg:p-3.5 lg:rounded-xl">
+    <div className="overflow-hidden rounded-xl border border-[#E3E8F1] bg-white shadow-[0_2px_12px_rgba(15,40,95,0.06)] transition-shadow duration-200 hover:border-[#D0DAE8] hover:shadow-[0_6px_24px_rgba(15,40,95,0.08)]">
+      <h3 className="m-0">
+        <button
+          type="button"
+          id={triggerId}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          onClick={() => onToggle(index)}
+          className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left transition-colors sm:gap-3 sm:px-4 sm:py-3 focus-visible:ring-2 focus-visible:ring-[#143C83] focus-visible:ring-offset-2"
+        >
+          <div
+            className={`flex h-[3rem] w-[4.25rem] shrink-0 flex-col items-center justify-center rounded-lg px-1 text-center text-[10px] font-bold uppercase leading-tight tracking-[0.08em] text-white shadow-sm sm:h-16 sm:w-[4.5rem] sm:text-[12px] ${
+              isInternship ? "bg-[#143C83]" : "bg-[#00999E]"
+            }`}
+          >
+            {item.yearLabel}
+          </div>
+          <span className="min-w-0 flex-1 text-[16px] font-semibold leading-snug tracking-tight text-[#143C83] sm:text-[17px] md:text-[18px]">
+            {item.title}
+          </span>
+          <span
+            className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] text-[#143C83] transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            aria-hidden
+          >
+            <FaChevronDown className="h-4 w-4" />
+          </span>
+        </button>
+      </h3>
       <div
-        className={`flex h-[4.5rem] w-[5rem] shrink-0 flex-col items-center justify-center self-start rounded-xl px-1.5 text-center text-[10px] font-bold uppercase leading-tight tracking-[0.08em] text-white shadow-sm sm:h-[5rem] sm:w-[5.5rem] sm:text-[11px] sm:tracking-[0.1em] md:h-[5.5rem] md:w-[6.25rem] md:text-xs lg:h-[3.75rem] lg:w-[4.5rem] lg:text-[9px] lg:leading-tight lg:tracking-[0.06em] xl:h-[4rem] xl:w-[4.75rem] xl:text-[10px] ${
-          isInternship ? "bg-[#143C83]" : "bg-[#00999E]"
+        id={panelId}
+        role="region"
+        aria-labelledby={triggerId}
+        className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
-        {item.yearLabel}
+        <div className="overflow-hidden">
+          <div className="border-t border-[#EEF2F7] px-3 pb-2.5 pt-2 sm:px-4 sm:pb-3">
+            {item.subjectTags && item.subjectTags.length > 0 ? (
+              <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0 sm:gap-2">
+                {item.subjectTags.map((tag) => (
+                  <li key={tag}>
+                    <span className="inline-block rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1 text-[11px] font-medium leading-snug text-[#4B5568] sm:text-[12px]">
+                      {tag}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {item.description.trim() ? (
+              <p
+                className={`text-[13px] font-medium leading-relaxed text-[#637086] sm:text-[14px] ${
+                  item.subjectTags?.length ? "mt-3" : ""
+                }`}
+              >
+                {item.description}
+              </p>
+            ) : null}
+          </div>
+        </div>
       </div>
-
-      <div className="min-w-0 flex-1 self-center py-0.5 text-left">
-        <h3 className="text-[16px] font-semibold leading-snug tracking-tight text-[#143C83] sm:text-[17px] md:text-[18px] lg:text-[14px] lg:leading-tight xl:text-[15px]">
-          {item.title}
-        </h3>
-        <p className="mt-2 text-[13px] font-medium leading-[1.6] text-[#637086] sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-1.5 lg:text-[12px] lg:leading-[1.45] xl:text-[13px] xl:leading-[1.5]">
-          {item.description}
-        </p>
-      </div>
-    </article>
+    </div>
   );
-}
+});
 
 export default function MbbsSylabusAbroad({ content }: MbbsSylabusAbroadProps) {
+  const reactId = useId();
+  const baseId = `mbbs-syllabus-${reactId.replace(/:/g, "")}`;
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const onToggle = useCallback((index: number) => {
+    setOpenIndex((prev) => (prev === index ? -1 : index));
+  }, []);
+
   return (
     <section
-      className="bg-white py-10 md:py-12 lg:py-8 xl:py-10"
+      className="bg-white py-8 md:py-10 lg:py-7 xl:py-9"
       aria-labelledby="mbbs-syllabus-heading"
-      id="mbbs-syllabus-russia"
+      id="mbbs-syllabus"
     >
       <ContainerWrapper>
         <div className="mx-auto max-w-7xl">
-          <div className="text-center lg:max-w-4xl lg:mx-auto">
-            <p className={ABROAD_SECTION_EYEBROW}>
-              {content.eyebrow}
-            </p>
-            <h2
-              id="mbbs-syllabus-heading"
-              className={ABROAD_SECTION_TITLE}
-            >
+          <div className="text-center lg:mx-auto lg:max-w-4xl">
+            <p className={ABROAD_SECTION_EYEBROW}>{content.eyebrow}</p>
+            <h2 id="mbbs-syllabus-heading" className={ABROAD_SECTION_TITLE}>
               {content.titlePrimary}{" "}
               <span className={ABROAD_SECTION_ACCENT}>{content.titleAccent}</span>
             </h2>
-            <p className={ABROAD_SECTION_SUBTITLE}>
-              {content.subtitle}
-            </p>
+            <p className={ABROAD_SECTION_SUBTITLE}>{content.subtitle}</p>
           </div>
 
-          {/* Laptop: 2 cols (3 rows) · wide laptop: 3 cols (2 rows) — zyada rows ek hi viewport me */}
-          <div className="mx-auto mt-6 max-w-4xl md:mt-8 lg:mt-5 lg:max-w-6xl xl:max-w-7xl">
-            <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:grid lg:grid-cols-2 lg:gap-x-4 lg:gap-y-2.5 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-2.5 2xl:gap-y-3">
-              {content.years.map((year) => (
-                <SyllabusYearCard key={year.yearLabel} item={year} />
+          <div className="mx-auto mt-5 max-w-3xl md:mt-6">
+            <div className="flex flex-col gap-2 sm:gap-2.5">
+              {content.years.map((year, i) => (
+                <SyllabusAccordionItem
+                  key={`${year.yearLabel}-${i}`}
+                  item={year}
+                  index={i}
+                  isOpen={openIndex === i}
+                  onToggle={onToggle}
+                  baseId={baseId}
+                />
               ))}
             </div>
+            {content.footerNote ? (
+              <p className="mx-auto mt-6 max-w-3xl text-center text-[13px] font-medium leading-relaxed text-[#637086] sm:text-[14px]">
+                {content.footerNote}
+              </p>
+            ) : null}
           </div>
         </div>
       </ContainerWrapper>

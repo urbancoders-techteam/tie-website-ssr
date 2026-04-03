@@ -23,6 +23,7 @@ import TeachingMethodologyAbroad from "@/components/mbbs/abroadCountries/Teachin
 import TopTenUniversityAbroad from "@/components/mbbs/abroadCountries/TopTenUniversityAbroad";
 import WhyChooseMbbs from "@/components/mbbs/abroadCountries/WhyChooseMbbs";
 import WhyChooseTaksheelaAbroad from "@/components/mbbs/abroadCountries/WhyChooseTaksheelaAbroad";
+import AbroadMbbsCtaBanner from "@/components/mbbs/abroadCountries/AbroadMbbsCtaBanner";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import { FlipCardBox } from "@/components/FlipcardBox";
@@ -87,18 +88,23 @@ export default function Page() {
           <MbbsSylabusAbroad content={abroadCopy.syllabus} />
           <CompleteComparissionAbroad content={abroadCopy.comparison} />
           <AccomodationAndClimateAbroad content={abroadCopy.accommodation} />
-          <OurStoriesAbroad content={abroadCopy.stories} />
-          <KeyFactsAbroad content={abroadCopy.keyFacts} />
-          <ScholarshipsAbroad content={abroadCopy.scholarships} />
-          <EducationLoanAbroad content={abroadCopy.educationLoan} />
+          <OurStoriesAbroad content={abroadCopy.stories} sectionSlug={slugLower} />
+          <KeyFactsAbroad content={abroadCopy.keyFacts} sectionSlug={slugLower} />
+          <ScholarshipsAbroad content={abroadCopy.scholarships} sectionSlug={slugLower} />
+          <EducationLoanAbroad content={abroadCopy.educationLoan} sectionSlug={slugLower} />
           <TeachingMethodologyAbroad
             content={abroadCopy.career}
             sectionId="career-opportunities-abroad"
             headingId="career-opportunities-heading"
             carouselAriaLabel="Career opportunities"
           />
-          <WhyChooseTaksheelaAbroad content={abroadCopy.whyTaksheela} />
-          <FAQSection items={abroadCopy.faq.items} variant="abroad" />
+          <WhyChooseTaksheelaAbroad content={abroadCopy.whyTaksheela} sectionSlug={slugLower} />
+          <AbroadMbbsCtaBanner
+            content={abroadCopy.ctaBanner}
+            sectionSlug={slugLower}
+            redirectPath={`/mbbs/abroad/${slug}`}
+          />
+          <FAQSection items={abroadCopy.faq.items} variant="abroad" sectionSlug={slugLower} />
         </>
       ) : (
         <>

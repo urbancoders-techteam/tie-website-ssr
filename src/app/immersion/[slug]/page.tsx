@@ -10,8 +10,6 @@ import About from '@/components/immersion/immersion-slug/about';
 import Country from '@/components/immersion/immersion-slug/country';
 import { immersionSlugData } from '@/constants/immersion';
 import { Box, LinearProgress } from '@mui/material';
-import ContainerWrapper from '@/components/ContainerWrapper';
-import { BackRouteContainer } from '@/components/study-abroad/university-finder/ViewComponents';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export default function ImmersionSlugPage() {
@@ -21,12 +19,6 @@ export default function ImmersionSlugPage() {
   const [item, setItem] = useState<any>(null);
   const [staticData, setStaticData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const immersionZone = slug
-    ? slug
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')
-    : '';
 
   useEffect(() => {
     if (!slug) {
@@ -60,14 +52,6 @@ export default function ImmersionSlugPage() {
   return (
     <>
      <BreadcrumbSchema />
-     <ContainerWrapper className="pt-12">
-        <BackRouteContainer
-          path="/immersion"
-          title="Immersion Main Page"
-          logo={"/images/backuniversity.png"}
-          currentPage={immersionZone}
-        />
-      </ContainerWrapper>
       {staticData && <About item={staticData} />}
       {loading ? (
       <Box sx={{ width: '100%', mt: 2, color: '#00999e' }}>

@@ -10,7 +10,6 @@ import LetsStart from "@/components/immersion/LetsStart";
 import FilterComponent from "@/components/study-abroad/university-finder/FilterComponent";
 import UniversityItem from "@/components/study-abroad/university-finder/UniversityItem";
 import {
-  BackRouteContainer,
   ButtonComponent,
   UniversityFinderBanner,
 } from "@/components/study-abroad/university-finder/ViewComponents";
@@ -226,13 +225,6 @@ const UniversityView: React.FC = () => {
       <ContainerWrapper>
         <div className="flex justify-start gap-4 px-4 mt-4 ">
           <ButtonComponent text="Back" width={100} onClick={handleBack} />
-          <div>
-            <BackRouteContainer
-              logo={"/images/backuniversity.png"}
-              path="/study-abroad/university-finder"
-              title="Study Abroad Page"
-            />
-          </div>
         </div>
 
         {compared.length > 0 && (
@@ -366,13 +358,6 @@ const UniversityView: React.FC = () => {
           )}
         </div>
 
-        <ContainerWrapper>
-          <BackRouteContainer
-            logo={"/images/backuniversity.png"}
-            path="/study-abroad/university-finder"
-            title="Study Abroad Page"
-          />
-        </ContainerWrapper>
         <LetsStart />
       </ContainerWrapper>
     </>

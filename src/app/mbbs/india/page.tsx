@@ -4,7 +4,6 @@ import { FlipCardBox } from "@/components/FlipcardBox";
 
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import { indianCollegeData, indianEligibilityData } from "@/constants/mbbs";
 import Image from "next/image";
 import React from "react";
@@ -15,10 +14,7 @@ export default function IndiaMBBS() {
   return (
     <>
      <BreadcrumbSchema />
-      <ContainerWrapper className="py-12">
-        <BackRouteContainer path="/mbbs" title="MBBS Main Page" />
-      </ContainerWrapper>
-      <section className="bg-[#effdff] py-12" id="indiaCriteria">
+      <section className="bg-[#effdff] py-12 pt-10" id="indiaCriteria">
         <ContainerWrapper>
           <HeadingTypography
             content="Eligibility criteria for MBBS in India"
@@ -79,9 +75,6 @@ export default function IndiaMBBS() {
       </ContainerWrapper>
       </section>
 
-      <ContainerWrapper>
-        <BackRouteContainer path="/mbbs" title="MBBS Main Page" />
-      </ContainerWrapper>
       <LetsStart />
     </>
   );

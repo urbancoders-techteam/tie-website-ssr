@@ -5,7 +5,6 @@ import FAQ from "@/components/FAQ";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import TwoColumnContent from "@/components/TwoColumnContent";
 import { courseData } from "@/constants/course";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
@@ -13,6 +12,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Key, useState } from "react";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 export default function Page() {
   const { slug } = useParams<{ slug: string }>();
@@ -25,10 +25,11 @@ export default function Page() {
     return (
       <ContainerWrapper>
         <h1 className="text-2xl font-bold capitalize">Course not found</h1>
-        <BackRouteContainer
-          path="/study-abroad/courses"
-          title="Back Course Page"
-        />
+        <p className="mt-4">
+          <Link href="/study-abroad/courses" className="font-medium text-[#00999E] hover:underline">
+            Back to courses
+          </Link>
+        </p>
       </ContainerWrapper>
     );
   }
@@ -300,12 +301,6 @@ Our expertise!!!"
           <FAQ faqData={data.faq} />
         </ContainerWrapper>
       </div>
-      <ContainerWrapper>
-        <BackRouteContainer
-          path="/study-abroad/courses"
-          title="Back Course Page"
-        />
-      </ContainerWrapper>
       <LetsStart />
     </>
   );
