@@ -5,17 +5,13 @@ import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import MbbsTabs from "@/components/mbbs/MbbsTabs";
 import Rules from "@/components/mbbs/Rules";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import { abroadEligibilityAbroadData } from "@/constants/mbbs";
 
 export default function Abroad() {
   return (
     <>
      <BreadcrumbSchema />
-      <ContainerWrapper className="pt-12">
-        <BackRouteContainer path="/mbbs" title="MBBS Main Page" />
-      </ContainerWrapper>
-      <section id="abroadCriteria" className="py-12">
+      <section id="abroadCriteria" className="py-12 pt-10">
         <ContainerWrapper>
           <HeadingTypography
             content="Eligibility Criteria for MBBS Abroad"
@@ -30,9 +26,6 @@ export default function Abroad() {
       </section>
       <MbbsTabs />
       <Rules/>
-      <ContainerWrapper className="py-12 mt-20">
-        <BackRouteContainer path="/mbbs" title="MBBS Main Page" />
-      </ContainerWrapper>
       <LetsStart />
     </>
   );

@@ -4,7 +4,6 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import FAQ from "@/components/FAQ";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import ChooseReason from "@/components/test/ChooseReason";
 import ExamStructureCard from "@/components/test/ExamStructureCard";
 import TestInfo from "@/components/test/TestInfo";
@@ -81,13 +80,6 @@ export default function Page() {
         <FAQ faqData={selectedData.faq || []} />
       </section>
 
-      <ContainerWrapper className="py-12">
-        <BackRouteContainer
-          path="/test"
-          title="Test Main Page"
-          logo={"/images/backuniversity.png"}
-        />
-      </ContainerWrapper>
       {/* CTA Section */}
       <LetsStart />
     </>

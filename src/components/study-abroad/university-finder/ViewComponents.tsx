@@ -2,8 +2,6 @@
 
 import React from "react";
 import { useRouter } from "next/navigation"; // for Next.js. Use `useNavigate` for React Router.
-import Image from "next/image";
-import ContainerWrapper from "@/components/ContainerWrapper";
 
 // ---------------------------------------
 // ButtonComponent
@@ -85,65 +83,6 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
       {text}
       {icon && <span className="ml-2">{icon}</span>}
     </button>
-  );
-};
-
-// ---------------------------------------
-// BackRouteContainer
-// ---------------------------------------
-interface BackRouteContainerProps {
-  path: string;
-  logo?: string;
-  title: string;
-  currentPage?: string;
-}
-
-export const BackRouteContainer: React.FC<BackRouteContainerProps> = ({
-  path,
-  logo,
-  title,
-  currentPage,
-}) => {
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    window.scrollTo(0, 0);
-    router.push(path);
-  };
-
-  return (
-    <ContainerWrapper>
-      <nav aria-label="Breadcrumb" className="flex justify-start">
-        <div
-          className="w-fit cursor-pointer flex items-center gap-2 text-gray-600 hover:text-[#00999E] transition-colors"
-          onClick={handleNavigation}
-        >
-          <Image
-            src={logo || "/images/backuniversity.png"}
-            alt="Back"
-            width={32}
-            height={32}
-            className="shrink-0"
-          />
-          <ol className="flex items-center gap-2 flex-wrap list-none m-0 p-0">
-            <li className="text-sm md:text-base font-medium">{title}</li>
-            {currentPage && (
-              <>
-                <li aria-hidden className="text-gray-400 select-none">
-                  /
-                </li>
-                <li
-                  className="text-sm md:text-base font-semibold text-[#00999E]"
-                  aria-current="page"
-                >
-                  {currentPage}
-                </li>
-              </>
-            )}
-          </ol>
-        </div>
-      </nav>
-    </ContainerWrapper>
   );
 };
 

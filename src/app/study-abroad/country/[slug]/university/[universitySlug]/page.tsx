@@ -6,9 +6,8 @@ import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
 import StudyAbroadFeeStructure from "@/components/study-abroad/StudyAbroadUniversity";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import TestPackages from "@/components/test/TestPackages";
-import { baseUrl, imageBaseUrl, navURL } from "@/utils/config";
+import { baseUrl, imageBaseUrl } from "@/utils/config";
 import { Box, LinearProgress } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
@@ -128,10 +127,6 @@ export default function UniversityDetailPage() {
           </div>
         </ContainerWrapper>
       </div>
-      <BackRouteContainer
-        title="Select University Page"
-        path={`${navURL}study-abroad/country/${slug}`}
-      />
 
       {/* University Details */}
       <ContainerWrapper className="py-12">
@@ -309,10 +304,6 @@ export default function UniversityDetailPage() {
       <ContainerWrapper className="pb-12 text-center">
         <ModalTrigger />
       </ContainerWrapper>
-      <BackRouteContainer
-        title="Select University Page"
-        path={`${navURL}study-abroad/country/${slug}`}
-      />
       <LetsStart />
     </>
   );

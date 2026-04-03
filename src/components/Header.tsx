@@ -287,6 +287,8 @@ export const Header = ({ itemupdate }: any) => {
       setSelectedParentMenu("international-relation");
     else if (location === "/immersion" || location.startsWith("/immersion/"))
       setSelectedParentMenu("Immersion");
+    else if (location === "/mbbs" || location.startsWith("/mbbs/"))
+      setSelectedParentMenu("mbbs");
     else setSelectedParentMenu(null);
   }, [location]);
 
@@ -377,10 +379,12 @@ export const Header = ({ itemupdate }: any) => {
     <>
       <AppBar
         position="static"
+        elevation={0}
         color="default"
         sx={{
           backgroundColor: "white",
           fontFamily: "Nunito",
+          boxShadow: "none",
         }}
       >
         <Container maxWidth={"xl"}>
@@ -648,10 +652,17 @@ export const Header = ({ itemupdate }: any) => {
                     </Box>
                   ) : (
                     <><Link
-                        // href={`${navURL}mbbs`}
                         href={`/mbbs`}
                         className="custom-link"
                         onClick={handleDrawerClose}
+                        style={
+                          NavLinkCss({
+                            isActive:
+                              isParentMenuSelected("mbbs") ||
+                              location === "/mbbs" ||
+                              location.startsWith("/mbbs/"),
+                          }) as React.CSSProperties
+                        }
                       >
                         <HoverTypography
                           fontSize={{
@@ -1091,9 +1102,17 @@ export const Header = ({ itemupdate }: any) => {
                   </Box>
                 ) : (
                   <><Link
-                        // href={`${navURL}mbbs`}
                         href={`/mbbs`}
                         className="custom-link"
+                        style={
+                          NavLinkCss({
+                            isActive:
+                              isParentMenuSelected("mbbs") ||
+                              location === "/mbbs" ||
+                              location.startsWith("/mbbs/"),
+                          }) as React.CSSProperties
+                        }
+                        onClick={() => setSelectedParentMenu("mbbs")}
                       >
                         <HoverTypography
                           fontSize={{

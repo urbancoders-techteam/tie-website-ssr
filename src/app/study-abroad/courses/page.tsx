@@ -3,7 +3,6 @@
 import React from "react";
 import  Image  from "next/image";
 import { useRouter } from "next/navigation";
-import { BackRouteContainer } from "@/components/study-abroad/university-finder/ViewComponents";
 import { imageBaseUrl } from "@/utils/config";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
@@ -28,7 +27,6 @@ const SelectCourses: React.FC = () => {
   return (
     <ContainerWrapper className="py-12">
        <BreadcrumbSchema />
-      <BackRouteContainer path="/study-abroad" title="Study Abroad Main Page" logo={'/images/backuniversity.png'}/>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center my-10">
           {universities.map((university) => (
             <div
@@ -49,7 +47,6 @@ const SelectCourses: React.FC = () => {
             </div>
           ))}
         </div>
-        <BackRouteContainer path="/study-abroad" title="Study Abroad Main Page" logo={'/images/backuniversity.png'} />
     </ContainerWrapper>
   );
 };
