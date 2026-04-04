@@ -63,9 +63,9 @@ export type AbroadHeroContent = {
 export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "Admissions Open · 2026–27 Batch",
   headline: {
-    line1: "Study MBBS in",
-    line2Accent: "Uzbekistan",
-    line3: "— Where Ancient Scholarship Meets Modern Medicine",
+    line1: "Study",
+    line2Accent: "MBBS in Uzbekistan",
+    line3: "Where Ancient Scholarship Meets Modern Medicine",
   },
   description:
     "Uzbekistan is Central Asia's fastest-rising destination for international medical education. NMC-approved, English-medium, zero donation — with fees starting at ₹2 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
@@ -88,9 +88,9 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
   statGrid: [
     { value: "5+", label: "NMC-approved universities" },
     { value: "$100–120", label: "Monthly living (est.)" },
-    { value: "6 Yr", label: "MD Physician (= MBBS)" },
+    { value: "7", label: "Medical institutes (MoH)" },
     /** Last card value is replaced by `uzbekistanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10", label: "Featured Universities" },
+    { value: "6", label: "Featured Universities" },
   ],
 };
 
@@ -162,7 +162,7 @@ export const uzbekistanAbroadOverviewContent: AbroadOverviewContent = {
   },
   recognisedStrip: {
     label: "Recognised by:",
-    body: "WHO (WDOMS) · NMC India · FAIMER · ECFMG · Uzbek Ministry of Health — enabling FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia) when individual requirements are met.",
+    body: "WHO (WDOMS) · NMC India · FAIMER · ECFMG · Uzbek Ministry of Health. Recognition enables graduates to appear for FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia) when individual requirements are met.",
   },
 };
 
@@ -171,9 +171,9 @@ export const uzbekistanAbroadOverviewContent: AbroadOverviewContent = {
 export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
   section: {
     eyebrow: "Challenges & Solutions",
-    titleLead: "",
-    titleMiddle: " — ",
-    titleAccent: "Real Fears & Honest Answers",
+    titleLead: "Real Fears. Honest Answers — ",
+    titleMiddle: "",
+    titleAccent: "",
     titleTrail: "",
     subtitle:
       "Every student carries doubts before taking the leap. Here is a no-filter breakdown of the most common pain points — and exactly how Taksheela resolves them.",
@@ -191,7 +191,7 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
       icon: "🗣️",
       title: "Language barrier in clinical years",
       description:
-        "Hospital rotations involve Uzbek-speaking patients. Students from India and Bangladesh fear communication difficulties from Year 3 onwards.",
+        "Hospital rotations involve Uzbek-speaking patients. Students from India and Bangladesh fear communication difficulties in Year 3 onwards.",
     },
     {
       icon: "🏫",
@@ -203,7 +203,7 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
       icon: "🍲",
       title: "Food & cultural adjustment",
       description:
-        "Students from India, Nepal, and Bangladesh worry about familiar food, cultural compatibility, and daily comfort abroad.",
+        "Students from India, Nepal, and Bangladesh worry about availability of familiar food, cultural compatibility, and daily comfort abroad.",
     },
     {
       icon: "💳",
@@ -217,7 +217,7 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
       icon: "🎯",
       title: "FMGE-first university shortlisting",
       description:
-        "We guide students exclusively to NMC-compliant institutions with strong clinical training and provide FMGE/NExT coaching resources from Year 1 of the programme.",
+        "We guide students exclusively to NMC-compliant institutions with strong clinical training and provide FMGE coaching resources from Year 1 of the programme.",
     },
     {
       icon: "📚",
@@ -233,7 +233,7 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
     },
     {
       icon: "🏪",
-      title: "Indian mess at major universities",
+      title: "Indian mess at all major universities",
       description:
         "Indian mess facilities are available at Tashkent, Samarkand, Bukhara, and Andijan universities. Halal food is widely available across Uzbekistan. Indian grocery items are easily sourced.",
     },
@@ -250,12 +250,12 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
 
 export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
   eyebrow: "Eligibility Criteria",
-  titleLead: "Who Can Apply — Requirements for MBBS in ",
-  titleTrail: " 2026–27",
+  titleLead: "Who Can Apply — Requirements by Country for MBBS in ",
+  titleTrail: " (2026–27)",
   subtitle:
     "Eligibility based on current NMC guidelines (2025) and Uzbekistan university requirements for the 2026–27 admissions cycle.",
   tabIndian: "🇮🇳 Indian Students",
-  tabNpbd: "🇳🇵 Nepal & 🇧🇩 Bangladesh",
+  tabNpbd: "🇳🇵 Nepali & 🇧🇩 Bangladeshi Students",
   indian: [
     {
       label: "10+2 with PCB",
@@ -270,12 +270,12 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
     {
       label: "Valid NEET-UG qualifying score",
       value:
-        "A NEET-UG qualifying score from 2024, 2025, or 2026 is mandatory as per NMC's Foreign Medical Graduate Licentiate (FMGL) regulations. No minimum score set by Uzbek universities — NMC qualifying percentile applies.",
+        "A NEET-UG qualifying score from 2024, 2025, or 2026 is mandatory as per NMC's Foreign Medical Graduate Licentiate (FMGL) regulations.",
     },
     {
       label: "Age: minimum 17 years",
       value:
-        "Must be at least 17 years old on or before 31st December of the admission year. No maximum age restriction at most universities.",
+        "Must be at least 17 years old on or before 31st December of the admission year. No maximum age restriction.",
     },
     {
       label: "Valid Indian passport",
@@ -316,34 +316,53 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
   ],
   npbd: [
     {
-      label: "Nepal — academic",
+      label: "Nepal — +2 Science with PCB",
       value:
-        "+2 Science with PCB (NEB/HSEB or equivalent) with Physics, Chemistry, and Biology as core subjects.",
+        "Completion of +2 Science or equivalent (NEB/HSEB) with Physics, Chemistry, and Biology as core subjects.",
     },
     {
-      label: "Nepal — marks & entrance",
-      value:
-        "Minimum 50% aggregate in PCB. A valid NEET score or Nepal's national medical entrance test is accepted.",
+      label: "Nepal — minimum 50% in PCB",
+      value: "50% aggregate in the science subjects for general applicants.",
     },
     {
-      label: "Nepal — age, passport & language",
+      label: "Nepal — NEET or equivalent entrance exam",
       value:
-        "Minimum 17 years. Valid Nepali passport. No IELTS/TOEFL required at NMC-approved Uzbek universities for Nepali applicants.",
+        "A valid NEET score or the Nepali equivalent national medical entrance test is accepted for admission.",
     },
     {
-      label: "Bangladesh — academic",
+      label: "Nepal — age & passport",
+      value:
+        "Must be at least 17 years old at the time of admission. Valid Nepali passport with sufficient validity to cover the duration of the programme.",
+    },
+    {
+      label: "Nepal — no IELTS / TOEFL",
+      value:
+        "None of the NMC-approved Uzbek universities require English language test scores for Nepali applicants.",
+    },
+    {
+      label: "Bangladesh — HSC with PCB",
       value:
         "Higher Secondary Certificate with Physics, Chemistry, Biology, and English from a recognised Bangladeshi board.",
     },
     {
-      label: "Bangladesh — marks & entrance",
+      label: "Bangladesh — minimum 50% in PCB",
       value:
-        "Minimum 50% aggregate across PCB in HSC. Review BMDC guidelines for studying abroad; NEET is recommended and admission proceeds on merit.",
+        "50% aggregate across Physics, Chemistry, and Biology in the HSC examination.",
     },
     {
-      label: "Bangladesh — age, passport & language",
+      label: "Bangladesh — medical entrance qualification",
       value:
-        "Minimum 17 years. Valid Bangladeshi passport. English proficiency tests not required for English-medium MBBS programmes.",
+        "Bangladesh Medical and Dental Council (BMDC) guidelines for studying abroad should be reviewed. NEET is recommended but admission proceeds on merit.",
+    },
+    {
+      label: "Bangladesh — age & passport",
+      value:
+        "Must be 17 years or older at the time of enrolment. Valid passport from Bangladesh is required for visa and university registration.",
+    },
+    {
+      label: "Bangladesh — no IELTS / TOEFL",
+      value:
+        "English proficiency tests are not required for admission to English-medium MBBS programs in Uzbekistan.",
     },
   ],
  
@@ -387,8 +406,8 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
 
 export const uzbekistanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent = {
   eyebrow: "Admission Process",
-  titleLead: "Step-by-Step Admission for MBBS in ",
-  titleAccent: " — 2026–27",
+  titleLead: "Step-by-Step Admission Process for MBBS in ",
+  titleAccent: "2026–27",
   titleTrail: "",
   subtitle:
     "A transparent, donation-free process from application to arrival in Uzbekistan — typically completed in 4 to 6 weeks.",
@@ -401,37 +420,37 @@ export const uzbekistanAbroadAdmissionProcessContent: AbroadAdmissionProcessCont
     {
       title: "Submit application to university",
       description:
-        "Apply on the chosen university's official portal. Scanned Class 12 marksheet, NEET scorecard, and passport are submitted. Most universities issue an admission letter within 24–48 hours.",
+        "Apply on the chosen university's official portal. Scanned copies of your Class 12 marksheet, NEET scorecard, and passport are submitted. Most universities issue an admission letter within 24–48 hours.",
     },
     {
-      title: "Admission letter & registration fees",
+      title: "Receive admission letter & pay registration fees",
       description:
         "Accept the offer by paying the registration fee. The university then issues an official Invitation Letter required for the student visa application.",
     },
     {
       title: "MEA apostille your documents",
       description:
-        "Get all academic documents apostilled by the Ministry of External Affairs (MEA), India. Mandatory before the visa appointment.",
+        "Get all academic documents apostilled by the Ministry of External Affairs (MEA), India. This is mandatory for Indian students and must be completed before the visa appointment.",
     },
     {
       title: "Apply for Uzbekistan student visa",
       description:
-        "Submit at the Uzbekistan Embassy or Consulate: Invitation Letter, apostilled certificates, passport, photographs, medical certificate, and proof of fee payment. Visa is typically issued within 10–15 working days.",
+        "Submit visa application at the Uzbekistan Embassy or Consulate. Required documents: Invitation Letter, apostilled certificates, passport, photographs, medical certificate, and proof of fee payment. Visa is typically issued within 10–15 working days.",
     },
     {
       title: "Pre-departure briefing with Taksheela",
       description:
-        "Packing checklist, arrival protocol, university representative contact, and first-week registration guidance.",
+        "Attend Taksheela's pre-departure orientation. Receive a packing checklist, arrival protocol, contact of the university representative in Uzbekistan, and initial guidance on the first-week registration process.",
     },
     {
       title: "Arrival & university registration",
       description:
-        "Airport pickup (through the university where arranged), hostel check-in, mandatory medical check-up on arrival, visa extension, and academic registration.",
+        "Travel to Uzbekistan. Your Taksheela representative assists with airport pickup (through the university), hostel check-in, medical check-up (mandatory on arrival), visa extension, and academic registration.",
     },
     {
       title: "Classes begin",
       description:
-        "Year 1 covers foundational sciences and Uzbek language. Clinical rotations begin from Year 3 in affiliated government hospitals.",
+        "Academic classes commence. Year 1 covers foundational sciences and Uzbek language. Clinical rotations begin from Year 3 in affiliated government hospitals.",
     },
   ],
 };
@@ -518,7 +537,7 @@ export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
   titlePrimary: "MBBS Uzbekistan Fees",
   titleAccent: "2026–27 — Complete Breakdown in Rupees",
   subtitle:
-    "Total cost includes tuition, hostel, food, and living — university-wise comparison for Indian students. For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT.",
+    "Total cost of MBBS in Uzbekistan including tuition, hostel, food, and living — university-wise comparison for Indian students. For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT.",
   tuitionTableTitle: "University tuition (indicative, USD → ₹ approx.)",
   tuitionColAnnual: "Annual tuition (USD)",
   tuitionColSixYear: "6-year total (₹ approx.)",
@@ -556,7 +575,7 @@ export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
     {
       item: "University hostel",
       monthly: "~USD 50–67 (~₹4.2K–5.6K)",
-      annual: "~USD 600–800",
+      annual: "~USD 600–800 (varies by city / uni)",
     },
     {
       item: "Food / living (excl. Indian mess)",
@@ -574,10 +593,10 @@ export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
       annual: "budget separately",
     },
     {
-      item: "Fee payment note",
+      item: "Fee payment (India)",
       monthly: "—",
       annual:
-        "Many families use RBI-authorised remittance; some carry USD for on-arrival university payment — Taksheela guides the compliant route.",
+        "Common: carry USD to Uzbekistan and pay the university after arrival; some universities allow direct transfer from India. Taksheela uses RBI-authorised remittance partners. Semester-wise plans at select universities.",
     },
   ],
   summaryCardTitle: "Total 6-year investment",
@@ -606,7 +625,7 @@ export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
   summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
   summaryTotalValue: "₹19–45L",
   summaryFootnote:
-    "Fees are approximate and subject to annual revision and USD/INR movement. Indian mess ~USD 1,200/year optional at major universities. Semester-wise plans available at select universities. Verify live fee letters before payment.",
+    "Fees are approximate and subject to annual revision and USD/INR movement. Average monthly living in Uzbekistan: USD 100–120 (food, transport, miscellaneous — excluding Indian mess). Indian mess ~USD 1,200/year optional at major universities. Verify live fee letters before payment.",
 };
 
 // --- Intake periods (IntakePeriodAbroad) ------------------------------------------
@@ -639,7 +658,11 @@ export const uzbekistanAbroadIntakePeriodContent: AbroadIntakePeriodContent = {
     icon: "🍂",
     title: "September intake (primary)",
     rows: [
-      { label: "Overview", value: "Main annual intake — all five NMC-approved universities admit international students" },
+      {
+        label: "Overview",
+        value:
+          "Main annual intake for MBBS in Uzbekistan — all five NMC-approved universities admit international students in September",
+      },
       { label: "Application window", value: "April – August" },
       { label: "Invitation letter", value: "June – August" },
       { label: "Visa processing", value: "2–4 weeks after invitation letter" },
@@ -654,7 +677,11 @@ export const uzbekistanAbroadIntakePeriodContent: AbroadIntakePeriodContent = {
     icon: "❄️",
     title: "February intake (winter)",
     rows: [
-      { label: "Overview", value: "Secondary intake at select universities (e.g. Navoi, Termez branch, TMA Urgench branch, Bukhara)" },
+      {
+        label: "Overview",
+        value:
+          "Secondary intake at select universities including Navoi State University, Termez Branch of Tashkent State Medical University, Tashkent Medical Academy Urgench Branch, and Bukhara State Medical University",
+      },
       { label: "Application window", value: "October – January" },
       { label: "Invitation letter", value: "November – January" },
       { label: "Visa processing", value: "2–4 weeks after letter" },
@@ -688,25 +715,25 @@ export const uzbekistanAbroadTeachingMethodologyContent: AbroadTeachingMethodolo
   titlePrimary: "How MBBS Is Taught in",
   titleAccent: "Uzbekistan",
   intro:
-    "NMC-approved universities follow a structured curriculum combining classical theory-heavy foundations with progressive clinical exposure — designed to prepare students for global licensing exams. Medium of instruction is English; Uzbek language classes run concurrently from Year 1.",
+    "Uzbekistan's NMC-approved universities follow a structured curriculum combining classical theory-heavy foundations with progressive clinical exposure — designed to prepare students for global licensing exams.",
   items: [
     {
       icon: "📖",
       title: "Lecture-based foundation (Years 1–2)",
       description:
-        "Primarily lecture and laboratory-based. Students build theoretical foundations in Anatomy, Physiology, Biochemistry, and Histology. Uzbek language classes run alongside.",
+        "Years 1 and 2 are primarily lecture and laboratory-based. Students build theoretical foundations in Anatomy, Physiology, Biochemistry, and Histology. Medium of instruction is English. Uzbek language classes run concurrently.",
     },
     {
       icon: "🔬",
       title: "Laboratory & practical training",
       description:
-        "Modern laboratories with cadavers, microscopes, models, and simulation equipment. Pre-clinical practical sessions from Year 1 connect theory to application early.",
+        "Modern laboratories equipped with cadavers, microscopes, models, and simulation equipment. Pre-clinical practical sessions from Year 1 ensure students connect theory to physical application early.",
     },
     {
       icon: "🏥",
       title: "Hospital-based clinical rotations (Year 3+)",
       description:
-        "Rotations through Internal Medicine, Surgery, Paediatrics, Gynaecology, Psychiatry, and Community Health in large affiliated government hospitals — high patient volume for real-world skills.",
+        "From Year 3, students rotate through departments including Internal Medicine, Surgery, Paediatrics, Gynaecology, Psychiatry, and Community Health in large affiliated government hospitals. High patient volume ensures real-world skill development.",
     },
   ],
 };
@@ -820,7 +847,7 @@ export const uzbekistanAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
         "Supervised Clinical Internship",
         "Rotations across all major departments",
         "Emergency Medicine",
-        "Final State Examinations (where applicable)",
+        "Final State Examinations (GOZZ)",
         "Research Thesis / Dissertation",
         "FMGE / NExT Preparation",
       ],
@@ -865,7 +892,7 @@ export const uzbekistanAbroadCompleteComparisonContent: AbroadCompleteComparison
   titlePrimary: "Studying MBBS in India vs Uzbekistan",
   titleAccent: "— 2026 Comparison",
   subtitle:
-    "A factual comparison for Indian students and families — Uzbekistan column vs India; reference columns for regional context.",
+    "A factual comparison to help Indian students and their families make an informed, pressure-free decision. Reference columns add regional context.",
   blockHeading: "India (private) · Uzbekistan · Govt India & regional reference",
   colParameter: "Parameter",
   colFeatured: "🇺🇿 MBBS in Uzbekistan",
@@ -876,7 +903,7 @@ export const uzbekistanAbroadCompleteComparisonContent: AbroadCompleteComparison
   rows: [
     {
       parameter: "Total 6-year fee",
-      featured: "₹19L – ₹45L (typical all-in, indicative)",
+      featured: "₹19L – ₹45L",
       indiaGovt: "₹5–15L (subsidised)",
       indiaPrivate: "₹50L – ₹1.5 Crore",
       bangladesh: "₹15–30L (typical NMC route)",
@@ -893,39 +920,39 @@ export const uzbekistanAbroadCompleteComparisonContent: AbroadCompleteComparison
     },
     {
       parameter: "NEET requirement",
-      featured: "Qualifying score sufficient (per NMC FMGL)",
+      featured: "Only qualifying score needed",
       indiaGovt: "Very high rank for govt. seats",
-      indiaPrivate: "High score often needed (95th+ percentile for top colleges)",
+      indiaPrivate: "High score needed (95th+ percentile for good college)",
       bangladesh: "NEET for India-return pathway where applicable",
       philippines: "NEET + school screening",
     },
     {
       parameter: "Seat availability",
       featured: "Wider availability for international students",
-      indiaGovt: "~1.18L total seats — extremely competitive",
-      indiaPrivate: "Limited + donation-driven",
+      indiaGovt: "Merit seats — extremely competitive nationally",
+      indiaPrivate: "~1.18 lakh total seats (extremely competitive)",
       bangladesh: "NMC-listed options; merit-based",
       philippines: "City- and school-limited",
     },
     {
       parameter: "Medium of instruction",
-      featured: "English (+ Uzbek for clinical communication)",
+      featured: "English (+ Uzbek for clinical)",
       indiaGovt: "English + regional languages",
-      indiaPrivate: "English (most colleges)",
+      indiaPrivate: "English",
       bangladesh: "Bengali + English",
       philippines: "English",
     },
     {
       parameter: "International recognition",
-      featured: "WHO, NMC, FAIMER, ECFMG (pathway-dependent)",
+      featured: "WHO, NMC, FAIMER, ECFMG (global)",
       indiaGovt: "NMC India",
-      indiaPrivate: "NMC India",
+      indiaPrivate: "India only (primarily)",
       bangladesh: "WHO / BMDC alignment",
       philippines: "WHO / NMC; USMLE culture",
     },
     {
       parameter: "Annual living cost",
-      featured: "~₹1.0L – ₹1.5L / year (excl. Indian mess)",
+      featured: "~₹1.0L – ₹1.5L / year",
       indiaGovt: "Varies by city",
       indiaPrivate: "₹2.4L – ₹4.8L / year (major cities)",
       bangladesh: "Lower vs major Indian metros (varies)",
@@ -948,8 +975,8 @@ export const uzbekistanAbroadCompleteComparisonContent: AbroadCompleteComparison
       philippines: "Tropical",
     },
     {
-      parameter: "Licensing after graduation (India)",
-      featured: "FMGE / NExT (same pathway as other foreign MBBS)",
+      parameter: "Licensing after graduation",
+      featured: "FMGE / NExT (same pathway)",
       indiaGovt: "NEET-PG / NExT",
       indiaPrivate: "NEET-PG / NExT",
       bangladesh: "Home licensing + FMGE/NExT if practising in India",
@@ -1047,39 +1074,41 @@ export const uzbekistanAbroadAccommodationClimateContent: AbroadAccommodationCli
   hostel: {
     title: "Hostel Accommodation",
     bullets: [
-      "All NMC-approved Uzbek universities provide on-campus or university-affiliated hostels for international students — typically USD 600–800/year.",
-      "Furnished rooms (2–4 students per room) with study tables, cupboards, and beds; RO water and attached bathrooms at most institutions.",
-      "Wi-Fi across hostel buildings; 24-hour security and warden supervision.",
-      "Indian mess facility available at major university hostels (additional ~USD 1,200/year).",
-      "Laundry and common recreation rooms; winter heating systems — essential for cold months.",
-      "Private apartments from Year 2 onwards are possible but often cost more — Taksheela recommends Year 1 in hostel for orientation and peer support.",
+      "All NMC-approved Uzbek universities provide on-campus or university-affiliated hostel accommodation for international students — typically USD 600–800/year.",
+      "Furnished rooms (2–4 students per room) with study tables, cupboards, and beds.",
+      "RO water purification systems and attached bathrooms at most institutions.",
+      "Wi-Fi connectivity across hostel buildings.",
+      "24-hour security and warden supervision.",
+      "Indian mess facility available at all major university hostels (additional USD 1,200/year).",
+      "Laundry facilities and common recreation rooms; winter heating systems — essential for cold months.",
+      "Students may rent private apartments from Year 2 onwards — typically costlier. Taksheela advises Year 1 in university hostels for community support and orientation.",
     ],
   },
   climate: {
     title: "Climate in Uzbekistan",
     intro:
-      "Semi-arid continental climate — notably milder than Russia, Kazakhstan, or Kyrgyzstan. Summers are dry and hot (familiar to North India and Bangladesh); winters are cold but not extreme vs Siberia.",
+      "Uzbekistan has a semi-arid continental climate — notably milder than Russia, Kazakhstan, or Kyrgyzstan. For students from India, Nepal, and Bangladesh, the climate is far more manageable than higher-latitude destinations.",
     rows: [
       {
         city: "Winter",
-        ranges: "0°C to -5°C — light jacket + thermals sufficient",
+        ranges: "0°C to -5°C",
       },
       {
         city: "Spring",
-        ranges: "15°C to 22°C — pleasant outdoor weather",
+        ranges: "15°C to 22°C",
       },
       {
         city: "Summer",
-        ranges: "30°C to 40°C — hot and dry; stay hydrated",
+        ranges: "30°C to 40°C",
       },
       {
         city: "Autumn",
-        ranges: "12°C to 22°C — ideal for exploring Samarkand & Bukhara",
+        ranges: "12°C to 22°C",
       },
     ],
     tipLabel: "Taksheela tip",
     tipBody:
-      "Central heating is standard in university buildings. Winters are nowhere near -20°C to -30°C as in Russia — most South Asian students adapt within weeks with the right packing list.",
+      "Winters are cold but nowhere near the -20°C to -30°C of Russia or Kyrgyzstan. Summers are dry and hot — familiar to North India and Bangladesh. Spring and autumn are ideal for exploring Samarkand and Bukhara. Central heating is standard in university buildings and hostels; a good jacket and thermals are enough for winter.",
   },
 };
 
@@ -1110,16 +1139,12 @@ export const uzbekistanAbroadKeyFactsContent: AbroadKeyFactsContent = {
   items: [
     { icon: "🌍", value: "Central Asia", label: "GEOGRAPHICAL REGION" },
     { icon: "🏙️", value: "Tashkent", label: "CAPITAL CITY" },
-    { icon: "👥", value: "36M+", label: "POPULATION (APPROX.)" },
+    { icon: "👥", value: "36M+", label: "POPULATION" },
     { icon: "💱", value: "UZS Som", label: "NATIONAL CURRENCY" },
-    { icon: "🕌", value: "Muslim majority", label: "HALAL FOOD WIDELY AVAILABLE" },
-    { icon: "✈️", value: "5–6 hrs", label: "FLIGHT FROM INDIA (TYPICAL)" },
-    { icon: "📚", value: "Very high", label: "LITERACY & EDUCATION CULTURE" },
-    { icon: "🛡️", value: "Very safe", label: "LOW CRIME · STUDENT-FRIENDLY CITIES" },
-    { icon: "🎓", value: "MD Physician (= MBBS)", label: "DEGREE AWARDED" },
-    { icon: "🏛️", value: "5+ NMC-listed core institutes", label: "INDIA RECOGNITION (VERIFY PDF)" },
-    { icon: "🚫", value: "Zero donation", label: "ADMISSION MODEL" },
-    { icon: "📝", value: "Not required", label: "IELTS / TOEFL" },
+    { icon: "🕌", value: "Muslim Majority", label: "HALAL FOOD WIDELY AVAILABLE" },
+    { icon: "✈️", value: "5–6 Hrs", label: "DIRECT FLIGHT FROM INDIA" },
+    { icon: "📚", value: "99.9%", label: "LITERACY RATE" },
+    { icon: "🛡️", value: "Very Safe", label: "LOW CRIME, CCTV COVERED CITIES" },
   ],
 };
 
@@ -1149,7 +1174,7 @@ export const uzbekistanAbroadScholarshipsContent: AbroadScholarshipsContent = {
   cards: [
     {
       iconKey: "graduation",
-      title: "Uzbekistan government scholarships",
+      title: "Uzbek government scholarships",
       description:
         "The Government of Uzbekistan offers a limited number of merit-based scholarships to international students through bilateral academic exchange programmes. Availability and eligibility vary annually — contact Taksheela for current status.",
       bullets: [
@@ -1162,7 +1187,7 @@ export const uzbekistanAbroadScholarshipsContent: AbroadScholarshipsContent = {
       iconKey: "building",
       title: "University-specific fee waivers",
       description:
-        "Select universities offer partial tuition waivers or first-year fee discounts to high-achieving applicants with strong Class 12 scores and NEET performance.",
+        "Select universities offer partial tuition waivers or first-year fee discounts to high-achieving applicants with strong Class 12 scores and NEET performance. Application is made alongside the main admission process.",
       bullets: [
         "Applied alongside the main admission file — not before offer.",
         "Renewable sometimes on GPA — confirm in the offer letter.",
@@ -1173,7 +1198,7 @@ export const uzbekistanAbroadScholarshipsContent: AbroadScholarshipsContent = {
       iconKey: "books",
       title: "Indian government / state scholarships",
       description:
-        "Students from SC/ST/OBC categories may be eligible for state government post-matric scholarships that can be used toward MBBS abroad fees. Check your state's scholarship portal.",
+        "Students from SC/ST/OBC categories may be eligible for state government post-matric scholarships that can be used toward MBBS abroad fees. Check your state's scholarship portal — Taksheela can assist with documentation.",
       bullets: [
         "CSIS / Padho Pardesh-style interest subsidies may apply to education loans for eligible Indian families.",
         "Taksheela assists with documentation where schemes allow MBBS abroad.",
@@ -1184,7 +1209,7 @@ export const uzbekistanAbroadScholarshipsContent: AbroadScholarshipsContent = {
       iconKey: "globe",
       title: "Academic performance incentives",
       description:
-        "Some Uzbek medical universities reduce tuition for students who maintain high GPA through their programme — rewarding continued excellence.",
+        "Some Uzbek medical universities reduce tuition for students who maintain high GPA through their programme. This rewards continued academic excellence and reduces the total cost of the degree.",
       bullets: [
         "Ask admissions if GPA-linked reductions exist for your intake.",
         "Keeps total degree cost lower over six years when applicable.",
@@ -1219,31 +1244,33 @@ export type AbroadEducationLoanContent = {
 
 export const uzbekistanAbroadEducationLoanContent: AbroadEducationLoanContent = {
   eyebrow: "Education Loans",
-  title: "Financing Your MBBS in Uzbekistan",
+  title: "Financing Your MBBS in Uzbekistan — Education Loan Guide",
   intro:
-    "MBBS in Uzbekistan qualifies for education loans from major Indian banks. The total cost of ₹19–45 lakhs makes repayment manageable on a doctor's salary when planned early.",
+    "MBBS in Uzbekistan qualifies for education loans from major Indian banks. The total cost of ₹19–45 lakhs makes loan repayment very manageable on a doctor's salary.",
   nationalised: {
     title: "Nationalised bank loans",
-    description: "SBI, Bank of Baroda, and other nationalised banks offer MBBS abroad loans at roughly 8–11% p.a. (floating).",
+    description:
+      "SBI, Bank of Baroda, and other nationalised banks offer education loans for MBBS abroad at interest rates of 8–11% per annum.",
     bullets: [
-      "Loans up to ₹20 lakhs may not require collateral — above that, property/LIC often required.",
-      "Moratorium typically covers study duration + 6–12 months after completion.",
+      "Loans up to ₹20 lakhs may not require collateral. Above ₹20 lakhs, collateral (property/LIC) is typically required.",
+      "Moratorium period covers the study duration + 6–12 months.",
       "Taksheela helps compile a lender-ready file: admission letter, fee schedule, course duration, NMC proof.",
     ],
   },
   privateNbfc: {
     title: "Private banks, NBFCs & study-loan platforms",
-    description: "HDFC, Axis, ICICI, Avanse, HDFC Credila, Propelld — faster processing with flexible collateral.",
+    description:
+      "HDFC Bank, Axis Bank, and ICICI Bank offer MBBS abroad education loans with faster processing; interest rates are often 10–14% with more flexible collateral. Non-banking finance companies such as Avanse, HDFC Credila, and Propelld specialise in study abroad loans and often process faster than banks. Some products offer up to ₹40 lakhs for overseas medical education. Taksheela can connect you with partner lenders.",
     bullets: [
-      "Interest often 10–14% p.a. — profile-dependent.",
-      "Some products offer up to ₹40 lakhs for overseas medical education.",
-      "NBFCs may process faster than public-sector banks for urgent cases.",
+      "Private banks: faster processing vs many public-sector timelines.",
+      "NBFCs work directly with students applying to recognised foreign universities.",
+      "Profile-dependent rates — compare offers before you sign.",
     ],
   },
   support: {
-    title: "Documents typically required",
+    title: "Documents required for loan",
     description:
-      "University admission letter, fee structure, Class 10 and 12 certificates, NEET scorecard, passport, income proof of parent/guardian, bank statements (6 months), collateral documents if applicable. Taksheela's loan advisors help compile and review before submission.",
+      "University admission letter, fee structure, Class 10 and 12 certificates, NEET scorecard, passport, income proof of parent/guardian, bank statements for the last 6 months, and collateral documents (if applicable). Taksheela's education loan advisors assist with documentation compilation.",
   },
 };
 
@@ -1271,27 +1298,27 @@ export const uzbekistanAbroadCareerOpportunitiesContent: AbroadTeachingMethodolo
     },
     {
       icon: "🇺🇸",
-      title: "USMLE — USA",
+      title: "USMLE — Practice in USA",
       description:
-        "FAIMER-listed Uzbek universities can support USMLE Steps 1, 2 & 3 eligibility — the pathway to US residency when individual requirements are met.",
+        "FAIMER-listed Uzbek universities qualify graduates to appear for USMLE Steps 1, 2 & 3 — the pathway to residency and medical practice in the United States.",
     },
     {
       icon: "🇬🇧",
-      title: "PLAB — UK",
+      title: "PLAB — Practice in UK",
       description:
-        "WHO-listed degree qualifies for PLAB — the standard entry route for international medical graduates to the NHS.",
+        "WHO-listed degree qualifies for PLAB (Professional and Linguistic Assessments Board) — the standard entry route for international medical graduates to the NHS.",
     },
     {
       icon: "🇦🇺",
-      title: "AMC — Australia",
+      title: "AMC — Practice in Australia",
       description:
-        "ECFMG-recognised degrees may be eligible for Australian Medical Council exams — pathway to Australia and New Zealand when requirements are met.",
+        "ECFMG-recognised degrees from Uzbek universities are eligible for AMC (Australian Medical Council) examinations — the pathway to practise medicine in Australia and New Zealand.",
     },
     {
       icon: "🌏",
-      title: "Uzbekistan & Central Asia",
+      title: "Work in Uzbekistan or Central Asia",
       description:
-        "Graduates may also pursue Uzbek state licensing and postgraduate training or clinical roles within Uzbekistan and the broader Central Asian region.",
+        "Graduates may also sit for the Uzbek State Medical Licensing Exam (GOZZ) and pursue postgraduate specialisation or clinical roles within Uzbekistan and the broader Central Asian region.",
     },
   ],
 };
@@ -1317,13 +1344,13 @@ export const uzbekistanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheela
   titlePrimary: "Why Students from India, Nepal & Bangladesh Trust",
   titleAccent: "Taksheela",
   subtitle:
-    "Taksheela Institute of Education is a Kolkata-headquartered study abroad consultancy with offices across major Indian cities, specialising in MBBS abroad placements.",
+    "Taksheela Institute of Education is a Kolkata-headquartered study abroad consultancy with offices across major Indian cities, specialising in MBBS abroad placements since our founding.",
   items: [
     {
       icon: "🔍",
       title: "100% transparent shortlisting",
       description:
-        "We never recommend universities on commission. Every shortlist is based on NMC compliance, FMGE/NExT readiness, clinical infrastructure, and your specific profile.",
+        "We never recommend universities on commission. Every shortlist is based on NMC compliance, FMGE track record, clinical infrastructure, and your specific profile.",
     },
     {
       icon: "📋",
@@ -1341,7 +1368,7 @@ export const uzbekistanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheela
       icon: "📚",
       title: "FMGE / NExT preparation guidance",
       description:
-        "We guide students on FMGE/NExT preparation strategy from Year 1, including recommended resources, test schedules, and coaching programmes.",
+        "We guide students on FMGE preparation strategy from Year 1, including recommended resources, test schedules, and coaching programmes.",
     },
     {
       icon: "💳",
@@ -1353,7 +1380,7 @@ export const uzbekistanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheela
       icon: "🤝",
       title: "Post-admission support",
       description:
-        "Our relationship does not end at admission. We assist with annual visa renewals, fee payment reminders, and licensing milestones throughout the programme.",
+        "Our relationship with students does not end at admission. We assist with annual visa renewals, fee payment reminders, and FMGE preparation milestones throughout the programme.",
     },
   ],
 };
@@ -1385,46 +1412,46 @@ export type AbroadRegulatoryFrameworkContent = {
 
 export const uzbekistanAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkContent = {
   eyebrow: "NMC Gazette & Compliance",
-  titlePrimary: "NMC Foreign Medical Graduate Licentiate (FMGL)",
+  titlePrimary: "NMC Gazette Notification",
   titleAccent: "— What Indian Students Must Know",
   subtitle:
-    "The National Medical Commission (NMC) of India sets binding requirements for students studying MBBS abroad. Non-compliance disqualifies graduates from practising medicine in India. Taksheela advisors stay updated with NMC circulars.",
+    "The National Medical Commission (NMC) of India sets binding requirements for students studying MBBS abroad. Non-compliance disqualifies graduates from practising medicine in India.",
   rules: [
     {
       icon: "📋",
       title: "NEET-UG qualifying score",
       description:
-        "Mandatory before starting MBBS abroad for Indian students (FMGL Regulations). Admissions in 2026 require a valid NEET from the allowed windows — verify current NMC validity rules.",
+        "NEET-UG qualifying score is mandatory before starting MBBS abroad. Students who began before 2019 are exempt, but all 2026 admissions require valid NEET.",
     },
     {
       icon: "🌐",
       title: "WDOMS / FAIMER listing",
       description:
-        "The foreign university must appear in the World Directory of Medical Schools (FAIMER). Cross-check every intake before paying fees.",
+        "The foreign university must be in the World Directory of Medical Schools (WDOMS) published by FAIMER — all five Uzbek universities on our list are included.",
     },
     {
       icon: "📅",
       title: "54 months + 12-month internship",
       description:
-        "Minimum 54 months of academic study plus 12 months compulsory clinical internship — six years total in line with NMC expectations for foreign MBBS.",
+        "Minimum course duration: 54 months of academic study plus a 12-month compulsory clinical internship — totalling 6 years. Uzbek universities meet this requirement.",
     },
     {
       icon: "📝",
       title: "NExT (National Exit Test)",
       description:
-        "Students must pass India's licensing examination (NExT replaces FMGE over time per NMC roadmap) to obtain registration to practise in India after graduation.",
+        "Students must appear for and pass the NExT — India's replacement for FMGE — to obtain a licence to practise medicine in India after graduation.",
     },
     {
       icon: "🏥",
       title: "India internship (where applicable)",
       description:
-        "A compulsory one-year internship in India after graduation may be required for certain batches under updated NMC directives — monitor official notifications.",
+        "A compulsory one-year internship in India (post-graduation) may be required for pre-2021 batch foreign graduates under updated NMC directives. Students should monitor NMC notifications.",
     },
     {
       icon: "🎓",
       title: "Recognised Uzbek degree",
       description:
-        "The degree must be equivalent to Indian MBBS and awarded by a university recognised under Uzbek law. Shortlist only NMC-listed institutions on the live PDF.",
+        "The degree must be equivalent to an Indian MBBS and awarded by a recognised university under the laws of Uzbekistan. All five NMC-listed Uzbek universities qualify.",
     },
   ],
   officialSourcesLabel: "Official Sources",
@@ -1532,10 +1559,11 @@ export type AbroadTopUniversitiesContent = {
 const uzImg = (n: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10) =>
   `${imageBaseUrl ?? ""}mbbsCollege/uzbekistan/uz${n}.png`;
 
+/** Six core NMC-listed universities as on the reference landing page (2026–27). */
 export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
   {
     id: "tma",
-    name: "Tashkent Medical Academy",
+    name: "Tashkent Medical Academy (TMA)",
     abbreviation: "TMA",
     established: "1919",
     locationLine: "Tashkent",
@@ -1547,21 +1575,22 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
       { label: "WHO Listed", variant: "sky" },
       { label: "Flagship", variant: "amber" },
     ],
-    rankTag: "Historic national medical academy — Tashkent",
+    rankTag: "Capital flagship · national academy",
+    subtitle: "Tashkent State Medical University branch",
     headerEmoji: "🏛️",
     imageSrc: uzImg(1),
     stats: [
       { label: "Annual tuition (USD)", value: "$3,100–3,500" },
-      { label: "6-year total (₹)", value: "~₹26–29L" },
+      { label: "6-year total (₹)", value: "₹26–29 Lakhs" },
       { label: "Duration", value: "6 Years" },
       { label: "Medium", value: "English" },
     ],
     fmge: {
       type: "text",
-      text: "Flagship capital campus — verify NMC listing each intake; strong Indian peer network for FMGE/NExT prep.",
+      text: "NMC approved — verify listing each intake; strong Indian peer network for FMGE/NExT prep.",
     },
     description: [
-      "Tashkent Medical Academy — historic national medical academy; English track with strong teaching hospitals (aligns with Tashkent State Medical University ecosystem).",
+      "Historic national medical academy in the capital; English-medium track with strong teaching-hospital exposure.",
     ],
     featureTags: ["Tashkent", "English Track", "Clinical Rotations", "Indian Community"],
     applyHref: "/contact",
@@ -1581,57 +1610,24 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
       { label: "WHO Listed", variant: "sky" },
       { label: "Silk Road", variant: "amber" },
     ],
-    rankTag: "UNESCO city — established institute",
+    rankTag: "UNESCO city · Silk Road hub",
+    subtitle: "Oldest and most prestigious Uzbek medical institution",
     headerEmoji: "🕌",
     imageSrc: uzImg(2),
     stats: [
       { label: "Annual tuition (USD)", value: "$3,000–3,400" },
-      { label: "6-year total (₹)", value: "~₹25–28L" },
+      { label: "6-year total (₹)", value: "₹25–28 Lakhs" },
       { label: "Duration", value: "6 Years" },
       { label: "City", value: "Samarkand" },
     ],
     fmge: {
       type: "text",
-      text: "Oldest and most prestigious Uzbek medical institution — pair disciplined NExT prep with clinical years.",
+      text: "UNESCO heritage city — pair disciplined NExT prep with clinical years.",
     },
     description: [
-      "UNESCO heritage city; oldest and most prestigious medical university — popular with South Asian students.",
+      "Oldest and most prestigious medical university in Uzbekistan — highly popular with South Asian students.",
     ],
     featureTags: ["Samarkand", "English Medium", "Peer Support", "NMC Aligned"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "asmi",
-    name: "Andijan State Medical Institute",
-    abbreviation: "ASMI",
-    established: "1955",
-    locationLine: "Andijan",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 29,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Fergana Valley", variant: "amber" },
-    ],
-    rankTag: "Fergana Valley — value intake",
-    headerEmoji: "🎓",
-    imageSrc: uzImg(3),
-    stats: [
-      { label: "Annual tuition (USD)", value: "$2,500–3,000" },
-      { label: "6-year total (₹)", value: "~₹21–25L" },
-      { label: "Duration", value: "6 Years" },
-      { label: "City", value: "Andijan" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Pioneer Fergana Valley college — verify NMC PDF before fees.",
-    },
-    description: [
-      "Pioneer medical college of the Fergana Valley — affordable English-medium intake.",
-    ],
-    featureTags: ["Andijan", "English Track", "Budget", "Hostel Options"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1649,57 +1645,59 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
       { label: "WHO Listed", variant: "sky" },
       { label: "Heritage City", variant: "amber" },
     ],
-    rankTag: "Historic Bukhara — cultural hub",
+    rankTag: "Historic Bukhara",
+    subtitle: "Well-established with strong clinical affiliations",
     headerEmoji: "🏛️",
     imageSrc: uzImg(4),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,700–3,100" },
-      { label: "6-year total (₹)", value: "~₹22–26L" },
+      { label: "6-year total (₹)", value: "₹22–26 Lakhs" },
       { label: "Duration", value: "6 Years" },
       { label: "Medium", value: "English" },
     ],
     fmge: {
       type: "text",
-      text: "Well-established with strong clinical affiliations — map NExT prep from Year 1.",
+      text: "Strong clinical affiliations — map NExT prep from Year 1.",
     },
     description: [
-      "Well-established institute with strong clinical affiliations and growing international cohort.",
+      "Well-established institute in historic Bukhara with growing international cohorts.",
     ],
     featureTags: ["Bukhara", "English Program", "Clinical Training", "NMC"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
   {
-    id: "ksmi",
-    name: "Karakalpak State Medical Institute",
-    abbreviation: "KSMI",
-    established: "1979",
-    locationLine: "Nukus",
+    id: "asmi",
+    name: "Andijan State Medical Institute",
+    abbreviation: "ASMI",
+    established: "1955",
+    locationLine: "Andijan",
     region: "other",
     budgetFriendly: true,
-    fmgePercent: 28,
+    fmgePercent: 29,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
       { label: "WHO Listed", variant: "sky" },
-      { label: "Northwest", variant: "amber" },
+      { label: "Fergana Valley", variant: "amber" },
     ],
-    rankTag: "Aral region — verify climate fit",
-    headerEmoji: "📚",
-    imageSrc: uzImg(5),
+    rankTag: "Fergana Valley value intake",
+    subtitle: "Pioneer medical college of the Fergana Valley",
+    headerEmoji: "🎓",
+    imageSrc: uzImg(3),
     stats: [
-      { label: "Annual fees", value: "~₹2–3.5L/yr" },
-      { label: "6-year total", value: "~₹16–24L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "City", value: "Nukus" },
+      { label: "Annual tuition (USD)", value: "$2,500–3,000" },
+      { label: "6-year total (₹)", value: "₹21–25 Lakhs" },
+      { label: "Duration", value: "6 Years" },
+      { label: "City", value: "Andijan" },
     ],
     fmge: {
       type: "text",
-      text: "Pair early NExT planning with clinical years — confirm listing before fees.",
+      text: "Value intake in the Fergana Valley — verify NMC PDF before fees.",
     },
     description: [
-      "Budget-friendly option in northwest Uzbekistan; smaller city with lower living costs vs Tashkent.",
+      "Pioneer medical college of the Fergana Valley — affordable English-medium pathway.",
     ],
-    featureTags: ["Nukus", "Value", "English Track", "NMC Pathway"],
+    featureTags: ["Andijan", "English Track", "Budget", "Hostel Options"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1707,7 +1705,7 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     id: "fsumf",
     name: "Fergana Medical Institute of Public Health",
     abbreviation: "FMIPH",
-    established: "1920",
+    established: "1991",
     locationLine: "Fergana",
     region: "other",
     budgetFriendly: true,
@@ -1717,57 +1715,24 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
       { label: "WHO Listed", variant: "sky" },
       { label: "Regional Hub", variant: "amber" },
     ],
-    rankTag: "Fergana — practical clinical focus",
+    rankTag: "Fergana · MoH Uzbekistan",
+    subtitle: "Government university, Ministry of Health UZ",
     headerEmoji: "🏫",
     imageSrc: uzImg(6),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,300–2,800" },
-      { label: "6-year total (₹)", value: "~₹19–23L" },
+      { label: "6-year total (₹)", value: "₹19–23 Lakhs" },
       { label: "Duration", value: "6 Years" },
       { label: "Medium", value: "English" },
     ],
     fmge: {
       type: "text",
-      text: "Government Ministry of Health UZ — lowest fee band on many shortlists; confirm internship mapping.",
+      text: "Lowest fee band on many shortlists — confirm internship mapping with admissions.",
     },
     description: [
-      "Government university, Ministry of Health — popular value intake in Fergana.",
+      "Government university under the Ministry of Health — popular value intake in Fergana.",
     ],
     featureTags: ["Fergana", "English MD", "Hostel", "Peer Network"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "nsmi",
-    name: "Namangan State Medical Institute",
-    abbreviation: "NSMI",
-    established: "1993",
-    locationLine: "Namangan",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 29,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Budget-Friendly", variant: "rose" },
-    ],
-    rankTag: "Fergana region — affordable",
-    headerEmoji: "🌍",
-    imageSrc: uzImg(7),
-    stats: [
-      { label: "Annual fees", value: "~₹2–3.5L/yr" },
-      { label: "6-year total", value: "~₹16–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Students", value: "Int'l mix" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Popular with South Asian students — verify latest NMC listing before fees.",
-    },
-    description: [
-      "Growing Indian and Bangladeshi cohorts; milder winters than northern steppe cities.",
-    ],
-    featureTags: ["Namangan", "Affordable", "Indian Community", "English"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1775,7 +1740,7 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     id: "tsumf",
     name: "Termez Branch — Tashkent State Medical University",
     abbreviation: "TSMU-T",
-    established: "1992",
+    established: "—",
     locationLine: "Termez",
     region: "other",
     budgetFriendly: true,
@@ -1785,91 +1750,24 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
       { label: "WHO Listed", variant: "sky" },
       { label: "South", variant: "amber" },
     ],
-    rankTag: "Southern border city — warm climate",
+    rankTag: "Warm south · winter intake",
+    subtitle: "Winter intake available",
     headerEmoji: "⚖️",
     imageSrc: uzImg(8),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,500–3,000" },
-      { label: "6-year total (₹)", value: "~₹21–25L" },
+      { label: "6-year total (₹)", value: "₹21–25 Lakhs" },
       { label: "Duration", value: "6 Years" },
       { label: "Intake", value: "Feb option" },
     ],
     fmge: {
       type: "text",
-      text: "Winter intake available — warm southern climate; confirm NMC listing.",
+      text: "Southern border city — warm climate; confirm NMC listing before fees.",
     },
     description: [
-      "Termez branch of Tashkent State Medical University — winter intake option; lower living costs.",
+      "Termez branch of Tashkent State Medical University — secondary winter intake; lower living costs.",
     ],
     featureTags: ["Termez", "Value", "Clinical Training", "NMC"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "usumf",
-    name: "Urgench State University — Medical Faculty",
-    abbreviation: "USUMF",
-    established: "1991",
-    locationLine: "Urgench",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 28,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Khorezm", variant: "amber" },
-    ],
-    rankTag: "Khorezm region — value option",
-    headerEmoji: "🩺",
-    imageSrc: uzImg(9),
-    stats: [
-      { label: "Annual fees", value: "~₹2–3.5L/yr" },
-      { label: "6-year total", value: "~₹16–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "City", value: "Urgench" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Outcomes linked to preparation — map coaching from semester one.",
-    },
-    description: [
-      "Medical faculty attracting international students seeking affordable total cost near Khiva.",
-    ],
-    featureTags: ["Urgench", "English", "Clinical Skills", "Hostel"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "tpmi",
-    name: "Tashkent Pediatric Medical Institute",
-    abbreviation: "TPMI",
-    established: "1972",
-    locationLine: "Tashkent",
-    region: "moscow",
-    budgetFriendly: false,
-    fmgePercent: 30,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Paediatrics Focus", variant: "amber" },
-    ],
-    rankTag: "Capital — paediatrics strength",
-    headerEmoji: "✨",
-    imageSrc: uzImg(10),
-    stats: [
-      { label: "Annual fees", value: "~₹2.5–4L/yr" },
-      { label: "6-year total", value: "~₹18–28L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Founded", value: "1972" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Strong paediatrics exposure — same NExT pathway as other Uzbek MD degrees.",
-    },
-    description: [
-      "Specialised institute in Tashkent with English track and growing Indian student community.",
-    ],
-    featureTags: ["Tashkent", "English MD", "Student Support", "NMC Screening"],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1880,7 +1778,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
   titlePrimary: "NMC-Approved Medical Universities in Uzbekistan",
   titleAccent: "2026–27",
   intro:
-    "Government-run, NMC-recognised English-medium MBBS with clinical training in affiliated teaching hospitals. Fees below are indicative in USD — verify the live fee letter before payment.",
+    "All universities listed below are government-run, NMC-recognised, and offer English-medium MBBS with clinical training in affiliated teaching hospitals. Fees are approximate and subject to annual revision; confirm the latest structure with Taksheela before payment.",
   cardWatermarkCode: "UZ",
   filters: [
     { id: "all", label: "All Universities" },
@@ -1901,7 +1799,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Tashkent",
         established: "1919",
         annualFees: "$3,100–3,500",
-        fmgeRate: "~₹26–29L",
+        fmgeRate: "₹26–29 Lakhs",
         fmgeHighlight: true,
         bestFor: "Capital flagship",
       },
@@ -1910,7 +1808,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Samarkand",
         established: "1930",
         annualFees: "$3,000–3,400",
-        fmgeRate: "~₹25–28L",
+        fmgeRate: "₹25–28 Lakhs",
         fmgeHighlight: true,
         bestFor: "Oldest medical university",
       },
@@ -1919,7 +1817,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Bukhara",
         established: "1990",
         annualFees: "$2,700–3,100",
-        fmgeRate: "~₹22–26L",
+        fmgeRate: "₹22–26 Lakhs",
         bestFor: "Heritage city · clinical ties",
       },
       {
@@ -1927,7 +1825,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Andijan",
         established: "1955",
         annualFees: "$2,500–3,000",
-        fmgeRate: "~₹21–25L",
+        fmgeRate: "₹21–25 Lakhs",
         bestFor: "Fergana Valley value",
       },
       {
@@ -1935,7 +1833,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Fergana",
         established: "1991",
         annualFees: "$2,300–2,800",
-        fmgeRate: "~₹19–23L",
+        fmgeRate: "₹19–23 Lakhs",
         bestFor: "Lowest fee band",
       },
       {
@@ -1943,40 +1841,8 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         city: "Termez",
         established: "—",
         annualFees: "$2,500–3,000",
-        fmgeRate: "~₹21–25L",
+        fmgeRate: "₹21–25 Lakhs",
         bestFor: "Winter intake · warm south",
-      },
-      {
-        university: "KSMI",
-        city: "Nukus",
-        established: "1979",
-        annualFees: "~USD 2–3.5K",
-        fmgeRate: "Value NW",
-        bestFor: "Northwest budget",
-      },
-      {
-        university: "NSMI",
-        city: "Namangan",
-        established: "1993",
-        annualFees: "~USD 2–3.5K",
-        fmgeRate: "Fergana",
-        bestFor: "Affordable option",
-      },
-      {
-        university: "USUMF",
-        city: "Urgench",
-        established: "1991",
-        annualFees: "~USD 2–3.5K",
-        fmgeRate: "Khorezm",
-        bestFor: "Regional value",
-      },
-      {
-        university: "TPMI",
-        city: "Tashkent",
-        established: "1972",
-        annualFees: "~USD 2.5–4K",
-        fmgeRate: "Paediatrics",
-        bestFor: "Capital · child health focus",
       },
     ],
   },
@@ -2005,42 +1871,42 @@ export const uzbekistanAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Is MBBS from Uzbekistan valid in India?",
       answer:
-        "Yes. Degrees from NMC-listed Uzbek medical universities are recognised in India. After graduation, students must pass the FMGE or NExT licensing examination to obtain NMC registration and practise medicine in India. All five universities highlighted on our counselling shortlists are verified against the current NMC PDF — always re-check before paying fees.",
+        "Yes. Degrees from NMC-listed Uzbek medical universities are recognised in India. After graduation, students must pass the FMGE or NExT licensing examination to obtain NMC registration and practise medicine in India. All five universities listed on this page are NMC-approved.",
     },
     {
       question: "Is NEET compulsory for MBBS in Uzbekistan?",
       answer:
-        "Yes, for Indian students. As per NMC's Foreign Medical Graduate Licentiate (FMGL) Regulations 2021, all Indian students pursuing MBBS abroad must hold a valid NEET-UG qualifying score at the time of admission. The score must be from 2024, 2025, or 2026 per typical validity windows — confirm against the latest NMC notice. Uzbek universities usually do not set a minimum NEET score beyond NMC's qualifying percentile.",
+        "Yes, for Indian students. As per NMC's Foreign Medical Graduate Licentiate (FMGL) Regulations 2021, all Indian students pursuing MBBS abroad must hold a valid NEET-UG qualifying score at the time of admission. The score must be from 2024, 2025, or 2026. Note: There is no minimum NEET score requirement set by Uzbek universities — only NMC's minimum qualifying percentile applies.",
     },
     {
       question: "What is the total cost of MBBS in Uzbekistan?",
       answer:
-        "The total cost of a 6-year MBBS in Uzbekistan ranges from approximately ₹19 lakhs to ₹45 lakhs depending on the university. This includes tuition (USD 2,300–3,500/yr), hostel (USD 600–800/yr), and estimated living expenses (USD 100–120/month). Indian mess is available at approximately USD 1,200/year at major campuses. No donation or capitation applies.",
+        "The total cost of a 6-year MBBS in Uzbekistan ranges from approximately ₹19 lakhs to ₹45 lakhs depending on the university. This includes tuition fees (USD 2,300–3,500/yr), hostel (USD 600–800/yr), and estimated living expenses (USD 100–120/month). Indian mess is available at additional cost of approximately USD 1,200/year. No donation or capitation fee applies.",
     },
     {
       question: "Is Uzbekistan safe for Indian students?",
       answer:
-        "Yes. Uzbekistan consistently ranks among the safer MBBS abroad destinations — low crime, CCTV coverage in major cities, and a government that welcomes international students. Tashkent, Samarkand, Bukhara, Andijan, and Fergana have established Indian student communities that support newcomers.",
+        "Yes. Uzbekistan consistently ranks as one of the safer MBBS abroad destinations. The country has a low crime rate, CCTV coverage in major cities, and a government that actively welcomes international students. Tashkent, Samarkand, Bukhara, Andijan, and Fergana all have established Indian student communities that support newcomers during the adjustment period.",
     },
     {
       question: "Is food a problem for Indian students in Uzbekistan?",
       answer:
-        "No. Indian mess facilities are available at all major NMC-approved Uzbek universities. As a Muslim-majority country, halal food is widely available. Indian grocery items are available in major cities. Most students adapt comfortably within the first few weeks.",
+        "No. Indian mess facilities are available at all major NMC-approved Uzbek universities. As a Muslim-majority country, halal food is widely available throughout Uzbekistan. Indian grocery items and brands (including Haldiram's) are available in major cities. Most students adapt comfortably within the first few weeks.",
     },
     {
       question: "How many intakes are there for MBBS in Uzbekistan per year?",
       answer:
-        "Two intakes: September (primary — all NMC-approved universities) and February (winter — select universities such as Navoi State University, Bukhara, TMA Urgench branch, Termez branch). September is recommended for most students.",
+        "There are two intakes: September (the primary intake, available at all NMC-approved universities) and February (the winter intake, available at select universities including Navoi State University, Bukhara State Medical University, Tashkent Medical Academy Urgench Branch, and Termez Branch). The September intake is recommended for most students.",
     },
     {
       question: "What is the FMGE pass rate for Uzbekistan graduates?",
       answer:
-        "NMC does not publish a single country-level FMGE pass rate for Uzbekistan alone. Outcomes depend on university quality and preparation from Year 1 — which is why Taksheela's FMGE-first shortlisting and coaching orientation matter.",
+        "While NMC does not publish country-specific FMGE pass rates broken down by Uzbekistan as a single country, graduates from well-structured NMC-compliant programmes generally perform comparably to other Central Asian destinations. The key differentiator is the quality of the university selected and preparation for FMGE/NExT from Year 1 — which is why Taksheela's FMGE-first shortlisting approach matters.",
     },
     {
       question: "Can Nepali and Bangladeshi students also study MBBS in Uzbekistan?",
       answer:
-        "Yes. Nepali students can use a valid NEET score or Nepal's national medical entry test. Bangladeshi students should confirm BMDC guidelines for studying abroad before applying. No IELTS or TOEFL is required at NMC-approved Uzbek universities for these nationalities in most cases.",
+        "Yes. Uzbek medical universities welcome students from Nepal and Bangladesh. Nepali students can use a valid NEET score or Nepal's national medical entry test for admission. Bangladeshi students should confirm BMDC guidelines for studying abroad before applying. No IELTS or TOEFL is required for either nationality at NMC-approved Uzbek universities.",
     },
   ],
 };
@@ -2048,8 +1914,8 @@ export const uzbekistanAbroadFaqPageContent: AbroadFaqPageContent = {
 export const uzbekistanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   countryLabel: "Uzbekistan",
   subtitle:
-    "Speak with a Taksheela counsellor today — free of charge, no pressure, just honest guidance. Seats for the September 2026 intake are filling fast.",
-  primaryCtaLabel: "Book Free Counselling",
+    "Speak with a Taksheela counsellor today — free of charge, no pressure, just honest guidance. Seats for the September 2026 intake are filling fast. Offices in Kolkata, Delhi, Mumbai, Chennai, Hyderabad, Lucknow.",
+  primaryCtaLabel: "Book Free Counselling →",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
 };
@@ -2067,7 +1933,7 @@ export const uzbekistanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
     label: "Course Duration",
     value: "6 Years (5 academic + 1 internship)",
     mLabel: "Duration",
-    mValue: "6 yrs",
+    mValue: "6 yrs (5+1)",
   },
   {
     icon: "📅",
@@ -2114,9 +1980,9 @@ export const uzbekistanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "🏛️",
     label: "NMC-Compliant Universities",
-    value: "5 government medical institutes (core list)",
+    value: "5 government medical institutes",
     mLabel: "NMC unis",
-    mValue: "5+",
+    mValue: "5",
   },
   {
     icon: "📝",
@@ -2135,7 +2001,7 @@ export const uzbekistanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "🍛",
     label: "Indian Food",
-    value: "Available — Indian mess at major unis",
+    value: "Available — Indian mess at all major unis",
     mLabel: "Food",
     mValue: "Indian mess",
   },
@@ -2144,51 +2010,51 @@ export const uzbekistanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
 const uzbekistanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
   {
     icon: "💸",
-    title: "Genuinely affordable fees — no hidden costs",
+    title: "Genuinely Affordable Fees — No Hidden Costs",
     description:
       "Annual tuition starts at USD 2,300 (approx. ₹1.9 lakhs), making the 6-year total ₹19–45 lakhs — far below private MBBS in India. Government-funded universities keep costs structurally low year after year.",
   },
   {
     icon: "✅",
-    title: "NMC, WHO & FAIMER approved",
+    title: "NMC, WHO & FAIMER Approved",
     description:
-      "Five Uzbek medical institutes are on India's NMC-approved list; degrees are also recognised by ECFMG and FAIMER for global medical licensing pathways when requirements are met.",
+      "Five Uzbek medical institutes are on the NMC's approved list, qualifying graduates to appear for FMGE/NExT in India. Degrees are also recognised by ECFMG and FAIMER for global medical licensing pathways.",
   },
   {
     icon: "🌐",
-    title: "English-medium teaching — no IELTS required",
+    title: "English-Medium Teaching — No IELTS Required",
     description:
-      "The entire MBBS curriculum is delivered in English at NMC-approved universities. No IELTS or TOEFL score is required for admission.",
+      "The entire MBBS curriculum is delivered in English at NMC-approved universities. No IELTS or TOEFL score is required for admission — accessible for all NEET-qualified students.",
   },
   {
     icon: "🚫",
-    title: "Zero donation, zero capitation",
+    title: "Zero Donation, Zero Capitation",
     description:
-      "Admission is purely merit-based. No management quota, no under-the-table payment — you pay only the officially published university fee directly to the institution.",
+      "Admission is purely merit-based. No management quota, no under-the-table payment, no donation demanded at any stage. You pay only the officially published university fee — directly to the institution.",
   },
   {
     icon: "🏥",
-    title: "Strong clinical training from Year 3",
+    title: "Strong Clinical Training from Year 3",
     description:
-      "Students rotate through large government teaching hospitals affiliated with their universities, gaining exposure to diverse patients and high case volumes — critical for licensing exams.",
+      "Students rotate through large government teaching hospitals affiliated with their universities, gaining exposure to diverse patient profiles and high case volumes — critical preparation for licensing exams.",
   },
   {
     icon: "🌍",
-    title: "Globally recognised degree",
+    title: "Globally Recognised Degree",
     description:
-      "Graduates from NMC-listed Uzbek universities can pursue FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia) — building a global career from one qualification.",
+      "Graduates from NMC-listed Uzbek universities can pursue FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia) — building a genuinely global medical career from a single qualification.",
   },
   {
     icon: "🛡️",
-    title: "Safe, student-friendly country",
+    title: "Safe, Student-Friendly Country",
     description:
-      "Low crime rate, respectful culture, and government infrastructure supportive of international students. Indian, Nepali, and Bangladeshi communities are well established in major university cities.",
+      "Uzbekistan has a low crime rate, a culturally respectful atmosphere, and government infrastructure supportive of international students. Indian, Nepali, and Bangladeshi student communities are well established in all major university cities.",
   },
   {
     icon: "☀️",
-    title: "Milder climate than Russia or Kyrgyzstan",
+    title: "Milder Climate Than Russia or Kyrgyzstan",
     description:
-      "Continental climate — hot dry summers and mild winters (often 0°C to -5°C at the coldest) — significantly easier to adapt to for students from South Asia.",
+      "Unlike Siberian or high-altitude destinations, Uzbekistan has a continental climate — hot dry summers and mild winters (0°C to -5°C at the coldest) — significantly easier to adapt to for students from South Asia.",
   },
 ];
 
