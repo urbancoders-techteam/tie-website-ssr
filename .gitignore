@@ -48,10 +48,10 @@ yarn-error.log*
 
 # Ignore ALL env files
 .env
-.env.local
-.env.development
-.env.staging
-.env.production
+# .env.local
+# .env.development
+# .env.staging
+# .env.production
 
 # Ignore variations
 .env.*.local
