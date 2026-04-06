@@ -53,11 +53,21 @@ export type AbroadHeroContent = {
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
   /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
-  quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
+  quickStats: [
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+  ];
   /** Large highlighted stat on the right */
   spotlight: AbroadHeroSpotlight;
   /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
+  statGrid: [
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+  ];
 };
 
 export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
@@ -97,7 +107,7 @@ export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
 /** Merges live college count into the hero stat grid (Kazakhstan). */
 export function kazakhstanAbroadHeroFeaturedCount(
   featuredCount: number,
-  base: AbroadHeroContent = kazakhstanAbroadHeroContent
+  base: AbroadHeroContent = kazakhstanAbroadHeroContent,
 ): AbroadHeroContent {
   const count = String(featuredCount);
   const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
@@ -148,7 +158,8 @@ export const kazakhstanAbroadOverviewContent: AbroadOverviewContent = {
     "Kazakhstan's 10+ NMC-approved medical universities are governed by the Ministry of Healthcare and the Ministry of Education and Science of Kazakhstan. They follow a standardised 6-year (5+1) curriculum aligned with NMC's requirements under the Gazette of India, including English as the primary medium of instruction, mandatory clinical exposure from Year 3, and a compulsory 12-month internship. Degrees from these institutions are recognised by WHO, NMC (India), FAIMER, ECFMG, and UNESCO — giving graduates pathways to practice in India (after NExT), the UK (PLAB), the USA (USMLE), the Gulf, and beyond.",
   ],
   officialData: {
-    leadBold: "Official Data (Kazakhstan MoH / higher education trends, 2024–25):",
+    leadBold:
+      "Official Data (Kazakhstan MoH / higher education trends, 2024–25):",
     textBeforeBold: "{countryName} hosts ",
     textBold: "{universityCount}+ NMC-listed medical universities",
     textAfterBold:
@@ -206,7 +217,8 @@ export const kazakhstanAbroadFearsContent: AbroadFearsContent = {
     },
     {
       icon: "🔍",
-      title: '"How do I know my counsellor isn\'t just sending me to a commission-paying university?"',
+      title:
+        '"How do I know my counsellor isn\'t just sending me to a commission-paying university?"',
       description:
         "Many agents recommend universities based on the highest commission they receive — not what's best for the student.",
     },
@@ -302,7 +314,8 @@ export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
   nepali: [
     {
       label: "Academic Background",
-      value: "Class 12 (NEB certificate or equivalent A-Level) with Physics, Chemistry, and Biology as core subjects.",
+      value:
+        "Class 12 (NEB certificate or equivalent A-Level) with Physics, Chemistry, and Biology as core subjects.",
     },
     {
       label: "Minimum Marks",
@@ -352,7 +365,7 @@ export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
         "BMDC (Bangladesh Medical and Dental Council) recognises degrees from WHO-listed, DGME-compliant universities. Graduates must clear the BMDC licensing exam to practise in Bangladesh. Taksheela advises on both BMDC and Indian NExT pathways.",
     },
   ],
- 
+
   specialNotes: [
     {
       code: "NP",
@@ -391,61 +404,62 @@ export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
 
 // --- Admission process (AdmissionProcessAbroad) ------------------------------------
 
-export const kazakhstanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent = {
-  eyebrow: "Step by Step",
-  titleLead: "MBBS in ",
-  titleAccent: "— Admission Process",
-  titleTrail: "",
-  subtitle:
-    "No donation, no separate entrance exam beyond NEET. Fully merit-based and completely guided by Taksheela from your first counselling session to your first week of classes in Kazakhstan.",
-  steps: [
-    {
-      title: "Free Counselling & Profile Assessment",
-      description:
-        "1:1 session with a Taksheela Kazakhstan specialist — evaluates your NEET score, Class 12 PCB percentage, budget, preferred city (Almaty vs Astana), and career goals to map the right NMC-compliant Kazakh university.",
-    },
-    {
-      title: "University Shortlisting",
-      description:
-        "2–3 NMC-approved, WHO-listed universities shortlisted with complete, transparent fee breakdowns, hostel availability, Indian community size, and clinical training quality compared side by side.",
-    },
-    {
-      title: "Document Preparation & MEA Apostille",
-      description:
-        "Class 10/12 marksheets, NEET scorecard, passport, passport photos, and medical certificate — compiled, apostilled through the Ministry of External Affairs (India), and translated where required for Kazakh university submission.",
-    },
-    {
-      title: "University Application Submission",
-      description:
-        "Taksheela submits your application directly to the chosen university, manages all follow-up communications, and confirms seat reservation — no missed deadlines, no paperwork gaps.",
-    },
-    {
-      title: "Admission Letter & Seat Confirmation",
-      description:
-        "Upon successful application review, you receive the official Admission Letter from the university. Your MBBS seat in Kazakhstan is confirmed — no donation, no capitation, no management quota payment involved.",
-    },
-    {
-      title: "Visa Invitation Letter & Fee Payment",
-      description:
-        "The university processes the official Visa Invitation Letter for the Kazakh Embassy. Simultaneously, our team handles the apostille of remaining documents and guided first-year fee remittance through authorised international transfer channels.",
-    },
-    {
-      title: "Student Visa Application",
-      description:
-        "Using the Visa Invitation Letter, you apply for a Kazakh student visa at the Kazakhstan Embassy or Consulate in India (New Delhi for Indian students; similar process for Nepal/Bangladesh). Taksheela prepares the complete visa package including medical tests, health insurance, and SOP.",
-    },
-    {
-      title: "Pre-Departure Briefing",
-      description:
-        "Comprehensive pre-departure orientation: what documents to carry, forex setup, Kazakhstan SIM cards, winter clothing guide, hostel essentials, food options, flight coordination, and emergency contact briefing.",
-    },
-    {
-      title: "Airport Pickup & Post-Arrival Support",
-      description:
-        "Taksheela's local representatives in Almaty or Astana receive you from the airport, assist with hostel check-in, university registration, SIM card setup, cultural orientation, and local banking — so your first week in Kazakhstan is smooth and stress-free.",
-    },
-  ],
-};
+export const kazakhstanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent =
+  {
+    eyebrow: "Step by Step",
+    titleLead: "MBBS in ",
+    titleAccent: "— Admission Process",
+    titleTrail: "",
+    subtitle:
+      "No donation, no separate entrance exam beyond NEET. Fully merit-based and completely guided by Taksheela from your first counselling session to your first week of classes in Kazakhstan.",
+    steps: [
+      {
+        title: "Free Counselling & Profile Assessment",
+        description:
+          "1:1 session with a Taksheela Kazakhstan specialist — evaluates your NEET score, Class 12 PCB percentage, budget, preferred city (Almaty vs Astana), and career goals to map the right NMC-compliant Kazakh university.",
+      },
+      {
+        title: "University Shortlisting",
+        description:
+          "2–3 NMC-approved, WHO-listed universities shortlisted with complete, transparent fee breakdowns, hostel availability, Indian community size, and clinical training quality compared side by side.",
+      },
+      {
+        title: "Document Preparation & MEA Apostille",
+        description:
+          "Class 10/12 marksheets, NEET scorecard, passport, passport photos, and medical certificate — compiled, apostilled through the Ministry of External Affairs (India), and translated where required for Kazakh university submission.",
+      },
+      {
+        title: "University Application Submission",
+        description:
+          "Taksheela submits your application directly to the chosen university, manages all follow-up communications, and confirms seat reservation — no missed deadlines, no paperwork gaps.",
+      },
+      {
+        title: "Admission Letter & Seat Confirmation",
+        description:
+          "Upon successful application review, you receive the official Admission Letter from the university. Your MBBS seat in Kazakhstan is confirmed — no donation, no capitation, no management quota payment involved.",
+      },
+      {
+        title: "Visa Invitation Letter & Fee Payment",
+        description:
+          "The university processes the official Visa Invitation Letter for the Kazakh Embassy. Simultaneously, our team handles the apostille of remaining documents and guided first-year fee remittance through authorised international transfer channels.",
+      },
+      {
+        title: "Student Visa Application",
+        description:
+          "Using the Visa Invitation Letter, you apply for a Kazakh student visa at the Kazakhstan Embassy or Consulate in India (New Delhi for Indian students; similar process for Nepal/Bangladesh). Taksheela prepares the complete visa package including medical tests, health insurance, and SOP.",
+      },
+      {
+        title: "Pre-Departure Briefing",
+        description:
+          "Comprehensive pre-departure orientation: what documents to carry, forex setup, Kazakhstan SIM cards, winter clothing guide, hostel essentials, food options, flight coordination, and emergency contact briefing.",
+      },
+      {
+        title: "Airport Pickup & Post-Arrival Support",
+        description:
+          "Taksheela's local representatives in Almaty or Astana receive you from the airport, assist with hostel check-in, university registration, SIM card setup, cultural orientation, and local banking — so your first week in Kazakhstan is smooth and stress-free.",
+      },
+    ],
+  };
 
 // --- Consider before choosing (ConsiderBeforeAbroad) --------------------------------
 
@@ -459,31 +473,32 @@ export type AbroadConsiderBeforeContent = {
   challenges: string[];
 };
 
-export const kazakhstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent = {
-  eyebrow: "Honest Assessment",
-  title: "Things to Consider Before Choosing Kazakhstan",
-  subtitle:
-    "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
-  advantagesTitle: "Strong Advantages",
-  advantages: [
-    "Annual fees as low as ₹3L — total 6-year investment ₹20–35 lakhs, with zero capitation or donation at any Kazakh medical university.",
-    "100% English-medium instruction at all NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission.",
-    "NMC and WHO recognition across 10+ universities — degrees qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
-    "12,000+ Indian students enrolled — well-established South Asian communities in Almaty and Astana with Indian food, festivals, and peer support.",
-    "Halal food widely available — Kazakhstan is a Muslim-majority country, making dietary adherence easy for students from diverse religious backgrounds.",
-    "Merit-based admission — no donation, no management quota, no seat cap. Every eligible student has a fair shot.",
-    "Strong career outcomes — approximately 60% of Kazakh graduates have historically passed FMGE/NExT with structured preparation.",
-  ],
-  challengesTitle: "Genuine Challenges",
-  challenges: [
-    "Winters in Astana can drop to -25°C — amongst the coldest capital cities on Earth. Almaty is milder but still cold by South Asian standards. Thermal wear and heating bills are real costs.",
-    "Russian and/or Kazakh language required for clinical patient interaction from Year 3. Dedicated language classes start from Year 1, but require consistent effort.",
-    "NExT / FMGE preparation requires disciplined self-study alongside coursework. Strong clinical training at Kazakh hospitals is an advantage, but proactive preparation is essential.",
-    "Currency exchange risk — fees are often quoted in USD; families should plan for exchange rate movements across the 6-year duration.",
-    "Cultural adjustment is greater than for Georgia or Russia — Kazakh customs and social norms differ more noticeably from South Asian contexts, requiring an open-minded attitude.",
-    "Smaller cities (Kokshetau, Semey) have fewer Indian community resources — students prioritising Indian food availability should choose Almaty or Astana.",
-  ],
-};
+export const kazakhstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent =
+  {
+    eyebrow: "Honest Assessment",
+    title: "Things to Consider Before Choosing Kazakhstan",
+    subtitle:
+      "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
+    advantagesTitle: "Strong Advantages",
+    advantages: [
+      "Annual fees as low as ₹3L — total 6-year investment ₹20–35 lakhs, with zero capitation or donation at any Kazakh medical university.",
+      "100% English-medium instruction at all NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission.",
+      "NMC and WHO recognition across 10+ universities — degrees qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
+      "12,000+ Indian students enrolled — well-established South Asian communities in Almaty and Astana with Indian food, festivals, and peer support.",
+      "Halal food widely available — Kazakhstan is a Muslim-majority country, making dietary adherence easy for students from diverse religious backgrounds.",
+      "Merit-based admission — no donation, no management quota, no seat cap. Every eligible student has a fair shot.",
+      "Strong career outcomes — approximately 60% of Kazakh graduates have historically passed FMGE/NExT with structured preparation.",
+    ],
+    challengesTitle: "Genuine Challenges",
+    challenges: [
+      "Winters in Astana can drop to -25°C — amongst the coldest capital cities on Earth. Almaty is milder but still cold by South Asian standards. Thermal wear and heating bills are real costs.",
+      "Russian and/or Kazakh language required for clinical patient interaction from Year 3. Dedicated language classes start from Year 1, but require consistent effort.",
+      "NExT / FMGE preparation requires disciplined self-study alongside coursework. Strong clinical training at Kazakh hospitals is an advantage, but proactive preparation is essential.",
+      "Currency exchange risk — fees are often quoted in USD; families should plan for exchange rate movements across the 6-year duration.",
+      "Cultural adjustment is greater than for Georgia or Russia — Kazakh customs and social norms differ more noticeably from South Asian contexts, requiring an open-minded attitude.",
+      "Smaller cities (Kokshetau, Semey) have fewer Indian community resources — students prioritising Indian food availability should choose Almaty or Astana.",
+    ],
+  };
 
 // --- Cost breakdown (CostBreakdownAbroad) ------------------------------------------
 
@@ -524,100 +539,101 @@ export type AbroadCostBreakdownContent = {
   summaryFootnote: string;
 };
 
-export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
-  eyebrow: "Financial planning",
-  titlePrimary: "MBBS in Kazakhstan",
-  titleAccent: "— Complete Fee Structure & Cost of Living",
-  subtitle:
-    "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2026–27.",
-  tuitionTableTitle: "University tuition (indicative)",
-  tuitionColAnnual: "Annual Tuition",
-  tuitionColSixYear: "6-Year Total",
-  tuitionRows: [
-    {
-      university: "Kazakh National Medical University (KNMU)",
-      annualTuition: "~₹3.5–5L",
-      sixYearTotal: "~₹22–32L",
-    },
-    {
-      university: "Astana Medical University",
-      annualTuition: "~₹3.5–5L",
-      sixYearTotal: "~₹22–32L",
-    },
-    {
-      university: "Karaganda State Medical University",
-      annualTuition: "~₹2.5–4L",
-      sixYearTotal: "~₹18–28L",
-    },
-    {
-      university: "South Kazakhstan Medical Academy",
-      annualTuition: "~₹2.5–4L",
-      sixYearTotal: "~₹18–28L",
-    },
-    {
-      university: "Kazakh-Russian Medical University",
-      annualTuition: "~₹3.5–5L",
-      sixYearTotal: "~₹22–32L",
-    },
-  ],
-  livingTableTitle: "Annual expense breakdown (non-tuition)",
-  livingColMonthly: "Monthly (est.)",
-  livingColAnnual: "Annual",
-  livingRows: [
-    {
-      item: "University hostel",
-      monthly: "~₹8,000–18,000",
-      annual: "₹1L–2.1L",
-    },
-    {
-      item: "Food / mess",
-      monthly: "~₹7,000–12,000",
-      annual: "₹85K–1.45L",
-    },
-    {
-      item: "Health insurance",
-      monthly: "~₹600–1,000",
-      annual: "₹7K–12K",
-    },
-    {
-      item: "Visa / registration",
-      monthly: "~₹500–1,200",
-      annual: "₹6K–15K",
-    },
-    {
-      item: "Personal expenses",
-      monthly: "~₹5,000–9,000",
-      annual: "₹60K–1.1L",
-    },
-  ],
-  summaryCardTitle: "Total 6-year investment",
-  summaryLines: [
-    {
-      label: "Typical annual all-in (tuition + living heads)",
-      value: "~₹5L–8.85L (indicative)",
-    },
-    {
-      label: "Nepal (NPR, using ₹ × ~1.6)",
-      value: "~NPR 32L–56L total (indicative)",
-    },
-    {
-      label: "Bangladesh (BDT, using ₹ × ~1.35)",
-      value: "~BDT 27L–47L total (indicative)",
-    },
-    {
-      label: "vs Indian private MBBS (incl. capitation & donation)",
-      value: "₹80L – ₹1.2 Crore",
-    },
-    {
-      label: "Kazakhstan advantage",
-      value: "zero capitation · zero donation",
-    },
-  ],
-  summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
-  summaryTotalValue: "₹20–35L",
-  summaryFootnote:
-    "Including all 6 years of tuition, hostel, food, insurance, visa, personal expenses, and one-time setup costs. Zero capitation. Zero donation. * One-time: flight ₹35–55K, visa processing, apostille, initial setup. Exchange rates are indicative for 2026–27.",
-};
+export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent =
+  {
+    eyebrow: "Financial planning",
+    titlePrimary: "MBBS in Kazakhstan",
+    titleAccent: "— Complete Fee Structure & Cost of Living",
+    subtitle:
+      "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2026–27.",
+    tuitionTableTitle: "University tuition (indicative)",
+    tuitionColAnnual: "Annual Tuition",
+    tuitionColSixYear: "6-Year Total",
+    tuitionRows: [
+      {
+        university: "Kazakh National Medical University (KNMU)",
+        annualTuition: "~₹3.5–5L",
+        sixYearTotal: "~₹22–32L",
+      },
+      {
+        university: "Astana Medical University",
+        annualTuition: "~₹3.5–5L",
+        sixYearTotal: "~₹22–32L",
+      },
+      {
+        university: "Karaganda State Medical University",
+        annualTuition: "~₹2.5–4L",
+        sixYearTotal: "~₹18–28L",
+      },
+      {
+        university: "South Kazakhstan Medical Academy",
+        annualTuition: "~₹2.5–4L",
+        sixYearTotal: "~₹18–28L",
+      },
+      {
+        university: "Kazakh-Russian Medical University",
+        annualTuition: "~₹3.5–5L",
+        sixYearTotal: "~₹22–32L",
+      },
+    ],
+    livingTableTitle: "Annual expense breakdown (non-tuition)",
+    livingColMonthly: "Monthly (est.)",
+    livingColAnnual: "Annual",
+    livingRows: [
+      {
+        item: "University hostel",
+        monthly: "~₹8,000–18,000",
+        annual: "₹1L–2.1L",
+      },
+      {
+        item: "Food / mess",
+        monthly: "~₹7,000–12,000",
+        annual: "₹85K–1.45L",
+      },
+      {
+        item: "Health insurance",
+        monthly: "~₹600–1,000",
+        annual: "₹7K–12K",
+      },
+      {
+        item: "Visa / registration",
+        monthly: "~₹500–1,200",
+        annual: "₹6K–15K",
+      },
+      {
+        item: "Personal expenses",
+        monthly: "~₹5,000–9,000",
+        annual: "₹60K–1.1L",
+      },
+    ],
+    summaryCardTitle: "Total 6-year investment",
+    summaryLines: [
+      {
+        label: "Typical annual all-in (tuition + living heads)",
+        value: "~₹5L–8.85L (indicative)",
+      },
+      {
+        label: "Nepal (NPR, using ₹ × ~1.6)",
+        value: "~NPR 32L–56L total (indicative)",
+      },
+      {
+        label: "Bangladesh (BDT, using ₹ × ~1.35)",
+        value: "~BDT 27L–47L total (indicative)",
+      },
+      {
+        label: "vs Indian private MBBS (incl. capitation & donation)",
+        value: "₹80L – ₹1.2 Crore",
+      },
+      {
+        label: "Kazakhstan advantage",
+        value: "zero capitation · zero donation",
+      },
+    ],
+    summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
+    summaryTotalValue: "₹20–35L",
+    summaryFootnote:
+      "Including all 6 years of tuition, hostel, food, insurance, visa, personal expenses, and one-time setup costs. Zero capitation. Zero donation. * One-time: flight ₹35–55K, visa processing, apostille, initial setup. Exchange rates are indicative for 2026–27.",
+  };
 
 // --- Intake periods (IntakePeriodAbroad) ------------------------------------------
 
@@ -693,51 +709,52 @@ export type AbroadTeachingMethodologyContent = {
   items: AbroadTeachingMethodologyItem[];
 };
 
-export const kazakhstanAbroadTeachingMethodologyContent: AbroadTeachingMethodologyContent = {
-  eyebrow: "How You Learn",
-  titlePrimary: "Teaching Methodology & Practical Training at",
-  titleAccent: "Kazakh Universities",
-  intro:
-    "Kazakh medical universities follow a structured 6-year curriculum governed by the Kazakhstan Ministry of Healthcare and the Ministry of Education and Science, with all NMC-listed institutions aligned to Schedule 1 requirements of the NMC Gazette. Phases: Years 1–2 pre-clinical (foundation biomedical sciences); Years 3–4 para-clinical (disease mechanisms & pharmacology); Years 5–6 clinical (full hospital rotations including Surgery, Internal Medicine, OBG, Paediatrics, Psychiatry & more).",
-  items: [
-    {
-      icon: "📖",
-      title: "Lecture & Seminar-Based Instruction",
-      description:
-        "Core theoretical subjects taught in English by experienced faculty across structured semesters. Seminars encourage active participation and analytical thinking from Year 1.",
-    },
-    {
-      icon: "🔬",
-      title: "Laboratory & Practical Sessions",
-      description:
-        "Dissection labs, histology microscopes, biochemistry practicals, and microbiology lab work from Year 1. Simulation centres at major universities use virtual anatomy tools and procedural trainers.",
-    },
-    {
-      icon: "🏥",
-      title: "Hospital Clinical Rotations from Year 3",
-      description:
-        "Supervised rotations at university-affiliated multi-speciality hospitals. High patient volumes in Kazakh hospitals provide diverse disease exposure, building diagnostic confidence.",
-    },
-    {
-      icon: "🗣️",
-      title: "Russian / Kazakh Language from Year 1",
-      description:
-        "Language training is compulsory, progressive, and structured — designed to reach basic conversational clinical proficiency by Year 3, exactly as NMC's abroad-MBBS guidelines require.",
-    },
-    {
-      icon: "💻",
-      title: "Digital Learning & Simulation",
-      description:
-        "Leading Kazakh medical universities integrate digital libraries, online clinical case platforms, and simulation training to supplement in-person hospital exposure.",
-    },
-    {
-      icon: "📝",
-      title: "Examination Formats",
-      description:
-        "Written exams, oral vivas, OSCE-style clinical assessments, and practical competency evaluations — all conducted in English throughout the 6-year program.",
-    },
-  ],
-};
+export const kazakhstanAbroadTeachingMethodologyContent: AbroadTeachingMethodologyContent =
+  {
+    eyebrow: "How You Learn",
+    titlePrimary: "Teaching Methodology & Practical Training at",
+    titleAccent: "Kazakh Universities",
+    intro:
+      "Kazakh medical universities follow a structured 6-year curriculum governed by the Kazakhstan Ministry of Healthcare and the Ministry of Education and Science, with all NMC-listed institutions aligned to Schedule 1 requirements of the NMC Gazette. Phases: Years 1–2 pre-clinical (foundation biomedical sciences); Years 3–4 para-clinical (disease mechanisms & pharmacology); Years 5–6 clinical (full hospital rotations including Surgery, Internal Medicine, OBG, Paediatrics, Psychiatry & more).",
+    items: [
+      {
+        icon: "📖",
+        title: "Lecture & Seminar-Based Instruction",
+        description:
+          "Core theoretical subjects taught in English by experienced faculty across structured semesters. Seminars encourage active participation and analytical thinking from Year 1.",
+      },
+      {
+        icon: "🔬",
+        title: "Laboratory & Practical Sessions",
+        description:
+          "Dissection labs, histology microscopes, biochemistry practicals, and microbiology lab work from Year 1. Simulation centres at major universities use virtual anatomy tools and procedural trainers.",
+      },
+      {
+        icon: "🏥",
+        title: "Hospital Clinical Rotations from Year 3",
+        description:
+          "Supervised rotations at university-affiliated multi-speciality hospitals. High patient volumes in Kazakh hospitals provide diverse disease exposure, building diagnostic confidence.",
+      },
+      {
+        icon: "🗣️",
+        title: "Russian / Kazakh Language from Year 1",
+        description:
+          "Language training is compulsory, progressive, and structured — designed to reach basic conversational clinical proficiency by Year 3, exactly as NMC's abroad-MBBS guidelines require.",
+      },
+      {
+        icon: "💻",
+        title: "Digital Learning & Simulation",
+        description:
+          "Leading Kazakh medical universities integrate digital libraries, online clinical case platforms, and simulation training to supplement in-person hospital exposure.",
+      },
+      {
+        icon: "📝",
+        title: "Examination Formats",
+        description:
+          "Written exams, oral vivas, OSCE-style clinical assessments, and practical competency evaluations — all conducted in English throughout the 6-year program.",
+      },
+    ],
+  };
 
 // --- MBBS syllabus (MbbsSylabusAbroad) ---------------------------------------------
 
@@ -901,120 +918,128 @@ export type AbroadCompleteComparisonContent = {
   rows: AbroadComparisonTableRow[];
 };
 
-export const kazakhstanAbroadCompleteComparisonContent: AbroadCompleteComparisonContent = {
-  eyebrow: "Side by side",
-  titlePrimary: "MBBS in Kazakhstan vs MBBS in India",
-  titleAccent: "— 2026–27 Comparison",
-  subtitle:
-    "Data-structured comparison for students asking whether MBBS in Kazakhstan fits versus India — transparent, decision-friendly context; Bangladesh & Philippines columns for regional reference.",
-  blockHeading: "Kazakhstan · India — key parameters · Bangladesh & Philippines (reference)",
-  colParameter: "Parameter",
-  colFeatured: "🇰🇿 MBBS in Kazakhstan",
-  colIndiaGovt: "IN India (Govt. College)",
-  colIndiaPrivate: "IN India (Private College)",
-  colBangladesh: "🇧🇩 BD Bangladesh",
-  colPhilippines: "🇵🇭 PH Philippines",
-  rows: [
-    {
-      parameter: "Entrance Exam",
-      featured: "NEET qualifying score only — accessible (no separate Kazakh entrance beyond university screening).",
-      indiaGovt: "NEET-UG — very high AIR required for govt. seats",
-      indiaPrivate: "NEET + large donation / management quota payment",
-      bangladesh: "NEET qualifying score (NMC) + institutional screening",
-      philippines: "NEET qualifying score + school-specific tests / interview",
-    },
-    {
-      parameter: "Competition Level",
-      featured: "Low — merit-based, no quota",
-      indiaGovt: "Extreme — 23L+ aspirants for ~1.18L seats",
-      indiaPrivate: "Moderate rank + high payment capacity",
-      bangladesh: "Moderate — merit + NEET pathway for Indians",
-      philippines: "Moderate — programme & city dependent",
-    },
-    {
-      parameter: "Total 6-Year Cost",
-      featured: "₹20–35L (all-in, indicative)",
-      indiaGovt: "₹5–15L (govt. subsidised)",
-      indiaPrivate: "₹80L–₹1.2Cr (+ capitation)",
-      bangladesh: "₹15–30 Lakhs (typical all-in)",
-      philippines: "₹20–40 Lakhs (typical all-in)",
-    },
-    {
-      parameter: "Capitation / Donation",
-      featured: "Zero. Never.",
-      indiaGovt: "None (govt. merit seat)",
-      indiaPrivate: "₹20L–₹1Cr common",
-      bangladesh: "None (typical NMC-listed route)",
-      philippines: "None (typical pathway)",
-      isDonationRow: true,
-    },
-    {
-      parameter: "Course Duration",
-      featured: "6 years (5 academic + 1 internship in Kazakhstan, per university structure)",
-      indiaGovt: "5.5 years (4.5 + 1 CRRI in India)",
-      indiaPrivate: "5.5 years",
-      bangladesh: "5 years + 1-year internship (typical)",
-      philippines: "4 yrs pre-med + 4 yrs MD + internship (typical)",
-    },
-    {
-      parameter: "Medium of Instruction",
-      featured: "English (full programme); Russian/Kazakh taught for clinical communication",
-      indiaGovt: "English + regional languages",
-      indiaPrivate: "English (majority of colleges)",
-      bangladesh: "Bengali + English (programme-dependent)",
-      philippines: "English (majority of programmes)",
-    },
-    {
-      parameter: "Seat Availability",
-      featured: "10+ universities, flexible intake",
-      indiaGovt: "Severely limited govt. seats",
-      indiaPrivate: "Limited + donation-dependent",
-      bangladesh: "~8–10 NMC-listed institutions; widely available",
-      philippines: "~8–10 recognised options; city-limited in places",
-    },
-    {
-      parameter: "Reservation / Quota",
-      featured: "None — merit only",
-      indiaGovt: "All India + state / category quotas",
-      indiaPrivate: "Management / NRI quota common",
-      bangladesh: "Institution-specific intake bands",
-      philippines: "Foreign-student quotas vary by school",
-    },
-    {
-      parameter: "Global Recognition",
-      featured: "WHO · NMC · FAIMER · ECFMG · UNESCO (pathway-dependent)",
-      indiaGovt: "NMC India",
-      indiaPrivate: "NMC India",
-      bangladesh: "WHO, NMC, BMDC alignment for Indian students",
-      philippines: "WHO, NMC; USMLE pathway widely advertised",
-    },
-    {
-      parameter: "Post-Grad Licensing (India)",
-      featured: "NExT (after Kazakhstan course + internship steps per NMC rules at your time of admission)",
-      indiaGovt: "NExT",
-      indiaPrivate: "NExT",
-      bangladesh: "FMGE / NExT after BMDC registration pathway",
-      philippines: "FMGE / NExT; strong USMLE prep at many schools",
-    },
-    {
-      parameter: "International Career",
-      featured: "PLAB (UK) · USMLE (USA) · Gulf · Germany",
-      indiaGovt: "Primarily India",
-      indiaPrivate: "Primarily India",
-      bangladesh: "Gulf · UK PLAB (case-by-case) · home licensing",
-      philippines: "USMLE culture strong · Gulf · UK routes",
-    },
-    {
-      parameter: "Food & Cultural Fit",
-      featured: "Halal food widely available; Indian food in Almaty/Astana; cultural gap requires adjustment",
-      indiaGovt: "Home environment",
-      indiaPrivate: "Home environment",
-      bangladesh: "Cultural proximity; home licensing rules",
-      philippines: "English-native campus culture",
-      isSummaryRow: true,
-    },
-  ],
-};
+export const kazakhstanAbroadCompleteComparisonContent: AbroadCompleteComparisonContent =
+  {
+    eyebrow: "Side by side",
+    titlePrimary: "MBBS in Kazakhstan vs MBBS in India",
+    titleAccent: "— 2026–27 Comparison",
+    subtitle:
+      "Data-structured comparison for students asking whether MBBS in Kazakhstan fits versus India — transparent, decision-friendly context; Bangladesh & Philippines columns for regional reference.",
+    blockHeading:
+      "Kazakhstan · India — key parameters · Bangladesh & Philippines (reference)",
+    colParameter: "Parameter",
+    colFeatured: "🇰🇿 MBBS in Kazakhstan",
+    colIndiaGovt: "IN India (Govt. College)",
+    colIndiaPrivate: "IN India (Private College)",
+    colBangladesh: "🇧🇩 BD Bangladesh",
+    colPhilippines: "🇵🇭 PH Philippines",
+    rows: [
+      {
+        parameter: "Entrance Exam",
+        featured:
+          "NEET qualifying score only — accessible (no separate Kazakh entrance beyond university screening).",
+        indiaGovt: "NEET-UG — very high AIR required for govt. seats",
+        indiaPrivate: "NEET + large donation / management quota payment",
+        bangladesh: "NEET qualifying score (NMC) + institutional screening",
+        philippines:
+          "NEET qualifying score + school-specific tests / interview",
+      },
+      {
+        parameter: "Competition Level",
+        featured: "Low — merit-based, no quota",
+        indiaGovt: "Extreme — 23L+ aspirants for ~1.18L seats",
+        indiaPrivate: "Moderate rank + high payment capacity",
+        bangladesh: "Moderate — merit + NEET pathway for Indians",
+        philippines: "Moderate — programme & city dependent",
+      },
+      {
+        parameter: "Total 6-Year Cost",
+        featured: "₹20–35L (all-in, indicative)",
+        indiaGovt: "₹5–15L (govt. subsidised)",
+        indiaPrivate: "₹80L–₹1.2Cr (+ capitation)",
+        bangladesh: "₹15–30 Lakhs (typical all-in)",
+        philippines: "₹20–40 Lakhs (typical all-in)",
+      },
+      {
+        parameter: "Capitation / Donation",
+        featured: "Zero. Never.",
+        indiaGovt: "None (govt. merit seat)",
+        indiaPrivate: "₹20L–₹1Cr common",
+        bangladesh: "None (typical NMC-listed route)",
+        philippines: "None (typical pathway)",
+        isDonationRow: true,
+      },
+      {
+        parameter: "Course Duration",
+        featured:
+          "6 years (5 academic + 1 internship in Kazakhstan, per university structure)",
+        indiaGovt: "5.5 years (4.5 + 1 CRRI in India)",
+        indiaPrivate: "5.5 years",
+        bangladesh: "5 years + 1-year internship (typical)",
+        philippines: "4 yrs pre-med + 4 yrs MD + internship (typical)",
+      },
+      {
+        parameter: "Medium of Instruction",
+        featured:
+          "English (full programme); Russian/Kazakh taught for clinical communication",
+        indiaGovt: "English + regional languages",
+        indiaPrivate: "English (majority of colleges)",
+        bangladesh: "Bengali + English (programme-dependent)",
+        philippines: "English (majority of programmes)",
+      },
+      {
+        parameter: "Seat Availability",
+        featured: "10+ universities, flexible intake",
+        indiaGovt: "Severely limited govt. seats",
+        indiaPrivate: "Limited + donation-dependent",
+        bangladesh: "~8–10 NMC-listed institutions; widely available",
+        philippines: "~8–10 recognised options; city-limited in places",
+      },
+      {
+        parameter: "Reservation / Quota",
+        featured: "None — merit only",
+        indiaGovt: "All India + state / category quotas",
+        indiaPrivate: "Management / NRI quota common",
+        bangladesh: "Institution-specific intake bands",
+        philippines: "Foreign-student quotas vary by school",
+      },
+      {
+        parameter: "Global Recognition",
+        featured: "WHO · NMC · FAIMER · ECFMG · UNESCO (pathway-dependent)",
+        indiaGovt: "NMC India",
+        indiaPrivate: "NMC India",
+        bangladesh: "WHO, NMC, BMDC alignment for Indian students",
+        philippines: "WHO, NMC; USMLE pathway widely advertised",
+      },
+      {
+        parameter: "Post-Grad Licensing (India)",
+        featured:
+          "NExT (after Kazakhstan course + internship steps per NMC rules at your time of admission)",
+        indiaGovt: "NExT",
+        indiaPrivate: "NExT",
+        bangladesh: "FMGE / NExT after BMDC registration pathway",
+        philippines: "FMGE / NExT; strong USMLE prep at many schools",
+      },
+      {
+        parameter: "International Career",
+        featured: "PLAB (UK) · USMLE (USA) · Gulf · Germany",
+        indiaGovt: "Primarily India",
+        indiaPrivate: "Primarily India",
+        bangladesh: "Gulf · UK PLAB (case-by-case) · home licensing",
+        philippines: "USMLE culture strong · Gulf · UK routes",
+      },
+      {
+        parameter: "Food & Cultural Fit",
+        featured:
+          "Halal food widely available; Indian food in Almaty/Astana; cultural gap requires adjustment",
+        indiaGovt: "Home environment",
+        indiaPrivate: "Home environment",
+        bangladesh: "Cultural proximity; home licensing rules",
+        philippines: "English-native campus culture",
+        isSummaryRow: true,
+      },
+    ],
+  };
 
 // --- Our stories / testimonials (OurStoriesAbroad) ---------------------------------
 
@@ -1121,48 +1146,52 @@ export type AbroadAccommodationClimateContent = {
   climate: AbroadAccommodationClimateClimateCard;
 };
 
-export const kazakhstanAbroadAccommodationClimateContent: AbroadAccommodationClimateContent = {
-  eyebrow: "Campus life",
-  titlePrimary: "Hostel Accommodation & Climate",
-  titleAccent: "in Kazakhstan",
-  hostel: {
-    title: "Hostel Accommodation",
-    bullets: [
-      "Most NMC-listed Kazakh universities provide on-campus or university-managed hostels for international students at annual costs of $600–$1,200 (₹52K–₹1.05L/year).",
-      "Rooms are typically double or triple occupancy with study desks, wardrobes, and shared washrooms. Central heating is standard and essential in winter.",
-      "University mess facilities are available on campus. Almaty and Astana have multiple Indian restaurants and Indian grocery stores catering to the South Asian community.",
-      "Kazakhstan is a Muslim-majority country — halal food is available everywhere, benefiting Muslim students from Bangladesh and other communities.",
-      "From Year 3 onwards, many students move to private apartments. Shared apartments in Almaty cost approximately $200–$350/month per person (₹17K–₹30K).",
-      "Taksheela coordinates verified hostel options and provides city-specific accommodation guidance before your departure.",
-    ],
-  },
-  climate: {
-    title: "Climate Across Key University Cities",
-    intro:
-      "Continental climate — Almaty offers milder winters than Astana; pack for real cold if you head north.",
-    rows: [
-      {
-        city: "Almaty Spring (Apr–Jun)",
-        ranges: "10–25°C — Pleasant, ideal for settling in. Admission season.",
-      },
-      {
-        city: "Almaty Summer (Jul–Sep)",
-        ranges: "25–35°C — Warm and sunny. Great for outdoor exploration.",
-      },
-      {
-        city: "Almaty Winter (Dec–Feb)",
-        ranges: "-5 to -15°C — Cold but manageable. Thermals + jacket essential.",
-      },
-      {
-        city: "Astana Winter (Dec–Feb)",
-        ranges: "-15 to -25°C — Very cold — one of the world's coldest capitals.",
-      },
-    ],
-    tipLabel: "Taksheela City Tip",
-    tipBody:
-      "If extreme cold is a concern, choose Almaty over Astana — winters are significantly milder and the city is more cosmopolitan. Both have strong Indian communities. Our pre-departure checklist covers clothing, heating, and acclimatisation advice in detail.",
-  },
-};
+export const kazakhstanAbroadAccommodationClimateContent: AbroadAccommodationClimateContent =
+  {
+    eyebrow: "Campus life",
+    titlePrimary: "Hostel Accommodation & Climate",
+    titleAccent: "in Kazakhstan",
+    hostel: {
+      title: "Hostel Accommodation",
+      bullets: [
+        "Most NMC-listed Kazakh universities provide on-campus or university-managed hostels for international students at annual costs of $600–$1,200 (₹52K–₹1.05L/year).",
+        "Rooms are typically double or triple occupancy with study desks, wardrobes, and shared washrooms. Central heating is standard and essential in winter.",
+        "University mess facilities are available on campus. Almaty and Astana have multiple Indian restaurants and Indian grocery stores catering to the South Asian community.",
+        "Kazakhstan is a Muslim-majority country — halal food is available everywhere, benefiting Muslim students from Bangladesh and other communities.",
+        "From Year 3 onwards, many students move to private apartments. Shared apartments in Almaty cost approximately $200–$350/month per person (₹17K–₹30K).",
+        "Taksheela coordinates verified hostel options and provides city-specific accommodation guidance before your departure.",
+      ],
+    },
+    climate: {
+      title: "Climate Across Key University Cities",
+      intro:
+        "Continental climate — Almaty offers milder winters than Astana; pack for real cold if you head north.",
+      rows: [
+        {
+          city: "Almaty Spring (Apr–Jun)",
+          ranges:
+            "10–25°C — Pleasant, ideal for settling in. Admission season.",
+        },
+        {
+          city: "Almaty Summer (Jul–Sep)",
+          ranges: "25–35°C — Warm and sunny. Great for outdoor exploration.",
+        },
+        {
+          city: "Almaty Winter (Dec–Feb)",
+          ranges:
+            "-5 to -15°C — Cold but manageable. Thermals + jacket essential.",
+        },
+        {
+          city: "Astana Winter (Dec–Feb)",
+          ranges:
+            "-15 to -25°C — Very cold — one of the world's coldest capitals.",
+        },
+      ],
+      tipLabel: "Taksheela City Tip",
+      tipBody:
+        "If extreme cold is a concern, choose Almaty over Astana — winters are significantly milder and the city is more cosmopolitan. Both have strong Indian communities. Our pre-departure checklist covers clothing, heating, and acclimatisation advice in detail.",
+    },
+  };
 
 // --- Key facts at a glance (KeyFactsAbroad) ---------------------------------------
 
@@ -1189,24 +1218,68 @@ export const kazakhstanAbroadKeyFactsContent: AbroadKeyFactsContent = {
   titlePrimary: "MBBS in Kazakhstan — Quick Facts",
   titleAccent: "2026–27",
   items: [
-    { icon: "🎓", value: "MD / General Medicine (= MBBS)", label: "DEGREE AWARDED" },
-    { icon: "⏱️", value: "6 Years (5 academic + 1 internship)", label: "COURSE DURATION" },
+    {
+      icon: "🎓",
+      value: "MD / General Medicine (= MBBS)",
+      label: "DEGREE AWARDED",
+    },
+    {
+      icon: "⏱️",
+      value: "6 Years (5 academic + 1 internship)",
+      label: "COURSE DURATION",
+    },
     { icon: "💰", value: "₹3L – ₹5L / year", label: "ANNUAL TUITION" },
     { icon: "🏠", value: "₹1.2L – ₹2.5L / year", label: "ANNUAL LIVING COST" },
-    { icon: "🗓️", value: "September (primary) · February (secondary)", label: "INTAKES" },
-    { icon: "🧾", value: "50% PCB + NEET qualified, age 17+", label: "BASIC ELIGIBILITY" },
-    { icon: "🌐", value: "English (primary); Russian/Kazakh taught", label: "MEDIUM OF INSTRUCTION" },
-    { icon: "✅", value: "WHO · NMC · FAIMER · ECFMG · UNESCO", label: "RECOGNISED BY" },
-    { icon: "👩‍🎓", value: "12,000+ enrolled", label: "INDIAN STUDENTS (2024–25)" },
-    { icon: "🏛️", value: "10+ institutions", label: "NMC-APPROVED UNIVERSITIES" },
-    { icon: "🚫", value: "Zero. Completely merit-based.", label: "DONATION / CAPITATION" },
-    { icon: "📝", value: "Not required for admission", label: "IELTS / TOEFL REQUIRED" },
+    {
+      icon: "🗓️",
+      value: "September (primary) · February (secondary)",
+      label: "INTAKES",
+    },
+    {
+      icon: "🧾",
+      value: "50% PCB + NEET qualified, age 17+",
+      label: "BASIC ELIGIBILITY",
+    },
+    {
+      icon: "🌐",
+      value: "English (primary); Russian/Kazakh taught",
+      label: "MEDIUM OF INSTRUCTION",
+    },
+    {
+      icon: "✅",
+      value: "WHO · NMC · FAIMER · ECFMG · UNESCO",
+      label: "RECOGNISED BY",
+    },
+    {
+      icon: "👩‍🎓",
+      value: "12,000+ enrolled",
+      label: "INDIAN STUDENTS (2024–25)",
+    },
+    {
+      icon: "🏛️",
+      value: "10+ institutions",
+      label: "NMC-APPROVED UNIVERSITIES",
+    },
+    {
+      icon: "🚫",
+      value: "Zero. Completely merit-based.",
+      label: "DONATION / CAPITATION",
+    },
+    {
+      icon: "📝",
+      value: "Not required for admission",
+      label: "IELTS / TOEFL REQUIRED",
+    },
   ],
 };
 
 // --- Scholarships (ScholarshipsAbroad) --------------------------------------------
 
-export type AbroadScholarshipIconKey = "building" | "graduation" | "books" | "globe";
+export type AbroadScholarshipIconKey =
+  | "building"
+  | "graduation"
+  | "books"
+  | "globe";
 
 export type AbroadScholarshipCard = {
   iconKey: AbroadScholarshipIconKey;
@@ -1302,102 +1375,106 @@ export type AbroadEducationLoanContent = {
   support: AbroadEducationLoanSupportCard;
 };
 
-export const kazakhstanAbroadEducationLoanContent: AbroadEducationLoanContent = {
-  eyebrow: "Financing your MBBS",
-  title: "Education Loans for MBBS in Kazakhstan",
-  intro:
-    "Financing a Kazakh MBBS is well-supported by Indian banks and NBFCs. Taksheela helps you build a lender-ready document file for faster loan processing.",
-  nationalised: {
-    title: "Nationalised Banks (India)",
-    description: "Best for lower interest rates; collateral often required above ₹7.5L",
-    bullets: [
-      "SBI Global Ed-Vantage — up to ₹1.5 crore (eligibility-based)",
-      "Bank of Baroda Baroda Scholar Scheme for study abroad",
-      "Union Bank of India overseas education loan",
-      "Punjab National Bank Saraswati scheme",
-      "Interest: 9.5–11% p.a. (floating, bank-specific)",
-      "Moratorium: course period + 6–12 months after completion",
-    ],
-  },
-  privateNbfc: {
-    title: "Private Banks & NBFCs",
-    description: "Faster processing; flexible collateral structures available",
-    bullets: [
-      "HDFC Credila — specialist study abroad education loans",
-      "Avanse Financial Services — MBBS abroad coverage",
-      "Auxilo Finserve — flexible MBBS abroad loan products",
-      "InCred Finance — flexible co-borrower structures",
-      "Up to ₹40–60L possible without collateral (profile-based)",
-      "Interest: 10.5–14% p.a. (NBFC rates vary)",
-    ],
-  },
-  support: {
-    title: "Taksheela Loan File Support",
-    description:
-      "We prepare your complete lender-ready document set — provisional admission letter, detailed fee schedule, course duration letter, university NMC verification, and co-borrower KYC proofs — so your loan application moves faster with fewer rejections and back-and-forth queries.",
-  },
-};
+export const kazakhstanAbroadEducationLoanContent: AbroadEducationLoanContent =
+  {
+    eyebrow: "Financing your MBBS",
+    title: "Education Loans for MBBS in Kazakhstan",
+    intro:
+      "Financing a Kazakh MBBS is well-supported by Indian banks and NBFCs. Taksheela helps you build a lender-ready document file for faster loan processing.",
+    nationalised: {
+      title: "Nationalised Banks (India)",
+      description:
+        "Best for lower interest rates; collateral often required above ₹7.5L",
+      bullets: [
+        "SBI Global Ed-Vantage — up to ₹1.5 crore (eligibility-based)",
+        "Bank of Baroda Baroda Scholar Scheme for study abroad",
+        "Union Bank of India overseas education loan",
+        "Punjab National Bank Saraswati scheme",
+        "Interest: 9.5–11% p.a. (floating, bank-specific)",
+        "Moratorium: course period + 6–12 months after completion",
+      ],
+    },
+    privateNbfc: {
+      title: "Private Banks & NBFCs",
+      description:
+        "Faster processing; flexible collateral structures available",
+      bullets: [
+        "HDFC Credila — specialist study abroad education loans",
+        "Avanse Financial Services — MBBS abroad coverage",
+        "Auxilo Finserve — flexible MBBS abroad loan products",
+        "InCred Finance — flexible co-borrower structures",
+        "Up to ₹40–60L possible without collateral (profile-based)",
+        "Interest: 10.5–14% p.a. (NBFC rates vary)",
+      ],
+    },
+    support: {
+      title: "Taksheela Loan File Support",
+      description:
+        "We prepare your complete lender-ready document set — provisional admission letter, detailed fee schedule, course duration letter, university NMC verification, and co-borrower KYC proofs — so your loan application moves faster with fewer rejections and back-and-forth queries.",
+    },
+  };
 
 // --- Career opportunities after MBBS (TeachingMethodologyAbroad — same content shape) ---
 
 /** Same shape as `AbroadTeachingMethodologyContent` so one component can render both sections. */
-export const kazakhstanAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyContent = {
-  eyebrow: "After graduation",
-  titlePrimary: "Career Opportunities After MBBS in",
-  titleAccent: "Kazakhstan",
-  intro:
-    "An NMC-compliant Kazakh MD degree, combined with NExT clearance, opens genuine career pathways in India and across the world.",
-  items: [
-    {
-      icon: "🏥",
-      title: "Practice in India",
-      description:
-        "Clear NExT, complete 12-month India internship, register with State Medical Council — and practice anywhere in India as a licensed physician.",
-    },
-    {
-      icon: "🎓",
-      title: "MD/MS Postgraduate",
-      description:
-        "Appear for NEET-PG (NExT Step 2) and pursue postgraduate specialisation in surgery, medicine, OBG, paediatrics, radiology, and more.",
-    },
-    {
-      icon: "🇬🇧",
-      title: "Practice in UK (PLAB)",
-      description:
-        "Clear PLAB 1 and PLAB 2 for GMC registration and employment in the NHS — one of the world's most sought-after medical career pathways.",
-    },
-    {
-      icon: "🇺🇸",
-      title: "Practice in USA (USMLE)",
-      description:
-        "Pass USMLE Steps 1 and 2CK for US residency applications through the ERAS/NRMP match system. ECFMG listing of Kazakh universities supports eligibility.",
-    },
-    {
-      icon: "🌍",
-      title: "Gulf Countries",
-      description:
-        "DHA (Dubai), HAAD (Abu Dhabi), and SCHS (Saudi Arabia) licensing exams open to WHO-recognised graduates when credential rules are met.",
-    },
-    {
-      icon: "🇩🇪",
-      title: "Germany & Europe",
-      description:
-        "German Approbation exam + B2/C1 German language proficiency opens medical registration in Germany and select EU countries.",
-    },
-    {
-      icon: "🔬",
-      title: "Medical Research",
-      description:
-        "Kazakh universities' UNESCO and FAIMER recognition opens doors to PhD programs and research fellowships in Europe, India, and internationally.",
-    },
-    {
-      icon: "🏢",
-      title: "Healthcare Administration",
-      description:
-        "Combine MBBS with an MBA/MHA for careers in hospital management, healthcare policy, pharmaceutical management, and health tech.",
-    },
-  ],
-};
+export const kazakhstanAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyContent =
+  {
+    eyebrow: "After graduation",
+    titlePrimary: "Career Opportunities After MBBS in",
+    titleAccent: "Kazakhstan",
+    intro:
+      "An NMC-compliant Kazakh MD degree, combined with NExT clearance, opens genuine career pathways in India and across the world.",
+    items: [
+      {
+        icon: "🏥",
+        title: "Practice in India",
+        description:
+          "Clear NExT, complete 12-month India internship, register with State Medical Council — and practice anywhere in India as a licensed physician.",
+      },
+      {
+        icon: "🎓",
+        title: "MD/MS Postgraduate",
+        description:
+          "Appear for NEET-PG (NExT Step 2) and pursue postgraduate specialisation in surgery, medicine, OBG, paediatrics, radiology, and more.",
+      },
+      {
+        icon: "🇬🇧",
+        title: "Practice in UK (PLAB)",
+        description:
+          "Clear PLAB 1 and PLAB 2 for GMC registration and employment in the NHS — one of the world's most sought-after medical career pathways.",
+      },
+      {
+        icon: "🇺🇸",
+        title: "Practice in USA (USMLE)",
+        description:
+          "Pass USMLE Steps 1 and 2CK for US residency applications through the ERAS/NRMP match system. ECFMG listing of Kazakh universities supports eligibility.",
+      },
+      {
+        icon: "🌍",
+        title: "Gulf Countries",
+        description:
+          "DHA (Dubai), HAAD (Abu Dhabi), and SCHS (Saudi Arabia) licensing exams open to WHO-recognised graduates when credential rules are met.",
+      },
+      {
+        icon: "🇩🇪",
+        title: "Germany & Europe",
+        description:
+          "German Approbation exam + B2/C1 German language proficiency opens medical registration in Germany and select EU countries.",
+      },
+      {
+        icon: "🔬",
+        title: "Medical Research",
+        description:
+          "Kazakh universities' UNESCO and FAIMER recognition opens doors to PhD programs and research fellowships in Europe, India, and internationally.",
+      },
+      {
+        icon: "🏢",
+        title: "Healthcare Administration",
+        description:
+          "Combine MBBS with an MBA/MHA for careers in hospital management, healthcare policy, pharmaceutical management, and health tech.",
+      },
+    ],
+  };
 
 // --- Why Choose Taksheela (WhyChooseTaksheelaAbroad) -------------------------------
 
@@ -1415,69 +1492,70 @@ export type AbroadWhyChooseTaksheelaContent = {
   items: AbroadWhyChooseTaksheelaItem[];
 };
 
-export const kazakhstanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheelaContent = {
-  eyebrow: "Your Kazakhstan MBBS Partner",
-  titlePrimary: "Why Choose Taksheela for",
-  titleAccent: "MBBS in Kazakhstan?",
-  subtitle:
-    "Not just a consultancy — your end-to-end medical career partner from NEET score to Kazakh MD degree and NExT preparation. Here is what makes Taksheela genuinely different.",
-  items: [
-    {
-      icon: "🎯",
-      title: "Kazakhstan-Specialist Counsellors",
-      description:
-        "Advisors who know Kazakhstan's university landscape deeply — city-wise cost differences (Almaty vs Astana vs Shymkent), NMC compliance, NExT readiness, and realistic winter preparation. Not generic abroad counselling.",
-    },
-    {
-      icon: "📊",
-      title: "Real-Time NMC Verification",
-      description:
-        "We cross-check every university against the NMC's current approved list before shortlisting — and share the official NMC document with you. You make decisions based on verified government data, not our word.",
-    },
-    {
-      icon: "🔍",
-      title: "Zero Commission Bias",
-      description:
-        "Our shortlisting is driven by NMC compliance, city suitability, fee transparency, hostel quality, and clinical training strength. Never by university commission. We show you the reasoning in writing.",
-    },
-    {
-      icon: "📋",
-      title: "Complete Document Management",
-      description:
-        "MEA apostille, Russian translation (where required), visa invitation coordination, and SOP preparation — structured checklists, zero missed steps, fewer rejections. We've placed hundreds of students in Kazakhstan.",
-    },
-    {
-      icon: "🛂",
-      title: "Visa & Travel Hand-Holding",
-      description:
-        "Full Kazakh student visa package — including medical tests, health insurance, SOP, and Embassy submission coordination. Pre-departure orientation covering forex, flights, winter packing, and SIM card setup.",
-    },
-    {
-      icon: "🤝",
-      title: "Local Teams in Almaty & Astana",
-      description:
-        "Taksheela's on-ground representatives in Kazakhstan provide airport pickup, hostel check-in, university registration, SIM setup, and cultural orientation — so your first week in Kazakhstan is smooth and reassuring.",
-    },
-    {
-      icon: "🇳🇵🇧🇩",
-      title: "Dedicated Nepal & Bangladesh Support",
-      description:
-        "Specialist counsellors who understand the unique visa, DGME/NMC-Nepal compliance, and licensing pathway requirements for Nepali and Bangladeshi students — not a copy-paste India process.",
-    },
-    {
-      icon: "💳",
-      title: "Education Loan File Preparation",
-      description:
-        "Complete lender-ready document file for SBI, Bank of Baroda, HDFC Credila, Avanse, and Auxilo — so your loan application moves faster and with fewer rejections.",
-    },
-    {
-      icon: "🧩",
-      title: "NExT Roadmap from Year 1",
-      description:
-        "Early orientation to NExT structure, study resources, and alumni connects — so your licensing preparation starts from Year 1, not in a panic during Year 5 or 6.",
-    },
-  ],
-};
+export const kazakhstanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheelaContent =
+  {
+    eyebrow: "Your Kazakhstan MBBS Partner",
+    titlePrimary: "Why Choose Taksheela for",
+    titleAccent: "MBBS in Kazakhstan?",
+    subtitle:
+      "Not just a consultancy — your end-to-end medical career partner from NEET score to Kazakh MD degree and NExT preparation. Here is what makes Taksheela genuinely different.",
+    items: [
+      {
+        icon: "🎯",
+        title: "Kazakhstan-Specialist Counsellors",
+        description:
+          "Advisors who know Kazakhstan's university landscape deeply — city-wise cost differences (Almaty vs Astana vs Shymkent), NMC compliance, NExT readiness, and realistic winter preparation. Not generic abroad counselling.",
+      },
+      {
+        icon: "📊",
+        title: "Real-Time NMC Verification",
+        description:
+          "We cross-check every university against the NMC's current approved list before shortlisting — and share the official NMC document with you. You make decisions based on verified government data, not our word.",
+      },
+      {
+        icon: "🔍",
+        title: "Zero Commission Bias",
+        description:
+          "Our shortlisting is driven by NMC compliance, city suitability, fee transparency, hostel quality, and clinical training strength. Never by university commission. We show you the reasoning in writing.",
+      },
+      {
+        icon: "📋",
+        title: "Complete Document Management",
+        description:
+          "MEA apostille, Russian translation (where required), visa invitation coordination, and SOP preparation — structured checklists, zero missed steps, fewer rejections. We've placed hundreds of students in Kazakhstan.",
+      },
+      {
+        icon: "🛂",
+        title: "Visa & Travel Hand-Holding",
+        description:
+          "Full Kazakh student visa package — including medical tests, health insurance, SOP, and Embassy submission coordination. Pre-departure orientation covering forex, flights, winter packing, and SIM card setup.",
+      },
+      {
+        icon: "🤝",
+        title: "Local Teams in Almaty & Astana",
+        description:
+          "Taksheela's on-ground representatives in Kazakhstan provide airport pickup, hostel check-in, university registration, SIM setup, and cultural orientation — so your first week in Kazakhstan is smooth and reassuring.",
+      },
+      {
+        icon: "🇳🇵🇧🇩",
+        title: "Dedicated Nepal & Bangladesh Support",
+        description:
+          "Specialist counsellors who understand the unique visa, DGME/NMC-Nepal compliance, and licensing pathway requirements for Nepali and Bangladeshi students — not a copy-paste India process.",
+      },
+      {
+        icon: "💳",
+        title: "Education Loan File Preparation",
+        description:
+          "Complete lender-ready document file for SBI, Bank of Baroda, HDFC Credila, Avanse, and Auxilo — so your loan application moves faster and with fewer rejections.",
+      },
+      {
+        icon: "🧩",
+        title: "NExT Roadmap from Year 1",
+        description:
+          "Early orientation to NExT structure, study resources, and alumni connects — so your licensing preparation starts from Year 1, not in a panic during Year 5 or 6.",
+      },
+    ],
+  };
 
 // --- Regulatory framework (RulesAndComplainsAbroad) -------------------------------
 
@@ -1504,58 +1582,62 @@ export type AbroadRegulatoryFrameworkContent = {
   officialLinks: AbroadRegulatoryOfficialLink[];
 };
 
-export const kazakhstanAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkContent = {
-  eyebrow: "Regulatory framework",
-  titlePrimary: "NMC Gazette Rules &",
-  titleAccent: "Kazakhstan Compliance",
-  subtitle:
-    "These six NMC Gazette rules determine whether your Kazakh MBBS degree qualifies you to practice medicine in India. All Taksheela-recommended Kazakh universities comply fully with all six when you verify current listings.",
-  rules: [
-    {
-      icon: "📅",
-      title: "Rule 1 — Minimum 54 Months Academic Study",
-      description:
-        "The programme must include at least 54 months of full-time academic study, excluding the 12-month internship. All Kazakh MD programs run for 5 academic years, fully satisfying this requirement — confirm your university’s exact structure vs NMC norms before enrolling.",
-    },
-    {
-      icon: "🏥",
-      title: "Rule 2 — 12-Month Mandatory Internship",
-      description:
-        "A compulsory 12-month clinical internship must be completed at the same university or its affiliated teaching hospital in Kazakhstan before returning to India, as per NMC rules applicable at your admission.",
-    },
-    {
-      icon: "🌐",
-      title: "Rule 3 — English as Primary Medium",
-      description:
-        "The full MBBS/MD course must be delivered in English. All 10+ NMC-listed Kazakh medical universities offer complete English-medium General Medicine programs at Taksheela-shortlisted options.",
-    },
-    {
-      icon: "🪪",
-      title: "Rule 4 — Valid Degree for Local Practice",
-      description:
-        "Graduates must receive a degree granting them the right to practise medicine in Kazakhstan. All recommended universities satisfy this — graduates can apply for Kazakh medical registration upon completion.",
-    },
-    {
-      icon: "📋",
-      title: "Rule 5 — NEET Qualification Mandatory",
-      description:
-        "All Indian students must have a valid NEET-UG qualifying score at the time of admission to any foreign medical university, as per NMC norms. NEET validity: 3 years from result date.",
-    },
-    {
-      icon: "✅",
-      title: "Rule 6 — WHO / WDOMS Listing",
-      description:
-        "The university must be listed in the World Directory of Medical Schools (WDOMS). All Taksheela-recommended Kazakh universities are confirmed WDOMS-listed and NMC-approved before shortlisting.",
-    },
-  ],
-  officialSourcesLabel: "Official Sources",
-  officialLinks: [
-    { label: "NMC India", href: "https://www.nmc.org.in" },
-    { label: "WHO Directory", href: "https://www.wdoms.org" },
-    { label: "Kazakhstan Ministry of Education (gov.kz)", href: "https://www.gov.kz" },
-    { label: "MEA India (Apostille)", href: "https://www.mea.gov.in" },
-  ],
-};
+export const kazakhstanAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkContent =
+  {
+    eyebrow: "Regulatory framework",
+    titlePrimary: "NMC Gazette Rules &",
+    titleAccent: "Kazakhstan Compliance",
+    subtitle:
+      "These six NMC Gazette rules determine whether your Kazakh MBBS degree qualifies you to practice medicine in India. All Taksheela-recommended Kazakh universities comply fully with all six when you verify current listings.",
+    rules: [
+      {
+        icon: "📅",
+        title: "Rule 1 — Minimum 54 Months Academic Study",
+        description:
+          "The programme must include at least 54 months of full-time academic study, excluding the 12-month internship. All Kazakh MD programs run for 5 academic years, fully satisfying this requirement — confirm your university’s exact structure vs NMC norms before enrolling.",
+      },
+      {
+        icon: "🏥",
+        title: "Rule 2 — 12-Month Mandatory Internship",
+        description:
+          "A compulsory 12-month clinical internship must be completed at the same university or its affiliated teaching hospital in Kazakhstan before returning to India, as per NMC rules applicable at your admission.",
+      },
+      {
+        icon: "🌐",
+        title: "Rule 3 — English as Primary Medium",
+        description:
+          "The full MBBS/MD course must be delivered in English. All 10+ NMC-listed Kazakh medical universities offer complete English-medium General Medicine programs at Taksheela-shortlisted options.",
+      },
+      {
+        icon: "🪪",
+        title: "Rule 4 — Valid Degree for Local Practice",
+        description:
+          "Graduates must receive a degree granting them the right to practise medicine in Kazakhstan. All recommended universities satisfy this — graduates can apply for Kazakh medical registration upon completion.",
+      },
+      {
+        icon: "📋",
+        title: "Rule 5 — NEET Qualification Mandatory",
+        description:
+          "All Indian students must have a valid NEET-UG qualifying score at the time of admission to any foreign medical university, as per NMC norms. NEET validity: 3 years from result date.",
+      },
+      {
+        icon: "✅",
+        title: "Rule 6 — WHO / WDOMS Listing",
+        description:
+          "The university must be listed in the World Directory of Medical Schools (WDOMS). All Taksheela-recommended Kazakh universities are confirmed WDOMS-listed and NMC-approved before shortlisting.",
+      },
+    ],
+    officialSourcesLabel: "Official Sources",
+    officialLinks: [
+      { label: "NMC India", href: "https://www.nmc.org.in" },
+      { label: "WHO Directory", href: "https://www.wdoms.org" },
+      {
+        label: "Kazakhstan Ministry of Education (gov.kz)",
+        href: "https://www.gov.kz",
+      },
+      { label: "MEA India (Apostille)", href: "https://www.mea.gov.in" },
+    ],
+  };
 
 // --- Top 10 universities (TopTenUniversityAbroad) --------------------------------
 
@@ -1584,7 +1666,12 @@ export type TopUniStatCell = {
   value: string;
 };
 
-export type TopUniStatsRow = [TopUniStatCell, TopUniStatCell, TopUniStatCell, TopUniStatCell];
+export type TopUniStatsRow = [
+  TopUniStatCell,
+  TopUniStatCell,
+  TopUniStatCell,
+  TopUniStatCell,
+];
 
 export type AbroadTopUniversityCard = {
   id: string;
@@ -1611,7 +1698,12 @@ export type AbroadTopUniversityCard = {
   availabilityText: string;
 };
 
-export type AbroadTopUniversitiesFilterId = "all" | "moscow" | "other" | "budget" | "top_fmge";
+export type AbroadTopUniversitiesFilterId =
+  | "all"
+  | "moscow"
+  | "other"
+  | "budget"
+  | "top_fmge";
 
 export type QuickComparisonRow = {
   /** Short label in the first column (e.g. “Kazan KSMU”) */
@@ -1649,7 +1741,8 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-const kzUni = (file: string) => `${imageBaseUrl ?? ""}mbbsCollege/kazakhstan/university/${file}`;
+const kzUni = (file: string) =>
+  `${imageBaseUrl ?? ""}mbbsCollege/kazakhstan/university/${file}`;
 
 export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
   {
@@ -1682,7 +1775,12 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     description: [
       "Kazakhstan’s flagship medical university with deep clinical training traditions and strong hospital affiliations in Almaty.",
     ],
-    featureTags: ["Almaty", "English Track", "Clinical Rotations", "Indian Community"],
+    featureTags: [
+      "Almaty",
+      "English Track",
+      "Clinical Rotations",
+      "Indian Community",
+    ],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1717,7 +1815,12 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     description: [
       "Well-known English-medium intake at Kazakhstan’s capital; modern infrastructure and growing international student cohort.",
     ],
-    featureTags: ["English Medium", "Hospital Network", "Peer Support", "NMC Aligned"],
+    featureTags: [
+      "English Medium",
+      "Hospital Network",
+      "Peer Support",
+      "NMC Aligned",
+    ],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1751,7 +1854,12 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     description: [
       "One of Central Asia’s oldest medical universities — strong teaching hospital network and structured MBBS curriculum.",
     ],
-    featureTags: ["International Mix", "English Track", "Karaganda", "Hostel Options"],
+    featureTags: [
+      "International Mix",
+      "English Track",
+      "Karaganda",
+      "Hostel Options",
+    ],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1785,7 +1893,12 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     description: [
       "Popular private medical university in Almaty with English-medium programmes and strong clinical exposure.",
     ],
-    featureTags: ["Almaty", "English Program", "Clinical Rotations", "Indian Community"],
+    featureTags: [
+      "Almaty",
+      "English Program",
+      "Clinical Rotations",
+      "Indian Community",
+    ],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
@@ -1990,118 +2103,124 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     description: [
       "One of Kazakhstan’s oldest universities with medical programmes; smaller city, lower living costs vs Almaty.",
     ],
-    featureTags: ["Petropavl", "English MD", "Student Support", "NMC Screening"],
+    featureTags: [
+      "Petropavl",
+      "English MD",
+      "Student Support",
+      "NMC Screening",
+    ],
     applyHref: "/contact",
     availabilityText: "Seats Available 2026-27",
   },
 ];
 
-export const kazakhstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
-  eyebrow: "Where to Study",
-  titlePrimary: "Top NMC-Approved Medical Universities in Kazakhstan",
-  titleAccent: "2026–27",
-  intro:
-    "All listed universities are WHO-listed, NMC-approved, and Taksheela-verified for 2026–27. Fees, city, and specialisations vary — Taksheela shortlists the right match for your profile.",
-  cardWatermarkCode: "KZ",
-  filters: [
-    { id: "all", label: "All Universities" },
-    { id: "moscow", label: "Almaty" },
-    { id: "other", label: "Other Cities" },
-    { id: "budget", label: "Budget-Friendly" },
-    { id: "top_fmge", label: "Top FMGE Rate" },
-  ],
-  topFmgeFilterIds: ["knmu", "amu"],
-  universities: kazakhstanTopUniversityCards,
-  quickComparison: {
-    title: "Quick Comparison — All 10 Universities",
-    disclaimer:
-      "Fees are approximate for 2026–27 based on publicly available data. Exact figures vary by year and exchange rate. Verified breakdown provided during free counselling.",
-    rows: [
-      {
-        university: "KNMU",
-        city: "Almaty",
-        established: "1931",
-        annualFees: "~₹3.5–5L/yr",
-        fmgeRate: "~30%",
-        fmgeHighlight: true,
-        bestFor: "Flagship national medical university",
-      },
-      {
-        university: "AMU",
-        city: "Nur-Sultan",
-        established: "1997",
-        annualFees: "~₹3.5–5L/yr",
-        fmgeRate: "Capital intake",
-        fmgeHighlight: true,
-        bestFor: "Modern capital campus",
-      },
-      {
-        university: "KSMU",
-        city: "Karaganda",
-        established: "1950",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "Established + value",
-      },
-      {
-        university: "KRMU",
-        city: "Almaty",
-        established: "1992",
-        annualFees: "~₹3.5–5L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "Private English track — Almaty",
-      },
-      {
-        university: "SSMU",
-        city: "Semey",
-        established: "1953",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "East Kazakhstan hub",
-      },
-      {
-        university: "WKMU",
-        city: "Aktobe",
-        established: "1988",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "Western region clinical focus",
-      },
-      {
-        university: "SKMA",
-        city: "Shymkent",
-        established: "1979",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Budget-friendly",
-        bestFor: "Milder climate + value",
-      },
-      {
-        university: "Koksu",
-        city: "Kokshetau",
-        established: "1962",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Value",
-        bestFor: "Northern belt — lower cost",
-      },
-      {
-        university: "KMU",
-        city: "Karaganda",
-        established: "1950",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "Medical-focused Karaganda option",
-      },
-      {
-        university: "NKSU",
-        city: "Petropavl",
-        established: "1937",
-        annualFees: "~₹2.5–4L/yr",
-        fmgeRate: "Moderate",
-        bestFor: "Oldest uni — coldest winters",
-      },
+export const kazakhstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent =
+  {
+    eyebrow: "Where to Study",
+    titlePrimary: "Top NMC-Approved Medical Universities in Kazakhstan",
+    titleAccent: "2026–27",
+    intro:
+      "All listed universities are WHO-listed, NMC-approved, and Taksheela-verified for 2026–27. Fees, city, and specialisations vary — Taksheela shortlists the right match for your profile.",
+    cardWatermarkCode: "KZ",
+    filters: [
+      { id: "all", label: "All Universities" },
+      { id: "moscow", label: "Almaty" },
+      { id: "other", label: "Other Cities" },
+      { id: "budget", label: "Budget-Friendly" },
+      { id: "top_fmge", label: "Top FMGE Rate" },
     ],
-  },
-};
+    topFmgeFilterIds: ["knmu", "amu"],
+    universities: kazakhstanTopUniversityCards,
+    quickComparison: {
+      title: "Quick Comparison — All 10 Universities",
+      disclaimer:
+        "Fees are approximate for 2026–27 based on publicly available data. Exact figures vary by year and exchange rate. Verified breakdown provided during free counselling.",
+      rows: [
+        {
+          university: "KNMU",
+          city: "Almaty",
+          established: "1931",
+          annualFees: "~₹3.5–5L/yr",
+          fmgeRate: "~30%",
+          fmgeHighlight: true,
+          bestFor: "Flagship national medical university",
+        },
+        {
+          university: "AMU",
+          city: "Nur-Sultan",
+          established: "1997",
+          annualFees: "~₹3.5–5L/yr",
+          fmgeRate: "Capital intake",
+          fmgeHighlight: true,
+          bestFor: "Modern capital campus",
+        },
+        {
+          university: "KSMU",
+          city: "Karaganda",
+          established: "1950",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "Established + value",
+        },
+        {
+          university: "KRMU",
+          city: "Almaty",
+          established: "1992",
+          annualFees: "~₹3.5–5L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "Private English track — Almaty",
+        },
+        {
+          university: "SSMU",
+          city: "Semey",
+          established: "1953",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "East Kazakhstan hub",
+        },
+        {
+          university: "WKMU",
+          city: "Aktobe",
+          established: "1988",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "Western region clinical focus",
+        },
+        {
+          university: "SKMA",
+          city: "Shymkent",
+          established: "1979",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Budget-friendly",
+          bestFor: "Milder climate + value",
+        },
+        {
+          university: "Koksu",
+          city: "Kokshetau",
+          established: "1962",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Value",
+          bestFor: "Northern belt — lower cost",
+        },
+        {
+          university: "KMU",
+          city: "Karaganda",
+          established: "1950",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "Medical-focused Karaganda option",
+        },
+        {
+          university: "NKSU",
+          city: "Petropavl",
+          established: "1937",
+          annualFees: "~₹2.5–4L/yr",
+          fmgeRate: "Moderate",
+          bestFor: "Oldest uni — coldest winters",
+        },
+      ],
+    },
+  };
 
 // --- FAQ — Kazakhstan MBBS (FAQPage schema / AI-optimised) ----------------------------
 
@@ -2130,7 +2249,8 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
         "Yes — provided you complete your degree at an NMC-approved Kazakh university, finish the full 6-year program including the mandatory 12-month clinical internship in Kazakhstan, and then clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before receiving permanent medical registration. Taksheela only recommends NMC-approved institutions verified against the current official list.",
     },
     {
-      question: "What is the total cost of MBBS in Kazakhstan in Indian Rupees, NPR, and BDT?",
+      question:
+        "What is the total cost of MBBS in Kazakhstan in Indian Rupees, NPR, and BDT?",
       answer:
         "Total 6-year all-inclusive cost (2026–27): Indian Rupees: ₹20–35 lakhs (tuition + hostel + food + insurance + visa + personal). This is among the lowest total costs for any NMC-approved MBBS destination globally. Nepal NPR: approximately NPR 32–56 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 27–47 lakh (₹ × ~1.35). Budget universities like SKMA and Kokshetau State University fall at the lower end. Premium options like KazNMU or Al-Farabi are at the higher end but still far cheaper than Indian private MBBS. Zero capitation. Zero donation.",
     },
@@ -2140,17 +2260,20 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
         "Yes, for Indian students who intend to return and practise medicine in India. As per NMC regulations (effective March 2019), a valid NEET-UG qualifying score (within its 3-year validity) is mandatory before admission to any foreign medical university. Kazakh universities do not set a minimum NEET percentile or score — only that you have qualified the exam. Nepali and Bangladeshi students should confirm equivalent national entrance test requirements with Taksheela.",
     },
     {
-      question: "Which are the best NMC-approved universities in Kazakhstan for Indian students?",
+      question:
+        "Which are the best NMC-approved universities in Kazakhstan for Indian students?",
       answer:
         "Top Taksheela-recommended NMC-compliant universities: (1) Kazakh National Medical University (KazNMU, est. 1930, Almaty — flagship institution), (2) Al-Farabi Kazakh National University (KazNU, est. 1934, Almaty), (3) Astana Medical University (AMU, est. 2009, Astana), (4) Kazakh Russian Medical University (KRMU, est. 2003, Almaty), (5) South Kazakhstan Medical Academy (SKMA, est. 1979, Shymkent — most affordable), (6) Karaganda Medical University (KarMU, est. 1950), (7) Kokshetau State University (KSU), (8) Semey Medical University (est. 1952), (9) West Kazakhstan Marat Ospanov Medical University (WKMU, Aktobe). All WHO-listed, NMC-approved — verify current list before fees.",
     },
     {
-      question: "Is MBBS in Kazakhstan better than Russia or Georgia for Indian students?",
+      question:
+        "Is MBBS in Kazakhstan better than Russia or Georgia for Indian students?",
       answer:
         "Kazakhstan vs Russia: Kazakhstan fees are comparable to Russia's budget options (₹3–5L/year vs ₹2.7–8L/year in Russia). Kazakhstan has no GOZZ state exam requirement, unlike Russia. Both require a second language for clinical years. Kazakhstan has a Muslim-majority culture with halal food readily available — an advantage for many South Asian students. Kazakhstan vs Georgia: Georgia offers 100% English medium with no second language for clinical years and milder winters. Kazakhstan is cheaper overall. The right choice depends on budget, climate preference, career goals, and cultural fit — Taksheela provides personalised comparisons based on your specific profile.",
     },
     {
-      question: "Can students from Nepal and Bangladesh study MBBS in Kazakhstan?",
+      question:
+        "Can students from Nepal and Bangladesh study MBBS in Kazakhstan?",
       answer:
         "Yes. Kazakh universities welcome students from all nationalities. Nepali students must show their NEB certificate (apostilled) or equivalent, and may use a valid NEET score or Nepali national medical entry test. Bangladeshi students must show their HSC certificate with DGME compliance documentation. Both nationalities require a Kazakh student visa. Taksheela has dedicated counsellors with specific knowledge of Nepal NMC and BMDC (Bangladesh) licensing pathways to advise on which Kazakh university best suits each student's career plan back home.",
     },
@@ -2160,17 +2283,20 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
         "Both have strong NMC-approved universities. Almaty (south Kazakhstan): milder winters (-5°C to -15°C), more cosmopolitan, larger Indian student community, more Indian restaurants, more university options (KazNMU, KazNU, KRMU). Widely preferred by Indian students. Astana (capital, north Kazakhstan): colder winters (-15°C to -25°C), more modern architecture, Astana Medical University with excellent facilities, slightly lower living costs. Best for students who prioritise capital city infrastructure and can manage severe winters. Taksheela recommends Almaty for most students from India, Nepal, and Bangladesh — especially those with concerns about climate adjustment.",
     },
     {
-      question: "What is the NExT exam and how does it affect students graduating from Kazakhstan?",
+      question:
+        "What is the NExT exam and how does it affect students graduating from Kazakhstan?",
       answer:
         "NExT (National Exit Test) has replaced the old FMGE for all Indian medical graduates returning from foreign universities. It is a two-part examination: NExT Step 1 (knowledge-based multiple-choice assessment) and NExT Step 2 (clinical skills and OSCE-format evaluation). Clearing NExT is mandatory for Kazakh MBBS graduates who wish to practise medicine in India or pursue MD/MS postgraduate specialisation. Unlike the old FMGE (which only applied to foreign graduates), NExT applies to all MBBS graduates, including those from Indian institutions. Taksheela provides NExT orientation to students starting from Year 1 of their MBBS in Kazakhstan.",
     },
     {
-      question: "Is food available for Indian, Hindu vegetarian, and Muslim students in Kazakhstan?",
+      question:
+        "Is food available for Indian, Hindu vegetarian, and Muslim students in Kazakhstan?",
       answer:
         "Yes. Kazakhstan is a Muslim-majority country, making halal food available everywhere — in university canteens, restaurants, and grocery stores. This is a significant advantage for Muslim students from Bangladesh and other communities. For Hindu vegetarian students, Almaty and Astana have multiple Indian restaurants serving vegetarian dal, rice, roti, and sabzi. Indian grocery stores in Almaty stock Indian brands including lentils, spices, pickles, and rice. University hostels at several institutions also have dedicated Indian mess facilities. Taksheela's local team in Almaty can guide students on the best Indian food resources on arrival.",
     },
     {
-      question: "When should I apply for MBBS in Kazakhstan for the September 2026 intake?",
+      question:
+        "When should I apply for MBBS in Kazakhstan for the September 2026 intake?",
       answer:
         "For the September 2026 intake: begin counselling and university shortlisting by March–April 2026. Applications should be submitted to the university by June–July 2026. Admission letters are typically received by July–August. Visa processing takes 3–5 weeks, so embassy submission should happen by late August. MEA apostille takes 2–4 weeks — start early. Taksheela strongly recommends beginning the process by April to ensure all documents, apostille, and visa stages align without deadline pressure. Contact us now to check current seat availability at your preferred Kazakh university.",
     },
@@ -2346,16 +2472,17 @@ const kazakhstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
   },
 ];
 
-const kazakhstanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent = {
-  eyebrow: "Why Choose Kazakhstan",
-  titleLead: "10 Compelling Reasons to Study MBBS in ",
-  titleTrail: "",
-  subtitle:
-    "Evidence-backed reasons why 12,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree.",
-};
+const kazakhstanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent =
+  {
+    eyebrow: "Why Choose Kazakhstan",
+    titleLead: "10 Compelling Reasons to Study MBBS in ",
+    titleTrail: "",
+    subtitle:
+      "Evidence-backed reasons why 12,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree.",
+  };
 
-export const kazakhstanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent = {
-  section: kazakhstanAbroadWhyChooseMbbsSection,
-  reasons: kazakhstanAbroadWhyChooseMbbsReasons,
-};
-
+export const kazakhstanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent =
+  {
+    section: kazakhstanAbroadWhyChooseMbbsSection,
+    reasons: kazakhstanAbroadWhyChooseMbbsReasons,
+  };
