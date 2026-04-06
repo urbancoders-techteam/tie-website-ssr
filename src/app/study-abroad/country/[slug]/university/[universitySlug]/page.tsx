@@ -16,8 +16,13 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function UniversityDetailPage() {
-  const { slug, universitySlug } = useParams<{
-    slug: string;
+  // const { slug, universitySlug } = useParams<{
+  //   slug: string;
+  //   universitySlug: string;
+  // }>();
+
+  const { universitySlug } = useParams<{
+    // slug: string;
     universitySlug: string;
   }>();
 
