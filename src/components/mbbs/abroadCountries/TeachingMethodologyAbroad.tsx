@@ -44,10 +44,14 @@ type TeachingSectionContent = AbroadFullPageCopy["teaching"];
 type MethodologyItem = TeachingSectionContent["items"][number];
 
 const SCROLLER_CLASS =
-  "flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [touch-action:pan-x] [&::-webkit-scrollbar]:hidden";
+  // Mobile carousel: add horizontal padding so cards don't touch edges.
+  // Use scroll-padding so snap-center respects the gutters.
+  "flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible scroll-smooth px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [touch-action:pan-x] [scroll-padding-left:1rem] [scroll-padding-right:1rem] [&::-webkit-scrollbar]:hidden";
 
 const SLIDE_WRAP =
-  "flex w-[min(100%,calc(100vw-2.5rem))] max-w-[min(400px,calc(100vw-2rem))] shrink-0 snap-center";
+  // Responsive slide width: comfortable on small phones, not too wide on large phones.
+  // Keeps a small peek of next card when possible.
+  "flex w-[86vw] shrink-0 snap-center sm:w-[70vw]";
 
 interface TeachingMethodologyAbroadProps {
   content: TeachingSectionContent;
@@ -150,6 +154,7 @@ export default function TeachingMethodologyAbroad({
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollSyncObserverRef = useRef<IntersectionObserver | null>(null);
+  const didInitScrollRef = useRef(false);
   const { items } = content;
   const itemCount = items.length;
   const [slideIndex, setSlideIndex] = useState(0);
@@ -157,15 +162,25 @@ export default function TeachingMethodologyAbroad({
 
   useEffect(() => {
     setSlideIndex(0);
+    didInitScrollRef.current = false;
   }, [content.titlePrimary, content.titleAccent, itemCount]);
 
-  useLayoutEffect(() => {
+  // Scroll the carousel horizontally without triggering page scroll.
+  useEffect(() => {
     if (!mobileCarouselVisible || itemCount === 0) return;
-    slideRefs.current[slideIndex]?.scrollIntoView({
-      behavior: "smooth",
-      inline: "nearest",
-      block: "nearest",
-    });
+    const root = scrollerRef.current;
+    const el = slideRefs.current[slideIndex];
+    if (!root || !el) return;
+
+    // Avoid an initial "page jump" on first paint: don't auto-scroll until
+    // we have a reason (autoplay tick or user tap/swipe changes slideIndex).
+    if (!didInitScrollRef.current) {
+      didInitScrollRef.current = true;
+      return;
+    }
+
+    const left = el.offsetLeft - root.offsetLeft;
+    root.scrollTo({ left, behavior: "smooth" });
   }, [slideIndex, itemCount, mobileCarouselVisible]);
 
   useEffect(() => {
@@ -253,7 +268,7 @@ export default function TeachingMethodologyAbroad({
                     key={`dot-${item.title}-${i}`}
                     type="button"
                     onClick={() => setSlideIndex(i)}
-                    className={`h-2 shrink-0 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#143C83]/40 ${
+                    className={`h-2 shrink-0 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#143C83]/40 ${
                       slideIndex === i
                         ? "w-8 bg-[#143C83]"
                         : "w-2 bg-[#C5CCD8] hover:bg-[#94A3B8]"
