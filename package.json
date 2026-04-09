@@ -9,9 +9,7 @@
     "build": "next build",
     "start:dev": "dotenv -e .env.development -- next start -p 3000",
     "start:prod": "dotenv -e .env.production -- next start -p 3001",
-    "start:staging": "dotenv -e .env.staging -- next start -p 3002",
     "build:dev": "dotenv -e .env.development -- next build",
-    "build:staging": "dotenv -e .env.staging -- next build",
     "build:prod": "dotenv -e .env.production -- next build",
     "lint": "next lint",
     "clean": "rimraf .next"

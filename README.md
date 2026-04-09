@@ -7,7 +7,6 @@ New SSR for TIE website.
 This project uses environment-specific files at the repository root:
 
 - `.env.development`
-- `.env.staging`
 - `.env.production`
 
 ## Install
@@ -23,13 +22,6 @@ npm run dev
 ```
 
 ## Build and run by environment
-
-### Staging
-
-```bash
-npm run build:staging
-npm run start:staging
-```
 
 ### Production
 

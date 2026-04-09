@@ -18,6 +18,25 @@ export default function Banner() {
   const [banners, setBanners] = useState<BannerItem[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const renderTitle = (title: string) => {
+    const trimmed = (title || "").trim();
+    // Allow API to send rich text (e.g. spans for colored words)
+    if (trimmed.includes("<") && trimmed.includes(">")) {
+      return (
+        <h2
+          className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight [&_span]:text-[#00B2B8]"
+          dangerouslySetInnerHTML={{ __html: trimmed }}
+        />
+      );
+    }
+
+    return (
+      <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+        {trimmed}
+      </h2>
+    );
+  };
+
   useEffect(() => {
     async function fetchBannerData() {
       try {
@@ -42,7 +61,7 @@ export default function Banner() {
   }, []);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
@@ -51,6 +70,14 @@ export default function Banner() {
     autoplaySpeed: 2500,
     fade: true,
     arrows: false,
+    appendDots: (dots: any) => (
+      <div className="absolute bottom-3 left-0 right-0">
+        <ul className="flex items-center justify-center gap-2">{dots}</ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div className="h-[3px] w-8 rounded-full bg-white/40 transition-all" />
+    ),
   };
 
   // Skeleton shimmer UI
@@ -96,19 +123,42 @@ export default function Banner() {
               />
 
               {/* Overlay and Content */}
-              <div className="absolute inset-0 bg-black/50 flex items-center">
+              <div className="absolute inset-0 flex items-center">
+                {/* multi-layer overlay to match screenshot */}
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-black/10" />
                 <ContainerWrapper>
-                  <div className="flex justify-between items-center w-full gap-4">
+                  <div className="relative flex justify-between items-center w-full gap-6">
                     {/* Left Text */}
-                    <div className="w-full md:w-1/2">
-                      <h2 className="text-white text-3xl md:text-5xl font-bold">
-                        {item.title}
-                      </h2>
+                    <div className="w-full md:w-[55%] lg:w-1/2">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1 text-white text-xs font-semibold tracking-wide">
+                        <span className="inline-block h-2 w-2 rounded-full bg-[#00B2B8]" />
+                        TEST PREPARATION
+                      </div>
+
+                      <div className="mt-4">
+                        {renderTitle(item.title)}
+                      </div>
+
+                      <p className="mt-4 max-w-xl text-white/80 text-sm md:text-[13px] leading-relaxed">
+                        Expert coaching for IELTS, TOEFL, PTE, GRE, GMAT, SAT &amp;
+                        DUOLINGO. Personalised study plans with certified trainers
+                        online and at centres across India.
+                      </p>
+
+                      <div className="mt-6 flex flex-wrap items-center gap-3">
+                        <button className="rounded-md bg-white text-[#0B1B22] px-5 py-2.5 text-sm font-semibold shadow-sm hover:bg-white/90 transition">
+                          Start Coaching &rsaquo;
+                        </button>
+                        <button className="rounded-md border border-white/40 text-white px-5 py-2.5 text-sm font-semibold hover:bg-white/10 transition">
+                          Book Free Demo
+                        </button>
+                      </div>
                     </div>
 
                     {/* Right Form */}
-                    <div className="hidden md:block">
-                      <RegisterForm />
+                    <div className="hidden md:flex w-[340px] lg:w-[360px] shrink-0 justify-center items-center">
+                      <RegisterForm floating={false} />
                     </div>
                   </div>
                 </ContainerWrapper>
@@ -118,8 +168,8 @@ export default function Banner() {
         </Slider>
       </div>
       {/* Mobile Form */}
-      <div className="block md:hidden mt-4 px-4">
-        <RegisterForm />
+      <div className="block md:hidden -mt-10 px-4 pb-6">
+        <RegisterForm floating={false} />
       </div>
     </>
   );
