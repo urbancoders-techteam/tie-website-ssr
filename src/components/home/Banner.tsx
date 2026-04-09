@@ -11,6 +11,7 @@ import { baseUrl } from "@/utils/config";
 interface BannerItem {
   id: string;
   title: string;
+  subContent: string;
   image: string;
 }
 
@@ -45,7 +46,8 @@ export default function Banner() {
 
         const mapped = data.data.formattedData.map((item: any) => ({
           id: item._id,
-          title: item.content,
+          title: item.title ?? item.content, // fallback for older payloads
+          subContent: item.subContent ?? "",
           image: item.bannerImg,
         }));
 
@@ -141,9 +143,8 @@ export default function Banner() {
                       </div>
 
                       <p className="mt-4 max-w-xl text-white/80 text-sm md:text-[13px] leading-relaxed">
-                        Expert coaching for IELTS, TOEFL, PTE, GRE, GMAT, SAT &amp;
-                        DUOLINGO. Personalised study plans with certified trainers
-                        online and at centres across India.
+                        {item.subContent ||
+                          "Expert coaching for IELTS, TOEFL, PTE, GRE, GMAT, SAT & DUOLINGO. Personalised study plans with certified trainers online and at centres across India."}
                       </p>
 
                       <div className="mt-6 flex flex-wrap items-center gap-3">
