@@ -10,8 +10,9 @@ import { baseUrl } from "@/utils/config";
 
 interface BannerItem {
   id: string;
+  category?: string;
   title: string;
-  subContent: string;
+  content: string;
   image: string;
 }
 
@@ -46,8 +47,9 @@ export default function Banner() {
 
         const mapped = data.data.formattedData.map((item: any) => ({
           id: item._id,
+          category: item.category ?? item.title ?? null, // fallback for older payloads
           title: item.title ?? item.content, // fallback for older payloads
-          subContent: item.subContent ?? "",
+          content: item.content ?? item.subContent ?? "",
           image: item.bannerImg,
         }));
 
@@ -135,7 +137,7 @@ export default function Banner() {
                     <div className="w-full md:w-[55%] lg:w-1/2">
                       <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1 text-white text-xs font-semibold tracking-wide">
                         <span className="inline-block h-2 w-2 rounded-full bg-[#00B2B8]" />
-                        TEST PREPARATION
+                        {(item.category || "TEST PREPARATION").toUpperCase()}
                       </div>
 
                       <div className="mt-4">
@@ -143,7 +145,7 @@ export default function Banner() {
                       </div>
 
                       <p className="mt-4 max-w-xl text-white/80 text-sm md:text-[13px] leading-relaxed">
-                        {item.subContent ||
+                        {item.content ||
                           "Expert coaching for IELTS, TOEFL, PTE, GRE, GMAT, SAT & DUOLINGO. Personalised study plans with certified trainers online and at centres across India."}
                       </p>
 
