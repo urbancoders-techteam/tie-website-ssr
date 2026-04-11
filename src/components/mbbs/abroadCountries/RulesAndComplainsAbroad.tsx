@@ -9,7 +9,7 @@ import {
   ABROAD_SECTION_TITLE,
 } from "@/constants/abroadSectionTheme";
 import Link from "next/link";
-import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaLink } from "react-icons/fa";
 
 interface RulesAndComplainsAbroadProps {
@@ -86,20 +86,31 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
   const ruleCount = rules.length;
   const desktopRules = useMemo(() => rules.slice(0, 6), [rules]);
 
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [slideIndex, setSlideIndex] = useState(0);
+  const didInitScrollRef = useRef(false);
 
   useEffect(() => {
     setSlideIndex(0);
+    didInitScrollRef.current = false;
   }, [ruleCount]);
 
-  useLayoutEffect(() => {
+  // Scroll horizontally inside the carousel without triggering page scroll.
+  useEffect(() => {
     if (ruleCount === 0) return;
-    slideRefs.current[slideIndex]?.scrollIntoView({
-      behavior: "smooth",
-      inline: "nearest",
-      block: "nearest",
-    });
+    const root = scrollerRef.current;
+    const el = slideRefs.current[slideIndex];
+    if (!root || !el) return;
+
+    // Prevent initial "page jump" on mount: don't auto-scroll on first paint.
+    if (!didInitScrollRef.current) {
+      didInitScrollRef.current = true;
+      return;
+    }
+
+    const left = el.offsetLeft - root.offsetLeft;
+    root.scrollTo({ left, behavior: "smooth" });
   }, [slideIndex, ruleCount]);
 
   useEffect(() => {
@@ -149,6 +160,7 @@ export default function RulesAndComplainsAbroad({ content }: RulesAndComplainsAb
               role="region"
               aria-roledescription="carousel"
               aria-label="NMC rules"
+              ref={scrollerRef}
               className={SCROLLER_CLASS}
             >
               {rules.map((rule, i) => (

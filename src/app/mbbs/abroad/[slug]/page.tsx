@@ -79,12 +79,15 @@ export default function Page() {
           <ConsiderBeforeAbroad content={abroadCopy.consider} />
           <RulesAndComplainsAbroad content={abroadCopy.regulatory} />
           <IntakePeriodAbroad content={abroadCopy.intake} />
+
+          {/* ------------------- Teaching methodology section ------------------- */}
           <TeachingMethodologyAbroad
             content={abroadCopy.teaching}
             sectionId="teaching-methodology"
             headingId="teaching-methodology-heading"
             carouselAriaLabel="Teaching methodology"
           />
+
           <MbbsSylabusAbroad content={abroadCopy.syllabus} />
           <CompleteComparissionAbroad content={abroadCopy.comparison} />
           <AccomodationAndClimateAbroad content={abroadCopy.accommodation} />
@@ -92,12 +95,15 @@ export default function Page() {
           <KeyFactsAbroad content={abroadCopy.keyFacts} sectionSlug={slugLower} />
           <ScholarshipsAbroad content={abroadCopy.scholarships} sectionSlug={slugLower} />
           <EducationLoanAbroad content={abroadCopy.educationLoan} sectionSlug={slugLower} />
+
+          {/* ------------------- Career opportunities section ------------------- */}
           <TeachingMethodologyAbroad
             content={abroadCopy.career}
             sectionId="career-opportunities-abroad"
             headingId="career-opportunities-heading"
             carouselAriaLabel="Career opportunities"
           />
+
           <WhyChooseTaksheelaAbroad content={abroadCopy.whyTaksheela} sectionSlug={slugLower} />
           <AbroadMbbsCtaBanner
             content={abroadCopy.ctaBanner}

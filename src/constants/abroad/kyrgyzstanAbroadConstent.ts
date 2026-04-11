@@ -3,7 +3,6 @@
  * Types mirror Georgia/Russia; shared imports from `russiaAbroadConstent`.
  */
 
-import { imageBaseUrl } from "@/utils/config";
 import type {
   AbroadCtaBannerContent,
   AbroadQuickFactItem,
@@ -53,51 +52,61 @@ export type AbroadHeroContent = {
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
   /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
-  quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
+  quickStats: [
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+    AbroadHeroStatPair,
+  ];
   /** Large highlighted stat on the right */
   spotlight: AbroadHeroSpotlight;
   /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
+  statGrid: [
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+    AbroadHeroGridCard,
+  ];
 };
 
 export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
-  eyebrow: "Admissions Open · 2026–27 Intake",
+  eyebrow: "Admissions Open · September & February 2026 Intake",
   headline: {
     line1: "Study MBBS in",
     line2Accent: "Kyrgyzstan",
-    line3: "— Where Affordability Meets World-Class Medical Training.",
+    line3: "Central Asia's Most Affordable Path to a Global Medical Degree",
   },
   description:
-    "NMC and WHO-approved medical degree in English, from ~₹2L per year (typical range). Large Indian student presence in Bishkek. Zero capitation. Zero donation. End-to-end guidance from Taksheela.",
+    "Kyrgyzstan is one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes at government universities where total six-year costs start below ₹15 lakhs. Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB. For students from India, Nepal, and Bangladesh who deserve quality medicine without financial strain, Kyrgyzstan makes the dream genuinely reachable.",
   descriptionMaxLength: 260,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",
-    secondaryHref: "#top-universities",
+    secondaryHref: "#universities",
   },
   quickStats: [
-    { label: "Annual Fees From", value: "~₹2L" },
-    { label: "Total Duration", value: "6 Yrs" },
-    { label: "Indian Students", value: "5K+" },
-    { label: "NMC-Approved Unis", value: "10" },
+    { label: "Total Cost From", value: "₹15L" },
+    { label: "Indian Students Enrolled", value: "16,000+" },
+    { label: "NMC-Approved Unis", value: "10+" },
+    { label: "Medium of Instruction", value: "English" },
   ],
   spotlight: {
-    value: "5,000+",
-    caption: "Indian students in Kyrgyz medical universities (industry estimates — verify with counsellor)",
+    value: "16,000+",
+    caption: "Indian students currently enrolled",
   },
   statGrid: [
-    { value: "WHO · NMC", label: "Recognised pathways" },
-    { value: "₹2L+", label: "Fees from / year" },
-    { value: "6 Yr", label: "MD (MBBS equiv.)" },
+    { value: "₹15–30L", label: "Total 6-year programme cost" },
+    { value: "$120–150", label: "Monthly living cost" },
+    { value: "Zero", label: "Donation / capitation" },
     /** Last card value is replaced by `kyrgyzstanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10", label: "Featured Universities" },
+    { value: "10+", label: "NMC-Approved Universities" },
   ],
 };
 
 /** Merges live college count into the hero stat grid (Kyrgyzstan). */
 export function kyrgyzstanAbroadHeroFeaturedCount(
   featuredCount: number,
-  base: AbroadHeroContent = kyrgyzstanAbroadHeroContent
+  base: AbroadHeroContent = kyrgyzstanAbroadHeroContent,
 ): AbroadHeroContent {
   const count = String(featuredCount);
   const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
@@ -141,18 +150,19 @@ export type AbroadOverviewContent = {
 
 export const kyrgyzstanAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
-  heading: "Why Kyrgyzstan is Rising as South Asia's Premier MBBS Destination",
+  heading: "MBBS in Kyrgyzstan — A Complete Picture for 2026–27",
   paragraphs: [
-    "Kyrgyzstan — a compact, mountainous Central Asian republic — has long been one of the most budget-friendly corridors for English-medium MBBS among students from India, Nepal, and Bangladesh. NMC-listed medical universities in Bishkek, Osh, Jalal-Abad, and Kant combine WHO-recognised General Medicine (MD) programmes with clinical training at affiliated hospitals, typically at annual tuition levels far below Indian private medical colleges.",
-    "Thousands of international students study medicine in Kyrgyzstan each cycle, with a large share from South Asia. Exact enrolment shares vary by year and source; Taksheela treats every intake as NMC-list-first — we verify the live approved-university PDF before any fee discussion.",
-    "Listed Kyrgyz medical universities follow a 6-year (5+1 style) curriculum aligned with what Indian regulators expect when you plan NExT: English as the primary medium of instruction, progressive clinical exposure from mid-programme years, and a compulsory internship phase mapped to your chosen university’s structure. Degrees are recognised along WHO / NMC pathways when the institution is on India’s current approved list — always verify before admission.",
+    "Kyrgyzstan — a landlocked Central Asian republic nestled in the Tian Shan mountain range — has steadily grown into one of the most preferred MBBS abroad destinations for South Asian students. With over 10 medical universities operating under the Kyrgyz Ministries of Health and Education, and more than 16,000 Indian students currently enrolled across these institutions, the country has built a mature, well-supported ecosystem for international medical education.",
+    "What makes Kyrgyzstan stand out is a combination that is genuinely rare at the global level: NMC compliance, English-medium instruction, zero donation fees, and a total six-year programme cost that in many cases falls below ₹20 lakhs. For families in India, Nepal, and Bangladesh where aspiring doctors cannot access government seats or afford ₹80 lakh–₹1.5 crore private college donations, Kyrgyzstan transforms an otherwise closed door into a fully open, legitimate pathway.",
+    "The academic calendar runs on the European semester model. Clinical training begins from Year 3 at affiliated government hospitals, providing meaningful patient exposure in real hospital environments. Kyrgyz language and Russian are introduced from Year 1 as compulsory subjects, equipping students to communicate with local patients during rotations — meeting NMC's language requirement naturally through the curriculum design.",
+    "All NMC-approved Kyrgyz universities are listed on the World Directory of Medical Schools (WDOMS) maintained by FAIMER. Degrees are recognised by WHO, ECFMG, and WFME — enabling graduates to pursue FMGE/NExT in India, USMLE in the USA, and PLAB in the UK. For students from Nepal and Bangladesh, the programme represents one of the most cost-effective and globally portable medical degrees available anywhere in the world.",
   ],
   officialData: {
-    leadBold: "Official Data (Kyrgyzstan MoH / higher education trends, 2024–25):",
+    leadBold: "At a Glance · 2026–27:",
     textBeforeBold: "{countryName} hosts ",
-    textBold: "{universityCount}+ NMC-listed medical universities",
+    textBold: "{universityCount}+ medical universities under the Ministries of Health and Education",
     textAfterBold:
-      " on India’s current approved foreign list (verify the live PDF before admission). English-medium General Medicine tracks, clinical training from Year 3, and internship structure are aligned with what Indian regulators expect when you plan NExT.",
+      " with 16,000+ Indian students currently enrolled across institutions.",
   },
   mediaPlaceholder: {
     emoji: "🏛️",
@@ -161,7 +171,7 @@ export const kyrgyzstanAbroadOverviewContent: AbroadOverviewContent = {
   },
   recognisedStrip: {
     label: "Recognised by:",
-    body: "WHO (WDOMS) · NMC India · WFME-aligned pathways where applicable · ECFMG / FAIMER (institution-dependent) · UNESCO sector engagement — enabling NExT (India), USMLE, PLAB, and Gulf licensing when individual requirements are met.",
+    body: "WHO (WDOMS) · NMC India · FAIMER · ECFMG · WFME",
   },
 };
 
@@ -169,90 +179,78 @@ export const kyrgyzstanAbroadOverviewContent: AbroadOverviewContent = {
 
 export const kyrgyzstanAbroadFearsContent: AbroadFearsContent = {
   section: {
-    eyebrow: "Common Fears & Real Answers",
-    titleLead: "What Students Worry About Before Choosing Kyrgyzstan",
+    eyebrow: "Challenges & Solutions",
+    titleLead: "Real Fears. Straight Answers.",
     titleMiddle: " — ",
-    titleAccent: "And How Taksheela Resolves It",
+    titleAccent: "",
     titleTrail: "",
     subtitle:
-      "Honest answers to the questions families ask first — validity, climate, language, NExT, trust, and loans.",
+      "Honest breakdown of the concerns every student carries — and exactly how Taksheela resolves each one.",
   },
-  painTitle: "Pain Point",
-  solutionTitle: "Taksheela's Solution",
+  painTitle: "⚠️ Common Pain Points",
+  solutionTitle: "✅ Taksheela's Solutions",
   painPoints: [
     {
-      icon: "😰",
-      title: '"Will my Kyrgyz degree be valid in India?"',
-      description:
-        "Students spend 6 years and ₹25–35 lakhs abroad and fear returning to find their degree isn't accepted by NMC.",
-    },
-    {
       icon: "❄️",
-      title: '"Kyrgyzstan winters are extreme. I can\'t handle that."',
+      title: "Harsh Winter Climate",
       description:
-        "Bishkek winters often reach roughly -15°C to -20°C in January. Students from tropical India, Nepal, and Bangladesh are understandably worried about health and acclimatisation.",
-    },
-    {
-      icon: "🗣️",
-      title: '"I\'ll face a language barrier with patients during rotations."',
-      description:
-        "Clinical rotations require communicating with Kyrgyz or Russian-speaking patients. Students worry about patient interaction in a foreign language.",
+        "Bishkek and Osh can drop to -10°C to -20°C in winter. Students from tropical South Asia worry about health, warmth, and acclimatisation.",
     },
     {
       icon: "📉",
-      title: '"What\'s the NExT pass rate for Kyrgyzstan graduates?"',
+      title: "FMGE Preparation Anxiety",
       description:
-        "Students are concerned about licensing exam outcomes after returning to India, especially with the newer NExT replacing FMGE.",
+        "Students fear that Kyrgyz MBBS may not prepare them adequately for India's licensing exams, citing overall FMGE pass rate concerns.",
     },
     {
-      icon: "🔍",
-      title: '"How do I know my counsellor isn\'t just sending me to a commission-paying university?"',
+      icon: "🗣️",
+      title: "Language Barrier",
       description:
-        "Many agents recommend universities based on the highest commission they receive — not what's best for the student.",
+        "Clinical rotations involve Kyrgyz and Russian-speaking patients. Students from India and Bangladesh fear communication breakdowns from Year 3 onwards.",
     },
     {
-      icon: "🏦",
-      title: '"I need an education loan. Will banks give it for Kyrgyzstan?"',
+      icon: "🏫",
+      title: "Overcrowded Universities",
       description:
-        "Families are unsure whether nationalised banks will sanction loans for MBBS at a Kyrgyz university.",
+        "Kyrgyzstan's low fees attract large international student numbers. Some students worry about classroom overcrowding and diluted clinical exposure.",
+    },
+    {
+      icon: "💳",
+      title: "Fee Payment Abroad",
+      description:
+        "Paying annual fees in USD and managing cross-border remittances is a genuine logistical challenge for many Indian and Bangladeshi families.",
     },
   ],
   solutions: [
     {
-      icon: "✅",
-      title: "Only Current NMC-Listed Universities",
+      icon: "🏠",
+      title: "Pre-Departure Winter Readiness Kit",
       description:
-        "We verify every university against the NMC's live approved list before shortlisting — and show you the official NMC document. No verbal assurances, only government-verified facts.",
-    },
-    {
-      icon: "🧥",
-      title: "Osh & Jalal-Abad Are Milder + Pre-Departure Prep",
-      description:
-        "Southern cities like Osh and Jalal-Abad see milder winters than Bishkek. Taksheela's winter checklist, packing guide, and city advice prepares students before departure. Most adapt within 3–4 weeks.",
-    },
-    {
-      icon: "📚",
-      title: "Russian/Kyrgyz Is Built Into the Curriculum from Year 1",
-      description:
-        "All NMC-compliant Kyrgyz universities include Russian and/or Kyrgyz language as a compulsory subject from Year 1. Basic conversational proficiency is achieved within 18–24 months — exactly as NMC requires for clinical readiness.",
+        "Taksheela provides a detailed packing checklist with winter essentials. All university hostels have central heating. Students adapt within 2–3 weeks, supported by established Indian communities.",
     },
     {
       icon: "🎯",
-      title: "University Selection Focused on NExT-Ready Training",
+      title: "FMGE-First University Selection",
       description:
-        "We shortlist universities based on curriculum quality, clinical training depth, and NExT/FMGE readiness. About 60% of Kyrgyz graduates have historically cleared licensing exams with structured preparation — Taksheela's NExT orientation begins from Year 1.",
+        "We shortlist only universities where NMC compliance, hospital quality, and student-teacher ratios support strong exam preparation. FMGE coaching resources are integrated from Year 1.",
     },
     {
-      icon: "📊",
-      title: "Written Reasoning. Zero Commission Bias.",
+      icon: "📚",
+      title: "Language Training Is Part of the Curriculum",
       description:
-        "Taksheela shows you the reasoning behind every shortlist — NMC status, fee structure, hostel quality, clinical training, and NExT track record — in writing. Our recommendations are never driven by university commission.",
+        "Kyrgyz and Russian language classes are compulsory from Year 1 at all NMC-approved universities. Clinical-level proficiency is naturally built into the programme before hospital rotations begin.",
     },
     {
-      icon: "💳",
-      title: "SBI, Bank of Baroda, HDFC Credila — All Available",
+      icon: "🔍",
+      title: "Batch-Size-Aware University Matching",
       description:
-        "Major nationalised banks and NBFCs readily finance NMC-approved MBBS in Kyrgyzstan. Taksheela prepares a complete lender-ready document file to accelerate your loan sanction.",
+        "Taksheela evaluates each university's international student intake, student-teacher ratio, and hospital affiliation before recommending it. We never recommend solely on the basis of low fees.",
+    },
+    {
+      icon: "🏦",
+      title: "RBI-Compliant Fee Transfer Support",
+      description:
+        "We guide families through authorised USD remittance channels. Semester-wise fee payment is available at several universities, reducing the upfront burden significantly.",
     },
   ],
 };
@@ -261,112 +259,119 @@ export const kyrgyzstanAbroadFearsContent: AbroadFearsContent = {
 
 export const kyrgyzstanAbroadEligibilityContent: AbroadEligibilityContent = {
   eyebrow: "Who Can Apply",
-  titleLead: "Eligibility Criteria for MBBS in ",
+  titleLead: "Who Can Apply — Requirements by Country",
   titleTrail: " 2026–27",
   subtitle:
-    "Requirements for students from India, Nepal, and Bangladesh — based on NMC guidelines, Kyrgyzstan Ministry of Education standards, and individual university requirements.",
-  tabIndian: "IN Indian Students",
-  tabNpbd: "NP BD Nepal & Bangladesh",
+    "Eligibility based on NMC's 2025 FMGL guidelines and Kyrgyz university requirements for 2026–27 admissions.",
+  tabIndian: "🇮🇳 Indian Students",
+  tabNpbd: "🇳🇵 🇧🇩 Nepal & Bangladesh",
   indian: [
     {
-      label: "Academic Background",
+      label: "10+2 with PCB",
       value:
-        "Class 10+2 with Physics, Chemistry, Biology (PCB) as compulsory core subjects from any recognised board (CBSE / ICSE / State Board).",
+        "Passed Class 12 with Physics, Chemistry, Biology, and English from any recognised board (CBSE, ICSE, State Board).",
     },
     {
-      label: "Minimum Marks",
+      label: "Minimum 50% in PCB (General)",
       value:
-        "General category: minimum 50% aggregate in PCB. Reserved categories (SC / ST / OBC / PwD): minimum 40% aggregate in PCB.",
+        "50% aggregate in Physics, Chemistry, and Biology. SC/ST/OBC category students require 40% aggregate as per NMC norms.",
     },
     {
-      label: "NEET Qualification",
+      label: "Valid NEET-UG Qualifying Score",
       value:
-        "Valid NEET-UG qualifying score mandatory (3-year validity from result date). No minimum percentile required by Kyrgyz universities — qualifying score is sufficient.",
+        "NEET-UG qualifying score from 2024, 2025, or 2026 is mandatory per NMC's FMGL Regulations. No minimum score beyond the qualifying percentile.",
     },
     {
-      label: "Age Requirement",
+      label: "Age: Minimum 17 Years",
       value:
-        "Minimum 17 years of age by 31st December of the admission year. No upper age limit at most Kyrgyz medical universities.",
+        "Must be at least 17 years old on or before 31st December of the year of admission. No upper age limit.",
     },
     {
-      label: "Language Tests",
+      label: "Valid Indian Passport",
       value:
-        "No IELTS or TOEFL required. No separate entrance exam beyond NEET. Some universities conduct a basic English proficiency interview during the application process.",
+        "A valid Indian passport with sufficient remaining validity is required at the time of application and throughout the programme.",
     },
     {
-      label: "Passport & Documents",
+      label: "MEA Apostille (Mandatory)",
       value:
-        "Valid Indian passport with minimum 18 months of remaining validity. MEA-apostilled academic certificates required for visa and university registration.",
+        "All academic documents must be apostilled by the Ministry of External Affairs (MEA), India, before applying for the Kyrgyzstan student visa.",
     },
   ],
   nepali: [
     {
-      label: "Academic Background",
-      value: "Class 12 (NEB certificate or equivalent A-Level) with Physics, Chemistry, and Biology as core subjects.",
+      label: "+2 Science with PCB",
+      value:
+        "+2 Science (NEB/HSEB) with Physics, Chemistry, and Biology as core subjects from a recognised Nepali board.",
     },
     {
-      label: "Minimum Marks",
-      value:
-        "Minimum 50% aggregate in PCB subjects. Individual university requirements may vary — confirm during shortlisting with Taksheela.",
+      label: "Minimum 50% in Science Subjects",
+      value: "50% aggregate in the core PCB subjects for general category applicants.",
     },
     {
-      label: "Entrance Qualification",
+      label: "NEET or Equivalent Accepted",
       value:
-        "Valid NEET score OR Nepali national medical entry test qualification accepted by most Kyrgyz universities. Taksheela confirms eligibility by university.",
+        "A valid NEET score or the Nepali national medical entrance test both qualify for admission at NMC-approved Kyrgyz universities.",
     },
     {
-      label: "Age & Passport",
-      value:
-        "Minimum 17 years. Valid Nepali passport with 18+ months validity. NEB certificate apostilled from relevant Nepali authority.",
+      label: "Age: Minimum 17 Years",
+      value: "Must be 17 years or older at the time of enrolment.",
     },
     {
-      label: "Nepal Licensing Note",
+      label: "Valid Nepali Passport",
       value:
-        "Nepali graduates must clear the Nepal Medical Council (NMC-Nepal) licensing examination to practise medicine in Nepal. Taksheela advises on both the Indian NExT and Nepal NMC pathways based on your individual career plan.",
+        "A valid Nepali passport with sufficient validity is required for visa application and university admission.",
+    },
+    {
+      label: "No IELTS / TOEFL Required",
+      value:
+        "English proficiency test scores are not required for admission to English-medium MBBS at NMC-approved Kyrgyz universities.",
     },
   ],
   npbd: [
     {
-      label: "Academic Background",
+      label: "HSC with PCB",
       value:
-        "HSC (Higher Secondary Certificate) with Biology, Physics, and Chemistry from any recognised Bangladesh board.",
+        "Higher Secondary Certificate with Physics, Chemistry, Biology, and English from a recognised Bangladeshi education board.",
     },
     {
-      label: "Minimum Marks",
-      value:
-        "Minimum GPA 3.5 in SSC and HSC combined, with Biology as a compulsory subject (individual university requirements may vary).",
+      label: "Minimum 50% in PCB",
+      value: "50% aggregate in Physics, Chemistry, and Biology in the HSC examination.",
     },
     {
-      label: "Entrance Requirement",
+      label: "Medical Entrance Qualification",
       value:
-        "National DGME-administered medical entry test qualification required. All Taksheela-recommended Kyrgyz universities satisfy DGME Bangladesh compliance requirements.",
+        "BMDC guidelines for studying abroad should be reviewed before applying. Admission proceeds on academic merit for Bangladeshi students.",
     },
     {
-      label: "Passport & Documents",
+      label: "Age: Minimum 17 Years",
       value:
-        "Valid Bangladeshi passport with 18+ months validity. HSC certificate with attestation from relevant Bangladeshi authority.",
+        "Must be 17 years or older at the time of enrolment at the Kyrgyz medical university.",
     },
     {
-      label: "Bangladesh Licensing Note",
+      label: "Valid Bangladeshi Passport",
       value:
-        "BMDC (Bangladesh Medical and Dental Council) recognises degrees from WHO-listed, DGME-compliant universities. Graduates must clear the BMDC licensing exam to practise in Bangladesh. Taksheela advises on both BMDC and Indian NExT pathways.",
+        "A valid passport from Bangladesh is required for visa processing and university registration in Kyrgyzstan.",
+    },
+    {
+      label: "No IELTS / TOEFL Required",
+      value:
+        "No English language proficiency test is required for admission to English-medium MBBS programmes in Kyrgyzstan.",
     },
   ],
- 
   specialNotes: [
     {
       code: "NP",
       heading: "Special Note - Nepali Students",
       title: "Why Kyrgyzstan Works for Nepal Students",
       points: [
-        "English-medium MD with affordable total cost — often roughly NPR 28–70 lakh depending on university and city.",
-        "Kathmandu document attestation support and NPR forex planning.",
-        "Growing Nepali peer network in Bishkek and Osh for shared housing and NExT prep.",
-        "Counselling covers both Nepal Medical Council and Indian NExT routes after graduation.",
+        "All NMC-approved Kyrgyz universities accept students from Nepal.",
+        "Nepali students may use a valid NEET score or Nepal's national medical entrance test.",
+        "No IELTS or TOEFL is required for English-medium programmes.",
+        "Taksheela has successfully placed students from Nepal in Kyrgyzstan.",
       ],
-      footerTitle: "Nepal Licensing Note:",
+      footerTitle: "Note:",
       footerText:
-        "Graduates must follow Nepal Medical Council licensing rules for practice in Nepal. Taksheela maps FMGE/NExT if you choose the India pathway instead.",
+        "Admission and licensing requirements can change. Students should verify home-country rules before applying.",
       accentClass: "border-[#00B94A] text-[#2C9B5D]",
       noteBgClass: "bg-[#F1FAF4] border-[#D6EEDF]",
     },
@@ -375,14 +380,14 @@ export const kyrgyzstanAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Bangladeshi Students",
       title: "Why Kyrgyzstan Works for Bangladesh Students",
       points: [
-        "DGME compliance documentation for return pathways — Taksheela verifies each intake.",
-        "Total cost roughly BDT 24–58 lakh; halal food widely available in major Kyrgyz cities.",
-        "Dhaka visa submission support and BDT forex planning.",
-        "Bangladesh Medical and Dental Council rules apply for home-country practice.",
+        "All NMC-approved Kyrgyz universities accept students from Bangladesh.",
+        "Bangladeshi students should review BMDC guidelines before applying.",
+        "No IELTS or TOEFL is required for English-medium programmes.",
+        "Taksheela has successfully placed students from Bangladesh in Kyrgyzstan.",
       ],
-      footerTitle: "Bangladesh Licensing Note:",
+      footerTitle: "Note:",
       footerText:
-        "Graduates must satisfy BMDC requirements for Bangladesh practice. Taksheela advises on BMDC exams versus FMGE/NExT for India.",
+        "Admission and licensing requirements can change. Students should verify home-country rules before applying.",
       accentClass: "border-[#0066FF] text-[#285F9A]",
       noteBgClass: "bg-[#F2F7FE] border-[#D6E3F5]",
     },
@@ -391,61 +396,57 @@ export const kyrgyzstanAbroadEligibilityContent: AbroadEligibilityContent = {
 
 // --- Admission process (AdmissionProcessAbroad) ------------------------------------
 
-export const kyrgyzstanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent = {
+export const kyrgyzstanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent =
+  {
   eyebrow: "Step by Step",
-  titleLead: "MBBS in ",
-  titleAccent: "— Admission Process",
+  titleLead: "Step-by-Step: How to Secure MBBS Admission in ",
+  titleAccent: "Kyrgyzstan 2026",
   titleTrail: "",
   subtitle:
-    "No donation, no separate entrance exam beyond NEET. Fully merit-based and completely guided by Taksheela from your first counselling session to your first week of classes in Kyrgyzstan.",
+    "A straightforward, donation-free process from first enquiry to first day of classes — typically completed in 4–6 weeks.",
   steps: [
     {
-      title: "Free Counselling & Profile Assessment",
+      title: "Free Eligibility & Counselling Session",
       description:
-        "1:1 session with a Taksheela Kyrgyzstan specialist — evaluates your NEET score, Class 12 PCB percentage, budget, preferred city (Bishkek vs Osh vs Jalal-Abad), and career goals to map the right NMC-compliant Kyrgyz university.",
+        "Consult with a Taksheela counsellor to verify NEET score, Class 12 marks, and passport validity. Receive a personalised shortlist of NMC-approved Kyrgyz universities matched to your profile, city preference, and budget.",
     },
     {
-      title: "University Shortlisting",
+      title: "Submit University Application",
       description:
-        "2–3 NMC-approved, WHO-listed universities shortlisted with complete, transparent fee breakdowns, hostel availability, Indian community size, and clinical training quality compared side by side.",
+        "Apply on the chosen university's official admissions portal. Scanned copies of Class 12 marksheet, NEET scorecard, and passport are submitted. Most universities confirm applications within 24–48 hours.",
     },
     {
-      title: "Document Preparation & MEA Apostille",
+      title: "Receive Admission Letter",
       description:
-        "Class 10/12 marksheets, NEET scorecard, passport, passport photos, and medical certificate — compiled, apostilled through the Ministry of External Affairs (India), and translated where required for Kyrgyz university submission.",
+        "Once the university reviews your documents, an official Admission Letter is issued. This letter confirms your seat and is required to initiate the Invitation Letter process for visa application.",
     },
     {
-      title: "University Application Submission",
+      title: "Pay Registration Fee",
       description:
-        "Taksheela submits your application directly to the chosen university, manages all follow-up communications, and confirms seat reservation — no missed deadlines, no paperwork gaps.",
+        "A nominal registration fee is paid to confirm acceptance of the offer. The university then issues an official Invitation Letter — the key document required for the Kyrgyzstan student visa application.",
     },
     {
-      title: "Admission Letter & Seat Confirmation",
+      title: "MEA Apostille Your Documents",
       description:
-        "Upon successful application review, you receive the official Admission Letter from the university. Your MBBS seat in Kyrgyzstan is confirmed — no donation, no capitation, no management quota payment involved.",
+        "All academic documents (Class 10, Class 12, birth certificate) must be apostilled by the Ministry of External Affairs (MEA), India. Taksheela's team guides the apostille process to avoid errors or delays.",
     },
     {
-      title: "Visa Invitation Letter & Fee Payment",
+      title: "Apply for Kyrgyzstan Student Visa",
       description:
-        "The university processes the official Visa Invitation Letter for the Kyrgyz Embassy. Simultaneously, our team handles the apostille of remaining documents and guided first-year fee remittance through authorised international transfer channels.",
+        "Submit the visa application at the Kyrgyz Embassy or designated Visa Application Centre. Required: Invitation Letter, apostilled certificates, valid passport, photographs, medical fitness certificate, and proof of financial capacity. Processing typically takes 10–15 working days.",
     },
     {
-      title: "Student Visa Application",
+      title: "Pre-Departure Orientation with Taksheela",
       description:
-        "Using the Visa Invitation Letter, you apply for a Kyrgyz student visa at the Kyrgyzstan Embassy or Consulate in India (New Delhi for Indian students; similar process for Nepal/Bangladesh). Taksheela prepares the complete visa package including medical tests, health insurance, and SOP.",
+        "Attend Taksheela's mandatory pre-departure session. Receive a packing list (winter clothing essentials), arrival protocol, university contact details, and the Bishkek/Osh representative's emergency number.",
     },
     {
-      title: "Pre-Departure Briefing",
+      title: "Arrive, Register & Begin Classes",
       description:
-        "Comprehensive pre-departure orientation: what documents to carry, forex setup, Kyrgyzstan SIM cards, winter clothing guide, hostel essentials, food options, flight coordination, and emergency contact briefing.",
-    },
-    {
-      title: "Airport Pickup & Post-Arrival Support",
-      description:
-        "Taksheela's local representatives in Bishkek (and key partner cities) receive you from the airport, assist with hostel check-in, university registration, SIM card setup, cultural orientation, and local banking — so your first week in Kyrgyzstan is smooth and stress-free.",
+        "Arrive at your university. A representative assists with medical check-up (mandatory on arrival), visa extension, hostel check-in, and academic registration. Classes begin within the first week of the intake month.",
     },
   ],
-};
+  };
 
 // --- Consider before choosing (ConsiderBeforeAbroad) --------------------------------
 
@@ -525,98 +526,76 @@ export type AbroadCostBreakdownContent = {
 };
 
 export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
-  eyebrow: "Financial planning",
-  titlePrimary: "MBBS in Kyrgyzstan",
-  titleAccent: "— Complete Fee Structure & Cost of Living",
+  eyebrow: "Cost & Fees",
+  titlePrimary: "MBBS Kyrgyzstan Fees 2026–27",
+  titleAccent: "— Complete Breakdown in Rupees",
   subtitle:
-    "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2026–27.",
-  tuitionTableTitle: "University tuition (indicative)",
+    "Total programme cost including tuition, hostel, and estimated living — a university-wise comparison for students from India, Nepal, and Bangladesh.",
+  tuitionTableTitle: "University-wise cost (indicative)",
   tuitionColAnnual: "Annual Tuition",
   tuitionColSixYear: "6-Year Total",
   tuitionRows: [
     {
-      university: "International School of Medicine (ISM)",
-      annualTuition: "~₹1.9–3.8L",
-      sixYearTotal: "~₹15–26L",
+      university: "Osh State University / Jalal-Abad State",
+      annualTuition: "USD 3,500–4,200",
+      sixYearTotal: "₹15–22L",
     },
     {
       university: "Kyrgyz State Medical Academy (KSMA)",
-      annualTuition: "~₹1.9–3.8L",
-      sixYearTotal: "~₹15–26L",
+      annualTuition: "USD 4,200–5,000",
+      sixYearTotal: "₹22–27L",
     },
     {
-      university: "Osh State University",
-      annualTuition: "~₹1.9–3.8L",
-      sixYearTotal: "~₹14–24L",
-    },
-    {
-      university: "Jalal-Abad State University",
-      annualTuition: "~₹1.9–3.8L",
-      sixYearTotal: "~₹14–24L",
-    },
-    {
-      university: "Asian Medical Institute (AMI)",
-      annualTuition: "~₹1.9–3.8L",
-      sixYearTotal: "~₹14–24L",
+      university: "ISM / IHSM — International Schools",
+      annualTuition: "USD 4,800–6,000",
+      sixYearTotal: "₹26–32L",
     },
   ],
-  livingTableTitle: "Annual expense breakdown (non-tuition)",
+  livingTableTitle: "Key yearly heads (indicative)",
   livingColMonthly: "Monthly (est.)",
   livingColAnnual: "Annual",
   livingRows: [
     {
-      item: "University hostel",
-      monthly: "~₹8,000–18,000",
-      annual: "₹1L–2.1L",
+      item: "Living cost (food, transport, misc.)",
+      monthly: "USD 120–150",
+      annual: "USD 1,440–1,800",
     },
     {
-      item: "Food / mess",
-      monthly: "~₹7,000–12,000",
-      annual: "₹85K–1.45L",
+      item: "Hostel",
+      monthly: "—",
+      annual: "USD 1,200–1,800",
     },
     {
-      item: "Health insurance",
-      monthly: "~₹600–1,000",
-      annual: "₹7K–12K",
+      item: "Indian mess",
+      monthly: "—",
+      annual: "USD 1,500/yr (compulsory Yr 1 at most unis)",
     },
     {
-      item: "Visa / registration",
-      monthly: "~₹500–1,200",
-      annual: "₹6K–15K",
-    },
-    {
-      item: "Personal expenses",
-      monthly: "~₹5,000–9,000",
-      annual: "₹60K–1.1L",
+      item: "Fee payment note (India)",
+      monthly: "—",
+      annual:
+        "Standard method: carry USD cash and pay after arrival; some unis allow bank transfers. Semester-wise fee payment available at several universities.",
     },
   ],
-  summaryCardTitle: "Total 6-year investment",
+  summaryCardTitle: "Total 6-year programme cost",
   summaryLines: [
     {
-      label: "Typical annual all-in (tuition + living heads)",
-      value: "~₹3.5L–6.5L (indicative)",
+      label: "Total 6-year cost range (indicative)",
+      value: "₹15L – ₹30L",
     },
     {
-      label: "Nepal (NPR, using ₹ × ~1.6)",
-      value: "~NPR 22L–42L total (indicative)",
+      label: "Annual tuition range",
+      value: "USD 3,500–6,000",
     },
     {
-      label: "Bangladesh (BDT, using ₹ × ~1.35)",
-      value: "~BDT 19L–36L total (indicative)",
-    },
-    {
-      label: "vs Indian private MBBS (incl. capitation & donation)",
-      value: "₹80L – ₹1.2 Crore",
-    },
-    {
-      label: "Kyrgyzstan advantage",
-      value: "zero capitation · zero donation",
+      label: "Monthly living cost",
+      value: "USD 120–150",
     },
   ],
-  summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
-  summaryTotalValue: "₹14–28L",
+  summaryTotalLabel: "TOTAL 6-YEAR PROGRAMME COST (EST.)",
+  summaryTotalValue: "₹15–30L",
   summaryFootnote:
-    "Including all 6 years of tuition, hostel, food, insurance, visa, personal expenses, and one-time setup costs. Zero capitation. Zero donation. * One-time: flight ₹30–50K, visa processing, apostille, initial setup. Exchange rates are indicative for 2026–27.",
+    "Fees are approximate and subject to annual revision. All amounts calculated at prevailing USD/INR exchange rates. Indian mess costs an additional USD 1,500/year and is compulsory in Year 1 at most universities.",
 };
 
 // --- Intake periods (IntakePeriodAbroad) ------------------------------------------
@@ -642,38 +621,34 @@ export type AbroadIntakePeriodContent = {
 };
 
 export const kyrgyzstanAbroadIntakePeriodContent: AbroadIntakePeriodContent = {
-  eyebrow: "Application timeline",
-  titlePrimary: "MBBS Intakes in Kyrgyzstan",
-  titleAccent: "2026–27",
+  eyebrow: "MBBS Intake",
+  titlePrimary: "MBBS Intake Calendar",
+  titleAccent: "— Kyrgyzstan 2026–27",
   primaryCard: {
-    icon: "⭐",
-    title: "Primary intake — recommended",
+    icon: "🍂",
+    title: "September Intake (Primary)",
     rows: [
-      { label: "Intake period", value: "September / October 2026" },
-      { label: "Application opens", value: "March – April 2026" },
-      { label: "Application deadline", value: "June – July 2026" },
-      { label: "Admission letters issued", value: "July – August 2026" },
-      { label: "Visa processing", value: "August 2026" },
-      { label: "Classes begin", value: "September – October 2026" },
-      { label: "Availability", value: "All universities" },
+      { label: "Application Window", value: "April – August" },
+      { label: "Invitation Letter Issued", value: "June – August" },
+      { label: "Visa Processing", value: "10–15 working days" },
+      { label: "Classes Begin", value: "September / October" },
+      { label: "Recommended Departure", value: "September" },
     ],
     footerNote:
-      "Two annual admission windows — September is strongly preferred for wider university choice and maximum seat availability. Important for Indian students: NMC requires your NEET score to be within its 3-year validity window at the time of application. If your NEET score is from 2022 or earlier, verify your eligibility window before applying. Contact Taksheela for a free eligibility check.",
+      "The main annual admission cycle for MBBS in Kyrgyzstan. All 10+ NMC-approved universities enrol international students in September. Applications open from April onwards — early applications are strongly recommended as seats fill up through July–August.",
   },
   secondaryCard: {
-    icon: "📅",
-    title: "Secondary intake — limited",
+    icon: "❄️",
+    title: "February Intake (Secondary)",
     rows: [
-      { label: "Intake period", value: "February / March 2026" },
-      { label: "Application opens", value: "November – December 2026" },
-      { label: "Application deadline", value: "December 2026" },
-      { label: "Admission letters issued", value: "December – January" },
-      { label: "Visa processing", value: "January 2026" },
-      { label: "Classes begin", value: "February – March 2026" },
-      { label: "Availability", value: "Select universities only" },
+      { label: "Application Window", value: "October – January" },
+      { label: "Invitation Letter Issued", value: "November – January" },
+      { label: "Visa Processing", value: "10–15 working days" },
+      { label: "Classes Begin", value: "February" },
+      { label: "Recommended Departure", value: "Late January / early February" },
     ],
     footerNote:
-      "For students who missed the autumn intake — fewer partner universities and limited seats. Confirm February / March 2026 availability with Taksheela before paying registration fees. Indian students should also verify NEET validity against NMC rules at application time.",
+      "A second intake cycle is available at several universities including KSMA, ISM, Osh State, and IHSM. Suitable for students who missed the September cycle or require additional time for documentation preparation.",
   },
 };
 
@@ -694,47 +669,29 @@ export type AbroadTeachingMethodologyContent = {
 };
 
 export const kyrgyzstanAbroadTeachingMethodologyContent: AbroadTeachingMethodologyContent = {
-  eyebrow: "How You Learn",
-  titlePrimary: "Teaching Methodology & Practical Training at",
-  titleAccent: "Kyrgyz Universities",
+  eyebrow: "Teaching Methodology",
+  titlePrimary: "How MBBS Is Taught in",
+  titleAccent: "Kyrgyzstan",
   intro:
-    "Kyrgyz medical universities follow a structured 6-year curriculum governed by the Kyrgyzstan Ministry of Healthcare and the Ministry of Education and Science, with all NMC-listed institutions aligned to Schedule 1 requirements of the NMC Gazette. Phases: Years 1–2 pre-clinical (foundation biomedical sciences); Years 3–4 para-clinical (disease mechanisms & pharmacology); Years 5–6 clinical (full hospital rotations including Surgery, Internal Medicine, OBG, Paediatrics, Psychiatry & more).",
+    "NMC-approved Kyrgyz universities follow a structured pedagogical model influenced by European and Russian academic traditions — with a practical, hospital-centred approach from Year 3.",
   items: [
     {
       icon: "📖",
-      title: "Lecture & Seminar-Based Instruction",
+      title: "Lecture & Laboratory-Based Foundation",
       description:
-        "Core theoretical subjects taught in English by experienced faculty across structured semesters. Seminars encourage active participation and analytical thinking from Year 1.",
+        "Years 1 and 2 build theoretical foundations through structured lectures, laboratory sessions, and cadaver dissection. Students are assessed through semester examinations in English. Kyrgyz/Russian language training runs concurrently from Day 1.",
     },
     {
       icon: "🔬",
-      title: "Laboratory & Practical Sessions",
+      title: "Simulation & Pre-Clinical Practice",
       description:
-        "Dissection labs, histology microscopes, biochemistry practicals, and microbiology lab work from Year 1. Simulation centres at major universities use virtual anatomy tools and procedural trainers.",
+        "Modern simulation labs, anatomy models, microscopy, and histology equipment allow students to develop practical skills before entering hospital settings. Student-to-teacher ratios at top universities range from 10:1 to 15:1.",
     },
     {
       icon: "🏥",
-      title: "Hospital Clinical Rotations from Year 3",
+      title: "Hospital Clinical Rotations",
       description:
-        "Supervised rotations at university-affiliated multi-speciality hospitals. High patient volumes in Kyrgyz hospitals provide diverse disease exposure, building diagnostic confidence.",
-    },
-    {
-      icon: "🗣️",
-      title: "Russian / Kyrgyz Language from Year 1",
-      description:
-        "Language training is compulsory, progressive, and structured — designed to reach basic conversational clinical proficiency by Year 3, exactly as NMC's abroad-MBBS guidelines require.",
-    },
-    {
-      icon: "💻",
-      title: "Digital Learning & Simulation",
-      description:
-        "Leading Kyrgyz medical universities integrate digital libraries, online clinical case platforms, and simulation training to supplement in-person hospital exposure.",
-    },
-    {
-      icon: "📝",
-      title: "Examination Formats",
-      description:
-        "Written exams, oral vivas, OSCE-style clinical assessments, and practical competency evaluations — all conducted in English throughout the 6-year program.",
+        "From Year 3, students rotate through government teaching hospitals across Internal Medicine, Surgery, Paediatrics, Obstetrics, Neurology, Psychiatry, and Community Health. High patient volumes and diverse disease exposure support strong FMGE/NExT preparation.",
     },
   ],
 };
@@ -762,108 +719,93 @@ export type AbroadMbbsSyllabusContent = {
 };
 
 export const kyrgyzstanAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
-  eyebrow: "Curriculum",
-  titlePrimary: "MBBS Syllabus in Kyrgyzstan",
-  titleAccent: "— Year by Year",
+  eyebrow: "Syllabus",
+  titlePrimary: "MBBS Kyrgyzstan Syllabus",
+  titleAccent: "— Year-by-Year Breakdown",
   subtitle:
-    "The 6-year General Medicine (MD) program meets NMC's minimum 54-month academic requirement + 12-month mandatory internship. Covers all 19+ compulsory subjects under NMC Schedule 1.",
-  footerNote:
-    "All Year 6 rotations are supervised by licensed clinicians at university-affiliated teaching hospitals in Kyrgyzstan. Completion of Year 6 qualifies graduates for NExT (India).",
+    "Aligned with WHO and NMC standards. All examinations conducted in English across all NMC-approved Kyrgyz medical universities.",
   years: [
     {
       yearLabel: "Year 1",
-      title: "Pre-Clinical Foundations I",
+      title: "Pre-Clinical — Foundational Sciences",
       description: "",
       subjectTags: [
-        "Human Anatomy (Regional & Systemic)",
-        "Medical Biochemistry",
+        "Human Anatomy",
+        "Human Physiology",
+        "Biochemistry",
         "Medical Biology & Genetics",
-        "Medical Physics & Biophysics",
-        "Medical Chemistry",
-        "Russian / Kyrgyz Language I",
-        "History of Kyrgyzstan",
-        "Physical Education",
+        "Histology & Embryology",
+        "Kyrgyz / Russian Language",
       ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 2",
-      title: "Pre-Clinical Foundations II",
+      title: "Pre-Clinical — Bridging Sciences",
       description: "",
       subjectTags: [
-        "Histology & Embryology",
-        "Normal Physiology",
-        "Microbiology (Introduction)",
-        "Medical Psychology",
-        "Russian / Kyrgyz Language II",
-        "Sociology & Medical Ethics",
-        "Medical Informatics",
+        "Pathological Anatomy",
+        "Pathophysiology",
+        "Microbiology & Virology",
+        "Pharmacology",
+        "Propaedeutics of Internal Medicine",
+        "Kyrgyz / Russian (advanced)",
       ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 3",
-      title: "Para-Clinical Sciences",
+      title: "Clinical Begins — Hospital Rotations Start",
       description: "",
       subjectTags: [
-        "Pathological Anatomy",
-        "Pathophysiology",
-        "Pharmacology I",
-        "Medical Microbiology (Full)",
-        "Immunology",
-        "Biostatistics & Public Health",
-        "Introduction to Clinical Medicine",
-        "First Aid & Emergency Medicine",
+        "Internal Medicine I",
+        "General Surgery",
+        "Neurology",
+        "Radiology & Imaging Diagnostics",
+        "Clinical Pharmacology",
+        "Traumatology & Orthopaedics",
       ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 4",
-      title: "Advanced Para-Clinical Sciences",
+      title: "Clinical — Specialised Departments",
       description: "",
       subjectTags: [
-        "Systemic Pathology",
-        "Advanced Pharmacology II",
-        "Radiology & Medical Imaging",
-        "Introduction to Surgery",
-        "Introduction to Internal Medicine",
-        "Clinical Diagnostic Skills",
+        "Internal Medicine II",
+        "Obstetrics & Gynaecology",
+        "Paediatrics I",
         "Ophthalmology",
-        "ENT (Ear, Nose, Throat)",
+        "ENT (Otorhinolaryngology)",
+        "Dermatology & STDs",
       ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 5",
-      title: "Clinical Core Sciences",
+      title: "Advanced Clinical — Complex & Systemic",
       description: "",
       subjectTags: [
-        "Internal Medicine (Full)",
-        "General Surgery",
-        "Obstetrics & Gynaecology",
-        "Paediatrics",
-        "Infectious Disease",
-        "Psychiatry",
-        "Neurology",
-        "Dermatology & Venereology",
-        "Oncology (introductory)",
-        "Forensic Medicine",
+        "Internal Medicine III (Cardiology)",
+        "Paediatrics II (Neonatology)",
+        "Psychiatry & Medical Psychology",
+        "Oncology",
+        "Infectious Diseases",
+        "Public Health & Epidemiology",
       ],
       badgeTone: "primary",
     },
     {
       yearLabel: "Year 6",
-      title: "Mandatory Clinical Internship (12 Months)",
+      title: "Internship — Compulsory Rotatory Clinical",
       description: "",
       subjectTags: [
-        "Internal Medicine (Rotations)",
-        "General Surgery (Rotations)",
-        "Obstetrics & Gynaecology",
-        "Paediatrics",
+        "Supervised Hospital Internship",
+        "Rotations across all departments",
         "Emergency Medicine",
-        "Family Medicine",
-        "Community & Preventive Medicine",
-        "Psychiatry",
+        "State Licensing Examinations",
+        "Research Dissertation / Thesis",
+        "FMGE / NExT Preparation",
       ],
       badgeTone: "internship",
     },
@@ -901,120 +843,113 @@ export type AbroadCompleteComparisonContent = {
   rows: AbroadComparisonTableRow[];
 };
 
-export const kyrgyzstanAbroadCompleteComparisonContent: AbroadCompleteComparisonContent = {
-  eyebrow: "Side by side",
-  titlePrimary: "MBBS in Kyrgyzstan vs MBBS in India",
-  titleAccent: "— 2026–27 Comparison",
-  subtitle:
-    "Data-structured comparison for students asking whether MBBS in Kyrgyzstan fits versus India — transparent, decision-friendly context; Bangladesh & Philippines columns for regional reference.",
-  blockHeading: "Kyrgyzstan · India — key parameters · Bangladesh & Philippines (reference)",
-  colParameter: "Parameter",
-  colFeatured: "🇰🇬 MBBS in Kyrgyzstan",
-  colIndiaGovt: "IN India (Govt. College)",
-  colIndiaPrivate: "IN India (Private College)",
-  colBangladesh: "🇧🇩 BD Bangladesh",
-  colPhilippines: "🇵🇭 PH Philippines",
-  rows: [
-    {
-      parameter: "Entrance Exam",
-      featured: "NEET qualifying score only — accessible (no separate Kyrgyz entrance beyond university screening).",
-      indiaGovt: "NEET-UG — very high AIR required for govt. seats",
-      indiaPrivate: "NEET + large donation / management quota payment",
-      bangladesh: "NEET qualifying score (NMC) + institutional screening",
-      philippines: "NEET qualifying score + school-specific tests / interview",
-    },
-    {
-      parameter: "Competition Level",
-      featured: "Low — merit-based, no quota",
-      indiaGovt: "Extreme — 23L+ aspirants for ~1.18L seats",
-      indiaPrivate: "Moderate rank + high payment capacity",
-      bangladesh: "Moderate — merit + NEET pathway for Indians",
-      philippines: "Moderate — programme & city dependent",
-    },
-    {
-      parameter: "Total 6-Year Cost",
-      featured: "₹14–28L (all-in, indicative)",
-      indiaGovt: "₹5–15L (govt. subsidised)",
-      indiaPrivate: "₹80L–₹1.2Cr (+ capitation)",
-      bangladesh: "₹15–30 Lakhs (typical all-in)",
-      philippines: "₹20–40 Lakhs (typical all-in)",
-    },
-    {
-      parameter: "Capitation / Donation",
-      featured: "Zero. Never.",
-      indiaGovt: "None (govt. merit seat)",
-      indiaPrivate: "₹20L–₹1Cr common",
-      bangladesh: "None (typical NMC-listed route)",
-      philippines: "None (typical pathway)",
-      isDonationRow: true,
-    },
-    {
-      parameter: "Course Duration",
-      featured: "6 years (5 academic + 1 internship in Kyrgyzstan, per university structure)",
-      indiaGovt: "5.5 years (4.5 + 1 CRRI in India)",
-      indiaPrivate: "5.5 years",
-      bangladesh: "5 years + 1-year internship (typical)",
-      philippines: "4 yrs pre-med + 4 yrs MD + internship (typical)",
-    },
-    {
-      parameter: "Medium of Instruction",
-      featured: "English (full programme); Russian/Kyrgyz taught for clinical communication",
-      indiaGovt: "English + regional languages",
-      indiaPrivate: "English (majority of colleges)",
-      bangladesh: "Bengali + English (programme-dependent)",
-      philippines: "English (majority of programmes)",
-    },
-    {
-      parameter: "Seat Availability",
-      featured: "10 NMC-listed options (verify PDF), flexible intake",
-      indiaGovt: "Severely limited govt. seats",
-      indiaPrivate: "Limited + donation-dependent",
-      bangladesh: "~8–10 NMC-listed institutions; widely available",
-      philippines: "~8–10 recognised options; city-limited in places",
-    },
-    {
-      parameter: "Reservation / Quota",
-      featured: "None — merit only",
-      indiaGovt: "All India + state / category quotas",
-      indiaPrivate: "Management / NRI quota common",
-      bangladesh: "Institution-specific intake bands",
-      philippines: "Foreign-student quotas vary by school",
-    },
-    {
-      parameter: "Global Recognition",
-      featured: "WHO · NMC · FAIMER · ECFMG · UNESCO (pathway-dependent)",
-      indiaGovt: "NMC India",
-      indiaPrivate: "NMC India",
-      bangladesh: "WHO, NMC, BMDC alignment for Indian students",
-      philippines: "WHO, NMC; USMLE pathway widely advertised",
-    },
-    {
-      parameter: "Post-Grad Licensing (India)",
-      featured: "NExT (after Kyrgyzstan course + internship steps per NMC rules at your time of admission)",
-      indiaGovt: "NExT",
-      indiaPrivate: "NExT",
-      bangladesh: "FMGE / NExT after BMDC registration pathway",
-      philippines: "FMGE / NExT; strong USMLE prep at many schools",
-    },
-    {
-      parameter: "International Career",
-      featured: "PLAB (UK) · USMLE (USA) · Gulf · Germany",
-      indiaGovt: "Primarily India",
-      indiaPrivate: "Primarily India",
-      bangladesh: "Gulf · UK PLAB (case-by-case) · home licensing",
-      philippines: "USMLE culture strong · Gulf · UK routes",
-    },
-    {
-      parameter: "Food & Cultural Fit",
-      featured: "Halal food widely available; Indian food in Bishkek/Osh; cultural gap requires adjustment",
-      indiaGovt: "Home environment",
-      indiaPrivate: "Home environment",
-      bangladesh: "Cultural proximity; home licensing rules",
-      philippines: "English-native campus culture",
-      isSummaryRow: true,
-    },
-  ],
-};
+export const kyrgyzstanAbroadCompleteComparisonContent: AbroadCompleteComparisonContent =
+  {
+    eyebrow: "MBBS India vs Kyrgyzstan",
+    titlePrimary: "Studying MBBS in India vs Kyrgyzstan",
+    titleAccent: "— 2026 Comparison",
+    subtitle:
+      "A factual, side-by-side breakdown to help Indian students and their families make a clear-headed, informed decision.",
+    blockHeading: "India (Private) vs Kyrgyzstan — key parameters",
+    colParameter: "Parameter",
+    colFeatured: "🇰🇬 MBBS in Kyrgyzstan",
+    colIndiaGovt: "",
+    colIndiaPrivate: "🇮🇳 MBBS in India (Private)",
+    colBangladesh: "",
+    colPhilippines: "",
+    rows: [
+      {
+        parameter: "Total 6-Year Fee",
+        indiaPrivate: "₹50L – ₹1.5 Crore",
+        featured: "₹15L – ₹30L",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Donation / Capitation",
+        indiaPrivate: "₹20L – ₹1Cr+ (widespread)",
+        featured: "Zero — strictly prohibited",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+        isDonationRow: true,
+      },
+      {
+        parameter: "NEET Requirement",
+        indiaPrivate: "High score needed (95th+ percentile for good college)",
+        featured: "Only qualifying score (40th–50th percentile)",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Seat Availability",
+        indiaPrivate: "~1.18 lakh seats — extremely competitive",
+        featured: "Wider international seats availability",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Medium of Instruction",
+        indiaPrivate: "English",
+        featured: "English (+ Kyrgyz/Russian for clinical)",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "International Recognition",
+        indiaPrivate: "India primarily",
+        featured: "WHO, NMC, FAIMER, ECFMG, WFME (global)",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Annual Living Cost",
+        indiaPrivate: "₹2.4L – ₹4.8L/year (metro cities)",
+        featured: "~₹1.0L – ₹1.5L/year",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Admission Transparency",
+        indiaPrivate: "Management quota & agents common",
+        featured: "Merit-based, direct application",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Climate",
+        indiaPrivate: "Tropical / familiar",
+        featured: "Cold winters (-10°C to -20°C), warm summers",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+      {
+        parameter: "Indian Student Community",
+        indiaPrivate: "Domestic",
+        featured: "16,000+ students — well-established",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+        isSummaryRow: true,
+      },
+      {
+        parameter: "Licensing in India",
+        indiaPrivate: "NEET-PG / NExT",
+        featured: "FMGE / NExT (same pathway)",
+        indiaGovt: "",
+        bangladesh: "",
+        philippines: "",
+      },
+    ],
+  };
 
 // --- Our stories / testimonials (OurStoriesAbroad) ---------------------------------
 
@@ -1038,56 +973,32 @@ export type AbroadOurStoriesContent = {
 
 export const kyrgyzstanAbroadOurStoriesContent: AbroadOurStoriesContent = {
   eyebrow: "Real experiences",
-  titlePrimary: "Stories From Students Who Chose",
+  titlePrimary: "What Our Students Say About MBBS in",
   titleAccent: "Kyrgyzstan",
   stories: [
     {
       rating: 5,
       quote:
-        "I was looking at private colleges in India, but the donation demands were shocking — ₹70 lakhs was the lowest quote I got. Taksheela showed me ISM in Bishkek and walked me through the NMC verification themselves. Two years in, and I'm genuinely happy I made this choice. Bishkek feels safe and student-friendly.",
-      name: "Rohan Verma",
-      meta: "NEET 327 · International School of Medicine · Delhi",
-      initial: "R",
+        "I scored 435 in NEET and private colleges in Rajasthan wanted ₹70 lakh in donation. Taksheela showed me KSMA — NMC-approved, English medium, total cost under ₹25 lakhs. I've been in Bishkek for two years and the clinical training is genuinely strong. My family is relieved and I am on track.",
+      name: "Priya Sharma",
+      meta: "Year 2 · Kyrgyz State Medical Academy · Jaipur, Rajasthan",
+      initial: "P",
     },
     {
       rating: 5,
       quote:
-        "I'm from Nepal and I wasn't sure whether Kyrgyzstan would work for my licensing pathway back home. The Taksheela counsellor explained the Nepal Medical Council exam route clearly and helped me pick KSMA. The Indian and Nepali student community in Bishkek is large — I never feel far from home.",
-      name: "Sita Shrestha",
-      meta: "Kyrgyz State Medical Academy · Kathmandu, Nepal",
-      initial: "S",
+        "As a Nepali student, I was concerned about finding familiar food and adjusting to the cold. Bishkek surprised me completely — there is a big Nepali student group at ISM and Indian mess is available on campus. The Taksheela pre-departure briefing prepared me for everything. No regrets at all.",
+      name: "Bibek Tamang",
+      meta: "Year 3 · International School of Medicine · Kathmandu, Nepal",
+      initial: "B",
     },
     {
       rating: 5,
       quote:
-        "I chose Osh State University because Taksheela showed me the cost breakdown honestly — total 6-year investment stayed within my family's budget. The clinical rotations started in Year 3 and the faculty is genuinely dedicated. NEET score was my main concern — 298 isn't high, but it was enough here.",
-      name: "Nikhil Mishra",
-      meta: "NEET 298 · Osh State University · Mumbai",
+        "My parents wanted me to study in India but couldn't afford private college fees. Taksheela explained the NMC rules clearly, arranged my visa support, and connected me with the Osh State University representative. The MBBS here costs less than one semester's donation at a private Bangladeshi college. I'm in my final year now.",
+      name: "Nadia Rahman",
+      meta: "Year 5 · Osh State University · Dhaka, Bangladesh",
       initial: "N",
-    },
-    {
-      rating: 5,
-      quote:
-        "The winter in Bishkek was a real shock at first — I won't lie. But Taksheela's pre-departure checklist was incredibly detailed. I bought the right clothes, knew what to expect, and within 3 weeks I'd adapted. The university itself is modern and the English faculty is excellent.",
-      name: "Tanvi Rawal",
-      meta: "NEET 308 · International Medical University · Jaipur, Rajasthan",
-      initial: "T",
-    },
-    {
-      rating: 5,
-      quote:
-        "As a Bangladeshi student, getting proper DGME-compliant counselling was my biggest challenge. Taksheela had specific knowledge about BMDC requirements and helped me choose a university that satisfied all the compliance criteria. Halal food is everywhere in Kyrgyzstan — that was a great comfort from Day 1.",
-      name: "Farhan Ahmed",
-      meta: "Asian Medical Institute · Dhaka, Bangladesh",
-      initial: "F",
-    },
-    {
-      rating: 5,
-      quote:
-        "From the moment I reached Bishkek to settling into hostel and starting classes, Taksheela's local team was there. I never had to figure anything out alone. The process was exactly as explained during counselling — transparent, step-by-step, no surprises. I'm in Year 4 now and preparing for NExT seriously.",
-      name: "Mohd Zaid",
-      meta: "NEET 354 · Jalal-Abad State University · Indore, MP",
-      initial: "M",
     },
   ],
 };
@@ -1122,45 +1033,47 @@ export type AbroadAccommodationClimateContent = {
 };
 
 export const kyrgyzstanAbroadAccommodationClimateContent: AbroadAccommodationClimateContent = {
-  eyebrow: "Campus life",
-  titlePrimary: "Hostel Accommodation & Climate",
+  eyebrow: "Hostel & Climate",
+  titlePrimary: "Accommodation & Climate Conditions",
   titleAccent: "in Kyrgyzstan",
   hostel: {
     title: "Hostel Accommodation",
     bullets: [
-      "Most NMC-listed Kyrgyz universities provide on-campus or university-managed hostels for international students at annual costs of $600–$1,200 (₹52K–₹1.05L/year).",
-      "Rooms are typically double or triple occupancy with study desks, wardrobes, and shared washrooms. Central heating is standard and essential in winter.",
-      "University mess facilities are available on campus. Bishkek and Osh have Indian restaurants and grocery options catering to the South Asian community.",
-      "Kyrgyzstan is a Muslim-majority country — halal food is available everywhere, benefiting Muslim students from Bangladesh and other communities.",
-      "From Year 3 onwards, many students move to private apartments. Shared apartments in Bishkek cost approximately $200–$350/month per person (₹17K–₹30K).",
-      "Taksheela coordinates verified hostel options and provides city-specific accommodation guidance before your departure.",
+      "All NMC-approved Kyrgyz universities provide on-campus or closely affiliated hostel accommodation for international students at an annual cost of USD 1,200–1,800.",
+      "Furnished rooms (2–4 students per room) with study tables, cupboards, and beds.",
+      "Central heating — essential for Bishkek winters (standard in all hostels).",
+      "Wi‑Fi connectivity across hostel and academic buildings.",
+      "24-hour security, CCTV surveillance, and warden supervision.",
+      "Indian mess facility available (USD 1,500/yr — compulsory in Year 1 at most unis).",
+      "Gym, recreation rooms, and outdoor sports facilities.",
+      "Canteen with halal and vegetarian food options on campus.",
     ],
   },
   climate: {
-    title: "Climate Across Key University Cities",
+    title: "Climate in Kyrgyzstan",
     intro:
-      "Continental climate — Bishkek is colder in winter than Osh or Jalal-Abad; pack layers if you choose the capital.",
+      "Kyrgyzstan has a continental climate — characterised by cold winters and warm summers.",
     rows: [
       {
-        city: "Bishkek Spring (Apr–Jun)",
-        ranges: "10–24°C — Pleasant, ideal for settling in. Admission season.",
+        city: "Winter",
+        ranges: "-10°C to -20°C",
       },
       {
-        city: "Bishkek Summer (Jul–Sep)",
-        ranges: "25–34°C — Warm and sunny. Great for outdoor exploration.",
+        city: "Spring",
+        ranges: "10°C to 18°C",
       },
       {
-        city: "Bishkek Winter (Dec–Feb)",
-        ranges: "-10 to -20°C — Cold; thermals + jacket essential.",
+        city: "Summer",
+        ranges: "25°C to 35°C",
       },
       {
-        city: "Osh Winter (Dec–Feb)",
-        ranges: "-2 to -12°C — Milder than Bishkek — popular with cold-sensitive students.",
+        city: "Autumn",
+        ranges: "8°C to 18°C",
       },
     ],
     tipLabel: "Taksheela City Tip",
     tipBody:
-      "If harsh winters worry you, shortlist Osh or Jalal-Abad alongside Bishkek. Bishkek has the largest university choice and Indian community. Our pre-departure checklist covers clothing, heating, and acclimatisation in detail.",
+      "Winters are cold but shorter and less extreme than Russia or Kazakhstan. Osh (southern Kyrgyzstan) has a milder climate than Bishkek — winters are less harsh. Pack thermal innerwear, a quality winter jacket, gloves, and winter boots for December–February. Taksheela provides a detailed pre-departure winter clothing list to all admitted students.",
   },
 };
 
@@ -1189,18 +1102,58 @@ export const kyrgyzstanAbroadKeyFactsContent: AbroadKeyFactsContent = {
   titlePrimary: "MBBS in Kyrgyzstan — Quick Facts",
   titleAccent: "2026–27",
   items: [
-    { icon: "🎓", value: "MD / General Medicine (= MBBS)", label: "DEGREE AWARDED" },
-    { icon: "⏱️", value: "6 Years (5 academic + 1 internship)", label: "COURSE DURATION" },
-    { icon: "💰", value: "₹1.9L – ₹3.8L / year (typical)", label: "ANNUAL TUITION" },
-    { icon: "🏠", value: "₹1.2L – ₹2.5L / year", label: "ANNUAL LIVING COST" },
-    { icon: "🗓️", value: "September (primary) · February (secondary)", label: "INTAKES" },
-    { icon: "🧾", value: "50% PCB + NEET qualified, age 17+", label: "BASIC ELIGIBILITY" },
-    { icon: "🌐", value: "English (primary); Russian/Kyrgyz taught", label: "MEDIUM OF INSTRUCTION" },
-    { icon: "✅", value: "WHO · NMC · FAIMER · ECFMG · UNESCO", label: "RECOGNISED BY" },
-    { icon: "👩‍🎓", value: "5,000+ enrolled (est.)", label: "INDIAN STUDENTS" },
-    { icon: "🏛️", value: "10 institutions", label: "NMC-APPROVED UNIVERSITIES" },
-    { icon: "🚫", value: "Zero. Completely merit-based.", label: "DONATION / CAPITATION" },
-    { icon: "📝", value: "Not required for admission", label: "IELTS / TOEFL REQUIRED" },
+    {
+      icon: "🎓",
+      value: "MD Physician (MBBS equivalent)",
+      label: "DEGREE AWARDED",
+    },
+    {
+      icon: "⏱️",
+      value: "6 Years (5 academic + 1 internship)",
+      label: "DURATION",
+    },
+    { icon: "📅", value: "September · February", label: "INTAKES" },
+    {
+      icon: "🧾",
+      value: "50% PCB in 10+2 + NEET qualified",
+      label: "ELIGIBILITY",
+    },
+    {
+      icon: "🌐",
+      value: "English + Kyrgyz/Russian (from Year 1)",
+      label: "MEDIUM",
+    },
+    {
+      icon: "💰",
+      value: "USD 3,500 – 6,000 per year",
+      label: "ANNUAL TUITION",
+    },
+    {
+      icon: "🏠",
+      value: "USD 1,200 – 1,800 per year",
+      label: "HOSTEL (ANNUAL)",
+    },
+    {
+      icon: "✅",
+      value: "WHO · NMC · ECFMG · FAIMER · WFME",
+      label: "RECOGNISED BY",
+    },
+    {
+      icon: "👥",
+      value: "16,000+ currently enrolled",
+      label: "INDIAN STUDENTS",
+    },
+    { icon: "📝", value: "Not required", label: "IELTS / TOEFL" },
+    {
+      icon: "🌡️",
+      value: "Continental — cold winters, warm summers",
+      label: "CLIMATE",
+    },
+    {
+      icon: "🍛",
+      value: "Available — Indian mess at all major unis",
+      label: "INDIAN FOOD",
+    },
   ],
 };
 
@@ -1223,58 +1176,38 @@ export type AbroadScholarshipsContent = {
 };
 
 export const kyrgyzstanAbroadScholarshipsContent: AbroadScholarshipsContent = {
-  eyebrow: "Financial Aid",
-  title: "Scholarships for MBBS in Kyrgyzstan",
+  eyebrow: "Scholarships",
+  title: "Scholarship & Financial Assistance Options",
   subtitle:
-    "Kyrgyzstan MBBS is already among the world's most budget-friendly medical degrees. These scholarship routes can reduce costs further for eligible students.",
+    "While MBBS in Kyrgyzstan is already one of the most affordable medical degrees globally, there are additional financial support avenues available to deserving students.",
   cards: [
     {
-      iconKey: "building",
-      title: "University Merit Scholarships",
+      iconKey: "graduation",
+      title: "Kyrgyz Government Scholarships",
       description:
-        "Merit-based tuition relief at Taksheela-partnered Kyrgyz universities — processed through the admissions office after you qualify.",
-      bullets: [
-        "10–20% tuition fee reduction for students with 70%+ in Class 12 PCB or strong NEET scores.",
-        "Renewable annually based on academic performance and GPA maintenance.",
-        "Available at multiple Taksheela-partnered Kyrgyz universities — confirm during shortlisting.",
-        "Processed after admission confirmation, not before.",
-      ],
+        "The Government of Kyrgyzstan offers limited scholarships through bilateral academic exchange programmes. These are merit-based and available to students from specific partner countries. Contact Taksheela for current eligibility and availability.",
+      bullets: [],
     },
     {
-      iconKey: "graduation",
-      title: "Government & bilateral scholarships",
+      iconKey: "building",
+      title: "University Performance Incentives",
       description:
-        "The Kyrgyz Republic and partner countries occasionally offer limited merit or exchange scholarships — medical quotas are small and rules change yearly.",
-      bullets: [
-        "Check current announcements from the university international office and Kyrgyz education authorities.",
-        "Medical programme slots for foreign students are limited — apply early if a window opens.",
-        "Requires strong academic profile and complete documentation.",
-        "Taksheela advises on current eligibility and paperwork.",
-      ],
+        "Several universities — including KSMA and ISM — offer fee reductions or second-year waivers to students who achieve consistently high GPA scores. Academic excellence during the first year often opens this opportunity.",
+      bullets: [],
     },
     {
       iconKey: "books",
-      title: "Government of India Schemes",
+      title: "Indian State Government Scholarships",
       description:
-        "Central and state programmes that can subsidise education loans or interest for eligible Indian students heading abroad for MBBS.",
-      bullets: [
-        "Central Sector Interest Subsidy (CSIS) — interest subsidy on education loans for EWS students (family income under ₹4.5L/year).",
-        "Padho Pardesh Scheme — interest subsidy for minority community students studying abroad.",
-        "State government merit scholarships (varies by state — check your state education department).",
-        "Apply before departure; Taksheela assists with documentation preparation.",
-      ],
+        "Students from SC/ST/OBC/EWS categories may be eligible for state government post-matric scholarships that can be applied toward MBBS abroad costs. Taksheela's team assists with documentation and scholarship application.",
+      bullets: [],
     },
     {
       iconKey: "globe",
-      title: "Taksheela Support Initiative",
+      title: "Taksheela Partner Discount",
       description:
-        "Our internal support for meritorious students from low-income backgrounds — limited seats each cycle.",
-      bullets: [
-        "Partial counselling and documentation fee waivers for meritorious students from low-income backgrounds.",
-        "Speak to a Taksheela counsellor to assess your eligibility.",
-        "Limited availability per intake cycle — apply early.",
-        "Focused on students with strong academics but genuine financial constraints.",
-      ],
+        "Through long-standing relationships with partner universities, Taksheela students may benefit from waived registration fees or preferential hostel arrangements not available through direct applications. Enquire during your counselling session.",
+      bullets: [],
     },
   ],
 };
@@ -1303,38 +1236,36 @@ export type AbroadEducationLoanContent = {
 };
 
 export const kyrgyzstanAbroadEducationLoanContent: AbroadEducationLoanContent = {
-  eyebrow: "Financing your MBBS",
-  title: "Education Loans for MBBS in Kyrgyzstan",
+  eyebrow: "Education Loans",
+  title: "How to Finance MBBS in Kyrgyzstan — Education Loan Guide",
   intro:
-    "Financing a Kyrgyz MBBS is well-supported by Indian banks and NBFCs. Taksheela helps you build a lender-ready document file for faster loan processing.",
+    "MBBS in Kyrgyzstan qualifies for education loans from major Indian banks. The total cost of ₹15–30 lakhs makes loan repayment very manageable on a physician's income.",
   nationalised: {
-    title: "Nationalised Banks (India)",
-    description: "Best for lower interest rates; collateral often required above ₹7.5L",
+    title: "Nationalised Bank Loans (SBI, BoB, Canara)",
+    description:
+      "SBI, Bank of Baroda, and other public sector banks offer MBBS abroad education loans at 8–11% per annum. Loans up to ₹20 lakhs are often available without collateral. Above ₹20 lakhs, property or LIC policy may be required as security. Moratorium period covers the study duration plus 6–12 months post-completion.",
     bullets: [
-      "SBI Global Ed-Vantage — up to ₹1.5 crore (eligibility-based)",
-      "Bank of Baroda Baroda Scholar Scheme for study abroad",
-      "Union Bank of India overseas education loan",
-      "Punjab National Bank Saraswati scheme",
-      "Interest: 9.5–11% p.a. (floating, bank-specific)",
-      "Moratorium: course period + 6–12 months after completion",
+      "Interest: 8–11% p.a. (bank-specific)",
+      "Up to ₹20L often without collateral",
+      "Above ₹20L: collateral may be required",
+      "Moratorium: study period + 6–12 months",
     ],
   },
   privateNbfc: {
-    title: "Private Banks & NBFCs",
-    description: "Faster processing; flexible collateral structures available",
+    title: "Private Bank Loans (HDFC, Axis, ICICI)",
+    description:
+      "Private banks process faster than nationalised banks and offer loans up to ₹40 lakhs for overseas medical education. Interest rates are slightly higher (10–14%). Collateral requirements are often more flexible. HDFC Credila and Avanse specialise specifically in study abroad loans.",
     bullets: [
-      "HDFC Credila — specialist study abroad education loans",
-      "Avanse Financial Services — MBBS abroad coverage",
-      "Auxilo Finserve — flexible MBBS abroad loan products",
-      "InCred Finance — flexible co-borrower structures",
-      "Up to ₹40–60L possible without collateral (profile-based)",
-      "Interest: 10.5–14% p.a. (NBFC rates vary)",
+      "Loan amount: up to ₹40L (bank-specific)",
+      "Interest: 10–14% p.a. (bank-specific)",
+      "Faster processing vs PSU banks",
+      "HDFC Credila and Avanse specialise in study abroad loans",
     ],
   },
   support: {
-    title: "Taksheela Loan File Support",
+    title: "Documents Required for Loan",
     description:
-      "We prepare your complete lender-ready document set — provisional admission letter, detailed fee schedule, course duration letter, university NMC verification, and co-borrower KYC proofs — so your loan application moves faster with fewer rejections and back-and-forth queries.",
+      "University Admission / Invitation Letter, official fee structure, Class 10 and 12 certificates, NEET scorecard, valid passport, 6-month bank statement of parent/guardian, income proof, and collateral documents (if loan exceeds ₹20 lakhs). Taksheela's education finance advisors assist with the complete documentation set.",
   },
 };
 
@@ -1343,58 +1274,46 @@ export const kyrgyzstanAbroadEducationLoanContent: AbroadEducationLoanContent = 
 /** Same shape as `AbroadTeachingMethodologyContent` so one component can render both sections. */
 export const kyrgyzstanAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyContent = {
   eyebrow: "After graduation",
-  titlePrimary: "Career Opportunities After MBBS in",
+  titlePrimary: "Career Pathways After MBBS in",
   titleAccent: "Kyrgyzstan",
   intro:
-    "An NMC-compliant Kyrgyz MD degree, combined with NExT clearance, opens genuine career pathways in India and across the world.",
+    "A WHO-listed, NMC-approved degree from Kyrgyzstan unlocks multiple global career pathways for graduates from India, Nepal, and Bangladesh.",
   items: [
     {
-      icon: "🏥",
-      title: "Practice in India",
+      icon: "🇮🇳",
+      title: "Practise in India",
       description:
-        "Clear NExT, complete 12-month India internship, register with State Medical Council — and practice anywhere in India as a licensed physician.",
+        "Pass FMGE or NExT to receive NMC registration. Practise as a registered medical professional in India's expanding public and private healthcare sector.",
     },
     {
       icon: "🎓",
-      title: "MD/MS Postgraduate",
+      title: "PG / Specialisation in India",
       description:
-        "Appear for NEET-PG (NExT Step 2) and pursue postgraduate specialisation in surgery, medicine, OBG, paediatrics, radiology, and more.",
-    },
-    {
-      icon: "🇬🇧",
-      title: "Practice in UK (PLAB)",
-      description:
-        "Clear PLAB 1 and PLAB 2 for GMC registration and employment in the NHS — one of the world's most sought-after medical career pathways.",
+        "After NMC registration, appear for NEET-PG or INI-CET to pursue MD/MS/DNB specialisations across all clinical disciplines in India.",
     },
     {
       icon: "🇺🇸",
-      title: "Practice in USA (USMLE)",
+      title: "USMLE — Practice in USA",
       description:
-        "Pass USMLE Steps 1 and 2CK for US residency applications through the ERAS/NRMP match system. ECFMG listing of Kyrgyz universities supports eligibility.",
+        "FAIMER/ECFMG-listed Kyrgyz universities qualify graduates to sit USMLE Steps 1, 2CK, and 2CS — the established pathway to US medical residency and practice.",
     },
     {
-      icon: "🌍",
-      title: "Gulf Countries",
+      icon: "🇬🇧",
+      title: "PLAB — NHS, United Kingdom",
       description:
-        "DHA (Dubai), HAAD (Abu Dhabi), and SCHS (Saudi Arabia) licensing exams open to WHO-recognised graduates when credential rules are met.",
+        "WHO-listed degree qualifies for PLAB (Professional and Linguistic Assessments Board) — the standard entry route for international medical graduates entering the UK's NHS.",
     },
     {
-      icon: "🇩🇪",
-      title: "Germany & Europe",
+      icon: "🇦🇺",
+      title: "AMC — Practice in Australia",
       description:
-        "German Approbation exam + B2/C1 German language proficiency opens medical registration in Germany and select EU countries.",
+        "ECFMG and WFME-recognised degree qualifies for AMC (Australian Medical Council) examination — the pathway to general practice and specialist training in Australia and New Zealand.",
     },
     {
-      icon: "🔬",
-      title: "Medical Research",
+      icon: "🌏",
+      title: "Practice in Kyrgyzstan & CIS",
       description:
-        "Kyrgyz universities' UNESCO and FAIMER recognition opens doors to PhD programs and research fellowships in Europe, India, and internationally.",
-    },
-    {
-      icon: "🏢",
-      title: "Healthcare Administration",
-      description:
-        "Combine MBBS with an MBA/MHA for careers in hospital management, healthcare policy, pharmaceutical management, and health tech.",
+        "After the state licensing exam, graduates may practise and pursue postgraduate specialisation in Kyrgyzstan or other CIS member states — a growing healthcare market with strong demand for doctors.",
     },
   ],
 };
@@ -1416,65 +1335,47 @@ export type AbroadWhyChooseTaksheelaContent = {
 };
 
 export const kyrgyzstanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheelaContent = {
-  eyebrow: "Your Kyrgyzstan MBBS Partner",
-  titlePrimary: "Why Choose Taksheela for",
-  titleAccent: "MBBS in Kyrgyzstan?",
+  eyebrow: "Why Choose Taksheela",
+  titlePrimary: "Why Students from India, Nepal & Bangladesh Trust",
+  titleAccent: "Taksheela",
   subtitle:
-    "Not just a consultancy — your end-to-end medical career partner from NEET score to Kyrgyz MD degree and NExT preparation. Here is what makes Taksheela genuinely different.",
+    "Taksheela Institute of Education is a Kolkata-headquartered study abroad consultancy with offices across India — specialising in MBBS abroad placements since our founding.",
   items: [
     {
-      icon: "🎯",
-      title: "Kyrgyzstan-Specialist Counsellors",
-      description:
-        "Advisors who know Kyrgyzstan's university landscape deeply — city-wise cost differences (Bishkek vs Osh vs Jalal-Abad), NMC compliance, NExT readiness, and realistic winter preparation. Not generic abroad counselling.",
-    },
-    {
-      icon: "📊",
-      title: "Real-Time NMC Verification",
-      description:
-        "We cross-check every university against the NMC's current approved list before shortlisting — and share the official NMC document with you. You make decisions based on verified government data, not our word.",
-    },
-    {
       icon: "🔍",
-      title: "Zero Commission Bias",
+      title: "100% Transparent Shortlisting",
       description:
-        "Our shortlisting is driven by NMC compliance, city suitability, fee transparency, hostel quality, and clinical training strength. Never by university commission. We show you the reasoning in writing.",
+        "Every university recommendation is based on NMC compliance, FMGE track record, hospital quality, batch size, and your specific profile. Never commission-first.",
     },
     {
       icon: "📋",
-      title: "Complete Document Management",
+      title: "End-to-End Admission Support",
       description:
-        "MEA apostille, Russian translation (where required), visa invitation coordination, and SOP preparation — structured checklists, zero missed steps, fewer rejections. We've placed hundreds of students in Kyrgyzstan.",
+        "Eligibility check → university application → document apostille → visa filing → pre-departure briefing → arrival coordination. We manage every step so you focus on preparation.",
     },
     {
-      icon: "🛂",
-      title: "Visa & Travel Hand-Holding",
+      icon: "🌐",
+      title: "On-Ground Representatives in Kyrgyzstan",
       description:
-        "Full Kyrgyz student visa package — including medical tests, health insurance, SOP, and Embassy submission coordination. Pre-departure orientation covering forex, flights, winter packing, and SIM card setup.",
+        "Our Bishkek and Osh representatives coordinate airport pickup, hostel check-in, medical check-up, visa extension, and first-semester registration — so no student arrives to confusion.",
     },
     {
-      icon: "🤝",
-      title: "Local Teams in Bishkek & Key Cities",
+      icon: "📚",
+      title: "FMGE / NExT Guidance from Year 1",
       description:
-        "Taksheela's on-ground representatives in Kyrgyzstan provide airport pickup, hostel check-in, university registration, SIM setup, and cultural orientation — so your first week in Kyrgyzstan is smooth and reassuring.",
-    },
-    {
-      icon: "🇳🇵🇧🇩",
-      title: "Dedicated Nepal & Bangladesh Support",
-      description:
-        "Specialist counsellors who understand the unique visa, DGME/NMC-Nepal compliance, and licensing pathway requirements for Nepali and Bangladeshi students — not a copy-paste India process.",
+        "We advise on FMGE/NExT preparation strategy from the very beginning of the programme — including recommended study resources, coaching integration, and exam timeline planning.",
     },
     {
       icon: "💳",
-      title: "Education Loan File Preparation",
+      title: "Authorised Fee Remittance Support",
       description:
-        "Complete lender-ready document file for SBI, Bank of Baroda, HDFC Credila, Avanse, and Auxilo — so your loan application moves faster and with fewer rejections.",
+        "We connect families with RBI-authorised international payment channels. Education loan partnerships are available through verified NBFC and bank partners for eligible students.",
     },
     {
-      icon: "🧩",
-      title: "NExT Roadmap from Year 1",
+      icon: "🤝",
+      title: "Post-Admission Support Throughout",
       description:
-        "Early orientation to NExT structure, study resources, and alumni connects — so your licensing preparation starts from Year 1, not in a panic during Year 5 or 6.",
+        "Our responsibility does not end at admission. Visa renewal reminders, fee payment coordination, mid-programme check-ins, and FMGE preparation milestones — we stay involved.",
     },
   ],
 };
@@ -1505,55 +1406,54 @@ export type AbroadRegulatoryFrameworkContent = {
 };
 
 export const kyrgyzstanAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkContent = {
-  eyebrow: "Regulatory framework",
-  titlePrimary: "NMC Gazette Rules &",
-  titleAccent: "Kyrgyzstan Compliance",
+  eyebrow: "NMC Gazette & Compliance",
+  titlePrimary: "NMC Guidelines",
+  titleAccent: "— What Every Indian Student Must Know",
   subtitle:
-    "These six NMC Gazette rules determine whether your Kyrgyz MBBS degree qualifies you to practice medicine in India. All Taksheela-recommended Kyrgyz universities comply fully with all six when you verify current listings.",
+    "India's National Medical Commission sets binding rules for all Indian students studying MBBS abroad. Non-compliance disqualifies graduates from practising in India.",
   rules: [
     {
-      icon: "📅",
-      title: "Rule 1 — Minimum 54 Months Academic Study",
+      icon: "🧾",
+      title: "Valid NEET-UG qualifying score",
       description:
-        "The programme must include at least 54 months of full-time academic study, excluding the 12-month internship. All Kyrgyz MD programs run for 5 academic years, fully satisfying this requirement — confirm your university’s exact structure vs NMC norms before enrolling.",
+        "A valid NEET-UG qualifying score is mandatory before beginning MBBS abroad. All students admitted from 2019 onwards must hold a current qualifying score (2024, 2025, or 2026).",
     },
     {
-      icon: "🏥",
-      title: "Rule 2 — 12-Month Mandatory Internship",
+      icon: "🌍",
+      title: "University must be WDOMS-listed (FAIMER)",
       description:
-        "A compulsory 12-month clinical internship must be completed at the same university or its affiliated teaching hospital in Kyrgyzstan before returning to India, as per NMC rules applicable at your admission.",
+        "The university must appear in the World Directory of Medical Schools (WDOMS) published by FAIMER. All NMC-approved Kyrgyz universities on this page are WDOMS-listed.",
+    },
+    {
+      icon: "📅",
+      title: "Minimum duration: 54 months + 12-month internship",
+      description:
+        "Minimum 54 months of academic study plus a 12-month compulsory clinical internship (totalling 6 years). Kyrgyz NMC-approved programmes fully comply with this requirement.",
+    },
+    {
+      icon: "📝",
+      title: "Must pass NExT after graduation",
+      description:
+        "Students must pass the NExT (National Exit Test) — India's replacement for FMGE — to obtain NMC registration and a licence to practise medicine in India after graduation.",
     },
     {
       icon: "🌐",
-      title: "Rule 3 — English as Primary Medium",
+      title: "Medium of instruction",
       description:
-        "The full MBBS/MD course must be delivered in English. NMC-listed Kyrgyz medical universities on India’s current PDF typically offer English-medium General Medicine — confirm your exact programme on the offer letter.",
+        "Instruction must be in English or the official national language of the host country. All NMC-approved Kyrgyz universities offer English-medium programmes as the primary language.",
     },
     {
-      icon: "🪪",
-      title: "Rule 4 — Valid Degree for Local Practice",
+      icon: "🏥",
+      title: "Internship policy can require India internship",
       description:
-        "Graduates must receive a degree granting them the right to practise medicine in Kyrgyzstan. All recommended universities satisfy this — graduates can apply for Kyrgyz medical registration upon completion.",
-    },
-    {
-      icon: "📋",
-      title: "Rule 5 — NEET Qualification Mandatory",
-      description:
-        "All Indian students must have a valid NEET-UG qualifying score at the time of admission to any foreign medical university, as per NMC norms. NEET validity: 3 years from result date.",
-    },
-    {
-      icon: "✅",
-      title: "Rule 6 — WHO / WDOMS Listing",
-      description:
-        "The university must be listed in the World Directory of Medical Schools (WDOMS). All Taksheela-recommended Kyrgyz universities are confirmed WDOMS-listed and NMC-approved before shortlisting.",
+        "A compulsory 12-month internship may need to be completed in India (post-graduation) under updated NMC directives for certain batches. Students must track NMC notifications — Taksheela maintains updated guidance.",
     },
   ],
   officialSourcesLabel: "Official Sources",
   officialLinks: [
     { label: "NMC India", href: "https://www.nmc.org.in" },
     { label: "WHO Directory", href: "https://www.wdoms.org" },
-    { label: "Kyrgyzstan Ministry of Education (gov.kg)", href: "https://www.gov.kg" },
-    { label: "MEA India (Apostille)", href: "https://www.mea.gov.in" },
+    { label: "Kyrgyz Ministry of Health", href: "https://www.gov.kg" },
   ],
 };
 
@@ -1649,455 +1549,268 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-const kyImg = (n: number) => `${imageBaseUrl ?? ""}mbbsCollege/kyrgyzstan/ky${n}.png`;
+// (Images intentionally omitted — HTML page provides no university images.)
 
-/** Matches `country.colleges` in `mbbs.js` (10 featured universities). */
+/** Universities listed on the Kyrgyzstan HTML table (7 entries). */
 export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
   {
-    id: "ism",
-    name: "International School of Medicine",
-    abbreviation: "ISM",
-    established: "1993",
-    locationLine: "Bishkek",
-    region: "moscow",
-    budgetFriendly: false,
-    fmgePercent: 30,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Popular", variant: "amber" },
-    ],
-    rankTag: "Large international intake — Bishkek",
-    headerEmoji: "🏛️",
-    imageSrc: kyImg(1),
-    stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Medium", value: "English" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Licensing outcomes depend on self-study; strong Indian peer groups in Bishkek for NExT coaching.",
-    },
-    description: [
-      "Well-known English-medium medical school in Bishkek with structured clinical training and a large South Asian student community.",
-    ],
-    featureTags: ["Bishkek", "English Track", "Clinical Rotations", "Indian Community"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
     id: "ksma",
-    name: "Kyrgyz State Medical Academy",
+    name: "Kyrgyz State Medical Academy (KSMA)",
     abbreviation: "KSMA",
     established: "1939",
     locationLine: "Bishkek",
     region: "moscow",
     budgetFriendly: false,
-    fmgePercent: 30,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "State", variant: "amber" },
+      { label: "Government", variant: "amber" },
     ],
-    rankTag: "Historic state medical academy — capital",
-    headerEmoji: "🔬",
-    imageSrc: kyImg(2),
+    rankTag: "Oldest & most prestigious medical university in Kyrgyzstan",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Founded", value: "1939" },
+      { label: "Annual tuition (USD)", value: "$4,200 – $5,000" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹22–27 Lakhs" },
+      { label: "City", value: "Bishkek" },
+      { label: "Type", value: "Government" },
     ],
-    fmge: {
-      type: "text",
-      text: "Structured clinical exposure — pair with disciplined NExT preparation from early years.",
-    },
-    description: [
-      "Established state medical academy in Bishkek with strong teaching-hospital links and international student intake.",
-    ],
-    featureTags: ["English Medium", "Hospital Network", "Peer Support", "NMC Aligned"],
+    fmge: { type: "text", text: "—" },
+    description: ["Oldest & most prestigious medical university in Kyrgyzstan"],
+    featureTags: ["Bishkek", "Government", "NMC Approved"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
   },
   {
-    id: "jsu",
-    name: "Jalal-Abad State University",
-    abbreviation: "JSU",
-    established: "1993",
-    locationLine: "Jalal-Abad",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 29,
+    id: "ism",
+    name: "International School of Medicine (ISM)",
+    abbreviation: "ISM",
+    established: "2003",
+    locationLine: "Bishkek",
+    region: "moscow",
+    budgetFriendly: false,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Regional", variant: "amber" },
+      { label: "Private", variant: "rose" },
     ],
-    rankTag: "Southern city — milder climate",
-    headerEmoji: "🎓",
-    imageSrc: kyImg(3),
+    rankTag: "First private medical school in Kyrgyzstan; 750+ Indian students",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹14–24L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "City", value: "Jalal-Abad" },
+      { label: "Annual tuition (USD)", value: "$4,800 – $6,000" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹26–32 Lakhs" },
+      { label: "City", value: "Bishkek" },
+      { label: "Type", value: "Private" },
     ],
-    fmge: {
-      type: "text",
-      text: "Verify latest NMC listing; good option for students prioritising milder winters.",
-    },
-    description: [
-      "Regional state university with medical faculty; popular with students seeking value outside the capital.",
-    ],
-    featureTags: ["International Mix", "English Track", "Jalal-Abad", "Hostel Options"],
+    fmge: { type: "text", text: "—" },
+    description: ["First private medical school in Kyrgyzstan; 750+ Indian students"],
+    featureTags: ["Bishkek", "Private", "Indian Students"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
   },
   {
-    id: "osu",
-    name: "Osh State University",
+    id: "osh",
+    name: "Osh State University — Medical Faculty",
     abbreviation: "OSU",
     established: "1951",
     locationLine: "Osh",
     region: "other",
     budgetFriendly: true,
-    fmgePercent: 29,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "South", variant: "amber" },
+      { label: "Government", variant: "amber" },
     ],
-    rankTag: "Second city — Fergana Valley hub",
-    headerEmoji: "🏛️",
-    imageSrc: kyImg(4),
+    rankTag: "70+ years legacy; largest university in southern Kyrgyzstan",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹14–24L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Medium", value: "English" },
+      { label: "Annual tuition (USD)", value: "$3,500 – $4,500" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹19–24 Lakhs" },
+      { label: "City", value: "Osh" },
+      { label: "Type", value: "Government" },
     ],
-    fmge: {
-      type: "text",
-      text: "Pair early NExT planning with clinical years — verify NMC listing each intake.",
-    },
-    description: [
-      "Major university in southern Kyrgyzstan with English-medium medical tracks and growing international cohorts.",
-    ],
-    featureTags: ["Osh", "English Program", "Clinical Rotations", "Value"],
+    fmge: { type: "text", text: "—" },
+    description: ["70+ years legacy; largest university in southern Kyrgyzstan"],
+    featureTags: ["Osh", "Government", "Budget-Friendly"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
   },
   {
-    id: "ami",
-    name: "Asian Medical Institute",
-    abbreviation: "AMI",
-    established: "2004",
-    locationLine: "Kant",
-    region: "other",
-    budgetFriendly: true,
-    fmgePercent: 28,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Near Bishkek", variant: "amber" },
-    ],
-    rankTag: "Kant campus — short hop from Bishkek",
-    headerEmoji: "📚",
-    imageSrc: kyImg(5),
-    stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹14–24L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "City", value: "Kant" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Popular with South Asian students — confirm internship mapping with Taksheela.",
-    },
-    description: [
-      "Private institute near Bishkek with English-medium MD programme and structured hostel support.",
-    ],
-    featureTags: ["Kant", "English Track", "Clinical Training", "NMC Pathway"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "imu",
-    name: "International Medical University",
-    abbreviation: "IMU",
-    established: "2016",
+    id: "ihsm",
+    name: "International Higher School of Medicine (IHSM)",
+    abbreviation: "IHSM",
+    established: "2002",
     locationLine: "Bishkek",
     region: "moscow",
     budgetFriendly: false,
-    fmgePercent: 28,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Bishkek", variant: "amber" },
+      { label: "Private", variant: "rose" },
     ],
-    rankTag: "Capital campus — modern intake",
-    headerEmoji: "🏫",
-    imageSrc: kyImg(6),
+    rankTag: "Strong FMGE-prep integration; multiple campuses",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Medium", value: "English" },
+      { label: "Annual tuition (USD)", value: "$4,500 – $5,500" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹24–29 Lakhs" },
+      { label: "City", value: "Bishkek" },
+      { label: "Type", value: "Private" },
     ],
-    fmge: {
-      type: "text",
-      text: "Licensing outcomes depend on individual prep; active peer networks in Bishkek.",
-    },
-    description: [
-      "Bishkek-based medical university with English-medium curriculum and hospital affiliations.",
-    ],
-    featureTags: ["Bishkek", "English MD", "Hostel", "Peer Network"],
+    fmge: { type: "text", text: "Strong FMGE-prep integration; multiple campuses" },
+    description: ["Strong FMGE-prep integration; multiple campuses"],
+    featureTags: ["Bishkek", "Private", "FMGE Prep"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
+  },
+  {
+    id: "jalalabad",
+    name: "Jalal-Abad State University — Medical Faculty",
+    abbreviation: "JASU",
+    established: "1993",
+    locationLine: "Jalal-Abad",
+    region: "other",
+    budgetFriendly: true,
+    fmgePercent: 0,
+    headerTags: [
+      { label: "NMC Approved", variant: "emerald" },
+      { label: "Government", variant: "amber" },
+    ],
+    rankTag: "Budget-friendly; quieter city with low living costs",
+    stats: [
+      { label: "Annual tuition (USD)", value: "$3,500 – $4,200" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹18–22 Lakhs" },
+      { label: "City", value: "Jalal-Abad" },
+      { label: "Type", value: "Government" },
+    ],
+    fmge: { type: "text", text: "—" },
+    description: ["Budget-friendly; quieter city with low living costs"],
+    featureTags: ["Jalal-Abad", "Budget-Friendly", "Government"],
+    applyHref: "/contact",
+    availabilityText: "NMC Approved",
   },
   {
     id: "krsu",
-    name: "Kyrgyz Russian Slavic University",
+    name: "Kyrgyz-Russian Slavic University — Medical Faculty",
     abbreviation: "KRSU",
     established: "1993",
     locationLine: "Bishkek",
     region: "moscow",
     budgetFriendly: false,
-    fmgePercent: 30,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Bilingual", variant: "amber" },
+      { label: "Government", variant: "amber" },
     ],
-    rankTag: "Russian–Kyrgyz academic tradition",
-    subtitle: "KRSU – Bishkek",
-    headerEmoji: "🌍",
-    imageSrc: kyImg(7),
+    rankTag: "Bilingual institution with Russian-European teaching traditions",
+    subtitle: "Kyrgyz-Russian Slavic University — Medical Faculty",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Students", value: "Int'l mix" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Strong Russian-language layer — plan NExT coaching alongside clinical years.",
-    },
-    description: [
-      "Established university with medical faculty; popular with students comfortable in a Russian-influenced academic environment.",
-    ],
-    featureTags: ["Bishkek", "Clinical Training", "Indian Community", "English"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "ksmi",
-    name: "Kyrgyz State Medical Institute",
-    abbreviation: "KSMI",
-    established: "1939",
-    locationLine: "Bishkek",
-    region: "moscow",
-    budgetFriendly: false,
-    fmgePercent: 29,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Established", variant: "amber" },
-    ],
-    rankTag: "Medical institute — Bishkek",
-    headerEmoji: "⚖️",
-    imageSrc: kyImg(8),
-    stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Founded", value: "1939" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Verify listing each cycle; map internship and NExT prep early with counsellor.",
-    },
-    description: [
-      "Long-standing medical institute in the capital with structured MD curriculum and clinical rotations.",
-    ],
-    featureTags: ["Bishkek", "Value", "Clinical Training", "NMC"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
-    id: "knu",
-    name: "Kyrgyz National University",
-    abbreviation: "KNU",
-    established: "1925",
-    locationLine: "Bishkek",
-    region: "moscow",
-    budgetFriendly: false,
-    fmgePercent: 29,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "National", variant: "amber" },
-    ],
-    rankTag: "Flagship national university — medical faculty",
-    headerEmoji: "🩺",
-    imageSrc: kyImg(9),
-    stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹15–26L" },
-      { label: "Duration", value: "5–6 Years" },
+      { label: "Annual tuition (USD)", value: "$4,000 – $5,000" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹21–27 Lakhs" },
       { label: "City", value: "Bishkek" },
+      { label: "Type", value: "Government" },
     ],
-    fmge: {
-      type: "text",
-      text: "Outcomes linked to preparation — map coaching from semester one.",
-    },
-    description: [
-      "National university with medical programme; strong peer network and capital-city infrastructure.",
-    ],
-    featureTags: ["Bishkek", "English", "Clinical Skills", "Hostel"],
+    fmge: { type: "text", text: "—" },
+    description: ["Bilingual institution with Russian-European teaching traditions"],
+    featureTags: ["Bishkek", "Government", "Bilingual"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
   },
   {
-    id: "ksapcs",
-    name: "Kyrgyz State Academy of Physical Culture and Sports",
-    abbreviation: "KSAPCS",
-    established: "1954",
+    id: "avicenna",
+    name: "Avicenna International Medical University",
+    abbreviation: "AIMU",
+    established: "—",
     locationLine: "Bishkek",
     region: "moscow",
-    budgetFriendly: true,
-    fmgePercent: 28,
+    budgetFriendly: false,
+    fmgePercent: 0,
     headerTags: [
       { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Value", variant: "rose" },
+      { label: "Private", variant: "rose" },
     ],
-    rankTag: "Medical faculty — verify programme fit",
-    headerEmoji: "✨",
-    imageSrc: kyImg(10),
+    rankTag: "Growing institution with modern facilities",
     stats: [
-      { label: "Annual fees", value: "~₹1.9–3.8L/yr" },
-      { label: "6-year total", value: "~₹14–24L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "Founded", value: "1954" },
+      { label: "Annual tuition (USD)", value: "$4,200 – $5,200" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹22–28 Lakhs" },
+      { label: "City", value: "Bishkek" },
+      { label: "Type", value: "Private" },
     ],
-    fmge: {
-      type: "text",
-      text: "Confirm exact degree title and NMC mapping with Taksheela before fees.",
-    },
-    description: [
-      "Institution listed on NMC-approved pathways where applicable — shortlist only after live PDF verification.",
-    ],
-    featureTags: ["Bishkek", "Verify NMC", "Student Support", "Budget"],
+    fmge: { type: "text", text: "—" },
+    description: ["Growing institution with modern facilities"],
+    featureTags: ["Bishkek", "Private"],
     applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
+    availabilityText: "NMC Approved",
   },
 ];
 
 export const kyrgyzstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
-  eyebrow: "Where to Study",
-  titlePrimary: "Top NMC-Approved Medical Universities in Kyrgyzstan",
+  eyebrow: "Top Universities",
+  titlePrimary: "NMC-Approved Medical Universities in Kyrgyzstan",
   titleAccent: "2026–27",
   intro:
-    "All listed universities are WHO-listed, NMC-approved, and Taksheela-verified for 2026–27. Fees, city, and specialisations vary — Taksheela shortlists the right match for your profile.",
+    "All institutions listed below are NMC-recognised, WHO-listed, and offer English-medium MBBS with clinical training at affiliated hospitals.",
   cardWatermarkCode: "KG",
   filters: [
     { id: "all", label: "All Universities" },
     { id: "moscow", label: "Bishkek" },
     { id: "other", label: "Other Cities" },
-    { id: "budget", label: "Budget-Friendly" },
-    { id: "top_fmge", label: "Top FMGE Rate" },
   ],
-  topFmgeFilterIds: ["ism", "ksma"],
   universities: kyrgyzstanTopUniversityCards,
   quickComparison: {
-    title: "Quick Comparison — All 10 Universities",
+    title: "University List (from the 2026–27 page table)",
     disclaimer:
-      "Fees are approximate for 2026–27 based on publicly available data. Exact figures vary by year and exchange rate. Verified breakdown provided during free counselling.",
+      "* Fees are approximate and subject to annual revision. All amounts calculated at prevailing USD/INR exchange rates. Contact Taksheela for the confirmed, current fee structure for each university.",
     rows: [
-      {
-        university: "ISM",
-        city: "Bishkek",
-        established: "1993",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Peer-heavy",
-        fmgeHighlight: true,
-        bestFor: "Large English intake",
-      },
       {
         university: "KSMA",
         city: "Bishkek",
         established: "1939",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "State academy",
-        fmgeHighlight: true,
-        bestFor: "Historic state school",
+        annualFees: "$4,200 – $5,000",
+        fmgeRate: "NMC Approved",
+        bestFor: "Oldest & most prestigious medical university in Kyrgyzstan",
       },
       {
-        university: "JSU",
-        city: "Jalal-Abad",
-        established: "1993",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Regional",
-        bestFor: "Milder south",
+        university: "ISM",
+        city: "Bishkek",
+        established: "2003",
+        annualFees: "$4,800 – $6,000",
+        fmgeRate: "NMC Approved",
+        bestFor: "First private medical school in Kyrgyzstan; 750+ Indian students",
       },
       {
-        university: "OSU",
+        university: "Osh State",
         city: "Osh",
         established: "1951",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Regional",
-        bestFor: "Fergana Valley hub",
+        annualFees: "$3,500 – $4,500",
+        fmgeRate: "NMC Approved",
+        bestFor: "70+ years legacy; largest university in southern Kyrgyzstan",
       },
       {
-        university: "AMI",
-        city: "Kant",
-        established: "2004",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Value",
-        bestFor: "Near Bishkek",
-      },
-      {
-        university: "IMU",
+        university: "IHSM",
         city: "Bishkek",
-        established: "2016",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Modern",
-        bestFor: "Capital campus",
+        established: "2002",
+        annualFees: "$4,500 – $5,500",
+        fmgeRate: "NMC Approved",
+        bestFor: "Strong FMGE-prep integration; multiple campuses",
+      },
+      {
+        university: "Jalal-Abad State",
+        city: "Jalal-Abad",
+        established: "1993",
+        annualFees: "$3,500 – $4,200",
+        fmgeRate: "NMC Approved",
+        bestFor: "Budget-friendly; quieter city with low living costs",
       },
       {
         university: "KRSU",
         city: "Bishkek",
         established: "1993",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Bilingual",
-        bestFor: "Slavic tradition",
+        annualFees: "$4,000 – $5,000",
+        fmgeRate: "NMC Approved",
+        bestFor: "Bilingual institution with Russian-European teaching traditions",
       },
       {
-        university: "KSMI",
+        university: "Avicenna",
         city: "Bishkek",
-        established: "1939",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Established",
-        bestFor: "Medical institute",
-      },
-      {
-        university: "KNU",
-        city: "Bishkek",
-        established: "1925",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "National uni",
-        bestFor: "Broad university setting",
-      },
-      {
-        university: "KSAPCS",
-        city: "Bishkek",
-        established: "1954",
-        annualFees: "~₹1.9–3.8L/yr",
-        fmgeRate: "Verify fit",
-        bestFor: "Budget — confirm NMC row",
+        established: "—",
+        annualFees: "$4,200 – $5,200",
+        fmgeRate: "NMC Approved",
+        bestFor: "Growing institution with modern facilities",
       },
     ],
   },
@@ -2118,71 +1831,50 @@ export type AbroadFaqPageContent = {
 };
 
 export const kyrgyzstanAbroadFaqPageContent: AbroadFaqPageContent = {
-  eyebrow: "Frequently Asked Questions",
-  title: "Everything You Need to Know About MBBS in Kyrgyzstan",
+  eyebrow: "FAQs",
+  title: "Frequently Asked Questions — MBBS in Kyrgyzstan 2026",
   subtitle:
-    "Answers for Indian, Nepali, and Bangladeshi students — validity, NExT, costs in INR/NPR/BDT, universities, food, climate, and timelines.",
+    "Answers to the most searched questions from students and parents in India, Nepal, and Bangladesh considering MBBS in Kyrgyzstan.",
   items: [
     {
-      question:
-        "Is MBBS in Kyrgyzstan valid in India? Can I practise medicine in India after graduating?",
+      question: "Is MBBS from Kyrgyzstan valid in India?",
       answer:
-        "Yes — provided you complete your degree at an NMC-approved Kyrgyz university, finish the full 6-year program including the mandatory 12-month clinical internship in Kyrgyzstan, and then clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before receiving permanent medical registration. Taksheela only recommends NMC-approved institutions verified against the current official list.",
+        "Yes. Degrees from NMC-listed Kyrgyz medical universities are valid in India. Graduates must pass the FMGE or NExT (National Exit Test) to obtain NMC registration and a licence to practise medicine in India. All universities listed on this page are NMC-approved and WDOMS-listed.",
     },
     {
-      question: "What is the total cost of MBBS in Kyrgyzstan in Indian Rupees, NPR, and BDT?",
+      question: "Is NEET compulsory for MBBS in Kyrgyzstan?",
       answer:
-        "Total 6-year all-inclusive cost (2026–27, indicative): Indian Rupees: ₹14–28 lakhs (tuition + hostel + food + insurance + visa + personal). Nepal NPR: approximately NPR 22–42 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 19–36 lakh (₹ × ~1.35). Osh, Jalal-Abad, and Kant options often sit at the lower end of living spend; Bishkek may be slightly higher. Always verify live fee letters. Zero capitation. Zero donation.",
+        "Yes, for Indian students. As per NMC's FMGL Regulations 2021, all Indian students pursuing MBBS at foreign universities must hold a valid NEET-UG qualifying score at the time of admission. Acceptable NEET scores are from 2024, 2025, or 2026. There is no minimum score threshold set by Kyrgyz universities — only the NMC qualifying percentile is required.",
     },
     {
-      question: "Is NEET mandatory for MBBS in Kyrgyzstan for Indian students?",
+      question: "What is the total cost of MBBS in Kyrgyzstan in INR?",
       answer:
-        "Yes, for Indian students who intend to return and practise medicine in India. As per NMC regulations (effective March 2019), a valid NEET-UG qualifying score (within its 3-year validity) is mandatory before admission to any foreign medical university. Kyrgyz universities do not set a minimum NEET percentile or score — only that you have qualified the exam. Nepali and Bangladeshi students should confirm equivalent national entrance test requirements with Taksheela.",
+        "The total cost of a 6-year MBBS in Kyrgyzstan ranges from approximately ₹15 lakhs to ₹30 lakhs depending on the university. This includes annual tuition (USD 3,500–6,000/yr), hostel (USD 1,200–1,800/yr), and estimated living expenses (USD 120–150/month). Indian mess costs an additional USD 1,500/year and is compulsory in Year 1 at most universities.",
     },
     {
-      question: "Which are the best NMC-approved universities in Kyrgyzstan for Indian students?",
+      question: "How many Indian students are currently studying in Kyrgyzstan?",
       answer:
-        "Shortlist only from India’s current NMC-approved foreign medical institutions list. Commonly discussed Kyrgyz options include: International School of Medicine (ISM, Bishkek), Kyrgyz State Medical Academy (KSMA, Bishkek), Osh State University (Osh), Jalal-Abad State University, Asian Medical Institute (Kant), International Medical University (Bishkek), Kyrgyz Russian Slavic University (KRSU), Kyrgyz State Medical Institute, Kyrgyz National University (medical faculty), and Kyrgyz State Academy of Physical Culture and Sports — confirm each row on the live NMC PDF and WDOMS before you pay any fees.",
+        "Over 16,000 Indian students are currently enrolled in Kyrgyzstan's medical universities, making it one of the largest Indian student communities in any MBBS abroad destination globally. Major universities like ISM and KSMA each have hundreds of Indian students — well-established communities with peer mentorship, Indian food facilities, and cultural events.",
     },
     {
-      question: "Is MBBS in Kyrgyzstan better than Russia or Georgia for Indian students?",
+      question: "Is Kyrgyzstan safe for Indian students?",
       answer:
-        "Kyrgyzstan vs Russia: Kyrgyzstan often works out cheaper on total spend for many families; Russia has a wider range from budget to premium universities. Russia may include state licensing steps (e.g. GOZZ) depending on the pathway — your counsellor should map this to your university. Both typically layer Russian (and/or local language) for patient communication in clinical years. Kyrgyzstan vs Georgia: Georgia is milder climatically and often English-only clinically; Kyrgyzstan is usually more budget-friendly. The right choice depends on budget, climate, language comfort, and NExT prep discipline — Taksheela compares options to your profile.",
+        "Yes. Kyrgyzstan has a low crime rate and a government that actively supports international student welfare. University campuses have 24-hour security and CCTV surveillance. Both Bishkek and Osh have well-established Indian and South Asian student communities that help newcomers adjust quickly. Taksheela's on-ground representatives also provide emergency support.",
     },
     {
-      question: "Can students from Nepal and Bangladesh study MBBS in Kyrgyzstan?",
+      question: "Is food available for Indian students in Kyrgyzstan?",
       answer:
-        "Yes. Kyrgyz universities welcome students from all nationalities. Nepali students must show their NEB certificate (apostilled) or equivalent, and may use a valid NEET score or Nepali national medical entry test. Bangladeshi students must show their HSC certificate with DGME compliance documentation. Both nationalities require a Kyrgyz student visa. Taksheela has dedicated counsellors with specific knowledge of Nepal NMC and BMDC (Bangladesh) licensing pathways to advise on which Kyrgyz university best suits each student's career plan back home.",
+        "Yes. Indian mess facilities are available at all major NMC-approved universities in Bishkek and Osh. As a Muslim-majority country, halal food is widely available throughout Kyrgyzstan. Indian grocery items are available in Bishkek's larger markets. Most students report comfortable food adaptation within the first few weeks of arrival.",
     },
     {
-      question: "Which city in Kyrgyzstan is best for MBBS — Bishkek or Osh?",
+      question: "What is the FMGE pass rate for Kyrgyzstan graduates?",
       answer:
-        "Bishkek is the capital and hosts the largest cluster of universities and Indian student services — more mess options, groceries, and coaching access, but colder winters. Osh (and Jalal-Abad) in the south are milder in winter and can be lighter on rent for some students, with strong university choices — verify which Osh/Jalal-Abad programmes match your NMC list row. Taksheela typically recommends Bishkek when you want maximum peer density and convenience, and Osh/Jalal-Abad when winter sensitivity or budget is the priority — always confirm NMC approval for the exact faculty you apply to.",
+        "FMGE pass rates vary significantly by university rather than by country. The key determinant is the quality of clinical training, the university's hospital affiliation, and the student's own FMGE preparation. Taksheela evaluates each university's student outcomes and provides verified data during counselling sessions — we do not recommend universities without this analysis.",
     },
     {
-      question: "What is the NExT exam and how does it affect students graduating from Kyrgyzstan?",
+      question: "Can Nepali and Bangladeshi students study MBBS in Kyrgyzstan?",
       answer:
-        "NExT (National Exit Test) has replaced the old FMGE for all Indian medical graduates returning from foreign universities. It is a two-part examination: NExT Step 1 (knowledge-based multiple-choice assessment) and NExT Step 2 (clinical skills and OSCE-format evaluation). Clearing NExT is mandatory for Kyrgyz MBBS graduates who wish to practise medicine in India or pursue MD/MS postgraduate specialisation. Unlike the old FMGE (which only applied to foreign graduates), NExT applies to all MBBS graduates, including those from Indian institutions. Taksheela provides NExT orientation to students starting from Year 1 of their MBBS in Kyrgyzstan.",
-    },
-    {
-      question: "Is food available for Indian, Hindu vegetarian, and Muslim students in Kyrgyzstan?",
-      answer:
-        "Yes. Kyrgyzstan is a Muslim-majority country, making halal food available widely — in university canteens, restaurants, and grocery stores. This is a significant advantage for Muslim students from Bangladesh and other communities. For Hindu vegetarian students, Bishkek and Osh have Indian restaurants serving vegetarian dal, rice, roti, and sabzi; Indian grocery items are available in larger cities. Several university hostels also run or partner Indian mess facilities. Taksheela's local team can guide you on the best food options on arrival.",
-    },
-    {
-      question: "When should I apply for MBBS in Kyrgyzstan for the September 2026 intake?",
-      answer:
-        "For the September 2026 intake: begin counselling and university shortlisting by March–April 2026. Applications should be submitted to the university by June–July 2026. Admission letters are typically received by July–August. Visa processing takes 3–5 weeks, so embassy submission should happen by late August. MEA apostille takes 2–4 weeks — start early. Taksheela strongly recommends beginning the process by April to ensure all documents, apostille, and visa stages align without deadline pressure. Contact us now to check current seat availability at your preferred Kyrgyz university.",
-    },
-    {
-      question: "How do I verify if a Kyrgyz university is NMC-approved?",
-      answer:
-        "Visit the official NMC website at nmc.org.in and check the published list of approved foreign medical universities. Also verify the institution in the WHO's World Directory of Medical Schools at wdoms.org. Taksheela performs this verification in real time before every shortlisting recommendation and shares the official NMC document with every student — so you're never relying solely on our word. The golden rule: never pay any fee to a university without independently confirming its current NMC approval status. We make this process straightforward for you.",
-    },
-    {
-      question: "Are there scholarships available for MBBS in Kyrgyzstan?",
-      answer:
-        "Yes — several routes are available. University merit fee waivers (where offered), the Government of India's Central Sector Interest Subsidy (CSIS) scheme for EWS students (family income under ₹4.5L), the Padho Pardesh scheme for minority community students, and occasional Kyrgyz government or bilateral exchange windows (rare for medicine — verify yearly). Scholarship availability changes every intake — always verify with the issuing body. Taksheela identifies eligible schemes and helps with documentation alongside admission.",
+        "Yes. All NMC-approved Kyrgyz universities accept students from Nepal and Bangladesh. Nepali students may use a valid NEET score or Nepal's national medical entrance test. Bangladeshi students should review BMDC guidelines before applying. No IELTS or TOEFL is required for either nationality. Taksheela has successfully placed students from both countries in Kyrgyzstan.",
     },
   ],
 };
@@ -2190,7 +1882,7 @@ export const kyrgyzstanAbroadFaqPageContent: AbroadFaqPageContent = {
 export const kyrgyzstanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   countryLabel: "Kyrgyzstan",
   subtitle:
-    "Book your free counselling session. Get a personalised university shortlist, complete fee breakdown, and eligibility confirmation within 24 hours.",
+    "Speak with a Taksheela counsellor today. Honest advice, verified data, and complete support from application to arrival. September 2026 intake seats are filling — apply early.",
   primaryCtaLabel: "Book Free Counselling",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
@@ -2200,9 +1892,9 @@ export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "🎓",
     label: "Degree Awarded",
-    value: "MD / General Medicine (= MBBS)",
+    value: "MD Physician (MBBS equivalent)",
     mLabel: "Degree",
-    mValue: "MD = MBBS",
+    mValue: "MD Physician",
   },
   {
     icon: "⏱️",
@@ -2212,72 +1904,72 @@ export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
     mValue: "6 yrs",
   },
   {
-    icon: "💰",
-    label: "Annual Tuition",
-    value: "₹1.9L – ₹3.8L / year",
-    mLabel: "Tuition / yr",
-    mValue: "₹2–3.8L",
-  },
-  {
-    icon: "🏠",
-    label: "Annual Living Cost",
-    value: "₹1.2L – ₹2.5L / year",
-    mLabel: "Living / yr",
-    mValue: "₹1.2–2.5L",
-  },
-  {
-    icon: "🗓️",
+    icon: "📅",
     label: "Intakes",
     value: "September (primary) · February (secondary)",
     mLabel: "Intakes",
     mValue: "Sep · Feb",
   },
   {
+    icon: "💰",
+    label: "Annual Tuition",
+    value: "USD 3,500 – 6,000 per year",
+    mLabel: "Tuition / yr",
+    mValue: "USD 3.5k–6k",
+  },
+  {
+    icon: "🏠",
+    label: "Hostel (annual)",
+    value: "USD 1,200 – 1,800 per year",
+    mLabel: "Hostel / yr",
+    mValue: "USD 1.2k–1.8k",
+  },
+  {
     icon: "🧾",
-    label: "Basic Eligibility",
-    value: "50% PCB + NEET qualified, age 17+",
+    label: "Eligibility",
+    value: "50% PCB in 10+2 + NEET qualified",
     mLabel: "Eligibility",
     mValue: "50% PCB + NEET",
   },
   {
     icon: "🌐",
     label: "Medium of Instruction",
-    value: "English (primary); Russian/Kyrgyz taught",
+    value: "English + Kyrgyz/Russian (from Year 1)",
     mLabel: "Medium",
     mValue: "English",
   },
   {
     icon: "✅",
     label: "Recognised By",
-    value: "WHO · NMC · FAIMER · ECFMG · UNESCO",
+    value: "WHO · NMC · ECFMG · FAIMER · WFME",
     mLabel: "Recognised",
     mValue: "Multi-body",
   },
   {
-    icon: "👩‍🎓",
+    icon: "👥",
     label: "Indian Students",
-    value: "5,000+ enrolled (est.)",
+    value: "16,000+ currently enrolled",
     mLabel: "Indians",
-    mValue: "5,000+",
+    mValue: "16,000+",
   },
   {
     icon: "🏛️",
     label: "NMC-Approved Universities",
-    value: "10 institutions",
+    value: "10+ institutions",
     mLabel: "NMC unis",
-    mValue: "10",
+    mValue: "10+",
   },
   {
     icon: "🚫",
     label: "Donation / Capitation",
-    value: "Zero. Completely merit-based.",
+    value: "Zero donation · zero capitation",
     mLabel: "Donation",
     mValue: "Zero",
   },
   {
     icon: "📝",
     label: "IELTS / TOEFL Required",
-    value: "Not required for admission",
+    value: "Not required",
     mLabel: "IELTS/TOEFL",
     mValue: "Not required",
   },
@@ -2286,72 +1978,60 @@ export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
 const kyrgyzstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
   {
     icon: "💸",
-    title: "One of the Most Affordable MBBS Destinations Globally",
+    title: "Lowest Total MBBS Cost in Central Asia",
     description:
-      "Annual tuition often falls roughly between ₹2L and ₹3.8L for many listed universities — among the lowest-cost NMC-approved corridors. Total 6-year investment commonly lands around ₹14–28 lakhs (indicative) — compared to ₹80L–₹1.2Cr at Indian private colleges, with zero donation.",
+      "Total six-year programme costs start from ₹15 lakhs and rarely exceed ₹30 lakhs — including tuition, hostel, and living. This is 70% cheaper than private MBBS in India and far below European destinations.",
   },
   {
     icon: "✅",
-    title: "NMC-Approved — Valid Degree for India Practice",
+    title: "10+ NMC, WHO & FAIMER Approved Universities",
     description:
-      "Taksheela shortlists only institutions on the NMC's current approved list. Graduates can appear for NExT and return to practise medicine anywhere in India after internship completion — verify the live PDF at admission time.",
+      "Kyrgyzstan offers one of the largest pools of NMC-compliant medical universities globally. All approved institutions are listed on WDOMS (FAIMER), enabling FMGE, NExT, USMLE, and PLAB eligibility after graduation.",
   },
   {
     icon: "🌐",
-    title: "English as Primary Medium — No IELTS Required",
+    title: "English-Medium — No IELTS Required",
     description:
-      "All NMC-listed Kyrgyz medical universities offer the General Medicine program entirely in English. Russian and Kyrgyz are taught as auxiliary languages for patient communication — but all exams, textbooks, and lectures are in English.",
-  },
-  {
-    icon: "🏥",
-    title: "Modern Hospitals with Diverse Clinical Exposure",
-    description:
-      "Kyrgyz teaching hospitals serve large, diverse patient populations with varied disease profiles. Clinical rotations from Year 3 cover Surgery, Internal Medicine, OBG, Paediatrics, Neurology, and Emergency Medicine.",
-  },
-  {
-    icon: "🎓",
-    title: "WHO, FAIMER, ECFMG & UNESCO Recognition",
-    description:
-      "Kyrgyz MD degrees carry multi-body international recognition, enabling graduates to pursue licensing exams globally: NExT (India), PLAB (UK), USMLE (USA), and Gulf country licensing exams.",
+      "The full MBBS curriculum is delivered in English across all NMC-approved Kyrgyz universities. No IELTS or TOEFL score is required for admission — accessible for every NEET-qualified applicant.",
   },
   {
     icon: "🚫",
-    title: "Absolutely Zero Donation or Capitation",
+    title: "Zero Donation, Zero Capitation",
     description:
-      "Kyrgyz universities admit students on pure academic merit. There are no management quotas, no backdoor admissions, and no capitation fees — a stark, welcome contrast to Indian private MBBS admissions.",
+      "Admission is entirely merit-based. There is no management quota, no under-the-table payment, and no donation demanded at any stage. You pay only the published university fee — nothing more.",
   },
   {
-    icon: "🛡️",
-    title: "Safe, Student-Friendly Cities",
+    icon: "👥",
+    title: "16,000+ Indian Students — Largest Community",
     description:
-      "Bishkek and Osh are established student hubs with visible international communities, campus security routines, and public transport — still use normal big-city awareness as you would anywhere.",
+      "The most developed Indian student ecosystem outside Russia. Indian mess, Diwali events, Hindi-speaking peers, and a 24/7 support network across Bishkek and Osh. Students from Nepal and Bangladesh are equally well-integrated.",
   },
   {
-    icon: "🍽️",
-    title: "Halal Food & Indian Dietary Options Available",
+    icon: "🏥",
+    title: "Clinical Training in Government Hospitals",
     description:
-      "Kyrgyzstan is a majority-Muslim country, making halal food readily available in all major cities. Indian restaurants and grocery options are easiest to find in Bishkek and Osh.",
+      "Students rotate through large affiliated teaching hospitals from Year 3, gaining hands-on exposure to diverse patient profiles and high-volume clinical settings — critical for FMGE and NExT preparation.",
   },
   {
-    icon: "🇳🇵🇧🇩",
-    title: "Welcoming for Nepal & Bangladesh Students",
+    icon: "🌍",
+    title: "Globally Recognised Degree",
     description:
-      "Kyrgyz universities actively recruit students from Nepal and Bangladesh. Growing Nepali and Bangladeshi student communities in Bishkek and Osh make cultural integration easier from Day 1.",
+      "WHO-listed, NMC-compliant degree qualifies graduates to appear for FMGE/NExT (India), USMLE (USA), PLAB (UK), and AMC (Australia). A single qualification that opens global medical career pathways.",
   },
   {
     icon: "✈️",
-    title: "Affordable Flights, Accessible Visa",
+    title: "Accessible Location — 3–4 Hours from India",
     description:
-      "One-stop flights from major Indian cities to Bishkek via the Gulf or Istanbul are common. Kyrgyzstan student visa processing is handled through the Kyrgyz diplomatic mission covering India — Taksheela guides the current document pack.",
+      "Direct or one-stop flights from Delhi, Mumbai, and Kolkata to Bishkek in 3–5 hours. Shorter travel time means easier family visits, faster emergency returns, and lower annual airfare costs compared to Europe or the Americas.",
   },
 ];
 
 const kyrgyzstanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent = {
   eyebrow: "Why Choose Kyrgyzstan",
-  titleLead: "10 Compelling Reasons to Study MBBS in ",
+  titleLead: "8 Strong Reasons to Choose MBBS in ",
   titleTrail: "",
   subtitle:
-    "Evidence-backed reasons why thousands of Indian students and growing numbers from Nepal and Bangladesh choose Kyrgyzstan for an affordable, NMC-verified medical degree.",
+    "Evidence-backed reasons why Kyrgyzstan is a top MBBS abroad choice for students from India, Nepal, and Bangladesh in 2026.",
 };
 
 export const kyrgyzstanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent = {

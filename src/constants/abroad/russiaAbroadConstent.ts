@@ -231,13 +231,13 @@ export const russiaAbroadHeroContent: AbroadHeroContent = {
     secondaryHref: "#top-universities",
   },
   quickStats: [
-    { label: "Total Fees", value: "Rs. 2.7L" },
+    { label: "Tuition Fees", value: "Rs. 2.7L" },
     { label: "Duration", value: "6 Years" },
     { label: "Medium", value: "English" },
     { label: "Intake", value: "Sep / Feb" },
   ],
   spotlight: {
-    value: "27,000+",
+    value: "100000+",
     caption: "Students currently pursuing MBBS in Russia",
   },
   statGrid: [
@@ -298,7 +298,7 @@ export const russiaAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
   heading: "Overview of MBBS in Russia",
   paragraphs: [
-    "Russia stands as the world's single most popular destination for Indian medical students abroad — a fact confirmed by India's Ministry of External Affairs (MEA) in the December 2025 Winter Session of Parliament, which recorded over 27,000 Indian students currently enrolled in Russian medical programs.",
+    "Russia stands as the world's single most popular destination for Indian medical students abroad — a fact confirmed by India's Ministry of External Affairs (MEA) in the December 2025 Winter Session of Parliament, which recorded over 100000 Indian students currently enrolled in Russian medical programs.",
     "Russian medical universities carry over two centuries of scientific heritage. Institutions like Sechenov University (est. 1758) and Kazan State Medical University (est. 1814) have trained physicians who practice across the globe. State subsidies keep fees far below Indian private medical colleges, while the 6-year English-medium curriculum fully satisfies NMC's guidelines for FMGE/NExT eligibility.",
     "For students from India, Nepal, and Bangladesh, the proposition is clear: 50+ NMC-compliant universities, merit-based admission with zero donation, total program costs of ₹18–36 lakhs, and a globally recognised degree that qualifies graduates for FMGE, USMLE, PLAB, and AMC.",
   ],
@@ -913,7 +913,7 @@ export const russiaAbroadConsiderBeforeContent: AbroadConsiderBeforeContent = {
     "Fees are often 3–5× lower than Indian private medical colleges, with state-subsidised tuition at many public universities.",
     "No donation or capitation — merit-based admission to universities listed under NMC’s current guidelines.",
     "50+ NMC-compliant options; degrees recognised for FMGE/NExT when other requirements are met.",
-    "27,000+ Indian students in Russia (MEA parliamentary data, 2025) — established peer communities in major cities.",
+    "100000+ Indian students in Russia (MEA parliamentary data, 2025) — established peer communities in major cities.",
     "English-medium 6-year programmes structured to align with NMC norms for abroad MBBS.",
     "Long clinical tradition and exposure in large teaching hospitals for hands-on training.",
   ],
@@ -2488,7 +2488,7 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Is MBBS in Russia better than Bangladesh for Indian students?",
       answer:
-        "For India-return careers, Russia offers: 50+ NMC-compliant universities vs ~8-10 in Bangladesh; 27,000+ Indian student community (world largest) vs much smaller in Bangladesh; RUDN at 45.45% FMGE and Tver TSMU at ~40% match or exceed Bangladesh FMGE averages; 200-year institutional heritage. Bangladesh may suit students preferring warmer climate or cultural familiarity. Taksheela provides personalised advice based on NEET score, budget, and career goals.",
+        "For India-return careers, Russia offers: 50+ NMC-compliant universities vs ~8-10 in Bangladesh; 100000+ Indian student community (world largest) vs much smaller in Bangladesh; RUDN at 45.45% FMGE and Tver TSMU at ~40% match or exceed Bangladesh FMGE averages; 200-year institutional heritage. Bangladesh may suit students preferring warmer climate or cultural familiarity. Taksheela provides personalised advice based on NEET score, budget, and career goals.",
     },
     {
       question:
@@ -2630,13 +2630,6 @@ export const russiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
     mValue: "~29.5% · top ~45%",
   },
   {
-    icon: "👩‍🎓",
-    label: "Indian Students",
-    value: "27,000+ (MEA, Dec 2025)",
-    mLabel: "Indians",
-    mValue: "27,000+",
-  },
-  {
     icon: "🏛️",
     label: "NMC-Compliant Universities",
     value: "50+ government medical universities",
@@ -2687,7 +2680,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "👥",
     title: "Largest Indian Student Community",
     description:
-      "27,000+ Indians enrolled - the most developed Indian student ecosystem of any MBBS abroad destination. Peer mentorship, Indian food, Diwali celebrations, Holi on campus - a genuine home away from home.",
+      "100000+ Indians enrolled - the most developed Indian student ecosystem of any MBBS abroad destination. Peer mentorship, Indian food, Diwali celebrations, Holi on campus - a genuine home away from home.",
   },
   {
     icon: "🏅",

@@ -37,6 +37,22 @@ async function fetchBlogs(): Promise<BlogData[]> {
       },
     });
 
+    if (!res.ok) {
+      // 404 is a valid "no data" state for this section
+      if (res.status === 404) return [];
+      // Avoid JSON.parse crashes when API returns plain text like "Not Found"
+      const body = await res.text().catch(() => "");
+      console.warn("Blog fetch failed", res.status, body);
+      return [];
+    }
+
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      const body = await res.text().catch(() => "");
+      console.warn("Blog fetch returned non-JSON", contentType, body);
+      return [];
+    }
+
     const json = await res.json();
     return (json?.data || [])?.map((item: any) => ({
       title: item.title,
@@ -46,7 +62,7 @@ async function fetchBlogs(): Promise<BlogData[]> {
       date: formatDate(item.date),
     }));
   } catch (error) {
-    console.error("Blog fetch failed", error);
+    console.warn("Blog fetch failed", error);
     return [];
   }
 }

@@ -20,9 +20,11 @@ function getPathEndpoint(): string {
 const RegisterForm = ({
   brochureUrl,
   showBrochure = false,
+  floating = true,
 }: {
   brochureUrl?: any;
   showBrochure?: boolean;
+  floating?: boolean;
 }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -121,8 +123,13 @@ const RegisterForm = ({
   };
 
   return (
-    <div className="sm:w-full md:w-72 bg-white rounded-lg shadow-md md:absolute md:top-[14%] md:left-[56%]">
-      <h2 className="text-center text-white bg-[#00999E] font-semibold text-lg py-3 rounded-t-md">
+    <div
+      className={[
+        "sm:w-full md:w-80 bg-white rounded-[20px] shadow-md border-[1px] border-[#00999E]",
+        floating ? "md:absolute md:top-[14%] md:left-[56%]" : "md:static",
+      ].join(" ")}
+    >
+      <h2 className="text-center text-white bg-[#00999E] font-semibold text-lg py-3 rounded-t-[20px]">
         Register Now
       </h2>
 
