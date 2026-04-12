@@ -189,7 +189,7 @@ export type AbroadFullPageCopy = {
   ctaBanner: AbroadCtaBannerContent;
 };
 
-function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
+function russiaFullPage(): AbroadFullPageCopy {
   return {
     hero: russiaAbroadHeroContent,
     overview: russiaAbroadOverviewContent,
@@ -218,7 +218,7 @@ function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
+function georgiaFullPage(): AbroadFullPageCopy {
   return {
     hero: georgiaAbroadHeroContent,
     overview: georgiaAbroadOverviewContent,
@@ -247,7 +247,7 @@ function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
+function kazakhstanFullPage(): AbroadFullPageCopy {
   return {
     hero: kazakhstanAbroadHeroContent,
     overview: kazakhstanAbroadOverviewContent,
@@ -276,7 +276,7 @@ function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
+function uzbekistanFullPage(): AbroadFullPageCopy {
   return {
     hero: uzbekistanAbroadHeroContent,
     overview: uzbekistanAbroadOverviewContent,
@@ -305,7 +305,7 @@ function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function kyrgyzstanFullPage(featuredCount: number): AbroadFullPageCopy {
+function kyrgyzstanFullPage(): AbroadFullPageCopy {
   return {
     hero: kyrgyzstanAbroadHeroContent,
     overview: kyrgyzstanAbroadOverviewContent,
@@ -334,7 +334,7 @@ function kyrgyzstanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPageCopy> = {
+const FULL_PAGE_BY_SLUG: Record<string, () => AbroadFullPageCopy> = {
   russia: russiaFullPage,
   georgia: georgiaFullPage,
   kazakhstan: kazakhstanFullPage,
@@ -346,10 +346,10 @@ const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPag
 export const ABROAD_FULL_LAYOUT_SLUGS = new Set(Object.keys(FULL_PAGE_BY_SLUG));
 
 /** Resolves all section copy for a full-layout abroad page, or `null` if the slug has no bundle yet. */
-export function getAbroadFullPageCopy(slug: string, featuredCount: number): AbroadFullPageCopy | null {
+export function getAbroadFullPageCopy(slug: string): AbroadFullPageCopy | null {
   const key = slug.toLowerCase();
   const build = FULL_PAGE_BY_SLUG[key];
-  return build ? build(featuredCount) : null;
+  return build ? build() : null;
 }
 
 /** Optional hero/overview image path keyed by slug — extend when adding a country. */
