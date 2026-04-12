@@ -37,7 +37,7 @@ import {
   russiaAbroadEligibilityContent,
   russiaAbroadFaqPageContent,
   russiaAbroadFearsContent,
-  russiaAbroadHeroFeaturedCount,
+  russiaAbroadHeroContent,
   russiaAbroadIntakePeriodContent,
   russiaAbroadKeyFactsContent,
   russiaAbroadMbbsSyllabusContent,
@@ -63,7 +63,7 @@ import {
   georgiaAbroadEligibilityContent,
   georgiaAbroadFaqPageContent,
   georgiaAbroadFearsContent,
-  georgiaAbroadHeroFeaturedCount,
+  georgiaAbroadHeroContent,
   georgiaAbroadIntakePeriodContent,
   georgiaAbroadKeyFactsContent,
   georgiaAbroadMbbsSyllabusContent,
@@ -89,7 +89,7 @@ import {
   kazakhstanAbroadEligibilityContent,
   kazakhstanAbroadFaqPageContent,
   kazakhstanAbroadFearsContent,
-  kazakhstanAbroadHeroFeaturedCount,
+  kazakhstanAbroadHeroContent,
   kazakhstanAbroadIntakePeriodContent,
   kazakhstanAbroadKeyFactsContent,
   kazakhstanAbroadMbbsSyllabusContent,
@@ -115,7 +115,7 @@ import {
   uzbekistanAbroadEligibilityContent,
   uzbekistanAbroadFaqPageContent,
   uzbekistanAbroadFearsContent,
-  uzbekistanAbroadHeroFeaturedCount,
+  uzbekistanAbroadHeroContent,
   uzbekistanAbroadIntakePeriodContent,
   uzbekistanAbroadKeyFactsContent,
   uzbekistanAbroadMbbsSyllabusContent,
@@ -141,7 +141,7 @@ import {
   kyrgyzstanAbroadEligibilityContent,
   kyrgyzstanAbroadFaqPageContent,
   kyrgyzstanAbroadFearsContent,
-  kyrgyzstanAbroadHeroFeaturedCount,
+  kyrgyzstanAbroadHeroContent,
   kyrgyzstanAbroadIntakePeriodContent,
   kyrgyzstanAbroadKeyFactsContent,
   kyrgyzstanAbroadMbbsSyllabusContent,
@@ -191,7 +191,7 @@ export type AbroadFullPageCopy = {
 
 function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
   return {
-    hero: russiaAbroadHeroFeaturedCount(featuredCount),
+    hero: russiaAbroadHeroContent,
     overview: russiaAbroadOverviewContent,
     fears: russiaAbroadFearsContent,
     topUniversities: russiaAbroadTopUniversitiesContent,
@@ -220,7 +220,7 @@ function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
 
 function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
   return {
-    hero: georgiaAbroadHeroFeaturedCount(featuredCount),
+    hero: georgiaAbroadHeroContent,
     overview: georgiaAbroadOverviewContent,
     fears: georgiaAbroadFearsContent,
     topUniversities: georgiaAbroadTopUniversitiesContent,
@@ -249,7 +249,7 @@ function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
 
 function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
   return {
-    hero: kazakhstanAbroadHeroFeaturedCount(featuredCount),
+    hero: kazakhstanAbroadHeroContent,
     overview: kazakhstanAbroadOverviewContent,
     fears: kazakhstanAbroadFearsContent,
     topUniversities: kazakhstanAbroadTopUniversitiesContent,
@@ -278,7 +278,7 @@ function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
 
 function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
   return {
-    hero: uzbekistanAbroadHeroFeaturedCount(featuredCount),
+    hero: uzbekistanAbroadHeroContent,
     overview: uzbekistanAbroadOverviewContent,
     fears: uzbekistanAbroadFearsContent,
     topUniversities: uzbekistanAbroadTopUniversitiesContent,
@@ -307,7 +307,7 @@ function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
 
 function kyrgyzstanFullPage(featuredCount: number): AbroadFullPageCopy {
   return {
-    hero: kyrgyzstanAbroadHeroFeaturedCount(featuredCount),
+    hero: kyrgyzstanAbroadHeroContent,
     overview: kyrgyzstanAbroadOverviewContent,
     fears: kyrgyzstanAbroadFearsContent,
     topUniversities: kyrgyzstanAbroadTopUniversitiesContent,

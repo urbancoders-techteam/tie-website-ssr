@@ -1,14 +1,24 @@
 
 import Banner from "@/components/home/Banner";
+import HomeCounter from "@/components/home/HomeCounter";
 import Blogs from "@/components/home/Blogs";
 import DownloadBrochure from "@/components/home/DownloadBrochure";
-import FreeCounsellingBanner from "@/components/home/FreeCouncellingBanner";
+// import FreeCounsellingBanner from "@/components/home/FreeCouncellingBanner";
 import OurServices from "@/components/home/OurServices";
+import TrustTaksheela from "@/components/home/TrustTaksheela";
+import GlobalReach from "@/components/home/GlobalReach";
+import MedicalEducation from "@/components/home/MedicalEducation";
+import GlobalImmersionHome from "@/components/home/GlobalImmersionHome";
+import GlobalDegree from "@/components/home/GlobalDegree";
 import TaksheelaEdge from "@/components/home/TaksheelaEdge";
+import WhereYouAre from "@/components/home/WhereYouAre";
+import TestPrepSectionHome from "@/components/home/TestPrepSectionHome";
 import TaksheelaInsights from "@/components/home/TaksheelaInsights";
 import Testimonial from "@/components/home/Testimonials";
+import FAQHome from "@/components/home/FAQHome";
 import WebinarEvent from "@/components/home/Webinar";
 import type { Metadata } from "next";
+import BookCouncilBanner from "@/components/BookCouncilBanner";
 
 // Ensure the home page isn't statically cached.
 // The API returns pre-signed S3 image URLs with short expiry,
@@ -71,12 +81,26 @@ export default function Page() {
       <h4 className="sr-only">Contact Us for a Free Consultation</h4>
 
       <Banner />
+      <HomeCounter />
       <OurServices />
-      <FreeCounsellingBanner />
+      {/* <FreeCounsellingBanner /> */}
+
+      <TrustTaksheela />
+      <GlobalDegree />
       <TaksheelaEdge />
+      <WhereYouAre />
+      <TestPrepSectionHome />
       <TaksheelaInsights />
-      <DownloadBrochure />
+      <GlobalReach />
+      <MedicalEducation />
+      <GlobalImmersionHome />
       <Testimonial />
+      <FAQHome />
+      <BookCouncilBanner
+        redirectPath="/thankyou"
+        description="Book your FREE counselling session today. 5,000+ students did — and never looked back."
+      />
+      <DownloadBrochure />
       <WebinarEvent />
       <Blogs />
     </>

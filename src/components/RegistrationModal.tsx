@@ -126,17 +126,31 @@ const RegistrationModal = ({
   useEffect(() => {
     if (!open) return;
 
-    // Lock scroll
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const scrollY = window.scrollY;
+    const body = document.body;
 
-    // Auto-focus on name input
-    const input = document.querySelector<HTMLInputElement>('input[name="name"]');
-    input?.focus();
+    // Lock scroll without jumping to top (plain overflow:hidden often resets scroll)
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.overflow = "hidden";
+    body.style.width = "100%";
 
-    // Cleanup when modal unmounts
+    const focusName = () => {
+      const input = document.querySelector<HTMLInputElement>('input[name="name"]');
+      input?.focus({ preventScroll: true });
+    };
+    requestAnimationFrame(focusName);
+
     return () => {
-      document.body.style.overflow = originalOverflow || "auto";
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.overflow = "";
+      body.style.width = "";
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 

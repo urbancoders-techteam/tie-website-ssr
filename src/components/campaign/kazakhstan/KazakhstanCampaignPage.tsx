@@ -1,4 +1,4 @@
-import ModalTrigger from "@/components/ModalTrigger";
+import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
@@ -131,31 +131,13 @@ export default function KazakhstanCampaignPage({
       
       <FAQSection items={KAZAKHSTAN_FAQ_ITEMS} />
 
-      <section className="py-10 md:py-14">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="rounded-2xl bg-[#00999E] text-white p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="max-w-2xl">
-              <h3 className="text-xl sm:text-2xl font-extrabold">Ready to start your MBBS journey?</h3>
-              <p className="text-white/90 mt-2">
-                Book a free counselling call and get a personalised shortlist for Kazakhstan.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <ModalTrigger
-                text="BOOK FREE COUNSELLING"
-                redirectPath={redirectPath}
-                className="inline-flex items-center gap-2 rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-              />
-              <a
-                href={`tel:${KAZAKHSTAN_PHONE_NUMBER.replace(/\s/g, "")}`}
-                className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#0b1b1c] hover:bg-white/90"
-              >
-                Call {KAZAKHSTAN_PHONE_NUMBER}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BookCouncilBanner
+        redirectPath={redirectPath}
+        heading="Ready to start your MBBS journey?"
+        description="Book a free counselling call and get a personalised shortlist for Kazakhstan."
+        bookButtonText="BOOK FREE COUNSELLING"
+        phone={{ tel: KAZAKHSTAN_PHONE_NUMBER }}
+      />
 
       <CampaignFooter />
       <ScrollToTopButton phoneNumber={KAZAKHSTAN_PHONE_NUMBER} />

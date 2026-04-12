@@ -5,6 +5,8 @@
  * Slug-page wiring (which countries use the full stack) lives in `abroadFullPageRegistry.ts`.
  */
 
+import type { StaticImageData } from "next/image";
+import russiaHeroBanner from "@/assets/russiabanner.jpg";
 import { imageBaseUrl } from "@/utils/config";
 
 /** Quick Facts grid (`QuickFactsAbroad`) — one card per item. */
@@ -188,19 +190,14 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
-  value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
-};
-
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
+  /**
+   * Hero background — local import (`StaticImageData`) or absolute URL string.
+   * When omitted, `AbroadHeroSection` falls back to the first college image from country data.
+   */
+  backgroundImage?: string | StaticImageData;
   headline: AbroadHeroHeadline;
   /** Body paragraph under the headline */
   description: string;
@@ -209,14 +206,11 @@ export type AbroadHeroContent = {
   cta: AbroadHeroCta;
   /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
   quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
 };
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
+  backgroundImage: russiaHeroBanner,
   headline: {
     line1: "Study MBBS in Russia",
     line2Accent: "Where Affordability Meets",
@@ -236,29 +230,7 @@ export const russiaAbroadHeroContent: AbroadHeroContent = {
     { label: "Medium", value: "English" },
     { label: "Intake", value: "Sep / Feb" },
   ],
-  spotlight: {
-    value: "100000+",
-    caption: "Students currently pursuing MBBS in Russia",
-  },
-  statGrid: [
-    { value: "50+", label: "NMC-Compliant Universities" },
-    { value: "Rs. 2.7L", label: "Annual Fees From" },
-    { value: "200+", label: "Years Medical Tradition" },
-    /** Last card value is replaced by `russiaAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10", label: "Featured Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Russia). */
-export function russiaAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = russiaAbroadHeroContent
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 
@@ -737,9 +709,9 @@ export const russiaAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Nepali Students",
       title: "Why Russia is the Right Choice for Nepal Students",
       points: [
-        "No IELTS/TOEFL required - all 10 featured universities admit Nepali students without English proficiency tests.",
+        "No IELTS /TOEFL required for Nepali students line -- replace 10 featured universities with 50+ universities and then the rest.",
         "NEET or equivalent accepted - valid NEET score or Nepali national medical entry test both qualify for admission.",
-        "Fees in NPR - total 6-year program ~ NPR 29-58 lakh (Rs. 18-36L x ~1.6 NPR/INR rate, varies by university).",
+        "Fees in NPR - total 6-year program ~ NPR 24- 96 Lakh (Rs. 15 to 60L). NPR/INR rate, varies by university).",
         "Established Nepali communities at Kazan KSMU, NSMU Arkhangelsk, and Tver TSMU - peer support from Day 1.",
         "Nepal NMC licensing pathway - Taksheela advises on both FMGE/NExT (India) and Nepal Medical Council exam routes after graduation.",
       ],
@@ -754,9 +726,9 @@ export const russiaAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Bangladeshi Students",
       title: "Why Russia is the Right Choice for Bangladesh Students",
       points: [
-        "Full DGME alignment - all 10 featured universities satisfy DGME Bangladesh requirements - English medium, WHO-listed, 6-year duration, government recognised.",
+        "Full DGME alignment - all 50+ universities satisfy DGME Bangladesh requirements - English medium, WHO-listed, 6-year duration, government recognised.",
         "DGME entry test accepted - Bangladeshi students qualifying the national DGME-administered medical entry test are eligible - Taksheela confirms eligibility documentation.",
-        "Fees in BDT - total 6-year program ~ BDT 24-49 lakh (Rs. 18-36L x ~1.35 BDT/INR rate, varies by university).",
+        "Fees in BDT - total 6-year program ~ BDT 20-80 lakh (Rs. 15- 60L x ~1.35 BDT/INR rate, varies by university).",
         "Halal food confirmed at Kazan (large Muslim-majority Tatar population), Ufa/BSMU (Bashkortostan), and Moscow - key cities for Bangladeshi students.",
         "Taksheela BD support - DGME document compliance, Russian Embassy visa from Dhaka, certified translation, and full on-ground support after arrival.",
       ],
@@ -2604,7 +2576,7 @@ export const russiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "💰",
     label: "Annual Tuition (Range)",
-    value: "Rs. 2.7L - Rs. 8L / year",
+    value: "Rs. 2.7L - Rs. 10L / year",
     mLabel: "Tuition / yr",
     mValue: "₹2.7L–₹8L",
   },
@@ -2650,7 +2622,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🔥",
     title: "Government-Subsidised Affordable Fees",
     description:
-      "Annual tuition from Rs. 2.7 lakh at government universities - total 6-year program Rs. 18-36L versus Rs. 50L-1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
+      "Annual tuition from Rs. 2.7 lakh at government universities - total 6-year program Rs. 15L to 60L versus Rs. 50L-1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
   },
   {
     icon: "✅",
@@ -2674,7 +2646,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🚫",
     title: "Zero Donation or Capitation",
     description:
-      "Admission is purely merit-based and transparent. No donation, no capitation, no management quota. You pay only the published fee, directly to the university - a stark contrast to Indian private colleges.",
+      "Admission is purely merit-based and transparent. No donation, no capitation, no management quota. You pay only the published fee, directly to the university.",
   },
   {
     icon: "👥",

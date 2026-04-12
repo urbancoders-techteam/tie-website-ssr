@@ -1,0 +1,160 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaGraduationCap } from "react-icons/fa";
+import ContainerWrapper from "../ContainerWrapper";
+import { medicalEducationAbroad } from "@/constants/home";
+
+/** Slightly lighter navy than pure #0a192f — easier on the eyes */
+const NAVY = "#152a42";
+const TEAL = "#00c2a8";
+const TEAL_DARK = "#00a88f";
+
+const BADGE_STYLES: Record<
+  string,
+  { className: string }
+> = {
+  teal: {
+    className:
+      "border border-[#00c2a8]/40 bg-[#00c2a8]/15 text-[#5eead4]",
+  },
+  green: {
+    className:
+      "border border-emerald-500/40 bg-emerald-500/15 text-emerald-300",
+  },
+  blue: {
+    className: "border border-sky-500/40 bg-sky-500/15 text-sky-300",
+  },
+  cyan: {
+    className:
+      "border border-[#00a88f]/40 bg-[#00a88f]/15 text-[#5eead4]",
+  },
+};
+
+export default function MedicalEducation() {
+  const data = medicalEducationAbroad;
+
+  return (
+    <section
+      className="relative overflow-hidden py-12 md:py-16 lg:py-20 xl:py-[5.5rem]"
+      style={{ backgroundColor: NAVY }}
+    >
+      <p
+        className="pointer-events-none absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 select-none font-bold uppercase leading-none tracking-tight text-white/[0.045] sm:translate-x-0 sm:translate-y-0"
+        style={{ fontSize: "clamp(4rem, 18vw, 14rem)" }}
+        aria-hidden
+      >
+        {data.watermark}
+      </p>
+
+      <ContainerWrapper className="relative z-10">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          {/* Left */}
+          <div className="min-w-0">
+            <p
+              className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs lg:text-left"
+              style={{ color: TEAL }}
+            >
+              <span className="opacity-70" aria-hidden>
+                —
+              </span>{" "}
+              {data.eyebrow}{" "}
+              <span className="opacity-70" aria-hidden>
+                —
+              </span>
+            </p>
+            <h2 className="mt-3 text-balance text-center text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[1.9rem] xl:text-[2.1rem]">
+              {data.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-base">
+              {data.description}
+            </p>
+
+            {/* Country cards: stack on lg+, horizontal scroll on small screens */}
+            <div
+              className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-visible pb-2 [-ms-overflow-style:none] [scrollbar-width:thin] lg:mt-10 lg:flex-col lg:gap-3 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20"
+            >
+              {data.countries.map((c) => {
+                const badge = BADGE_STYLES[c.badgeTone] ?? BADGE_STYLES.teal;
+                return (
+                  <div
+                    key={c.id}
+                    className="min-w-[min(100%,340px)] shrink-0 snap-start sm:min-w-[360px] lg:min-w-0"
+                  >
+                    <div className="flex items-stretch gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3.5 backdrop-blur-sm sm:gap-4 sm:px-4 sm:py-4">
+                      <span
+                        className="flex w-11 shrink-0 items-center justify-center text-xl font-bold leading-none text-white/[0.12] sm:w-14 sm:text-2xl"
+                        aria-hidden
+                      >
+                        {c.code}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-bold text-white">{c.name}</p>
+                        <p className="mt-1 text-[0.75rem] leading-snug text-slate-400 sm:text-[0.8125rem]">
+                          {c.detail}
+                        </p>
+                      </div>
+                      <span
+                        className={`shrink-0 self-center rounded-md px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide sm:text-[0.7rem] ${badge.className}`}
+                      >
+                        {c.badge}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-start lg:mt-10">
+              <Link
+                href={data.primaryCta.href}
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-center text-sm font-bold text-[#0f172a] shadow-lg transition hover:brightness-105 sm:text-base"
+                style={{ backgroundColor: TEAL }}
+              >
+                {data.primaryCta.label}
+              </Link>
+              <Link
+                href={data.secondaryCta.href}
+                className="inline-flex items-center justify-center rounded-lg border border-white/35 bg-transparent px-6 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
+              >
+                {data.secondaryCta.label}
+              </Link>
+            </div>
+          </div>
+
+          {/* Right — hero image + floating card */}
+          <div className="relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-900/50 shadow-2xl ring-1 ring-white/10 sm:aspect-[3/4] lg:aspect-[4/5]">
+              <Image
+                src={data.heroImage}
+                alt="Medical education — anatomy and clinical learning"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={false}
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-[#152a42]/45 via-transparent to-transparent"
+                aria-hidden
+              />
+
+              <div className="absolute left-4 top-4 z-10 max-w-[240px] rounded-xl border border-white/15 bg-white/95 p-4 shadow-xl backdrop-blur-sm sm:left-5 sm:top-5 sm:max-w-[260px] sm:p-4">
+                <FaGraduationCap
+                  className="mb-2 h-7 w-7"
+                  style={{ color: TEAL_DARK }}
+                  aria-hidden
+                />
+                <p className="text-base font-bold leading-snug text-[#0f2744] sm:text-lg">
+                  {data.floatingCard.title}
+                </p>
+                <p className="mt-1.5 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                  {data.floatingCard.subtitle}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ContainerWrapper>
+    </section>
+  );
+}

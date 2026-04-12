@@ -33,16 +33,6 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
-  value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
-};
-
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
@@ -54,10 +44,6 @@ export type AbroadHeroContent = {
   cta: AbroadHeroCta;
   /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
   quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
 };
 
 export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
@@ -81,29 +67,7 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
     { label: "NMC-Approved Unis", value: "5+" },
     { label: "Medium of Study", value: "English" },
   ],
-  spotlight: {
-    value: "₹19–45L",
-    caption: "Total 6-year program cost (indicative) · zero donation",
-  },
-  statGrid: [
-    { value: "5+", label: "NMC-approved universities" },
-    { value: "$100–120", label: "Monthly living (est.)" },
-    { value: "7", label: "Medical institutes (MoH)" },
-    /** Last card value is replaced by `uzbekistanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "6", label: "Featured Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Uzbekistan). */
-export function uzbekistanAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = uzbekistanAbroadHeroContent
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 

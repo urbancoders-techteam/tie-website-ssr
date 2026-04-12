@@ -60,7 +60,8 @@ const ModalTrigger = ({
         type="button"
         onClick={handleClick}
         aria-label={rest["aria-label"] ?? "Open registration modal"}
-        className={buttonClass}
+        className={`${buttonClass} cursor-pointer`}
+   
         {...rest}
       >
         {children ?? text ?? "Register Now"}

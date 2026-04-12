@@ -33,16 +33,6 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
-  value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
-};
-
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
@@ -54,10 +44,6 @@ export type AbroadHeroContent = {
   cta: AbroadHeroCta;
   /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
   quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
 };
 
 export const georgiaAbroadHeroContent: AbroadHeroContent = {
@@ -81,29 +67,7 @@ export const georgiaAbroadHeroContent: AbroadHeroContent = {
     { label: "Medium", value: "English" },
     { label: "Intake", value: "Sep / Feb" },
   ],
-  spotlight: {
-    value: "15,000+",
-    caption: "Indian students in Georgia (MEA / open-source estimates)",
-  },
-  statGrid: [
-    { value: "WHO · NMC", label: "Screened Universities" },
-    { value: "₹4L+", label: "Annual Fees From" },
-    { value: "6 Yr", label: "MD (MBBS equiv.)" },
-    /** Last card value is replaced by `georgiaAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10", label: "Featured Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Georgia). */
-export function georgiaAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = georgiaAbroadHeroContent
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 

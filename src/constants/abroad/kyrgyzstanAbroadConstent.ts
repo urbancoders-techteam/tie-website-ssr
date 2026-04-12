@@ -32,16 +32,6 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
-  value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
-};
-
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
@@ -57,15 +47,6 @@ export type AbroadHeroContent = {
     AbroadHeroStatPair,
     AbroadHeroStatPair,
     AbroadHeroStatPair,
-  ];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
   ];
 };
 
@@ -90,29 +71,7 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
     { label: "NMC-Approved Unis", value: "10+" },
     { label: "Medium of Instruction", value: "English" },
   ],
-  spotlight: {
-    value: "16,000+",
-    caption: "Indian students currently enrolled",
-  },
-  statGrid: [
-    { value: "₹15–30L", label: "Total 6-year programme cost" },
-    { value: "$120–150", label: "Monthly living cost" },
-    { value: "Zero", label: "Donation / capitation" },
-    /** Last card value is replaced by `kyrgyzstanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10+", label: "NMC-Approved Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Kyrgyzstan). */
-export function kyrgyzstanAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = kyrgyzstanAbroadHeroContent,
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 
