@@ -55,7 +55,10 @@ export default function GlobalReach() {
       `[data-dest-index="${initial}"]`,
     );
     if (target) {
-      target.scrollIntoView({ inline: "center", block: "nearest" });
+      // Avoid `scrollIntoView` here: it can scroll the main page on reload in some browsers.
+      // Instead, center the active card by setting the scroller's scrollLeft directly.
+      const left = target.offsetLeft - (el.clientWidth - target.offsetWidth) / 2;
+      el.scrollTo({ left: Math.max(0, left), behavior: "auto" });
       requestAnimationFrame(updateFromScroll);
     }
   }, [initial, total, updateFromScroll]);
