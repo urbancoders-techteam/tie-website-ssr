@@ -34,7 +34,7 @@ function ServiceCell({
       />
       <div className="relative z-10 flex h-full min-h-0 flex-col justify-between gap-4 p-5 sm:gap-5 sm:p-6 lg:gap-3 lg:p-5 xl:gap-4 xl:p-6 2xl:p-7">
         <div className="min-h-0 space-y-3 sm:space-y-3.5">
-          <h3 className="text-[0.6875rem] font-bold uppercase leading-snug tracking-[0.18em] text-white sm:text-xs md:text-[0.8125rem] lg:text-[0.6875rem] xl:text-[0.75rem] 2xl:text-[0.8125rem]">
+          <h3 className="text-[0.9875rem] font-bold uppercase leading-snug tracking-[0.18em] text-white sm:text-sm md:text-[0.8125rem] lg:text-[0.6875rem] xl:text-[0.75rem] 2xl:text-[0.8125rem]">
             {title}
           </h3>
           <p className="text-[0.8125rem] font-normal leading-[1.65] text-white sm:text-[0.875rem] lg:text-[0.75rem] lg:leading-[1.55] xl:text-[0.8125rem] xl:leading-[1.62] 2xl:text-[0.875rem]">
@@ -91,6 +91,36 @@ function MosaicImageCell(props: {
   );
 }
 
+function MobileServiceCard({
+  imageSrc,
+  imageAlt,
+  title,
+  description,
+  href,
+}: {
+  imageSrc: string | StaticImageData;
+  imageAlt: string;
+  title: string;
+  description: string;
+  href: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_4px_28px_-10px_rgba(15,39,68,0.14)] ring-1 ring-black/5">
+      <div className="relative aspect-[16/10] w-full bg-[#e8eef0]">
+        <Image
+          fill
+          loading="lazy"
+          alt={imageAlt}
+          src={imageSrc}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+      <ServiceCell title={title} description={description} href={href} />
+    </div>
+  );
+}
+
 export default function OurServices() {
   const [imgTL, imgTR, imgBL, imgBR] = ourServicesCornerImages;
   const [study, immersion, intl, mbbs] = ourserviceshomedata;
@@ -118,9 +148,41 @@ export default function OurServices() {
           </p>
         </header>
 
+        {/* Mobile: image on top of each service */}
+        <div className="grid grid-cols-1 gap-5 sm:hidden">
+          <MobileServiceCard
+            imageSrc={imgTL.src}
+            imageAlt={imgTL.alt}
+            title={study.title}
+            description={study.description}
+            href={study.path}
+          />
+          <MobileServiceCard
+            imageSrc={imgTR.src}
+            imageAlt={imgTR.alt}
+            title={immersion.title}
+            description={immersion.description}
+            href={immersion.path}
+          />
+          <MobileServiceCard
+            imageSrc={imgBL.src}
+            imageAlt={imgBL.alt}
+            title={intl.title}
+            description={intl.description}
+            href={intl.path}
+          />
+          <MobileServiceCard
+            imageSrc={imgBR.src}
+            imageAlt={imgBR.alt}
+            title={mbbs.title}
+            description={mbbs.description}
+            href={mbbs.path}
+          />
+        </div>
+
         <div className="overflow-hidden rounded-2xl bg-white p-px shadow-[0_4px_28px_-6px_rgba(15,39,68,0.1)] ring-1 ring-white">
           <div
-            className="grid grid-cols-1 gap-px bg-white sm:grid-cols-2 lg:h-[24rem] lg:w-full lg:grid-cols-4 lg:grid-rows-2 xl:h-[26rem] 2xl:h-[27rem]"
+            className="hidden grid-cols-1 gap-px bg-white sm:grid sm:grid-cols-2 lg:h-[24rem] lg:w-full lg:grid-cols-4 lg:grid-rows-2 xl:h-[26rem] 2xl:h-[27rem]"
           >
             <MosaicImageCell src={imgTL.src} alt={imgTL.alt} />
             <ServiceCell
