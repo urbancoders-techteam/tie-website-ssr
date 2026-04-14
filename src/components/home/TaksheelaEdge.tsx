@@ -144,13 +144,13 @@ export default function TaksheelaEdge() {
           </p>
         </header>
 
-        <ul className="mt-10 grid list-none grid-cols-1 gap-5 sm:gap-6 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 flex list-none snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible pb-3 [-ms-overflow-style:none] [scrollbar-width:thin] [scrollbar-color:rgba(0,168,143,0.45)_rgba(15,23,42,0.06)] md:mt-12 md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 lg:grid-cols-3">
           {features.map((item) => {
             const gold = item.icon === "trophy" || item.icon === "handshake";
             return (
               <li
                 key={item.id}
-                className="flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_4px_24px_-12px_rgba(15,39,68,0.12)] sm:p-6"
+                className="flex w-[min(86vw,340px)] shrink-0 snap-start flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_4px_24px_-12px_rgba(15,39,68,0.12)] sm:w-[min(60vw,360px)] sm:p-6 md:w-auto md:shrink md:snap-none"
               >
                 <div className={ICON_BOX}>
                   <FeatureIcon name={item.icon} accent={gold ? "gold" : "teal"} />
@@ -167,16 +167,31 @@ export default function TaksheelaEdge() {
         </ul>
 
         <div className="mt-10 flex justify-center md:mt-12">
-          <Link
-            href={cta.href}
-            className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 sm:px-10 sm:py-4 sm:text-base"
-            style={{ backgroundColor: TEAL }}
-          >
-            {cta.label}
-            <span aria-hidden className="text-lg font-light">
-              ›
-            </span>
-          </Link>
+          {cta.href.startsWith("http") ? (
+            <a
+              href={cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 sm:px-10 sm:py-4 sm:text-base"
+              style={{ backgroundColor: TEAL }}
+            >
+              {cta.label}
+              <span aria-hidden className="text-lg font-light">
+                ›
+              </span>
+            </a>
+          ) : (
+            <Link
+              href={cta.href}
+              className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 sm:px-10 sm:py-4 sm:text-base"
+              style={{ backgroundColor: TEAL }}
+            >
+              {cta.label}
+              <span aria-hidden className="text-lg font-light">
+                ›
+              </span>
+            </Link>
+          )}
         </div>
       </ContainerWrapper>
     </section>

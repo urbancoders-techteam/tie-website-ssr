@@ -206,10 +206,13 @@ export default function Banner() {
       autoplaySpeed: 2500,
       fade: true,
       arrows: true,
-      prevArrow: <BannerArrow direction="prev" />,
+      prevArrow: <BannerArrow direction="prev"  />,
       nextArrow: <BannerArrow direction="next" />,
       appendDots: (dots: ReactNode) => (
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-30 flex justify-center px-4 md:bottom-16">
+        <div
+          className="pointer-events-none absolute inset-x-0 z-30 flex justify-center px-4"
+          style={{ bottom: 18 }}
+        >
           <ul className="pointer-events-auto flex items-center justify-center gap-2">{dots}</ul>
         </div>
    

@@ -54,7 +54,7 @@ export default function TrustTaksheela() {
                 src={trustTaksheelaHero.image}
                 alt="Student working on study abroad planning with Taksheela"
                 fill
-                className="object-cover object-center"
+                className="object-cover "
                 sizes="(max-width: 1023px) 100vw, 42vw"
                 priority={false}
               />
@@ -84,18 +84,7 @@ export default function TrustTaksheela() {
               </span>
             </p>
             <h2 className="mt-3 text-center text-2xl font-bold leading-snug tracking-tight text-[#0f2744] sm:text-3xl md:text-[2rem] md:leading-tight lg:text-left lg:text-[1.7rem] lg:leading-tight xl:text-[1.8rem] 2xl:text-[2rem] 2xl:leading-snug">
-              {/* “Study Abroad” ko next line pe dikhana on lg+ screens, single line on mobile */}
-              {trustTaksheelaIntro.title.split("Study Abroad").length > 1 ? (
-                <>
-                  {trustTaksheelaIntro.title.split("Study Abroad")[0]}
-                  <span className="block lg:inline xl:block">
-                    Study Abroad
-                  </span>
-                  {trustTaksheelaIntro.title.split("Study Abroad")[1]}
-                </>
-              ) : (
-                trustTaksheelaIntro.title
-              )}
+              {trustTaksheelaIntro.title}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-slate-600 sm:mt-4 sm:text-[0.9375rem] lg:mx-0 lg:mt-2 lg:max-w-none lg:text-left lg:text-[0.8125rem] lg:leading-snug xl:text-sm xl:leading-relaxed 2xl:mt-4 2xl:text-base">
               {trustTaksheelaIntro.description}
@@ -123,13 +112,25 @@ export default function TrustTaksheela() {
             </div>
 
             <div className="mt-5 flex justify-center lg:mt-4 lg:justify-start xl:mt-5 2xl:mt-8">
-              <Link
-                href={trustTaksheelaIntro.ctaHref}
-                className="inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-xs font-bold text-white shadow-md transition-[transform,box-shadow] duration-200 hover:shadow-lg active:scale-[0.99] sm:px-7 sm:py-3 sm:text-sm lg:px-5 lg:py-2 lg:text-[0.6875rem] xl:px-6 xl:py-2.5 xl:text-xs 2xl:px-8 2xl:py-3.5 2xl:text-base"
-                style={{ backgroundColor: TEAL }}
-              >
-                {trustTaksheelaIntro.ctaLabel}
-              </Link>
+              {trustTaksheelaIntro.ctaHref.startsWith("http") ? (
+                <a
+                  href={trustTaksheelaIntro.ctaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-xs font-bold text-white shadow-md transition-[transform,box-shadow] duration-200 hover:shadow-lg active:scale-[0.99] sm:px-7 sm:py-3 sm:text-sm lg:px-5 lg:py-2 lg:text-[0.6875rem] xl:px-6 xl:py-2.5 xl:text-xs 2xl:px-8 2xl:py-3.5 2xl:text-base"
+                  style={{ backgroundColor: TEAL }}
+                >
+                  {trustTaksheelaIntro.ctaLabel}
+                </a>
+              ) : (
+                <Link
+                  href={trustTaksheelaIntro.ctaHref}
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-xs font-bold text-white shadow-md transition-[transform,box-shadow] duration-200 hover:shadow-lg active:scale-[0.99] sm:px-7 sm:py-3 sm:text-sm lg:px-5 lg:py-2 lg:text-[0.6875rem] xl:px-6 xl:py-2.5 xl:text-xs 2xl:px-8 2xl:py-3.5 2xl:text-base"
+                  style={{ backgroundColor: TEAL }}
+                >
+                  {trustTaksheelaIntro.ctaLabel}
+                </Link>
+              )}
             </div>
           </div>
         </div>

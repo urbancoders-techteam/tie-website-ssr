@@ -89,19 +89,19 @@ export default function Page() {
       <GlobalDegree />
       <TaksheelaEdge />
       <WhereYouAre />
-      <TestPrepSectionHome />
-      <TaksheelaInsights />
-      <GlobalReach />
-      <MedicalEducation />
-      <GlobalImmersionHome />
       <Testimonial />
+      <GlobalReach />
+      <GlobalImmersionHome />
+      <MedicalEducation />
+      <TestPrepSectionHome />
       <FAQHome />
       <BookCouncilBanner
         redirectPath="/thankyou"
         description="Book your FREE counselling session today. 5,000+ students did — and never looked back."
       />
-      <DownloadBrochure />
+      <TaksheelaInsights />
       <WebinarEvent />
+      <DownloadBrochure />
       <Blogs />
     </>
   );

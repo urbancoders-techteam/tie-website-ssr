@@ -136,16 +136,31 @@ export default function GlobalDegree() {
         </ul>
 
         <div className="mt-12 flex justify-center md:mt-14">
-          <Link
-            href={cta.href}
-            className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-110 sm:px-10 sm:py-4 sm:text-base"
-            style={{ backgroundColor: TEAL }}
-          >
-            {cta.label}
-            <span aria-hidden className="text-lg font-light">
-              ›
-            </span>
-          </Link>
+          {cta.href.startsWith("http") ? (
+            <a
+              href={cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-110 sm:px-10 sm:py-4 sm:text-base"
+              style={{ backgroundColor: TEAL }}
+            >
+              {cta.label}
+              <span aria-hidden className="text-lg font-light">
+                ›
+              </span>
+            </a>
+          ) : (
+            <Link
+              href={cta.href}
+              className="inline-flex items-center justify-center gap-1 rounded-lg px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-110 sm:px-10 sm:py-4 sm:text-base"
+              style={{ backgroundColor: TEAL }}
+            >
+              {cta.label}
+              <span aria-hidden className="text-lg font-light">
+                ›
+              </span>
+            </Link>
+          )}
         </div>
       </ContainerWrapper>
     </section>

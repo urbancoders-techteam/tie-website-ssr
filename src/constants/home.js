@@ -63,7 +63,7 @@ export const taksheelaEdge = {
     "Taksheela isn't just a consultancy — we are a full-spectrum global education partner trusted by students, parents and institutions across India.",
   cta: {
     label: "Talk to an Expert Now",
-    href: "/contact",
+    href: "https://wa.me/919831241212",
   },
   features: [
     {
@@ -124,7 +124,7 @@ export const trustTaksheelaIntro = {
   description:
     "From shortlisting universities to visa filing and pre-departure briefings, Taksheela combines certified counsellors, transparent processes, and a technology-backed journey so you can plan your future abroad with confidence.",
   ctaLabel: "Book Free Counselling Session",
-  ctaHref: "https://www.taksheela.com/contact",
+  ctaHref: "https://wa.me/919831241212",
 };
 
 /** Icons: trophy | calculator | people | document | heart | airplane */
@@ -468,7 +468,7 @@ export const globalDegreeJourney = {
     "We handle all the complexity so you can focus on your future.",
   cta: {
     label: "Start Your Journey Today",
-    href: "/contact",
+    href: "https://wa.me/919831241212",
   },
   steps: [
     {
@@ -570,7 +570,7 @@ export const faqHome = {
   title: "Frequently Asked Questions",
   description:
     "Answers to the most common questions from Indian students and parents about studying abroad, MBBS abroad, test prep and the Global Immersion Program.",
-  cta: { label: "Ask Our Counsellors Directly", href: "/contact" },
+  cta: { label: "Ask Our Counsellors Directly", href: "https://wa.me/919831241212" },
   items: [
     {
       id: "services",

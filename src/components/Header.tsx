@@ -38,8 +38,10 @@ import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { baseUrl, navURL } from "@/utils/config";
+
+const PHONE_TEL = "+919831241212";
 
 export const Header = ({ itemupdate }: any) => {
 
@@ -76,7 +78,6 @@ export const Header = ({ itemupdate }: any) => {
   const [cartList, setCartList] = useState<any>([]);
 
 
-  const currentLocation = usePathname();
   const [expanded, setExpanded] = useState(null);
 
   const handleAccordionChange = (index: any) => {
@@ -86,12 +87,12 @@ export const Header = ({ itemupdate }: any) => {
   useEffect(() => {
     navbarData.forEach((menuItem, index) => {
       if (
-        menuItem.subMenu.some((subItem) => currentLocation === subItem.link)
+        menuItem.subMenu.some((subItem) => location === subItem.link)
       ) {
         setExpanded(index as any);
       }
     });
-  }, [currentLocation]);
+  }, [location]);
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -125,10 +126,7 @@ export const Header = ({ itemupdate }: any) => {
       }
     };
 
-    if(token){
-      fetchCartData();
-    }
-    
+    fetchCartData();
   }, [itemupdate, token]);
 
   const theme = useTheme();
@@ -170,9 +168,9 @@ export const Header = ({ itemupdate }: any) => {
     setDrawerOpen(false);
   };
 
-  const handlePhoneIconClick = () => {
-    window.open(`tel:${+919831241212}`);
-  };
+  const handlePhoneIconClick = useCallback(() => {
+    window.open(`tel:${PHONE_TEL}`);
+  }, []);
 
   const HoverTypography = (allProps: any) => {
     const { children, sx, fontSize, border, ...rest } = allProps;
