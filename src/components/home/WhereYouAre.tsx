@@ -32,36 +32,25 @@ export default function WhereYouAre() {
           className="where-you-are-scroller mt-10 flex w-full flex-nowrap gap-4 overflow-x-auto scroll-px-1 py-3 sm:mt-12 sm:gap-5 sm:scroll-px-0 sm:py-4 lg:gap-4 lg:py-5"
         >
           {locations.map((loc) => (
-            <article
+            <Link
               key={loc.id}
-              className="flex h-full min-h-[220px] w-[min(78vw,300px)] shrink-0 flex-col rounded-2xl border border-white/10 bg-white/[0.06] p-5 transition-[border-color,box-shadow,background-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#00a88f] hover:bg-white/[0.09] hover:shadow-[0_10px_36px_-10px_rgba(0,168,143,0.35)] focus-within:-translate-y-1 focus-within:border-[#00a88f] focus-within:bg-white/[0.09] focus-within:shadow-[0_10px_36px_-10px_rgba(0,168,143,0.35)] sm:min-h-[240px] sm:w-[min(42vw,320px)] sm:p-6 lg:min-h-[220px] lg:w-[calc((100%-5rem)/5.5)] lg:max-w-[calc((100%-5rem)/5.5)] lg:basis-[calc((100%-5rem)/5.5)] lg:shrink-0"
+              href={loc.href}
+              className="block w-[min(78vw,300px)] shrink-0 rounded-2xl border border-white/10 bg-white/[0.06] p-5 no-underline transition-[border-color,box-shadow,background-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#00a88f] hover:bg-white/[0.09] hover:shadow-[0_10px_36px_-10px_rgba(0,168,143,0.35)] focus-visible:-translate-y-1 focus-visible:border-[#00a88f] focus-visible:bg-white/[0.09] focus-visible:shadow-[0_10px_36px_-10px_rgba(0,168,143,0.35)] sm:w-[min(42vw,320px)] sm:p-6 lg:w-[calc((100%-5rem)/5.5)] lg:max-w-[calc((100%-5rem)/5.5)] lg:basis-[calc((100%-5rem)/5.5)] lg:shrink-0"
             >
-              <h3 className="text-left text-lg font-bold leading-snug text-white sm:text-xl">
-                {loc.headline}
-              </h3>
-              <p className="mt-3 flex-1 text-left text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem]">
-                {loc.address}
-              </p>
-              <div className="mt-5 border-t border-white/10 pt-4">
-                {loc.cta.href.startsWith("tel:") ? (
-                  <a
-                    href={loc.cta.href}
-                    className="inline-flex text-sm font-semibold transition hover:brightness-110 sm:text-base"
-                    style={{ color: TEAL }}
-                  >
+              <article className="flex h-full flex-col">
+                <h3 className="line-clamp-2 min-h-[3.1em] text-left text-lg font-bold leading-snug text-white sm:min-h-[3em] sm:text-xl">
+                  {loc.headline}
+                </h3>
+                <p className="mt-3 line-clamp-4 text-left text-sm leading-relaxed text-slate-400 sm:line-clamp-5 sm:text-[0.9375rem]">
+                  {loc.address}
+                </p>
+                <div className="mt-auto border-t border-white/10 pt-4">
+                  <span className="inline-flex text-sm font-semibold transition hover:brightness-110 sm:text-base" style={{ color: TEAL }}>
                     {loc.cta.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={loc.cta.href}
-                    className="inline-flex text-sm font-semibold transition hover:brightness-110 sm:text-base"
-                    style={{ color: TEAL }}
-                  >
-                    {loc.cta.label}
-                  </Link>
-                )}
-              </div>
-            </article>
+                  </span>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </ContainerWrapper>

@@ -524,42 +524,48 @@ export const whereYouAreHome = {
       headline: "IN Kolkata",
       address:
         "Salt Lake, Sector V — full-stack study abroad counselling, test prep & visa support.",
-      cta: { label: "Know More →", href: "/contact" },
+      href: "/consultants-study-abroad-kolkata",
+      cta: { label: "Know More →" },
     },
     {
       id: "del",
       headline: "IN Delhi NCR",
       address:
         "Noida / Gurugram — walk-in sessions for UG, PG & MBA abroad; IELTS & GRE batches.",
-      cta: { label: "Call →", href: "tel:+919831241212" },
+      href: "/study-abroad-consultants-delhi-ncr",
+      cta: { label: "Know More →" },
     },
     {
       id: "mum",
       headline: "IN Mumbai",
       address:
         "Western suburbs — premium counselling for USA, UK, Canada & EU admissions.",
-      cta: { label: "Know More →", href: "/contact" },
+      href: "/study-abroad-consultants-mumbai",
+      cta: { label: "Know More →" },
     },
     {
       id: "blr",
       headline: "IN Bangalore",
       address:
         "Koramangala — tech & STEM-focused shortlisting; partner university connects.",
-      cta: { label: "Contact Us →", href: "/contact" },
+      href: "/study-abroad-consultants-bangalore",
+      cta: { label: "Know More →" },
     },
     {
       id: "bbsr",
       headline: "IN Bhubaneswar",
       address:
         "Eastern India hub — affordable pathways, scholarships & visa filing under one roof.",
-      cta: { label: "Know More →", href: "/contact" },
+      href: "/study-abroad-consultants-bhubaneswar",
+      cta: { label: "Know More →" },
     },
     {
       id: "dxb",
       headline: "AE Dubai",
       address:
         "Business Bay — Middle East desk for Indian students & institutional partnerships.",
-      cta: { label: "Contact Us →", href: "/contact" },
+      href: "/study-in-dubai",
+      cta: { label: "Know More →" },
     },
   ],
 };
