@@ -6,6 +6,7 @@ import Image from "next/image";
 import RegisterForm from "./RegisterForm";
 import ContainerWrapper from "../ContainerWrapper";
 import { baseUrl } from "@/utils/config";
+import fallbackBannerImage from "@/assets/doctor.png";
 
 interface BannerItem {
   id: string;
@@ -36,6 +37,14 @@ const TITLE_CLASS =
 const DEFAULT_CATEGORY = "TEST PREPARATION";
 const FALLBACK_BODY =
   "Expert coaching for IELTS, TOEFL, PTE, GRE, GMAT, SAT & DUOLINGO. Personalised study plans with certified trainers online and at centres across India.";
+const FALLBACK_BANNER: BannerItem = {
+  id: "fallback-banner",
+  category: "MBBS ABROAD",
+  title: "Become globally recognised doctor <span>from ₹20 Lakhs</span>",
+  content:
+    "End-to-end MBBS abroad support across Russia, Georgia, Kazakhstan, Kyrgyzstan & Uzbekistan with transparent fees, visa guidance and trusted university admissions.",
+  image: fallbackBannerImage.src,
+};
 
 function BannerArrow({
   onClick,
@@ -85,26 +94,16 @@ function BannerHeroTitle({ title }: { title: string }) {
   return <h2 className={TITLE_CLASS}>{trimmed}</h2>;
 }
 
-function BannerSkeleton() {
+function BannerFallback() {
   return (
-    <div className={`relative w-full ${SLIDE_HEIGHT} animate-pulse`}>
-      <div className="absolute inset-0 bg-gray-300" />
-      <div className="absolute inset-0 flex items-center bg-black/40">
-        <ContainerWrapper>
-          <div className="flex w-full items-center justify-between gap-4">
-            <div className="w-full space-y-4 md:w-1/2">
-              <div className="h-10 w-3/4 rounded bg-gray-400" />
-              <div className="h-10 w-1/2 rounded bg-gray-400" />
-            </div>
-            <div className="hidden w-1/2 space-y-4 md:block">
-              <div className="h-12 w-full rounded bg-gray-400" />
-              <div className="h-12 w-full rounded bg-gray-400" />
-              <div className="h-12 w-full rounded bg-gray-400" />
-            </div>
-          </div>
-        </ContainerWrapper>
+    <>
+      <div className={`relative w-full ${SLIDE_HEIGHT}`}>
+        <BannerSlide item={FALLBACK_BANNER} />
       </div>
-    </div>
+      <div className="block bg-[#0B162C] px-4 pb-10 pt-5 md:hidden">
+        <RegisterForm floating={false} variant="dark" />
+      </div>
+    </>
   );
 }
 
@@ -225,11 +224,11 @@ export default function Banner() {
   );
 
   if (loading) {
-    return <BannerSkeleton />;
+    return <BannerFallback />;
   }
 
   if (banners.length === 0) {
-    return null;
+    return <BannerFallback />;
   }
 
   return (
