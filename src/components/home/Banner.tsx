@@ -98,7 +98,7 @@ function BannerFallback() {
   return (
     <>
       <div className={`relative w-full ${SLIDE_HEIGHT}`}>
-        <BannerSlide item={FALLBACK_BANNER} />
+        <BannerSlide item={FALLBACK_BANNER} priority />
       </div>
       <div className="block bg-[#0B162C] px-4 pb-10 pt-5 md:hidden">
         <RegisterForm floating={false} variant="dark" />
@@ -107,13 +107,21 @@ function BannerFallback() {
   );
 }
 
-function BannerSlide({ item }: { item: BannerItem }) {
+function BannerSlide({ item, priority = false }: { item: BannerItem; priority?: boolean }) {
   const category = (item.category || DEFAULT_CATEGORY).toUpperCase();
   const body = item.content || FALLBACK_BODY;
 
   return (
     <div className={`relative ${SLIDE_HEIGHT}`}>
-      <Image src={item.image} alt={item.title} fill className="object-cover" priority sizes="100vw" />
+      <Image
+        src={item.image}
+        alt={item.title}
+        fill
+        className="object-cover"
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        sizes="100vw"
+      />
 
       <div className="absolute inset-0 flex items-center">
         <div className="absolute inset-0 bg-black/40" />
@@ -235,8 +243,8 @@ export default function Banner() {
     <>
       <div className={`relative w-full ${SLIDE_HEIGHT} ${SLICK_FULL_HEIGHT} ${SLICK_DOTS}`}>
         <Slider {...sliderSettings}>
-          {banners.map((item) => (
-            <BannerSlide key={item.id} item={item} />
+          {banners.map((item, idx) => (
+            <BannerSlide key={item.id} item={item} priority={idx === 0} />
           ))}
         </Slider>
       </div>
