@@ -66,10 +66,11 @@ const COUNTRY_FEES_FROM: Record<string, string> = {
 const DEFAULT_FEES_FROM = "Affordable";
 
 const DEFAULT_QUICK_STATS = (feesFrom: string): HeroStat[] => [
-  { label: "Total Fees", value: feesFrom },
+  { label: "Tuition Fees", value: feesFrom },
   { label: "Duration", value: "6 Years" },
   { label: "Medium", value: "English" },
   { label: "Intake", value: "Sep / Feb" },
+  { label: "Universities", value: "50+" },
 ];
 
 const EYEBROW =
@@ -82,8 +83,8 @@ const BTN_PRIMARY =
   "inline-flex h-12 items-center justify-center rounded-xl bg-[#00999E] px-6 text-sm sm:text-base font-semibold text-white transition-colors hover:bg-[#007a7f]";
 const BTN_SECONDARY =
   "inline-flex h-12 items-center justify-center rounded-xl bg-white px-6 text-sm sm:text-base font-semibold text-[#0A6D72] transition-colors hover:bg-white/90";
-const QUICK_STATS_WRAP =
-  "mt-7 grid grid-cols-2 sm:grid-cols-4 overflow-hidden rounded-xl border border-[#A7ECEE]/55 bg-[#2A9EA3]/28 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-[3px]";
+const QUICK_STATS_WRAP_BASE =
+  "mt-7 grid overflow-hidden rounded-xl border border-[#A7ECEE]/55 bg-[#2A9EA3]/28 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-[3px]";
 const STAT_CELL = "text-[10px] uppercase tracking-widest text-white";
 const STAT_VALUE = "text-lg sm:text-xl font-semibold text-white mt-1";
 
@@ -147,12 +148,13 @@ function HeroBackdrop({ bg, imageAlt, decorativeLayers }: BackdropProps) {
 }
 
 function QuickStatsGrid({ stats }: { stats: HeroStat[] }) {
+  const cols = stats.length >= 5 ? "grid-cols-2 sm:grid-cols-5" : "grid-cols-2 sm:grid-cols-4";
   return (
-    <div className={QUICK_STATS_WRAP}>
+    <div className={`${QUICK_STATS_WRAP_BASE} ${cols}`}>
       {stats.map((stat, i) => (
         <div
           key={stat.label}
-          className={`px-4 py-3 ${i < 3 ? "border-r border-[#A7ECEE]/35" : ""}`}
+          className={`px-4 py-3 ${i < stats.length - 1 ? "border-r border-[#A7ECEE]/35" : ""}`}
         >
           <p className={STAT_CELL}>{stat.label}</p>
           <p className={STAT_VALUE}>{stat.value}</p>
@@ -167,6 +169,23 @@ function HeroRegisterColumn() {
     <div className="flex w-full min-w-0 flex-col lg:pl-2">
       <div className="mx-auto flex w-full max-w-[360px] justify-center lg:mx-auto lg:max-w-[340px] [&>div]:w-full [&>div]:md:!max-w-none">
         <RegisterForm floating={false} />
+      </div>
+    </div>
+  );
+}
+
+function HeroRightStatCard({ value, subtitle }: { value: string; subtitle: string }) {
+  return (
+    <div className="flex w-full min-w-0 flex-col lg:pl-2">
+      <div className="mx-auto w-full max-w-[360px] lg:max-w-[340px]">
+        <div className="overflow-hidden rounded-xl border border-[#A7ECEE]/55 bg-[#2A9EA3]/28 px-4 py-3 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-[3px] sm:px-5 sm:py-4">
+          <p className="text-center text-[34px] font-extrabold leading-none tracking-tight text-[#FFD465] sm:text-[40px] lg:text-[36px] xl:text-[38px]">
+            {value}
+          </p>
+          <p className="mt-1.5 text-center text-[11px] font-semibold leading-snug text-white/90 sm:text-xs lg:text-[11px]">
+            {subtitle}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -235,7 +254,13 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
             )}
           </div>
 
-          <HeroRegisterColumn />
+          <div className="flex min-w-0 flex-col gap-5">
+              <HeroRightStatCard
+                value="100000+"
+                subtitle="Students currently pursuing MBBS in Russia"
+              />
+            <HeroRegisterColumn />
+          </div>
         </div>
       </div>
     </section>

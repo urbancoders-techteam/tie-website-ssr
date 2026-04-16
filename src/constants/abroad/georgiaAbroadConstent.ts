@@ -42,8 +42,8 @@ export type AbroadHeroContent = {
   /** Truncate description to this length (default 260) */
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
-  /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
-  quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
+  /** Stats cells in the bordered row (e.g. Fees, Duration, Medium, Intake, Universities). */
+  quickStats: AbroadHeroStatPair[];
 };
 
 export const georgiaAbroadHeroContent: AbroadHeroContent = {
@@ -66,6 +66,7 @@ export const georgiaAbroadHeroContent: AbroadHeroContent = {
     { label: "Duration", value: "6 Years" },
     { label: "Medium", value: "English" },
     { label: "Intake", value: "Sep / Feb" },
+    { label: "Universities", value: "50+" },
   ],
 };
 

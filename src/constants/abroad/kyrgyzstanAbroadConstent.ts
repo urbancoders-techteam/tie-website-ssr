@@ -47,7 +47,7 @@ export type AbroadHeroContent = {
     AbroadHeroStatPair,
     AbroadHeroStatPair,
     AbroadHeroStatPair,
-  ];
+  ] | AbroadHeroStatPair[];
 };
 
 export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
@@ -70,6 +70,7 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
     { label: "Indian Students Enrolled", value: "16,000+" },
     { label: "NMC-Approved Unis", value: "10+" },
     { label: "Medium of Instruction", value: "English" },
+    { label: "Universities", value: "50+" },
   ],
 };
 

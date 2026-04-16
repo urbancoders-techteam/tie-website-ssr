@@ -48,7 +48,7 @@ export type AbroadHeroContent = {
     AbroadHeroStatPair,
     AbroadHeroStatPair,
     AbroadHeroStatPair,
-  ];
+  ] | AbroadHeroStatPair[];
 };
 
 export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
@@ -71,6 +71,7 @@ export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
     { label: "Total Duration", value: "6 Yrs" },
     { label: "Indian Students", value: "12K+" },
     { label: "NMC-Approved Unis", value: "10+" },
+    { label: "Universities", value: "50+" },
   ],
 };
 

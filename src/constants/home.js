@@ -196,7 +196,7 @@ export const globalReachDestinations = [
     name: "Australia",
     tagline: "Go8 Universities",
     image:
-      "https://images.unsplash.com/photo-1523482580672-f109bc896c48?auto=format&fit=crop&w=900&q=80",
+      "/images/australia.jpg",
   },
   {
     id: "fr",
@@ -310,7 +310,7 @@ export const globalImmersionHome = {
       price: "From ₹65,000",
       image:
         "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80",
-      href: "/immersion",
+      href: "/immersion/south-east-asia",
     },
     {
       id: "my",
@@ -322,8 +322,8 @@ export const globalImmersionHome = {
       tags: ["UTM / UPM", "Tech Industry", "Certificate"],
       price: "From ₹75,000",
       image:
-        "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80",
-      href: "/immersion",
+        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/immersion/image/a5befa02-a277-4ee4-8177-bcac2dbf2a27.png",
+      href: "/immersion/south-east-asia",
     },
     {
       id: "ae",
@@ -335,8 +335,8 @@ export const globalImmersionHome = {
       tags: ["GEMS / HCT", "Business Visits", "Certificate"],
       price: "From ₹80,000",
       image:
-        "https://images.unsplash.com/photo-1518684079-83c43afe2d94?auto=format&fit=crop&w=1200&q=80",
-      href: "/immersion",
+        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/immersion/image/77002874-6469-41af-8cb9-9dde7e132076.jpeg",
+      href: "/immersion/middle-east",
     },
     {
       id: "de",
@@ -349,7 +349,7 @@ export const globalImmersionHome = {
       price: "From ₹1,20,000",
       image:
         "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80",
-      href: "/immersion",
+      href: "/immersion/europe",
     },
     {
       id: "fr",
@@ -362,7 +362,7 @@ export const globalImmersionHome = {
       price: "From ₹1,10,000",
       image:
         "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
-      href: "/immersion",
+      href: "/immersion/europe",
     },
   ],
 };

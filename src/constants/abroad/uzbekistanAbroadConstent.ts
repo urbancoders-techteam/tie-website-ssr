@@ -42,8 +42,8 @@ export type AbroadHeroContent = {
   /** Truncate description to this length (default 260) */
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
-  /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
-  quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
+  /** Stats cells in the bordered row (e.g. Fees, Duration, Medium, Intake, Universities). */
+  quickStats: AbroadHeroStatPair[];
 };
 
 export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
@@ -66,6 +66,7 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
     { label: "Program Duration", value: "6 Yrs" },
     { label: "NMC-Approved Unis", value: "5+" },
     { label: "Medium of Study", value: "English" },
+    { label: "Universities", value: "50+" },
   ],
 };
 

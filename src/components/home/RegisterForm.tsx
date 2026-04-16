@@ -134,7 +134,7 @@ const RegisterForm = ({
       ].join(" ")}
     >
       {variant === "dark" ? (
-        <div className="px-5 pt-5">
+        <div className="px-5 pt-2">
           <h2 className="text-lg font-extrabold text-white">
             Register Now <span className="font-semibold text-white/70">— Free Consultation</span>
           </h2>
@@ -148,7 +148,7 @@ const RegisterForm = ({
 
       <form
         onSubmit={formik.handleSubmit}
-        className={variant === "dark" ? "mt-5 grid gap-3 px-5 pb-5" : "mt-5 grid gap-4  p-6"}
+        className={variant === "dark" ? "mt-2 grid gap-3 px-5 pb-5" : "mt-2 grid gap-4  p-6"}
       >
         <div>
           <input
