@@ -82,17 +82,15 @@ export default function Page() {
       <Banner />
       <HomeCounter />
       <OurServices />
-      {/* <FreeCounsellingBanner /> */}
-
+      <GlobalReach />
+      <MedicalEducation />
+      <GlobalImmersionHome />
+      <TestPrepSectionHome />
       <TrustTaksheela />
       <GlobalDegree />
       <TaksheelaEdge />
       <WhereYouAre />
       <Testimonial />
-      <GlobalReach />
-      <GlobalImmersionHome />
-      <MedicalEducation />
-      <TestPrepSectionHome />
       <FAQHome />
       <BookCouncilBanner
         redirectPath="/thankyou"

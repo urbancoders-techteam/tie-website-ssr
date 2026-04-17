@@ -8,6 +8,7 @@ import { CircularProgress } from "@mui/material";
 import type { TestimonialWebRaw } from "@/utils/testimonialWeb";
 import { normalizeWebTestimonial } from "@/utils/testimonialWeb";
 import type { TestimonialViewModel } from "@/utils/testimonialWeb";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 const SECTION_EYEBROW = "TRIUMPH TALES";
 const SECTION_TITLE = "What Our Students Say About Taksheela";
@@ -48,23 +49,15 @@ const Testimonial = () => {
   return (
     <section className="w-full bg-slate-50 py-12 md:py-14 lg:py-16 xl:py-[4.5rem]">
       <ContainerWrapper>
-        <header className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs">
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>{" "}
-            {SECTION_EYEBROW}{" "}
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]">
-            {SECTION_TITLE}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base">
-            {SECTION_SUB}
-          </p>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto mb-10 max-w-3xl text-center md:mb-12"
+          eyebrow={SECTION_EYEBROW}
+          title={SECTION_TITLE}
+          subtitle={SECTION_SUB}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]"
+          subtitleClassName="mx-auto mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base"
+        />
 
         {loading ? (
           <div

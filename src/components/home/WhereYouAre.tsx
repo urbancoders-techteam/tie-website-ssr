@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ContainerWrapper from "../ContainerWrapper";
 import { whereYouAreHome } from "@/constants/home";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 const BG = "#0a1628";
 const TEAL = "#00a88f";
@@ -11,20 +12,13 @@ export default function WhereYouAre() {
   return (
     <section className="w-full py-12 md:py-14 lg:py-16 xl:py-[4.5rem]" style={{ backgroundColor: BG }}>
       <ContainerWrapper>
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs">
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>{" "}
-            {eyebrow}{" "}
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-[2rem]">
-            {title}
-          </h2>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto max-w-3xl text-center"
+          eyebrow={eyebrow}
+          title={title}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-[2rem]"
+        />
 
         <div
           role="region"

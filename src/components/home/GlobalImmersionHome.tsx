@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ContainerWrapper from "../ContainerWrapper";
 import { globalImmersionHome } from "@/constants/home";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 /** ~4 cards + peek (lg+); 3 (md); 2 (sm); 1+ (base) */
 const cardClass =
@@ -69,23 +70,15 @@ export default function GlobalImmersionHome() {
   return (
     <section className="w-full bg-white py-12 md:py-14 lg:py-16 xl:py-[4.5rem]">
       <ContainerWrapper>
-        <header className="mx-auto mb-8 max-w-3xl text-center md:mb-9 lg:mb-10">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#00a88f] sm:text-xs sm:tracking-[0.28em]">
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>{" "}
-            {eyebrow}{" "}
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]">
-            {title}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base">
-            {description}
-          </p>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto mb-8 max-w-3xl text-center md:mb-9 lg:mb-10"
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={description}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#00a88f] sm:text-xs sm:tracking-[0.28em]"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]"
+          subtitleClassName="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base"
+        />
 
         <div role="region" aria-label="Immersion programs" className={scrollerClass}>
           {programs.map((p, index) => (

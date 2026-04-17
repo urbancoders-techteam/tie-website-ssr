@@ -83,6 +83,7 @@ import {
 } from "react-icons/fa";
 import ContainerWrapper from "../ContainerWrapper";
 import { taksheelaEdge } from "@/constants/home";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 const TEAL = "#00a88f";
 const ICON_BOX =
@@ -124,25 +125,15 @@ export default function TaksheelaEdge() {
       className="w-full py-12 md:py-14 lg:py-16 xl:py-[4.5rem]"
     >
       <ContainerWrapper>
-        <header className="mx-auto max-w-4xl text-center">
-          <p
-            className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs"
-          >
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>{" "}
-            {eyebrow}{" "}
-            <span className="text-[#00a88f]/70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]">
-            {title}
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base">
-            {subtitle}
-          </p>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto max-w-4xl text-center"
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:text-xs"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-[#0f2744] sm:text-3xl md:text-[1.85rem] lg:text-[2rem]"
+          subtitleClassName="mx-auto mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] md:text-base"
+        />
 
         <ul className="mt-10 flex list-none snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible pb-3 [-ms-overflow-style:none] [scrollbar-width:thin] [scrollbar-color:rgba(0,168,143,0.45)_rgba(15,23,42,0.06)] md:mt-12 md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 lg:grid-cols-3">
           {features.map((item) => {

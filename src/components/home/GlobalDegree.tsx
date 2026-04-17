@@ -8,6 +8,7 @@ import {
 import { FaHandshake } from "react-icons/fa";
 import ContainerWrapper from "../ContainerWrapper";
 import { globalDegreeJourney } from "@/constants/home";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 const BG = "#0B162C";
 const TEAL = "#00C4B4";
@@ -58,26 +59,17 @@ export default function GlobalDegree() {
       style={{ backgroundColor: BG }}
     >
       <ContainerWrapper className="relative z-10">
-        <header className="mx-auto max-w-3xl text-center">
-          <p
-            className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs"
-            style={{ color: TEAL }}
-          >
-            <span className="opacity-70" aria-hidden>
-              —
-            </span>{" "}
-            {eyebrow}{" "}
-            <span className="opacity-70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-[2rem]">
-            {title}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem] md:text-base">
-            {subtitle}
-          </p>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto max-w-3xl text-center"
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs"
+          eyebrowStyle={{ color: TEAL }}
+          markerClassName="opacity-70"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-[2rem]"
+          subtitleClassName="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem] md:text-base"
+        />
 
         {/* Large screens: horizontal timeline */}
         <div className="relative mx-auto mt-12 hidden max-w-6xl lg:mt-14 lg:block">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaGraduationCap } from "react-icons/fa";
 import ContainerWrapper from "../ContainerWrapper";
 import { medicalEducationAbroad } from "@/constants/home";
+import HomeSectionHeader from "./HomeSectionHeader";
 
 /** Slightly lighter navy than pure #0a192f — easier on the eyes */
 const NAVY = "#152a42";
@@ -49,41 +50,34 @@ export default function MedicalEducation() {
 
       <ContainerWrapper className="relative z-10">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          {/* Left */}
+          {/* Left side: section heading, country highlights, and CTA buttons */}
           <div className="min-w-0">
-            <p
-              className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs lg:text-left"
-              style={{ color: TEAL }}
-            >
-              <span className="opacity-70" aria-hidden>
-                —
-              </span>{" "}
-              {data.eyebrow}{" "}
-              <span className="opacity-70" aria-hidden>
-                —
-              </span>
-            </p>
-            <h2 className="mt-3 text-balance text-center text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[1.9rem] xl:text-[2.1rem]">
-              {data.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-base">
-              {data.description}
-            </p>
+            <HomeSectionHeader
+              headerClassName="text-center lg:text-left"
+              eyebrow={data.eyebrow}
+              title={data.title}
+              subtitle={data.description}
+              eyebrowClassName="text-center text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs lg:text-left"
+              eyebrowStyle={{ color: TEAL }}
+              markerClassName="opacity-70"
+              titleClassName="mt-3 text-balance text-center text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[1.9rem] xl:text-[2.1rem]"
+              subtitleClassName="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-slate-400 sm:text-[0.9375rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-base"
+            />
 
-            {/* Country cards: stack on lg+, horizontal scroll on small screens */}
+            {/* Left side content group: country cards (horizontal on mobile, stacked on desktop) */}
             <div
-              className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-visible pb-2 [-ms-overflow-style:none] [scrollbar-width:thin] lg:mt-10 lg:flex-col lg:gap-3 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20"
+              className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-visible pb-2 [-ms-overflow-style:none] [scrollbar-width:thin] [scroll-padding-inline:0.25rem] lg:mt-10 lg:flex-col lg:gap-3 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20"
             >
               {data.countries.map((c) => {
                 const badge = BADGE_STYLES[c.badgeTone] ?? BADGE_STYLES.teal;
                 return (
                   <div
                     key={c.id}
-                    className="min-w-[min(100%,340px)] shrink-0 snap-start sm:min-w-[360px] lg:min-w-0"
+                    className="w-[calc(100%-0.25rem)] shrink-0 snap-start sm:min-w-[360px] sm:w-auto lg:min-w-0"
                   >
-                    <div className="flex items-stretch gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3.5 backdrop-blur-sm sm:gap-4 sm:px-4 sm:py-4">
+                    <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3.5 backdrop-blur-sm sm:items-stretch sm:gap-4 sm:px-4 sm:py-4">
                       <span
-                        className="flex w-11 shrink-0 items-center justify-center text-xl font-bold leading-none text-white/[0.12] sm:w-14 sm:text-2xl"
+                        className="flex w-10 shrink-0 items-center justify-center pt-0.5 text-lg font-bold leading-none text-white/[0.12] sm:w-14 sm:pt-0 sm:text-2xl"
                         aria-hidden
                       >
                         {c.code}
@@ -95,7 +89,7 @@ export default function MedicalEducation() {
                         </p>
                       </div>
                       <span
-                        className={`shrink-0 self-center rounded-md px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide sm:text-[0.7rem] ${badge.className}`}
+                        className={`shrink-0 self-start rounded-md px-2 py-1 text-[0.6rem] font-semibold uppercase tracking-wide sm:self-center sm:px-2.5 sm:text-[0.7rem] ${badge.className}`}
                       >
                         {c.badge}
                       </span>
@@ -122,7 +116,7 @@ export default function MedicalEducation() {
             </div>
           </div>
 
-          {/* Right — hero image + floating card */}
+          {/* Right side: hero image with floating information card overlay */}
           <div className="relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-900/50 shadow-2xl ring-1 ring-white/10 sm:aspect-[3/4] lg:aspect-[4/5]">
               <Image
@@ -138,16 +132,18 @@ export default function MedicalEducation() {
                 aria-hidden
               />
 
-              <div className="absolute left-4 top-4 z-10 max-w-[240px] rounded-xl border border-white/15 bg-white/95 p-4 shadow-xl backdrop-blur-sm sm:left-5 sm:top-5 sm:max-w-[260px] sm:p-4">
-                <FaGraduationCap
-                  className="mb-2 h-7 w-7"
-                  style={{ color: TEAL_DARK }}
-                  aria-hidden
-                />
-                <p className="text-base font-bold leading-snug text-[#0f2744] sm:text-lg">
-                  {data.floatingCard.title}
-                </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-slate-600 sm:text-sm">
+              <div className="absolute left-3 top-3 z-10 max-w-[190px] rounded-lg border border-white/15 bg-white/95 p-3 shadow-xl backdrop-blur-sm sm:left-5 sm:top-5 sm:max-w-[260px] sm:rounded-xl sm:p-4">
+                <div className="flex items-center gap-1.5 sm:gap-2.5">
+                  <FaGraduationCap
+                    className="h-4 w-4 sm:h-7 sm:w-7"
+                    style={{ color: TEAL_DARK }}
+                    aria-hidden
+                  />
+                  <p className="text-[0.78rem] font-bold leading-snug text-[#0f2744] sm:text-lg">
+                    {data.floatingCard.title}
+                  </p>
+                </div>
+                <p className="mt-0.5 text-[0.62rem] leading-relaxed text-slate-600 sm:mt-1.5 sm:text-sm">
                   {data.floatingCard.subtitle}
                 </p>
               </div>

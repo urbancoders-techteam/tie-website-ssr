@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import ContainerWrapper from "../ContainerWrapper";
+import HomeSectionHeader from "./HomeSectionHeader";
 import {
   globalReachDestinations,
   globalReachIntro,
@@ -79,26 +80,17 @@ export default function GlobalReach() {
   return (
     <section className="w-full py-12 md:py-14 lg:py-12 xl:py-14" style={{ backgroundColor: NAVY }}>
       <ContainerWrapper>
-        <header className="mx-auto mb-8 max-w-4xl text-center md:mb-10 lg:mb-8">
-          <p
-            className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs md:tracking-[0.32em]"
-            style={{ color: TEAL }}
-          >
-            <span className="opacity-70" aria-hidden>
-              —
-            </span>{" "}
-            {globalReachIntro.eyebrow}{" "}
-            <span className="opacity-70" aria-hidden>
-              —
-            </span>
-          </p>
-          <h2 className="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2rem]">
-            {globalReachIntro.title}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-[1.7] text-white/60 sm:text-[0.9375rem] lg:mt-2.5 lg:text-[0.9rem] xl:text-base">
-            {globalReachIntro.subtitle}
-          </p>
-        </header>
+        <HomeSectionHeader
+          headerClassName="mx-auto mb-8 max-w-4xl text-center md:mb-10 lg:mb-8"
+          eyebrow={globalReachIntro.eyebrow}
+          title={globalReachIntro.title}
+          subtitle={globalReachIntro.subtitle}
+          eyebrowClassName="text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs md:tracking-[0.32em]"
+          eyebrowStyle={{ color: TEAL }}
+          markerClassName="opacity-70"
+          titleClassName="mt-3 text-balance text-2xl font-bold leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2rem]"
+          subtitleClassName="mx-auto mt-3 max-w-2xl text-sm leading-[1.7] text-white/60 sm:text-[0.9375rem] lg:mt-2.5 lg:text-[0.9rem] xl:text-base"
+        />
 
         <div
           ref={scrollRef}

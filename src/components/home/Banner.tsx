@@ -216,13 +216,16 @@ export default function Banner() {
       prevArrow: <BannerArrow direction="prev"  />,
       nextArrow: <BannerArrow direction="next" />,
       appendDots: (dots: ReactNode) => (
-        <div
-          className="pointer-events-none absolute inset-x-0 z-30 flex justify-center px-4"
-          style={{ bottom: 18 }}
-        >
-          <ul className="pointer-events-auto flex items-center justify-center gap-2">{dots}</ul>
+        <div>
+          {/* Mobile dots */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-1 z-30 flex justify-center px-4 md:hidden">
+            <ul className="pointer-events-auto flex items-center justify-center gap-2">{dots}</ul>
+          </div>
+          {/* Laptop/Desktop dots */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-[18px] z-30 hidden justify-center px-4 md:flex">
+            <ul className="pointer-events-auto flex items-center justify-center gap-2">{dots}</ul>
+          </div>
         </div>
-   
       ),
       customPaging: () => (
         <div className="h-[3px] w-8 rounded-full bg-white/50 shadow-sm transition-all" />

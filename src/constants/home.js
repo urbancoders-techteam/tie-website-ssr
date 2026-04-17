@@ -1,16 +1,20 @@
 import { imageBaseUrl } from "@/utils/config";
-import mbbsStudent from "@/assets/mbbs_student.png"
+// import mbbsStudent from "@/assets/mbbs_student.png"
 
 const stbg = imageBaseUrl + "homestudybg.svg";
 const imbg = imageBaseUrl + "homeimmigrationbg.svg";
 const mbbg = imageBaseUrl + "homembbsbg.svg";
 const tpbg = imageBaseUrl + "hometestprepbg.svg";
-const st = imageBaseUrl + "homestudyabroad.svg";
-const im = imageBaseUrl + "homeBanner/immersion.jpg";
-const mb = imageBaseUrl + "homeBanner/IR.jpg";
+// const st = imageBaseUrl + "homestudyabroad.svg";
+// const mb = imageBaseUrl + "homeBanner/IR.jpg";
 // const tp = imageBaseUrl + "hometest.svg";
 
-const mbbs = mbbsStudent;
+// Overview Images
+const st = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/study-abroad-home.png";
+const im = imageBaseUrl + "homeBanner/immersion.jpg";
+const ie = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/international-engagement-home.png";
+const mbbs = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/mbbs-home.jpg";
+
 
 export const ourserviceshomedata = [
   {
@@ -31,7 +35,7 @@ export const ourserviceshomedata = [
   },
   {
     background: mbbg,
-    image: mb,
+    image: ie,
     title: "INTERNATIONAL ENGAGEMENT",
     path: "/international-relation",
     description:
@@ -51,7 +55,7 @@ export const ourserviceshomedata = [
 export const ourServicesCornerImages = [
   { src: st, alt: "Study abroad consultants India — student with globe" },
   { src: im, alt: "Group immersion experience abroad" },
-  { src: mb, alt: "Academic writing and international engagement" },
+  { src: ie, alt: "Academic writing and international engagement" },
   { src: mbbs, alt: "Medical education and MBBS pathways" },
 ];
 
@@ -188,7 +192,7 @@ export const globalReachDestinations = [
     name: "United States",
     tagline: "Research · OPT & STEM pathways",
     image:
-      "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=900&q=80",
+      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/usa-home.png",
   },
   {
     id: "au",
@@ -204,7 +208,7 @@ export const globalReachDestinations = [
     name: "France",
     tagline: "Grandes Écoles · Affordable",
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/france-home.jpg",
   },
   {
     id: "nl",
@@ -212,7 +216,7 @@ export const globalReachDestinations = [
     name: "Netherlands",
     tagline: "English-taught · EU hub",
     image:
-      "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=900&q=80",
+      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/netherland-home.jpg",
   },
   {
     id: "de",
@@ -220,7 +224,7 @@ export const globalReachDestinations = [
     name: "Germany",
     tagline: "Tuition-free · STEM hub",
     image:
-      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=80",
+      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/germany-home.jpg",
   },
   {
     id: "ca",
@@ -228,7 +232,7 @@ export const globalReachDestinations = [
     name: "Canada",
     tagline: "PR pathway · PGWPP",
     image:
-      "https://images.unsplash.com/photo-1517935706615-2717063c9255?auto=format&fit=crop&w=900&q=80",
+      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/canada-home.jpg",
   },
 ];
 
@@ -238,8 +242,7 @@ export const medicalEducationAbroad = {
   title: "Pursue MBBS Abroad from ₹20 Lakhs — Fully NMC Recognised",
   description:
     "Transparent counselling, NMC-listed universities, end-to-end application & visa support, and coaching partners who prepare you for FMGE & NExT — all through one trusted team at Taksheela.",
-  heroImage:
-    "https://images.unsplash.com/photo-1579684385127-1ef0d293dbdb?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/StudyabroadMain.svg",
   watermark: "MBBS",
   floatingCard: {
     title: "FMGE / NExT Ready",
@@ -309,7 +312,7 @@ export const globalImmersionHome = {
       tags: ["Kasetsart University", "Industry Visits", "Certificate"],
       price: "From ₹65,000",
       image:
-        "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80",
+        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/thailand.avif",
       href: "/immersion/south-east-asia",
     },
     {
@@ -348,7 +351,7 @@ export const globalImmersionHome = {
       tags: ["TU Munich", "Siemens/BMW", "Certificate"],
       price: "From ₹1,20,000",
       image:
-        "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80",
+        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/germany-home.jpg",
       href: "/immersion/europe",
     },
     {
@@ -361,7 +364,7 @@ export const globalImmersionHome = {
       tags: ["ESSEC / HEC", "Cultural Tour", "Certificate"],
       price: "From ₹1,10,000",
       image:
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/france-home.jpg",
       href: "/immersion/europe",
     },
   ],
