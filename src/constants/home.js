@@ -1,4 +1,4 @@
-import { imageBaseUrl } from "@/utils/config";
+import { homePageBaseUrl, imageBaseUrl } from "@/utils/config";
 // import mbbsStudent from "@/assets/mbbs_student.png"
 
 const stbg = imageBaseUrl + "homestudybg.svg";
@@ -10,10 +10,28 @@ const tpbg = imageBaseUrl + "hometestprepbg.svg";
 // const tp = imageBaseUrl + "hometest.svg";
 
 // Overview Images
-const st = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/study-abroad-home.png";
+const st = homePageBaseUrl + "study-abroad-home.png";
 const im = imageBaseUrl + "homeBanner/immersion.jpg";
-const ie = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/international-engagement-home.png";
-const mbbs = "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/mbbs-home.jpg";
+const ie = homePageBaseUrl + "international-engagement-home.png";
+const mbbs = homePageBaseUrl + "mbbs-home.jpg";
+
+// Global Reach country images
+const countryUkImage = homePageBaseUrl + "Uk-home.jpg";
+const countryIrelandImage = homePageBaseUrl + "Ireland-home.jpg";
+const countryAustraliaImage = "/images/australia.jpg";
+const countryFranceImage = homePageBaseUrl + "france-home.jpg";
+const countryGermanyImage = homePageBaseUrl + "germany-home.jpg";
+const countryCanadaImage = homePageBaseUrl + "canada-home.jpg";
+const countryHungaryImage = homePageBaseUrl + "Hungary-home.jpg";
+const countryDenmarkImage = homePageBaseUrl + "Denmark-home.jpg";
+const countryItalyImage = homePageBaseUrl + "Italy-home.jpg";
+const countryMaltaImage = homePageBaseUrl + "Malta-home.jpg";
+const countryNetherlandsImage = homePageBaseUrl + "netherland-home.jpg";
+const countrySwedenImage = homePageBaseUrl + "Sweden-home.jpg";
+const countryBelgiumImage = homePageBaseUrl + "Belgium-home.jpg";
+const thailandHomeImage = homePageBaseUrl + "thailand.avif";
+const germanyHomeImage = homePageBaseUrl + "germany-home.jpg";
+const franceHomeImage = homePageBaseUrl + "france-home.jpg";
 
 
 export const ourserviceshomedata = [
@@ -184,55 +202,98 @@ export const globalReachIntro = {
     "From tuition-free Germany to PR-pathway Canada — we cover the full global map of higher education.",
 };
 
-/** Landscape images (Unsplash); optimized query params for Next/Image */
+/** Study-abroad destination cards */
 export const globalReachDestinations = [
   {
-    id: "us",
-    code: "US",
-    name: "United States",
-    tagline: "Research · OPT & STEM pathways",
-    image:
-      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/usa-home.png",
+    id: "uk",
+    code: "UK",
+    name: "United Kingdom",
+    tagline: "Russell Group · PSW route",
+    image: countryUkImage,
+  },
+  {
+    id: "ie",
+    code: "IE",
+    name: "Ireland",
+    tagline: "Tech hub · 2-year stay back",
+    image: countryIrelandImage,
   },
   {
     id: "au",
     code: "AU",
     name: "Australia",
     tagline: "Go8 Universities",
-    image:
-      "/images/australia.jpg",
+    image: countryAustraliaImage,
   },
   {
     id: "fr",
     code: "FR",
     name: "France",
     tagline: "Grandes Écoles · Affordable",
-    image:
-      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/france-home.jpg",
-  },
-  {
-    id: "nl",
-    code: "NL",
-    name: "Netherlands",
-    tagline: "English-taught · EU hub",
-    image:
-      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/netherland-home.jpg",
+    image: countryFranceImage,
   },
   {
     id: "de",
     code: "DE",
     name: "Germany",
     tagline: "Tuition-free · STEM hub",
-    image:
-      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/germany-home.jpg",
+    image: countryGermanyImage,
   },
   {
     id: "ca",
     code: "CA",
     name: "Canada",
     tagline: "PR pathway · PGWPP",
-    image:
-      "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/canada-home.jpg",
+    image: countryCanadaImage,
+  },
+  {
+    id: "hu",
+    code: "HU",
+    name: "Hungary",
+    tagline: "Affordable tuition · Schengen access",
+    image: countryHungaryImage,
+  },
+  {
+    id: "dk",
+    code: "DK",
+    name: "Denmark",
+    tagline: "Innovation-led education",
+    image: countryDenmarkImage,
+  },
+  {
+    id: "it",
+    code: "IT",
+    name: "Italy",
+    tagline: "Historic universities · Global rankings",
+    image: countryItalyImage,
+  },
+  {
+    id: "mt",
+    code: "MT",
+    name: "Malta",
+    tagline: "English-friendly island campus life",
+    image: countryMaltaImage,
+  },
+  {
+    id: "nl",
+    code: "NL",
+    name: "Netherlands",
+    tagline: "English-taught · EU hub",
+    image: countryNetherlandsImage,
+  },
+  {
+    id: "se",
+    code: "SE",
+    name: "Sweden",
+    tagline: "Research-driven · Sustainable campuses",
+    image: countrySwedenImage,
+  },
+  {
+    id: "be",
+    code: "BE",
+    name: "Belgium",
+    tagline: "EU capital exposure · Multilingual",
+    image: countryBelgiumImage,
   },
 ];
 
@@ -311,8 +372,7 @@ export const globalImmersionHome = {
         "Bangkok & Pattaya: factory & startup visits, Thai culture workshop, and a university partner session with certificate.",
       tags: ["Kasetsart University", "Industry Visits", "Certificate"],
       price: "From ₹65,000",
-      image:
-        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/thailand.avif",
+      image: thailandHomeImage,
       href: "/immersion/south-east-asia",
     },
     {
@@ -350,8 +410,7 @@ export const globalImmersionHome = {
         "Berlin & Munich — applied research labs, engineering immersions, and curated industry visits with certificate.",
       tags: ["TU Munich", "Siemens/BMW", "Certificate"],
       price: "From ₹1,20,000",
-      image:
-        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/germany-home.jpg",
+      image: germanyHomeImage,
       href: "/immersion/europe",
     },
     {
@@ -363,8 +422,7 @@ export const globalImmersionHome = {
         "Paris & Lyon — grandes écoles campus visits, luxury & creative industries, and curated cultural immersion.",
       tags: ["ESSEC / HEC", "Cultural Tour", "Certificate"],
       price: "From ₹1,10,000",
-      image:
-        "https://taksheelabucket.s3.ap-south-1.amazonaws.com/home-page/france-home.jpg",
+      image: franceHomeImage,
       href: "/immersion/europe",
     },
   ],
