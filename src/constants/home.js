@@ -339,15 +339,15 @@ export const medicalEducationAbroad = {
       badge: "European",
       badgeTone: "blue",
     },
-    {
-      id: "ph",
-      code: "PH",
-      name: "Philippines",
-      detail:
-        "US-style curriculum · English instruction · Strong FMGE track record",
-      badge: "Top Ranked",
-      badgeTone: "cyan",
-    },
+    // {
+    //   id: "ph",
+    //   code: "PH",
+    //   name: "Philippines",
+    //   detail:
+    //     "US-style curriculum · English instruction · Strong FMGE track record",
+    //   badge: "Top Ranked",
+    //   badgeTone: "cyan",
+    // },
   ],
 };
 

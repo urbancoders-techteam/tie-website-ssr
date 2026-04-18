@@ -59,7 +59,7 @@ export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
     line3: "— Where Affordability Meets World-Class Medical Training.",
   },
   description:
-    "NMC and WHO-approved medical degree in English, from ₹3L per year. 12,000+ Indian students already enrolled. Zero capitation. Zero donation. End-to-end guidance from Taksheela.",
+    "NMC and WHO-approved medical degree in English, from ₹3.5L per year. 9,000+ Indian students already enrolled. Zero capitation. Zero donation. End-to-end guidance from Taksheela.",
   descriptionMaxLength: 260,
   cta: {
     primaryText: "Book Free Counselling →",
@@ -67,9 +67,9 @@ export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
     secondaryHref: "#top-universities",
   },
   quickStats: [
-    { label: "Annual Fees From", value: "₹3L" },
+    { label: "Annual Fees From", value: "₹3.5L" },
     { label: "Total Duration", value: "6 Yrs" },
-    { label: "Indian Students", value: "12K+" },
+    { label: "Indian Students", value: "9K+" },
     { label: "NMC-Approved Unis", value: "10+" },
     { label: "Universities", value: "50+" },
   ],
@@ -114,7 +114,7 @@ export const kazakhstanAbroadOverviewContent: AbroadOverviewContent = {
   heading: "Why Kazakhstan is Rising as South Asia's Premier MBBS Destination",
   paragraphs: [
     "Kazakhstan — Central Asia's largest and most economically dynamic nation — has steadily cemented its position as one of the most dependable destinations for medical education among students from India, Nepal, and Bangladesh. Sitting at the geographical and cultural crossroads of Europe and Asia, Kazakhstan offers a unique combination: NMC-approved, WHO-listed medical degrees delivered in English, at annual fees as low as ₹3 lakhs, inside university campuses equipped with modern hospitals and simulation laboratories.",
-    "According to the Ministry of Science and Higher Education of Kazakhstan (2024–25 data), over 25,000 international students pursue medical programs in Kazakhstan annually, with Indian students constituting approximately 48% of this pool — translating to over 12,000 Indian students enrolled across Kazakh medical universities in the current academic cycle. This figure has grown steadily even as other Central Asian destinations have fluctuated due to geopolitical and regulatory shifts.",
+    "According to the Ministry of Science and Higher Education of Kazakhstan (2024–25 data), over 35,000+ international students pursue medical programs in Kazakhstan annually, with Indian students constituting approximately 48% of this pool — translating to over 9,500+ Indian students enrolled across Kazakh medical universities in the current academic cycle. This figure has grown steadily even as other Central Asian destinations have fluctuated due to geopolitical and regulatory shifts.",
     "Kazakhstan's 10+ NMC-approved medical universities are governed by the Ministry of Healthcare and the Ministry of Education and Science of Kazakhstan. They follow a standardised 6-year (5+1) curriculum aligned with NMC's requirements under the Gazette of India, including English as the primary medium of instruction, mandatory clinical exposure from Year 3, and a compulsory 12-month internship. Degrees from these institutions are recognised by WHO, NMC (India), FAIMER, ECFMG, and UNESCO — giving graduates pathways to practice in India (after NExT), the UK (PLAB), the USA (USMLE), the Gulf, and beyond.",
   ],
   officialData: {
@@ -155,7 +155,7 @@ export const kazakhstanAbroadFearsContent: AbroadFearsContent = {
       icon: "😰",
       title: '"Will my Kazakh degree be valid in India?"',
       description:
-        "Students spend 6 years and ₹25–35 lakhs abroad and fear returning to find their degree isn't accepted by NMC.",
+        "Students spend 6 years and ₹35-50 lakhs abroad and fear returning to find their degree isn't accepted by NMC.",
     },
     {
       icon: "❄️",
@@ -332,7 +332,7 @@ export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Nepali Students",
       title: "Why Kazakhstan Works for Nepal Students",
       points: [
-        "English-medium MD with affordable total cost — often roughly NPR 28–70 lakh depending on university and city.",
+        "English-medium MD with affordable total cost — often roughly NPR 55–77 lakh depending on university and city.",
         "Kathmandu document attestation support and NPR forex planning.",
         "Growing Nepali peer network in Almaty and Nur-Sultan for shared housing and NExT prep.",
         "Counselling covers both Nepal Medical Council and Indian NExT routes after graduation.",
@@ -349,7 +349,7 @@ export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
       title: "Why Kazakhstan Works for Bangladesh Students",
       points: [
         "DGME compliance documentation for return pathways — Taksheela verifies each intake.",
-        "Total cost roughly BDT 24–58 lakh; halal food widely available in major Kazakh cities.",
+        "Total cost roughly BDT 45–64 lakh; halal food widely available in major Kazakh cities.",
         "Dhaka visa submission support and BDT forex planning.",
         "Bangladesh Medical and Dental Council rules apply for home-country practice.",
       ],
@@ -441,10 +441,10 @@ export const kazakhstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent 
       "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
     advantagesTitle: "Strong Advantages",
     advantages: [
-      "Annual fees as low as ₹3L — total 6-year investment ₹20–35 lakhs, with zero capitation or donation at any Kazakh medical university.",
+      "Annual fees as low as ₹3.5L — total 6-year investment ₹35-48  lakhs, with zero capitation or donation at any Kazakh medical university.",
       "100% English-medium instruction at all NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission.",
       "NMC and WHO recognition across 10+ universities — degrees qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
-      "12,000+ Indian students enrolled — well-established South Asian communities in Almaty and Astana with Indian food, festivals, and peer support.",
+      "9,000+ Indian students enrolled — well-established South Asian communities in Almaty and Astana with Indian food, festivals, and peer support.",
       "Halal food widely available — Kazakhstan is a Muslim-majority country, making dietary adherence easy for students from diverse religious backgrounds.",
       "Merit-based admission — no donation, no management quota, no seat cap. Every eligible student has a fair shot.",
       "Strong career outcomes — approximately 60% of Kazakh graduates have historically passed FMGE/NExT with structured preparation.",
@@ -505,7 +505,7 @@ export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent =
     titlePrimary: "MBBS in Kazakhstan",
     titleAccent: "— Complete Fee Structure & Cost of Living",
     subtitle:
-      "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2026–27.",
+      "Estimated totals for Nepal and Bangladesh are provided below. All figures are approximate for 2026–27.",
     tuitionTableTitle: "University tuition (indicative)",
     tuitionColAnnual: "Annual Tuition",
     tuitionColSixYear: "6-Year Total",
@@ -573,12 +573,12 @@ export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent =
         value: "~₹5L–8.85L (indicative)",
       },
       {
-        label: "Nepal (NPR, using ₹ × ~1.6)",
-        value: "~NPR 32L–56L total (indicative)",
+        label: "Nepal (NPR)",
+        value: "~NPR 55L–77L total (indicative)",
       },
       {
-        label: "Bangladesh (BDT, using ₹ × ~1.35)",
-        value: "~BDT 27L–47L total (indicative)",
+        label: "Bangladesh (BDT)",
+        value: "~BDT 45L–64L total (indicative)",
       },
       {
         label: "vs Indian private MBBS (incl. capitation & donation)",
@@ -590,7 +590,7 @@ export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent =
       },
     ],
     summaryTotalLabel: "TOTAL 6-YEAR INVESTMENT (EST.)",
-    summaryTotalValue: "₹20–35L",
+    summaryTotalValue: "₹35-48 L",
     summaryFootnote:
       "Including all 6 years of tuition, hostel, food, insurance, visa, personal expenses, and one-time setup costs. Zero capitation. Zero donation. * One-time: flight ₹35–55K, visa processing, apostille, initial setup. Exchange rates are indicative for 2026–27.",
   };
@@ -914,7 +914,7 @@ export const kazakhstanAbroadCompleteComparisonContent: AbroadCompleteComparison
       },
       {
         parameter: "Total 6-Year Cost",
-        featured: "₹20–35L (all-in, indicative)",
+        featured: "₹35-48 L (all-in, indicative)",
         indiaGovt: "₹5–15L (govt. subsidised)",
         indiaPrivate: "₹80L–₹1.2Cr (+ capitation)",
         bangladesh: "₹15–30 Lakhs (typical all-in)",
@@ -1114,11 +1114,11 @@ export const kazakhstanAbroadAccommodationClimateContent: AbroadAccommodationCli
     hostel: {
       title: "Hostel Accommodation",
       bullets: [
-        "Most NMC-listed Kazakh universities provide on-campus or university-managed hostels for international students at annual costs of $600–$1,200 (₹52K–₹1.05L/year).",
+        "Most NMC-listed Kazakh universities provide on-campus or university-managed hostels for international students at annual costs of $500-1000 (₹46.6-93.2k).",
         "Rooms are typically double or triple occupancy with study desks, wardrobes, and shared washrooms. Central heating is standard and essential in winter.",
         "University mess facilities are available on campus. Almaty and Astana have multiple Indian restaurants and Indian grocery stores catering to the South Asian community.",
         "Kazakhstan is a Muslim-majority country — halal food is available everywhere, benefiting Muslim students from Bangladesh and other communities.",
-        "From Year 3 onwards, many students move to private apartments. Shared apartments in Almaty cost approximately $200–$350/month per person (₹17K–₹30K).",
+        "From Year 3 onwards, many students move to private apartments. Shared apartments in Almaty cost approximately ₹18-33k per person.",
         "Taksheela coordinates verified hostel options and provides city-specific accommodation guidance before your departure.",
       ],
     },
@@ -1188,7 +1188,7 @@ export const kazakhstanAbroadKeyFactsContent: AbroadKeyFactsContent = {
       value: "6 Years (5 academic + 1 internship)",
       label: "COURSE DURATION",
     },
-    { icon: "💰", value: "₹3L – ₹5L / year", label: "ANNUAL TUITION" },
+    { icon: "💰", value: "₹3.5L – ₹5L / year", label: "ANNUAL TUITION" },
     { icon: "🏠", value: "₹1.2L – ₹2.5L / year", label: "ANNUAL LIVING COST" },
     {
       icon: "🗓️",
@@ -1212,7 +1212,7 @@ export const kazakhstanAbroadKeyFactsContent: AbroadKeyFactsContent = {
     },
     {
       icon: "👩‍🎓",
-      value: "12,000+ enrolled",
+      value: "9,000+ enrolled",
       label: "INDIAN STUDENTS (2024–25)",
     },
     {
@@ -2000,40 +2000,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     availabilityText: "Seats Available 2026-27",
   },
   {
-    id: "kmu",
-    name: "Karaganda Medical University",
-    abbreviation: "KMU",
-    established: "1950",
-    locationLine: "Karaganda",
-    region: "other",
-    budgetFriendly: false,
-    fmgePercent: 29,
-    headerTags: [
-      { label: "NMC Approved", variant: "emerald" },
-      { label: "WHO Listed", variant: "sky" },
-      { label: "Established", variant: "amber" },
-    ],
-    rankTag: "Medical faculty — Karaganda",
-    headerEmoji: "🩺",
-    imageSrc: kzUni("kmu.webp"),
-    stats: [
-      { label: "Annual fees", value: "~₹2.5–4L/yr" },
-      { label: "6-year total", value: "~₹18–28L" },
-      { label: "Duration", value: "5–6 Years" },
-      { label: "City", value: "Karaganda" },
-    ],
-    fmge: {
-      type: "text",
-      text: "Outcomes linked to preparation — map coaching from semester one.",
-    },
-    description: [
-      "Distinct medical-focused institution in Karaganda with strong clinical exposure and international student support.",
-    ],
-    featureTags: ["Karaganda", "English", "Clinical Skills", "Hostel"],
-    applyHref: "/contact",
-    availabilityText: "Seats Available 2026-27",
-  },
-  {
     id: "nksu",
     name: "North Kazakhstan State University (M. Kozybayev)",
     abbreviation: "NKSU",
@@ -2092,7 +2058,7 @@ export const kazakhstanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
     topFmgeFilterIds: ["knmu", "amu"],
     universities: kazakhstanTopUniversityCards,
     quickComparison: {
-      title: "Quick Comparison — All 10 Universities",
+      title: "Quick Comparison — All 9 Universities",
       disclaimer:
         "Fees are approximate for 2026–27 based on publicly available data. Exact figures vary by year and exchange rate. Verified breakdown provided during free counselling.",
       rows: [
@@ -2163,20 +2129,12 @@ export const kazakhstanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
           bestFor: "Northern belt — lower cost",
         },
         {
-          university: "KMU",
-          city: "Karaganda",
-          established: "1950",
-          annualFees: "~₹2.5–4L/yr",
-          fmgeRate: "Moderate",
-          bestFor: "Medical-focused Karaganda option",
-        },
-        {
           university: "NKSU",
           city: "Petropavl",
           established: "1937",
           annualFees: "~₹2.5–4L/yr",
           fmgeRate: "Moderate",
-          bestFor: "Oldest uni — coldest winters",
+          bestFor: "Oldest uni — coldest winters and hottest summers",
         },
       ],
     },
@@ -2212,7 +2170,7 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "What is the total cost of MBBS in Kazakhstan in Indian Rupees, NPR, and BDT?",
       answer:
-        "Total 6-year all-inclusive cost (2026–27): Indian Rupees: ₹20–35 lakhs (tuition + hostel + food + insurance + visa + personal). This is among the lowest total costs for any NMC-approved MBBS destination globally. Nepal NPR: approximately NPR 32–56 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 27–47 lakh (₹ × ~1.35). Budget universities like SKMA and Kokshetau State University fall at the lower end. Premium options like KazNMU or Al-Farabi are at the higher end but still far cheaper than Indian private MBBS. Zero capitation. Zero donation.",
+        "Total 6-year all-inclusive cost (2026–27): Indian Rupees: ₹35-48  lakhs (tuition + hostel + food + insurance + visa + personal). This is among the lowest total costs for any NMC-approved MBBS destination globally. Nepal NPR: approximately NPR 55–77 lakh. Bangladesh BDT: approximately BDT 45–64 lakh. Budget universities like SKMA and Kokshetau State University fall at the lower end. Premium options like KazNMU or Al-Farabi are at the higher end but still far cheaper than Indian private MBBS. Zero capitation. Zero donation.",
     },
     {
       question: "Is NEET mandatory for MBBS in Kazakhstan for Indian students?",
@@ -2300,9 +2258,9 @@ export const kazakhstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "💰",
     label: "Annual Tuition",
-    value: "₹3L – ₹5L / year",
+    value: "₹3.5L – ₹5L / year",
     mLabel: "Tuition / yr",
-    mValue: "₹3–5L",
+    mValue: "₹3.5–5L",
   },
   {
     icon: "🏠",
@@ -2342,9 +2300,9 @@ export const kazakhstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "👩‍🎓",
     label: "Indian Students",
-    value: "12,000+ enrolled (2024–25)",
+    value: "9,000+ enrolled (2024–25)",
     mLabel: "Indians",
-    mValue: "12,000+",
+    mValue: "9,000+",
   },
   {
     icon: "🏛️",
@@ -2374,7 +2332,7 @@ const kazakhstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "One of the Most Affordable MBBS Destinations Globally",
     description:
-      "Annual tuition ranges from ₹3L to ₹5L, making Kazakhstan among the lowest-cost NMC-approved medical education destinations. Total 6-year investment: ₹20–35 lakhs — compared to ₹80L–₹1.2Cr at Indian private colleges, with zero donation.",
+      "Annual tuition ranges from ₹3.5L to ₹5L, making Kazakhstan among the lowest-cost NMC-approved medical education destinations. Total 6-year investment: ₹35-48  lakhs — compared to ₹80L–₹1.2Cr at Indian private colleges, with zero donation.",
   },
   {
     icon: "✅",
@@ -2438,7 +2396,7 @@ const kazakhstanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent =
     titleLead: "10 Compelling Reasons to Study MBBS in ",
     titleTrail: "",
     subtitle:
-      "Evidence-backed reasons why 12,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree.",
+      "Evidence-backed reasons why 9,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree.",
   };
 
 export const kazakhstanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent =
