@@ -61,40 +61,43 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
   }, []);
   
   return loading ? (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4">
       {[...Array(8)].map((_, idx) => (
         <div
           key={idx}
-          className="h-[135px] w-[135px] rounded-lg animate-pulse bg-gray-200 mx-auto"
+          className="aspect-[1/1] w-full animate-pulse rounded-xl bg-gray-200"
         />
       ))}
     </div>
   ) : (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4">
       {countryData.map((item) => {
         const isSelected = selectedCountries.includes(item._id);
-  
+
         return (
-          <div
+          <button
             key={item._id}
+            type="button"
             onClick={() => handleCardClick(item._id)}
-            className={`border-2 rounded-lg h-[135px] w-[135px] flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-200 ${
+            className={`group flex aspect-[1/1] w-full flex-col items-center justify-center gap-1.5 rounded-xl border p-2.5 text-center transition-all duration-200 sm:gap-2 sm:p-3 ${
               isSelected
-                ? "bg-[#00999E] text-white border-[#00999E]"
-                : "bg-[#Effdff] text-black border-gray-300"
-            } hover:shadow-md mx-auto`}
+                ? "border-[#00999E] bg-[#00999E] text-white shadow-[0_10px_24px_-14px_rgba(0,153,158,0.9)]"
+                : "border-gray-300 bg-[#effdff] text-black hover:border-[#00999E]/50 hover:shadow-sm"
+            }`}
           >
-            <div className="w-20 h-16 py-2">
+            <div className="h-10 w-12 sm:h-11 sm:w-14">
               <Image
                 src={item.icon}
                 alt={item.name}
-                width={20}
-                height={20}
-                className="w-full h-full object-contain"
+                width={56}
+                height={44}
+                className="h-full w-full object-contain"
               />
             </div>
-            <p className="text-sm mt-1">{item.name}</p>
-          </div>
+            <p className="line-clamp-2 text-xs font-medium leading-tight sm:text-sm">
+              {item.name}
+            </p>
+          </button>
         );
       })}
     </div>

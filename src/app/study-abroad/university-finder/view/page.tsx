@@ -35,9 +35,10 @@ const UniversityView: React.FC = () => {
   const [allShortlisted, setAllShortlisted] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
   const [count, setCount] = useState(0);
+  const [openUniversityId, setOpenUniversityId] = useState<string | null>(null);
 
   const [page, setPage] = useState(1);
-  const [limit] = useState(4);
+  const [limit] = useState(11);
   const [totalPages, setTotalPages] = useState(1);
 
   const scrollToTop = () => window.scrollTo({ top: 530, behavior: "smooth" });
@@ -73,6 +74,18 @@ const UniversityView: React.FC = () => {
     if (!hydrated) return;
     fetchFilteredData(page, limit);
   }, [hydrated, limit, page]);
+
+  useEffect(() => {
+    if (!universityData.length) {
+      setOpenUniversityId(null);
+      return;
+    }
+
+    setOpenUniversityId((prev) => {
+      if (prev && universityData.some((item) => item?._id === prev)) return prev;
+      return universityData[0]?._id ?? null;
+    });
+  }, [universityData]);
 
   const fetchFilteredData = async (pageNum: number, pageLimit: number) => {
     setIsLoader(true);
@@ -172,6 +185,11 @@ const UniversityView: React.FC = () => {
     );
   };
 
+  const handleAccordionToggle = (id: string) => {
+    // Allow the same button to both open and close the panel.
+    setOpenUniversityId((prev) => (prev === id ? null : id));
+  };
+
   const handleCompareClick = async () => {
     try {
       const res = await fetch(`${baseUrl}university/compareUniveristy`, {
@@ -203,63 +221,71 @@ const UniversityView: React.FC = () => {
     <>
       <UniversityFinderBanner />
       <BreadcrumbSchema />
-      <div className="bg-[#00999E] py-4 text-white font-semibold">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p>
-            {!hydrated ? (
-              <span className="opacity-90">Loading…</span>
-            ) : listLoading ? (
-              <span className="opacity-90">Updating results…</span>
-            ) : (
-              countLabel
-            )}
-          </p>
-          {!listLoading && count > 0 && totalPages > 1 && (
-            <p className="text-sm font-medium opacity-95">
-              Showing {rangeStart}–{rangeEnd} of {count}
+      <div className="sticky top-[90px] md:top-[120px] z-[1000]">
+        <div className="bg-[#00999E] py-4 text-white font-semibold">
+          <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p>
+              {!hydrated ? (
+                <span className="opacity-90">Loading…</span>
+              ) : listLoading ? (
+                <span className="opacity-90">Updating results…</span>
+              ) : (
+                countLabel
+              )}
             </p>
-          )}
+            {!listLoading && count > 0 && totalPages > 1 && (
+              <p className="text-sm font-medium opacity-95">
+                Showing {rangeStart}–{rangeEnd} of {count}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="border-b border-[#00999E]/20 bg-white/95 backdrop-blur-sm">
+          <div className="mx-auto max-w-7xl px-4 py-2">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <ButtonComponent text="Back" width={100} onClick={handleBack} />
+
+              <div className="min-h-[38px] flex items-center">
+                {compared.length > 0 ? (
+                  <div className="flex items-center gap-3 rounded-xl border-2 border-[#00999E] bg-[#effdff] px-3 py-1.5 shadow-sm">
+                    <span className="text-sm font-medium">
+                      {compared.length} university{compared.length > 1 ? "ies" : ""}{" "}
+                      added to compare
+                    </span>
+                    <ButtonComponent
+                      text="Compare"
+                      fontWeight="550"
+                      onClick={handleCompareClick}
+                    />
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="flex items-center gap-4">
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox accent-[#00999E]"
+                    checked={allShortlisted}
+                    onChange={handleShortlistAll}
+                  />
+                  <span className="ml-2 md:text-md text-sm">Shortlist All</span>
+                </label>
+                <ButtonComponent
+                  text="Download"
+                  onClick={handleDownloadAll}
+                  backgroundColor={shortlisted.length === 0 ? "#c1c1c1" : "#00999E"}
+                  disabled={shortlisted.length === 0}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <ContainerWrapper>
-        <div className="flex justify-start gap-4 px-4 mt-4 ">
-          <ButtonComponent text="Back" width={100} onClick={handleBack} />
-        </div>
-
-        {compared.length > 0 && (
-          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#effdff] border-2 border-[#00999E] rounded-2xl shadow p-4 max-w-md w-full z-50 flex justify-between items-center">
-            <span className="text-sm font-medium">
-              {compared.length} university{compared.length > 1 ? "ies" : ""}{" "}
-              added to compare
-            </span>
-            <ButtonComponent
-              text="Compare"
-              fontWeight="550"
-              onClick={handleCompareClick}
-            />
-          </div>
-        )}
-
         <div className="px-4 py-4">
-          <div className="flex justify-end mb-4 gap-4">
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="form-checkbox accent-[#00999E]"
-                checked={allShortlisted}
-                onChange={handleShortlistAll}
-              />
-              <span className="ml-2 md:text-md text-sm">Shortlist All</span>
-            </label>
-            <ButtonComponent
-              text="Download"
-              onClick={handleDownloadAll}
-              backgroundColor={shortlisted.length === 0 ? "#c1c1c1" : "#00999E"}
-              disabled={shortlisted.length === 0}
-            />
-          </div>
-
           <div className="flex flex-wrap justify-between gap-4 mt-12">
             <button
               type="button"
@@ -321,12 +347,13 @@ const UniversityView: React.FC = () => {
                     onShortlist={() => handleShortlist(university._id)}
                     onDownload={() => handleDownload(university._id)}
                     isShortlisted={shortlisted.includes(university._id)}
+                    isOpen={openUniversityId === university._id}
+                    onToggle={() => handleAccordionToggle(university._id)}
                   />
                 ))
               )}
             </div>
           </div>
-
           {!listLoading && (totalPages > 1 || totalPages === 0) && (
             <div className="flex flex-wrap justify-end items-center gap-2 mt-6">
               <button
@@ -356,6 +383,7 @@ const UniversityView: React.FC = () => {
               </button>
             </div>
           )}
+
         </div>
 
         <LetsStart />

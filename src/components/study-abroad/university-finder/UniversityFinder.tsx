@@ -25,7 +25,7 @@ interface Filters {
   intake?: string[];
   duration?: string[];
   tutionfee?: string | number;
-  courses?: string;
+  courses?: string | string[];
   admission?: string[];
   qualification?: string;
   scholarship?: string[];
@@ -45,9 +45,18 @@ const steps = [
 
 /** Same shape as FilterComponent handleApplyFilter — used for sessionStorage + view page filters */
 function buildFilterPayloadFromFilters(filters: Filters): Record<string, unknown> {
+  const selectedCourses = Array.isArray(filters.courses)
+    ? filters.courses
+    : typeof filters.courses === "string" && filters.courses.trim()
+      ? filters.courses
+          .split(",")
+          .map((course) => course.trim())
+          .filter(Boolean)
+      : [];
+
   const filterPayload: Record<string, unknown> = {
     type: "filter",
-    courses: filters.courses || "",
+    courses: selectedCourses,
   };
   if (filters.country?.length) filterPayload.countryId = filters.country;
   if (filters.pursue) filterPayload.pursue = filters.pursue;
@@ -99,7 +108,10 @@ const UniversityFinder: React.FC = () => {
   const validateStep = (): boolean => {
     switch (activeStep) {
       case 1:
-        if (!filters.courses) {
+        if (
+          !Array.isArray(filters.courses) ||
+          filters.courses.length === 0
+        ) {
           toast.error("Please select a field of interest");
           setIsSubmitting(false);
           return false;
@@ -113,12 +125,21 @@ const UniversityFinder: React.FC = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
+      const selectedCourses = Array.isArray(filters.courses)
+        ? filters.courses
+        : typeof filters.courses === "string" && filters.courses.trim()
+          ? filters.courses
+              .split(",")
+              .map((course) => course.trim())
+              .filter(Boolean)
+          : [];
+
       const payload: Record<string, any> = {
         type: "submit",
         name: filters.name || "",
         phone: filters.phone || "",
         email: filters.email || "",
-        courses: filters.courses || "",
+        courseId: selectedCourses,
         ...(filters.country && { countryId: filters.country }),
         ...(filters.pursue && { pursue: filters.pursue }),
         ...(filters.year && { year: filters.year }),
@@ -221,16 +242,16 @@ const UniversityFinder: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-12">{renderStepContent(activeStep)}</div>
+      <div>{renderStepContent(activeStep)}</div>
       <ContainerWrapper>
-        <div className="flex justify-between items-center py-6">
+        <div className="flex justify-between items-center">
           <button
             onClick={handleBack}
             disabled={activeStep === 0}
-            className={`px-4 py-2 rounded text-white ${
+            className={`px-4 py-2 rounded font-bold text-white ${
               activeStep === 0
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-[#00999E]"
+                : "bg-[#00999E] cursor-pointer"
             }`}
           >
             {` <---- Previous`}
@@ -240,7 +261,9 @@ const UniversityFinder: React.FC = () => {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="px-4 py-2 rounded bg-[#00999E] text-white hover:bg-[#007b8f]"
+              className={`px-4 py-2 rounded font-bold bg-[#00999E] text-white hover:bg-[#007b8f] ${
+                isSubmitting ? "cursor-not-allowed opacity-80" : "cursor-pointer"
+              }`}
               
             >
               {isSubmitting ? "Submitting..." : "Submit"}
@@ -249,7 +272,9 @@ const UniversityFinder: React.FC = () => {
             <button
               onClick={handleNext}
               disabled={isSubmitting}
-              className="px-4 py-2 rounded bg-[#00999E] text-white hover:bg-[#007b8f]"
+              className={`px-4 py-2 font-bold rounded bg-[#00999E] text-white hover:bg-[#007b8f] ${
+                isSubmitting ? "cursor-not-allowed opacity-80" : "cursor-pointer"
+              }`}
             >
               {isSubmitting ? "Loading..." : "Next ---->"}
             </button>
