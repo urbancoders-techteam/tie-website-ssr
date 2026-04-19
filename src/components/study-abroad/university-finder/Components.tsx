@@ -171,6 +171,8 @@ export const Location: React.FC<FiltersProps> = ({ filters, setFilters }) => {
         options={fieldOfInterestOptions}
         selectedValues={fieldOfInterestValue}
         onChange={handleSelect}
+        isLoading={isCourseLoading}
+        loadingText="Loading courses..."
         placeholder={isCourseLoading ? "Loading courses..." : "Select options"}
       />
       <div className="rounded-lg  flex flex-wrap text-center sm:justify-center md:justify-between items-center border-2 border-[#00999E] p-4 bg-gradient-to-r from-[#a7d6d799] via-[#daf0f180] to-white">

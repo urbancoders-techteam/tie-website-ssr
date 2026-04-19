@@ -290,6 +290,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           selectedValues={selectedCountry}
           onChange={(values) => setSelectedCountry(values)}
           compact
+          isLoading={isCourseLoading}
+          loadingText="Loading filters..."
           placeholder="Select options"
         />
 
@@ -347,6 +349,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           selectedValues={selectedCourses}
           onChange={(values) => setSelectedCourses(values)}
           compact
+          isLoading={isCourseLoading}
+          loadingText="Loading courses..."
           showFullSelectedText
           placeholder={isCourseLoading ? "Loading courses..." : "Select options"}
         />

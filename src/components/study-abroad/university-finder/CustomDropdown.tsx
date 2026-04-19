@@ -21,6 +21,8 @@ interface CustomMultiSelectDropdownProps {
     placeholder?: string;
     compact?: boolean;
     showFullSelectedText?: boolean;
+    isLoading?: boolean;
+    loadingText?: string;
 }
 
 const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
@@ -31,6 +33,8 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
     placeholder = "Select options",
     compact = false,
     showFullSelectedText = false,
+    isLoading = false,
+    loadingText = "Loading options...",
 }) => {
     // Keep row height large enough for long labels (2 lines) to avoid overlap
     // while still preserving virtualization performance for big datasets.
@@ -96,10 +100,17 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
         onChange(selectedValues.filter((item) => item !== optionValue));
     };
 
+    const handleToggleOpen = () => {
+        if (isLoading) return;
+        setOpen((prev) => !prev);
+    };
+
     const handleTriggerKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            setOpen((prev) => !prev);
+            if (!isLoading) {
+                setOpen((prev) => !prev);
+            }
             return;
         }
 
@@ -144,15 +155,24 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
                 <div
                     role="button"
                     tabIndex={0}
-                    onClick={() => setOpen((prev) => !prev)}
+                    onClick={handleToggleOpen}
                     onKeyDown={handleTriggerKeyDown}
                     className={
                         compact
-                            ? "flex w-full items-center justify-between rounded-lg border border-[#00999E] bg-white px-2.5 py-1.5 text-left text-xs font-medium text-slate-700 shadow-sm transition hover:border-[#007f83]"
-                            : "flex w-full items-center justify-between rounded-lg border-2 border-[#00999E] bg-white px-3 py-2 text-left text-sm font-medium text-slate-700 shadow-sm transition hover:border-[#007f83] sm:px-4 sm:text-base"
+                            ? `flex w-full items-center justify-between rounded-lg border border-[#00999E] bg-white px-2.5 py-1.5 text-left text-xs font-medium text-slate-700 shadow-sm transition ${
+                                isLoading
+                                    ? "cursor-wait opacity-80"
+                                    : "cursor-pointer hover:border-[#007f83]"
+                            }`
+                            : `flex w-full items-center justify-between rounded-lg border-2 border-[#00999E] bg-white px-3 py-2 text-left text-sm font-medium text-slate-700 shadow-sm transition sm:px-4 sm:text-base ${
+                                isLoading
+                                    ? "cursor-wait opacity-80"
+                                    : "cursor-pointer hover:border-[#007f83]"
+                            }`
                     }
                     aria-haspopup="listbox"
                     aria-expanded={open}
+                    aria-disabled={isLoading}
                 >
                     <div className="min-w-0 flex-1">
                         {selectedValues.length ? (
@@ -215,13 +235,19 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
                                 </div>
                             )
                         ) : (
-                            <span className="text-slate-500">{placeholder}</span>
+                            <span className="text-slate-500">
+                                {isLoading ? loadingText : placeholder}
+                            </span>
                         )}
                     </div>
 
-                    <span className={`ml-3 text-[#00999E] transition-transform ${open ? "rotate-180" : ""}`}>
-                        ▼
-                    </span>
+                    {isLoading ? (
+                        <span className="ml-3 h-4 w-4 animate-spin rounded-full border-2 border-[#00999E]/30 border-t-[#00999E]" />
+                    ) : (
+                        <span className={`ml-3 text-[#00999E] transition-transform ${open ? "rotate-180" : ""}`}>
+                            ▼
+                        </span>
+                    )}
                 </div>
 
                 {open ? (
@@ -232,23 +258,25 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
                                 : "absolute z-20 mt-2 w-full rounded-lg border border-[#00999E]/40 bg-white p-2 shadow-xl"
                         }
                     >
-                        <div className={compact ? "mb-1.5" : "mb-2"}>
-                            <input
-                                ref={searchInputRef}
-                                type="text"
-                                value={query}
-                                onChange={(e) => {
-                                    setQuery(e.target.value);
-                                    setScrollTop(0);
-                                }}
-                                placeholder="Type to search options..."
-                                className={
-                                    compact
-                                        ? "w-full rounded-md border border-[#00999E]/40 px-2.5 py-1.5 text-xs outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
-                                        : "w-full rounded-md border border-[#00999E]/40 px-3 py-2 text-sm outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
-                                }
-                            />
-                        </div>
+                        {!isLoading ? (
+                            <div className={compact ? "mb-1.5" : "mb-2"}>
+                                <input
+                                    ref={searchInputRef}
+                                    type="text"
+                                    value={query}
+                                    onChange={(e) => {
+                                        setQuery(e.target.value);
+                                        setScrollTop(0);
+                                    }}
+                                    placeholder="Type to search options..."
+                                    className={
+                                        compact
+                                            ? "w-full rounded-md border border-[#00999E]/40 px-2.5 py-1.5 text-xs outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
+                                            : "w-full rounded-md border border-[#00999E]/40 px-3 py-2 text-sm outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
+                                    }
+                                />
+                            </div>
+                        ) : null}
 
                         <div
                             className="overflow-auto rounded-md"
@@ -257,7 +285,12 @@ const CustomMultiSelectDropdown: React.FC<CustomMultiSelectDropdownProps> = ({
                             role="listbox"
                             aria-multiselectable="true"
                         >
-                            {filteredOptions.length ? (
+                            {isLoading ? (
+                                <div className="flex items-center justify-center gap-2 py-3 text-sm text-slate-500">
+                                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#00999E]/30 border-t-[#00999E]" />
+                                    <span>{loadingText}</span>
+                                </div>
+                            ) : filteredOptions.length ? (
                                 <div
                                     style={{ height: `${totalHeight}px`, position: "relative" }}
                                 >
