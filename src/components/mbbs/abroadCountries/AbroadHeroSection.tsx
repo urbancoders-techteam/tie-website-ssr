@@ -135,8 +135,10 @@ function HeroBackdrop({ bg, imageAlt, decorativeLayers }: BackdropProps) {
           <Image src={bg} alt={imageAlt} fill priority className="object-cover" sizes="100vw" />
         </div>
       ) : null}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-black/10" />
+      {/* Made the upper layer lighter: changed bg-black/55 to bg-black/35 */}
+      <div className="absolute inset-0 bg-black/45" />
+      {/* Optionally, further reduce the opacity of the gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-black/10" />
       {decorativeLayers ? (
         <>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(125,240,244,0.34),transparent_42%),radial-gradient(circle_at_92%_18%,rgba(45,212,191,0.30),transparent_36%),radial-gradient(circle_at_58%_100%,rgba(255,220,110,0.18),transparent_42%),linear-gradient(135deg,#0A6268_0%,#10929A_50%,#075159_100%)]" />

@@ -39,6 +39,8 @@ export type AbroadHeroContent = {
   headline: AbroadHeroHeadline;
   /** Body paragraph under the headline */
   description: string;
+  /** Optional explicit hero background image URL/path */
+  backgroundImage?: string;
   /** Truncate description to this length (default 260) */
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
@@ -53,6 +55,7 @@ export type AbroadHeroContent = {
 
 export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "Admissions Open · 2026–27 Intake",
+  backgroundImage: `${imageBaseUrl}mbbsCollege/kazakhstan/kzkstan_hero_img.png`,
   headline: {
     line1: "Study MBBS in",
     line2Accent: "Kazakhstan",

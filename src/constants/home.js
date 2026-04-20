@@ -33,6 +33,7 @@ const thailandHomeImage = homePageBaseUrl + "thailand.avif";
 const germanyHomeImage = homePageBaseUrl + "germany-home.jpg";
 const franceHomeImage = homePageBaseUrl + "france-home.jpg";
 
+const NMCHomeImage = homePageBaseUrl + "NMC-home.png";
 
 export const ourserviceshomedata = [
   {
@@ -303,7 +304,7 @@ export const medicalEducationAbroad = {
   title: "Pursue MBBS Abroad from ₹20 Lakhs — Fully NMC Recognised",
   description:
     "Transparent counselling, NMC-listed universities, end-to-end application & visa support, and coaching partners who prepare you for FMGE & NExT — all through one trusted team at Taksheela.",
-  heroImage: "/images/StudyabroadMain.svg",
+  heroImage: NMCHomeImage,
   watermark: "MBBS",
   floatingCard: {
     title: "FMGE / NExT Ready",
