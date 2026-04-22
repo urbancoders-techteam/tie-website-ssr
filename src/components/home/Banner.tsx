@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import RegisterForm from "./RegisterForm";
 import ContainerWrapper from "../ContainerWrapper";
+import ModalTrigger from "../ModalTrigger";
 import { baseUrl } from "@/utils/config";
 import fallbackBannerImage from "@/assets/doctor.png";
 
@@ -141,20 +142,20 @@ function BannerSlide({ item, priority = false }: { item: BannerItem; priority?: 
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 md:text-[13px]">{body}</p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
+                <ModalTrigger
+                  variant="custom"
                   className="rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[#0B1B22] shadow-sm transition hover:bg-white/90"
                 >
-                  <span className="md:hidden">Explore Destinations &rsaquo;</span>
-                  <span className="hidden md:inline">Start Coaching &rsaquo;</span>
-                </button>
-                <button
-                  type="button"
+                  {/* <span className="md:hidden">Explore Destinations &rsaquo;</span> */}
+                  <span >Start Coaching &rsaquo;</span>
+                </ModalTrigger>
+                <ModalTrigger
+                  variant="custom"
                   className="rounded-md border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   <span className="md:hidden">Schedule A Meeting</span>
                   <span className="hidden md:inline">Book Free Demo</span>
-                </button>
+                </ModalTrigger>
               </div>
             </div>
 

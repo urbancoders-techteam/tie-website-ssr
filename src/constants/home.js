@@ -438,7 +438,6 @@ export const testPrepSectionHome = {
     "Structured modules, expert trainers, and full-length mocks — built to lift your score fast. Choose your exam and see how we help you hit your target with personalised plans and proven methods.",
   heroImage:
     "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-  demoCta: { label: "Book a Free Demo Class", href: "/contact" },
   tests: [
     {
       id: "ielts",

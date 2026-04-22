@@ -16,7 +16,7 @@ const GlobalImmersionHome = dynamic(() => import("@/components/home/GlobalImmers
 const TestPrepSectionHome = dynamic(() => import("@/components/home/TestPrepSectionHome"));
 const FAQHome = dynamic(() => import("@/components/home/FAQHome"));
 const BookCouncilBanner = dynamic(() => import("@/components/BookCouncilBanner"));
-const TaksheelaInsights = dynamic(() => import("@/components/home/TaksheelaInsights"));
+// const TaksheelaInsights = dynamic(() => import("@/components/home/TaksheelaInsights"));
 const WebinarEvent = dynamic(() => import("@/components/home/Webinar"));
 const DownloadBrochure = dynamic(() => import("@/components/home/DownloadBrochure"));
 const Blogs = dynamic(() => import("@/components/home/Blogs"));
@@ -90,13 +90,13 @@ export default function Page() {
       <GlobalDegree />
       <TaksheelaEdge />
       <WhereYouAre />
-      <Testimonial />
       <FAQHome />
       <BookCouncilBanner
         redirectPath="/thankyou"
         description="Book your FREE counselling session today. 5,000+ students did — and never looked back."
       />
-      <TaksheelaInsights />
+      <Testimonial />
+      {/* <TaksheelaInsights /> */}
       <WebinarEvent />
       <DownloadBrochure />
       <Blogs />

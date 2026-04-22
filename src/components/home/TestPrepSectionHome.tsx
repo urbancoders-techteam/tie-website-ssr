@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   FaChalkboardTeacher,
   FaClipboardList,
@@ -10,6 +9,8 @@ import {
   FaRegFileAlt,
 } from "react-icons/fa";
 import ContainerWrapper from "../ContainerWrapper";
+import HomeSectionHeader from "./HomeSectionHeader";
+import ModalTrigger from "../ModalTrigger";
 import { testPrepSectionHome } from "@/constants/home";
 
 type TestPrepTest = {
@@ -74,27 +75,17 @@ export default function TestPrepSectionHome() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
           {/* Left — ~60% */}
           <div className="min-w-0 lg:col-span-7">
-            <p
-              className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.22em] sm:text-xs sm:tracking-[0.28em] lg:text-left"
-              style={{ color: TEAL }}
-            >
-              <span className="opacity-70" aria-hidden>
-                —
-              </span>{" "}
-              {data.eyebrow}{" "}
-              <span className="opacity-70" aria-hidden>
-                —
-              </span>
-            </p>
-            <h2
-              className="mt-3 text-balance text-center text-2xl font-bold leading-tight sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[2rem] xl:text-[2.1rem]"
-              style={{ color: NAVY }}
-            >
-              {data.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-base">
-              {data.description}
-            </p>
+            <HomeSectionHeader
+              headerClassName="text-center lg:text-left"
+              eyebrow={data.eyebrow}
+              title={data.title}
+              subtitle={data.description}
+              eyebrowClassName="text-center text-[0.65rem] font-semibold uppercase tracking-[0.22em] sm:text-xs sm:tracking-[0.28em] lg:text-left"
+              titleClassName="mt-3 text-balance text-center text-2xl font-bold leading-tight text-[#1a2b48] sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[2rem] xl:text-[2.1rem]"
+              subtitleClassName="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-base"
+              markerClassName="opacity-70"
+              eyebrowStyle={{ color: TEAL }}
+            />
 
             {/* Test cards */}
             <div
@@ -174,16 +165,17 @@ export default function TestPrepSectionHome() {
             </ul>
 
             <div className="mt-8 lg:mt-9">
-              <Link
-                href={data.demoCta.href}
-                className="inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 sm:w-auto sm:px-7 sm:text-base"
+              <ModalTrigger
+                variant="custom"
+                className="inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 sm:w-auto sm:px-5 sm:text-base"
+           
                 style={{ backgroundColor: TEAL }}
               >
-                {data.demoCta.label}{" "}
-                <span className="ml-1 inline-block" aria-hidden>
+                Book a Free Counsellor{" "}
+                <span className="ml-1 inline-block" style={{fontSize: "1.5rem"}} aria-hidden>
                   ›
                 </span>
-              </Link>
+              </ModalTrigger>
             </div>
           </div>
 
