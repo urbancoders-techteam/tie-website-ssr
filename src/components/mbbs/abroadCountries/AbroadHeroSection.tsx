@@ -209,6 +209,10 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
   const description = hero
     ? getShortDescription(hero.description, hero.descriptionMaxLength ?? 260)
     : getShortDescription(country.content ?? "");
+  const rightStat = hero?.rightStat ?? {
+    value: "100000+",
+    subtitle: `Students currently pursuing MBBS in ${country.title}`,
+  };
 
   return (
     <section className="relative overflow-hidden bg-[#0B7A80]">
@@ -258,8 +262,8 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
 
           <div className="flex min-w-0 flex-col gap-5">
               <HeroRightStatCard
-                value="100000+"
-                subtitle="Students currently pursuing MBBS in Russia"
+                value={rightStat.value}
+                subtitle={rightStat.subtitle}
               />
             <HeroRegisterColumn />
           </div>

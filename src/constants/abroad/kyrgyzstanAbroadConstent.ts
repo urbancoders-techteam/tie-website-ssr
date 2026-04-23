@@ -32,6 +32,11 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
+export type AbroadHeroHighlightStat = {
+  value: string;
+  subtitle: string;
+};
+
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
@@ -48,6 +53,8 @@ export type AbroadHeroContent = {
     AbroadHeroStatPair,
     AbroadHeroStatPair,
   ] | AbroadHeroStatPair[];
+  /** Highlight stat card shown above the register form in the right column. */
+  rightStat?: AbroadHeroHighlightStat;
 };
 
 export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
@@ -72,6 +79,10 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
     { label: "Medium of Instruction", value: "English" },
     { label: "Universities", value: "50+" },
   ],
+  rightStat: {
+    value: "16,000+",
+    subtitle: "Students currently pursuing MBBS in Kyrgyzstan",
+  },
 };
 
 // --- Overview section (OverviewAbroad) ---------------------------------------

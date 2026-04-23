@@ -190,6 +190,11 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
+export type AbroadHeroHighlightStat = {
+  value: string;
+  subtitle: string;
+};
+
 /** Full hero payload — every visible string in the hero can be driven from here. */
 export type AbroadHeroContent = {
   eyebrow: string;
@@ -206,6 +211,8 @@ export type AbroadHeroContent = {
   cta: AbroadHeroCta;
   /** Stats cells in the bordered row (e.g. Fees, Duration, Medium, Intake, Universities). */
   quickStats: AbroadHeroStatPair[];
+  /** Highlight stat card shown above the register form in the right column. */
+  rightStat?: AbroadHeroHighlightStat;
 };
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
@@ -231,6 +238,10 @@ export const russiaAbroadHeroContent: AbroadHeroContent = {
     { label: "Intake", value: "Sep / Feb" },
     { label: "Universities", value: "50+" },
   ],
+  rightStat: {
+    value: "100000+",
+    subtitle: "Students currently pursuing MBBS in Russia",
+  },
 };
 
 // --- Overview section (OverviewAbroad) ---------------------------------------

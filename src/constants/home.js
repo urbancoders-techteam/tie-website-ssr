@@ -521,6 +521,7 @@ export const testPrepSectionHome = {
   ],
 };
 
+
 /** Home — Global Degree: journey / how it works */
 export const globalDegreeJourney = {
   eyebrow: "HOW IT WORKS",
