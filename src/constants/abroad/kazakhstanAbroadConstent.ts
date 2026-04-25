@@ -62,7 +62,6 @@ export type AbroadHeroContent = {
 
 export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "Admissions Open · 2026–27 Intake",
-  backgroundImage: `${imageBaseUrl}mbbsCollege/kazakhstan/kzkstan_hero_img.png`,
   headline: {
     line1: "Study MBBS in",
     line2Accent: "Kazakhstan",

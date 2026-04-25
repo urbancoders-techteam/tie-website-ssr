@@ -45,6 +45,7 @@ const RegistrationModal = ({
       .string()
       .matches(/^\d{10}$/, "Phone number must be 10 digits")
       .required("Phone number is required"),
+    city: yup.string().required("City is required"),
     message: yup.string().required("Message is required"),
   });
 
@@ -54,6 +55,7 @@ const RegistrationModal = ({
       name: "",
       email: "",
       phone: "",
+      city: "",
       message: "",
     },
     validationSchema,
@@ -215,6 +217,25 @@ const RegistrationModal = ({
                 typeof formik.errors.phone === "string" && (
                   <p className="text-red-500 text-sm mt-1  text-left">
                     {formik.errors.phone}
+                  </p>
+                )}
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Enter your city"
+                {...formik.getFieldProps("city")}
+                className={`w-full border ${formik.touched.city && formik.errors.city
+                    ? "border-red-500"
+                    : "border-gray-300"
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`}
+              />
+              {formik.touched.city &&
+                formik.errors.city &&
+                typeof formik.errors.city === "string" && (
+                  <p className="text-red-500 text-sm mt-1  text-left">
+                    {formik.errors.city}
                   </p>
                 )}
             </div>

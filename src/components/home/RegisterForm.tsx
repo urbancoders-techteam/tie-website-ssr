@@ -42,6 +42,7 @@ const RegisterForm = ({
       .string()
       .matches(/^\d{10}$/, "Phone number must be 10 digits")
       .required("Phone number is required"),
+    city: yup.string().required("City is required"),
     message: yup.string().required("Message is required"),
   });
 
@@ -50,6 +51,7 @@ const RegisterForm = ({
       name: "",
       email: "",
       phone: "",
+      city: "",
       message: "",
     },
     validationSchema,
@@ -134,21 +136,25 @@ const RegisterForm = ({
       ].join(" ")}
     >
       {variant === "dark" ? (
-        <div className="px-5 pt-2">
-          <h2 className="text-lg font-extrabold text-white">
+        <div className="px-4 pt-2 sm:px-5">
+          <h2 className="text-base font-extrabold text-white sm:text-lg">
             Register Now <span className="font-semibold text-white/70">— Free Consultation</span>
           </h2>
-          <p className="mt-1 text-sm text-white/70">5,000+ students guided. Let us guide you too.</p>
+          <p className="mt-1 text-xs text-white/70 sm:text-sm">5,000+ students guided. Let us guide you too.</p>
         </div>
       ) : (
-        <h2 className="text-center text-white bg-[#00999E] font-semibold text-lg py-3 rounded-t-[20px]">
+        <h2 className="rounded-t-[20px] bg-[#00999E] py-2.5 text-center text-base font-semibold text-white sm:py-3 sm:text-lg">
           Register Now
         </h2>
       )}
 
       <form
         onSubmit={formik.handleSubmit}
-        className={variant === "dark" ? "mt-2 grid gap-3 px-5 pb-5" : "mt-2 grid gap-4  p-6"}
+        className={
+          variant === "dark"
+            ? "mt-1 grid gap-2.5 px-4 pb-4 sm:mt-2 sm:gap-3 sm:px-5 sm:pb-5"
+            : "mt-1 grid gap-3 p-4 sm:mt-2 sm:gap-4 sm:p-6"
+        }
       >
         <div>
           <input
@@ -157,7 +163,7 @@ const RegisterForm = ({
             {...formik.getFieldProps("name")}
             className={
               variant === "dark"
-                ? `w-full rounded-lg border px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] ${
+                ? `w-full rounded-lg border px-3.5 py-2.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] sm:px-4 sm:py-3 ${
                     formik.touched.name && formik.errors.name ? "border-red-400/80" : "border-white/12"
                   } bg-white/5`
                 : `w-full border ${
@@ -182,7 +188,7 @@ const RegisterForm = ({
             {...formik.getFieldProps("phone")}
             className={
               variant === "dark"
-                ? `w-full rounded-lg border px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] ${
+                ? `w-full rounded-lg border px-3.5 py-2.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] sm:px-4 sm:py-3 ${
                     formik.touched.phone && formik.errors.phone ? "border-red-400/80" : "border-white/12"
                   } bg-white/5`
                 : `w-full border ${
@@ -201,12 +207,36 @@ const RegisterForm = ({
 
         <div>
           <input
+            type="text"
+            placeholder={variant === "dark" ? "City" : "Enter your city"}
+            {...formik.getFieldProps("city")}
+            className={
+              variant === "dark"
+                ? `w-full rounded-lg border px-3.5 py-2.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] sm:px-4 sm:py-3 ${
+                    formik.touched.city && formik.errors.city ? "border-red-400/80" : "border-white/12"
+                  } bg-white/5`
+                : `w-full border ${
+                    formik.touched.city && formik.errors.city ? "border-red-500" : "border-gray-300"
+                  } rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00999E]`
+            }
+          />
+          {formik.touched.city &&
+            formik.errors.city &&
+            typeof formik.errors.city === "string" && (
+              <p className={variant === "dark" ? "text-red-300 text-xs mt-1" : "text-red-500 text-sm mt-1"}>
+                {formik.errors.city}
+              </p>
+            )}
+        </div>
+
+        <div>
+          <input
             type="email"
             placeholder={variant === "dark" ? "Email Address" : "Enter your email"}
             {...formik.getFieldProps("email")}
             className={
               variant === "dark"
-                ? `w-full rounded-lg border px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] ${
+                ? `w-full rounded-lg border px-3.5 py-2.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] sm:px-4 sm:py-3 ${
                     formik.touched.email && formik.errors.email ? "border-red-400/80" : "border-white/12"
                   } bg-white/5`
                 : `w-full border ${
@@ -226,11 +256,11 @@ const RegisterForm = ({
         <div>
           <textarea
             placeholder={variant === "dark" ? "Interested In..." : "Enter your message"}
-            rows={variant === "dark" ? 1 : 3}
+            rows={variant === "dark" ? 1 : 2}
             {...formik.getFieldProps("message")}
             className={
               variant === "dark"
-                ? `w-full resize-none rounded-lg border px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] ${
+                ? `w-full resize-none rounded-lg border px-3.5 py-2.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-[#00B2B8] sm:px-4 sm:py-3 ${
                     formik.touched.message && formik.errors.message ? "border-red-400/80" : "border-white/12"
                   } bg-white/5`
                 : `w-full border ${
@@ -252,10 +282,10 @@ const RegisterForm = ({
           disabled={loading}
           className={
             variant === "dark"
-              ? `mt-2 rounded-lg bg-[#00B2B8] py-3 text-sm font-semibold text-white transition hover:bg-[#00a1a6] ${
+              ? `mt-2 cursor-pointer rounded-lg bg-[#00B2B8] py-3 text-sm font-semibold text-white transition hover:bg-[#00a1a6] ${
                   loading ? "opacity-60 cursor-not-allowed" : ""
                 }`
-              : `bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${
+              : `cursor-pointer bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200 ${
                   loading ? "opacity-60 cursor-not-allowed" : ""
                 }`
           }
@@ -267,7 +297,7 @@ const RegisterForm = ({
           <button
             type="button"
             onClick={handleDownloadBrochure}
-            className="bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200"
+            className="cursor-pointer bg-[#00999E] text-white font-medium py-2 rounded hover:bg-[#007a7e] transition-all duration-200"
           >
             Download Brochure
           </button>

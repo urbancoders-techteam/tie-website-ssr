@@ -6,7 +6,6 @@
  */
 
 import type { StaticImageData } from "next/image";
-import russiaHeroBanner from "@/assets/russiabanner.jpg";
 import { imageBaseUrl } from "@/utils/config";
 
 /** Quick Facts grid (`QuickFactsAbroad`) — one card per item. */
@@ -217,7 +216,6 @@ export type AbroadHeroContent = {
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
-  backgroundImage: russiaHeroBanner,
   headline: {
     line1: "Study MBBS in Russia",
     line2Accent: "Where Affordability Meets",
