@@ -28,6 +28,7 @@ import {
   homeSubMenues,
   immersionSubMenues,
   iRSubMenues,
+  mbbsSubMenues,
   navbarData,
   studyAbroadsubMenues,
 } from "@/constants/navbar";
@@ -137,6 +138,7 @@ export const Header = ({ itemupdate }: any) => {
   const isLgDown = useMediaQuery(theme.breakpoints.down("lg"));
   const [homeSubMenuOpen, setHomeSubMenuOpen] = useState(false);
   const [studyAbroadOpen, setStudyAbroadOpen] = useState(false);
+  const [mbbsOpen, setMbbsOpen] = useState(false);
   const [immersionOpen, setImmersionOpen] = useState(false);
   const [iROpen, setIROpen] = useState(false);
 
@@ -144,6 +146,7 @@ export const Header = ({ itemupdate }: any) => {
   useEffect(() => {
     setHomeSubMenuOpen(false);
     setStudyAbroadOpen(false);
+    setMbbsOpen(false);
     setImmersionOpen(false);
     setIROpen(false);
   }, [location]);
@@ -153,6 +156,7 @@ export const Header = ({ itemupdate }: any) => {
     const closeAllSubmenus = () => {
       setHomeSubMenuOpen(false);
       setStudyAbroadOpen(false);
+      setMbbsOpen(false);
       setImmersionOpen(false);
       setIROpen(false);
     };
@@ -255,6 +259,7 @@ export const Header = ({ itemupdate }: any) => {
   const closeAllDesktopSubmenus = () => {
     setHomeSubMenuOpen(false);
     setStudyAbroadOpen(false);
+    setMbbsOpen(false);
     setImmersionOpen(false);
     setIROpen(false);
   };
@@ -275,6 +280,14 @@ export const Header = ({ itemupdate }: any) => {
   };
   const handleStudyAbroadLeave = () => {
     setStudyAbroadOpen(false);
+  };
+
+  const handleMBBSEnter = () => {
+    closeAllDesktopSubmenus();
+    setMbbsOpen(true);
+  };
+  const handleMBBSLeave = () => {
+    setMbbsOpen(false);
   };
 
   const handleImmersionEnter = () => {
@@ -957,6 +970,88 @@ export const Header = ({ itemupdate }: any) => {
                 </div>
 
                 <div
+                  onMouseEnter={handleMBBSEnter}
+                  onMouseLeave={handleMBBSLeave}
+                  className="relative"
+                >
+                  <Link
+                    href="/mbbs"
+                    className="custom-link"
+                    style={
+                      NavLinkCss({
+                        isActive:
+                          isParentMenuSelected("mbbs") ||
+                          location === "/mbbs" ||
+                          location.startsWith("/mbbs/"),
+                      }) as React.CSSProperties
+                    }
+                    onClick={() => setSelectedParentMenu("mbbs")}
+                  >
+                    <HoverTypography
+                      sx={{
+                        fontSize: isLgDown ? "13px" : "14px",
+                        fontWeight: 500,
+                      }}
+                      isActive={
+                        isParentMenuSelected("mbbs") ||
+                        location === "/mbbs" ||
+                        location.startsWith("/mbbs/")
+                      }
+                    >
+                      MBBS
+                    </HoverTypography>
+                  </Link>
+                  {mbbsOpen && (
+                    <Box
+                      position="absolute"
+                      left="0"
+                      bgcolor="white"
+                      boxShadow={3}
+                      zIndex={999999}
+                      sx={submenuDropDownSx}
+                    >
+                      {mbbsSubMenues?.map((subMenu, index) => (
+                        <Box
+                          key={subMenu.title}
+                          sx={{
+                            borderBottom:
+                              index < (mbbsSubMenues?.length ?? 1) - 1
+                                ? "0.2px solid #00999e"
+                                : "none",
+                            py: 0.5,
+                            px: 1.5,
+                          }}
+                        >
+                          <Link
+                            href={subMenu?.link}
+                            className="custom-link"
+                            style={{
+                              color: location === subMenu.link ? "#00999e" : "",
+                            }}
+                          >
+                            <HoverTypography
+                              fontSize={{
+                                xs: "10px",
+                                sm: "10px",
+                                md: "13px",
+                                lg: "15px",
+                              }}
+                              component="span"
+                              style={{
+                                color: location === subMenu.link ? "#00999e" : "",
+                              }}
+                              sx={{ fontSize: "13px" }}
+                            >
+                              {subMenu?.title}
+                            </HoverTypography>
+                          </Link>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
+                </div>
+
+                <div
                   onMouseEnter={handleIREnter}
                   onMouseLeave={handleIRLeave}
                   className="relative"
@@ -1198,41 +1293,7 @@ export const Header = ({ itemupdate }: any) => {
                     </PopupState>
                   </Box>
                 ) : (
-                  <><Link
-                        href={`/mbbs`}
-                        className="custom-link"
-                        style={
-                          NavLinkCss({
-                            isActive:
-                              isParentMenuSelected("mbbs") ||
-                              location === "/mbbs" ||
-                              location.startsWith("/mbbs/"),
-                          }) as React.CSSProperties
-                        }
-                        onClick={() => setSelectedParentMenu("mbbs")}
-                      >
-                        <HoverTypography
-                          fontSize={{
-                            xs: "10px",
-                            sm: "10px",
-                            md: "13px",
-                            lg: "20px",
-                          }}
-                          sx={{
-                            fontSize: isLgDown ? "13px" : "14px",
-                            fontWeight: 500,
-                          }}
-                          isActive={
-                            isParentMenuSelected("mbbs") ||
-                            location === "/mbbs" ||
-                            location.startsWith("/mbbs/")
-                          }
-
-                        >
-                          MBBS
-                        </HoverTypography>
-                      </Link>
-                      
+                  <>
                       <Link
                         href={`${navURL}login`}
                         className="custom-link"
