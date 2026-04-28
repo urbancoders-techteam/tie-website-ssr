@@ -5,7 +5,7 @@ import ContainerWrapper from "../ContainerWrapper";
 
 const STATS = [
   { end: 5000, label: "Students placed globally" },
-  { end: 500, label: "University partners" },
+  { end: 1000, label: "University partners" },
   { end: 30, label: "Countries covered" },
   { end: 15, label: "Years of expertise" },
 ] as const;

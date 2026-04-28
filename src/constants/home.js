@@ -55,7 +55,7 @@ export const ourserviceshomedata = [
   {
     background: mbbg,
     image: ie,
-    title: "INTERNATIONAL ENGAGEMENT",
+    title: "STUDY IN INDIA",
     path: "/international-relation",
     description:
       "Helping Indian HEIs build global partnerships, MoUs, faculty exchanges and international student mobility programs with world-class universities.",
@@ -198,7 +198,7 @@ export const trustTaksheelaFeatures = [
 
 export const globalReachIntro = {
   eyebrow: "GLOBAL REACH",
-  title: "Top Study Abroad Destinations for Indian Students in 2025",
+  title: "Top Study Abroad Destinations for Indian Students",
   subtitle:
     "From tuition-free Germany to PR-pathway Canada — we cover the full global map of higher education.",
 };
@@ -306,16 +306,13 @@ export const medicalEducationAbroad = {
     "Transparent counselling, NMC-listed universities, end-to-end application & visa support, and coaching partners who prepare you for FMGE & NExT — all through one trusted team at Taksheela.",
   heroImage: NMCHomeImage,
   watermark: "MBBS",
-  floatingCard: {
-    title: "FMGE / NExT Ready",
-    subtitle: "We connect you with top coaching partners.",
-  },
   primaryCta: { label: "Compare MBBS Programs ›", href: "/mbbs" },
   secondaryCta: { label: "Check My Eligibility", href: "/contact" },
   countries: [
     {
       id: "ru",
       code: "RU",
+      flag: "https://flagcdn.com/w160/ru.png",
       name: "Russia",
       detail:
         "6-yr MBBS · Fees from ₹22L · NMC approved · English medium",
@@ -325,6 +322,7 @@ export const medicalEducationAbroad = {
     {
       id: "uz",
       code: "UZ",
+      flag: "https://flagcdn.com/w160/uz.png",
       name: "Uzbekistan",
       detail:
         "Affordable tuition · WHO-listed colleges · Clinical exposure · English medium",
@@ -334,21 +332,33 @@ export const medicalEducationAbroad = {
     {
       id: "ge",
       code: "GE",
+      flag: "https://flagcdn.com/w160/ge.png",
       name: "Georgia",
       detail:
         "European degree · 6-year program · NMC recognised · Safe & welcoming",
       badge: "European",
       badgeTone: "blue",
     },
-    // {
-    //   id: "ph",
-    //   code: "PH",
-    //   name: "Philippines",
-    //   detail:
-    //     "US-style curriculum · English instruction · Strong FMGE track record",
-    //   badge: "Top Ranked",
-    //   badgeTone: "cyan",
-    // },
+    {
+      id: "kz",
+      code: "KZ",
+      flag: "https://flagcdn.com/w160/kz.png",
+      name: "Kazakhstan",
+      detail:
+        "Globally recognised degree · 5–6 year program · NMC recognised · Advanced medical training",
+      badge: "Value Choice",
+      badgeTone: "teal",
+    },
+    {
+      id: "kg",
+      code: "KG",
+      flag: "https://flagcdn.com/w160/kg.png",
+      name: "Kyrgyzstan",
+      detail:
+        "Budget-friendly MBBS · 6-year program · NMC recognised · Popular among Indian students",
+      badge: "Budget Friendly",
+      badgeTone: "cyan",
+    },
   ],
 };
 

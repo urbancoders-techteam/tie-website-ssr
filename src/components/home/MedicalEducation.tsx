@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGraduationCap } from "react-icons/fa";
 import ContainerWrapper from "../ContainerWrapper";
 import { medicalEducationAbroad } from "@/constants/home";
 import HomeSectionHeader from "./HomeSectionHeader";
@@ -9,7 +8,6 @@ import HomeSectionHeader from "./HomeSectionHeader";
 /** Slightly lighter navy than pure #0a192f — easier on the eyes */
 const NAVY = "#152a42";
 const TEAL = "#00c2a8";
-const TEAL_DARK = "#00a88f";
 
 const BADGE_STYLES: Record<
   string,
@@ -76,12 +74,15 @@ export default function MedicalEducation() {
                     className="w-[calc(100%-0.25rem)] shrink-0 snap-start sm:min-w-[360px] sm:w-auto lg:min-w-0"
                   >
                     <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3.5 backdrop-blur-sm sm:items-stretch sm:gap-4 sm:px-4 sm:py-4">
-                      <span
-                        className="flex w-10 shrink-0 items-center justify-center pt-0.5 text-lg font-bold leading-none text-white/[0.12] sm:w-14 sm:pt-0 sm:text-2xl"
-                        aria-hidden
-                      >
-                        {c.code}
-                      </span>
+                      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full border border-white/20 sm:h-12 sm:w-12">
+                        <Image
+                          src={c.flag}
+                          alt={`${c.name} flag`}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-white">{c.name}</p>
                         <p className="mt-1 text-[0.75rem] leading-snug text-slate-400 sm:text-[0.8125rem]">
@@ -131,22 +132,6 @@ export default function MedicalEducation() {
                 className="absolute inset-0 bg-gradient-to-t from-[#152a42]/45 via-transparent to-transparent"
                 aria-hidden
               />
-
-              <div className="absolute left-3 top-3 z-10 max-w-[190px] rounded-lg border border-white/15 bg-white/95 p-3 shadow-xl backdrop-blur-sm sm:left-5 sm:top-5 sm:max-w-[260px] sm:rounded-xl sm:p-4">
-                <div className="flex items-center gap-1.5 sm:gap-2.5">
-                  <FaGraduationCap
-                    className="h-4 w-4 sm:h-7 sm:w-7"
-                    style={{ color: TEAL_DARK }}
-                    aria-hidden
-                  />
-                  <p className="text-[0.78rem] font-bold leading-snug text-[#0f2744] sm:text-lg">
-                    {data.floatingCard.title}
-                  </p>
-                </div>
-                <p className="mt-0.5 text-[0.62rem] leading-relaxed text-slate-600 sm:mt-1.5 sm:text-sm">
-                  {data.floatingCard.subtitle}
-                </p>
-              </div>
             </div>
           </div>
         </div>
