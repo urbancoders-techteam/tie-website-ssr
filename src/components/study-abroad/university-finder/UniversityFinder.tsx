@@ -21,11 +21,11 @@ import {
 interface Filters {
   country?: string[];
   pursue?: string;
-  year?: string[];
-  intake?: string[];
-  duration?: string[];
+  year?: string | string[];
+  intake?: string | string[];
+  duration?: string | string[];
   tutionfee?: string | number;
-  courses?: string | string[];
+  courses?: string;
   admission?: string[];
   qualification?: string;
   scholarship?: string[];
@@ -42,27 +42,30 @@ const steps = [
   "Field of Study",
   "Prerequisites",
 ];
+const UNIVERSITY_FINDER_LIMIT = 12;
 
 /** Same shape as FilterComponent handleApplyFilter — used for sessionStorage + view page filters */
+function normalizeToArray(value: string | string[] | undefined): string[] {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  if (typeof value === "string" && value.trim()) return [value.trim()];
+  return [];
+}
+
 function buildFilterPayloadFromFilters(filters: Filters): Record<string, unknown> {
-  const selectedCourses = Array.isArray(filters.courses)
-    ? filters.courses
-    : typeof filters.courses === "string" && filters.courses.trim()
-      ? filters.courses
-          .split(",")
-          .map((course) => course.trim())
-          .filter(Boolean)
-      : [];
+  const selectedCourse = typeof filters.courses === "string" ? filters.courses.trim() : "";
+  const selectedYears = normalizeToArray(filters.year);
+  const selectedDurations = normalizeToArray(filters.duration);
+  const selectedIntakes = normalizeToArray(filters.intake);
 
   const filterPayload: Record<string, unknown> = {
     type: "filter",
-    courses: selectedCourses,
+    courses: selectedCourse,
   };
   if (filters.country?.length) filterPayload.countryId = filters.country;
   if (filters.pursue) filterPayload.pursue = filters.pursue;
-  if (filters.year?.length) filterPayload.year = filters.year;
-  if (filters.duration?.length) filterPayload.duration = filters.duration;
-  if (filters.intake?.length) filterPayload.intake = filters.intake;
+  if (selectedYears.length) filterPayload.year = selectedYears;
+  if (selectedDurations.length) filterPayload.duration = selectedDurations;
+  if (selectedIntakes.length) filterPayload.intake = selectedIntakes;
   if (filters.tutionfee != null && filters.tutionfee !== "" && Number(filters.tutionfee) > 0) {
     filterPayload.tutionFee = String(filters.tutionfee);
   }
@@ -108,10 +111,7 @@ const UniversityFinder: React.FC = () => {
   const validateStep = (): boolean => {
     switch (activeStep) {
       case 1:
-        if (
-          !Array.isArray(filters.courses) ||
-          filters.courses.length === 0
-        ) {
+        if (!filters.courses || !filters.courses.trim()) {
           toast.error("Please select a field of interest");
           setIsSubmitting(false);
           return false;
@@ -125,27 +125,23 @@ const UniversityFinder: React.FC = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const selectedCourses = Array.isArray(filters.courses)
-        ? filters.courses
-        : typeof filters.courses === "string" && filters.courses.trim()
-          ? filters.courses
-              .split(",")
-              .map((course) => course.trim())
-              .filter(Boolean)
-          : [];
+      const selectedCourse = typeof filters.courses === "string" ? filters.courses.trim() : "";
+      const selectedYears = normalizeToArray(filters.year);
+      const selectedDurations = normalizeToArray(filters.duration);
+      const selectedIntakes = normalizeToArray(filters.intake);
 
       const payload: Record<string, any> = {
         type: "submit",
         name: filters.name || "",
         phone: filters.phone || "",
         email: filters.email || "",
-        courseId: selectedCourses,
+        ...(selectedCourse && { courses: selectedCourse }),
         ...(filters.country && { countryId: filters.country }),
         ...(filters.pursue && { pursue: filters.pursue }),
-        ...(filters.year && { year: filters.year }),
+        ...(selectedYears.length && { year: selectedYears }),
         ...(filters.tutionfee && { tutionFee: filters.tutionfee }),
-        ...(filters.duration && { duration: filters.duration }),
-        ...(filters.intake && { intake: filters.intake }),
+        ...(selectedDurations.length && { duration: selectedDurations }),
+        ...(selectedIntakes.length && { intake: selectedIntakes }),
         ...(filters.admission && { admissionRequirement: filters.admission }),
         ...(filters.scholarship && {
           scholarAvailability: filters.scholarship,
@@ -155,7 +151,7 @@ const UniversityFinder: React.FC = () => {
         }),
       };
 
-      const res = await fetch(`${baseUrl}university/universityFilter?page=1&limit=3`, {
+      const res = await fetch(`${baseUrl}university/universityFilter?page=1&limit=${UNIVERSITY_FINDER_LIMIT}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -168,7 +164,7 @@ const UniversityFinder: React.FC = () => {
         const inner = data?.data;
         const totalCount = inner?.count ?? 0;
         const apiTotalPages = inner?.totalPages ?? 0;
-        const pages = deriveTotalPages(totalCount, apiTotalPages, 3);
+        const pages = deriveTotalPages(totalCount, apiTotalPages, UNIVERSITY_FINDER_LIMIT);
 
         sessionStorage.setItem("formattedData", JSON.stringify(data.data.data));
         sessionStorage.setItem("filterData", JSON.stringify(filterPayload));

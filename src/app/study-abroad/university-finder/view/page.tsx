@@ -23,6 +23,7 @@ import {
 
 const UniversityView: React.FC = () => {
   const router = useRouter();
+  const UNIVERSITY_FINDER_LIMIT = 12;
 
   const [showMobileFilter, setShowMobileFilter] = useState(false);
 
@@ -38,7 +39,7 @@ const UniversityView: React.FC = () => {
   const [openUniversityId, setOpenUniversityId] = useState<string | null>(null);
 
   const [page, setPage] = useState(1);
-  const [limit] = useState(11);
+  const [limit] = useState(UNIVERSITY_FINDER_LIMIT);
   const [totalPages, setTotalPages] = useState(1);
 
   const scrollToTop = () => window.scrollTo({ top: 530, behavior: "smooth" });

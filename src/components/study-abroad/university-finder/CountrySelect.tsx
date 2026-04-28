@@ -70,7 +70,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
       ))}
     </div>
   ) : (
-    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-5">
       {countryData.map((item) => {
         const isSelected = selectedCountries.includes(item._id);
 

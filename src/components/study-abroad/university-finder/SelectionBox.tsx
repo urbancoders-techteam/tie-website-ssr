@@ -26,49 +26,52 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
       ? (selectedValue as string[])?.includes(option)
       : selectedValue === option;
 
-      const handleClick = (option: string) => {
-        if (multiple) {
-          const currentValues = Array.isArray(selectedValue) ? selectedValue : [];
-      
-          if (currentValues.includes(option)) {
-            onSelect(currentValues.filter((item) => item !== option));
-          } else {
-            onSelect([...currentValues, option]);
-          }
-        } else {
-          onSelect(selectedValue === option ? "" : option);
-        }
-      };
-      
+  const handleClick = (option: string) => {
+    if (multiple) {
+      const currentValues = Array.isArray(selectedValue) ? selectedValue : [];
+
+      if (currentValues.includes(option)) {
+        onSelect(currentValues.filter((item) => item !== option));
+      } else {
+        onSelect([...currentValues, option]);
+      }
+    } else {
+      onSelect(selectedValue === option ? "" : option);
+    }
+  };
 
   return (
-    <div className="my-5 p-4 text-center rounded-2xl border-2 border-[#00999E] bg-gradient-to-r from-[#a7d6d799] via-[#daf0f17f] to-white flex flex-col md:flex-row items-center justify-center md:justify-between gap-5">
+    <section className="my-5 rounded-2xl border border-[#00999E]/25 bg-gradient-to-br from-[#f9fefe] via-white to-[#f1fafb] p-4 shadow-sm sm:p-5">
       {/* Label */}
-      <div className="w-full text-center md:text-left">
-        <h2 className="text-lg font-semibold">{label}</h2>
+      <div className="mb-4 w-full text-center md:text-left">
+        <h2 className="text-base font-bold tracking-tight text-[#0f2744] sm:text-lg">
+          {label}
+        </h2>
       </div>
 
       {/* Options */}
-      <div className="w-full items-center grid sm:grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+      <div className="grid w-full grid-cols-2 gap-3">
         {options.map((option) => {
           const selected = isSelected(option);
           return (
-            <div
+            <button
+              type="button"
               key={option}
               onClick={() => handleClick(option)}
-              className={`text-center px-4 py-2 rounded cursor-pointer shadow-md transition-all duration-200 ${
+              className={`w-full cursor-pointer rounded-lg border px-4 py-2.5 text-center text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#00999E]/35 ${
                 selected
-                  ? "border-2 border-[#00999E] text-[#00999E] shadow-[#00999E]"
-                  : "border-2 border-black text-black"
-              } hover:bg-gray-100`}
+                  ? "border-[#00999E] bg-[#00999E]/10 text-[#007f85] shadow-[0_4px_14px_-8px_rgba(0,153,158,0.65)]"
+                  : "border-slate-300 bg-white text-slate-700 hover:border-[#00999E]/60 hover:bg-[#f5fbfb]"
+              }`}
               style={{ width }}
+              aria-pressed={selected}
             >
               {option}
-            </div>
+            </button>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -22,8 +22,6 @@ interface FilterComponentProps {
   setIsLoader: (val: boolean) => void;
 }
 
-type DropdownOption = { label: string; value: string };
-
 const parseStringArray = (value: unknown): string[] => {
   if (Array.isArray(value)) return value.filter((item): item is string => typeof item === "string");
   if (typeof value === "string" && value.trim()) {
@@ -41,24 +39,10 @@ const parseSingleSelect = (value: unknown): string[] => {
   return [];
 };
 
-const parseCourses = (data: any): string[] => {
-  if (Array.isArray(data?.courseId)) return data.courseId;
-  if (Array.isArray(data?.courses)) return data.courses;
-  return parseStringArray(data?.courses);
-};
-
-const mapCoursesToOptions = (apiCourses: any[]): DropdownOption[] => {
-  const parsed = apiCourses
-    .map((course: any) => ({
-      label: typeof course?.name === "string" ? course.name.trim() : "",
-      value: typeof course?._id === "string" ? course._id : "",
-    }))
-    .filter((course: DropdownOption) => course.label && course.value);
-
-  return parsed.filter(
-    (course: DropdownOption, index: number) =>
-      parsed.findIndex((candidate: DropdownOption) => candidate.value === course.value) === index
-  );
+const parseCourseText = (data: any): string => {
+  if (typeof data?.courses === "string" && data.courses.trim()) return data.courses.trim();
+  if (Array.isArray(data?.courses) && data.courses.length) return String(data.courses[0] ?? "").trim();
+  return "";
 };
 
 function parseFilterResponse(res: any, filterPayload: any): UniversityFilterResult {
@@ -74,19 +58,18 @@ function parseFilterResponse(res: any, filterPayload: any): UniversityFilterResu
 
 const FilterComponent: React.FC<FilterComponentProps> = ({
   filterData,
-  limit = 3,
+  limit = 12,
   onFilterChange,
   setIsLoader,
 }) => {
   const [countries, setCountries] = useState<any[]>([]);
-  const [courseOptions, setCourseOptions] = useState<DropdownOption[]>([]);
   const [isCourseLoading, setIsCourseLoading] = useState(false);
 
   const [selectedCountry, setSelectedCountry] = useState<string[]>(
     parseStringArray(filterData.countryId)
   );
   const [selectedPursue, setSelectedPursue] = useState<string[]>(
-    parseSingleSelect(filterData.pursue)
+    parseStringArray(filterData.pursue)
   );
   const [selectedYear, setSelectedYear] = useState<string[]>(
     parseStringArray(filterData.year)
@@ -97,12 +80,12 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   const [selectedIntake, setSelectedIntake] = useState<string[]>(
     parseStringArray(filterData.intake)
   );
-  const [selectedCourses, setSelectedCourses] = useState<string[]>(parseCourses(filterData));
+  const [selectedCourses, setSelectedCourses] = useState<string>(parseCourseText(filterData));
   const [selectedScholarship, setSelectedScholarship] = useState<string[]>(
     parseStringArray(filterData.scholarAvailability)
   );
   const [selectedQualification, setSelectedQualification] = useState<string[]>(
-    parseSingleSelect(filterData.highestQualification)
+    parseStringArray(filterData.highestQualification)
   );
   const [selectedFee, setSelectedFee] = useState<string[]>(parseSingleSelect(filterData.tutionFee));
   const [selectedAdmission, setSelectedAdmission] = useState<string[]>(
@@ -111,13 +94,13 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
   useEffect(() => {
     setSelectedCountry(parseStringArray(filterData.countryId));
-    setSelectedPursue(parseSingleSelect(filterData.pursue));
+    setSelectedPursue(parseStringArray(filterData.pursue));
     setSelectedYear(parseStringArray(filterData.year));
     setSelectedDuration(parseStringArray(filterData.duration));
     setSelectedIntake(parseStringArray(filterData.intake));
-    setSelectedCourses(parseCourses(filterData));
+    setSelectedCourses(parseCourseText(filterData));
     setSelectedScholarship(parseStringArray(filterData.scholarAvailability));
-    setSelectedQualification(parseSingleSelect(filterData.highestQualification));
+    setSelectedQualification(parseStringArray(filterData.highestQualification));
     setSelectedFee(parseSingleSelect(filterData.tutionFee));
     setSelectedAdmission(parseStringArray(filterData.admissionRequirement));
   }, [filterData]);
@@ -126,18 +109,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     const fetchFilterOptions = async () => {
       try {
         setIsCourseLoading(true);
-        const [countryRes, courseRes] = await Promise.all([
-          axios.get(`${baseUrl}university/countryList`),
-          axios.get(`${baseUrl}university/courseList`),
-        ]);
+        const countryRes = await axios.get(`${baseUrl}university/countryList`);
 
         setCountries(countryRes?.data?.data?.formattedData ?? []);
-        const apiCourses = courseRes?.data?.data?.formattedData;
-        if (Array.isArray(apiCourses)) {
-          setCourseOptions(mapCoursesToOptions(apiCourses));
-        } else {
-          setCourseOptions([]);
-        }
       } catch (error) {
         console.error("Error fetching filter options:", error);
       } finally {
@@ -155,9 +129,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     const filterPayload: any = {
       type: "filter",
     };
-    if (selectedCourses.length) filterPayload.courseId = selectedCourses;
+    if (selectedCourses.trim()) filterPayload.courses = selectedCourses.trim();
     if (selectedCountry.length) filterPayload.countryId = selectedCountry;
-    if (selectedPursue.length) filterPayload.pursue = selectedPursue[0];
+    if (selectedPursue.length) filterPayload.pursue = selectedPursue;
     if (selectedYear.length) filterPayload.year = selectedYear;
     if (selectedDuration.length) filterPayload.duration = selectedDuration;
     if (selectedFee.length) filterPayload.tutionFee = selectedFee[0];
@@ -167,7 +141,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     if (selectedScholarship.length)
       filterPayload.scholarAvailability = selectedScholarship;
     if (selectedQualification.length)
-      filterPayload.highestQualification = selectedQualification[0];
+      filterPayload.highestQualification = selectedQualification;
 
     const applyPage = 1;
     axios
@@ -215,7 +189,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     setSelectedYear([]);
     setSelectedDuration([]);
     setSelectedIntake([]);
-    setSelectedCourses([]);
+    setSelectedCourses("");
     setSelectedScholarship([]);
     setSelectedQualification([]);
     setSelectedFee([]);
@@ -225,7 +199,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     const emptyBody = {
       type: "filter",
       countryId: "",
-      courseId: "",
+      courses: "",
       stateId: "",
       pursue: "",
       year: "",
@@ -299,9 +273,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           label="Planning To Pursue"
           options={["Undergraduate", "Graduate", "PHD", "Certificate Program"]}
           selectedValues={selectedPursue}
-          onChange={(values) =>
-            setSelectedPursue(values.length ? [values[values.length - 1]] : [])
-          }
+          onChange={(values) => setSelectedPursue(values)}
           compact
           placeholder="Select options"
         />
@@ -343,17 +315,18 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           placeholder="Select options"
         />
 
-        <CustomMultiSelectDropdown
-          label="Field of Interest"
-          options={courseOptions}
-          selectedValues={selectedCourses}
-          onChange={(values) => setSelectedCourses(values)}
-          compact
-          isLoading={isCourseLoading}
-          loadingText="Loading courses..."
-          showFullSelectedText
-          placeholder={isCourseLoading ? "Loading courses..." : "Select options"}
-        />
+        <div className="space-y-1">
+          <label className="block text-[13px] font-semibold text-[#1f2937]">
+            Field of Interest
+          </label>
+          <input
+            type="text"
+            value={selectedCourses}
+            onChange={(e) => setSelectedCourses(e.target.value)}
+            placeholder="Enter field of interest"
+            className="w-full rounded-lg border border-[#ced4da] bg-white px-3 py-2 text-sm text-[#1f2937] outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
+          />
+        </div>
 
         <CustomMultiSelectDropdown
           label="Tuition Fee (Optional)"
@@ -396,9 +369,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             "Certificate Program",
           ]}
           selectedValues={selectedQualification}
-          onChange={(values) =>
-            setSelectedQualification(values.length ? [values[values.length - 1]] : [])
-          }
+          onChange={(values) => setSelectedQualification(values)}
           compact
           placeholder="Select options"
         />

@@ -2,14 +2,11 @@
 
 import ContainerWrapper from "@/components/ContainerWrapper";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CountrySelect from "./CountrySelect";
 import FormComponent from "./Form";
-import CustomMultiSelectDropdown from "./CustomDropdown";
 import RangeSelectionBox from "./RangeSelectionBox";
 import SelectionBox from "./SelectionBox";
-import axios from "axios";
-import { baseUrl } from "@/utils/config";
 interface FiltersProps {
   filters: any;
   setFilters: React.Dispatch<React.SetStateAction<any>>;
@@ -22,7 +19,7 @@ export const RegisterYourself: React.FC<FiltersProps> = ({
 }) => {
   return (
     <ContainerWrapper>
-      <div className="grid grid-cols-1 items-center gap-6 py-6 sm:gap-8 md:grid-cols-2 md:gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 items-center gap-4 py-6 sm:gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
         {/* Left Side – Image Block */}
         <div className="relative mx-auto aspect-square w-full max-w-[420px] overflow-hidden rounded-xl self-center">
           <Image
@@ -69,44 +66,16 @@ export const RegisterYourself: React.FC<FiltersProps> = ({
 };
 
 export const Location: React.FC<FiltersProps> = ({ filters, setFilters }) => {
-  const defaultFieldOfInterestOptions = [
-    { label: "Engineering", value: "Engineering" },
-    {
-      label: "Computer Science & Information Technology",
-      value: "Computer Science & Information Technology",
-    },
-    { label: "Health Science and Medicine", value: "Health Science and Medicine" },
-    { label: "Social Science", value: "Social Science" },
-    { label: "Bussiness Management", value: "Bussiness Management" },
-    { label: "Physical & Life Science", value: "Physical & Life Science" },
-    { label: "Fine & Applied Art", value: "Fine & Applied Art" },
-    { label: "Communication & Journalism", value: "Communication & Journalism" },
-    { label: "Designing", value: "Designing" },
-  ];
-
   const [selectedCountries, setSelectedCountries] = useState(
     filters.country || []
   );
-  const [fieldOfInterestOptions, setFieldOfInterestOptions] = useState<
-    Array<{ label: string; value: string }>
-  >(defaultFieldOfInterestOptions);
-  const [isCourseLoading, setIsCourseLoading] = useState(false);
-  const [fieldOfInterestValue, setFieldOfInterestValue] = useState<string[]>(
-    Array.isArray(filters.courses)
-      ? filters.courses
-      : typeof filters.courses === "string"
-        ? filters.courses
-            .split(",")
-            .map((item: string) => item.trim())
-            .filter(Boolean)
-        : []
+  const [fieldOfInterestValue, setFieldOfInterestValue] = useState<string>(
+    typeof filters.courses === "string" ? filters.courses : ""
   );
 
-  console.log('fieldOfInterestValue', fieldOfInterestValue)
-
-  const handleSelect = (values: string[]) => {
-    setFieldOfInterestValue(values);
-    setFilters((prev: any) => ({ ...prev, courses: values }));
+  const handleFieldOfInterestChange = (value: string) => {
+    setFieldOfInterestValue(value);
+    setFilters((prev: any) => ({ ...prev, courses: value }));
   };
 
   const handleCard = (countryId: string) => {
@@ -118,73 +87,37 @@ export const Location: React.FC<FiltersProps> = ({ filters, setFilters }) => {
     setFilters((prev: any) => ({ ...prev, country: updated }));
   };
 
-  useEffect(() => {
-    const fetchCourseList = async () => {
-      try {
-        setIsCourseLoading(true);
-        const response = await axios.get(`${baseUrl}university/courseList`);
-        const apiCourses = response?.data?.data?.formattedData;
-
-        if (Array.isArray(apiCourses)) {
-          const courseOptions = apiCourses
-            .map((course: any) => ({
-              label: typeof course?.name === "string" ? course.name.trim() : "",
-              value: typeof course?._id === "string" ? course._id : "",
-            }))
-            .filter((course: { label: string; value: string }) => course.label && course.value);
-
-          const dedupedCourseOptions = courseOptions.filter(
-            (course: { label: string; value: string }, index: number) =>
-              courseOptions.findIndex(
-                (candidate: { label: string; value: string }) =>
-                  candidate.value === course.value
-              ) === index
-          );
-
-          if (dedupedCourseOptions.length) {
-            setFieldOfInterestOptions(dedupedCourseOptions);
-          }
-
-          const validCourseIds = new Set(dedupedCourseOptions.map((course) => course.value));
-          setFieldOfInterestValue((prevValues) => {
-            const selectedValidCourseIds = prevValues.filter((id) => validCourseIds.has(id));
-            if (selectedValidCourseIds.length !== prevValues.length) {
-              setFilters((prev: any) => ({ ...prev, courses: selectedValidCourseIds }));
-            }
-            return selectedValidCourseIds;
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching course list:", error);
-      } finally {
-        setIsCourseLoading(false);
-      }
-    };
-
-    fetchCourseList();
-  }, [setFilters]);
-
   return (
     <ContainerWrapper>
-      <CustomMultiSelectDropdown
-        label="Choose Your Field Of Interest?"
-        options={fieldOfInterestOptions}
-        selectedValues={fieldOfInterestValue}
-        onChange={handleSelect}
-        isLoading={isCourseLoading}
-        loadingText="Loading courses..."
-        placeholder={isCourseLoading ? "Loading courses..." : "Select options"}
-      />
-      <div className="rounded-lg  flex flex-wrap text-center sm:justify-center md:justify-between items-center border-2 border-[#00999E] p-4 bg-gradient-to-r from-[#a7d6d799] via-[#daf0f180] to-white">
-        <h3 className="font-semibold text-lg mb-2 ">
-          Where Do You Plan To Study?
-        </h3>
-        <CountrySelect
-          selectedCountries={selectedCountries}
-          setSelectedCountries={setSelectedCountries}
-          handleCardClick={handleCard}
-          setFilters={setFilters}
-        />
+      <div className="grid grid-cols-1 gap-2 lg:grid-cols-1 lg:gap-3">
+        <div className="rounded-lg border-2 border-[#00999E] bg-gradient-to-r from-[#a7d6d799] via-[#daf0f180] to-white p-4 flex items-center gap-3">
+          <label
+            htmlFor="field-of-interest"
+            className="text-sm font-semibold text-[#0f2744] whitespace-nowrap mb-0"
+          >
+            Enter Your Field Of Interest?
+          </label>
+          <input
+            id="field-of-interest"
+            type="text"
+            value={fieldOfInterestValue}
+            onChange={(e) => handleFieldOfInterestChange(e.target.value)}
+            placeholder="Enter field of interest"
+            className="flex-1 rounded-md border border-[#00999E] bg-white px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-[#007f85] focus:ring-2 focus:ring-[#00999E]/25"
+          />
+        </div>
+
+        <div className="rounded-lg flex flex-wrap text-center sm:justify-center md:justify-between items-center border-2 border-[#00999E] p-4 bg-gradient-to-r from-[#a7d6d799] via-[#daf0f180] to-white">
+          <h3 className="font-semibold text-lg mb-2 ">
+            Where Do You Plan To Study?
+          </h3>
+          <CountrySelect
+            selectedCountries={selectedCountries}
+            setSelectedCountries={setSelectedCountries}
+            handleCardClick={handleCard}
+            setFilters={setFilters}
+          />
+        </div>
       </div>
     </ContainerWrapper>
   );
@@ -200,40 +133,63 @@ export const ProgramAndPreferredYear: React.FC<FiltersProps> = ({
 
   return (
     <ContainerWrapper>
-      <SelectionBox
-        label="What Are You Planning To Pursue?"
-        options={["Undergraduate", "Graduate", "PHD", "Certificate Program"]}
-        selectedValue={filters.pursue}
-        onSelect={(value: any) => handleChange("pursue", value)}
-      />
-      <CustomMultiSelectDropdown
-        label="What Is Your Preferred Year?"
-        options={["2025", "2026", "2027", "2028"]}
-        selectedValues={Array.isArray(filters.year) ? filters.year : []}
-        onChange={(values) => handleChange("year", values)}
-      />
-      <CustomMultiSelectDropdown
-        label="What Is Your Preferred Intake?"
-        options={[
-          "Current Dec - Mar",
-          "Apr - Jul",
-          "Aug - Nov",
-          "Upcoming Dec - Mar",
-        ]}
-        selectedValues={Array.isArray(filters.intake) ? filters.intake : []}
-        onChange={(values) => handleChange("intake", values)}
-      />
-      <CustomMultiSelectDropdown
-        label="What Is Your Preferred Duration?"
-        options={[
-          "less than 1 Year",
-          "1-2 year",
-          "3-4 year",
-          "more than 4 year",
-        ]}
-        selectedValues={Array.isArray(filters.duration) ? filters.duration : []}
-        onChange={(values) => handleChange("duration", values)}
-      />
+      <div className="grid grid-cols-1 gap-y-2 gap-x-4 lg:grid-cols-2 lg:gap-y-3 lg:gap-x-6">
+        <SelectionBox
+          label="What Are You Planning To Pursue?"
+          options={["Undergraduate", "Graduate", "PHD", "Certificate Program"]}
+          selectedValue={typeof filters.pursue === "string" ? filters.pursue : ""}
+          onSelect={(value: any) => handleChange("pursue", value)}
+        />
+        <SelectionBox
+          label="What Is Your Preferred Year?"
+          options={["2025", "2026", "2027", "2028"]}
+          selectedValue={
+            Array.isArray(filters.year)
+              ? filters.year
+              : typeof filters.year === "string" && filters.year
+                ? [filters.year]
+                : []
+          }
+          onSelect={(value: any) => handleChange("year", value)}
+          multiple
+        />
+        <SelectionBox
+          label="What Is Your Preferred Intake?"
+          options={[
+            "Current Dec - Mar",
+            "Apr - Jul",
+            "Aug - Nov",
+            "Upcoming Dec - Mar",
+          ]}
+          selectedValue={
+            Array.isArray(filters.intake)
+              ? filters.intake
+              : typeof filters.intake === "string" && filters.intake
+                ? [filters.intake]
+                : []
+          }
+          onSelect={(value: any) => handleChange("intake", value)}
+          multiple
+        />
+        <SelectionBox
+          label="What Is Your Preferred Duration?"
+          options={[
+            "less than 1 Year",
+            "1-2 year",
+            "3-4 year",
+            "more than 4 year",
+          ]}
+          selectedValue={
+            Array.isArray(filters.duration)
+              ? filters.duration
+              : typeof filters.duration === "string" && filters.duration
+                ? [filters.duration]
+                : []
+          }
+          onSelect={(value: any) => handleChange("duration", value)}
+          multiple
+        />
+      </div>
     </ContainerWrapper>
   );
 };
@@ -248,22 +204,25 @@ export const FieldOfStudy: React.FC<FiltersProps> = ({
 
   return (
     <ContainerWrapper>
-      <CustomMultiSelectDropdown
-        label="Scholarship Availability"
-        options={[
-          "Full Scholarships",
-          "Partial Scholarships",
-          "No Scholarships",
-        ]}
-        selectedValues={Array.isArray(filters.scholarship) ? filters.scholarship : []}
-        onChange={(values) => handleChange("scholarship", values)}
-      />
+      <div className="grid grid-cols-1 gap-y-2 gap-x-4 lg:grid-cols-2 lg:gap-y-3 lg:gap-x-6">
+        <SelectionBox
+          label="Scholarship Availability"
+          options={[
+            "Full Scholarships",
+            "Partial Scholarships",
+            "No Scholarships",
+          ]}
+          selectedValue={Array.isArray(filters.scholarship) ? filters.scholarship : []}
+          onSelect={(value: any) => handleChange("scholarship", value)}
+          multiple
+        />
 
-      <RangeSelectionBox
-        label="Yearly Tuition Fee"
-        value={Number(filters.tutionfee || 0)} 
-        onChange={(val) => handleChange("tutionfee", val)}
-      />
+        <RangeSelectionBox
+          label="Yearly Tuition Fee"
+          value={Number(filters.tutionfee || 0)} 
+          onChange={(val) => handleChange("tutionfee", val)}
+        />
+      </div>
     </ContainerWrapper>
   );
 };
@@ -278,23 +237,26 @@ export const AdmissionRequirements: React.FC<FiltersProps> = ({
 
   return (
     <ContainerWrapper>
-      <CustomMultiSelectDropdown
-        label="Admission Requirement"
-        options={["PTE", "IELTS", "TOEFL", "DUOLINGO", "SAT", "GRE/GMAT"]}
-        selectedValues={Array.isArray(filters.admission) ? filters.admission : []}
-        onChange={(values) => handleChange("admission", values)}
-      />
-      <SelectionBox
-        label="Highest Qualification"
-        options={[
-          "Higher Secondary",
-          "Undergraduate",
-          "Graduate",
-          "Certificate Program",
-        ]}
-        selectedValue={filters.qualification}
-        onSelect={(value: any) => handleChange("qualification", value)}
-      />
+      <div className="grid grid-cols-1 gap-y-2 gap-x-4 lg:grid-cols-2 lg:gap-y-3 lg:gap-x-6">
+        <SelectionBox
+          label="Admission Requirement"
+          options={["PTE", "IELTS", "TOEFL", "DUOLINGO", "SAT", "GRE/GMAT"]}
+          selectedValue={Array.isArray(filters.admission) ? filters.admission : []}
+          onSelect={(value: any) => handleChange("admission", value)}
+          multiple
+        />
+        <SelectionBox
+          label="Highest Qualification"
+          options={[
+            "Higher Secondary",
+            "Undergraduate",
+            "Graduate",
+            "Certificate Program",
+          ]}
+          selectedValue={filters.qualification}
+          onSelect={(value: any) => handleChange("qualification", value)}
+        />
+      </div>
     </ContainerWrapper>
   );
 };
