@@ -32,14 +32,9 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
+export type AbroadHeroHighlightStat = {
   value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
+  subtitle: string;
 };
 
 /** Full hero payload — every visible string in the hero can be driven from here. */
@@ -57,16 +52,9 @@ export type AbroadHeroContent = {
     AbroadHeroStatPair,
     AbroadHeroStatPair,
     AbroadHeroStatPair,
-  ];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
-    AbroadHeroGridCard,
-  ];
+  ] | AbroadHeroStatPair[];
+  /** Highlight stat card shown above the register form in the right column. */
+  rightStat?: AbroadHeroHighlightStat;
 };
 
 export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
@@ -77,7 +65,7 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
     line3: "Central Asia's Most Affordable Path to a Global Medical Degree",
   },
   description:
-    "Kyrgyzstan is one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes at government universities where total six-year costs start below ₹15 lakhs. Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB. For students from India, Nepal, and Bangladesh who deserve quality medicine without financial strain, Kyrgyzstan makes the dream genuinely reachable.",
+    "Kyrgyzstan is one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes with annual fees from ₹3.7 lakhs and total six-year costs typically in the ₹28–51 lakh band (university-dependent). Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB. For students from India, Nepal, and Bangladesh who need quality plus affordability, Kyrgyzstan remains a practical pathway.",
   descriptionMaxLength: 260,
   cta: {
     primaryText: "Book Free Counselling →",
@@ -85,34 +73,17 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
     secondaryHref: "#universities",
   },
   quickStats: [
-    { label: "Total Cost From", value: "₹15L" },
+    { label: "Annual Fees From", value: "₹3.7L" },
     { label: "Indian Students Enrolled", value: "16,000+" },
     { label: "NMC-Approved Unis", value: "10+" },
     { label: "Medium of Instruction", value: "English" },
+    { label: "Universities", value: "14+" },
   ],
-  spotlight: {
-    value: "16,000+",
-    caption: "Indian students currently enrolled",
+  rightStat: {
+    value: "39,000+",
+    subtitle: "Students currently pursuing MBBS in Kyrgyzstan",
   },
-  statGrid: [
-    { value: "₹15–30L", label: "Total 6-year programme cost" },
-    { value: "$120–150", label: "Monthly living cost" },
-    { value: "Zero", label: "Donation / capitation" },
-    /** Last card value is replaced by `kyrgyzstanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "10+", label: "NMC-Approved Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Kyrgyzstan). */
-export function kyrgyzstanAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = kyrgyzstanAbroadHeroContent,
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 
@@ -153,7 +124,7 @@ export const kyrgyzstanAbroadOverviewContent: AbroadOverviewContent = {
   heading: "MBBS in Kyrgyzstan — A Complete Picture for 2026–27",
   paragraphs: [
     "Kyrgyzstan — a landlocked Central Asian republic nestled in the Tian Shan mountain range — has steadily grown into one of the most preferred MBBS abroad destinations for South Asian students. With over 10 medical universities operating under the Kyrgyz Ministries of Health and Education, and more than 16,000 Indian students currently enrolled across these institutions, the country has built a mature, well-supported ecosystem for international medical education.",
-    "What makes Kyrgyzstan stand out is a combination that is genuinely rare at the global level: NMC compliance, English-medium instruction, zero donation fees, and a total six-year programme cost that in many cases falls below ₹20 lakhs. For families in India, Nepal, and Bangladesh where aspiring doctors cannot access government seats or afford ₹80 lakh–₹1.5 crore private college donations, Kyrgyzstan transforms an otherwise closed door into a fully open, legitimate pathway.",
+    "What makes Kyrgyzstan stand out is a combination that is genuinely rare at the global level: NMC compliance, English-medium instruction, zero donation fees, and a six-year programme cost structure that generally remains in the ₹28–51 lakh band across major options. For families in India, Nepal, and Bangladesh where aspiring doctors cannot access government seats or afford ₹80 lakh–₹1.5 crore private college donations, Kyrgyzstan transforms an otherwise closed door into a fully open, legitimate pathway.",
     "The academic calendar runs on the European semester model. Clinical training begins from Year 3 at affiliated government hospitals, providing meaningful patient exposure in real hospital environments. Kyrgyz language and Russian are introduced from Year 1 as compulsory subjects, equipping students to communicate with local patients during rotations — meeting NMC's language requirement naturally through the curriculum design.",
     "All NMC-approved Kyrgyz universities are listed on the World Directory of Medical Schools (WDOMS) maintained by FAIMER. Degrees are recognised by WHO, ECFMG, and WFME — enabling graduates to pursue FMGE/NExT in India, USMLE in the USA, and PLAB in the UK. For students from Nepal and Bangladesh, the programme represents one of the most cost-effective and globally portable medical degrees available anywhere in the world.",
   ],
@@ -467,7 +438,7 @@ export const kyrgyzstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent 
     "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
   advantagesTitle: "Strong Advantages",
   advantages: [
-    "Annual fees often from roughly ₹2L — total 6-year investment commonly ₹14–28 lakhs (indicative), with zero capitation or donation when you choose verified NMC-listed universities.",
+    "Annual fees from approximately ₹3.7L — total 6-year investment generally ₹28–51 lakhs (university-dependent), with zero capitation or donation when you choose verified NMC-listed universities.",
     "English-medium instruction at NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission at typical partner universities.",
     "NMC and WHO recognition for listed institutions — degrees can qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams when individual requirements are met.",
     "5,000+ Indian students enrolled — established South Asian communities in Bishkek and Osh with Indian food options, festivals, and peer support.",
@@ -537,18 +508,18 @@ export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
   tuitionRows: [
     {
       university: "Osh State University / Jalal-Abad State",
-      annualTuition: "USD 3,500–4,200",
-      sixYearTotal: "₹15–22L",
+      annualTuition: "From ₹3.7L/year",
+      sixYearTotal: "₹28–36L",
     },
     {
       university: "Kyrgyz State Medical Academy (KSMA)",
-      annualTuition: "USD 4,200–5,000",
-      sixYearTotal: "₹22–27L",
+      annualTuition: "Approx. ₹7.0L/year",
+      sixYearTotal: "₹42L",
     },
     {
       university: "ISM / IHSM — International Schools",
-      annualTuition: "USD 4,800–6,000",
-      sixYearTotal: "₹26–32L",
+      annualTuition: "Approx. ₹6.5L–₹8.5L/year",
+      sixYearTotal: "₹39–51L",
     },
   ],
   livingTableTitle: "Key yearly heads (indicative)",
@@ -563,7 +534,7 @@ export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
     {
       item: "Hostel",
       monthly: "—",
-      annual: "USD 1,200–1,800",
+      annual: "USD 500–800 annually",
     },
     {
       item: "Indian mess",
@@ -581,11 +552,11 @@ export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
   summaryLines: [
     {
       label: "Total 6-year cost range (indicative)",
-      value: "₹15L – ₹30L",
+      value: "₹28L – ₹51L",
     },
     {
       label: "Annual tuition range",
-      value: "USD 3,500–6,000",
+      value: "From ₹3.7L/year",
     },
     {
       label: "Monthly living cost",
@@ -593,7 +564,7 @@ export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
     },
   ],
   summaryTotalLabel: "TOTAL 6-YEAR PROGRAMME COST (EST.)",
-  summaryTotalValue: "₹15–30L",
+  summaryTotalValue: "₹28–51L",
   summaryFootnote:
     "Fees are approximate and subject to annual revision. All amounts calculated at prevailing USD/INR exchange rates. Indian mess costs an additional USD 1,500/year and is compulsory in Year 1 at most universities.",
 };
@@ -635,7 +606,7 @@ export const kyrgyzstanAbroadIntakePeriodContent: AbroadIntakePeriodContent = {
       { label: "Recommended Departure", value: "September" },
     ],
     footerNote:
-      "The main annual admission cycle for MBBS in Kyrgyzstan. All 10+ NMC-approved universities enrol international students in September. Applications open from April onwards — early applications are strongly recommended as seats fill up through July–August.",
+      "The main annual admission cycle for MBBS in Kyrgyzstan. All 14+ NMC-approved universities enrol international students in September. Applications open from April onwards — early applications are strongly recommended as seats fill up through July–August.",
   },
   secondaryCard: {
     icon: "❄️",
@@ -861,7 +832,7 @@ export const kyrgyzstanAbroadCompleteComparisonContent: AbroadCompleteComparison
       {
         parameter: "Total 6-Year Fee",
         indiaPrivate: "₹50L – ₹1.5 Crore",
-        featured: "₹15L – ₹30L",
+        featured: "₹28L – ₹51L",
         indiaGovt: "",
         bangladesh: "",
         philippines: "",
@@ -979,7 +950,7 @@ export const kyrgyzstanAbroadOurStoriesContent: AbroadOurStoriesContent = {
     {
       rating: 5,
       quote:
-        "I scored 435 in NEET and private colleges in Rajasthan wanted ₹70 lakh in donation. Taksheela showed me KSMA — NMC-approved, English medium, total cost under ₹25 lakhs. I've been in Bishkek for two years and the clinical training is genuinely strong. My family is relieved and I am on track.",
+        "I scored 435 in NEET and private colleges in Rajasthan wanted ₹70 lakh in donation. Taksheela showed me KSMA — NMC-approved, English medium, with a clear 6-year cost around ₹42 lakhs and no hidden donation. I've been in Bishkek for two years and the clinical training is genuinely strong. My family is relieved and I am on track.",
       name: "Priya Sharma",
       meta: "Year 2 · Kyrgyz State Medical Academy · Jaipur, Rajasthan",
       initial: "P",
@@ -1039,7 +1010,7 @@ export const kyrgyzstanAbroadAccommodationClimateContent: AbroadAccommodationCli
   hostel: {
     title: "Hostel Accommodation",
     bullets: [
-      "All NMC-approved Kyrgyz universities provide on-campus or closely affiliated hostel accommodation for international students at an annual cost of USD 1,200–1,800.",
+      "All major Kyrgyz universities provide on-campus or closely affiliated hostel accommodation for international students at an annual cost of about USD 500–800.",
       "Furnished rooms (2–4 students per room) with study tables, cupboards, and beds.",
       "Central heating — essential for Bishkek winters (standard in all hostels).",
       "Wi‑Fi connectivity across hostel and academic buildings.",
@@ -1125,12 +1096,12 @@ export const kyrgyzstanAbroadKeyFactsContent: AbroadKeyFactsContent = {
     },
     {
       icon: "💰",
-      value: "USD 3,500 – 6,000 per year",
+      value: "From ₹3.7L per year",
       label: "ANNUAL TUITION",
     },
     {
       icon: "🏠",
-      value: "USD 1,200 – 1,800 per year",
+      value: "USD 500 – 800 per year",
       label: "HOSTEL (ANNUAL)",
     },
     {
@@ -1239,7 +1210,7 @@ export const kyrgyzstanAbroadEducationLoanContent: AbroadEducationLoanContent = 
   eyebrow: "Education Loans",
   title: "How to Finance MBBS in Kyrgyzstan — Education Loan Guide",
   intro:
-    "MBBS in Kyrgyzstan qualifies for education loans from major Indian banks. The total cost of ₹15–30 lakhs makes loan repayment very manageable on a physician's income.",
+    "MBBS in Kyrgyzstan qualifies for education loans from major Indian banks. With total costs typically in the ₹28–51 lakh range, structured education-loan planning helps families manage payments comfortably over time.",
   nationalised: {
     title: "Nationalised Bank Loans (SBI, BoB, Canara)",
     description:
@@ -1569,7 +1540,7 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Oldest & most prestigious medical university in Kyrgyzstan",
     stats: [
       { label: "Annual tuition (USD)", value: "$4,200 – $5,000" },
-      { label: "Total 6-Yr (₹ approx.)", value: "₹22–27 Lakhs" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹42 Lakhs" },
       { label: "City", value: "Bishkek" },
       { label: "Type", value: "Government" },
     ],
@@ -1595,7 +1566,7 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "First private medical school in Kyrgyzstan; 750+ Indian students",
     stats: [
       { label: "Annual tuition (USD)", value: "$4,800 – $6,000" },
-      { label: "Total 6-Yr (₹ approx.)", value: "₹26–32 Lakhs" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹39–51 Lakhs" },
       { label: "City", value: "Bishkek" },
       { label: "Type", value: "Private" },
     ],
@@ -1620,8 +1591,8 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "70+ years legacy; largest university in southern Kyrgyzstan",
     stats: [
-      { label: "Annual tuition (USD)", value: "$3,500 – $4,500" },
-      { label: "Total 6-Yr (₹ approx.)", value: "₹19–24 Lakhs" },
+      { label: "Annual tuition (USD)", value: "$3,700 – $4,500" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹28–36 Lakhs" },
       { label: "City", value: "Osh" },
       { label: "Type", value: "Government" },
     ],
@@ -1647,7 +1618,7 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Strong FMGE-prep integration; multiple campuses",
     stats: [
       { label: "Annual tuition (USD)", value: "$4,500 – $5,500" },
-      { label: "Total 6-Yr (₹ approx.)", value: "₹24–29 Lakhs" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹39–51 Lakhs" },
       { label: "City", value: "Bishkek" },
       { label: "Type", value: "Private" },
     ],
@@ -1672,8 +1643,8 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Budget-friendly; quieter city with low living costs",
     stats: [
-      { label: "Annual tuition (USD)", value: "$3,500 – $4,200" },
-      { label: "Total 6-Yr (₹ approx.)", value: "₹18–22 Lakhs" },
+      { label: "Annual tuition (USD)", value: "$3,700 – $4,200" },
+      { label: "Total 6-Yr (₹ approx.)", value: "₹28–36 Lakhs" },
       { label: "City", value: "Jalal-Abad" },
       { label: "Type", value: "Government" },
     ],
@@ -1776,7 +1747,7 @@ export const kyrgyzstanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         university: "Osh State",
         city: "Osh",
         established: "1951",
-        annualFees: "$3,500 – $4,500",
+        annualFees: "From ₹3.7L/year",
         fmgeRate: "NMC Approved",
         bestFor: "70+ years legacy; largest university in southern Kyrgyzstan",
       },
@@ -1792,7 +1763,7 @@ export const kyrgyzstanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
         university: "Jalal-Abad State",
         city: "Jalal-Abad",
         established: "1993",
-        annualFees: "$3,500 – $4,200",
+        annualFees: "From ₹3.7L/year",
         fmgeRate: "NMC Approved",
         bestFor: "Budget-friendly; quieter city with low living costs",
       },
@@ -1849,7 +1820,7 @@ export const kyrgyzstanAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "What is the total cost of MBBS in Kyrgyzstan in INR?",
       answer:
-        "The total cost of a 6-year MBBS in Kyrgyzstan ranges from approximately ₹15 lakhs to ₹30 lakhs depending on the university. This includes annual tuition (USD 3,500–6,000/yr), hostel (USD 1,200–1,800/yr), and estimated living expenses (USD 120–150/month). Indian mess costs an additional USD 1,500/year and is compulsory in Year 1 at most universities.",
+        "The total cost of a 6-year MBBS in Kyrgyzstan generally ranges from approximately ₹28 lakhs to ₹51 lakhs depending on the university and city. Typical current benchmarks: Osh/Jalal-Abad State around ₹28–36L, KSMA around ₹42L, and ISM/IHSM around ₹39–51L. Annual fees start from about ₹3.7L, with hostel and living costs added on top.",
     },
     {
       question: "How many Indian students are currently studying in Kyrgyzstan?",
@@ -1913,16 +1884,16 @@ export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "💰",
     label: "Annual Tuition",
-    value: "USD 3,500 – 6,000 per year",
+    value: "From ₹3.7L per year",
     mLabel: "Tuition / yr",
-    mValue: "USD 3.5k–6k",
+    mValue: "From ₹3.7L",
   },
   {
     icon: "🏠",
     label: "Hostel (annual)",
-    value: "USD 1,200 – 1,800 per year",
+    value: "USD 500 – 800 per year",
     mLabel: "Hostel / yr",
-    mValue: "USD 1.2k–1.8k",
+    mValue: "USD 500–800",
   },
   {
     icon: "🧾",
@@ -1955,9 +1926,9 @@ export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "🏛️",
     label: "NMC-Approved Universities",
-    value: "10+ institutions",
+    value: "14+ institutions",
     mLabel: "NMC unis",
-    mValue: "10+",
+    mValue: "14+",
   },
   {
     icon: "🚫",
@@ -1980,11 +1951,11 @@ const kyrgyzstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "Lowest Total MBBS Cost in Central Asia",
     description:
-      "Total six-year programme costs start from ₹15 lakhs and rarely exceed ₹30 lakhs — including tuition, hostel, and living. This is 70% cheaper than private MBBS in India and far below European destinations.",
+      "Total six-year programme costs start from ₹28 lakhs and rarely exceed ₹51 lakhs — including tuition, hostel, and living. This is 70% cheaper than private MBBS in India and far below European destinations.",
   },
   {
     icon: "✅",
-    title: "10+ NMC, WHO & FAIMER Approved Universities",
+    title: "14+ NMC, WHO & FAIMER Approved Universities",
     description:
       "Kyrgyzstan offers one of the largest pools of NMC-compliant medical universities globally. All approved institutions are listed on WDOMS (FAIMER), enabling FMGE, NExT, USMLE, and PLAB eligibility after graduation.",
   },

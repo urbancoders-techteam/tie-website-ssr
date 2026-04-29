@@ -21,9 +21,9 @@ import {
 interface Filters {
   country?: string[];
   pursue?: string;
-  year?: string[];
-  intake?: string[];
-  duration?: string[];
+  year?: string | string[];
+  intake?: string | string[];
+  duration?: string | string[];
   tutionfee?: string | number;
   courses?: string;
   admission?: string[];
@@ -42,18 +42,30 @@ const steps = [
   "Field of Study",
   "Prerequisites",
 ];
+const UNIVERSITY_FINDER_LIMIT = 12;
 
 /** Same shape as FilterComponent handleApplyFilter — used for sessionStorage + view page filters */
+function normalizeToArray(value: string | string[] | undefined): string[] {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  if (typeof value === "string" && value.trim()) return [value.trim()];
+  return [];
+}
+
 function buildFilterPayloadFromFilters(filters: Filters): Record<string, unknown> {
+  const selectedCourse = typeof filters.courses === "string" ? filters.courses.trim() : "";
+  const selectedYears = normalizeToArray(filters.year);
+  const selectedDurations = normalizeToArray(filters.duration);
+  const selectedIntakes = normalizeToArray(filters.intake);
+
   const filterPayload: Record<string, unknown> = {
     type: "filter",
-    courses: filters.courses || "",
+    courses: selectedCourse,
   };
   if (filters.country?.length) filterPayload.countryId = filters.country;
   if (filters.pursue) filterPayload.pursue = filters.pursue;
-  if (filters.year?.length) filterPayload.year = filters.year;
-  if (filters.duration?.length) filterPayload.duration = filters.duration;
-  if (filters.intake?.length) filterPayload.intake = filters.intake;
+  if (selectedYears.length) filterPayload.year = selectedYears;
+  if (selectedDurations.length) filterPayload.duration = selectedDurations;
+  if (selectedIntakes.length) filterPayload.intake = selectedIntakes;
   if (filters.tutionfee != null && filters.tutionfee !== "" && Number(filters.tutionfee) > 0) {
     filterPayload.tutionFee = String(filters.tutionfee);
   }
@@ -99,7 +111,7 @@ const UniversityFinder: React.FC = () => {
   const validateStep = (): boolean => {
     switch (activeStep) {
       case 1:
-        if (!filters.courses) {
+        if (!filters.courses || !filters.courses.trim()) {
           toast.error("Please select a field of interest");
           setIsSubmitting(false);
           return false;
@@ -113,18 +125,23 @@ const UniversityFinder: React.FC = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
+      const selectedCourse = typeof filters.courses === "string" ? filters.courses.trim() : "";
+      const selectedYears = normalizeToArray(filters.year);
+      const selectedDurations = normalizeToArray(filters.duration);
+      const selectedIntakes = normalizeToArray(filters.intake);
+
       const payload: Record<string, any> = {
         type: "submit",
         name: filters.name || "",
         phone: filters.phone || "",
         email: filters.email || "",
-        courses: filters.courses || "",
+        ...(selectedCourse && { courses: selectedCourse }),
         ...(filters.country && { countryId: filters.country }),
         ...(filters.pursue && { pursue: filters.pursue }),
-        ...(filters.year && { year: filters.year }),
+        ...(selectedYears.length && { year: selectedYears }),
         ...(filters.tutionfee && { tutionFee: filters.tutionfee }),
-        ...(filters.duration && { duration: filters.duration }),
-        ...(filters.intake && { intake: filters.intake }),
+        ...(selectedDurations.length && { duration: selectedDurations }),
+        ...(selectedIntakes.length && { intake: selectedIntakes }),
         ...(filters.admission && { admissionRequirement: filters.admission }),
         ...(filters.scholarship && {
           scholarAvailability: filters.scholarship,
@@ -134,7 +151,7 @@ const UniversityFinder: React.FC = () => {
         }),
       };
 
-      const res = await fetch(`${baseUrl}university/universityFilter?page=1&limit=3`, {
+      const res = await fetch(`${baseUrl}university/universityFilter?page=1&limit=${UNIVERSITY_FINDER_LIMIT}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -147,7 +164,7 @@ const UniversityFinder: React.FC = () => {
         const inner = data?.data;
         const totalCount = inner?.count ?? 0;
         const apiTotalPages = inner?.totalPages ?? 0;
-        const pages = deriveTotalPages(totalCount, apiTotalPages, 3);
+        const pages = deriveTotalPages(totalCount, apiTotalPages, UNIVERSITY_FINDER_LIMIT);
 
         sessionStorage.setItem("formattedData", JSON.stringify(data.data.data));
         sessionStorage.setItem("filterData", JSON.stringify(filterPayload));
@@ -221,16 +238,16 @@ const UniversityFinder: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-12">{renderStepContent(activeStep)}</div>
+      <div>{renderStepContent(activeStep)}</div>
       <ContainerWrapper>
-        <div className="flex justify-between items-center py-6">
+        <div className="flex justify-between items-center">
           <button
             onClick={handleBack}
             disabled={activeStep === 0}
-            className={`px-4 py-2 rounded text-white ${
+            className={`px-4 py-2 rounded font-bold text-white ${
               activeStep === 0
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-[#00999E]"
+                : "bg-[#00999E] cursor-pointer"
             }`}
           >
             {` <---- Previous`}
@@ -240,7 +257,9 @@ const UniversityFinder: React.FC = () => {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="px-4 py-2 rounded bg-[#00999E] text-white hover:bg-[#007b8f]"
+              className={`px-4 py-2 rounded font-bold bg-[#00999E] text-white hover:bg-[#007b8f] ${
+                isSubmitting ? "cursor-not-allowed opacity-80" : "cursor-pointer"
+              }`}
               
             >
               {isSubmitting ? "Submitting..." : "Submit"}
@@ -249,7 +268,9 @@ const UniversityFinder: React.FC = () => {
             <button
               onClick={handleNext}
               disabled={isSubmitting}
-              className="px-4 py-2 rounded bg-[#00999E] text-white hover:bg-[#007b8f]"
+              className={`px-4 py-2 font-bold rounded bg-[#00999E] text-white hover:bg-[#007b8f] ${
+                isSubmitting ? "cursor-not-allowed opacity-80" : "cursor-pointer"
+              }`}
             >
               {isSubmitting ? "Loading..." : "Next ---->"}
             </button>

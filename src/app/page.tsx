@@ -1,19 +1,28 @@
-
 import Banner from "@/components/home/Banner";
-import Blogs from "@/components/home/Blogs";
-import DownloadBrochure from "@/components/home/DownloadBrochure";
-import FreeCounsellingBanner from "@/components/home/FreeCouncellingBanner";
+import HomeCounter from "@/components/home/HomeCounter";
+// import FreeCounsellingBanner from "@/components/home/FreeCouncellingBanner";
 import OurServices from "@/components/home/OurServices";
+import TrustTaksheela from "@/components/home/TrustTaksheela";
+import MedicalEducation from "@/components/home/MedicalEducation";
+import GlobalDegree from "@/components/home/GlobalDegree";
 import TaksheelaEdge from "@/components/home/TaksheelaEdge";
-import TaksheelaInsights from "@/components/home/TaksheelaInsights";
-import Testimonial from "@/components/home/Testimonials";
-import WebinarEvent from "@/components/home/Webinar";
+import WhereYouAre from "@/components/home/WhereYouAre";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
-// Ensure the home page isn't statically cached.
-// The API returns pre-signed S3 image URLs with short expiry,
-// so caching can render already-expired signatures after deploy.
-export const dynamic = "force-dynamic";
+const Testimonial = dynamic(() => import("@/components/home/Testimonials"));
+const GlobalReach = dynamic(() => import("@/components/home/GlobalReach"));
+const GlobalImmersionHome = dynamic(() => import("@/components/home/GlobalImmersionHome"));
+const TestPrepSectionHome = dynamic(() => import("@/components/home/TestPrepSectionHome"));
+const FAQHome = dynamic(() => import("@/components/home/FAQHome"));
+const BookCouncilBanner = dynamic(() => import("@/components/BookCouncilBanner"));
+// const TaksheelaInsights = dynamic(() => import("@/components/home/TaksheelaInsights"));
+const WebinarEvent = dynamic(() => import("@/components/home/Webinar"));
+const DownloadBrochure = dynamic(() => import("@/components/home/DownloadBrochure"));
+const Blogs = dynamic(() => import("@/components/home/Blogs"));
+
+// Cache the route output for short windows to improve TTFB while staying fresh.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Best Study Abroad & Test Prep Experts | Taksheela Institute",
@@ -71,13 +80,25 @@ export default function Page() {
       <h4 className="sr-only">Contact Us for a Free Consultation</h4>
 
       <Banner />
+      <HomeCounter />
       <OurServices />
-      <FreeCounsellingBanner />
+      <GlobalReach />
+      <MedicalEducation />
+      <GlobalImmersionHome />
+      <TestPrepSectionHome />
+      <TrustTaksheela />
+      <GlobalDegree />
       <TaksheelaEdge />
-      <TaksheelaInsights />
-      <DownloadBrochure />
+      <WhereYouAre />
+      <FAQHome />
+      <BookCouncilBanner
+        redirectPath="/thankyou"
+        description="Book your FREE counselling session today. 5,000+ students did — and never looked back."
+      />
       <Testimonial />
+      {/* <TaksheelaInsights /> */}
       <WebinarEvent />
+      <DownloadBrochure />
       <Blogs />
     </>
   );

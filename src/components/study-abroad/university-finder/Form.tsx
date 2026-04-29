@@ -82,13 +82,17 @@ const FormComponent: React.FC<FormComponentProps> = ({
             {/* Phone */}
             <div>
               <Field
-                type="text"
+                type="tel"
                 name="phone"
                 placeholder="Phone"
                 maxLength={10}
+                inputMode="numeric"
+                pattern="[0-9]*"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const digitsOnly = e.target.value.replace(/\D/g, "");
+                  e.target.value = digitsOnly;
                   handleChange(e);
-                  setFilters({ ...filters, phone: e.target.value });
+                  setFilters({ ...filters, phone: digitsOnly });
                 }}
                 onBlur={handleBlur}
                 value={values.phone}

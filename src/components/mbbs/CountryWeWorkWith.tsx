@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ContainerWrapper from "@/components/ContainerWrapper";
+import ModalTrigger from "@/components/ModalTrigger";
 import { countryData } from "@/constants/mbbs";
 
 type CountryCard = {
@@ -147,6 +148,23 @@ const countries: CountryCard[] = [
   },
 ];
 
+const readMoreCountries = new Set([
+  "Russia",
+  "Georgia",
+  "Uzbekistan",
+  "Kazakhstan",
+  "Kyrgyzstan",
+]);
+
+const priorityOrder = ["Russia", "Georgia", "Uzbekistan", "Kazakhstan", "Kyrgyzstan"];
+
+const orderedCountries = [
+  ...priorityOrder
+    .map((countryName) => countries.find((item) => item.country === countryName))
+    .filter((item): item is CountryCard => Boolean(item)),
+  ...countries.filter((item) => !priorityOrder.includes(item.country)),
+];
+
 function CountryCardBody({ item }: { item: CountryCard }) {
   return (
     <>
@@ -176,10 +194,6 @@ function CountryCardBody({ item }: { item: CountryCard }) {
           </span>
         ))}
       </div>
-
-      <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
-        Read More →
-      </span>
     </>
   );
 }
@@ -206,29 +220,73 @@ export default function CountryWeWorkWith() {
           {/* Mobile + tablet slider */}
           <div className="lg:hidden mt-10 -mx-1 px-1 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex gap-4 pb-1">
-              {countries.map((item) => (
-                <Link
-                  key={item.code}
-                  href={item.href}
-                  className={`snap-start shrink-0 w-[85%] sm:w-[60%] block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass}`}
-                >
-                  <CountryCardBody item={item} />
-                </Link>
-              ))}
+              {orderedCountries.map((item) => {
+                const isReadMore = readMoreCountries.has(item.country);
+                const cardClass = `snap-start shrink-0 w-[85%] sm:w-[60%] rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass} flex h-full flex-col`;
+
+                if (isReadMore) {
+                  return (
+                    <Link key={item.code} href={item.href} className={cardClass}>
+                      <div className="flex-1">
+                        <CountryCardBody item={item} />
+                      </div>
+                      <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
+                        Read More →
+                      </span>
+                    </Link>
+                  );
+                }
+
+                return (
+                  <div key={item.code} className={cardClass}>
+                    <div className="flex-1">
+                      <CountryCardBody item={item} />
+                    </div>
+                    <ModalTrigger
+                      variant="custom"
+                      className="inline-flex mt-4 rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#007a7f]"
+                      text="Enquire now"
+                      aria-label={`Enquire now for ${item.country}`}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Laptop + desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-10">
-            {countries.map((item) => (
-              <Link
-                key={item.code}
-                href={item.href}
-                className={`block rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass}`}
-              >
-                <CountryCardBody item={item} />
-              </Link>
-            ))}
+            {orderedCountries.map((item) => {
+              const isReadMore = readMoreCountries.has(item.country);
+              const cardClass = `rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass} flex h-full flex-col`;
+
+              if (isReadMore) {
+                return (
+                  <Link key={item.code} href={item.href} className={cardClass}>
+                    <div className="flex-1">
+                      <CountryCardBody item={item} />
+                    </div>
+                    <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
+                      Read More →
+                    </span>
+                  </Link>
+                );
+              }
+
+              return (
+                <div key={item.code} className={cardClass}>
+                  <div className="flex-1">
+                    <CountryCardBody item={item} />
+                  </div>
+                  <ModalTrigger
+                    variant="custom"
+                    className="inline-flex mt-4 rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#007a7f]"
+                    text="Enquire now"
+                    aria-label={`Enquire now for ${item.country}`}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </ContainerWrapper>

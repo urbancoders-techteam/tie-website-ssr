@@ -44,6 +44,31 @@ export const navbarData = [
     ],
   },
   {
+    menu: { name: "MBBS", link: "/mbbs" },
+    subMenu: [
+      {
+        title: "Russia",
+        link: "/mbbs/abroad/russia",
+      },
+      {
+        title: "Georgia",
+        link: "/mbbs/abroad/georgia",
+      },
+      {
+        title: "Kazakhstan",
+        link: "/mbbs/abroad/kazakhstan",
+      },
+      {
+        title: "Kyrgyzstan",
+        link: "/mbbs/abroad/kyrgyzstan",
+      },
+      {
+        title: "Uzbekistan",
+        link: "/mbbs/abroad/uzbekistan",
+      },
+    ],
+  },
+  {
     menu: { name: "International Engagement", link: "/international-relation" },
     subMenu: [
       {
@@ -94,6 +119,14 @@ export const studyAbroadsubMenues = [
     title: "University Finder",
     link: `/study-abroad/university-finder`,
   },
+];
+
+export const mbbsSubMenues = [
+  { title: "Russia", link: "/mbbs/abroad/russia" },
+  { title: "Georgia", link: "/mbbs/abroad/georgia" },
+  { title: "Kazakhstan", link: "/mbbs/abroad/kazakhstan" },
+  { title: "Kyrgyzstan", link: "/mbbs/abroad/kyrgyzstan" },
+  { title: "Uzbekistan", link: "/mbbs/abroad/uzbekistan" },
 ];
 
 export const immersionSubMenues = [

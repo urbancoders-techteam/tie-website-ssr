@@ -54,8 +54,7 @@ export default function Page() {
     return <div className="p-10 text-red-500">Country not found</div>;
   }
 
-  const featuredCount = country.colleges?.length ?? 0;
-  const abroadCopy = getAbroadFullPageCopy(slugLower, featuredCount);
+  const abroadCopy = getAbroadFullPageCopy(slugLower);
   const overviewMediaSrc = getAbroadOverviewMediaSrc(slugLower);
 
   return (

@@ -129,17 +129,9 @@ export default function OverviewAbroad({ country, overview, mediaImageSrc }: Ove
               {view.paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
-            </div>
-
-            <div className="mt-7 max-w-[840px] rounded-2xl bg-[#0E4797] text-white px-5 py-5 md:px-6 md:py-5">
-              <p className="text-[15px] md:text-[17px] leading-[1.65]">
-                <span className="font-semibold">{view.officialLead}</span> {view.officialBefore}
-                <span className="font-semibold">{view.officialBold}</span>
-                {view.officialAfter}
-              </p>
-            </div>
+            </div>  
           </div>
-
+              
           <div className="pt-1">
             {mediaImageSrc ? (
               <Image

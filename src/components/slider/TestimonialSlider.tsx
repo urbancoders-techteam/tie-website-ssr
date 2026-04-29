@@ -1,61 +1,32 @@
-// app/components/TestimonialSlider.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import React from "react";
 import TestimonialCard from "../TestimonialCard";
-
-
-interface TestimonialData {
-  _id: string;
-  studentName: string;
-  studentImage: string;
-  course: string;
-  university: string;
-  paragraph: string;
-  rating: number;
-}
+import type { TestimonialViewModel } from "@/utils/testimonialWeb";
 
 interface Props {
-  testimonials: TestimonialData[];
+  testimonials: TestimonialViewModel[];
 }
 
-const TestimonialSlider = ({ testimonials }: Props) => {
-  const [windowWidth, setWindowWidth] = useState<number>(1200);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize(); 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: windowWidth < 768 ? 1 : 2,
-    slidesToScroll: 1,
-    arrows: windowWidth >= 1024,
-    autoplay: true,
-    autoplaySpeed: 2500,
-  };
+/** Native horizontal scroll — momentum on touch / two-finger trackpad; no carousel UI */
+export default function TestimonialSlider({ testimonials }: Props) {
+  const n = testimonials.length;
+  if (n === 0) return null;
 
   return (
-    <Slider {...settings}>
+    <div
+      role="region"
+      aria-label="Student testimonials"
+      className="testimonial-scroll-scroller flex w-full gap-5 overflow-x-auto overflow-y-hidden scroll-px-3 pb-2 sm:gap-6 sm:scroll-px-4 md:scroll-pl-6 md:scroll-pr-6"
+    >
       {testimonials.map((item) => (
-        <div key={item._id}>
-          <TestimonialCard
-            name={item.studentName}
-            icon={item.studentImage}
-            about={item.course}
-            university={item.university}
-            review={item.paragraph}
-            star={item.rating}
-          />
+        <div
+          key={item.id}
+          className="h-full w-[min(88vw,400px)] shrink-0 sm:w-[min(47%,400px)] lg:w-[min(31.5%,420px)]"
+        >
+          <TestimonialCard data={item} />
         </div>
       ))}
-    </Slider>
+    </div>
   );
-};
-
-export default TestimonialSlider;
+}

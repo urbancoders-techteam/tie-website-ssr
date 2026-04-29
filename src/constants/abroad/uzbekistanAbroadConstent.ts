@@ -33,14 +33,9 @@ export type AbroadHeroStatPair = {
   value: string;
 };
 
-export type AbroadHeroSpotlight = {
+export type AbroadHeroHighlightStat = {
   value: string;
-  caption: string;
-};
-
-export type AbroadHeroGridCard = {
-  value: string;
-  label: string;
+  subtitle: string;
 };
 
 /** Full hero payload — every visible string in the hero can be driven from here. */
@@ -52,12 +47,10 @@ export type AbroadHeroContent = {
   /** Truncate description to this length (default 260) */
   descriptionMaxLength?: number;
   cta: AbroadHeroCta;
-  /** Four cells in the bordered row (e.g. Total Fees, Duration, Medium, Intake) */
-  quickStats: [AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair, AbroadHeroStatPair];
-  /** Large highlighted stat on the right */
-  spotlight: AbroadHeroSpotlight;
-  /** Four smaller cards under the spotlight */
-  statGrid: [AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard, AbroadHeroGridCard];
+  /** Stats cells in the bordered row (e.g. Fees, Duration, Medium, Intake, Universities). */
+  quickStats: AbroadHeroStatPair[];
+  /** Highlight stat card shown above the register form in the right column. */
+  rightStat?: AbroadHeroHighlightStat;
 };
 
 export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
@@ -68,7 +61,7 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
     line3: "Where Ancient Scholarship Meets Modern Medicine",
   },
   description:
-    "Uzbekistan is Central Asia's fastest-rising destination for international medical education. NMC-approved, English-medium, zero donation — with fees starting at ₹2 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
+    "Uzbekistan is Central Asia's fastest-rising destination for international medical education. NMC-approved, English-medium, zero donation — with fees starting at ₹2.5 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
   descriptionMaxLength: 320,
   cta: {
     primaryText: "Book Free Counselling →",
@@ -76,34 +69,17 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
     secondaryHref: "#top-universities",
   },
   quickStats: [
-    { label: "Annual Fees From", value: "₹2L" },
+    { label: "Annual Fees From", value: "₹2.5L" },
     { label: "Program Duration", value: "6 Yrs" },
     { label: "NMC-Approved Unis", value: "5+" },
     { label: "Medium of Study", value: "English" },
+    { label: "Universities", value: "50+" },
   ],
-  spotlight: {
-    value: "₹19–45L",
-    caption: "Total 6-year program cost (indicative) · zero donation",
+  rightStat: {
+    value: " 7500+",
+    subtitle: "NMC-approved medical universities in Uzbekistan",
   },
-  statGrid: [
-    { value: "5+", label: "NMC-approved universities" },
-    { value: "$100–120", label: "Monthly living (est.)" },
-    { value: "7", label: "Medical institutes (MoH)" },
-    /** Last card value is replaced by `uzbekistanAbroadHeroFeaturedCount` when used from the page. */
-    { value: "6", label: "Featured Universities" },
-  ],
 };
-
-/** Merges live college count into the hero stat grid (Uzbekistan). */
-export function uzbekistanAbroadHeroFeaturedCount(
-  featuredCount: number,
-  base: AbroadHeroContent = uzbekistanAbroadHeroContent
-): AbroadHeroContent {
-  const count = String(featuredCount);
-  const next = [...base.statGrid] as AbroadHeroContent["statGrid"];
-  next[3] = { ...next[3], value: count };
-  return { ...base, statGrid: next };
-}
 
 // --- Overview section (OverviewAbroad) ---------------------------------------
 
@@ -372,7 +348,7 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Nepali Students",
       title: "Why Uzbekistan Works for Nepal Students",
       points: [
-        "English-medium MD with affordable total cost — often roughly NPR 28–70 lakh depending on university and city.",
+        "English-medium MD with affordable total cost — often roughly NPR 40-56 lakhs depending on university and city.",
         "Kathmandu document attestation support and NPR forex planning.",
         "Growing Nepali peer network in Tashkent and Samarkand for shared housing and NExT prep.",
         "Counselling covers both Nepal Medical Council and Indian NExT routes after graduation.",
@@ -389,7 +365,7 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
       title: "Why Uzbekistan Works for Bangladesh Students",
       points: [
         "DGME compliance documentation for return pathways — Taksheela verifies each intake.",
-        "Total cost roughly BDT 24–58 lakh; halal food widely available in major Uzbek cities.",
+        "Total cost roughly BDT 32-45 lakhs; halal food widely available in major Uzbek cities.",
         "Dhaka visa submission support and BDT forex planning.",
         "Bangladesh Medical and Dental Council rules apply for home-country practice.",
       ],
@@ -537,7 +513,7 @@ export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = 
   titlePrimary: "MBBS Uzbekistan Fees",
   titleAccent: "2026–27 — Complete Breakdown in Rupees",
   subtitle:
-    "Total cost of MBBS in Uzbekistan including tuition, hostel, food, and living — university-wise comparison for Indian students. For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT.",
+    "Total cost of MBBS in Uzbekistan including tuition, hostel, food, and living — university-wise comparison for Indian students. For Nepal: multiply ₹ by ~2.2 for NPR. For Bangladesh: multiply ₹ by ~1.8 for BDT.",
   tuitionTableTitle: "University tuition (indicative, USD → ₹ approx.)",
   tuitionColAnnual: "Annual tuition (USD)",
   tuitionColSixYear: "6-year total (₹ approx.)",
@@ -1959,16 +1935,16 @@ export const uzbekistanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
   {
     icon: "💰",
     label: "Annual Tuition",
-    value: "USD 2,300 – 3,500 per year",
+    value: "USD $2.5K-4K per year",
     mLabel: "Tuition / yr",
-    mValue: "USD 2.3–3.5K",
+    mValue: "USD 2.5–4K",
   },
   {
     icon: "🏠",
     label: "Hostel (annual)",
-    value: "USD 600 – 800 per year",
+    value: "USD 400 – 800 per year",
     mLabel: "Hostel",
-    mValue: "USD 600–800",
+    mValue: "USD 400–800",
   },
   {
     icon: "✅",
@@ -2012,7 +1988,7 @@ const uzbekistanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "Genuinely Affordable Fees — No Hidden Costs",
     description:
-      "Annual tuition starts at USD 2,300 (approx. ₹1.9 lakhs), making the 6-year total ₹19–45 lakhs — far below private MBBS in India. Government-funded universities keep costs structurally low year after year.",
+      "Annual tuition starts at USD $2.5K (approx. ₹2.5 lakhs), making the 6-year total ₹25-35 lakhs — far below private MBBS in India. Government-funded universities keep costs structurally low year after year.",
   },
   {
     icon: "✅",

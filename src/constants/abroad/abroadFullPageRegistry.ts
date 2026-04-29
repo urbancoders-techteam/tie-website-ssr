@@ -37,7 +37,7 @@ import {
   russiaAbroadEligibilityContent,
   russiaAbroadFaqPageContent,
   russiaAbroadFearsContent,
-  russiaAbroadHeroFeaturedCount,
+  russiaAbroadHeroContent,
   russiaAbroadIntakePeriodContent,
   russiaAbroadKeyFactsContent,
   russiaAbroadMbbsSyllabusContent,
@@ -63,7 +63,7 @@ import {
   georgiaAbroadEligibilityContent,
   georgiaAbroadFaqPageContent,
   georgiaAbroadFearsContent,
-  georgiaAbroadHeroFeaturedCount,
+  georgiaAbroadHeroContent,
   georgiaAbroadIntakePeriodContent,
   georgiaAbroadKeyFactsContent,
   georgiaAbroadMbbsSyllabusContent,
@@ -89,7 +89,7 @@ import {
   kazakhstanAbroadEligibilityContent,
   kazakhstanAbroadFaqPageContent,
   kazakhstanAbroadFearsContent,
-  kazakhstanAbroadHeroFeaturedCount,
+  kazakhstanAbroadHeroContent,
   kazakhstanAbroadIntakePeriodContent,
   kazakhstanAbroadKeyFactsContent,
   kazakhstanAbroadMbbsSyllabusContent,
@@ -115,7 +115,7 @@ import {
   uzbekistanAbroadEligibilityContent,
   uzbekistanAbroadFaqPageContent,
   uzbekistanAbroadFearsContent,
-  uzbekistanAbroadHeroFeaturedCount,
+  uzbekistanAbroadHeroContent,
   uzbekistanAbroadIntakePeriodContent,
   uzbekistanAbroadKeyFactsContent,
   uzbekistanAbroadMbbsSyllabusContent,
@@ -141,7 +141,7 @@ import {
   kyrgyzstanAbroadEligibilityContent,
   kyrgyzstanAbroadFaqPageContent,
   kyrgyzstanAbroadFearsContent,
-  kyrgyzstanAbroadHeroFeaturedCount,
+  kyrgyzstanAbroadHeroContent,
   kyrgyzstanAbroadIntakePeriodContent,
   kyrgyzstanAbroadKeyFactsContent,
   kyrgyzstanAbroadMbbsSyllabusContent,
@@ -189,9 +189,9 @@ export type AbroadFullPageCopy = {
   ctaBanner: AbroadCtaBannerContent;
 };
 
-function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
+function russiaFullPage(): AbroadFullPageCopy {
   return {
-    hero: russiaAbroadHeroFeaturedCount(featuredCount),
+    hero: withRegistryHeroMedia("russia", russiaAbroadHeroContent),
     overview: russiaAbroadOverviewContent,
     fears: russiaAbroadFearsContent,
     topUniversities: russiaAbroadTopUniversitiesContent,
@@ -218,9 +218,9 @@ function russiaFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
+function georgiaFullPage(): AbroadFullPageCopy {
   return {
-    hero: georgiaAbroadHeroFeaturedCount(featuredCount),
+    hero: withRegistryHeroMedia("georgia", georgiaAbroadHeroContent),
     overview: georgiaAbroadOverviewContent,
     fears: georgiaAbroadFearsContent,
     topUniversities: georgiaAbroadTopUniversitiesContent,
@@ -247,9 +247,9 @@ function georgiaFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
+function kazakhstanFullPage(): AbroadFullPageCopy {
   return {
-    hero: kazakhstanAbroadHeroFeaturedCount(featuredCount),
+    hero: withRegistryHeroMedia("kazakhstan", kazakhstanAbroadHeroContent),
     overview: kazakhstanAbroadOverviewContent,
     fears: kazakhstanAbroadFearsContent,
     topUniversities: kazakhstanAbroadTopUniversitiesContent,
@@ -276,9 +276,9 @@ function kazakhstanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
+function uzbekistanFullPage(): AbroadFullPageCopy {
   return {
-    hero: uzbekistanAbroadHeroFeaturedCount(featuredCount),
+    hero: withRegistryHeroMedia("uzbekistan", uzbekistanAbroadHeroContent),
     overview: uzbekistanAbroadOverviewContent,
     fears: uzbekistanAbroadFearsContent,
     topUniversities: uzbekistanAbroadTopUniversitiesContent,
@@ -305,9 +305,9 @@ function uzbekistanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-function kyrgyzstanFullPage(featuredCount: number): AbroadFullPageCopy {
+function kyrgyzstanFullPage(): AbroadFullPageCopy {
   return {
-    hero: kyrgyzstanAbroadHeroFeaturedCount(featuredCount),
+    hero: withRegistryHeroMedia("kyrgyzstan", kyrgyzstanAbroadHeroContent),
     overview: kyrgyzstanAbroadOverviewContent,
     fears: kyrgyzstanAbroadFearsContent,
     topUniversities: kyrgyzstanAbroadTopUniversitiesContent,
@@ -334,7 +334,7 @@ function kyrgyzstanFullPage(featuredCount: number): AbroadFullPageCopy {
   };
 }
 
-const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPageCopy> = {
+const FULL_PAGE_BY_SLUG: Record<string, () => AbroadFullPageCopy> = {
   russia: russiaFullPage,
   georgia: georgiaFullPage,
   kazakhstan: kazakhstanFullPage,
@@ -342,23 +342,37 @@ const FULL_PAGE_BY_SLUG: Record<string, (featuredCount: number) => AbroadFullPag
   kyrgyzstan: kyrgyzstanFullPage,
 };
 
+/** Hero media keyed by slug for full-layout abroad pages. */
+const ABROAD_HERO_MEDIA_SRC: Record<string, string> = {
+  russia: `${imageBaseUrl}mbbsCollege/russia/BgRussia-abroad.jpg`,
+  georgia: `${imageBaseUrl}mbbsCollege/georgia/BgGeorgia-abroad.jpg`,
+  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/BgKazakhstan-abroad.jpg`,
+  uzbekistan: `${imageBaseUrl}mbbsCollege/uzbekistan/BgUzbekistan-abroad.jpg`,
+  kyrgyzstan: `${imageBaseUrl}mbbsCollege/kyrgyzstan/BgKyrgystan-abroad.jpg`,
+};
+
+function withRegistryHeroMedia(slug: string, hero: AbroadHeroContent): AbroadHeroContent {
+  const backgroundImage = ABROAD_HERO_MEDIA_SRC[slug.toLowerCase()];
+  return backgroundImage ? { ...hero, backgroundImage } : hero;
+}
+
 /** Slugs that render the full abroad component stack (single source of truth with `FULL_PAGE_BY_SLUG`). */
 export const ABROAD_FULL_LAYOUT_SLUGS = new Set(Object.keys(FULL_PAGE_BY_SLUG));
 
 /** Resolves all section copy for a full-layout abroad page, or `null` if the slug has no bundle yet. */
-export function getAbroadFullPageCopy(slug: string, featuredCount: number): AbroadFullPageCopy | null {
+export function getAbroadFullPageCopy(slug: string): AbroadFullPageCopy | null {
   const key = slug.toLowerCase();
   const build = FULL_PAGE_BY_SLUG[key];
-  return build ? build(featuredCount) : null;
+  return build ? build() : null;
 }
 
-/** Optional hero/overview image path keyed by slug — extend when adding a country. */
+/** Optional overview image path keyed by slug — extend when adding a country. */
 const ABROAD_OVERVIEW_MEDIA_SRC: Record<string, string> = {
-  russia: `${imageBaseUrl}mbbsCollege/russia/campaign/universities/clg_images/mephi.jpg`,
-  georgia: `${imageBaseUrl}mbbsCollege/georgia/campaign/universities/clg_images/geomedi.jpg`,
-  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/university/knmu.jpg`,
-  uzbekistan: `${imageBaseUrl}mbbsCollege/uzbekistan/uz1.png`,
-  kyrgyzstan: `${imageBaseUrl}mbbsCollege/kyrgyzstan/ky1.png`,
+  russia: `${imageBaseUrl}mbbsCollege/russia/russia-overview.jpg`,
+  georgia: `${imageBaseUrl}mbbsCollege/georgia/georgia-overview.jpg`,
+  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/Kazakhstan-overview.jpg`,
+  uzbekistan: `${imageBaseUrl}mbbsCollege/uzbekistan/uzbekstan-overview.jpg`,
+  kyrgyzstan: `${imageBaseUrl}mbbsCollege/kyrgyzstan/kyrigistan-overview.jpg`,
 };
 
 export function getAbroadOverviewMediaSrc(slug: string): string | undefined {

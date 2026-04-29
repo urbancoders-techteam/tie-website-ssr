@@ -23,6 +23,7 @@ import {
 
 const UniversityView: React.FC = () => {
   const router = useRouter();
+  const UNIVERSITY_FINDER_LIMIT = 12;
 
   const [showMobileFilter, setShowMobileFilter] = useState(false);
 
@@ -35,9 +36,10 @@ const UniversityView: React.FC = () => {
   const [allShortlisted, setAllShortlisted] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
   const [count, setCount] = useState(0);
+  const [openUniversityId, setOpenUniversityId] = useState<string | null>(null);
 
   const [page, setPage] = useState(1);
-  const [limit] = useState(4);
+  const [limit] = useState(UNIVERSITY_FINDER_LIMIT);
   const [totalPages, setTotalPages] = useState(1);
 
   const scrollToTop = () => window.scrollTo({ top: 530, behavior: "smooth" });
@@ -73,6 +75,25 @@ const UniversityView: React.FC = () => {
     if (!hydrated) return;
     fetchFilteredData(page, limit);
   }, [hydrated, limit, page]);
+
+  useEffect(() => {
+    if (!universityData.length) {
+      setOpenUniversityId(null);
+      return;
+    }
+
+    setOpenUniversityId((prev) => {
+      if (prev && universityData.some((item) => item?._id === prev)) return prev;
+      return universityData[0]?._id ?? null;
+    });
+  }, [universityData]);
+
+  useEffect(() => {
+    document.body.style.overflow = showMobileFilter ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showMobileFilter]);
 
   const fetchFilteredData = async (pageNum: number, pageLimit: number) => {
     setIsLoader(true);
@@ -172,6 +193,11 @@ const UniversityView: React.FC = () => {
     );
   };
 
+  const handleAccordionToggle = (id: string) => {
+    // Allow the same button to both open and close the panel.
+    setOpenUniversityId((prev) => (prev === id ? null : id));
+  };
+
   const handleCompareClick = async () => {
     try {
       const res = await fetch(`${baseUrl}university/compareUniveristy`, {
@@ -197,81 +223,87 @@ const UniversityView: React.FC = () => {
     count === 0 ? 0 : Math.min((page - 1) * limit + 1, count);
   const rangeEnd = count === 0 ? 0 : Math.min(page * limit, count);
   const countLabel =
-    count === 1 ? "1 university found" : `${count} Courses found`;
+    count === 1 ? "1 Course found" : `${count} Courses found`;
 
   return (
     <>
       <UniversityFinderBanner />
       <BreadcrumbSchema />
-      <div className="bg-[#00999E] py-4 text-white font-semibold">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p>
-            {!hydrated ? (
-              <span className="opacity-90">Loading…</span>
-            ) : listLoading ? (
-              <span className="opacity-90">Updating results…</span>
-            ) : (
-              countLabel
-            )}
-          </p>
-          {!listLoading && count > 0 && totalPages > 1 && (
-            <p className="text-sm font-medium opacity-95">
-              Showing {rangeStart}–{rangeEnd} of {count}
+      <div className="sticky top-[120px] sm:top-[104px] md:top-[120px] z-[40]">
+        <div className="bg-[#00999E] py-4 text-white font-semibold">
+          <div className="mx-auto flex max-w-7xl flex-row items-center justify-between gap-4 px-4">
+            <p>
+              {!hydrated ? (
+                <span className="opacity-90">Loading…</span>
+              ) : listLoading ? (
+                <span className="opacity-90">Updating results…</span>
+              ) : (
+                countLabel
+              )}
             </p>
-          )}
+            {!listLoading && count > 0 && totalPages > 1 ? (
+              <p className="text-xs font-medium opacity-95 sm:text-sm">
+                Showing {rangeStart}–{rangeEnd} of {count}
+              </p>
+            ) : null}
+          </div>
+        </div>
+   
+
+        <div className="border-b border-[#00999E]/20 bg-white/95 backdrop-blur-sm">
+          <div className="mx-auto max-w-7xl px-4 py-2">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div className="flex flex-wrap items-center gap-2">
+                <ButtonComponent text="Back" width={100} onClick={handleBack} />
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-lg border border-[#00999E] px-3 py-2 text-sm font-semibold text-[#00999E] lg:hidden"
+                  onClick={() => setShowMobileFilter(true)}
+                >
+                  Filters
+                </button>
+              </div>
+
+              {compared.length > 0 ? (
+                <div className="flex flex-wrap items-center gap-2 rounded-xl border-2 border-[#00999E] bg-[#effdff] px-3 py-1.5 shadow-sm">
+                  <span className="text-sm font-medium sm:text-sm">
+                    {compared.length} university{compared.length > 1 ? "ies" : ""}{" "}
+                    added to compare
+                  </span>
+                  <ButtonComponent
+                    text="Compare"
+                    fontWeight="550"
+                    onClick={handleCompareClick}
+                  />
+                </div>
+              ) : null}
+
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox accent-[#00999E]"
+                    checked={allShortlisted}
+                    onChange={handleShortlistAll}
+                  />
+                  <span className="ml-2 md:text-md text-sm">Shortlist All</span>
+                </label>
+                <ButtonComponent
+                  text="Download"
+                  onClick={handleDownloadAll}
+                  backgroundColor={shortlisted.length === 0 ? "#c1c1c1" : "#00999E"}
+                  disabled={shortlisted.length === 0}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <ContainerWrapper>
-        <div className="flex justify-start gap-4 px-4 mt-4 ">
-          <ButtonComponent text="Back" width={100} onClick={handleBack} />
-        </div>
-
-        {compared.length > 0 && (
-          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#effdff] border-2 border-[#00999E] rounded-2xl shadow p-4 max-w-md w-full z-50 flex justify-between items-center">
-            <span className="text-sm font-medium">
-              {compared.length} university{compared.length > 1 ? "ies" : ""}{" "}
-              added to compare
-            </span>
-            <ButtonComponent
-              text="Compare"
-              fontWeight="550"
-              onClick={handleCompareClick}
-            />
-          </div>
-        )}
-
         <div className="px-4 py-4">
-          <div className="flex justify-end mb-4 gap-4">
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="form-checkbox accent-[#00999E]"
-                checked={allShortlisted}
-                onChange={handleShortlistAll}
-              />
-              <span className="ml-2 md:text-md text-sm">Shortlist All</span>
-            </label>
-            <ButtonComponent
-              text="Download"
-              onClick={handleDownloadAll}
-              backgroundColor={shortlisted.length === 0 ? "#c1c1c1" : "#00999E"}
-              disabled={shortlisted.length === 0}
-            />
-          </div>
-
-          <div className="flex flex-wrap justify-between gap-4 mt-12">
-            <button
-              type="button"
-              className="md:hidden w-full self-end px-4 py-2 bg-[#00999E] text-white text-sm rounded shadow"
-              onClick={() => setShowMobileFilter((prev) => !prev)}
-            >
-              {showMobileFilter ? "Hide Filters" : "Show Filters"}
-            </button>
-
-            <div
-              className={`flex-1 ${showMobileFilter ? "block" : "hidden"} md:block`}
-            >
+          <div className="mt-6 flex flex-col gap-4 lg:flex-row">
+            <div className="hidden lg:block lg:w-[320px] xl:w-[360px] shrink-0">
               <FilterComponent
                 setIsLoader={setIsLoader}
                 filterData={filterData}
@@ -280,7 +312,7 @@ const UniversityView: React.FC = () => {
               />
             </div>
 
-            <div className="flex-2 w-full">
+            <div className="w-full min-w-0 flex-1">
               {listLoading ? (
                 <div className="flex items-center justify-center py-8 text-gray-600">
                   <svg
@@ -321,28 +353,29 @@ const UniversityView: React.FC = () => {
                     onShortlist={() => handleShortlist(university._id)}
                     onDownload={() => handleDownload(university._id)}
                     isShortlisted={shortlisted.includes(university._id)}
+                    isOpen={openUniversityId === university._id}
+                    onToggle={() => handleAccordionToggle(university._id)}
                   />
                 ))
               )}
             </div>
           </div>
-
           {!listLoading && (totalPages > 1 || totalPages === 0) && (
-            <div className="flex flex-wrap justify-end items-center gap-2 mt-6">
+            <div className="mt-6 flex flex-wrap items-center justify-end gap-2">
               <button
                 type="button"
-                className="px-10 py-2 border rounded disabled:opacity-50 cursor-pointer bg-[#00999e] text-white hover:bg-[#00777A] text-sm"
+                className="rounded border bg-[#00999e] px-4 py-2 text-sm text-white cursor-pointer hover:bg-[#00777A] disabled:opacity-50 sm:px-8"
                 onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                 disabled={page <= 1 || totalPages === 0}
               >
                 Prev
               </button>
-              <span className="font-medium">
+              <span className="text-sm font-medium sm:text-base">
                 Page {page} of {totalPages}
               </span>
               <button
                 type="button"
-                className="px-10 py-2 border rounded disabled:opacity-50 cursor-pointer bg-[#00999e] text-white hover:bg-[#00777A] text-sm"
+                className="rounded border bg-[#00999e] px-4 py-2 text-sm text-white cursor-pointer hover:bg-[#00777A] disabled:opacity-50 sm:px-8"
                 onClick={() =>
                   setPage((prev) =>
                     totalPages <= 0
@@ -356,10 +389,45 @@ const UniversityView: React.FC = () => {
               </button>
             </div>
           )}
+
         </div>
 
         <LetsStart />
       </ContainerWrapper>
+
+      {showMobileFilter ? (
+        <div className="fixed inset-0 z-[1210] lg:hidden">
+          <button
+            type="button"
+            className="absolute inset-0 h-full w-full bg-black/40"
+            aria-label="Close filters drawer"
+            onClick={() => setShowMobileFilter(false)}
+          />
+          <div className="absolute inset-y-0 right-0 w-[92vw] max-w-[420px] bg-white shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+              <h2 className="text-base font-semibold text-slate-900">Filters</h2>
+              <button
+                type="button"
+                className="rounded-md px-2 py-1 text-sm font-semibold text-slate-600 hover:bg-slate-100"
+                onClick={() => setShowMobileFilter(false)}
+              >
+                Close
+              </button>
+            </div>
+            <div className="h-[calc(100vh-57px)] overflow-y-auto p-3">
+              <FilterComponent
+                setIsLoader={setIsLoader}
+                filterData={filterData}
+                onFilterChange={(result) => {
+                  handleFilterChange(result);
+                  setShowMobileFilter(false);
+                }}
+                limit={limit}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };

@@ -6,8 +6,7 @@ import axios from "axios";
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
 
-import DropdownComponent from "@/components/DropdownComponent";
-import TextField from "@/components/TextFiled";
+import CustomMultiSelectDropdown from "./CustomDropdown";
 import { baseUrl } from "@/utils/config";
 import {
   clearUniFinderMetaFromStorage,
@@ -23,6 +22,29 @@ interface FilterComponentProps {
   setIsLoader: (val: boolean) => void;
 }
 
+const parseStringArray = (value: unknown): string[] => {
+  if (Array.isArray(value)) return value.filter((item): item is string => typeof item === "string");
+  if (typeof value === "string" && value.trim()) {
+    return value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  return [];
+};
+
+const parseSingleSelect = (value: unknown): string[] => {
+  if (typeof value === "string" && value.trim()) return [value];
+  if (value != null && value !== "") return [String(value)];
+  return [];
+};
+
+const parseCourseText = (data: any): string => {
+  if (typeof data?.courses === "string" && data.courses.trim()) return data.courses.trim();
+  if (Array.isArray(data?.courses) && data.courses.length) return String(data.courses[0] ?? "").trim();
+  return "";
+};
+
 function parseFilterResponse(res: any, filterPayload: any): UniversityFilterResult {
   const inner = res?.data?.data;
   const list = inner?.data;
@@ -36,97 +58,68 @@ function parseFilterResponse(res: any, filterPayload: any): UniversityFilterResu
 
 const FilterComponent: React.FC<FilterComponentProps> = ({
   filterData,
-  limit = 3,
+  limit = 12,
   onFilterChange,
   setIsLoader,
 }) => {
   const [countries, setCountries] = useState<any[]>([]);
+  const [isCourseLoading, setIsCourseLoading] = useState(false);
 
   const [selectedCountry, setSelectedCountry] = useState<string[]>(
-    Array.isArray(filterData.countryId) ? filterData.countryId : []
+    parseStringArray(filterData.countryId)
   );
-  const [selectedPursue, setSelectedPursue] = useState<string>(
-    typeof filterData.pursue === "string" ? filterData.pursue : ""
+  const [selectedPursue, setSelectedPursue] = useState<string[]>(
+    parseStringArray(filterData.pursue)
   );
   const [selectedYear, setSelectedYear] = useState<string[]>(
-    Array.isArray(filterData.year) ? filterData.year : []
+    parseStringArray(filterData.year)
   );
   const [selectedDuration, setSelectedDuration] = useState<string[]>(
-    Array.isArray(filterData.duration) ? filterData.duration : []
+    parseStringArray(filterData.duration)
   );
   const [selectedIntake, setSelectedIntake] = useState<string[]>(
-    Array.isArray(filterData.intake) ? filterData.intake : []
+    parseStringArray(filterData.intake)
   );
-  const [selectedCourses, setSelectedCourses] = useState<string>(
-    typeof filterData.courses === "string" ? filterData.courses : ""
-  );
+  const [selectedCourses, setSelectedCourses] = useState<string>(parseCourseText(filterData));
   const [selectedScholarship, setSelectedScholarship] = useState<string[]>(
-    Array.isArray(filterData.scholarAvailability)
-      ? filterData.scholarAvailability
-      : []
+    parseStringArray(filterData.scholarAvailability)
   );
-  const [selectedQualification, setSelectedQualification] = useState<string>(
-    typeof filterData.highestQualification === "string"
-      ? filterData.highestQualification
-      : ""
+  const [selectedQualification, setSelectedQualification] = useState<string[]>(
+    parseStringArray(filterData.highestQualification)
   );
-  const [selectedFee, setSelectedFee] = useState<string>(() => {
-    const tf = filterData.tutionFee;
-    if (typeof tf === "string") return tf;
-    if (tf != null && tf !== "") return String(tf);
-    return "";
-  });
+  const [selectedFee, setSelectedFee] = useState<string[]>(parseSingleSelect(filterData.tutionFee));
   const [selectedAdmission, setSelectedAdmission] = useState<string[]>(
-    Array.isArray(filterData.admissionRequirement)
-      ? filterData.admissionRequirement
-      : []
+    parseStringArray(filterData.admissionRequirement)
   );
 
   useEffect(() => {
-    setSelectedCountry(
-      Array.isArray(filterData.countryId) ? filterData.countryId : []
-    );
-    setSelectedPursue(
-      typeof filterData.pursue === "string" ? filterData.pursue : ""
-    );
-    setSelectedYear(Array.isArray(filterData.year) ? filterData.year : []);
-    setSelectedDuration(
-      Array.isArray(filterData.duration) ? filterData.duration : []
-    );
-    setSelectedIntake(Array.isArray(filterData.intake) ? filterData.intake : []);
-    setSelectedCourses(
-      typeof filterData.courses === "string" ? filterData.courses : ""
-    );
-    setSelectedScholarship(
-      Array.isArray(filterData.scholarAvailability)
-        ? filterData.scholarAvailability
-        : []
-    );
-    setSelectedQualification(
-      typeof filterData.highestQualification === "string"
-        ? filterData.highestQualification
-        : ""
-    );
-    const tf = filterData.tutionFee;
-    setSelectedFee(
-      typeof tf === "string"
-        ? tf
-        : tf != null && tf !== ""
-          ? String(tf)
-          : ""
-    );
-    setSelectedAdmission(
-      Array.isArray(filterData.admissionRequirement)
-        ? filterData.admissionRequirement
-        : []
-    );
+    setSelectedCountry(parseStringArray(filterData.countryId));
+    setSelectedPursue(parseStringArray(filterData.pursue));
+    setSelectedYear(parseStringArray(filterData.year));
+    setSelectedDuration(parseStringArray(filterData.duration));
+    setSelectedIntake(parseStringArray(filterData.intake));
+    setSelectedCourses(parseCourseText(filterData));
+    setSelectedScholarship(parseStringArray(filterData.scholarAvailability));
+    setSelectedQualification(parseStringArray(filterData.highestQualification));
+    setSelectedFee(parseSingleSelect(filterData.tutionFee));
+    setSelectedAdmission(parseStringArray(filterData.admissionRequirement));
   }, [filterData]);
 
   useEffect(() => {
-    axios
-      .get(`${baseUrl}university/countryList`)
-      .then((res) => setCountries(res?.data?.data?.formattedData))
-      .catch(console.error);
+    const fetchFilterOptions = async () => {
+      try {
+        setIsCourseLoading(true);
+        const countryRes = await axios.get(`${baseUrl}university/countryList`);
+
+        setCountries(countryRes?.data?.data?.formattedData ?? []);
+      } catch (error) {
+        console.error("Error fetching filter options:", error);
+      } finally {
+        setIsCourseLoading(false);
+      }
+    };
+
+    fetchFilterOptions();
   }, []);
 
   const handleApplyFilter = () => {
@@ -135,19 +128,19 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
     const filterPayload: any = {
       type: "filter",
-      courses: selectedCourses || "",
     };
+    if (selectedCourses.trim()) filterPayload.courses = selectedCourses.trim();
     if (selectedCountry.length) filterPayload.countryId = selectedCountry;
-    if (selectedPursue) filterPayload.pursue = selectedPursue;
+    if (selectedPursue.length) filterPayload.pursue = selectedPursue;
     if (selectedYear.length) filterPayload.year = selectedYear;
     if (selectedDuration.length) filterPayload.duration = selectedDuration;
-    if (selectedFee) filterPayload.tutionFee = selectedFee;
+    if (selectedFee.length) filterPayload.tutionFee = selectedFee[0];
     if (selectedIntake.length) filterPayload.intake = selectedIntake;
     if (selectedAdmission.length)
       filterPayload.admissionRequirement = selectedAdmission;
     if (selectedScholarship.length)
       filterPayload.scholarAvailability = selectedScholarship;
-    if (selectedQualification)
+    if (selectedQualification.length)
       filterPayload.highestQualification = selectedQualification;
 
     const applyPage = 1;
@@ -192,14 +185,14 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     setIsLoader(true);
 
     setSelectedCountry([]);
-    setSelectedPursue("");
+    setSelectedPursue([]);
     setSelectedYear([]);
     setSelectedDuration([]);
     setSelectedIntake([]);
     setSelectedCourses("");
     setSelectedScholarship([]);
-    setSelectedQualification("");
-    setSelectedFee("");
+    setSelectedQualification([]);
+    setSelectedFee([]);
     setSelectedAdmission([]);
 
     const resetPage = 1;
@@ -253,40 +246,48 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
   return (
     <div className=" border-2 border-[#00999E] rounded-2xl bg-[#effdff] shadow">
-      <div className="flex items-center gap-2 p-4 text-black">
-        <Icon icon="mdi:filter" className="text-2xl" />
-        <h2 className="text-lg font-semibold">Filters</h2>
+      <div className="flex items-center justify-between p-4 text-black bg-[#00999E] rounded-t-2xl">
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:filter" className="text-2xl text-white" />
+          <h2 className="text-lg font-semibold text-white">Filters</h2>
+        </div>
+        <div>
+          <h3 className="font-semibold text-base sm:text-lg text-white">ELIGIBILITY</h3>
+        </div>
       </div>
-
-      <div className="bg-[#00999E] text-white p-4">
-        <h3 className="font-semibold text-lg">ELIGIBILITY</h3>
-      </div>
+ 
 
       <div className="p-5 space-y-4">
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Country"
           options={countries?.map((c) => ({ value: c._id, label: c.name }))}
-          value={selectedCountry}
-          onChange={(val) => setSelectedCountry(val as string[])}
-          multiSelect
+          selectedValues={selectedCountry}
+          onChange={(values) => setSelectedCountry(values)}
+          compact
+          isLoading={isCourseLoading}
+          loadingText="Loading filters..."
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Planning To Pursue"
           options={["Undergraduate", "Graduate", "PHD", "Certificate Program"]}
-          value={selectedPursue}
-          onChange={(val) => setSelectedPursue(val as string)}
+          selectedValues={selectedPursue}
+          onChange={(values) => setSelectedPursue(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Preferred Year"
           options={["2024", "2025", "2026", "2027", "2028", "2029"]}
-          value={selectedYear}
-          onChange={(val) => setSelectedYear(val as string[])}
-          multiSelect
+          selectedValues={selectedYear}
+          onChange={(values) => setSelectedYear(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Preferred Intake"
           options={[
             "Current Dec - Mar",
@@ -294,12 +295,13 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             "Aug - Nov",
             "Upcoming Dec - Mar",
           ]}
-          value={selectedIntake}
-          onChange={(val) => setSelectedIntake(val as string[])}
-          multiSelect
+          selectedValues={selectedIntake}
+          onChange={(values) => setSelectedIntake(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Preferred Duration"
           options={[
             "less than 1 Year",
@@ -307,18 +309,26 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             "3-4 year",
             "more than 4 year",
           ]}
-          value={selectedDuration}
-          onChange={(val) => setSelectedDuration(val as string[])}
-          multiSelect
+          selectedValues={selectedDuration}
+          onChange={(values) => setSelectedDuration(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <TextField
-          label="Field of Interest"
-          value={selectedCourses}
-          onChange={setSelectedCourses}
-        />
+        <div className="space-y-1">
+          <label className="block text-[13px] font-semibold text-[#1f2937]">
+            Field of Interest
+          </label>
+          <input
+            type="text"
+            value={selectedCourses}
+            onChange={(e) => setSelectedCourses(e.target.value)}
+            placeholder="Enter field of interest"
+            className="w-full rounded-lg border border-[#ced4da] bg-white px-3 py-2 text-sm text-[#1f2937] outline-none transition focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20"
+          />
+        </div>
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Tuition Fee (Optional)"
           options={[
             "0",
@@ -333,19 +343,24 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             "450000",
             "500000",
           ]}
-          value={selectedFee}
-          onChange={(val) => setSelectedFee(val as string)}
+          selectedValues={selectedFee}
+          onChange={(values) =>
+            setSelectedFee(values.length ? [values[values.length - 1]] : [])
+          }
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Admission Requirements"
           options={["PTE", "IELTS", "TOEFL", "DUOLINGO", "SAT", "GRE/GMAT"]}
-          value={selectedAdmission}
-          onChange={(val) => setSelectedAdmission(val as string[])}
-          multiSelect
+          selectedValues={selectedAdmission}
+          onChange={(values) => setSelectedAdmission(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Highest Qualification"
           options={[
             "Higher Secondary",
@@ -353,37 +368,45 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             "Graduate",
             "Certificate Program",
           ]}
-          value={selectedQualification}
-          onChange={(val) => setSelectedQualification(val as string)}
+          selectedValues={selectedQualification}
+          onChange={(values) => setSelectedQualification(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <DropdownComponent
+        <CustomMultiSelectDropdown
           label="Scholarship"
           options={[
             "Full Scholarships",
             "Partial Scholarships",
             "No Scholarships",
           ]}
-          value={selectedScholarship}
-          onChange={(val) => setSelectedScholarship(val as string[])}
-          multiSelect
+          selectedValues={selectedScholarship}
+          onChange={(values) => setSelectedScholarship(values)}
+          compact
+          placeholder="Select options"
         />
 
-        <button
-          type="button"
-          onClick={handleApplyFilter}
-          className="w-full mt-4 bg-[#00999E] text-white font-medium py-2 rounded cursor-pointer"
-        >
-          APPLY FILTER
-        </button>
+        <div className="flex w-full gap-4 mt-6">
+          <button
+            type="button"
+            onClick={handleResetFilter}
+            className="flex-1 border-2 border-[#00999E] text-[#00999E] font-semibold py-2 rounded-lg cursor-pointer bg-white transition-all duration-150 hover:bg-[#e5fafb] hover:border-[#007e81] hover:text-[#007e81] shadow-sm"
+            style={{ maxWidth: "50%" }}
+          >
+            Reset Filter
+          </button>
+          <button
+            type="button"
+            onClick={handleApplyFilter}
+            className="flex-1 bg-gradient-to-r from-[#0acdc1] to-[#00999E] text-white font-semibold py-2 rounded-lg cursor-pointer transition-all duration-150 hover:bg-[#007e81] shadow-md border-2 border-[#00999E] hover:from-[#00999E] hover:to-[#0acdc1]"
+            style={{ maxWidth: "50%" }}
+          >
+            Apply Filter
+          </button>
+        </div>
 
-        <button
-          type="button"
-          onClick={handleResetFilter}
-          className="w-full mt-2 text-[#00999E] border-2 border-[#00999E] font-medium py-2 rounded cursor-pointer"
-        >
-          RESET FILTER
-        </button>
+   
       </div>
     </div>
   );

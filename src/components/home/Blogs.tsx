@@ -1,22 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// app/components/Blogs.tsx
 import ContainerWrapper from "../ContainerWrapper";
-import HeadingTypography from "../Heading";
-import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { baseUrl } from "@/utils/config";
 import Link from "next/link";
-import BlogSlider from "../slider/BlogSlider";
-import { Metadata } from "next";
+import { MdChevronRight } from "react-icons/md";
 import { formatDate } from "@/utils/methods";
+import BlogsCarousel, { type BlogPostHome } from "./BlogsCarousel";
 
-export const metadata: Metadata = {
-  title: "Blogs & Newsletters - Taksheela Institute",
-  description:
-    "Explore insightful blogs and newsletters from Taksheela Institute on study abroad trends, academic news, student journeys, and global education updates.",
-};
+const TEAL = "#00999E";
+const TITLE = "#0B162C";
 
 // Don't cache: `item.image` is a pre-signed S3 URL with short expiry.
-// If we cache this fetch result, the page can render already-expired signatures.
 
 interface BlogData {
   image: string;
@@ -38,9 +31,7 @@ async function fetchBlogs(): Promise<BlogData[]> {
     });
 
     if (!res.ok) {
-      // 404 is a valid "no data" state for this section
       if (res.status === 404) return [];
-      // Avoid JSON.parse crashes when API returns plain text like "Not Found"
       const body = await res.text().catch(() => "");
       console.warn("Blog fetch failed", res.status, body);
       return [];
@@ -68,32 +59,54 @@ async function fetchBlogs(): Promise<BlogData[]> {
 }
 
 export default async function Blogs() {
-  const scrollData = await fetchBlogs();
-
+  const scrollData: BlogPostHome[] = await fetchBlogs();
 
   return (
-    <section id="blog-section" className="w-full py-12 bg-[#f9f9f9]">
+    <section id="blog-section" className="w-full bg-white py-12 md:py-16 lg:py-20">
       <ContainerWrapper>
-        <HeadingTypography textAlign="center" content="Blogs & Newsletters" />
-
         {scrollData.length > 0 ? (
-          <div className="mt-10 overflow-hidden">
-            <BlogSlider data={scrollData} />
-
-            <div className="flex justify-start mt-6">
-              <Link
-                href="https://blog.taksheela.com/"
-                target="_blank"
-                className="flex items-center text-[#00999e] font-semibold hover:underline"
-              >
-                More <ArrowForwardIosRoundedIcon className="ml-1" />
-              </Link>
+          <>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+              <div className="max-w-3xl">
+                <p
+                  className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.28em] sm:text-xs lg:text-left"
+                  style={{ color: TEAL }}
+                >
+                  <span className="opacity-70" aria-hidden>
+                    —
+                  </span>{" "}
+                  BLOGS & NEWSLETTERS{" "}
+                  <span className="opacity-70" aria-hidden>
+                    —
+                  </span>
+                </p>
+                <h2
+                  className="mt-3 text-balance text-center text-2xl font-bold leading-tight sm:text-3xl md:text-[1.85rem] lg:text-left lg:text-[2rem]"
+                  style={{ color: TITLE }}
+                >
+                  Latest Insights on Studying Abroad
+                </h2>
+              </div>
+              <div className="flex justify-center lg:justify-end lg:shrink-0">
+                <Link
+                  href="https://blog.taksheela.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-0.5 rounded-lg border-2 px-5 py-2.5 text-sm font-semibold transition hover:bg-[#00999E]/5 sm:text-base"
+                  style={{ borderColor: TEAL, color: TEAL }}
+                >
+                  View All
+                  <MdChevronRight className="h-5 w-5" aria-hidden />
+                </Link>
+              </div>
             </div>
-          </div>
+
+            <BlogsCarousel posts={scrollData} />
+          </>
         ) : (
-          <div className="text-center py-6">
-            <p className="text-gray-600 text-lg">
-              No Blogs or Newsletters available at the moment..!
+          <div className="py-10 text-center">
+            <p className="text-lg text-slate-600">
+              No blogs or newsletters available at the moment.
             </p>
           </div>
         )}
