@@ -8,6 +8,7 @@ import ContainerWrapper from "../ContainerWrapper";
 interface TestInfoProps {
   testInfo: {
     title: string;
+    h1?: string;
     content: string;
     image: string;
     cta: string;
@@ -24,11 +25,38 @@ const TestInfo: React.FC<TestInfoProps> = ({ testInfo }) => {
             <div className="text-center md:text-left">
               {/* Title & Content */}
               <div className="text-[20px] sm:text-[26px] md:text-[36px] text-gray-800 font-medium">
-                <h2 className="inline text-[#00999E] font-bold">
-                  {testInfo?.title}:&nbsp;
-                </h2>
-                <span
+                <h1
                   className="
+                        inline
+                        text-[#00999E]
+                        font-bold
+                        text-[20px]
+                        sm:text-[26px]
+                        md:text-[30px]
+                        lg:text-[30px]
+                        leading-snug
+  "
+                >
+                  {testInfo?.h1 ?? `${testInfo?.title}: `}
+                </h1>
+                {testInfo?.h1 ? (
+                  <p
+                    className="
+                        mt-3
+                        font-semibold
+                        text-[rgba(0,0,0,0.7)]
+                        text-[18px]
+                        sm:text-[22px]
+                        md:text-[24px]
+                        lg:text-[24px]
+                        leading-snug
+  "
+                  >
+                    {testInfo?.content}
+                  </p>
+                ) : (
+                  <span
+                    className="
                         font-semibold 
                         text-[rgba(0,0,0,0.7)] 
                         text-[20px] 
@@ -37,9 +65,10 @@ const TestInfo: React.FC<TestInfoProps> = ({ testInfo }) => {
                         lg:text-[30px] 
                         leading-snug  
   "
-                >
-                  {testInfo?.content}
-                </span>
+                  >
+                    {testInfo?.content}
+                  </span>
+                )}
               </div>
 
               {/* CTA Button */}

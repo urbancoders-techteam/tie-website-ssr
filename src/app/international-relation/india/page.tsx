@@ -4,15 +4,23 @@ import CoursesOffered from "@/components/internation-relation/CourseOffered";
 import UniversityCards from "@/components/internation-relation/IndianUniversity/UniversityCard";
 import WhyStudyInIndia from "@/components/internation-relation/IndianUniversity/WhyStudyInIndia";
 import TwoColumnContent from "@/components/TwoColumnContent";
+import { staticMetaDescriptions, staticMetaTitles } from "@/constants/metaDescriptions";
 import { imageBaseUrl } from "@/utils/config";
+import type { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: staticMetaTitles.internationalRelationIndia,
+  description: staticMetaDescriptions.internationalRelationIndia,
+};
 
 export default function page() {
   return (
     <>
       <BreadcrumbSchema />
       <TwoColumnContent
-        heading="Study In India"
+        heading="Study in India — Top Universities for International Students"
+        headingAs="h1"
         imageUrl={imageBaseUrl + "International-Relation/University/indian_culture.jpg"}
         reverse={true}
         description={

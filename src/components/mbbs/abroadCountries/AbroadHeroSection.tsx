@@ -22,6 +22,7 @@ type CollegeItem = {
 
 export type AbroadCountry = {
   title: string;
+  h1?: string;
   path: string;
   content?: string;
   aspectAndFacts?: AspectItem[];
@@ -209,6 +210,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
   const description = hero
     ? getShortDescription(hero.description, hero.descriptionMaxLength ?? 260)
     : getShortDescription(country.content ?? "");
+  const fallbackHeadline = country.h1 ?? `Study MBBS in ${country.title}`;
   const rightStat = hero?.rightStat ?? {
     value: "100000+",
     subtitle: `Students currently pursuing MBBS in ${country.title}`,
@@ -244,9 +246,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
                   {code} MBBS in {country.title} 2026-27 - Admissions Open
                 </p>
                 <h1 className={HEADLINE}>
-                  Study MBBS in {country.title}
-                  <span className="block text-[#FFD465] italic">Where Affordability Meets</span>
-                  <span className="block">Global Medical Excellence.</span>
+                  {fallbackHeadline}
                 </h1>
                 <p className={BODY}>{description}</p>
                 <div className={CTA_ROW}>

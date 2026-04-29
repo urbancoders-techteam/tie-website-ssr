@@ -193,6 +193,23 @@ const UniversityView: React.FC = () => {
     );
   };
 
+  const currentPageUniversityIds = universityData
+    .map((university) => university?._id)
+    .filter(Boolean);
+  const allCurrentPageCompared =
+    currentPageUniversityIds.length > 0 &&
+    currentPageUniversityIds.every((id) => compared.includes(id));
+
+  const handleCompareAll = () => {
+    setCompared((prev) => {
+      if (allCurrentPageCompared) {
+        return prev.filter((id) => !currentPageUniversityIds.includes(id));
+      }
+
+      return Array.from(new Set([...prev, ...currentPageUniversityIds]));
+    });
+  };
+
   const handleAccordionToggle = (id: string) => {
     // Allow the same button to both open and close the panel.
     setOpenUniversityId((prev) => (prev === id ? null : id));
@@ -264,16 +281,27 @@ const UniversityView: React.FC = () => {
                 </button>
               </div>
 
-              {compared.length > 0 ? (
-                <div className="flex flex-wrap items-center gap-2 rounded-xl border-2 border-[#00999E] bg-[#effdff] px-3 py-1.5 shadow-sm">
+              {!listLoading && currentPageUniversityIds.length > 0 && compared.length > 0 ? (
+                <div className="flex flex-wrap items-center gap-3 rounded-xl border-2 border-[#00999E] bg-[#effdff] px-3 py-1.5 shadow-sm">
+                  <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#0B162C]">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 cursor-pointer accent-[#00999E]"
+                      checked={allCurrentPageCompared}
+                      onChange={handleCompareAll}
+                    />
+                    Select All
+                  </label>
                   <span className="text-sm font-medium sm:text-sm">
-                    {compared.length} university{compared.length > 1 ? "ies" : ""}{" "}
-                    added to compare
+                    {compared.length} university
+                    {compared.length > 1 ? "ies" : ""} added to compare
                   </span>
                   <ButtonComponent
                     text="Compare"
                     fontWeight="550"
                     onClick={handleCompareClick}
+                    backgroundColor={compared.length === 0 ? "#c1c1c1" : "#00999E"}
+                    disabled={compared.length === 0}
                   />
                 </div>
               ) : null}

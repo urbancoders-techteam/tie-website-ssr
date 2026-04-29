@@ -14,6 +14,7 @@ export default function About({ item }: any) {
       window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
     }
   };
+  const heading = item?.h1 ?? item?.title;
 
   return (
     <section className="bg-[#effdff] text-[#525560] my-8">
@@ -32,7 +33,7 @@ export default function About({ item }: any) {
 
           {/* Title + HTML Description */}
           <div className="space-y-6">
-            <HeadingTypography content={item?.title} />
+            <HeadingTypography content={heading} as="h1" />
             <div
               className="text-lg leading-relaxed text-gray-700 space-y-4"
               dangerouslySetInnerHTML={{ __html: item?.content }}

@@ -195,6 +195,9 @@ const Cart = () => {
         )}
 
         <main className="flex-1 px-4 py-10">
+          <h1 className="text-2xl sm:text-4xl font-semibold text-[#00999e] text-center mb-8">
+            Almost There! Review Your Cart
+          </h1>
           {fetchLoading ? (
             <div className="flex justify-center items-center h-80">
               <div className="animate-spin h-8 w-8 border-4 border-t-transparent border-[#00999e] rounded-full"></div>

@@ -5,15 +5,21 @@ import { FlipCardBox } from "@/components/FlipcardBox";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import { indianCollegeData, indianEligibilityData } from "@/constants/mbbs";
+import { staticMetaDescriptions, staticMetaTitles } from "@/constants/metaDescriptions";
+import type { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 
-
+export const metadata: Metadata = {
+  title: staticMetaTitles.mbbsIndia,
+  description: staticMetaDescriptions.mbbsIndia,
+};
 
 export default function IndiaMBBS() {
   return (
     <>
      <BreadcrumbSchema />
+      <h1 className="sr-only">Top MBBS Colleges in India: Eligibility & Admissions</h1>
       <section className="bg-[#effdff] py-12 pt-10" id="indiaCriteria">
         <ContainerWrapper>
           <HeadingTypography

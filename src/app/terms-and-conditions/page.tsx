@@ -1,11 +1,12 @@
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import ContainerWrapper from '@/components/ContainerWrapper'
+import { staticMetaDescriptions, staticMetaTitles } from '@/constants/metaDescriptions';
 import { Metadata } from 'next';
 import React from 'react'
 
 export const metadata: Metadata = {
-  title: "Study Abroad Counselor& Test Prep Institute - Taksheela",
-  
+  title: staticMetaTitles.termsAndConditions,
+  description: staticMetaDescriptions.termsAndConditions,
 };
 
 export default function page() {
