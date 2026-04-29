@@ -29,6 +29,18 @@ function rowKeyForUniversity(u: University, index: number): string {
   return `compare-col-${index}`;
 }
 
+function formatArrayValue(raw: unknown[]) {
+  const values = raw
+    .map((item: unknown) =>
+      typeof item === "object" && item !== null && "name" in item
+        ? String((item as { name?: string }).name ?? "")
+        : String(item ?? "")
+    )
+    .filter(Boolean);
+
+  return values.join(", ") || "-";
+}
+
 const UniversityComparison: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -49,7 +61,7 @@ const fetchComparisonData = async (ids: string[]) => {
     const res = await fetch(`${baseUrl}university/compareUniveristy`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ids }), // 👈 now proper array
+      body: JSON.stringify({ ids }),
     });
 
     if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
@@ -62,7 +74,7 @@ const fetchComparisonData = async (ids: string[]) => {
   const details = [
     { label: "Country", key: "countryName" },
     { label: "Intake", key: "Intake" },
-    { label: "Courses", key: "Courses" },
+    { label: "Courses", key: "courses" },
     { label: "Tuition Fees", key: "TutionFee" },
     { label: "Language", key: "Language" },
     { label: "QS Ranking", key: "QSRanking" },
@@ -90,10 +102,10 @@ const fetchComparisonData = async (ids: string[]) => {
 
           {/* Table */}
           <div className="overflow-x-auto border-2 border-[#00999E] rounded-lg">
-            <table className="min-w-full border-collapse">
+            <table className="min-w-full border-separate border-spacing-0">
               <thead>
                 <tr className="bg-white border-b-2 border-[#00999E]">
-                  <th className="font-semibold text-lg px-4 py-3 border-r border-[#00999E] text-left">
+                  <th className="sticky left-0 z-20 min-w-[180px] bg-white px-4 py-3 text-left text-lg font-semibold shadow-[4px_0_8px_-6px_rgba(0,0,0,0.35)] after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#00999E]">
                     University Name
                   </th>
                   {universities.map((university, uIndex) => (
@@ -114,22 +126,17 @@ const fetchComparisonData = async (ids: string[]) => {
                       index % 2 === 0 ? "bg-[#effdff]" : "bg-white"
                     } border-b border-[#00999E]`}
                   >
-                    <td className="px-4 py-2 font-semibold border-r border-[#00999E] max-w-xs">
+                    <td
+                      className={`sticky left-0 z-10 min-w-[180px] px-4 py-2 font-semibold max-w-xs shadow-[4px_0_8px_-6px_rgba(0,0,0,0.35)] after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#00999E] ${
+                        index % 2 === 0 ? "bg-[#effdff]" : "bg-white"
+                      }`}
+                    >
                       {detail.label}
                     </td>
                     {universities.map((university, uIndex) => {
                       const raw = university[detail.key];
                       let value: string | number | null = Array.isArray(raw)
-                        ? raw
-                            .map((item: unknown) =>
-                              typeof item === "object" &&
-                              item !== null &&
-                              "name" in item
-                                ? String((item as { name?: string }).name ?? "")
-                                : String(item ?? "")
-                            )
-                            .filter(Boolean)
-                            .join(", ") || "-"
+                        ? formatArrayValue(raw)
                         : raw ?? "-";
 
                       if (detail.key === "TutionFee") {

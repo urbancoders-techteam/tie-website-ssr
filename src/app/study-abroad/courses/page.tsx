@@ -27,6 +27,9 @@ const SelectCourses: React.FC = () => {
   return (
     <ContainerWrapper className="py-12">
        <BreadcrumbSchema />
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-semibold text-[#00999e] text-center mb-8">
+          Explore Top Courses to Study Abroad
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center my-10">
           {universities.map((university) => (
             <div

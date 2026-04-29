@@ -12,7 +12,14 @@ import { OurTestData } from "@/constants/test";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-
+const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
+  gmat: "Score Higher on GMAT With Expert Test Prep",
+  gre: "Score Higher on the GRE with Expert Prep",
+  ilets: "Score High on IELTS with Taksheela's Test Coaching",
+  pte: "Score High in PTE with Taksheela's Expert Coaching",
+  sat: "Get SAT-Ready With Trusted Test Prep Team",
+  toefl: "Ace the TOEFL Exam with Expert Coaching",
+};
 
 export default function Page() {
   const { slug } = useParams<{ slug: string }>();
@@ -30,10 +37,17 @@ export default function Page() {
       </div>
     );
   }
+  const selectedDataWithSuggestedH1 = {
+    ...selectedData,
+    info: {
+      ...selectedData.info,
+      h1: SUGGESTED_H1_BY_SLUG[slug.toLowerCase()],
+    },
+  };
 
   return (
     <>
-      <TestInfo testInfo={selectedData?.info} />
+      <TestInfo testInfo={selectedDataWithSuggestedH1.info} />
       <BreadcrumbSchema />
       {/* Card Grid */}
       <ContainerWrapper className="py-12 text-center">

@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      {
+        source: "/info@taksheela.com",
+        destination: "/contact",
+        permanent: true,
+      },
       // Ensure trailing slash doesn't break – redirect /campaign/ to /campaign
       {
         source: "/mbbs/abroad/russia/campaign/",

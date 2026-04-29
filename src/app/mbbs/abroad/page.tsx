@@ -13,6 +13,9 @@ export default function Abroad() {
      <BreadcrumbSchema />
       <section id="abroadCriteria" className="py-12 pt-10">
         <ContainerWrapper>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-semibold text-[#00999e] text-center mb-4">
+            Study MBBS Abroad — Admissions, Eligibility & Guide
+          </h1>
           <HeadingTypography
             content="Eligibility Criteria for MBBS Abroad"
             textAlign="center"

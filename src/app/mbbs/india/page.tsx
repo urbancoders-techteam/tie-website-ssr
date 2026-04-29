@@ -14,6 +14,7 @@ export default function IndiaMBBS() {
   return (
     <>
      <BreadcrumbSchema />
+      <h1 className="sr-only">Top MBBS Colleges in India: Eligibility & Admissions</h1>
       <section className="bg-[#effdff] py-12 pt-10" id="indiaCriteria">
         <ContainerWrapper>
           <HeadingTypography

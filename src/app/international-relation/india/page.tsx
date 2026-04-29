@@ -12,7 +12,8 @@ export default function page() {
     <>
       <BreadcrumbSchema />
       <TwoColumnContent
-        heading="Study In India"
+        heading="Study in India — Top Universities for International Students"
+        headingAs="h1"
         imageUrl={imageBaseUrl + "International-Relation/University/indian_culture.jpg"}
         reverse={true}
         description={

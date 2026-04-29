@@ -40,6 +40,17 @@ import { useParams } from "next/navigation";
 import About from "@/components/immersion/immersion-slug/about";
 import ModalTrigger from "@/components/ModalTrigger";
 
+const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
+  australia: "Pursue MBBS in Australia — Top Universities & Costs",
+  bangladesh: "Pursue MBBS in Bangladesh: Eligibility, Fees & Colleges",
+  canada: "MBBS Abroad in Canada — Fees, Colleges & Eligibility",
+  germany: "Study MBBS in Germany — World-Class Medical Education",
+  nepal: "Study MBBS in Nepal: Top Colleges, Fees & Eligibility",
+  philippines: "Pursue MBBS in Philippines with Top Medical Colleges",
+  uk: "MBBS in the UK: Top Universities & Admission Guide",
+  usa: "MBBS in USA: Top Medical Universities & Eligibility",
+};
+
 export default function Page() {
   const params = useParams();
   const slug = params?.slug as string;
@@ -56,23 +67,27 @@ export default function Page() {
 
   const abroadCopy = getAbroadFullPageCopy(slugLower);
   const overviewMediaSrc = getAbroadOverviewMediaSrc(slugLower);
+  const countryWithSuggestedH1 = {
+    ...country,
+    h1: SUGGESTED_H1_BY_SLUG[slugLower],
+  };
 
   return (
     <>
       {abroadCopy ? (
         <>
-          <AbroadHeroSection country={country} hero={abroadCopy.hero} />
+          <AbroadHeroSection country={countryWithSuggestedH1} hero={abroadCopy.hero} />
 
           <OverviewAbroad
-            country={country}
+            country={countryWithSuggestedH1}
             overview={abroadCopy.overview}
             mediaImageSrc={overviewMediaSrc}
           />
-          <QuickFactsAbroad country={country} facts={abroadCopy.quickFacts} />
-          <CommonFearsSection country={country} fears={abroadCopy.fears} />
-          <WhyChooseMbbs country={country} content={abroadCopy.whyChooseMbbs} />
-          <EligibilityCriteraAbroad country={country} eligibility={abroadCopy.eligibility} />
-          <AdmissionProcessAbroad country={country} process={abroadCopy.admissionProcess} />
+          <QuickFactsAbroad country={countryWithSuggestedH1} facts={abroadCopy.quickFacts} />
+          <CommonFearsSection country={countryWithSuggestedH1} fears={abroadCopy.fears} />
+          <WhyChooseMbbs country={countryWithSuggestedH1} content={abroadCopy.whyChooseMbbs} />
+          <EligibilityCriteraAbroad country={countryWithSuggestedH1} eligibility={abroadCopy.eligibility} />
+          <AdmissionProcessAbroad country={countryWithSuggestedH1} process={abroadCopy.admissionProcess} />
           <TopTenUniversityAbroad content={abroadCopy.topUniversities} />
           <CostBreakdownAbroad content={abroadCopy.cost} />
           <ConsiderBeforeAbroad content={abroadCopy.consider} />
@@ -114,7 +129,7 @@ export default function Page() {
       ) : (
         <>
           <BreadcrumbSchema />
-          <About item={country} />
+          <About item={countryWithSuggestedH1} />
           <ContainerWrapper>
             <HeadingTypography content="Aspect & Facts" textAlign="center" />
             <div className="flex flex-wrap justify-center gap-5 text-center mt-10">
