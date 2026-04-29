@@ -2,6 +2,7 @@
 import "@/app/globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
+import Script from "next/script";
 import "leaflet/dist/leaflet.css";
 import CanonicalTag from "@/components/CanonicalTag";
 import CampaignGoogleAdsScripts from "@/components/campaign/CampaignGoogleAdsScripts";
@@ -41,6 +42,27 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
           rel="stylesheet"
         />
+
+        {/* This Script is the exclusive property of Website Speedy, Copyright © 2026. All rights reserved. */}
+        <Script
+          id="website-speedy-1"
+          type="text/javascript"
+          src="https://websitespeedycdn7.b-cdn.net/speedyscripts/ecmrx_13245/ecmrx_13245_1.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="website-speedy-2"
+          type="text/javascript"
+          src="https://websitespeedycdn7.b-cdn.net/speedyscripts/ecmrx_13245/ecmrx_13245_2.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="website-speedy-3"
+          type="text/javascript"
+          src="https://websitespeedycdn7.b-cdn.net/speedyscripts/ecmrx_13245/ecmrx_13245_3.js"
+          strategy="beforeInteractive"
+        />
+        {/* This Script is the exclusive property of Website Speedy, Copyright © 2026. All rights reserved. */}
 
         <CampaignGoogleAdsScripts />
       </head>
