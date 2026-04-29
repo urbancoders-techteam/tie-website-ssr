@@ -4,8 +4,14 @@ import CoursesOffered from "@/components/internation-relation/CourseOffered";
 import UniversityCards from "@/components/internation-relation/IndianUniversity/UniversityCard";
 import WhyStudyInIndia from "@/components/internation-relation/IndianUniversity/WhyStudyInIndia";
 import TwoColumnContent from "@/components/TwoColumnContent";
+import { staticMetaDescriptions } from "@/constants/metaDescriptions";
 import { imageBaseUrl } from "@/utils/config";
+import type { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  description: staticMetaDescriptions.internationalRelationIndia,
+};
 
 export default function page() {
   return (

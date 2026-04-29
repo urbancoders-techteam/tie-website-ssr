@@ -5,10 +5,14 @@ import { FlipCardBox } from "@/components/FlipcardBox";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import { indianCollegeData, indianEligibilityData } from "@/constants/mbbs";
+import { staticMetaDescriptions } from "@/constants/metaDescriptions";
+import type { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 
-
+export const metadata: Metadata = {
+  description: staticMetaDescriptions.mbbsIndia,
+};
 
 export default function IndiaMBBS() {
   return (

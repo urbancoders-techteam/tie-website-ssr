@@ -1,10 +1,12 @@
 
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import ContainerWrapper from "@/components/ContainerWrapper";
+import { staticMetaDescriptions } from "@/constants/metaDescriptions";
 import { Metadata } from "next";
 
  export const metadata: Metadata = {
   title: "Study Abroad Counselor& Test Prep Institute - Taksheela",
+  description: staticMetaDescriptions.refundPolicy,
 
 };
 const RefundPolicy = () => {
