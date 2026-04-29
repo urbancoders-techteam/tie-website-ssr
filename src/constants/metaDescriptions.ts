@@ -65,3 +65,44 @@ export const staticMetaDescriptions = {
   internationalRelationIndia:
     "Explore top universities in India - globally ranked, affordable and scholarship-friendly. Get admission guidance from Taksheela Institute of Education.",
 } as const;
+
+export const mbbsAbroadMetaTitles: Record<string, string> = {
+  australia: "MBBS in Australia | Taksheela Institute of Education",
+  bangladesh: "Study MBBS in Bangladesh | Taksheela Institute of Education",
+  canada: "MBBS in Canada | Top Medical Universities | Taksheela",
+  georgia: "Admission Guide for MBBS in Georgia | Taksheela Institute",
+  germany: "Study MBBS in Germany | Taksheela Institute of Education",
+  kazakhstan: "Study MBBS in Kazakhstan | Taksheela Institute of Education",
+  kyrgyzstan: "Study MBBS in Kyrgyzstan | Taksheela Institute of Education",
+  nepal: "MBBS in Nepal: Fees, Eligibility & Top Colleges | Taksheela",
+  philippines: "Study MBBS in Philippines | Taksheela Institute of Education",
+  russia: "MBBS in Russia Admission Guide | Taksheela Institute",
+  uk: "MBBS in United Kingdom | Taksheela Institute of Education",
+  usa: "MBBS in USA Consultants | Taksheela Institute of Education",
+  uzbekistan: "Study MBBS in Uzbekistan | Taksheela Institute of Education",
+};
+
+export const testMetaTitles: Record<string, string> = {
+  gmat: "GMAT Test Prep - Exam Structure, Content & Features",
+  gre: "GRE Test Training & Prep | Taksheela Institute of Education",
+  ielts: "IELTS Test Preparation | Taksheela Institute of Education",
+  pte: "PTE Test Preparation | Taksheela Institute of Education",
+  sat: "SAT Test Training & Prep | Taksheela Institute of Education",
+  toefl: "TOEFL Prep | Expert Coaching for Study Abroad | TIE",
+};
+
+export const immersionMetaTitles: Record<string, string> = {
+  europe: "Europe Immersion Programs | Study Abroad | Taksheela",
+  "middle-east": "Middle East Immersion Program | Taksheela Institute",
+  "south-east-asia": "Immersion Programs in South-East-Asia | Taksheela Institute",
+};
+
+export const staticMetaTitles = {
+  cart: "Cart | Study Abroad Counselling Services | Taksheela",
+  internationalRelationIndia: "Study in India | Affordable World-Class Education | TIE",
+  mbbsAbroad: "MBBS Abroad - UG & PG Programs, NMC Guidelines | Taksheela",
+  mbbsIndia: "MBBS in India | Top Colleges & Eligibility | Taksheela",
+  refundPolicy: "Refund Policy for Study Abroad Services | Taksheela",
+  studyAbroadCourses: "Study Abroad Courses | Taksheela Institute of Education",
+  termsAndConditions: "Terms and Conditions | Taksheela Institute of Education",
+} as const;

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { immersionMetaDescriptions } from "@/constants/metaDescriptions";
+import {
+  immersionMetaDescriptions,
+  immersionMetaTitles,
+} from "@/constants/metaDescriptions";
 
 type Props = {
   children: ReactNode;
@@ -9,9 +12,14 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const description = immersionMetaDescriptions[slug.toLowerCase()];
+  const slugKey = slug.toLowerCase();
+  const description = immersionMetaDescriptions[slugKey];
+  const title = immersionMetaTitles[slugKey];
 
-  return description ? { description } : {};
+  return {
+    ...(title ? { title } : {}),
+    ...(description ? { description } : {}),
+  };
 }
 
 export default function ImmersionSlugLayout({ children }: Props) {

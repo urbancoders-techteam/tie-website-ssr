@@ -6,10 +6,11 @@ import LetsStart from "@/components/immersion/LetsStart";
 import MbbsTabs from "@/components/mbbs/MbbsTabs";
 import Rules from "@/components/mbbs/Rules";
 import { abroadEligibilityAbroadData } from "@/constants/mbbs";
-import { staticMetaDescriptions } from "@/constants/metaDescriptions";
+import { staticMetaDescriptions, staticMetaTitles } from "@/constants/metaDescriptions";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  title: staticMetaTitles.mbbsAbroad,
   description: staticMetaDescriptions.mbbsAbroad,
 };
 

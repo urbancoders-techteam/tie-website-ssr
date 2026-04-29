@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { testMetaDescriptions } from "@/constants/metaDescriptions";
+import { testMetaDescriptions, testMetaTitles } from "@/constants/metaDescriptions";
 
 type Props = {
   children: ReactNode;
@@ -9,9 +9,14 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const description = testMetaDescriptions[slug.toLowerCase()];
+  const slugKey = slug.toLowerCase();
+  const description = testMetaDescriptions[slugKey];
+  const title = testMetaTitles[slugKey];
 
-  return description ? { description } : {};
+  return {
+    ...(title ? { title } : {}),
+    ...(description ? { description } : {}),
+  };
 }
 
 export default function TestSlugLayout({ children }: Props) {

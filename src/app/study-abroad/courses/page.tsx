@@ -1,8 +1,9 @@
 import SelectCoursesClient from "@/components/study-abroad/SelectCoursesClient";
-import { staticMetaDescriptions } from "@/constants/metaDescriptions";
+import { staticMetaDescriptions, staticMetaTitles } from "@/constants/metaDescriptions";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  title: staticMetaTitles.studyAbroadCourses,
   description: staticMetaDescriptions.studyAbroadCourses,
 };
 
