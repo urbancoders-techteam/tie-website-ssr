@@ -1,5 +1,4 @@
 import RussiaCampaignContent from "@/components/campaign/russia/RussiaCampaignPage";
-import CampaignGoogleAdsScripts from "@/components/campaign/CampaignGoogleAdsScripts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,10 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RussiaCampaignPage() {
-  return (
-    <>
-      <CampaignGoogleAdsScripts />
-      <RussiaCampaignContent />
-    </>
-  );
+  return <RussiaCampaignContent />;
 }
