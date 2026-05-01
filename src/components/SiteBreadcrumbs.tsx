@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BREADCRUMB_SEGMENT_LABELS } from "@/constants/breadcrumbSegmentLabels";
 
 /** Known path segments → display labels (SEO/nav friendly, not raw slugs). */
 const SEGMENT_LABELS: Record<string, string> = {
@@ -37,6 +38,7 @@ const SEGMENT_LABELS: Record<string, string> = {
 function labelForSegment(segment: string): string {
   const key = segment.toLowerCase();
   if (SEGMENT_LABELS[key]) return SEGMENT_LABELS[key];
+  if (BREADCRUMB_SEGMENT_LABELS[key]) return BREADCRUMB_SEGMENT_LABELS[key];
   const decoded = decodeURIComponent(segment);
   return decoded
     .split("-")

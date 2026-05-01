@@ -15,7 +15,7 @@ import { useParams } from "next/navigation";
 const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
   gmat: "Score Higher on GMAT With Expert Test Prep",
   gre: "Score Higher on the GRE with Expert Prep",
-  ilets: "Score High on IELTS with Taksheela's Test Coaching",
+  ielts: "Score High on IELTS with Taksheela's Test Coaching",
   pte: "Score High in PTE with Taksheela's Expert Coaching",
   sat: "Get SAT-Ready With Trusted Test Prep Team",
   toefl: "Ace the TOEFL Exam with Expert Coaching",

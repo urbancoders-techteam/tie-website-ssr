@@ -59,8 +59,8 @@ const testexam4 = imageBaseUrl + "testexam4.svg";
 
 export const OurTestData = [
   {
-    title: "ILETS",
-    path: "/test/ilets",
+    title: "IELTS",
+    path: "/test/ielts",
     image: "/images/ielts.svg",
     info: {
       title: "IELTS",

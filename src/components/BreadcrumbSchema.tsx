@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { BREADCRUMB_SEGMENT_LABELS } from "@/constants/breadcrumbSegmentLabels";
 
 const BreadcrumbSchema = () => {
   const pathname = usePathname();
@@ -16,9 +17,12 @@ const BreadcrumbSchema = () => {
     },
     ...segments.map((segment, index) => {
       const url = `${baseUrl}/${segments.slice(0, index + 1).join("/")}`;
-      const name = decodeURIComponent(segment)
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (c) => c.toUpperCase());
+      const key = decodeURIComponent(segment).toLowerCase();
+      const name =
+        BREADCRUMB_SEGMENT_LABELS[key] ??
+        decodeURIComponent(segment)
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase());
       return {
         "@type": "ListItem",
         position: index + 2,

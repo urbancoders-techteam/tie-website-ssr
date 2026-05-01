@@ -9,7 +9,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const slugKey = slug.toLowerCase();
+  const slugLower = slug.toLowerCase();
+  const slugKey = slugLower as keyof typeof testMetaDescriptions;
   const description = testMetaDescriptions[slugKey];
   const title = testMetaTitles[slugKey];
 
