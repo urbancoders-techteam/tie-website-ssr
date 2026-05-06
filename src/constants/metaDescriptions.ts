@@ -52,6 +52,8 @@ export const immersionMetaDescriptions: Record<string, string> = {
 };
 
 export const staticMetaDescriptions = {
+  cart:
+    "Review your cart at Taksheela Institute of Education. Enroll in study abroad or MBBS programs and move closer to your international education dream.",
   mbbsAbroad:
     "Explore MBBS abroad with Taksheela Institute. Get expert guidance on top countries, eligibility, fees, and admissions for a successful medical career overseas.",
   mbbsIndia:
