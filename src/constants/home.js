@@ -439,6 +439,104 @@ export const globalImmersionHome = {
   ],
 };
 
+/** Study in India — home grid card images (S3). Filenames match bucket objects. */
+const studyInIndiaImagesBaseUrl =
+  "https://tied-web-bkt.s3.ap-south-1.amazonaws.com/study-in-india/";
+
+/** Home — Study in India (SAARC) — cards use `ProgramCard` (grid). */
+export const studyInIndiaHome = {
+  eyebrow: "FOR SAARC STUDENTS",
+  titleBefore: "Taksheela ",
+  titleHighlight: "Study in India",
+  titleAfter: " Program",
+  description:
+    "Structured pathways for South Asian students to pursue degrees and exchange opportunities at Indian universities — with admissions guidance, documentation support, visa counselling and on-campus liaison through Taksheela’s institutional network.",
+  programs: [
+    {
+      id: "saarc-af",
+      duration: "AF",
+      countryCode: "AF",
+      countryName: "Afghanistan",
+      description:
+        "Engineering, medical and scholarship-aligned pathways with partner HEIs — mentoring from application to enrolment and orientation in India.",
+      tags: ["Engineering", "Medical", "Scholarship"],
+      image: studyInIndiaImagesBaseUrl + "Afganistan-home.png",
+    },
+    {
+      id: "saarc-bd",
+      duration: "BD",
+      countryCode: "BD",
+      countryName: "Bangladesh",
+      description:
+        "MoU-led programmes, streamlined admissions and certificate-backed short courses — ideal for students seeking credible Indian credentials.",
+      tags: ["MoU Programs", "Admissions", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Bangladesh-home.png",
+    },
+    {
+      id: "saarc-bt",
+      duration: "BT",
+      countryCode: "BT",
+      countryName: "Bhutan",
+      description:
+        "STEM-focused tracks with curated campus visits and immersion modules across premier Indian institutes.",
+      tags: ["STEM", "Campus Visits", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Bhutan-home.jpg",
+    },
+    {
+      id: "saarc-in",
+      duration: "IN",
+      countryCode: "IN",
+      countryName: "India",
+      description:
+        "Our hub for HEI partnerships, faculty exchange, joint degrees and mobility programmes — anchor your Study in India journey from here.",
+      tags: ["HEI Partnerships", "Faculty Exchange", "MoU"],
+      image: studyInIndiaImagesBaseUrl + "India-home.jpg",
+      ctaLabel: "View Details >",
+      ctaHref: "/international-relation",
+    },
+    {
+      id: "saarc-mv",
+      duration: "MV",
+      countryCode: "MV",
+      countryName: "Maldives",
+      description:
+        "Health sciences and hospitality streams with industry-linked exposure and placement-aligned preparatory support.",
+      tags: ["Health Sciences", "Hospitality", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Maldives-home.jpg",
+    },
+    {
+      id: "saarc-np",
+      duration: "NP",
+      countryCode: "NP",
+      countryName: "Nepal",
+      description:
+        "High-placement-potential courses with dedicated visa documentation reviews and pre-departure briefing for Indian campuses.",
+      tags: ["Top Placements", "Visa Support", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Nepal-home.jpg",
+    },
+    {
+      id: "saarc-pk",
+      duration: "PK",
+      countryCode: "PK",
+      countryName: "Pakistan",
+      description:
+        "Student exchange and MoU-driven enrolments across selective programmes with transparent eligibility guidance.",
+      tags: ["Exchange Programs", "MoU", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Pakistan-home.jpg",
+    },
+    {
+      id: "saarc-lk",
+      duration: "LK",
+      countryCode: "LK",
+      countryName: "Sri Lanka",
+      description:
+        "STEM and business pathways with blended counselling — choose institutes that match your budget and career goals.",
+      tags: ["STEM", "Business", "Certificate"],
+      image: studyInIndiaImagesBaseUrl + "Shrilanka-home.png",
+    },
+  ],
+};
+
 /** Home — Test Preparation Coaching */
 export const testPrepSectionHome = {
   eyebrow: "TEST PREPARATION COACHING",
