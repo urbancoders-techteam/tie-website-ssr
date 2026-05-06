@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 const Testimonial = dynamic(() => import("@/components/home/Testimonials"));
 const GlobalReach = dynamic(() => import("@/components/home/GlobalReach"));
 const GlobalImmersionHome = dynamic(() => import("@/components/home/GlobalImmersionHome"));
+const StudyInIndiaHome = dynamic(() => import("@/components/home/StudyInIndiaHome"));
 const TestPrepSectionHome = dynamic(() => import("@/components/home/TestPrepSectionHome"));
 const FAQHome = dynamic(() => import("@/components/home/FAQHome"));
 const BookCouncilBanner = dynamic(() => import("@/components/BookCouncilBanner"));
@@ -84,6 +85,7 @@ export default function Page() {
       <OurServices />
       <GlobalReach />
       <MedicalEducation />
+      <StudyInIndiaHome />
       <GlobalImmersionHome />
       <TestPrepSectionHome />
       <TrustTaksheela />
