@@ -2,7 +2,8 @@ import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import OverviewSection from "@/components/campaign/OverviewSection";
 import CampaignTabs, { GEORGIA_CAMPAIGN_TABS } from "@/components/campaign/CampaignTabs";
 import QuickFactsSection from "@/components/campaign/QuickFactsSection";
@@ -59,20 +60,23 @@ export default function GeorgiaCampaignPage({
     <div className="min-h-screen" >
       <CampaignNavbar redirectPath={redirectPath} navLinks={GEORGIA_NAV_LINKS} />
 
-      <HeroSection
+      <CustomHeroSection
         heroImage={georgia_hero_img}
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={GEORGIA_HERO.title}
         tagline={GEORGIA_HERO.tagline}
-        title={GEORGIA_HERO.title}
-        titleHighlight={GEORGIA_HERO.titleHighlight}
+        title={renderCampaignHeroTitle(GEORGIA_HERO.title, GEORGIA_HERO.titleHighlight)}
         description={GEORGIA_HERO.description}
-        stats={
-          GEORGIA_HERO.stats.map((stat) => ({
-            value: typeof stat.value !== "string" ? stat.value : "",
-            label: stat.label,
-          }))
-        }
-        ctaText={GEORGIA_HERO.ctaText}
-        redirectPath={redirectPath}
+        stats={GEORGIA_HERO.stats.map((stat) => ({
+          value: typeof stat.value !== "string" ? stat.value : "",
+          label: stat.label,
+        }))}
+        primaryCta={{
+          kind: "modal",
+          text: GEORGIA_HERO.ctaText,
+          redirectPath,
+          className: "text-white",
+        }}
       />
 
       <div className="sticky top-18.5 md:top-24 z-50">

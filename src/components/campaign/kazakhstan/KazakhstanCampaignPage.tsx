@@ -2,7 +2,8 @@ import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import OverviewSection from "@/components/campaign/OverviewSection";
 import CampaignTabs, { KAZAKHSTAN_CAMPAIGN_TABS } from "@/components/campaign/CampaignTabs";
 import QuickFactsSection from "@/components/campaign/QuickFactsSection";
@@ -59,20 +60,23 @@ export default function KazakhstanCampaignPage({
     <div className="min-h-screen">
       <CampaignNavbar redirectPath={redirectPath} navLinks={KAZAKHSTAN_NAV_LINKS} />
 
-      <HeroSection
+      <CustomHeroSection
         heroImage={mbbs_kazakhstan}
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={KAZAKHSTAN_HERO.title}
         tagline={KAZAKHSTAN_HERO.tagline}
-        title={KAZAKHSTAN_HERO.title}
-        titleHighlight={KAZAKHSTAN_HERO.titleHighlight}
+        title={renderCampaignHeroTitle(KAZAKHSTAN_HERO.title, KAZAKHSTAN_HERO.titleHighlight)}
         description={KAZAKHSTAN_HERO.description}
-        stats={
-          KAZAKHSTAN_HERO.stats.map((stat) => ({
-            value: typeof stat.value !== "string" ? stat.value : "",
-            label: stat.label,
-          }))
-        }
-        ctaText={KAZAKHSTAN_HERO.ctaText}
-        redirectPath={redirectPath}
+        stats={KAZAKHSTAN_HERO.stats.map((stat) => ({
+          value: typeof stat.value !== "string" ? stat.value : "",
+          label: stat.label,
+        }))}
+        primaryCta={{
+          kind: "modal",
+          text: KAZAKHSTAN_HERO.ctaText,
+          redirectPath,
+          className: "text-white",
+        }}
       />
 
       <div className="sticky top-18.5 md:top-24 z-50">

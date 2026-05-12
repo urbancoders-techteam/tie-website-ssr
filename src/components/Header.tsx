@@ -39,7 +39,7 @@ import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { baseUrl, navURL } from "@/utils/config";
 
 const PHONE_TEL = "+919831241212";
@@ -171,10 +171,6 @@ export const Header = ({ itemupdate }: any) => {
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
-
-  const handlePhoneIconClick = useCallback(() => {
-    window.open(`tel:${PHONE_TEL}`);
-  }, []);
 
   const HoverTypography = (allProps: any) => {
     const { children, sx, fontSize, border, ...rest } = allProps;
@@ -728,6 +724,8 @@ export const Header = ({ itemupdate }: any) => {
 
                 <Box sx={{ px: 2, pb: 2, pt: 1 }}>
                   <Box
+                    component="a"
+                    href={`tel:${PHONE_TEL}`}
                     sx={{
                       display: "flex",
                       alignItems: "center",
@@ -735,8 +733,9 @@ export const Header = ({ itemupdate }: any) => {
                       cursor: "pointer",
                       userSelect: "none",
                       mb: 1.5,
+                      color: "inherit",
+                      textDecoration: "none",
                     }}
-                    onClick={handlePhoneIconClick}
                   >
                     <Box sx={{ width: 24, height: 24, position: "relative" }}>
                       <Image
@@ -1340,14 +1339,17 @@ export const Header = ({ itemupdate }: any) => {
                 </Link>
 
                 <Box
+                  component="a"
+                  href={`tel:${PHONE_TEL}`}
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     gap: 1,
                     cursor: "pointer",
                     userSelect: "none",
+                    color: "inherit",
+                    textDecoration: "none",
                   }}
-                  onClick={handlePhoneIconClick}
                 >
                   <Box sx={{ width: 28, height: 28, position: "relative" }}>
                     <Image
