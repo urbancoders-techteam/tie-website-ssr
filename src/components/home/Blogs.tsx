@@ -61,6 +61,8 @@ async function fetchBlogs(): Promise<BlogData[]> {
 export default async function Blogs() {
   const scrollData: BlogPostHome[] = await fetchBlogs();
 
+  console.log('Blogs Data', scrollData)
+
   return (
     <section id="blog-section" className="w-full bg-white py-12 md:py-16 lg:py-20">
       <ContainerWrapper>
