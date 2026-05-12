@@ -55,7 +55,7 @@ export const staticMetaDescriptions = {
   cart:
     "Review your cart at Taksheela Institute of Education. Enroll in study abroad or MBBS programs and move closer to your international education dream.",
   mbbsAbroad:
-    "Explore MBBS abroad with Taksheela Institute. Get expert guidance on top countries, eligibility, fees, and admissions for a successful medical career overseas.",
+    "Planning MBBS abroad in 2026? Compare NMC-approved universities in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan. Full fee breakdown (₹11L–₹51L), NExT rules, eligibility & step-by-step admission process. Free counselling by Taksheela — India's trusted MBBS abroad experts.",
   mbbsIndia:
     "Get into the best MBBS colleges in India. With full guidance, eligibility criteria & college comparison - all with Taksheela Institute of Education. Apply now!",
   refundPolicy:
@@ -102,7 +102,8 @@ export const immersionMetaTitles: Record<string, string> = {
 export const staticMetaTitles = {
   cart: "Cart | Study Abroad Counselling Services | Taksheela",
   internationalRelationIndia: "Study in India | Affordable World-Class Education | TIE",
-  mbbsAbroad: "MBBS Abroad - UG & PG Programs, NMC Guidelines | Taksheela",
+  mbbsAbroad:
+    "MBBS Abroad 2026 in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan — Fees, Eligibility & Admission Guide | Taksheela",
   mbbsIndia: "MBBS in India | Top Colleges & Eligibility | Taksheela",
   refundPolicy: "Refund Policy for Study Abroad Services | Taksheela",
   studyAbroadCourses: "Study Abroad Courses | Taksheela Institute of Education",
