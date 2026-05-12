@@ -1,7 +1,8 @@
 import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import OverviewSection from "@/components/campaign/OverviewSection";
 import CampaignTabs, { UZBEKISTAN_CAMPAIGN_TABS } from "@/components/campaign/CampaignTabs";
 import QuickFactsSection from "@/components/campaign/QuickFactsSection";
@@ -57,11 +58,12 @@ export default function UzbekistanCampaignPage({
       <CampaignNavbar redirectPath={redirectPath} navLinks={UZBEKISTAN_NAV_LINKS} />
 
       {/* Hero */}
-      <HeroSection
+      <CustomHeroSection
         heroImage={uzbekistan_hero_img}
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={UZBEKISTAN_HERO.title}
         tagline={UZBEKISTAN_HERO.tagline}
-        title={UZBEKISTAN_HERO.title}
-        titleHighlight={UZBEKISTAN_HERO.titleHighlight}
+        title={renderCampaignHeroTitle(UZBEKISTAN_HERO.title, UZBEKISTAN_HERO.titleHighlight)}
         description={UZBEKISTAN_HERO.description}
         stats={
           Array.isArray(UZBEKISTAN_HERO.stats)
@@ -71,8 +73,12 @@ export default function UzbekistanCampaignPage({
               }))
             : []
         }
-        ctaText={UZBEKISTAN_HERO.ctaText}
-        redirectPath={redirectPath}
+        primaryCta={{
+          kind: "modal",
+          text: UZBEKISTAN_HERO.ctaText,
+          redirectPath,
+          className: "text-white",
+        }}
       />
 
       {/* Campaign Tabs */}
