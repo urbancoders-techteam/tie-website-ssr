@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Testimonial from '@/components/home/Testimonials';
 import LetsStart from '@/components/immersion/LetsStart';
 import GlobalCombination from '@/components/study-abroad/GlobalCombination';
@@ -7,7 +8,43 @@ import StudyAbroad from '@/components/study-abroad/StudyAbroad';
 import Roadmap from '@/components/study-abroad/WorlClassEducationAssist';
 import WorldMapClientWrapper from '@/components/study-abroad/WorldMapClientWrapper';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+import CustomAbroadHero from '@/components/custom-component/CustomAbroadHero';
+import OurImpact from '@/components/study-abroad/new-changes/OurImpact';
+import WhatTaksheela from '@/components/study-abroad/new-changes/WhatTaksheela';
+import StudyDestination from '@/components/study-abroad/new-changes/StudyDestination';
+import PopularCourses from '@/components/study-abroad/new-changes/PopularCourses';
+import WhoCanApply from '@/components/study-abroad/new-changes/WhoCanApply';
+import RealStudentsJourneys from '@/components/study-abroad/new-changes/RealStudentsJourneys';
+import BudgetSmartOption from '@/components/study-abroad/new-changes/BudgetSmartOption';
+import EnglishRequirement from '@/components/study-abroad/new-changes/EnglishRequirement';
+import OurProcess from '@/components/study-abroad/new-changes/OurProcess';
+import FindingYourEducation from '@/components/study-abroad/new-changes/FindingYourEducation';
+import ForParents from '@/components/study-abroad/new-changes/ForParents';
+import WhyStudyAbroad from '@/components/study-abroad/new-changes/WhyStudyAbroad';
+import { studyAbroadAfterWhatTaksheelaFilmstrip } from '@/constants/StudyAbroad/study-abroad';
 
+// const studyAbroadHeroMediaCards = [
+//   {
+//     title: 'University of Warwick, UK',
+//     subtitle: 'One of 1,000+ partner universities',
+//     image: '/images/StudyabroadMain.svg',
+//   },
+//   {
+//     title: 'DE Germany · Free Tuition',
+//     image: '/images/StudyabroadMain.svg',
+//   },
+//   {
+//     title: 'GB UK · 2-Year Work Visa',
+//     image: '/images/StudyabroadMain.svg',
+//   },
+// ];
+
+const studyAbroadHeroStats = [
+  { value: '10+', label: 'Years of Expert Counselling' },
+  { value: '98%', label: 'Application Success Rate' },
+  { value: '500+', label: 'Students Placed Globally' },
+  { value: '14+', label: 'Countries Covered' },
+];
 
 export const metadata: Metadata = {
   title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
@@ -57,7 +94,7 @@ export default function StudyAbroadPage() {
   return (
     <>
       {/* SEO Semantic Structure (screen reader-friendly) */}
-         <BreadcrumbSchema />
+      <BreadcrumbSchema />
       <h1 className="sr-only">
         Achieve Your Dreams of Studying Abroad with Taksheela Institute
       </h1>
@@ -69,12 +106,92 @@ export default function StudyAbroadPage() {
         Frequently Asked Questions About Studying Abroad
       </h4>
 
-      <WorldMapClientWrapper />
+      <CustomAbroadHero
+        backgroundImage="/images/study-abroad-bg.png"
+        backgroundImageAlt="Students planning their study abroad journey with Taksheela"
+        sectionClassName="relative flex min-h-[560px] items-center overflow-hidden bg-[#0B7A80] lg:min-h-[calc(100vh-96px)]"
+        eyebrow="India's Most Trusted Study Abroad Consultants"
+        eyebrowVariant="pill"
+        title={
+          <>
+            Your Dream of{' '}
+            <span className="text-[#5dd4d9]">Studying Abroad</span>
+            <span className="block">Starts Right Here.</span>
+          </>
+        }
+        description={
+          <>
+            From choosing the right country and university to landing your student visa,{' '}
+            <span className="font-semibold text-white">Taksheela guides Indian students through every step</span>{' '}
+            of their overseas education journey. UK, Germany, Ireland, Australia, Canada &amp; 10+ more countries.
+          </>
+        }
+        primaryCta={{
+          kind: 'modal',
+          text: 'Book Free Counselling',
+          redirectPath: '/thankyou',
+        }}
+        secondaryCta={{
+          kind: 'link',
+          text: 'Check Eligibility',
+          href: '#world-map',
+        }}
+        quickStats={studyAbroadHeroStats}
+        imageOverlay="light"
+        // mediaCards={studyAbroadHeroMediaCards}
+        // showRegisterForm
+      />
+
+      <OurImpact />
+
+      <WhyStudyAbroad />
+
+      <WhatTaksheela />
+
+      <div className="relative w-full border-t-[3px] border-[#010a14] bg-[#010a14]">
+        <div className="flex h-[clamp(76px,15vw,200px)] w-full sm:h-[clamp(88px,13vw,200px)]">
+          {studyAbroadAfterWhatTaksheelaFilmstrip.map((item) => (
+            <div key={item.src} className="relative min-h-0 min-w-0 flex-1">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover object-center"
+                sizes="20vw"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <StudyDestination />
+
+      <PopularCourses />
+
+      <WhoCanApply />
+
+      <RealStudentsJourneys />
+
+      <BudgetSmartOption />
+
+      <EnglishRequirement />
+
+      <OurProcess />
+
+      <FindingYourEducation />
+
+      <ForParents />
+
+      <Testimonial />
+
+      <div id="world-map">
+        <WorldMapClientWrapper />
+      </div>
       <StudyAbroad />
       <Milestones />
       <Roadmap />
       <GlobalCombination />
-      <Testimonial />
       <LetsStart />
     </>
   );

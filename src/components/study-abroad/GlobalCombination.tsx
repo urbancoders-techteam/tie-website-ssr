@@ -1,7 +1,7 @@
 
 
 
-import globalCombinationData from "@/constants/study-abroad";
+import globalCombinationData from "@/constants/StudyAbroad/study-abroad";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 import HexagonalCard from "../HexagonCard";

@@ -2,7 +2,7 @@
 
 "use client";
 
-import AbroadHeroSection from "@/components/mbbs/abroadCountries/AbroadHeroSection";
+import CustomAbroadHero from "@/components/custom-component/CustomAbroadHero";
 import CommonFearsSection from "@/components/mbbs/abroadCountries/CommonFearsSection";
 import AdmissionProcessAbroad from "@/components/mbbs/abroadCountries/AdmissionProcessAbroad";
 import EligibilityCriteraAbroad from "@/components/mbbs/abroadCountries/EligibilityCriteraAbroad";
@@ -51,6 +51,28 @@ const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
   usa: "MBBS in USA: Top Medical Universities & Eligibility",
 };
 
+type CollegeItem = {
+  Image?: string;
+  image?: string;
+};
+
+function getShortDescription(text: string, maxLength = 260) {
+  if (text.length <= maxLength) return text;
+  const clipped = text.slice(0, maxLength);
+  const lastSpace = clipped.lastIndexOf(" ");
+  if (lastSpace > 0) {
+    return `${clipped.slice(0, lastSpace).trimEnd()}...`;
+  }
+  return `${clipped.trimEnd()}...`;
+}
+
+function firstCollegeImageUrl(colleges?: CollegeItem[]): string | null {
+  const hit =
+    colleges?.find((c) => typeof c.Image === "string" && c.Image) ??
+    colleges?.find((c) => typeof c.image === "string" && c.image);
+  return hit?.Image ?? hit?.image ?? null;
+}
+
 export default function Page() {
   const params = useParams();
   const slug = params?.slug as string;
@@ -71,12 +93,44 @@ export default function Page() {
     ...country,
     h1: SUGGESTED_H1_BY_SLUG[slugLower],
   };
+  const heroBackgroundImage = abroadCopy?.hero.backgroundImage ?? firstCollegeImageUrl(countryWithSuggestedH1.colleges);
+  const heroRightStat = abroadCopy?.hero.rightStat ?? {
+    value: "100000+",
+    subtitle: `Students currently pursuing MBBS in ${countryWithSuggestedH1.title}`,
+  };
 
   return (
     <>
       {abroadCopy ? (
         <>
-          <AbroadHeroSection country={countryWithSuggestedH1} hero={abroadCopy.hero} />
+          <CustomAbroadHero
+            backgroundImage={heroBackgroundImage ?? undefined}
+            backgroundImageAlt={`${countryWithSuggestedH1.title} university`}
+            eyebrow={abroadCopy.hero.eyebrow}
+            title={
+              <>
+                {abroadCopy.hero.headline.line1}{" "}
+                <span className="text-[#FFD465]">{abroadCopy.hero.headline.line2Accent}</span>
+                <span className="block">{abroadCopy.hero.headline.line3}</span>
+              </>
+            }
+            description={getShortDescription(
+              abroadCopy.hero.description,
+              abroadCopy.hero.descriptionMaxLength ?? 260,
+            )}
+            primaryCta={{
+              kind: "modal",
+              text: abroadCopy.hero.cta.primaryText,
+            }}
+            secondaryCta={{
+              kind: "link",
+              text: abroadCopy.hero.cta.secondaryText,
+              href: abroadCopy.hero.cta.secondaryHref,
+            }}
+            quickStats={abroadCopy.hero.quickStats}
+            rightStat={heroRightStat}
+            showRegisterForm
+          />
 
           <OverviewAbroad
             country={countryWithSuggestedH1}
