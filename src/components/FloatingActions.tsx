@@ -47,19 +47,23 @@ const FloatingActions = () => {
       )}
       <div className="flex gap-3">
         {/* Call Button */}
-        <button
-          onClick={() => window.open("tel:+919831241212")}
+        <a
+          href="tel:+919831241212"
+          aria-label="Call TIE"
           className="bg-[#1976d2] hover:bg-[#135aa0] text-white p-2 rounded-md shadow-md cursor-pointer"
         >
           <Icon icon="mdi:phone" width="28" height="28" />
-        </button>
+        </a>
         {/* WhatsApp Button */}
-        <button
-          onClick={() => window.open("https://wa.me/+919831241212", "_blank")}
+        <a
+          href="https://wa.me/919831241212"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with TIE on WhatsApp"
           className="bg-[#25D366] hover:bg-[#1ebc5b] text-white p-2 rounded-md shadow-md cursor-pointer"
         >
           <Icon icon="mdi:whatsapp" width="30" height="30" />
-        </button>
+        </a>
       </div>
     </div>
   );
