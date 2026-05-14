@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Testimonial from '@/components/home/Testimonials';
 import LetsStart from '@/components/immersion/LetsStart';
-import GlobalCombination from '@/components/study-abroad/GlobalCombination';
-import Milestones from '@/components/study-abroad/Milestones';
-import StudyAbroad from '@/components/study-abroad/StudyAbroad';
-import Roadmap from '@/components/study-abroad/WorlClassEducationAssist';
-import WorldMapClientWrapper from '@/components/study-abroad/WorldMapClientWrapper';
+// import GlobalCombination from '@/components/study-abroad/GlobalCombination';
+// import Milestones from '@/components/study-abroad/Milestones';
+// import StudyAbroad from '@/components/study-abroad/StudyAbroad';
+// import Roadmap from '@/components/study-abroad/WorlClassEducationAssist';
+// import WorldMapClientWrapper from '@/components/study-abroad/WorldMapClientWrapper';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import CustomAbroadHero from '@/components/custom-component/CustomAbroadHero';
 import OurImpact from '@/components/study-abroad/new-changes/OurImpact';
@@ -16,28 +16,19 @@ import PopularCourses from '@/components/study-abroad/new-changes/PopularCourses
 import WhoCanApply from '@/components/study-abroad/new-changes/WhoCanApply';
 import RealStudentsJourneys from '@/components/study-abroad/new-changes/RealStudentsJourneys';
 import BudgetSmartOption from '@/components/study-abroad/new-changes/BudgetSmartOption';
+import TestPreparation from '@/components/study-abroad/new-changes/TestPreparation';
 import EnglishRequirement from '@/components/study-abroad/new-changes/EnglishRequirement';
 import OurProcess from '@/components/study-abroad/new-changes/OurProcess';
 import FindingYourEducation from '@/components/study-abroad/new-changes/FindingYourEducation';
 import ForParents from '@/components/study-abroad/new-changes/ForParents';
 import WhyStudyAbroad from '@/components/study-abroad/new-changes/WhyStudyAbroad';
+import WhyNotApplyAlone from '@/components/study-abroad/new-changes/WhyNotApplyAlone';
+import CountryWiseScholarship from '@/components/study-abroad/new-changes/CountryWiseScholarship';
+import GlobalFutureStartsHere from '@/components/study-abroad/new-changes/GlobalFutureStartsHere';
+import GetStartedToday from '@/components/study-abroad/new-changes/GetStartedToday';
+import FAQSection from '@/components/campaign/FAQSection';
 import { studyAbroadAfterWhatTaksheelaFilmstrip } from '@/constants/StudyAbroad/study-abroad';
-
-// const studyAbroadHeroMediaCards = [
-//   {
-//     title: 'University of Warwick, UK',
-//     subtitle: 'One of 1,000+ partner universities',
-//     image: '/images/StudyabroadMain.svg',
-//   },
-//   {
-//     title: 'DE Germany · Free Tuition',
-//     image: '/images/StudyabroadMain.svg',
-//   },
-//   {
-//     title: 'GB UK · 2-Year Work Visa',
-//     image: '/images/StudyabroadMain.svg',
-//   },
-// ];
+import { studyAbroadFaqItems } from '@/constants/StudyAbroad/faq';
 
 const studyAbroadHeroStats = [
   { value: '10+', label: 'Years of Expert Counselling' },
@@ -185,13 +176,31 @@ export default function StudyAbroadPage() {
 
       <Testimonial />
 
-      <div id="world-map">
+      <WhyNotApplyAlone />
+
+      <TestPreparation />
+
+      <CountryWiseScholarship />
+
+      <GlobalFutureStartsHere />
+
+      <FAQSection
+        items={studyAbroadFaqItems}
+        variant="abroad"
+        sectionSlug="study-abroad"
+        headingId="study-abroad-faq-heading"
+      />
+
+      <GetStartedToday />
+
+
+      {/* <div id="world-map">
         <WorldMapClientWrapper />
       </div>
       <StudyAbroad />
       <Milestones />
       <Roadmap />
-      <GlobalCombination />
+      <GlobalCombination /> */}
       <LetsStart />
     </>
   );
