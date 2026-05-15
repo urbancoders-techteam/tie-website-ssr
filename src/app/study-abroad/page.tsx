@@ -27,8 +27,8 @@ import CountryWiseScholarship from '@/components/study-abroad/new-changes/Countr
 import GlobalFutureStartsHere from '@/components/study-abroad/new-changes/GlobalFutureStartsHere';
 import GetStartedToday from '@/components/study-abroad/new-changes/GetStartedToday';
 import FAQSection from '@/components/campaign/FAQSection';
-import { studyAbroadAfterWhatTaksheelaFilmstrip } from '@/constants/StudyAbroad/study-abroad';
-import { studyAbroadFaqItems } from '@/constants/StudyAbroad/faq';
+import { studyAbroadAfterWhatTaksheelaFilmstrip } from '@/constants/study_abroad/study-abroad';
+import { studyAbroadFaqItems } from '@/constants/study_abroad/faq';
 
 const studyAbroadHeroStats = [
   { value: '10+', label: 'Years of Expert Counselling' },

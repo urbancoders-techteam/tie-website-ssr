@@ -7,7 +7,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ContainerWrapper from "../ContainerWrapper";
 import { CategoryKey } from "@/utils/interface";
-import { viewmoredata } from "@/constants/StudyAbroad/study-abroad";
+import { viewmoredata } from "@/constants/study_abroad/study-abroad";
 import { imageBaseUrl } from "@/utils/config";
 import HeadingTypography from "../Heading";
 

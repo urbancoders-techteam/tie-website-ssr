@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { realStudentsJourneysContent } from "@/constants/StudyAbroad/realStudentsJourneys";
+import { realStudentsJourneysContent } from "@/constants/study_abroad/realStudentsJourneys";
 
 export default function RealStudentsJourneys() {
   const { eyebrow, headingLine1, headingLine2, description, ctaText, gallery } =

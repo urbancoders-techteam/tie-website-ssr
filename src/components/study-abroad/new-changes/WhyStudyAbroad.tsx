@@ -14,7 +14,7 @@ import {
 } from "react-icons/fi";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { whyStudyAbroadContent } from "@/constants/StudyAbroad/whyStudyAbroad";
+import { whyStudyAbroadContent } from "@/constants/study_abroad/whyStudyAbroad";
 
 type SvgIconProps = { className?: string };
 const FEATURE_ICONS: Record<string, ComponentType<SvgIconProps>> = {

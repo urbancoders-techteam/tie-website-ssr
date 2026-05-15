@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HeadingTypography from "../Heading";
 import MilestonesCard from "../MilestoneCard";
-import {milestonesData} from '@/constants/StudyAbroad/study-abroad'
+import {milestonesData} from '@/constants/study_abroad/study-abroad'
 
 const Milestones = () => {
   const [showMilestones, setShowMilestones] = useState(false);

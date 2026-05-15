@@ -7,7 +7,7 @@ import ModalTrigger from "@/components/ModalTrigger";
 import {
   whoCanApplyContent,
   type WhoCanApplyTheme,
-} from "@/constants/StudyAbroad/whoCanApply";
+} from "@/constants/study_abroad/whoCanApply";
 
 const OVERLAY_BY_THEME: Record<
   WhoCanApplyTheme,

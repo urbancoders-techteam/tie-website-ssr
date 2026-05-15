@@ -3,7 +3,7 @@
 import type { ComponentType } from "react";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { ourProcessContent, type ProcessIconKey, type ProcessStep } from "@/constants/StudyAbroad/ourProcess";
+import { ourProcessContent, type ProcessIconKey, type ProcessStep } from "@/constants/study_abroad/ourProcess";
 import {
   FaClipboardList,
   FaCommentDots,

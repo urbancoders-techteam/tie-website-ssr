@@ -20,7 +20,7 @@ import {
   forParentsContent,
   type ForParentsFeature,
   type ForParentsFeatureIcon,
-} from "@/constants/StudyAbroad/forParents";
+} from "@/constants/study_abroad/forParents";
 
 const FEATURE_ICONS: Record<
   ForParentsFeatureIcon,

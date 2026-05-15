@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { globalFutureStartsHereContent } from "@/constants/StudyAbroad/globalFutureStartsHere";
+import { globalFutureStartsHereContent } from "@/constants/study_abroad/globalFutureStartsHere";
 
 export default function GlobalFutureStartsHere() {
   const { eyebrow, heading, description, primaryCta, secondaryCta } = globalFutureStartsHereContent;

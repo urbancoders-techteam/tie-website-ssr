@@ -4,7 +4,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { budgetSmartOptionContent, type BudgetHighlightCard } from "@/constants/StudyAbroad/budgetSmartOption";
+import { budgetSmartOptionContent, type BudgetHighlightCard } from "@/constants/study_abroad/budgetSmartOption";
 
 const NAVY = "bg-[#001f3f]";
 const TEAL = "text-[#14b8a6]";

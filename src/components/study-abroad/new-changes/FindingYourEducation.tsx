@@ -12,7 +12,7 @@ import {
   findingYourEducationContent,
   type FundingCard,
   type FundingCardVariant,
-} from "@/constants/StudyAbroad/findingYourEducation";
+} from "@/constants/study_abroad/findingYourEducation";
 
 const ICONS: Record<FundingCard["icon"], ComponentType<{ className?: string }>> = {
   medal: FaMedal,

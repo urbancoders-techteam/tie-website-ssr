@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { studyDestinationsContent } from "@/constants/StudyAbroad/studyDestinations";
+import { studyDestinationsContent } from "@/constants/study_abroad/studyDestinations";
 
 export default function StudyDestination() {
   const { eyebrow, heading, description, destinations } = studyDestinationsContent;

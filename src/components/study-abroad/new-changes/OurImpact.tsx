@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 import {
   studyAbroadImpactCountryLinks,
   studyAbroadImpactStats,
-} from "@/constants/StudyAbroad/study-abroad";
+} from "@/constants/study_abroad/study-abroad";
 
 export default function OurImpact() {
   return (
