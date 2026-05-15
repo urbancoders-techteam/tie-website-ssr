@@ -21,7 +21,7 @@ import {
 import { FiGlobe } from "react-icons/fi";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { popularCoursesContent } from "@/constants/StudyAbroad/popularCourses";
+import { popularCoursesContent } from "@/constants/study_abroad/popularCourses";
 
 type SvgIconProps = { className?: string };
 

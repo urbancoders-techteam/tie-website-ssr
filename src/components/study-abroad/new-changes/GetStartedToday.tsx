@@ -3,7 +3,7 @@
 import { FaCheck, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 import RegisterForm from "@/components/home/RegisterForm";
-import { getStartedTodayContent } from "@/constants/StudyAbroad/getStartedToday";
+import { getStartedTodayContent } from "@/constants/study_abroad/getStartedToday";
 
 export default function GetStartedToday() {
   const { eyebrow, heading, description, benefits, contact } = getStartedTodayContent;

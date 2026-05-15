@@ -3,7 +3,7 @@
 import { FaExclamationTriangle } from "react-icons/fa";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { englishRequirementContent } from "@/constants/StudyAbroad/englishRequirement";
+import { englishRequirementContent } from "@/constants/study_abroad/englishRequirement";
 
 export default function EnglishRequirement() {
   const {

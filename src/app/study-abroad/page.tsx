@@ -1,5 +1,4 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
+﻿import type { Metadata } from 'next';
 import Testimonial from '@/components/home/Testimonials';
 import LetsStart from '@/components/immersion/LetsStart';
 // import GlobalCombination from '@/components/study-abroad/GlobalCombination';
@@ -27,8 +26,8 @@ import CountryWiseScholarship from '@/components/study-abroad/new-changes/Countr
 import GlobalFutureStartsHere from '@/components/study-abroad/new-changes/GlobalFutureStartsHere';
 import GetStartedToday from '@/components/study-abroad/new-changes/GetStartedToday';
 import FAQSection from '@/components/campaign/FAQSection';
-import { studyAbroadAfterWhatTaksheelaFilmstrip } from '@/constants/StudyAbroad/study-abroad';
-import { studyAbroadFaqItems } from '@/constants/StudyAbroad/faq';
+import StudyAbroadFilmstrip from '@/components/study-abroad/new-changes/StudyAbroadFilmstrip';
+import { studyAbroadFaqItems } from '@/constants/study_abroad/faq';
 
 const studyAbroadHeroStats = [
   { value: '10+', label: 'Years of Expert Counselling' },
@@ -38,7 +37,7 @@ const studyAbroadHeroStats = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+  title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
   description:
     'Discover top study abroad programs with Taksheela Institute. Get expert guidance, valuable insights, & personalized admission support for your global education.',
   keywords: [
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     'Education Counseling',
   ],
   openGraph: {
-    title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+    title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
     description:
       'Discover top study abroad programs with Taksheela Institute. Get expert guidance, valuable insights, & personalized admission support for your global education.',
     url: 'https://www.taksheela.com/study-abroad',
@@ -70,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+    title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
     description:
       'Explore study abroad opportunities with personalized help from Taksheela Institute.',
     images: [
@@ -139,22 +138,7 @@ export default function StudyAbroadPage() {
 
       <WhatTaksheela />
 
-      <div className="relative w-full border-t-[3px] border-[#010a14] bg-[#010a14]">
-        <div className="flex h-[clamp(76px,15vw,200px)] w-full sm:h-[clamp(88px,13vw,200px)]">
-          {studyAbroadAfterWhatTaksheelaFilmstrip.map((item) => (
-            <div key={item.src} className="relative min-h-0 min-w-0 flex-1">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover object-center"
-                sizes="20vw"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      <StudyAbroadFilmstrip />
 
       <StudyDestination />
 

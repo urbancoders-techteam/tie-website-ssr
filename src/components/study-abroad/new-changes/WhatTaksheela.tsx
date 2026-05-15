@@ -13,7 +13,7 @@ import {
 import { FiFileText } from "react-icons/fi";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { whatTaksheelaContent } from "@/constants/StudyAbroad/whatTaksheela";
+import { whatTaksheelaContent } from "@/constants/study_abroad/whatTaksheela";
 
 type SvgIconProps = { className?: string };
 

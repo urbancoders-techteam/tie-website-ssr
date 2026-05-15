@@ -6,7 +6,7 @@ import ModalTrigger from "@/components/ModalTrigger";
 import {
   whyNotApplyAloneContent,
   type SelfApplicationStatus,
-} from "@/constants/StudyAbroad/whyNotApplyAlone";
+} from "@/constants/study_abroad/whyNotApplyAlone";
 
 function SelfIcon({ type }: { type: SelfApplicationStatus }) {
   if (type === "warning") {

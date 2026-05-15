@@ -8,7 +8,7 @@ import ModalTrigger from "@/components/ModalTrigger";
 import {
   countryWiseScholarshipContent,
   type ScholarshipCountry,
-} from "@/constants/StudyAbroad/countryWiseScholarship";
+} from "@/constants/study_abroad/countryWiseScholarship";
 
 function ScholarshipCard({ country }: { country: ScholarshipCountry }) {
   return (

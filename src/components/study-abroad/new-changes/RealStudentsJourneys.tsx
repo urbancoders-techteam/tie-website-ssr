@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { realStudentsJourneysContent } from "@/constants/StudyAbroad/realStudentsJourneys";
+import { realStudentsJourneysContent } from "@/constants/study_abroad/realStudentsJourneys";
 
 export default function RealStudentsJourneys() {
   const { eyebrow, headingLine1, headingLine2, description, ctaText, gallery } =
@@ -50,7 +50,7 @@ export default function RealStudentsJourneys() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    className="object-cover object-center"
+                    className="object-contain object-center"
                     sizes="(max-width: 1024px) 50vw, 280px"
                   />
                 </div>

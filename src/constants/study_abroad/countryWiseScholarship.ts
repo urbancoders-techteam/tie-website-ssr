@@ -1,3 +1,16 @@
+import { homePageBaseUrl } from "@/utils/config";
+
+const countryUkImage = homePageBaseUrl + "Uk-home.jpg";
+const countryIrelandImage = homePageBaseUrl + "Ireland-home.jpg";
+const countryAustraliaImage = "/images/australia.jpg";
+const countryFranceImage = homePageBaseUrl + "france-home.jpg";
+const countryGermanyImage = homePageBaseUrl + "germany-home.jpg";
+const countryCanadaImage = homePageBaseUrl + "canada-home.jpg";
+const countryHungaryImage = homePageBaseUrl + "Hungary-home.jpg";
+const countryItalyImage = homePageBaseUrl + "Italy-home.jpg";
+const countryNetherlandsImage = homePageBaseUrl + "netherland-home.jpg";
+const countrySwedenImage = homePageBaseUrl + "Sweden-home.jpg";
+
 export type ScholarshipCountry = {
   country: string;
   code: string;
@@ -21,8 +34,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "United Kingdom",
       code: "GB",
-      imageSrc:
-        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryUkImage,
       imageAlt: "London skyline and Westminster Bridge in the United Kingdom",
       scholarships: [
         "Chevening Scholarship (UK Government fully-funded)",
@@ -36,8 +48,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Germany",
       code: "DE",
-      imageSrc:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryGermanyImage,
       imageAlt: "Historic government building in Germany",
       scholarships: [
         "DAAD Scholarship (German Academic Exchange Service)",
@@ -51,8 +62,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Ireland",
       code: "IE",
-      imageSrc:
-        "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryIrelandImage,
       imageAlt: "City skyline in Ireland",
       scholarships: [
         "Government of Ireland International Education Scholarship",
@@ -66,8 +76,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Australia",
       code: "AU",
-      imageSrc:
-        "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryAustraliaImage,
       imageAlt: "Sydney Harbour in Australia",
       scholarships: [
         "Australia Awards Scholarships",
@@ -81,8 +90,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Canada",
       code: "CA",
-      imageSrc:
-        "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryCanadaImage,
       imageAlt: "Toronto skyline in Canada",
       scholarships: [
         "Vanier Canada Graduate Scholarships",
@@ -96,8 +104,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "France",
       code: "FR",
-      imageSrc:
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryFranceImage,
       imageAlt: "Eiffel Tower in Paris, France",
       scholarships: [
         "Eiffel Excellence Scholarship Programme",
@@ -111,8 +118,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Netherlands",
       code: "NL",
-      imageSrc:
-        "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryNetherlandsImage,
       imageAlt: "Amsterdam canal and city architecture in the Netherlands",
       scholarships: [
         "Holland Scholarship (Dutch Government)",
@@ -126,8 +132,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Sweden",
       code: "SE",
-      imageSrc:
-        "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countrySwedenImage,
       imageAlt: "Historic public square and buildings in Sweden",
       scholarships: [
         "Swedish Institute Scholarship for Global Professionals",
@@ -141,8 +146,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Italy",
       code: "IT",
-      imageSrc:
-        "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryItalyImage,
       imageAlt: "Colosseum in Rome, Italy",
       scholarships: [
         "Italian Government Scholarship for Foreign Students",
@@ -156,8 +160,7 @@ export const countryWiseScholarshipContent = {
     {
       country: "Hungary",
       code: "HU",
-      imageSrc:
-        "https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80",
+      imageSrc: countryHungaryImage,
       imageAlt: "Budapest city view in Hungary",
       scholarships: [
         "Stipendium Hungaricum Scholarship Programme",

@@ -4,7 +4,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import { budgetSmartOptionContent, type BudgetHighlightCard } from "@/constants/StudyAbroad/budgetSmartOption";
+import { budgetSmartOptionContent, type BudgetHighlightCard } from "@/constants/study_abroad/budgetSmartOption";
 
 const NAVY = "bg-[#001f3f]";
 const TEAL = "text-[#14b8a6]";
@@ -60,9 +60,7 @@ export default function BudgetSmartOption() {
                   direction="left"
                   speed={28}
                   pauseOnHover
-                  gradient
-                  gradientColor="rgb(244, 247, 251)"
-                  gradientWidth={48}
+                  gradient={false}
                   autoFill
                   className="flex"
                 >

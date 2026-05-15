@@ -1,3 +1,10 @@
+import { studyAbroadBaseUrl } from "@/utils/config";
+
+const realStudentsJourneysImage1 = studyAbroadBaseUrl + "main-page/rsj-img1.webp";
+const realStudentsJourneysImage2 = studyAbroadBaseUrl + "main-page/rsj-img2.avif";
+const realStudentsJourneysImage3 = studyAbroadBaseUrl + "main-page/rsj-img3.jpg";
+const realStudentsJourneysImage4 = studyAbroadBaseUrl + "main-page/rsj-img4.jpg";
+
 export const realStudentsJourneysContent = {
   eyebrow: "Real student journeys",
   headingLine1: "From Indian Classrooms to",
@@ -8,22 +15,22 @@ export const realStudentsJourneysContent = {
   gallery: [
     {
       id: "hallway",
-      src: "https://images.unsplash.com/photo-1580582932707-52087c9d2fc6?auto=format&fit=crop&w=600&q=80",
+      src: realStudentsJourneysImage1,
       alt: "Students in a bright school corridor with lockers",
     },
     {
       id: "campus",
-      src: "https://images.unsplash.com/photo-1564981797816-104fc4aac74a?auto=format&fit=crop&w=600&q=80",
+      src: realStudentsJourneysImage2,
       alt: "Historic university building with columns under a blue sky",
     },
     {
       id: "together",
-      src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+      src: realStudentsJourneysImage3,
       alt: "Group of friends sitting together at a table",
     },
     {
       id: "graduation",
-      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80",
+      src: realStudentsJourneysImage4,
       alt: "Graduates in caps and gowns celebrating outdoors",
     },
   ],

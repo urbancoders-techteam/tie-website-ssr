@@ -10,7 +10,7 @@ import {
   testPreparationContent,
   type TestPreparationCategory,
   type TestPreparationExam,
-} from "@/constants/StudyAbroad/testPreparation";
+} from "@/constants/study_abroad/testPreparation";
 
 const CATEGORY_ICONS = {
   academic: FiTriangle,

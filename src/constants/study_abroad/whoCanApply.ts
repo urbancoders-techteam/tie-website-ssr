@@ -1,3 +1,4 @@
+import { studyAbroadBaseUrl } from "@/utils/config";
 export type WhoCanApplyTheme = "teal" | "navy" | "orange";
 
 export type WhoCanApplyCard = {
@@ -12,6 +13,11 @@ export type WhoCanApplyCard = {
   ctaText: string;
 };
 
+
+const whoCanApplyImage1 = studyAbroadBaseUrl + "main-page/bachlors-abroad.jpg";
+const whoCanApplyImage2 = studyAbroadBaseUrl + "main-page/masters-abroad.jpg";
+const whoCanApplyImage3 = studyAbroadBaseUrl + "main-page/career-upgrade.jpg";
+
 export const whoCanApplyContent = {
   eyebrow: "Who can apply?",
   heading: "Study Abroad After 12th, After Graduation & For Working Professionals",
@@ -22,7 +28,7 @@ export const whoCanApplyContent = {
       id: "bachelors",
       theme: "teal",
       imageSrc:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
+        whoCanApplyImage1,
       imageAlt: "Graduates celebrating with caps in the air",
       imageBadge: "After Class 12",
       imageTitle: "Bachelor's Abroad",
@@ -41,7 +47,7 @@ export const whoCanApplyContent = {
       id: "masters",
       theme: "navy",
       imageSrc:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+        whoCanApplyImage2,
       imageAlt: "Smiling young professional with glasses",
       imageBadge: "After Graduation",
       imageTitle: "Master's Abroad",
@@ -60,7 +66,7 @@ export const whoCanApplyContent = {
       id: "professionals",
       theme: "orange",
       imageSrc:
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=80",
+        whoCanApplyImage3,
       imageAlt: "Minimal desk with keyboard and workspace",
       imageBadge: "Working Professionals",
       imageTitle: "Career Upgrade Abroad",
