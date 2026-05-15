@@ -10,14 +10,12 @@ import {
 export default function OurImpact() {
   return (
     <section className="overflow-hidden bg-[#eefaf8]">
-      <div className="bg-[#0fb3a9] text-white">
+      <div className="overflow-hidden bg-[#0fb3a9] text-white">
         <Marquee
           speed={60}
-          gradient
-          gradientColor="rgb(15, 179, 169)"
-          gradientWidth={72}
+          gradient={false}
           autoFill
-          className="py-2"
+          className="overflow-hidden py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&_.rfm-marquee]:overflow-hidden [&_.rfm-marquee-container]:overflow-hidden [&_.rfm-marquee-container]:[-ms-overflow-style:none] [&_.rfm-marquee-container]:[scrollbar-width:none] [&_.rfm-marquee-container::-webkit-scrollbar]:hidden"
         >
           {studyAbroadImpactCountryLinks.map((item) => (
             <span
