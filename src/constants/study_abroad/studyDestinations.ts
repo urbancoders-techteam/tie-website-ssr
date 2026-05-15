@@ -1,3 +1,19 @@
+import { homePageBaseUrl } from "@/utils/config";
+
+const countryUkImage = homePageBaseUrl + "Uk-home.jpg";
+const countryIrelandImage = homePageBaseUrl + "Ireland-home.jpg";
+const countryAustraliaImage = "/images/australia.jpg";
+const countryFranceImage = homePageBaseUrl + "france-home.jpg";
+const countryGermanyImage = homePageBaseUrl + "germany-home.jpg";
+const countryCanadaImage = homePageBaseUrl + "canada-home.jpg";
+const countryHungaryImage = homePageBaseUrl + "Hungary-home.jpg";
+const countryDenmarkImage = homePageBaseUrl + "Denmark-home.jpg";
+const countryItalyImage = homePageBaseUrl + "Italy-home.jpg";
+const countryMaltaImage = homePageBaseUrl + "Malta-home.jpg";
+const countryNetherlandsImage = homePageBaseUrl + "netherland-home.jpg";
+const countrySwedenImage = homePageBaseUrl + "Sweden-home.jpg";
+const countryBelgiumImage = homePageBaseUrl + "Belgium-home.jpg";
+
 export type StudyDestinationCard = {
   /** In-app country page when available; otherwise hub `/study-abroad/country`. */
   href: string;
@@ -21,8 +37,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/UK",
       countryCode: "GB",
       countryName: "United Kingdom",
-      imageSrc:
-        "https://images.unsplash.com/photo-1513635269977-596948e844a8?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryUkImage,
       imageAlt: "London skyline and Thames",
       bestFor: "1-year MSc, MBA, STEM — fast-track degrees",
       courses: "Business, Data Science, Engineering, Finance, Law",
@@ -33,8 +48,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/Germany",
       countryCode: "DE",
       countryName: "Germany",
-      imageSrc:
-        "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryGermanyImage,
       imageAlt: "Brandenburg Gate Berlin",
       bestFor: "Low or no tuition at public universities, strong industry links",
       courses: "Engineering, IT, Natural Sciences, Business, Medicine",
@@ -45,8 +59,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/Ireland",
       countryCode: "IE",
       countryName: "Ireland",
-      imageSrc:
-        "https://images.unsplash.com/photo-1590080876351-941da357a3ee?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryIrelandImage,
       imageAlt: "Dublin city and river",
       bestFor: "English-taught degrees, tech & pharma hubs, EU access",
       courses: "Computer Science, Pharmacy, Business, Data Analytics",
@@ -57,8 +70,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/Australia",
       countryCode: "AU",
       countryName: "Australia",
-      imageSrc:
-        "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryAustraliaImage,
       imageAlt: "Sydney Opera House and harbour",
       bestFor: "QS-ranked universities, research-led courses, coastal campuses",
       courses: "IT, Nursing, Engineering, Accounting, Environmental Science",
@@ -69,8 +81,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/Canada",
       countryCode: "CA",
       countryName: "Canada",
-      imageSrc:
-        "https://images.unsplash.com/photo-1517935706615-2717063f2225?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryCanadaImage,
       imageAlt: "Toronto city skyline",
       bestFor: "PGWP-friendly pathways, PR-oriented programs, co-op options",
       courses: "Business, Health Sciences, IT, Hospitality, Media",
@@ -81,8 +92,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/France",
       countryCode: "FR",
       countryName: "France",
-      imageSrc:
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryFranceImage,
       imageAlt: "Eiffel Tower and Paris",
       bestFor: "Affordable public fees, English-taught Masters, EU mobility",
       courses: "Fashion, Hospitality, Engineering, Arts, Management",
@@ -93,8 +103,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "NL",
       countryName: "Netherlands",
-      imageSrc:
-        "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryNetherlandsImage,
       imageAlt: "Amsterdam canals and architecture",
       bestFor: "English-taught Bachelors & Masters, bike-friendly cities",
       courses: "Logistics, Engineering, Economics, Design, Agriculture",
@@ -105,8 +114,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "SE",
       countryName: "Sweden",
-      imageSrc:
-        "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countrySwedenImage,
       imageAlt: "Stockholm waterfront",
       bestFor: "Innovation-led degrees, sustainability focus, English programs",
       courses: "Engineering, IT, Life Sciences, Design, Business",
@@ -117,8 +125,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "DK",
       countryName: "Denmark",
-      imageSrc:
-        "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryDenmarkImage,
       imageAlt: "Copenhagen colourful waterfront",
       bestFor: "Problem-based learning, strong welfare, English-taught courses",
       courses: "Renewable Energy, Engineering, Life Sciences, Business",
@@ -129,8 +136,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country/Italy",
       countryCode: "IT",
       countryName: "Italy",
-      imageSrc:
-        "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryItalyImage,
       imageAlt: "Venice canals",
       bestFor: "Design, architecture, culinary arts, affordable living",
       courses: "Architecture, Fashion, Engineering, Tourism, Fine Arts",
@@ -141,8 +147,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "BE",
       countryName: "Belgium",
-      imageSrc:
-        "https://images.unsplash.com/photo-1555990538-1e6c3b3b3573?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryBelgiumImage,
       imageAlt: "Brussels Grand Place architecture",
       bestFor: "EU institutions nearby, multilingual environment",
       courses: "International Relations, Business, Engineering, Political Science",
@@ -165,8 +170,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "MT",
       countryName: "Malta",
-      imageSrc:
-        "https://images.unsplash.com/photo-1613395877344-13d4c79e4284?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryMaltaImage,
       imageAlt: "Malta coastline and cityscape",
       bestFor: "English-speaking EU country, Healthcare, Gaming",
       courses: "IT, Healthcare, Hospitality, Finance, Gaming",
@@ -177,8 +181,7 @@ export const studyDestinationsContent = {
       href: "/study-abroad/country",
       countryCode: "HU",
       countryName: "Hungary",
-      imageSrc:
-        "https://images.unsplash.com/photo-1549890762-0a3f893bc524?auto=format&fit=crop&w=800&q=80",
+      imageSrc: countryHungaryImage,
       imageAlt: "Budapest Parliament and Danube",
       bestFor: "Medical, Dental, Veterinary, Pharmacy",
       courses: "MBBS, Dentistry, Pharmacy, Veterinary, Engineering",

@@ -1,8 +1,14 @@
+import { studyAbroadBaseUrl } from "@/utils/config";
+
 export type WhyStudyAbroadFeature = {
   id: string;
   title: string;
   description: string;
 };
+
+
+const whyStudyAbroadImage1 = studyAbroadBaseUrl + "main-page/wsa-img1.avif";
+const whyStudyAbroadImage2 = studyAbroadBaseUrl + "main-page/wsa-img2.avif";
 
 export const whyStudyAbroadContent = {
   eyebrow: "Why study abroad?",
@@ -10,10 +16,10 @@ export const whyStudyAbroadContent = {
   description:
     "Studying abroad is one of the most transformative decisions you can make. It shapes how you think, how you lead, and how you grow — with global exposure, recognised degrees, and career pathways that last a lifetime.",
   mainImageSrc:
-    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80",
+    whyStudyAbroadImage1,
   mainImageAlt: "Students collaborating outdoors with a laptop",
   secondaryImageSrc:
-    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80",
+    whyStudyAbroadImage2,
   secondaryImageAlt: "Team discussion in a modern meeting room",
   floatingCard: {
     value: "14+",

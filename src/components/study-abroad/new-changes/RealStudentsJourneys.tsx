@@ -50,7 +50,7 @@ export default function RealStudentsJourneys() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    className="object-cover object-center"
+                    className="object-contain object-center"
                     sizes="(max-width: 1024px) 50vw, 280px"
                   />
                 </div>

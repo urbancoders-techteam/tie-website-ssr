@@ -60,9 +60,7 @@ export default function BudgetSmartOption() {
                   direction="left"
                   speed={28}
                   pauseOnHover
-                  gradient
-                  gradientColor="rgb(244, 247, 251)"
-                  gradientWidth={48}
+                  gradient={false}
                   autoFill
                   className="flex"
                 >

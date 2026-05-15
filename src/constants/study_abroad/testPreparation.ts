@@ -1,3 +1,5 @@
+import { studyAbroadBaseUrl } from "@/utils/config";
+
 export type TestPreparationCategoryId = "academic" | "english";
 
 export type TestPreparationExam = {
@@ -14,6 +16,8 @@ export type TestPreparationCategory = {
   exams: TestPreparationExam[];
 };
 
+const testPreparationImage = studyAbroadBaseUrl + "main-page/test-preparation.jpg";
+
 export const testPreparationContent = {
   eyebrow: "Test Preparation",
   heading: {
@@ -25,7 +29,7 @@ export const testPreparationContent = {
   secondaryIntro:
     "Requirements vary - some universities need IELTS or PTE, others accept MOI certificates. Postgraduate applicants may also need GRE or GMAT. Hover over any exam card below to learn more. Taksheela counsellors assess your target university requirements and guide you on the right exam path for your profile.",
   image: {
-    src: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
+    src: testPreparationImage,
     alt: "Student writing study abroad exam preparation notes on a whiteboard",
   },
   categories: [

@@ -1,4 +1,4 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
 import { CategoryKey, ViewMoreItem } from "@/utils/interface";
 
 export const studyAbroadImpactCountryLinks = [
@@ -185,28 +185,53 @@ export const viewmoredata: Record<CategoryKey, ViewMoreItem[]> = {
   ],
 };
 
+export type StudyAbroadFilmstripIconId =
+  | "library"
+  | "discussions"
+  | "departure"
+  | "graduation"
+  | "campus";
+
+export type StudyAbroadFilmstripItem = {
+  src: string;
+  alt: string;
+  /** Shown centered on card hover */
+  label: string;
+  icon: StudyAbroadFilmstripIconId;
+};
+
 /** Study-abroad page only: filmstrip below WhatTaksheela (separate from WhatTaksheela UI) */
-export const studyAbroadAfterWhatTaksheelaFilmstrip = [
+export const studyAbroadAfterWhatTaksheelaFilmstrip: StudyAbroadFilmstripItem[] = [
   {
-    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80",
+    src: studyAbroadBaseUrl + "main-page/wsa-img1.avif",
     alt: "Students collaborating outdoors on campus",
+    label: "University Library",
+    icon: "library",
   },
   {
-    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+    src: studyAbroadBaseUrl + "main-page/wsa-img2.avif",
     alt: "Team study session around a table with laptops",
+    label: "Group Discussions",
+    icon: "discussions",
   },
   {
-    src: "https://images.unsplash.com/photo-1564981797816-1046734e8785?auto=format&fit=crop&w=600&q=80",
+    src: studyAbroadBaseUrl + "main-page/diparture-day.jpg",
     alt: "University campus with historic brick building",
+    label: "Departure Day",
+    icon: "departure",
   },
   {
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80",
+    src: studyAbroadBaseUrl + "main-page/graduation-day.jpg",
     alt: "Graduates celebrating in caps and gowns",
+    label: "Graduation Day",
+    icon: "graduation",
   },
   {
-    src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+    src: studyAbroadBaseUrl + "main-page/campus-life.jpg",
     alt: "Two students studying together with laptops",
+    label: "Campus Life",
+    icon: "campus",
   },
-] as const;
+];
 
 export default globalCombinationData;

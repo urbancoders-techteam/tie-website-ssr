@@ -1,3 +1,5 @@
+import { studyAbroadBaseUrl } from "@/utils/config";
+
 export type ForParentsFeatureIcon =
   | "shield"
   | "chart"
@@ -13,12 +15,14 @@ export type ForParentsFeature = {
   description: string;
 };
 
+const forParentsImage = studyAbroadBaseUrl + "main-page/parents.avif";
+
 export const forParentsContent = {
   eyebrow: "For parents",
   heading: "A Message to Parents: Your Questions, Answered with Complete Transparency.",
   description:
     "We know sending your child abroad is a big decision. Taksheela walks with families through every concern — safety, costs, visas, and outcomes — with clear timelines, documented processes, and honest guidance so you always know what comes next.",
-  heroImageSrc: "/images/",
+  heroImageSrc: forParentsImage,
   heroImageAlt:
     "Parents and counsellors collaborating over study abroad planning documents",
   stats: [
