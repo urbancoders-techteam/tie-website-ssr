@@ -1,6 +1,54 @@
 import { imageBaseUrl } from "@/utils/config";
 import { CategoryKey, ViewMoreItem } from "@/utils/interface";
 
+export const studyAbroadImpactCountryLinks = [
+  "AU Study in Australia",
+  "CA Study in Canada",
+  "FR Study in France",
+  "NL Study in Netherlands",
+  "SE Study in Sweden",
+  "DK Study in Denmark",
+  "BE Study in Belgium",
+  "AT Study in Austria",
+  "IT Study in Italy",
+  "MT Study in Malta",
+];
+
+export const studyAbroadImpactStats = [
+  {
+    icon: "🏆",
+    value: 10,
+    suffix: "+",
+    label: "Years of Counselling Excellence",
+    cardClassName: "bg-[#071b3a] text-white shadow-[0_22px_50px_rgba(7,27,58,0.22)]",
+    valueClassName: "text-white",
+  },
+  {
+    icon: "✅",
+    value: 98,
+    suffix: "%",
+    label: "Application Success Rate",
+    cardClassName: "bg-[#10b6ad] text-white shadow-[0_22px_50px_rgba(16,182,173,0.24)]",
+    valueClassName: "text-white",
+  },
+  {
+    icon: "🎓",
+    value: 500,
+    suffix: "+",
+    label: "Students Placed Globally",
+    cardClassName: "border border-[#d9eeee] bg-white/45 text-[#0d233f] shadow-[0_20px_45px_rgba(13,35,63,0.07)]",
+    valueClassName: "text-[#10b6ad]",
+  },
+  {
+    icon: "🏛️",
+    value: 1000,
+    suffix: "+",
+    label: "Partner Universities Worldwide",
+    cardClassName: "border border-[#f2d49a] bg-[#fff7e7] text-[#0d233f] shadow-[0_20px_45px_rgba(210,159,55,0.12)]",
+    valueClassName: "text-[#d9a420]",
+  },
+] as const;
+
 export const milestonesData = [
   {
     id: 1,
@@ -137,6 +185,28 @@ export const viewmoredata: Record<CategoryKey, ViewMoreItem[]> = {
   ],
 };
 
-
+/** Study-abroad page only: filmstrip below WhatTaksheela (separate from WhatTaksheela UI) */
+export const studyAbroadAfterWhatTaksheelaFilmstrip = [
+  {
+    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80",
+    alt: "Students collaborating outdoors on campus",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+    alt: "Team study session around a table with laptops",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1564981797816-1046734e8785?auto=format&fit=crop&w=600&q=80",
+    alt: "University campus with historic brick building",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80",
+    alt: "Graduates celebrating in caps and gowns",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+    alt: "Two students studying together with laptops",
+  },
+] as const;
 
 export default globalCombinationData;

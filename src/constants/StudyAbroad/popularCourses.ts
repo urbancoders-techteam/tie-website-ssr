@@ -1,0 +1,25 @@
+export const popularCoursesContent = {
+  eyebrow: "Popular courses",
+  heading: "Most In-Demand Courses Abroad for Indian Students",
+  description:
+    "High-employability, globally recognised programmes across top universities worldwide.",
+  ctaText: "Match Courses to Your Profile",
+  courses: [
+    { id: "business", label: "Business Management" },
+    { id: "mba", label: "MBA" },
+    { id: "dataScience", label: "Data Science" },
+    { id: "ai", label: "Artificial Intelligence" },
+    { id: "engineering", label: "Engineering" },
+    { id: "computerScience", label: "Computer Science" },
+    { id: "cybersecurity", label: "Cybersecurity" },
+    { id: "hospitality", label: "Hospitality" },
+    { id: "healthcare", label: "Healthcare" },
+    { id: "nursing", label: "Nursing" },
+    { id: "publicHealth", label: "Public Health" },
+    { id: "finance", label: "Finance" },
+    { id: "supplyChain", label: "Supply Chain" },
+    { id: "design", label: "Design" },
+    { id: "psychology", label: "Psychology" },
+    { id: "education", label: "Education" },
+  ],
+} as const;
