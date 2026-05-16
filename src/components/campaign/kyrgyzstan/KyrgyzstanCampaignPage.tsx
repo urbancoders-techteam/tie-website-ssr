@@ -1,7 +1,8 @@
 import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import OverviewSection from "@/components/campaign/OverviewSection";
 import CampaignTabs, { KYRGYZSTAN_CAMPAIGN_TABS } from "@/components/campaign/CampaignTabs";
 import QuickFactsSection from "@/components/campaign/QuickFactsSection";
@@ -55,11 +56,12 @@ export default function KyrgyzstanCampaignPage({
     <div className="min-h-screen bg-white">
       <CampaignNavbar redirectPath={redirectPath} navLinks={KYRGYZSTAN_NAV_LINKS} />
 
-      <HeroSection
+      <CustomHeroSection
         heroImage={kyrgyzstanHeroImg}
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={KYRGYZSTAN_HERO.title}
         tagline={KYRGYZSTAN_HERO.tagline}
-        title={KYRGYZSTAN_HERO.title}
-        titleHighlight={KYRGYZSTAN_HERO.titleHighlight}
+        title={renderCampaignHeroTitle(KYRGYZSTAN_HERO.title, KYRGYZSTAN_HERO.titleHighlight)}
         description={KYRGYZSTAN_HERO.description}
         stats={
           Array.isArray(KYRGYZSTAN_HERO.stats)
@@ -69,8 +71,12 @@ export default function KyrgyzstanCampaignPage({
               }))
             : []
         }
-        ctaText={KYRGYZSTAN_HERO.ctaText}
-        redirectPath={redirectPath}
+        primaryCta={{
+          kind: "modal",
+          text: KYRGYZSTAN_HERO.ctaText,
+          redirectPath,
+          className: "text-white",
+        }}
       />
 
       <div className="sticky top-18.5 md:top-24 z-50">

@@ -1,7 +1,8 @@
 import BookCouncilBanner from "@/components/BookCouncilBanner";
 import CampaignNavbar from "@/components/campaign/CampaignNavbar";
 import CampaignFooter from "@/components/campaign/CampaignFooter";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import OverviewSection from "@/components/campaign/OverviewSection";
 import CampaignTabs from "@/components/campaign/CampaignTabs";
 import QuickFactsSection from "@/components/campaign/QuickFactsSection";
@@ -57,11 +58,12 @@ export default function RussiaCampaignPage({
       <CampaignNavbar redirectPath={redirectPath} navLinks={RUSSIA_NAV_LINKS} />
 
       {/* Hero */}
-      <HeroSection
+      <CustomHeroSection
         heroImage={russia_hero_img}
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={RUSSIA_HERO.title}
         tagline={RUSSIA_HERO.tagline}
-        title={RUSSIA_HERO.title}
-        titleHighlight={RUSSIA_HERO.titleHighlight}
+        title={renderCampaignHeroTitle(RUSSIA_HERO.title, RUSSIA_HERO.titleHighlight)}
         description={RUSSIA_HERO.description}
         stats={
           Array.isArray(RUSSIA_HERO.stats)
@@ -71,8 +73,12 @@ export default function RussiaCampaignPage({
               }))
             : []
         }
-        ctaText={RUSSIA_HERO.ctaText}
-        redirectPath={redirectPath}
+        primaryCta={{
+          kind: "modal",
+          text: RUSSIA_HERO.ctaText,
+          redirectPath,
+          className: "text-white",
+        }}
       />
 
       {/* Campaign Tabs */}

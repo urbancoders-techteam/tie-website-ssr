@@ -12,7 +12,8 @@ import { faqData } from "@/constants/mbbs";
 import LetsStart from "@/components/immersion/LetsStart";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
-import HeroSection from "@/components/campaign/HeroSection";
+import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
+import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import LikeCounter from "@/components/LikeCounter";
 import CountryComparison from "@/components/mbbs/CountryComparison";
 import CountryWeWorkWith from "@/components/mbbs/CountryWeWorkWith";
@@ -133,6 +134,8 @@ export default function Page() {
     },
   ];
 
+  const mbbsHeroTitle = "MBBS Abroad 2026–27: Your Medical Dream, Globally Achieved.";
+
   const mbbsHeroStats = [
     { value: <span className="text-[#5dd4d9]">12+</span>, label: "Countries" },
     { value: <span className="text-[#5dd4d9]">₹3L</span>, label: "Fees / Year" },
@@ -197,13 +200,15 @@ export default function Page() {
       />
 
       {/* Hero Section */}
-      <HeroSection
+      <CustomHeroSection
         heroImage={heroImage}
         heroImageAlt="MBBS abroad students at NMC-approved university campus"
         imageSizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-        imagePriority={true}
+        imagePriority
+        imageClassName="object-contain object-top md:object-cover md:object-center"
+        semanticH1={mbbsHeroTitle}
         tagline="Admissions Open — 2026-27 Session"
-        title="MBBS Abroad 2026–27: Your Medical Dream, Globally Achieved."
+        title={renderCampaignHeroTitle(mbbsHeroTitle)}
         description={
           <>
             Over <span className="text-[#5dd4d9]">23 lakh</span> students compete for just{" "}
@@ -214,7 +219,11 @@ export default function Page() {
           </>
         }
         stats={mbbsHeroStats}
-        ctaText="Book Your Free Demo Session"
+        primaryCta={{
+          kind: "modal",
+          text: "Book Your Free Demo Session",
+          className: "text-white",
+        }}
       />
 
       <BreadcrumbSchema />
