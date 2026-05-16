@@ -127,8 +127,62 @@ export const popularPosts = faqPosts.slice(0, 4).map((post) => ({
 
 export const allPosts = [...featuredPosts, ...latestPosts, ...explorePosts, ...faqPosts];
 
-export const categories = [
-  "All",
-  ...Array.from(new Set(allPosts.map((post) => post.category))),
+export type BlogCategoryTab = {
+  id: string;
+  label: string;
+  dotColor: string;
+};
+
+export const blogCategoryTabs: BlogCategoryTab[] = [
+  { id: "all", label: "All Posts", dotColor: "#00B2B8" },
+  { id: "study-abroad", label: "Study Abroad", dotColor: "#00B2B8" },
+  { id: "mbbs-abroad", label: "MBBS Abroad", dotColor: "#C45C26" },
+  { id: "study-in-india", label: "Study in India", dotColor: "#3B82F6" },
+  { id: "test-prep", label: "Test Prep", dotColor: "#8B5CF6" },
+  { id: "global-immersion", label: "Global Immersion", dotColor: "#166534" },
+  { id: "visa-docs", label: "Visa & Docs", dotColor: "#CA8A04" },
+  { id: "scholarships", label: "Scholarships", dotColor: "#DB2777" },
 ];
+
+const MBBS_CATEGORIES = new Set([
+  "Country Guides",
+  "Eligibility",
+  "NMC & NExT",
+  "Admission Process",
+  "Student Safety",
+  "FAQs",
+]);
+
+export function postMatchesBlogTab(post: BlogPost, tabId: string) {
+  if (tabId === "all") return true;
+  if (tabId === "mbbs-abroad") return MBBS_CATEGORIES.has(post.category);
+  if (tabId === "study-abroad") {
+    return /study abroad|university|visa|scholarship/i.test(
+      `${post.title} ${post.description} ${post.category}`,
+    );
+  }
+  if (tabId === "test-prep") {
+    return /ielts|toefl|pte|gre|gmat|test prep|neet/i.test(
+      `${post.title} ${post.description}`,
+    );
+  }
+  if (tabId === "visa-docs") {
+    return /visa|document|passport|sop|lor/i.test(`${post.title} ${post.description}`);
+  }
+  if (tabId === "scholarships") {
+    return /scholarship|funding|financial aid/i.test(`${post.title} ${post.description}`);
+  }
+  if (tabId === "global-immersion") {
+    return /immersion|exchange|short.?term/i.test(`${post.title} ${post.description}`);
+  }
+  if (tabId === "study-in-india") {
+    return /india|indian university|ug in india|pg in india/i.test(
+      `${post.title} ${post.description}`,
+    );
+  }
+  return false;
+}
+
+/** @deprecated Use blogCategoryTabs */
+export const categories = blogCategoryTabs.map((tab) => tab.label);
 

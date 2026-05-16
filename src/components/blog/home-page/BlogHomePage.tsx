@@ -8,25 +8,26 @@ import BlogHeroSearch from "./BlogHeroSearch";
 import BlogNewsletterCta from "./BlogNewsletterCta";
 import BlogPopularList from "./BlogPopularList";
 import BlogSectionLabel from "./BlogSectionLabel";
+import NMCApprovedColleges from "./NMCApprovedColleges";
+import ShortBlogs from "./ShortBlogs";
 import {
   allPosts,
-  categories,
+  blogCategoryTabs,
   explorePosts,
-  featuredPosts,
   latestPosts,
   popularPosts,
+  postMatchesBlogTab,
 } from "./blogHomePageData";
 
 export default function BlogHomePage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeTabId, setActiveTabId] = useState("all");
   const [query, setQuery] = useState("");
 
   const filteredPosts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
     return allPosts.filter((post) => {
-      const matchesCategory =
-        activeCategory === "All" || post.category === activeCategory;
+      const matchesCategory = postMatchesBlogTab(post, activeTabId);
       const matchesQuery =
         !normalizedQuery ||
         [post.title, post.description, post.category, post.author]
@@ -36,21 +37,21 @@ export default function BlogHomePage() {
 
       return matchesCategory && matchesQuery;
     });
-  }, [activeCategory, query]);
+  }, [activeTabId, query]);
 
-  const hasFilters = activeCategory !== "All" || query.trim().length > 0;
+  const hasFilters = activeTabId !== "all" || query.trim().length > 0;
 
   return (
     <div className="min-h-screen bg-[#F7FCFD] text-[#0B162C]">
       <BlogHeroSearch query={query} onChangeQuery={setQuery} />
       <BlogCategoryTabs
-        categories={categories}
-        activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
+        tabs={blogCategoryTabs}
+        activeTabId={activeTabId}
+        onSelectTab={setActiveTabId}
       />
 
-      <ContainerWrapper className="py-12 sm:py-14 lg:py-16">
-        {hasFilters ? (
+      {hasFilters ? (
+        <ContainerWrapper className="py-12 sm:py-14 lg:py-16">
           <section>
             <BlogSectionLabel>Search Results</BlogSectionLabel>
             {filteredPosts.length > 0 ? (
@@ -68,21 +69,12 @@ export default function BlogHomePage() {
               </div>
             )}
           </section>
-        ) : (
-          <>
-            <section>
-              <BlogSectionLabel>Featured Stories</BlogSectionLabel>
-              <div className="grid gap-6 lg:grid-cols-[1.55fr_1fr]">
-                <div className="lg:row-span-2">
-                  <BlogCard post={featuredPosts[0]} />
-                </div>
-                {featuredPosts.slice(1).map((post) => (
-                  <BlogCard key={post.title} post={post} />
-                ))}
-              </div>
-            </section>
+        </ContainerWrapper>
+      ) : (
+        <>
 
-            <section className="mt-16">
+          <ContainerWrapper className="py-12 sm:py-14 lg:py-16">
+            <section>
               <BlogSectionLabel>Latest Articles</BlogSectionLabel>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {latestPosts.map((post) => (
@@ -92,8 +84,10 @@ export default function BlogHomePage() {
             </section>
 
             <BlogNewsletterCta />
+          </ContainerWrapper>
 
-            <section className="mt-16 grid gap-10 lg:grid-cols-[2fr_1fr]">
+          <ContainerWrapper className="pb-12 sm:pb-14 lg:pb-16">
+            <section className="grid gap-10 lg:grid-cols-[2fr_1fr]">
               <div>
                 <BlogSectionLabel>More to Explore</BlogSectionLabel>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -105,9 +99,14 @@ export default function BlogHomePage() {
 
               <BlogPopularList posts={popularPosts} />
             </section>
-          </>
-        )}
-      </ContainerWrapper>
+          </ContainerWrapper>
+
+          <NMCApprovedColleges />
+
+          <ShortBlogs />
+
+        </>
+      )}
     </div>
   );
 }
