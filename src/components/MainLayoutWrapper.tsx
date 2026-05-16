@@ -39,7 +39,10 @@ export default function MainLayoutWrapper({
   return (
     <>
       {/* Sticky top bar: nav + breadcrumbs (breadcrumbs only render on inner routes). */}
-      <div className="sticky top-0 z-[1100] bg-white shadow-[0_4px_24px_-4px_rgba(15,23,42,0.12)]">
+      <div
+        data-site-sticky-chrome
+        className="sticky top-0 z-[1100] bg-white shadow-[0_4px_24px_-4px_rgba(15,23,42,0.12)]"
+      >
         <Suspense fallback={null}>
           <Header />
         </Suspense>
