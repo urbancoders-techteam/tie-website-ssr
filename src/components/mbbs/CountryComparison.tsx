@@ -181,6 +181,9 @@ export default function CountryComparison() {
 
           <div className="mt-10 rounded-[10px] border border-[#D9E2EF] overflow-x-auto lg:overflow-visible bg-white shadow-sm">
             <table className="w-full min-w-[980px] rounded-[10px] lg:min-w-0 table-auto lg:table-fixed text-[12px] sm:text-[13px] lg:text-[12px] xl:text-sm">
+              <caption className="sr-only">
+                MBBS abroad country comparison — fees, FMGE rates and NMC status for Indian students 2026-27
+              </caption>
               <thead>
                 <tr className="bg-[#00999E] rounded-[10px] text-white text-left">
                   <th className="px-3 sm:px-4 lg:px-2 xl:px-3 py-5 text-[11px] sm:text-xs font-bold uppercase tracking-wide">

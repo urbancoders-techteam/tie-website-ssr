@@ -1,16 +1,43 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Testimonial from '@/components/home/Testimonials';
 import LetsStart from '@/components/immersion/LetsStart';
-import GlobalCombination from '@/components/study-abroad/GlobalCombination';
-import Milestones from '@/components/study-abroad/Milestones';
-import StudyAbroad from '@/components/study-abroad/StudyAbroad';
-import Roadmap from '@/components/study-abroad/WorlClassEducationAssist';
-import WorldMapClientWrapper from '@/components/study-abroad/WorldMapClientWrapper';
+// import GlobalCombination from '@/components/study-abroad/GlobalCombination';
+// import Milestones from '@/components/study-abroad/Milestones';
+// import StudyAbroad from '@/components/study-abroad/StudyAbroad';
+// import Roadmap from '@/components/study-abroad/WorlClassEducationAssist';
+// import WorldMapClientWrapper from '@/components/study-abroad/WorldMapClientWrapper';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+import CustomAbroadHero from '@/components/custom-component/CustomAbroadHero';
+import OurImpact from '@/components/study-abroad/new-changes/OurImpact';
+import WhatTaksheela from '@/components/study-abroad/new-changes/WhatTaksheela';
+import StudyDestination from '@/components/study-abroad/new-changes/StudyDestination';
+import PopularCourses from '@/components/study-abroad/new-changes/PopularCourses';
+import WhoCanApply from '@/components/study-abroad/new-changes/WhoCanApply';
+import RealStudentsJourneys from '@/components/study-abroad/new-changes/RealStudentsJourneys';
+import BudgetSmartOption from '@/components/study-abroad/new-changes/BudgetSmartOption';
+import TestPreparation from '@/components/study-abroad/new-changes/TestPreparation';
+import EnglishRequirement from '@/components/study-abroad/new-changes/EnglishRequirement';
+import OurProcess from '@/components/study-abroad/new-changes/OurProcess';
+import FindingYourEducation from '@/components/study-abroad/new-changes/FindingYourEducation';
+import ForParents from '@/components/study-abroad/new-changes/ForParents';
+import WhyStudyAbroad from '@/components/study-abroad/new-changes/WhyStudyAbroad';
+import WhyNotApplyAlone from '@/components/study-abroad/new-changes/WhyNotApplyAlone';
+import CountryWiseScholarship from '@/components/study-abroad/new-changes/CountryWiseScholarship';
+import GlobalFutureStartsHere from '@/components/study-abroad/new-changes/GlobalFutureStartsHere';
+import GetStartedToday from '@/components/study-abroad/new-changes/GetStartedToday';
+import FAQSection from '@/components/campaign/FAQSection';
+import StudyAbroadFilmstrip from '@/components/study-abroad/new-changes/StudyAbroadFilmstrip';
+import { studyAbroadFaqItems } from '@/constants/study_abroad/faq';
 
+const studyAbroadHeroStats = [
+  { value: '10+', label: 'Years of Expert Counselling' },
+  { value: '98%', label: 'Application Success Rate' },
+  { value: '500+', label: 'Students Placed Globally' },
+  { value: '14+', label: 'Countries Covered' },
+];
 
 export const metadata: Metadata = {
-  title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+  title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
   description:
     'Discover top study abroad programs with Taksheela Institute. Get expert guidance, valuable insights, & personalized admission support for your global education.',
   keywords: [
@@ -25,7 +52,7 @@ export const metadata: Metadata = {
     'Education Counseling',
   ],
   openGraph: {
-    title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+    title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
     description:
       'Discover top study abroad programs with Taksheela Institute. Get expert guidance, valuable insights, & personalized admission support for your global education.',
     url: 'https://www.taksheela.com/study-abroad',
@@ -42,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
+    title: 'Study Abroad with Taksheela Institute â€“ Your Trusted Guide',
     description:
       'Explore study abroad opportunities with personalized help from Taksheela Institute.',
     images: [
@@ -57,7 +84,7 @@ export default function StudyAbroadPage() {
   return (
     <>
       {/* SEO Semantic Structure (screen reader-friendly) */}
-         <BreadcrumbSchema />
+      <BreadcrumbSchema />
       <h1 className="sr-only">
         Achieve Your Dreams of Studying Abroad with Taksheela Institute
       </h1>
@@ -69,12 +96,95 @@ export default function StudyAbroadPage() {
         Frequently Asked Questions About Studying Abroad
       </h4>
 
-      <WorldMapClientWrapper />
+      <CustomAbroadHero
+        backgroundImage="/images/study-abroad-bg.png"
+        backgroundImageAlt="Students planning their study abroad journey with Taksheela"
+        sectionClassName="relative flex min-h-[560px] items-center overflow-hidden bg-[#0B7A80] lg:min-h-[calc(100vh-96px)]"
+        eyebrow="India's Most Trusted Study Abroad Consultants"
+        eyebrowVariant="pill"
+        title={
+          <>
+            Your Dream of{' '}
+            <span className="text-[#5dd4d9]">Studying Abroad</span>
+            <span className="block">Starts Right Here.</span>
+          </>
+        }
+        description={
+          <>
+            From choosing the right country and university to landing your student visa,{' '}
+            <span className="font-semibold text-white">Taksheela guides Indian students through every step</span>{' '}
+            of their overseas education journey. UK, Germany, Ireland, Australia, Canada &amp; 10+ more countries.
+          </>
+        }
+        primaryCta={{
+          kind: 'modal',
+          text: 'Book Free Counselling',
+          redirectPath: '/thankyou',
+        }}
+        secondaryCta={{
+          kind: 'link',
+          text: 'Check Eligibility',
+          href: '#world-map',
+        }}
+        quickStats={studyAbroadHeroStats}
+        imageOverlay="light"
+        // mediaCards={studyAbroadHeroMediaCards}
+        // showRegisterForm
+      />
+
+      <OurImpact />
+
+      <WhyStudyAbroad />
+
+      <WhatTaksheela />
+
+      <StudyAbroadFilmstrip />
+
+      <StudyDestination />
+
+      <PopularCourses />
+
+      <WhoCanApply />
+
+      <RealStudentsJourneys />
+
+      <BudgetSmartOption />
+
+      <EnglishRequirement />
+
+      <OurProcess />
+
+      <FindingYourEducation />
+
+      <ForParents />
+
+      <Testimonial />
+
+      <WhyNotApplyAlone />
+
+      <TestPreparation />
+
+      <CountryWiseScholarship />
+
+      <GlobalFutureStartsHere />
+
+      <FAQSection
+        items={studyAbroadFaqItems}
+        variant="abroad"
+        sectionSlug="study-abroad"
+        headingId="study-abroad-faq-heading"
+      />
+
+      <GetStartedToday />
+
+
+      {/* <div id="world-map">
+        <WorldMapClientWrapper />
+      </div>
       <StudyAbroad />
       <Milestones />
       <Roadmap />
-      <GlobalCombination />
-      <Testimonial />
+      <GlobalCombination /> */}
       <LetsStart />
     </>
   );

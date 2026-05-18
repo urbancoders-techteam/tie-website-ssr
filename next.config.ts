@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
       },
       // Ensure trailing slash doesn't break – redirect /campaign/ to /campaign
       {
+        source: "/mbbs/",
+        destination: "/mbbs",
+        permanent: true,
+      },
+      {
+        source: "/mbbs/abroad/russia/",
+        destination: "/mbbs/abroad/russia",
+        permanent: true,
+      },
+      {
         source: "/mbbs/abroad/russia/campaign/",
         destination: "/mbbs/abroad/russia/campaign",
         permanent: true,

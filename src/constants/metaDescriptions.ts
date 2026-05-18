@@ -18,7 +18,7 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
   philippines:
     "Study MBBS in the Philippines with Taksheela Institute. Get expert help on admissions, eligibility, fees, and top medical universities for Indian students.",
   russia:
-    "Choose Taksheela Institute Of Education for MBBS in Russia. Explore top universities, low fees, easy admissions and expert visa support for students.",
+    "Complete guide to MBBS in Russia for Indian students 2026-27. MBBS fees in Russia starting ₹2.7L/year, 50+ NMC-approved universities, FMGE data & free counselling. Russia MBBS fees in Indian rupees: ₹18–36 lakhs total.",
   uk:
     "Study MBBS in UK with Taksheela Institute Of Education. Get expert guidance on admissions, affordable fees, top medical universities and full visa support.",
   usa:
@@ -55,7 +55,9 @@ export const staticMetaDescriptions = {
   cart:
     "Review your cart at Taksheela Institute of Education. Enroll in study abroad or MBBS programs and move closer to your international education dream.",
   mbbsAbroad:
-    "Planning MBBS abroad in 2026? Compare NMC-approved universities in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan. Full fee breakdown (₹11L–₹51L), NExT rules, eligibility & step-by-step admission process. Free counselling by Taksheela — India's trusted MBBS abroad experts.",
+    "Explore the best countries for MBBS abroad for Indian students — Russia, Bangladesh, Philippines & 9 more. Compare fees, FMGE rates & NMC-approved colleges. Free counselling by Taksheela.",
+  mbbsHub:
+    "Explore the best countries for MBBS abroad for Indian students — Russia, Bangladesh, Philippines & 9 more. Compare fees, FMGE rates & NMC-approved colleges. Free counselling by Taksheela.",
   mbbsIndia:
     "Get into the best MBBS colleges in India. With full guidance, eligibility criteria & college comparison - all with Taksheela Institute of Education. Apply now!",
   refundPolicy:
@@ -78,7 +80,8 @@ export const mbbsAbroadMetaTitles: Record<string, string> = {
   kyrgyzstan: "Study MBBS in Kyrgyzstan | Taksheela Institute of Education",
   nepal: "MBBS in Nepal: Fees, Eligibility & Top Colleges | Taksheela",
   philippines: "Study MBBS in Philippines | Taksheela Institute of Education",
-  russia: "MBBS in Russia Admission Guide | Taksheela Institute",
+  russia:
+    "MBBS in Russia for Indian Students 2026 — Fees, Admission & NMC Universities | Taksheela",
   uk: "MBBS in United Kingdom | Taksheela Institute of Education",
   usa: "MBBS in USA Consultants | Taksheela Institute of Education",
   uzbekistan: "Study MBBS in Uzbekistan | Taksheela Institute of Education",
@@ -103,7 +106,9 @@ export const staticMetaTitles = {
   cart: "Cart | Study Abroad Counselling Services | Taksheela",
   internationalRelationIndia: "Study in India | Affordable World-Class Education | TIE",
   mbbsAbroad:
-    "MBBS Abroad 2026 in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan — Fees, Eligibility & Admission Guide | Taksheela",
+    "MBBS Abroad 2026-27 for Indian Students — Best Countries, Fees & NMC Colleges | Taksheela",
+  mbbsHub:
+    "MBBS Abroad 2026-27 for Indian Students — Best Countries, Fees & NMC Colleges | Taksheela",
   mbbsIndia: "MBBS in India | Top Colleges & Eligibility | Taksheela",
   refundPolicy: "Refund Policy for Study Abroad Services | Taksheela",
   studyAbroadCourses: "Study Abroad Courses | Taksheela Institute of Education",

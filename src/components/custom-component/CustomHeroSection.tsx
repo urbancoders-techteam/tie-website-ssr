@@ -115,20 +115,22 @@ export default function CustomHeroSection({
   const posClass = imagePosition === "top" ? "object-top" : "object-center";
   const computedImageClassName =
     imageClassName ?? `${fitClass} ${posClass} md:${fitClass} md:${posClass}`;
+  const h1Text = semanticH1 ?? (typeof title === "string" ? title : null);
+  const decorativeTitle = semanticH1 ? null : title;
 
   return (
     <section id={id} className={`relative overflow-hidden bg-black ${minHeightClassName}`}>
-      {semanticH1 ? <h1 className="sr-only">{semanticH1}</h1> : null}
-
       <div className={mobileHeaderClassName}>
         {tagline ? (
           <div className="text-[11px] sm:text-sm tracking-widest uppercase text-[#5dd4d9] font-bold">
             {tagline}
           </div>
         ) : null}
-        {title ? (
+        {h1Text ? (
+          <h1 className={mobileTitleClassName}>{h1Text}</h1>
+        ) : decorativeTitle ? (
           <div className={mobileTitleClassName} aria-hidden="true">
-            {title}
+            {decorativeTitle}
           </div>
         ) : null}
       </div>
@@ -162,9 +164,11 @@ export default function CustomHeroSection({
                     {tagline}
                   </div>
                 ) : null}
-                {title ? (
+                {h1Text ? (
+                  <h1 className={desktopTitleClassName}>{h1Text}</h1>
+                ) : decorativeTitle ? (
                   <div className={desktopTitleClassName} aria-hidden="true">
-                    {title}
+                    {decorativeTitle}
                   </div>
                 ) : null}
               </div>

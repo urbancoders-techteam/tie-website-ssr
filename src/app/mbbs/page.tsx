@@ -13,7 +13,6 @@ import LetsStart from "@/components/immersion/LetsStart";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
-import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
 import LikeCounter from "@/components/LikeCounter";
 import CountryComparison from "@/components/mbbs/CountryComparison";
 import CountryWeWorkWith from "@/components/mbbs/CountryWeWorkWith";
@@ -22,17 +21,22 @@ import NeetToWhiteCoat from "@/components/mbbs/NeetToWhiteCoat";
 import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
 import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
+import {
+  staticMetaDescriptions,
+  staticMetaTitles,
+} from "@/constants/metaDescriptions";
 
 const MBBS_URL = "https://www.taksheela.com/mbbs";
 const SITE_URL = "https://www.taksheela.com";
+const MBBS_META_TITLE = staticMetaTitles.mbbsHub;
+const MBBS_META_DESCRIPTION = staticMetaDescriptions.mbbsHub;
 
 /** First 8 FAQs match the default accordion on this page (see FAQ component). */
 const MBBS_HUB_FAQ_FOR_SCHEMA = faqData.slice(0, 8);
 
 export const metadata: Metadata = {
-  title: "MBBS Abroad 2026-27 | NMC Approved Universities, Fees & Admission | Taksheela",
-  description:
-    "Study MBBS abroad in 12 NMC-approved countries — Russia, Bangladesh, Philippines, Kyrgyzstan & more. Fees from ₹3L/year. Expert guidance for students from India, Nepal & Bangladesh. Free counselling by Taksheela.",
+  title: MBBS_META_TITLE,
+  description: MBBS_META_DESCRIPTION,
   keywords: [
     "MBBS abroad",
     "MBBS abroad 2026",
@@ -68,9 +72,8 @@ export const metadata: Metadata = {
     url: MBBS_URL,
     siteName: "Taksheela Institute of Education",
     locale: "en_IN",
-    title: "MBBS Abroad 2026-27 | NMC Approved Universities & Fees | Taksheela",
-    description:
-      "Study MBBS abroad in 12 NMC-approved countries. Fees from ₹3L/year. Free counselling for students from India, Nepal & Bangladesh.",
+    title: MBBS_META_TITLE,
+    description: MBBS_META_DESCRIPTION,
     images: [
       {
         url: "/images/og-mbbs-abroad.jpg",
@@ -82,9 +85,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MBBS Abroad 2026-27 | NMC Approved Universities & Fees | Taksheela",
-    description:
-      "Study MBBS abroad in 12 NMC-approved countries. Fees from ₹3L/year. Free counselling for India, Nepal & Bangladesh students.",
+    title: MBBS_META_TITLE,
+    description: MBBS_META_DESCRIPTION,
     images: ["/images/og-mbbs-abroad.jpg"],
   },
 };
@@ -134,7 +136,8 @@ export default function Page() {
     },
   ];
 
-  const mbbsHeroTitle = "MBBS Abroad 2026–27: Your Medical Dream, Globally Achieved.";
+  const mbbsHeroTitle =
+    "MBBS Abroad 2026-27 — Best Countries, NMC Colleges & Fees for Indian Students";
 
   const mbbsHeroStats = [
     { value: <span className="text-[#5dd4d9]">12+</span>, label: "Countries" },
@@ -147,9 +150,8 @@ export default function Page() {
     "@type": "WebPage",
     "@id": MBBS_URL,
     url: MBBS_URL,
-    name: "MBBS Abroad 2026-27 | NMC Approved Universities, Fees & Admission",
-    description:
-      "Comprehensive guide to studying MBBS abroad across 12 NMC-approved countries, with fees, eligibility, and step-by-step admission process for students from India, Nepal, and Bangladesh.",
+    name: MBBS_META_TITLE,
+    description: MBBS_META_DESCRIPTION,
     inLanguage: "en",
     isPartOf: {
       "@type": "WebSite",
@@ -187,9 +189,27 @@ export default function Page() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "MBBS Abroad",
+        item: MBBS_URL,
+      },
+    ],
+  };
+
   const structuredDataGraph = {
     "@context": "https://schema.org",
-    "@graph": [webPageEntity, faqEntity],
+    "@graph": [webPageEntity, faqEntity, breadcrumbSchema],
   };
 
   return (
@@ -202,13 +222,12 @@ export default function Page() {
       {/* Hero Section */}
       <CustomHeroSection
         heroImage={heroImage}
-        heroImageAlt="MBBS abroad students at NMC-approved university campus"
+        heroImageAlt="MBBS abroad 2026-27 — NMC-approved universities for Indian students"
         imageSizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         imagePriority
         imageClassName="object-contain object-top md:object-cover md:object-center"
         semanticH1={mbbsHeroTitle}
         tagline="Admissions Open — 2026-27 Session"
-        title={renderCampaignHeroTitle(mbbsHeroTitle)}
         description={
           <>
             Over <span className="text-[#5dd4d9]">23 lakh</span> students compete for just{" "}
@@ -421,7 +440,7 @@ export default function Page() {
       {/* FAQ Section */}
       <section className="bg-[#effdff]">
         <ContainerWrapper>
-          <FAQ faqData={faqData} />
+          <FAQ faqData={faqData} keepAnswersInDom />
         </ContainerWrapper>
       </section>
 

@@ -1,28 +1,32 @@
-import BlogHomePage from "@/components/blog/BlogHomePage";
+import BlogHomePage from "@/components/blog/home-page/BlogHomePage";
 import type { Metadata } from "next";
 
 const BLOG_URL = "https://www.taksheela.com/blog";
 
 export const metadata: Metadata = {
-  title: "Study Abroad Blog | Visa, IELTS, MBBS & Global Education Guides",
+  title:
+    "MBBS Abroad 2026 in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan — Fees, Eligibility & Admission Guide | Taksheela",
   description:
-    "Read expert study abroad insights from Taksheela Institute, including visa guides, IELTS preparation tips, MBBS abroad updates, scholarships and student life advice.",
+    "Planning MBBS abroad in 2026? Compare NMC-approved universities in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan. Full fee breakdown (₹11L–₹51L), NExT rules, eligibility & step-by-step admission process. Free counselling by Taksheela — India's trusted MBBS abroad experts.",
   keywords: [
-    "Taksheela blog",
-    "study abroad blog",
-    "IELTS tips",
-    "student visa guide",
-    "MBBS abroad guide",
-    "scholarships for Indian students",
-    "global education",
+    "MBBS abroad 2026",
+    "MBBS in Russia",
+    "MBBS in Georgia",
+    "MBBS in Kazakhstan",
+    "MBBS in Uzbekistan",
+    "MBBS in Kyrgyzstan",
+    "NMC approved medical universities",
+    "MBBS abroad fees",
+    "NExT exam",
   ],
   alternates: {
     canonical: BLOG_URL,
   },
   openGraph: {
-    title: "Study Abroad Blog | Taksheela Institute",
+    title:
+      "MBBS Abroad 2026 in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan",
     description:
-      "Guides and expert insights on studying abroad, IELTS, visas, MBBS abroad, scholarships and international student life.",
+      "Compare MBBS abroad fees, NMC-approved universities, eligibility, NExT rules, and admission process for Indian students in 2026.",
     url: BLOG_URL,
     siteName: "Taksheela Institute",
     type: "website",
@@ -37,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Study Abroad Blog | Taksheela Institute",
+    title: "MBBS Abroad 2026 Guide | Taksheela",
     description:
-      "Expert insights on studying abroad, IELTS prep, visa guides, MBBS pathways and student life.",
+      "Compare Russia, Georgia, Kazakhstan, Uzbekistan and Kyrgyzstan for MBBS abroad fees, eligibility, NMC/NExT rules and admission guidance.",
     images: [
       "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],

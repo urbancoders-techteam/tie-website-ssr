@@ -4,4 +4,5 @@
  */
 export const BREADCRUMB_SEGMENT_LABELS: Record<string, string> = {
   ielts: "IELTS",
+  mbbs: "MBBS Abroad",
 };

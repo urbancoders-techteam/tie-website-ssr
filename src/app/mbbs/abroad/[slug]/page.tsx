@@ -2,7 +2,7 @@
 
 "use client";
 
-import AbroadHeroSection from "@/components/mbbs/abroadCountries/AbroadHeroSection";
+import CustomAbroadHero from "@/components/custom-component/CustomAbroadHero";
 import CommonFearsSection from "@/components/mbbs/abroadCountries/CommonFearsSection";
 import AdmissionProcessAbroad from "@/components/mbbs/abroadCountries/AdmissionProcessAbroad";
 import EligibilityCriteraAbroad from "@/components/mbbs/abroadCountries/EligibilityCriteraAbroad";
@@ -39,6 +39,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import About from "@/components/immersion/immersion-slug/about";
 import ModalTrigger from "@/components/ModalTrigger";
+import AbroadHeroHeadline from "@/components/mbbs/abroadCountries/AbroadHeroHeadline";
 
 const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
   australia: "Pursue MBBS in Australia — Top Universities & Costs",
@@ -50,6 +51,28 @@ const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
   uk: "MBBS in the UK: Top Universities & Admission Guide",
   usa: "MBBS in USA: Top Medical Universities & Eligibility",
 };
+
+type CollegeItem = {
+  Image?: string;
+  image?: string;
+};
+
+function getShortDescription(text: string, maxLength = 260) {
+  if (text.length <= maxLength) return text;
+  const clipped = text.slice(0, maxLength);
+  const lastSpace = clipped.lastIndexOf(" ");
+  if (lastSpace > 0) {
+    return `${clipped.slice(0, lastSpace).trimEnd()}...`;
+  }
+  return `${clipped.trimEnd()}...`;
+}
+
+function firstCollegeImageUrl(colleges?: CollegeItem[]): string | null {
+  const hit =
+    colleges?.find((c) => typeof c.Image === "string" && c.Image) ??
+    colleges?.find((c) => typeof c.image === "string" && c.image);
+  return hit?.Image ?? hit?.image ?? null;
+}
 
 export default function Page() {
   const params = useParams();
@@ -71,12 +94,42 @@ export default function Page() {
     ...country,
     h1: SUGGESTED_H1_BY_SLUG[slugLower],
   };
+  const heroBackgroundImage = abroadCopy?.hero.backgroundImage ?? firstCollegeImageUrl(countryWithSuggestedH1.colleges);
+  const heroRightStat = abroadCopy?.hero.rightStat ?? {
+    value: "100000+",
+    subtitle: `Students currently pursuing MBBS in ${countryWithSuggestedH1.title}`,
+  };
 
   return (
     <>
       {abroadCopy ? (
         <>
-          <AbroadHeroSection country={countryWithSuggestedH1} hero={abroadCopy.hero} />
+          <CustomAbroadHero
+            backgroundImage={heroBackgroundImage ?? undefined}
+            backgroundImageAlt={`${countryWithSuggestedH1.title} university`}
+            eyebrow={abroadCopy.hero.eyebrow}
+            title={<AbroadHeroHeadline headline={abroadCopy.hero.headline} />}
+            description={
+              abroadCopy.hero.descriptionMaxLength
+                ? getShortDescription(
+                    abroadCopy.hero.description,
+                    abroadCopy.hero.descriptionMaxLength,
+                  )
+                : abroadCopy.hero.description
+            }
+            primaryCta={{
+              kind: "modal",
+              text: abroadCopy.hero.cta.primaryText,
+            }}
+            secondaryCta={{
+              kind: "link",
+              text: abroadCopy.hero.cta.secondaryText,
+              href: abroadCopy.hero.cta.secondaryHref,
+            }}
+            quickStats={abroadCopy.hero.quickStats}
+            rightStat={heroRightStat}
+            showRegisterForm
+          />
 
           <OverviewAbroad
             country={countryWithSuggestedH1}
