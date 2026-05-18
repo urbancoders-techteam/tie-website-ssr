@@ -7,6 +7,7 @@ import ModalTrigger from "@/components/ModalTrigger";
 import RegisterForm from "@/components/home/RegisterForm";
 import { countryData } from "@/constants/mbbs";
 import type { AbroadHeroContent } from "@/constants/abroad/russiaAbroadConstent";
+import AbroadHeroHeadline from "@/components/mbbs/abroadCountries/AbroadHeroHeadline";
 
 type AspectItem = {
   title?: string;
@@ -227,9 +228,7 @@ export default function AbroadHeroSection({ country, hero }: AbroadHeroSectionPr
               <>
                 <p className={EYEBROW}>{hero.eyebrow}</p>
                 <h1 className={HEADLINE}>
-                  {hero.headline.line1}{" "}
-                  <span className="text-[#FFD465]">{hero.headline.line2Accent}</span>
-                  <span className="block">{hero.headline.line3}</span>
+                  <AbroadHeroHeadline headline={hero.headline} />
                 </h1>
                 <p className={BODY}>{description}</p>
                 <div className={CTA_ROW}>

@@ -217,13 +217,12 @@ export type AbroadHeroContent = {
 export const russiaAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
   headline: {
-    line1: "Study MBBS in Russia",
-    line2Accent: "Where Affordability Meets",
-    line3: "Global Medical Excellence.",
+    line1: "Study MBBS in Russia —",
+    line2Accent: "Where Affordability Meets Global Medical Excellence.",
+    line3: "",
   },
   description:
-    "Russia is known the world over for its excellence in teaching and research. It is known for providing high-quality education at a low cost, which is why it is one of the most sought-after destinations for international students desiring to study MBBS in Russia. Most of the students wish to study MBBS so as to become successful doctors in their field. Russia and India both are great destinations to study MBBS.",
-  descriptionMaxLength: 260,
+    "Russia is known the world over for its excellence in teaching and research. It is known for providing high-quality education at a low cost, which is why it is one of the most sought-after destinations for international students seeking quality MBBS education in Russia at an affordable cost.",
   cta: {
     primaryText: "Book Free Counselling ->",
     secondaryText: "View Universities",

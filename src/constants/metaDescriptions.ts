@@ -18,7 +18,7 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
   philippines:
     "Study MBBS in the Philippines with Taksheela Institute. Get expert help on admissions, eligibility, fees, and top medical universities for Indian students.",
   russia:
-    "Choose Taksheela Institute Of Education for MBBS in Russia. Explore top universities, low fees, easy admissions and expert visa support for students.",
+    "Complete guide to MBBS in Russia for Indian students 2026-27. MBBS fees in Russia starting ₹2.7L/year, 50+ NMC-approved universities, FMGE data & free counselling. Russia MBBS fees in Indian rupees: ₹18–36 lakhs total.",
   uk:
     "Study MBBS in UK with Taksheela Institute Of Education. Get expert guidance on admissions, affordable fees, top medical universities and full visa support.",
   usa:
@@ -78,7 +78,8 @@ export const mbbsAbroadMetaTitles: Record<string, string> = {
   kyrgyzstan: "Study MBBS in Kyrgyzstan | Taksheela Institute of Education",
   nepal: "MBBS in Nepal: Fees, Eligibility & Top Colleges | Taksheela",
   philippines: "Study MBBS in Philippines | Taksheela Institute of Education",
-  russia: "MBBS in Russia Admission Guide | Taksheela Institute",
+  russia:
+    "MBBS in Russia for Indian Students 2026 — Fees, Admission & NMC Universities | Taksheela",
   uk: "MBBS in United Kingdom | Taksheela Institute of Education",
   usa: "MBBS in USA Consultants | Taksheela Institute of Education",
   uzbekistan: "Study MBBS in Uzbekistan | Taksheela Institute of Education",

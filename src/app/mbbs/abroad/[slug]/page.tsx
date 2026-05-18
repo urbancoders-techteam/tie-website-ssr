@@ -39,6 +39,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import About from "@/components/immersion/immersion-slug/about";
 import ModalTrigger from "@/components/ModalTrigger";
+import AbroadHeroHeadline from "@/components/mbbs/abroadCountries/AbroadHeroHeadline";
 
 const SUGGESTED_H1_BY_SLUG: Record<string, string> = {
   australia: "Pursue MBBS in Australia — Top Universities & Costs",
@@ -107,17 +108,15 @@ export default function Page() {
             backgroundImage={heroBackgroundImage ?? undefined}
             backgroundImageAlt={`${countryWithSuggestedH1.title} university`}
             eyebrow={abroadCopy.hero.eyebrow}
-            title={
-              <>
-                {abroadCopy.hero.headline.line1}{" "}
-                <span className="text-[#FFD465]">{abroadCopy.hero.headline.line2Accent}</span>
-                <span className="block">{abroadCopy.hero.headline.line3}</span>
-              </>
+            title={<AbroadHeroHeadline headline={abroadCopy.hero.headline} />}
+            description={
+              abroadCopy.hero.descriptionMaxLength
+                ? getShortDescription(
+                    abroadCopy.hero.description,
+                    abroadCopy.hero.descriptionMaxLength,
+                  )
+                : abroadCopy.hero.description
             }
-            description={getShortDescription(
-              abroadCopy.hero.description,
-              abroadCopy.hero.descriptionMaxLength ?? 260,
-            )}
             primaryCta={{
               kind: "modal",
               text: abroadCopy.hero.cta.primaryText,
