@@ -29,7 +29,8 @@ export default function LikeCounter({
   useGrouping = true,
   className = "",
 }: LikeCounterProps) {
-  const [value, setValue] = useState(0);
+  /** Start at target so SSR/crawlers see real figures, not zero. */
+  const [value, setValue] = useState(target);
   const [started, setStarted] = useState(false);
   const nodeRef = useRef<HTMLSpanElement | null>(null);
 
@@ -73,7 +74,6 @@ export default function LikeCounter({
     const tick = (now: number) => {
       const deadline = startAt + startDelayMs;
       if (now < deadline) {
-        setValue(0);
         frameId = requestAnimationFrame(tick);
         return;
       }

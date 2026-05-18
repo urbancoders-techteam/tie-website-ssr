@@ -7,9 +7,11 @@ import AccordionCard from "@/components/AccordianCard";
 interface Props {
   faqData: any;
   heading?: string;
+  /** Render all answers in the DOM for crawlers (collapsed items use sr-only). */
+  keepAnswersInDom?: boolean;
 }
 
-const FAQ: React.FC<Props> = ({ faqData, heading }) => {
+const FAQ: React.FC<Props> = ({ faqData, heading, keepAnswersInDom = false }) => {
   const [showAll, setShowAll] = useState(false);
   const visibleFaqs = showAll ? faqData : faqData?.slice(0, 8);
   const headingText = heading ?? "Frequently Asked Questions";
@@ -20,7 +22,7 @@ const FAQ: React.FC<Props> = ({ faqData, heading }) => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 sm:gap-4 mt-10">
         {visibleFaqs?.map((item: any, index: number) => (
-          <AccordionCard key={index} data={item} i={index} />
+          <AccordionCard key={index} data={item} i={index} keepAnswerInDom={keepAnswersInDom} />
         ))}
       </div>
 

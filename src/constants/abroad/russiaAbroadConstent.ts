@@ -281,7 +281,7 @@ export const russiaAbroadOverviewContent: AbroadOverviewContent = {
   paragraphs: [
     "Russia stands as the world's single most popular destination for Indian medical students abroad — a fact confirmed by India's Ministry of External Affairs (MEA) in the December 2025 Winter Session of Parliament, which recorded over 100000 Indian students currently enrolled in Russian medical programs.",
     "Russian medical universities carry over two centuries of scientific heritage. Institutions like Sechenov University (est. 1758) and Kazan State Medical University (est. 1814) have trained physicians who practice across the globe. State subsidies keep fees far below Indian private medical colleges, while the 6-year English-medium curriculum fully satisfies NMC's guidelines for FMGE/NExT eligibility.",
-    "For students from India, Nepal, and Bangladesh, the proposition is clear: 50+ NMC-compliant universities, merit-based admission with zero donation, total program costs of ₹18–36 lakhs, and a globally recognised degree that qualifies graduates for FMGE, USMLE, PLAB, and AMC.",
+    "For those considering MBBS in Russia for Indian students, Nepali, and Bangladeshi aspirants, the proposition is clear: 50+ NMC-compliant universities, merit-based admission with zero donation, total program costs of ₹18–36 lakhs, and a globally recognised degree that qualifies graduates for FMGE, USMLE, PLAB, and AMC.",
   ],
   officialData: {
     leadBold: "Official Data (MEA, Dec 2025):",
@@ -2475,7 +2475,7 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "What is the total cost of MBBS in Russia in Indian Rupees, Nepali Rupees (NPR), and Bangladeshi Taka (BDT)?",
       answer:
-        "Total 6-year all-inclusive cost: Indian Rupees: Rs 18-36 lakhs. Nepal NPR: approximately NPR 29-58 lakh (Rs x ~1.6). Bangladesh BDT: approximately BDT 24-49 lakh (Rs x ~1.35). Budget universities (NSMU, ISMU, TSMU) at lower end; premium institutions (Sechenov ~Rs 50L, RUDN ~Rs 55L) at higher end. Annual living: Rs 1.2-2.4 lakh per year in all featured cities.",
+        "The total 6-year all-inclusive Russia MBBS fees in Indian rupees range from Rs 18 to 36 lakhs depending on the university. Nepal NPR: approximately NPR 29-58 lakh (Rs x ~1.6). Bangladesh BDT: approximately BDT 24-49 lakh (Rs x ~1.35). Budget universities (NSMU, ISMU, TSMU) at lower end; premium institutions (Sechenov ~Rs 50L, RUDN ~Rs 55L) at higher end. Annual living: Rs 1.2-2.4 lakh per year in all featured cities.",
     },
     {
       question: "What is the FMGE pass rate at RUDN University Russia in 2024?",
@@ -2631,7 +2631,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🔥",
     title: "Government-Subsidised Affordable Fees",
     description:
-      "Annual tuition from Rs. 2.7 lakh at government universities - total 6-year program Rs. 15L to 60L versus Rs. 50L-1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
+      "MBBS fees in Russia for Indian students start from Rs. 2.7 lakh per year at government universities — a 6-year total of Rs. 15L to 60L versus Rs. 50L–1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
   },
   {
     icon: "✅",

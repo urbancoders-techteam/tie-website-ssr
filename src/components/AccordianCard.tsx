@@ -16,9 +16,11 @@ interface AccordionData {
 interface AccordionCardProps {
   data: AccordionData;
   i: number;
+  /** Keep answer text in DOM when collapsed (SEO / crawlers). */
+  keepAnswerInDom?: boolean;
 }
 
-const AccordionCard: React.FC<AccordionCardProps> = ({ data, i }) => {
+const AccordionCard: React.FC<AccordionCardProps> = ({ data, i, keepAnswerInDom = false }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => setIsOpen((prev) => !prev);
@@ -53,9 +55,12 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ data, i }) => {
         </div>
       </button>
 
-      {isOpen && (
-        <div className="p-4 border-t border-gray-200 h-fit">
-          {data.fees && data.fees.length > 0 && (
+      {(isOpen || keepAnswerInDom) && (
+        <div
+          className={`border-t border-gray-200 h-fit ${isOpen ? "p-4" : "sr-only"}`}
+          aria-hidden={keepAnswerInDom && !isOpen ? true : undefined}
+        >
+          {isOpen && data.fees && data.fees.length > 0 && (
             <table className="w-full text-left border-collapse mb-4">
               <thead>
                 <tr>
