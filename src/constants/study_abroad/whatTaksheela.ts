@@ -6,9 +6,16 @@ export type WhatTaksheelaFeature = {
 
 export const whatTaksheelaContent = {
   eyebrow: "Why Taksheela?",
-  heading: "End-to-End Overseas Education Guidance — From First Thought to First Day at University",
+  heading: {
+    before: "End-to-End Overseas Education Guidance — From",
+    highlightA: "First Thought",
+    middle: "to",
+    highlightB: "First Day at University",
+  },
   description:
     "We do not stop at shortlisting universities. Taksheela walks with you through applications, funding, visas, travel and settling in — so you are never guessing the next step.",
+  trustBanner:
+    "The Only Consultancy That Plans for What Happens AFTER You Enrol",
   ctaText: "Talk to an Expert Counsellor — It's Free",
   features: [
     {
