@@ -15,7 +15,7 @@ export type ForParentsFeature = {
   description: string;
 };
 
-const forParentsImage = studyAbroadBaseUrl + "main-page/parents.avif";
+const forParentsImage = studyAbroadBaseUrl + "main-page/ParentSection.png";
 
 export const forParentsContent = {
   eyebrow: "For parents",

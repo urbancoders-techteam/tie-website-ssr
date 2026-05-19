@@ -1,25 +1,68 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, type UIEvent } from "react";
 import { FaCheck } from "react-icons/fa";
 
 import ModalTrigger from "@/components/ModalTrigger";
+import ScrollableSlider, {
+  SCROLLABLE_SLIDE_COURSES_GRID_CLASS,
+} from "@/components/study-abroad/new-changes/ScrollableSlider";
 import {
   countryWiseScholarshipContent,
   type ScholarshipCountry,
 } from "@/constants/study_abroad/countryWiseScholarship";
 
+function ScholarshipMobileCard({ country }: { country: ScholarshipCountry }) {
+  return (
+    <article className="flex w-full flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_14px_34px_rgba(7,27,58,0.11)] ring-1 ring-[#d7ecea]">
+      <div className="relative h-44 w-full shrink-0 overflow-hidden">
+        <Image
+          src={country.imageSrc}
+          alt={country.imageAlt}
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-base font-extrabold text-[#071b3a]">{country.country}</h3>
+          <span className="text-base font-extrabold text-[#071b3a]">{country.code}</span>
+        </div>
+
+        <ul className="mt-4 space-y-2.5">
+          {country.scholarships.map((scholarship) => (
+            <li key={scholarship} className="flex gap-2 text-xs leading-snug text-[#506070]">
+              <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-[#0fb3a9] text-[#0fb3a9]">
+                <FaCheck className="h-2.5 w-2.5" aria-hidden />
+              </span>
+              <span>{scholarship}</span>
+            </li>
+          ))}
+        </ul>
+
+        <ModalTrigger
+          text={`${country.ctaText} →`}
+          variant="custom"
+          className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#ddf7f5] px-4 py-3 text-center text-xs font-extrabold text-[#00777e] transition hover:bg-[#0fb3a9] hover:text-white"
+          redirectPath="/thankyou"
+        />
+      </div>
+    </article>
+  );
+}
+
 function ScholarshipCard({ country }: { country: ScholarshipCountry }) {
   return (
-    <article className="flex h-full min-h-[490px] w-[250px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_14px_34px_rgba(7,27,58,0.11)] ring-1 ring-[#d7ecea] sm:w-[285px] lg:w-[305px]">
+    <article className="flex h-full min-h-[490px] w-[285px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_14px_34px_rgba(7,27,58,0.11)] ring-1 ring-[#d7ecea] lg:w-[305px]">
       <div className="relative h-40 w-full overflow-hidden">
         <Image
           src={country.imageSrc}
           alt={country.imageAlt}
           fill
           className="object-cover transition duration-500 hover:scale-105"
-          sizes="(max-width: 768px) 75vw, (max-width: 1280px) 30vw, 305px"
+          sizes="(max-width: 1280px) 30vw, 305px"
         />
       </div>
 
@@ -51,42 +94,18 @@ function ScholarshipCard({ country }: { country: ScholarshipCountry }) {
   );
 }
 
-const sliderClassName =
-  "flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-4 pb-2 sm:px-6 lg:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+const scholarshipMobileTrackClassName =
+  "flex w-full items-stretch gap-4 overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+
+const desktopTrackClassName =
+  "mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
 export default function CountryWiseScholarship() {
   const { eyebrow, heading, intro, secondaryIntro, countries, primaryCta } =
     countryWiseScholarshipContent;
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleSliderScroll = (event: UIEvent<HTMLDivElement>) => {
-    const slider = event.currentTarget;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-    if (maxScroll <= 0) {
-      setActiveIndex(0);
-      return;
-    }
-
-    setActiveIndex(Math.round((slider.scrollLeft / maxScroll) * (countries.length - 1)));
-  };
-
-  const scrollToCard = (index: number) => {
-    const slider = sliderRef.current;
-
-    if (!slider) return;
-
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    slider.scrollTo({
-      left: maxScroll * (index / Math.max(countries.length - 1, 1)),
-      behavior: "smooth",
-    });
-    setActiveIndex(index);
-  };
 
   return (
-    <section className="overflow-hidden bg-[#eefafa] py-12 sm:py-14 lg:py-16">
+    <section className="bg-[#eefafa] py-12 sm:py-14 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="max-w-6xl">
           <p className="inline-flex items-center gap-2 rounded-full bg-[#dff8f6] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#00777e] sm:text-[11px]">
@@ -105,29 +124,38 @@ export default function CountryWiseScholarship() {
           </div>
         </header>
 
+        <ScrollableSlider
+          className="mt-10 w-full min-w-0 md:hidden"
+          total={countries.length}
+          ariaLabel="Country-wise scholarship cards"
+          autoplayMs={5000}
+          mobileMq="(max-width: 767px)"
+          bleedOnMobile={false}
+          trackClassName={scholarshipMobileTrackClassName}
+          dotsClassName="mt-6 flex justify-center gap-2"
+          dotActiveClassName="w-7 bg-[#0fb3a9]"
+          dotInactiveClassName="w-2 bg-[#c9eee9] hover:bg-[#7ddbd3]"
+          getDotLabel={(index) => countries[index].country}
+        >
+          {(setSlideRef) =>
+            countries.map((country, index) => (
+              <div
+                key={country.code}
+                ref={setSlideRef(index)}
+                className={`${SCROLLABLE_SLIDE_COURSES_GRID_CLASS} flex flex-col`}
+              >
+                <ScholarshipMobileCard country={country} />
+              </div>
+            ))
+          }
+        </ScrollableSlider>
+
         <div
-          ref={sliderRef}
-          className={`${sliderClassName} mt-10`}
+          className={`${desktopTrackClassName} hidden md:flex`}
           aria-label="Country-wise scholarship cards"
-          onScroll={handleSliderScroll}
         >
           {countries.map((country) => (
             <ScholarshipCard key={country.code} country={country} />
-          ))}
-        </div>
-
-        <div className="mt-6 flex justify-center gap-2" aria-label="Scholarship slider pagination">
-          {countries.map((country, index) => (
-            <button
-              key={country.code}
-              type="button"
-              onClick={() => scrollToCard(index)}
-              aria-label={`Show ${country.country} scholarships`}
-              aria-current={activeIndex === index ? "true" : undefined}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeIndex === index ? "w-7 bg-[#0fb3a9]" : "w-2 bg-[#c9eee9] hover:bg-[#7ddbd3]"
-              }`}
-            />
           ))}
         </div>
 

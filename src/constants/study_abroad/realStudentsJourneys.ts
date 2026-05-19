@@ -35,3 +35,6 @@ export const realStudentsJourneysContent = {
     },
   ],
 };
+
+export type RealStudentsJourneysGalleryItem =
+  (typeof realStudentsJourneysContent.gallery)[number];

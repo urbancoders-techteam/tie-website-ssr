@@ -11,12 +11,11 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
-import Slider from "react-slick";
-import type { Settings } from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import ModalTrigger from "@/components/ModalTrigger";
+import ScrollableSlider, {
+  SCROLLABLE_SLIDE_MOBILE_CLASS,
+} from "@/components/study-abroad/new-changes/ScrollableSlider";
 import {
   forParentsContent,
   type ForParentsFeature,
@@ -43,21 +42,6 @@ const ICON_STYLES: Record<ForParentsFeatureIcon, string> = {
   home: "bg-orange-100 text-orange-700 ring-orange-200/80",
   phone: "bg-pink-100 text-pink-600 ring-pink-200/80",
 };
-
-const MOBILE_SLIDER_SETTINGS: Settings = {
-  dots: true,
-  arrows: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  pauseOnHover: true,
-};
-
-const mobileSliderClassName =
-  "lg:hidden [&_.slick-list]:mx-[-6px] [&_.slick-list]:overflow-visible [&_.slick-slide]:px-1.5 [&_.slick-slide>div]:h-full [&_ul.slick-dots]:!bottom-[-36px] [&_ul.slick-dots>li]:!m-0 [&_ul.slick-dots>li>button:before]:!text-[#14b8a6] [&_ul.slick-dots>li>button:before]:!text-[11px] [&_ul.slick-dots>li>button:before]:!opacity-35 [&_ul.slick-dots>li.slick-active>button:before]:!opacity-100";
 
 const FEATURE_MARQUEE_CLASS =
   "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&_.rfm-marquee]:flex [&_.rfm-marquee-container]:overflow-hidden";
@@ -155,15 +139,27 @@ export default function ForParents() {
               {description}
             </p>
 
-            <div className={`${mobileSliderClassName} mt-8 pb-10 sm:mt-10`}>
-              <Slider {...MOBILE_SLIDER_SETTINGS}>
-                {features.map((f) => (
-                  <div key={f.id}>
+            <ScrollableSlider
+              className="mt-8 sm:mt-10 lg:hidden"
+              total={features.length}
+              ariaLabel="For parents features"
+              autoplayMs={5000}
+              dotActiveClassName="w-7 bg-[#14b8a6]"
+              dotInactiveClassName="w-2 bg-[#14b8a6]/30 hover:bg-[#14b8a6]/50"
+              getDotLabel={(index) => features[index].title}
+            >
+              {(setSlideRef) =>
+                features.map((f, index) => (
+                  <div
+                    key={f.id}
+                    ref={setSlideRef(index)}
+                    className={SCROLLABLE_SLIDE_MOBILE_CLASS}
+                  >
                     <ParentFeatureCard feature={f} />
                   </div>
-                ))}
-              </Slider>
-            </div>
+                ))
+              }
+            </ScrollableSlider>
 
             <div className="relative mt-8 hidden min-w-0 lg:mt-10 lg:block">
               <div className="overflow-hidden py-3">

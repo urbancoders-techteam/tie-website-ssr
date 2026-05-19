@@ -12,9 +12,14 @@ import {
   FaSuitcase,
 } from "react-icons/fa";
 import { FiFileText } from "react-icons/fi";
-
 import ModalTrigger from "@/components/ModalTrigger";
-import { whatTaksheelaContent } from "@/constants/study_abroad/whatTaksheela";
+import ScrollableSlider, {
+  SCROLLABLE_SLIDE_MOBILE_CLASS,
+} from "@/components/study-abroad/new-changes/ScrollableSlider";
+import {
+  whatTaksheelaContent,
+  type WhatTaksheelaFeature,
+} from "@/constants/study_abroad/whatTaksheela";
 
 type SvgIconProps = { className?: string };
 
@@ -72,6 +77,9 @@ const ICON_TILE: Record<string, { wrap: string; icon: string; glow: string }> = 
     glow: "shadow-[0_0_28px_rgba(45,212,191,0.55)]",
   },
 };
+
+const WHY_SLIDER_ARROW_CLASS =
+  "flex h-10 w-10 items-center justify-center rounded-full border border-[#1e3a5f]/60 bg-[#0c1525]/80 text-lg text-[#22d3ee] shadow-sm transition hover:bg-[#0a1628]";
 
 /** Fixed star positions — stable across renders. */
 const STARS: { top: string; left: string; size: number; opacity: number }[] = [
@@ -284,6 +292,39 @@ function SectionBackground() {
   );
 }
 
+function WhyFeatureCard({ feature, index }: { feature: WhatTaksheelaFeature; index: number }) {
+  const Icon = FEATURE_ICONS[feature.id] ?? FaBook;
+  const tile = ICON_TILE[feature.id] ?? ICON_TILE.roadmap;
+  const num = String(index + 1).padStart(2, "0");
+
+  return (
+    <article className="relative flex h-full min-h-[200px] flex-col overflow-hidden rounded-2xl border border-[#1e3a5f]/60 bg-[#0c1525]/75 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-md sm:min-h-[220px]">
+      <Icon
+        className="pointer-events-none absolute -bottom-3 -right-3 h-24 w-24 text-white/[0.04] sm:h-28 sm:w-28"
+        aria-hidden
+      />
+      <div className="relative flex items-start justify-between gap-2">
+        <span
+          className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${tile.wrap} ${tile.glow}`}
+        >
+          <span
+            className="absolute inset-[2px] rounded-[10px] bg-gradient-to-b from-white/25 to-transparent"
+            aria-hidden
+          />
+          <Icon className={`relative h-[22px] w-[22px] ${tile.icon}`} aria-hidden />
+        </span>
+        <span className="text-sm font-bold tabular-nums text-[#22d3ee]/90">{num}</span>
+      </div>
+      <h3 className="relative mt-4 text-[15px] font-bold leading-snug text-white sm:text-base">
+        {feature.title}
+      </h3>
+      <p className="relative mt-2 flex-1 text-[13px] leading-relaxed text-slate-400 sm:text-sm">
+        {feature.description}
+      </p>
+    </article>
+  );
+}
+
 export default function WhyTaksheela() {
   const { eyebrow, heading, description, features, trustBanner, ctaText } =
     whatTaksheelaContent;
@@ -315,42 +356,33 @@ export default function WhyTaksheela() {
           </p>
         </header>
 
-        <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-5">
-          {features.map((f, index) => {
-            const Icon = FEATURE_ICONS[f.id] ?? FaBook;
-            const tile = ICON_TILE[f.id] ?? ICON_TILE.roadmap;
-            const num = String(index + 1).padStart(2, "0");
-
-            return (
-              <article
+        <ScrollableSlider
+          className="mx-auto mt-10 max-w-md sm:mt-12 sm:max-w-lg lg:hidden"
+          total={features.length}
+          ariaLabel="Why Taksheela features"
+          autoplayMs={3000}
+          arrowsClassName={WHY_SLIDER_ARROW_CLASS}
+          dotActiveClassName="w-7 bg-[#22d3ee]"
+          dotInactiveClassName="w-2 bg-[#22d3ee]/25 hover:bg-[#22d3ee]/45"
+          getDotLabel={(index) => features[index].title}
+        >
+          {(setSlideRef) =>
+            features.map((f, index) => (
+              <div
                 key={f.id}
-                className="relative flex flex-col overflow-hidden rounded-2xl border border-[#1e3a5f]/60 bg-[#0c1525]/75 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-md sm:p-5"
+                ref={setSlideRef(index)}
+                className={SCROLLABLE_SLIDE_MOBILE_CLASS}
               >
-                <Icon
-                  className="pointer-events-none absolute -bottom-3 -right-3 h-24 w-24 text-white/[0.04] sm:h-28 sm:w-28"
-                  aria-hidden
-                />
-                <div className="relative flex items-start justify-between gap-2">
-                  <span
-                    className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${tile.wrap} ${tile.glow}`}
-                  >
-                    <span
-                      className="absolute inset-[2px] rounded-[10px] bg-gradient-to-b from-white/25 to-transparent"
-                      aria-hidden
-                    />
-                    <Icon className={`relative h-[22px] w-[22px] ${tile.icon}`} aria-hidden />
-                  </span>
-                  <span className="text-sm font-bold tabular-nums text-[#22d3ee]/90">{num}</span>
-                </div>
-                <h3 className="relative mt-4 text-[15px] font-bold leading-snug text-white sm:text-base">
-                  {f.title}
-                </h3>
-                <p className="relative mt-2 text-[13px] leading-relaxed text-slate-400 sm:text-sm">
-                  {f.description}
-                </p>
-              </article>
-            );
-          })}
+                <WhyFeatureCard feature={f} index={index} />
+              </div>
+            ))
+          }
+        </ScrollableSlider>
+
+        <div className="mx-auto mt-10 hidden max-w-6xl grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:mt-14 lg:grid lg:grid-cols-4 lg:gap-5">
+          {features.map((f, index) => (
+            <WhyFeatureCard key={f.id} feature={f} index={index} />
+          ))}
         </div>
 
         <div className="relative mx-auto mt-8 max-w-4xl overflow-hidden rounded-2xl border border-[#1e3a5f]/50 bg-[#0c1525]/70 px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-md sm:mt-10 sm:px-6 sm:py-5">

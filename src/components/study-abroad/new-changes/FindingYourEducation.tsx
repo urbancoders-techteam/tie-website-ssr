@@ -2,12 +2,10 @@
 
 import type { ComponentType } from "react";
 import { FaBullseye, FaClock, FaGlobeAmericas, FaMedal } from "react-icons/fa";
-import Slider from "react-slick";
-import type { Settings } from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import ModalTrigger from "@/components/ModalTrigger";
+import ScrollableSlider, {
+  SCROLLABLE_SLIDE_MOBILE_CLASS,
+} from "@/components/study-abroad/new-changes/ScrollableSlider";
 import {
   findingYourEducationContent,
   type FundingCard,
@@ -50,21 +48,6 @@ const TOP_STYLES: Record<
     icon: "text-[#7c3aed]",
   },
 };
-
-const MOBILE_SLIDER_SETTINGS: Settings = {
-  dots: true,
-  arrows: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 4800,
-  pauseOnHover: true,
-};
-
-const mobileSliderClassName =
-  "lg:hidden [&_.slick-list]:mx-[-6px] [&_.slick-list]:overflow-visible [&_.slick-slide]:px-1.5 [&_.slick-slide>div]:h-full [&_ul.slick-dots]:!bottom-[-36px] [&_ul.slick-dots>li]:!m-0 [&_ul.slick-dots>li>button:before]:!text-[#14b8a6] [&_ul.slick-dots>li>button:before]:!text-[11px] [&_ul.slick-dots>li>button:before]:!opacity-35 [&_ul.slick-dots>li.slick-active>button:before]:!opacity-100";
 
 function FundingCardItem({ card }: { card: FundingCard }) {
   const Icon = ICONS[card.icon];
@@ -126,16 +109,27 @@ export default function FindingYourEducation() {
           </p>
         </header>
 
-        {/* Mobile & tablet: slick slider */}
-        <div className={`${mobileSliderClassName} mx-auto mt-10 max-w-md pb-10 sm:mt-12 sm:max-w-lg`}>
-          <Slider {...MOBILE_SLIDER_SETTINGS}>
-            {cards.map((c) => (
-              <div key={c.id}>
+        <ScrollableSlider
+          className="mx-auto mt-10 max-w-md sm:mt-12 sm:max-w-lg lg:hidden"
+          total={cards.length}
+          ariaLabel="Funding options"
+          autoplayMs={4800}
+          dotActiveClassName="w-7 bg-[#14b8a6]"
+          dotInactiveClassName="w-2 bg-[#14b8a6]/30 hover:bg-[#14b8a6]/50"
+          getDotLabel={(index) => cards[index].title}
+        >
+          {(setSlideRef) =>
+            cards.map((c, index) => (
+              <div
+                key={c.id}
+                ref={setSlideRef(index)}
+                className={SCROLLABLE_SLIDE_MOBILE_CLASS}
+              >
                 <FundingCardItem card={c} />
               </div>
-            ))}
-          </Slider>
-        </div>
+            ))
+          }
+        </ScrollableSlider>
 
         {/* Desktop: 4-column grid */}
         <div className="mx-auto mt-10 hidden max-w-6xl grid-cols-1 gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mx-0 lg:mt-14 lg:grid lg:max-w-none lg:grid-cols-4 lg:gap-5 xl:gap-6">
