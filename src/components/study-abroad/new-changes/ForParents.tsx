@@ -10,6 +10,7 @@ import {
   FaPhone,
   FaShieldAlt,
 } from "react-icons/fa";
+import Marquee from "react-fast-marquee";
 import Slider from "react-slick";
 import type { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -58,22 +59,40 @@ const MOBILE_SLIDER_SETTINGS: Settings = {
 const mobileSliderClassName =
   "lg:hidden [&_.slick-list]:mx-[-6px] [&_.slick-list]:overflow-visible [&_.slick-slide]:px-1.5 [&_.slick-slide>div]:h-full [&_ul.slick-dots]:!bottom-[-36px] [&_ul.slick-dots>li]:!m-0 [&_ul.slick-dots>li>button:before]:!text-[#14b8a6] [&_ul.slick-dots>li>button:before]:!text-[11px] [&_ul.slick-dots>li>button:before]:!opacity-35 [&_ul.slick-dots>li.slick-active>button:before]:!opacity-100";
 
-function ParentFeatureCard({ feature }: { feature: ForParentsFeature }) {
+const FEATURE_MARQUEE_CLASS =
+  "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&_.rfm-marquee]:flex [&_.rfm-marquee-container]:overflow-hidden";
+
+function ParentFeatureCard({
+  feature,
+  variant = "default",
+}: {
+  feature: ForParentsFeature;
+  variant?: "default" | "marquee";
+}) {
   const Icon = FEATURE_ICONS[feature.icon];
   const iconRing = ICON_STYLES[feature.icon];
+  const isMarquee = variant === "marquee";
 
   return (
-    <article className="group flex h-full min-w-0 gap-3 rounded-2xl border border-gray-200/90 bg-white p-3.5 shadow-[0_6px_22px_rgba(0,31,63,0.05)] transition-all duration-300 ease-out will-change-transform hover:-translate-y-1.5 hover:border-[#14b8a6]/65 hover:shadow-[0_18px_40px_rgba(20,184,166,0.18),0_8px_20px_rgba(0,31,63,0.08)] hover:ring-2 hover:ring-[#14b8a6]/25 sm:gap-3.5 sm:rounded-3xl sm:p-4">
+    <article
+      className={`flex gap-3 rounded-2xl bg-white p-3.5 shadow-[0_6px_22px_rgba(0,31,63,0.05)] sm:gap-3.5 sm:rounded-3xl sm:p-4 ${
+        isMarquee ? "h-full w-full items-start" : "h-full min-w-0"
+      }`}
+    >
       <div
-        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-2 ring-inset transition-transform duration-300 ease-out group-hover:scale-110 sm:h-12 sm:w-12 ${iconRing}`}
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-2 ring-inset sm:h-12 sm:w-12 ${iconRing}`}
       >
         <Icon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" aria-hidden />
       </div>
-      <div className="min-w-0 flex-1">
-        <h3 className="text-sm font-extrabold leading-snug text-[#001f3f] transition-colors duration-300 group-hover:text-[#0f2847] sm:text-[15px]">
+      <div className={`min-w-0 flex-1 ${isMarquee ? "flex h-full flex-col" : ""}`}>
+        <h3
+          className={`text-sm font-extrabold leading-snug text-[#001f3f] sm:text-[15px] ${isMarquee ? "line-clamp-2" : ""}`}
+        >
           {feature.title}
         </h3>
-        <p className="mt-1 text-[12px] leading-relaxed text-[#5a6570] transition-colors duration-300 group-hover:text-[#4b5563] sm:mt-1.5 sm:text-[13px]">
+        <p
+          className={`mt-1 text-[12px] leading-relaxed text-[#5a6570] sm:mt-1.5 sm:text-[13px] ${isMarquee ? "line-clamp-3 flex-1" : ""}`}
+        >
           {feature.description}
         </p>
       </div>
@@ -88,10 +107,10 @@ export default function ForParents() {
   return (
     <section className="bg-[#f0f4f9] py-12 sm:py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-16">
           {/* Left — hero image + stats */}
-          <div className="min-w-0">
-            <div className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(0,31,63,0.12)] sm:max-w-lg lg:mx-0 lg:max-w-none">
+          <div className="min-w-0 lg:flex lg:h-full lg:items-center">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(0,31,63,0.12)] sm:max-w-lg lg:mx-0 lg:aspect-auto lg:h-[82%] lg:max-h-full lg:max-w-none lg:w-full">
               <Image
                 src={heroImageSrc}
                 alt={heroImageAlt}
@@ -146,10 +165,22 @@ export default function ForParents() {
               </Slider>
             </div>
 
-            <div className="mt-8 hidden min-h-0 grid-cols-2 gap-3 sm:gap-4 lg:mt-10 lg:grid">
-              {features.map((f) => (
-                <ParentFeatureCard key={f.id} feature={f} />
-              ))}
+            <div className="relative mt-8 hidden min-w-0 lg:mt-10 lg:block">
+              <div className="overflow-hidden py-3">
+                <Marquee
+                  speed={32}
+                  pauseOnHover
+                  gradient={false}
+                  autoFill
+                  className={FEATURE_MARQUEE_CLASS}
+                >
+                  {features.map((f) => (
+                    <div key={f.id} className="mx-2.5 h-[152px] w-[300px] shrink-0 sm:mx-3">
+                      <ParentFeatureCard feature={f} variant="marquee" />
+                    </div>
+                  ))}
+                </Marquee>
+              </div>
             </div>
 
             <div className="mt-8 sm:mt-10 lg:mt-10">

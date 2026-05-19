@@ -64,7 +64,9 @@ export default function WhatTaksheela() {
             {eyebrow}
           </p>
           <h2 className="mt-6 text-2xl font-extrabold leading-tight tracking-[-0.02em] text-white sm:mt-7 sm:text-3xl sm:leading-[1.2] lg:text-[2rem] xl:text-[2.125rem] xl:leading-snug">
-            {heading}
+            {heading.before}{" "}
+            <span className="text-[#5eead4]">{heading.highlightA}</span> {heading.middle}{" "}
+            <span className="text-[#5eead4]">{heading.highlightB}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/70 sm:mt-5 sm:text-base">
             {description}
