@@ -2,6 +2,10 @@ import { imageBaseUrl } from "@/utils/config";
 
 export const faqData = [
   {
+    title: "What is the best country for MBBS for Indian students?",
+    Desc: "There's no single answer — the best country to study MBBS abroad for Indian students depends on budget, NEET score, and career goals. Russia is the most popular for its low fees and 50+ NMC universities. Bangladesh has the highest FMGE alignment. Philippines offers the best FMGE rates with an English-only curriculum. Taksheela's free counselling session helps you identify the right fit for your specific profile.",
+  },
+  {
     title: "Why should I consider studying MBBS abroad?",
     Desc: "Studying MBBS abroad is no longer a fallback — it is a strategic career decision. With 23 lakh students competing for 1.18 lakh seats in India, the odds are brutal. Abroad, you access NMC-approved universities at a fraction of Indian private college costs — ₹18 to 30 lakh total versus ₹50 lakh to 1.5 crore domestically — in full English, with globally recognised degrees. Over 30,000 Indian students made this choice in 2024 alone.",
   },

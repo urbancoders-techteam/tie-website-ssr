@@ -212,8 +212,9 @@ export default function CountryWeWorkWith() {
             </h2>
             <div className="h-1 w-28 bg-[#F4C542] rounded-full mx-auto mt-3" />
             <p className="text-[#5D6678] text-sm md:text-xl leading-relaxed max-w-4xl mx-auto mt-5">
-              Each destination is selected for NMC compliance, cost-effectiveness, academic
-              quality, and student safety. Find your pathway below.
+              Taksheela works only with the best medical colleges abroad for Indian students —
+              each destination selected for NMC compliance, cost-effectiveness, academic quality,
+              and student safety. Find your pathway below.
             </p>
           </div>
 
