@@ -1,5 +1,6 @@
-"<!--         created with www.mysitemapgenerator.com         -->
-<urlset xmlns=""http://www.sitemaps.org/schemas/sitemap/0.9"">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with www.mysitemapgenerator.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://www.taksheela.com/</loc>
 <lastmod>2026-05-13T13:36:31+01:00</lastmod>
@@ -275,10 +276,7 @@
 <lastmod>2026-05-13T13:36:50+01:00</lastmod>
 <priority>0.6</priority>
 </url>
-</urlset>"
-
-
-
+</urlset>
 
 
 

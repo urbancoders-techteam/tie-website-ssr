@@ -118,6 +118,7 @@ export default function Page() {
       {/* banner section */}
       <TwoColumnContent
         heading={pageData?.info?.title || ""}
+        headingAs="h1"
         imageUrl={pageData?.info?.image || ""}
         bgColor={false}
         reverse={true}

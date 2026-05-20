@@ -57,7 +57,7 @@ const Footer = () => {
                 }}
                 aria-label="Facebook"
               >
-                <Image src="/images/fb.svg" alt="" width={18} height={18} />
+                <Image src="/images/fb.svg" alt="Facebook icon" width={18} height={18} />
               </Link>
               <Link
                 href="https://www.instagram.com/taksheela_studyabroad/"
@@ -71,7 +71,7 @@ const Footer = () => {
                 }}
                 aria-label="Instagram"
               >
-                <Image src="/images/insta.svg" alt="" width={18} height={18} />
+                <Image src="/images/insta.svg" alt="Instagram icon" width={18} height={18} />
               </Link>
             </div>
           </div>

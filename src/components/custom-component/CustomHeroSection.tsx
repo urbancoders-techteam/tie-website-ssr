@@ -117,6 +117,8 @@ export default function CustomHeroSection({
     imageClassName ?? `${fitClass} ${posClass} md:${fitClass} md:${posClass}`;
   const h1Text = semanticH1 ?? (typeof title === "string" ? title : null);
   const decorativeTitle = semanticH1 ? null : title;
+  /** One <h1> per page; desktop uses a styled <p> so mobile/desktop layouts do not duplicate headings. */
+  const desktopHeadingClassName = `${desktopTitleClassName} m-0`;
 
   return (
     <section id={id} className={`relative overflow-hidden bg-black ${minHeightClassName}`}>
@@ -127,7 +129,7 @@ export default function CustomHeroSection({
           </div>
         ) : null}
         {h1Text ? (
-          <h1 className={mobileTitleClassName}>{h1Text}</h1>
+          <h1 className={`${mobileTitleClassName} md:hidden`}>{h1Text}</h1>
         ) : decorativeTitle ? (
           <div className={mobileTitleClassName} aria-hidden="true">
             {decorativeTitle}
@@ -165,7 +167,13 @@ export default function CustomHeroSection({
                   </div>
                 ) : null}
                 {h1Text ? (
-                  <h1 className={desktopTitleClassName}>{h1Text}</h1>
+                  <p
+                    className={`${desktopHeadingClassName} hidden md:block`}
+                    role="heading"
+                    aria-level={1}
+                  >
+                    {h1Text}
+                  </p>
                 ) : decorativeTitle ? (
                   <div className={desktopTitleClassName} aria-hidden="true">
                     {decorativeTitle}

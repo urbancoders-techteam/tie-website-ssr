@@ -135,6 +135,37 @@ const nextConfig: NextConfig = {
         destination: "/test/ielts",
         permanent: true,
       },
+      // Client SEO: legacy immersion URLs → canonical pages
+      {
+        source: "/immersion/study-abroad-consultants-delhi-ncr",
+        destination: "/study-abroad-consultants-delhi-ncr",
+        permanent: true,
+      },
+      {
+        source: "/immersion/study-abroad-consultants-delhi-ncr/",
+        destination: "/study-abroad-consultants-delhi-ncr",
+        permanent: true,
+      },
+      {
+        source: "/immersion/consultants-study-abroad-kolkata",
+        destination: "/consultants-study-abroad-kolkata",
+        permanent: true,
+      },
+      {
+        source: "/immersion/consultants-study-abroad-kolkata/",
+        destination: "/consultants-study-abroad-kolkata",
+        permanent: true,
+      },
+      {
+        source: "/immersion/southeast-asia",
+        destination: "/immersion/south-east-asia",
+        permanent: true,
+      },
+      {
+        source: "/immersion/southeast-asia/",
+        destination: "/immersion/south-east-asia",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

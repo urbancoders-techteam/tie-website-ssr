@@ -22,6 +22,7 @@ import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
 import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
 import {
+  mbbsHubOnPageSeo,
   staticMetaDescriptions,
   staticMetaTitles,
 } from "@/constants/metaDescriptions";
@@ -136,9 +137,6 @@ export default function Page() {
     },
   ];
 
-  const mbbsHeroTitle =
-    "MBBS Abroad 2026-27 — Best Countries, NMC Colleges & Fees for Indian Students";
-
   const mbbsHeroStats = [
     { value: <span className="text-[#5dd4d9]">12+</span>, label: "Countries" },
     { value: <span className="text-[#5dd4d9]">₹3L</span>, label: "Fees / Year" },
@@ -222,11 +220,11 @@ export default function Page() {
       {/* Hero Section */}
       <CustomHeroSection
         heroImage={heroImage}
-        heroImageAlt="MBBS abroad 2026-27 — NMC-approved universities for Indian students"
+        heroImageAlt={mbbsHubOnPageSeo.heroImageAlt}
         imageSizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         imagePriority
         imageClassName="object-contain object-top md:object-cover md:object-center"
-        semanticH1={mbbsHeroTitle}
+        semanticH1={mbbsHubOnPageSeo.h1}
         tagline="Admissions Open — 2026-27 Session"
         description={
           <>

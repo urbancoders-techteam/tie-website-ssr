@@ -4,8 +4,8 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Your Site",
-  description: "Read our privacy policy to learn how we handle your data.",
+  title: "Privacy Policy | Taksheela Institute of Education",
+  description: "Read the Privacy Policy of Taksheela Institute to understand how we collect, use, protect, and securely manage your personal information online with care.",
 };
 
 const PrivacyPolicy = () => {
@@ -365,9 +365,7 @@ const PrivacyPolicy = () => {
         <ul className="w-[95%] mx-auto list-disc pl-5 space-y-2 text-[16px] text-black font-normal leading-relaxed">
           <li>By email:
             <a
-              href="info@taksheela.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://www.taksheela.com/contact"
               className="text-blue-600 underline"
             >&nbsp;info@taksheela.com</a> 
             </li>  
