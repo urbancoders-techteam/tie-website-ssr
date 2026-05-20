@@ -22,6 +22,8 @@ export default function TwoColumnContent({
   reverse = false,
   headingAs = "h3",
 }: TwoColumnContentProps) {
+  const hasImage = typeof imageUrl === "string" && imageUrl.trim().length > 0;
+
   return (
     <section className={`py-12 ${bgColor ? 'bg-[#effdff] ': 'bg-white'}`}>
       <ContainerWrapper>
@@ -41,13 +43,17 @@ export default function TwoColumnContent({
           {/* Image Section */}
           <div className="w-full md:w-1/2">
             <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src={imageUrl}
-                alt={heading}
-                fill
-                className="object-cover"
-                priority
-              />
+              {hasImage ? (
+                <Image
+                  src={imageUrl}
+                  alt={heading}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-100" />
+              )}
             </div>
           </div>
         </div>
