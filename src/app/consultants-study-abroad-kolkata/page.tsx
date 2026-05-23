@@ -65,13 +65,6 @@ export default function StudyAbroadPage() {
   return (
     <>
      <BreadcrumbSchema />
-      {/* âœ… Semantic Headings for SEO */}
-      <h1 className="sr-only">Top Study Abroad Consultants in Kolkata</h1>
-      <h2 className="sr-only">Why Choose Us for Studying Abroad?</h2>
-      <h3 className="sr-only">Our Study Abroad Services</h3>
-      <h4 className="sr-only">Success Stories</h4>
-      <h5 className="sr-only">Post-Admission Support</h5>
-      <h6 className="sr-only">Get a Free Consultation</h6>
 
       <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
         <ContainerWrapper>
@@ -80,18 +73,11 @@ export default function StudyAbroadPage() {
             <div className="flex justify-center items-center">
               <div>
                 <h1
-                  className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px]  leading-snug"
+                  className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px] leading-snug"
                   style={{ color: "rgba(0, 0, 0, 0.7)", textAlign: "left" }}
                 >
-                  <span className="text-[#00999E] ">
-                    Kolkatas Most Trusted:&nbsp;
-                  </span>
-                </h1>
-                <h1
-                  className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px]  leading-snug"
-                  style={{ color: "rgba(0, 0, 0, 0.7)", textAlign: "left" }}
-                >
-                  <span> Overseas Education Consultants</span>
+                  <span className="text-[#00999E]">Kolkatas Most Trusted:&nbsp;</span>
+                  <span>Overseas Education Consultants</span>
                 </h1>
                 <div className="my-4 sm:my-10  items-end justify-center flex">
                   {/* You can add CTA button here if needed */}
@@ -318,9 +304,9 @@ export default function StudyAbroadPage() {
             </>
           }
       />
-      <Milestones />
-      <Roadmap />
-      <GlobalCombination />
+      <Milestones sectionHeadingAs="h2" />
+      <Roadmap sectionHeadingAs="h2" />
+      <GlobalCombination sectionHeadingAs="h2" />
       <FAQ faqData={kolkateFAQ} />
       <LetsStart />
     </>

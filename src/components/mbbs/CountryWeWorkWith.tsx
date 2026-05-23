@@ -3,6 +3,7 @@ import Image from "next/image";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import ModalTrigger from "@/components/ModalTrigger";
 import { countryData } from "@/constants/mbbs";
+import { hasMbbsAbroadDetailPage } from "@/constants/mbbs/abroadCountryAccess";
 
 type CountryCard = {
   code: string;
@@ -54,7 +55,7 @@ const countries: CountryCard[] = [
     description:
       "India-identical curriculum, zero language barrier, and the highest FMGE alignment of any destination. Culturally closest option for students from West Bengal, Bihar, and Northeast India.",
     chips: ["₹18-25L total", "6 years", "SAARC-Friendly"],
-    href: "/mbbs/abroad/bangladesh",
+    href: "",
   },
   {
     code: "CA",
@@ -63,7 +64,7 @@ const countries: CountryCard[] = [
     description:
       "World-ranked medical schools with cutting-edge research and unparalleled clinical training. Opens doors to practice across North America, Europe, and beyond.",
     chips: ["Top-Ranked", "USMLE/LMCC", "Post-Study Work"],
-    href: "/mbbs/abroad/canada",
+    href: "",
   },
   {
     code: "DE",
@@ -72,7 +73,7 @@ const countries: CountryCard[] = [
     description:
       "Public university MBBS at near-zero tuition fees. A European MD, world-class infrastructure, and one of the clearest pathways to EU permanent residency.",
     chips: ["Near-Zero Fees", "EU Standard", "PR-Friendly"],
-    href: "/mbbs/abroad/germany",
+    href: "",
   },
   {
     code: "PH",
@@ -81,7 +82,7 @@ const countries: CountryCard[] = [
     description:
       "American-pattern BS+MD curriculum, the highest FMGE pass rates among affordable destinations (30-35%), full English instruction, and low living costs.",
     chips: ["₹20-30L total", "US Curriculum", "English Only"],
-    href: "/mbbs/abroad/philippines",
+    href: "",
   },
   {
     code: "AU",
@@ -90,7 +91,7 @@ const countries: CountryCard[] = [
     description:
       "Consistently top-50 globally ranked medical schools, exceptional clinical diversity, and an established post-study work pathway for international graduates.",
     chips: ["Top-50 Ranked", "AMC Pathway", "Post-Study Visa"],
-    href: "/mbbs/abroad/australia",
+    href: "",
   },
   {
     code: "NP",
@@ -99,7 +100,7 @@ const countries: CountryCard[] = [
     description:
       "India-aligned curriculum, no visa required for Indian nationals, the lowest cost of living of any destination, and cultural familiarity that eases the entire transition.",
     chips: ["₹28-35L total", "No Visa (India)", "6 years"],
-    href: "/mbbs/abroad/nepal",
+    href: "",
   },
   {
     code: "US",
@@ -108,7 +109,7 @@ const countries: CountryCard[] = [
     description:
       "The world's most prestigious medical schools. An MD from a US institution opens every career door globally - research, academic medicine, and clinical practice.",
     chips: ["Top Global Rank", "4-year MD", "USMLE"],
-    href: "/mbbs/abroad/usa",
+    href: "",
   },
   {
     code: "GB",
@@ -117,7 +118,7 @@ const countries: CountryCard[] = [
     description:
       "Russell Group MBBS programs, NHS clinical exposure, and a clear PLAB registration pathway for students targeting a career in British healthcare.",
     chips: ["5-year MBBS", "PLAB", "NHS"],
-    href: "/mbbs/abroad/uk",
+    href: "",
   },
   {
     code: "KZ",
@@ -147,14 +148,6 @@ const countries: CountryCard[] = [
     href: "/mbbs/abroad/uzbekistan",
   },
 ];
-
-const readMoreCountries = new Set([
-  "Russia",
-  "Georgia",
-  "Uzbekistan",
-  "Kazakhstan",
-  "Kyrgyzstan",
-]);
 
 const priorityOrder = ["Russia", "Georgia", "Uzbekistan", "Kazakhstan", "Kyrgyzstan"];
 
@@ -201,6 +194,49 @@ function CountryCardBody({ item }: { item: CountryCard }) {
 const cardInteractiveClass =
   "transition-all duration-300 hover:-translate-y-1 hover:border-[#2D62CC] hover:shadow-[0_16px_28px_rgba(16,24,40,0.16)]";
 
+const cardShellClass = `rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass} flex h-full flex-col`;
+
+function CountryCardFooter({ item }: { item: CountryCard }) {
+  if (hasMbbsAbroadDetailPage(item.country)) {
+    return (
+      <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
+        Read More →
+      </span>
+    );
+  }
+
+  return (
+    <ModalTrigger
+      variant="custom"
+      className="inline-flex mt-4 rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#007a7f]"
+      text="Enquire now"
+      aria-label={`Enquire now for ${item.country}`}
+    />
+  );
+}
+
+function CountryCard({ item, className }: { item: CountryCard; className?: string }) {
+  if (hasMbbsAbroadDetailPage(item.country)) {
+    return (
+      <Link href={item.href} className={`${cardShellClass} ${className ?? ""}`}>
+        <div className="flex-1">
+          <CountryCardBody item={item} />
+        </div>
+        <CountryCardFooter item={item} />
+      </Link>
+    );
+  }
+
+  return (
+    <article className={`${cardShellClass} ${className ?? ""}`}>
+      <div className="flex-1">
+        <CountryCardBody item={item} />
+      </div>
+      <CountryCardFooter item={item} />
+    </article>
+  );
+}
+
 export default function CountryWeWorkWith() {
   return (
     <section className="bg-white py-12 md:py-16">
@@ -218,76 +254,22 @@ export default function CountryWeWorkWith() {
             </p>
           </div>
 
-          {/* Mobile + tablet slider */}
           <div className="lg:hidden mt-10 -mx-1 px-1 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex gap-4 pb-1">
-              {orderedCountries.map((item) => {
-                const isReadMore = readMoreCountries.has(item.country);
-                const cardClass = `snap-start shrink-0 w-[85%] sm:w-[60%] rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass} flex h-full flex-col`;
-
-                if (isReadMore) {
-                  return (
-                    <Link key={item.code} href={item.href} className={cardClass}>
-                      <div className="flex-1">
-                        <CountryCardBody item={item} />
-                      </div>
-                      <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
-                        Read More →
-                      </span>
-                    </Link>
-                  );
-                }
-
-                return (
-                  <div key={item.code} className={cardClass}>
-                    <div className="flex-1">
-                      <CountryCardBody item={item} />
-                    </div>
-                    <ModalTrigger
-                      variant="custom"
-                      className="inline-flex mt-4 rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#007a7f]"
-                      text="Enquire now"
-                      aria-label={`Enquire now for ${item.country}`}
-                    />
-                  </div>
-                );
-              })}
+              {orderedCountries.map((item) => (
+                <CountryCard
+                  key={item.code}
+                  item={item}
+                  className="snap-start shrink-0 w-[85%] sm:w-[60%]"
+                />
+              ))}
             </div>
           </div>
 
-          {/* Laptop + desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-10">
-            {orderedCountries.map((item) => {
-              const isReadMore = readMoreCountries.has(item.country);
-              const cardClass = `rounded-[10px] border border-[#D9E2EF] bg-white p-5 shadow-[0_8px_22px_rgba(16,24,40,0.08)] ${cardInteractiveClass} flex h-full flex-col`;
-
-              if (isReadMore) {
-                return (
-                  <Link key={item.code} href={item.href} className={cardClass}>
-                    <div className="flex-1">
-                      <CountryCardBody item={item} />
-                    </div>
-                    <span className="inline-block mt-4 text-[14px] font-medium text-[#2D62CC] transition-colors">
-                      Read More →
-                    </span>
-                  </Link>
-                );
-              }
-
-              return (
-                <div key={item.code} className={cardClass}>
-                  <div className="flex-1">
-                    <CountryCardBody item={item} />
-                  </div>
-                  <ModalTrigger
-                    variant="custom"
-                    className="inline-flex mt-4 rounded-lg bg-[#00999E] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#007a7f]"
-                    text="Enquire now"
-                    aria-label={`Enquire now for ${item.country}`}
-                  />
-                </div>
-              );
-            })}
+            {orderedCountries.map((item) => (
+              <CountryCard key={item.code} item={item} />
+            ))}
           </div>
         </div>
       </ContainerWrapper>

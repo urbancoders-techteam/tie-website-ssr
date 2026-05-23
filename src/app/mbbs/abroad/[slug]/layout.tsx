@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { redirect } from "next/navigation";
 import {
   mbbsAbroadMetaDescriptions,
   mbbsAbroadMetaTitles,
 } from "@/constants/metaDescriptions";
-import { getAbroadFullPageCopy } from "@/constants/abroad/abroadFullPageRegistry";
+import {
+  ABROAD_FULL_LAYOUT_SLUGS,
+  getAbroadFullPageCopy,
+} from "@/constants/abroad/abroadFullPageRegistry";
+import { isMbbsAbroadHubOnlySlug } from "@/constants/mbbs/abroadCountryAccess";
 import { buildFaqPageSchema } from "@/lib/faqPageSchema";
 
 const SITE_ORIGIN = "https://www.taksheela.com";
@@ -17,6 +22,11 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const slugKey = slug.toLowerCase();
+
+  if (isMbbsAbroadHubOnlySlug(slugKey) || !ABROAD_FULL_LAYOUT_SLUGS.has(slugKey)) {
+    return {};
+  }
+
   const description = mbbsAbroadMetaDescriptions[slugKey];
   const title = mbbsAbroadMetaTitles[slugKey];
   const canonicalPath = `/mbbs/abroad/${slugKey}`;
@@ -33,6 +43,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function MbbsAbroadSlugLayout({ children, params }: Props) {
   const { slug } = await params;
   const slugKey = slug.toLowerCase();
+
+  if (isMbbsAbroadHubOnlySlug(slugKey) || !ABROAD_FULL_LAYOUT_SLUGS.has(slugKey)) {
+    redirect("/mbbs");
+  }
+
   const abroadCopy = getAbroadFullPageCopy(slugKey);
   const faqSchema =
     abroadCopy?.faq.items?.length ?

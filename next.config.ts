@@ -8,6 +8,38 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/login",
+        destination: "https://portal.taksheela.com/login",
+        permanent: true,
+      },
+      {
+        source: "/login/",
+        destination: "https://portal.taksheela.com/login",
+        permanent: true,
+      },
+      // Hub-only MBBS countries (no detail page — cards stay on /mbbs with Enquire now)
+      ...[
+        "bangladesh",
+        "canada",
+        "germany",
+        "philippines",
+        "australia",
+        "nepal",
+        "usa",
+        "uk",
+      ].flatMap((slug) => [
+        {
+          source: `/mbbs/abroad/${slug}`,
+          destination: "/mbbs",
+          permanent: true,
+        },
+        {
+          source: `/mbbs/abroad/${slug}/`,
+          destination: "/mbbs",
+          permanent: true,
+        },
+      ]),
       // Ensure trailing slash doesn't break – redirect /campaign/ to /campaign
       {
         source: "/mbbs/",
