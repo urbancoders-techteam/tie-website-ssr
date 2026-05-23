@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.taksheela.com"),
   title: "Study Abroad Counselor & Test Prep Institute - Taksheela",
   description:
-    "Taksheela Institute of Education offers expert guidance for studying abroad.",
+    "Study in Dubai with Taksheela for expert admission guidance, visa support, top university options, scholarships, and complete study abroad assistance.",
 };
 
 export const viewport = {

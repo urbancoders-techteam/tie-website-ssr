@@ -68,6 +68,14 @@ export const staticMetaDescriptions = {
     "Read Taksheela Institute's terms and conditions to understand policies, user responsibilities, services, and guidelines for using our website and offerings.",
   internationalRelationIndia:
     "Explore top universities in India - globally ranked, affordable and scholarship-friendly. Get admission guidance from Taksheela Institute of Education.",
+  login:
+    "Access the Taksheela student portal for seamless login, course updates, study abroad guidance, test prep resources, student support, and more. Login now!",
+} as const;
+
+/** /mbbs hub on-page SEO copy (H1 + hero image alt). */
+export const mbbsHubOnPageSeo = {
+  h1: "MBBS Abroad 2026-27 — Best Countries, NMC Colleges & Fees for Indian Students",
+  heroImageAlt: "MBBS abroad 2026-27 — NMC-approved universities for Indian students",
 } as const;
 
 export const mbbsAbroadMetaTitles: Record<string, string> = {
@@ -108,9 +116,10 @@ export const staticMetaTitles = {
   mbbsAbroad:
     "MBBS Abroad 2026-27 for Indian Students — Best Countries, Fees & NMC Colleges | Taksheela",
   mbbsHub:
-    "MBBS Abroad 2026-27 for Indian Students — Best Countries, Fees & NMC Colleges | Taksheela",
+    "MBBS Abroad 2026-27 | Fees & Admission | Taksheela",
   mbbsIndia: "MBBS in India | Top Colleges & Eligibility | Taksheela",
   refundPolicy: "Refund Policy for Study Abroad Services | Taksheela",
   studyAbroadCourses: "Study Abroad Courses | Taksheela Institute of Education",
   termsAndConditions: "Terms and Conditions | Taksheela Institute of Education",
+  login: "Student Portal Login | Taksheela Institute of Education",
 } as const;

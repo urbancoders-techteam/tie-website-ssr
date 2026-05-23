@@ -1,5 +1,6 @@
-"<!--         created with www.mysitemapgenerator.com         -->
-<urlset xmlns=""http://www.sitemaps.org/schemas/sitemap/0.9"">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with www.mysitemapgenerator.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://www.taksheela.com/</loc>
 <lastmod>2026-05-13T13:36:31+01:00</lastmod>
@@ -191,46 +192,6 @@
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://www.taksheela.com/mbbs/abroad/bangladesh</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/canada</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/germany</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/philippines</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/australia</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/nepal</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/usa</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.taksheela.com/mbbs/abroad/uk</loc>
-<lastmod>2026-05-13T13:36:44+01:00</lastmod>
-<priority>0.6</priority>
-</url>
-<url>
 <loc>https://www.taksheela.com/study-abroad/courses/enginnering</loc>
 <lastmod>2026-05-13T13:36:50+01:00</lastmod>
 <priority>0.6</priority>
@@ -275,10 +236,7 @@
 <lastmod>2026-05-13T13:36:50+01:00</lastmod>
 <priority>0.6</priority>
 </url>
-</urlset>"
-
-
-
+</urlset>
 
 
 

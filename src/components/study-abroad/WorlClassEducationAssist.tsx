@@ -11,7 +11,11 @@ import { viewmoredata } from "@/constants/study_abroad/study-abroad";
 import { imageBaseUrl } from "@/utils/config";
 import HeadingTypography from "../Heading";
 
-const Roadmap = () => {
+type RoadmapProps = {
+  sectionHeadingAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+};
+
+const Roadmap = ({ sectionHeadingAs = "h3" }: RoadmapProps) => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<CategoryKey | null>(
     null
@@ -47,6 +51,7 @@ const Roadmap = () => {
       <HeadingTypography
         content="World Class Education Assist"
         textAlign="center"
+        as={sectionHeadingAs}
       />
       <div className="bg-white text-center py-16 text-sm">
         <div className="px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pt-6">

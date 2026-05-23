@@ -8,6 +8,38 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/login",
+        destination: "https://portal.taksheela.com/login",
+        permanent: true,
+      },
+      {
+        source: "/login/",
+        destination: "https://portal.taksheela.com/login",
+        permanent: true,
+      },
+      // Hub-only MBBS countries (no detail page — cards stay on /mbbs with Enquire now)
+      ...[
+        "bangladesh",
+        "canada",
+        "germany",
+        "philippines",
+        "australia",
+        "nepal",
+        "usa",
+        "uk",
+      ].flatMap((slug) => [
+        {
+          source: `/mbbs/abroad/${slug}`,
+          destination: "/mbbs",
+          permanent: true,
+        },
+        {
+          source: `/mbbs/abroad/${slug}/`,
+          destination: "/mbbs",
+          permanent: true,
+        },
+      ]),
       // Ensure trailing slash doesn't break – redirect /campaign/ to /campaign
       {
         source: "/mbbs/",
@@ -133,6 +165,37 @@ const nextConfig: NextConfig = {
       {
         source: "/test/ilets",
         destination: "/test/ielts",
+        permanent: true,
+      },
+      // Client SEO: legacy immersion URLs → canonical pages
+      {
+        source: "/immersion/study-abroad-consultants-delhi-ncr",
+        destination: "/study-abroad-consultants-delhi-ncr",
+        permanent: true,
+      },
+      {
+        source: "/immersion/study-abroad-consultants-delhi-ncr/",
+        destination: "/study-abroad-consultants-delhi-ncr",
+        permanent: true,
+      },
+      {
+        source: "/immersion/consultants-study-abroad-kolkata",
+        destination: "/consultants-study-abroad-kolkata",
+        permanent: true,
+      },
+      {
+        source: "/immersion/consultants-study-abroad-kolkata/",
+        destination: "/consultants-study-abroad-kolkata",
+        permanent: true,
+      },
+      {
+        source: "/immersion/southeast-asia",
+        destination: "/immersion/south-east-asia",
+        permanent: true,
+      },
+      {
+        source: "/immersion/southeast-asia/",
+        destination: "/immersion/south-east-asia",
         permanent: true,
       },
     ];

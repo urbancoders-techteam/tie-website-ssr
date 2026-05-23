@@ -118,6 +118,7 @@ export default function Page() {
       {/* banner section */}
       <TwoColumnContent
         heading={pageData?.info?.title || ""}
+        headingAs="h1"
         imageUrl={pageData?.info?.image || ""}
         bgColor={false}
         reverse={true}
@@ -173,12 +174,17 @@ export default function Page() {
                     {/* Top section with image + name */}
                     <div className="flex flex-col items-center px-4 py-5 text-center">
                       <div className="relative w-[120px] h-[120px] mb-2 rounded-md">
-                        <Image
-                          src={item?.image}
-                          alt={item?.universitySortName}
-                          fill
-                          className="object-cover rounded-md"
-                        />
+                        {typeof item?.image === "string" &&
+                        item.image.trim().length > 0 ? (
+                          <Image
+                            src={item.image}
+                            alt={item?.universitySortName || "University image"}
+                            fill
+                            className="object-cover rounded-md"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-100 rounded-md" />
+                        )}
                       </div>
                     </div>
 
@@ -223,12 +229,17 @@ export default function Page() {
                     {/* Top section with image + name */}
                     <div className="flex flex-col items-center px-4 py-5 text-center">
                       <div className="relative w-full h-[120px] mb-2 rounded-md">
-                        <Image
-                          src={item?.Image}
-                          alt={item?.title?.[0]}
-                          fill
-                          className="object-contain rounded-md"
-                        />
+                        {typeof item?.Image === "string" &&
+                        item.Image.trim().length > 0 ? (
+                          <Image
+                            src={item.Image}
+                            alt={item?.title?.[0] || "Recruiter image"}
+                            fill
+                            className="object-contain rounded-md"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-100 rounded-md" />
+                        )}
                       </div>
                     </div>
 

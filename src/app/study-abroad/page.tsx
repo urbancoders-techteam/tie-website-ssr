@@ -9,7 +9,6 @@ import LetsStart from '@/components/immersion/LetsStart';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import CustomAbroadHero from '@/components/custom-component/CustomAbroadHero';
 import OurImpact from '@/components/study-abroad/new-changes/OurImpact';
-import WhatTaksheela from '@/components/study-abroad/new-changes/WhatTaksheela';
 import StudyDestination from '@/components/study-abroad/new-changes/StudyDestination';
 import PopularCourses from '@/components/study-abroad/new-changes/PopularCourses';
 import WhoCanApply from '@/components/study-abroad/new-changes/WhoCanApply';
@@ -17,7 +16,6 @@ import RealStudentsJourneys from '@/components/study-abroad/new-changes/RealStud
 import BudgetSmartOption from '@/components/study-abroad/new-changes/BudgetSmartOption';
 import TestPreparation from '@/components/study-abroad/new-changes/TestPreparation';
 import EnglishRequirement from '@/components/study-abroad/new-changes/EnglishRequirement';
-import OurProcess from '@/components/study-abroad/new-changes/OurProcess';
 import FindingYourEducation from '@/components/study-abroad/new-changes/FindingYourEducation';
 import ForParents from '@/components/study-abroad/new-changes/ForParents';
 import WhyStudyAbroad from '@/components/study-abroad/new-changes/WhyStudyAbroad';
@@ -28,6 +26,7 @@ import GetStartedToday from '@/components/study-abroad/new-changes/GetStartedTod
 import FAQSection from '@/components/campaign/FAQSection';
 import StudyAbroadFilmstrip from '@/components/study-abroad/new-changes/StudyAbroadFilmstrip';
 import { studyAbroadFaqItems } from '@/constants/study_abroad/faq';
+import WhyTaksheela from '@/components/study-abroad/new-changes/WhyTakhseela';
 
 const studyAbroadHeroStats = [
   { value: '10+', label: 'Years of Expert Counselling' },
@@ -135,28 +134,26 @@ export default function StudyAbroadPage() {
       <OurImpact />
 
       <WhyStudyAbroad />
-
-      <WhatTaksheela />
-
-      <StudyAbroadFilmstrip />
-
+      
       <StudyDestination />
 
-      <PopularCourses />
+      <WhyTaksheela />
 
+      <PopularCourses />
+      
       <WhoCanApply />
 
       <RealStudentsJourneys />
-
+      
       <BudgetSmartOption />
+
+      <ForParents />
+
+      <StudyAbroadFilmstrip />
 
       <EnglishRequirement />
 
-      <OurProcess />
-
       <FindingYourEducation />
-
-      <ForParents />
 
       <Testimonial />
 

@@ -56,8 +56,8 @@ export default function WhyChooseTaksheela() {
             </h2>
             <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#f0b42f]" />
             <p className="mx-auto mt-4 max-w-3xl text-sm md:text-[18px] leading-relaxed text-[#687b98]">
-              We are not just a consultancy. We are your medical career partner - from the day
-              you call us to the day you wear your white coat.
+              Taksheela is not just an MBBS study abroad consultancy — we are your medical career
+              partner, from the day you call us to the day you wear your white coat.
             </p>
           </div>
 

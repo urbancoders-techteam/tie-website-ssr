@@ -9,7 +9,7 @@ import { navURL } from "@/utils/config";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "About Taksheela Institute | Study Abroad & Immigration Experts",
+  title: "About Taksheela Institute | Overseas Study Experts",
   description:
     "Discover Taksheela Institute—trusted experts in study abroad, immigration, test prep, and counseling. Empowering students for global education success.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Taksheela team",
   ],
   openGraph: {
-    title: "About Taksheela Institute | Study Abroad & Immigration Experts",
+    title: "About Taksheela Institute | Overseas Study Experts",
     description:
       "Discover Taksheela Institute—trusted experts in study abroad, immigration, test prep, and counseling. Empowering students for global education success.",
     url: `${navURL}about`,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Taksheela Institute | Study Abroad & Immigration Experts",
+    title: "About Taksheela Institute | Overseas Study Experts",
     description:
       "Discover Taksheela Institute—trusted experts in study abroad, immigration, test prep, and counseling. Empowering students for global education success.",
     images: [

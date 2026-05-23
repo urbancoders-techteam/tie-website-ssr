@@ -209,15 +209,15 @@ export default function OurServices() {
   const desktopSlots: ReadonlyArray<
     { kind: "image"; index: number } | { kind: "service"; index: number }
   > = [
-    { kind: "image", index: 0 },
-    { kind: "service", index: 0 },
-    { kind: "service", index: 1 },
-    { kind: "image", index: 1 },
-    { kind: "image", index: 2 },
-    { kind: "service", index: 2 },
-    { kind: "service", index: 3 },
-    { kind: "image", index: 3 },
-  ];
+      { kind: "image", index: 0 },
+      { kind: "service", index: 0 },
+      { kind: "service", index: 1 },
+      { kind: "image", index: 1 },
+      { kind: "image", index: 2 },
+      { kind: "service", index: 2 },
+      { kind: "service", index: 3 },
+      { kind: "image", index: 3 },
+    ];
 
   return (
     <section className="bg-[#f0f9f8]">
@@ -228,7 +228,7 @@ export default function OurServices() {
           title="One Platform. Every Path to Global Education."
           subtitle={
             <>
-              Study Abroad, MBBS, Immersion or Test Prep — Taksheela Institute of
+              <a href="/study-abroad" className="underline hover:text-[#00999E] transition-colors">Study Abroad</a>, MBBS, Immersion or Test Prep — Taksheela Institute of
               Education is India&apos;s most trusted single partner for
               international education from India.
             </>

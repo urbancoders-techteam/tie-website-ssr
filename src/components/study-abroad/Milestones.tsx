@@ -8,7 +8,11 @@ import HeadingTypography from "../Heading";
 import MilestonesCard from "../MilestoneCard";
 import {milestonesData} from '@/constants/study_abroad/study-abroad'
 
-const Milestones = () => {
+type MilestonesProps = {
+  sectionHeadingAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+};
+
+const Milestones = ({ sectionHeadingAs = "h3" }: MilestonesProps) => {
   const [showMilestones, setShowMilestones] = useState(false);
 
 
@@ -54,7 +58,7 @@ const Milestones = () => {
   return (
     <section className="w-full py-12 bg-[#effdff] opacity-75">
       <div className="container mx-auto px-4">
-        <HeadingTypography content="Milestones"  textAlign="center" />
+        <HeadingTypography content="Milestones" textAlign="center" as={sectionHeadingAs} />
         {showMilestones && (
           <div className="mt-8">
             <Slider {...settings}>

@@ -173,9 +173,9 @@ export default function CountryComparison() {
             </h2>
             <div className="h-1 w-28 bg-[#F4C542] rounded-full mx-auto mt-3" />
             <p className="text-[#626C7C] text-sm sm:text-base md:text-xl leading-relaxed max-w-5xl mx-auto mt-5">
-              A data-driven comparison of all 12 MBBS destinations - fees, duration, FMGE rates,
-              NMC status and medium of instruction - to help students from India, Nepal and
-              Bangladesh make an informed choice.
+              Choosing the best countries for doing MBBS depends on your budget, NEET score, and
+              licensing goals. Here&apos;s a data-driven comparison of all 12 destinations — fees,
+              FMGE rates, NMC status, and medium of instruction.
             </p>
           </div>
 

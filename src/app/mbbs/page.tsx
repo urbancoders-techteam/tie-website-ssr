@@ -22,6 +22,7 @@ import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
 import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
 import {
+  mbbsHubOnPageSeo,
   staticMetaDescriptions,
   staticMetaTitles,
 } from "@/constants/metaDescriptions";
@@ -31,8 +32,8 @@ const SITE_URL = "https://www.taksheela.com";
 const MBBS_META_TITLE = staticMetaTitles.mbbsHub;
 const MBBS_META_DESCRIPTION = staticMetaDescriptions.mbbsHub;
 
-/** First 8 FAQs match the default accordion on this page (see FAQ component). */
-const MBBS_HUB_FAQ_FOR_SCHEMA = faqData.slice(0, 8);
+/** First 9 FAQs match the default accordion on this page (see FAQ component). */
+const MBBS_HUB_FAQ_FOR_SCHEMA = faqData.slice(0, 9);
 
 export const metadata: Metadata = {
   title: MBBS_META_TITLE,
@@ -136,9 +137,6 @@ export default function Page() {
     },
   ];
 
-  const mbbsHeroTitle =
-    "MBBS Abroad 2026-27 — Best Countries, NMC Colleges & Fees for Indian Students";
-
   const mbbsHeroStats = [
     { value: <span className="text-[#5dd4d9]">12+</span>, label: "Countries" },
     { value: <span className="text-[#5dd4d9]">₹3L</span>, label: "Fees / Year" },
@@ -222,18 +220,18 @@ export default function Page() {
       {/* Hero Section */}
       <CustomHeroSection
         heroImage={heroImage}
-        heroImageAlt="MBBS abroad 2026-27 — NMC-approved universities for Indian students"
+        heroImageAlt={mbbsHubOnPageSeo.heroImageAlt}
         imageSizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         imagePriority
         imageClassName="object-contain object-top md:object-cover md:object-center"
-        semanticH1={mbbsHeroTitle}
+        semanticH1={mbbsHubOnPageSeo.h1}
         tagline="Admissions Open — 2026-27 Session"
         description={
           <>
             Over <span className="text-[#5dd4d9]">23 lakh</span> students compete for just{" "}
             <span className="text-[#5dd4d9]">1.18 lakh</span> MBBS seats in India. Taksheela guides students from
             India, Nepal & Bangladesh into NMC-approved medical universities across{" "}
-            <span className="text-[#5dd4d9]">12 countries</span> — with fees starting at just{" "}
+            <span className="text-[#5dd4d9]">12 MBBS in foreign countries</span> — with fees starting at just{" "}
             <span className="text-[#5dd4d9]">₹3 lakh per year</span>.
           </>
         }
