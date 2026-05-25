@@ -62,7 +62,7 @@ export default function Page() {
 
   const overviewMediaSrc = getAbroadOverviewMediaSrc(slugLower);
   const countryTitle = COUNTRY_TITLE_BY_SLUG[slugLower] ?? slug;
-  const country = { title: countryTitle };
+  const country = { title: countryTitle, path: `/mbbs/abroad/${slugLower}` };
   const heroBackgroundImage = abroadCopy.hero.backgroundImage;
   const heroRightStat = abroadCopy.hero.rightStat ?? {
     value: "100000+",
