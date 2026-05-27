@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 /** Routes that set alternates.canonical via Next.js metadata — avoid duplicate <link rel="canonical">. */
 function hasMetadataCanonical(pathname: string): boolean {
   const normalized = pathname.replace(/\/+$/, '') || '/';
-  if (normalized === '/mbbs' || normalized === '/blog') return true;
+  if (normalized === '/blog') return true;
   if (/^\/mbbs\/abroad\/[^/]+$/.test(normalized)) return true;
   return false;
 }

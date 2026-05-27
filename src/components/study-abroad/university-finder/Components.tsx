@@ -33,9 +33,9 @@ export const RegisterYourself: React.FC<FiltersProps> = ({
           {/* Keep heading inside image's top-right blank region */}
           <div className="absolute inset-0 flex items-start justify-end p-3 sm:p-4 md:p-5">
             <div className="absolute right-2 top-2 w-[58%] text-start sm:right-[-40px]">
-              <h1 className="text-base font-semibold leading-tight text-[#00999E] sm:text-xl md:text-2xl lg:text-3xl">
+              <h2 className="text-base font-semibold leading-tight text-[#00999E] sm:text-xl md:text-2xl lg:text-3xl">
                 Welcome
-              </h1>
+              </h2>
               <p className="mt-1 text-[0.78rem] font-semibold leading-snug text-[#606060] sm:mt-1.5 sm:text-base md:text-lg lg:text-xl">
                 Your Global Journey
                 <br />

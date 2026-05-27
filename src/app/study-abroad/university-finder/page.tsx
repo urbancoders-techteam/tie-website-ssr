@@ -47,9 +47,6 @@ export default function Page() {
   return (
     <>
      <BreadcrumbSchema />
-      <h1 className="sr-only">
-        Find the Best Universities Abroad with Taksheela&apos;s University Finder
-      </h1>
       <UniversityFinder />
       <LetsStart />
     </>
