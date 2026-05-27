@@ -1,8 +1,8 @@
 "use client";
 
 import ContainerWrapper from "@/components/ContainerWrapper";
+import type { BlogCategoryTab } from "@/lib/blog/types";
 import { useEffect, useState } from "react";
-import type { BlogCategoryTab } from "./blogHomePageData";
 
 const ACTIVE_TEAL = "#00B2B8";
 

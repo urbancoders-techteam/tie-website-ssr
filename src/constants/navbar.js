@@ -6,10 +6,10 @@ export const navbarData = [
         title: "About Us",
         link: "/aboutus",
       },
-      // {
-      //   title: "Blogs",
-      //   link: "https://blog.taksheela.com",
-      // },
+      {
+        title: "Blogs",
+        link: "/blog",
+      },
       {
         title: "Taksheela Edge",
         link: "/",
@@ -107,7 +107,7 @@ export const navbarData = [
 
 export const homeSubMenues = [
   { title: "About Us", link: "/aboutus" },
-  // { title: "Blogs", url: "https://blog.taksheela.com/" },
+  { title: "Blogs", url: "/blog" },
   { title: "Taksheela Edge", link: "/", id: "taksheela-edge-section" },
   { title: "Taksheela Insights", link: "/", id: "taksheela-insights-section" },
 ];

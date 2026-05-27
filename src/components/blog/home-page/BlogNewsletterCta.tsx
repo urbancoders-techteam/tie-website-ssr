@@ -1,6 +1,6 @@
 import { MdMailOutline } from "react-icons/md";
 
-import { DARK } from "./blogHomePageData";
+import { DARK } from "@/lib/blog/map";
 
 export default function BlogNewsletterCta() {
   return (

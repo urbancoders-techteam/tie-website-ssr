@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { MdLocalFireDepartment } from "react-icons/md";
 
-import { DEFAULT_GUIDE_HREF } from "./blogHomePageData";
-
-export type PopularPostItem = {
-  category: string;
-  title: string;
-  meta: string;
-};
+import type { PopularPostItem } from "@/lib/blog/types";
 
 export default function BlogPopularList({ posts }: { posts: PopularPostItem[] }) {
   return (
@@ -19,8 +13,8 @@ export default function BlogPopularList({ posts }: { posts: PopularPostItem[] })
       <div className="space-y-3">
         {posts.map((post, index) => (
           <Link
-            key={post.title}
-            href={DEFAULT_GUIDE_HREF}
+            key={`${post.href}-${post.title}`}
+            href={post.href}
             className="group flex gap-4 rounded-2xl border border-[#CBECEF] bg-white p-4 transition hover:border-[#00999E] hover:shadow-md"
           >
             <span className="w-10 shrink-0 text-3xl font-black leading-none text-[#BFE6EA] transition group-hover:text-[#00999E]">
@@ -33,7 +27,9 @@ export default function BlogPopularList({ posts }: { posts: PopularPostItem[] })
               <span className="mt-1 block text-sm font-extrabold leading-snug text-[#0B162C]">
                 {post.title}
               </span>
-              <span className="mt-1 block text-xs font-semibold text-slate-500">{post.meta}</span>
+              <span className="mt-1 block line-clamp-2 text-xs font-semibold text-slate-500">
+                {post.meta}
+              </span>
             </span>
           </Link>
         ))}
@@ -41,4 +37,3 @@ export default function BlogPopularList({ posts }: { posts: PopularPostItem[] })
     </aside>
   );
 }
-
