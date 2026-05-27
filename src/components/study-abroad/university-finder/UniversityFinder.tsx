@@ -203,6 +203,16 @@ const UniversityFinder: React.FC = () => {
 
   return (
     <section id="university-finder-section" className="min-h-screen bg-white">
+      <ContainerWrapper>
+        <div className="py-6 sm:py-8">
+          <h1 className="text-balance text-2xl font-extrabold tracking-tight text-[#0f2744] sm:text-3xl md:text-4xl">
+            Find the Best Universities Abroad with Taksheela&apos;s University Finder
+          </h1>
+          <p className="mt-2 max-w-3xl text-pretty text-sm font-medium text-slate-600 sm:text-base">
+            Get personalised university recommendations based on your goals in just a few steps.
+          </p>
+        </div>
+      </ContainerWrapper>
       <div className="w-full py-6 bg-[#effdff]">
         <div className="relative flex items-center justify-between px-4">
           {/* Trimmed horizontal line */}
