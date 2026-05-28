@@ -19,7 +19,7 @@ const CanonicalTag = () => {
   const canonicalUrl = `${baseUrl}${normalizedPath}`;
 
   return (
-    <link rel="canonical" href={canonicalUrl} />
+    <link key="canonical" rel="canonical" href={canonicalUrl} />
   );
 };
 
