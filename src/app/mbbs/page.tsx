@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
+    canonical: MBBS_URL,
     languages: {
       "en-IN": MBBS_URL,
       "en-NP": MBBS_URL,
