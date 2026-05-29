@@ -12,18 +12,17 @@ export function middleware(request: NextRequest) {
   const hostname = hostHeader.split(":")[0].toLowerCase();
   if (hostname !== APEX_HOST) return NextResponse.next();
 
-  const url = request.nextUrl.clone();
-  url.protocol = "https:";
-  url.host = WWW_HOST;
+  // Build from a fixed origin so dev port (:3000) is never forwarded to production www.
+  const destination = new URL(
+    `${request.nextUrl.pathname}${request.nextUrl.search}`,
+    `https://${WWW_HOST}`,
+  );
 
-  return NextResponse.redirect(url, 301);
+  return NextResponse.redirect(destination, 301);
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all paths except Next.js internals and static assets.
-     */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|woff2?|ttf)$).*)",
   ],
 };
