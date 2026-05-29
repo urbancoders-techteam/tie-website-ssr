@@ -1,10 +1,11 @@
 import ContainerWrapper from "@/components/ContainerWrapper";
 import type { ApiBlog } from "@/lib/blog/types";
 import Link from "next/link";
-import { MdArrowBack } from "react-icons/md";
+// import { MdArrowBack } from "react-icons/md";
 import BlogArticleContent from "./BlogArticleContent";
 import BlogCounsellingCard from "./BlogCounsellingCard";
 import BlogHero from "./BlogHero";
+import BlogRelatedArticles from "./BlogRelatedArticles";
 import BlogYouMayAlsoLike from "./BlogYouMayAlsoLike";
 
 type BlogDetailPageProps = {
@@ -18,26 +19,30 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
       <BlogHero blog={blog} />
 
       <ContainerWrapper className="py-10 sm:py-12 lg:py-14">
-        {/* items-stretch (default) so sidebar column is full row height — sticky works while article scrolls */}
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-10">
-          <div className="min-w-0">
-            <Link
-              href="/blog"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#00999E] transition hover:gap-3"
-            >
-              <MdArrowBack className="h-5 w-5" aria-hidden />
-              Back to all articles
-            </Link>
+        <div className="lg:flex lg:items-stretch lg:gap-8 xl:gap-10">
+          {/* Left sidebar — stays pinned on screen while article scrolls */}
+          <aside
+            className="hidden lg:block lg:w-[18rem] lg:shrink-0 xl:w-[20rem]"
+            aria-label="Blog sidebar"
+          >
+            <div className="sticky top-32 z-30 space-y-6 lg:top-36">
+              <BlogCounsellingCard />
+              <BlogRelatedArticles relatedBlogs={relatedBlogs} />
+            </div>
+          </aside>
 
-            <div className="mx-auto max-w-4xl lg:mx-0 lg:max-w-none">
+          <div className="min-w-0 flex-1 lg:mx-auto lg:max-w-[53rem]">
+
+            <div className="mx-auto w-full max-w-4xl lg:mx-0 lg:max-w-none">
               <BlogArticleContent html={blog.description} />
             </div>
 
-            <div className="mt-10 lg:hidden">
+            <div className="mt-10 space-y-6 lg:hidden">
               <BlogCounsellingCard />
+              <BlogRelatedArticles relatedBlogs={relatedBlogs} />
             </div>
 
-            <div className="mx-auto mt-14 max-w-4xl rounded-2xl border border-[#CBECEF] bg-white p-8 text-center shadow-sm sm:p-10 lg:mx-0 lg:max-w-none">
+            <div className="mx-auto mt-14 w-full max-w-4xl rounded-2xl border border-[#CBECEF] bg-white p-8 text-center shadow-sm sm:p-10 lg:mx-0 lg:max-w-none">
               <h2 className="text-xl font-extrabold text-[#0B162C] sm:text-2xl">
                 Planning your study abroad journey?
               </h2>
@@ -61,12 +66,6 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
               </div>
             </div>
           </div>
-
-          <aside className="hidden lg:block" aria-label="Free MBBS counselling">
-            <div className="sticky top-32 z-30">
-              <BlogCounsellingCard />
-            </div>
-          </aside>
         </div>
       </ContainerWrapper>
 

@@ -39,7 +39,7 @@ export default function BlogsCarousel({ posts }: { posts: BlogPostHome[] }) {
       >
         {posts.map((post, index) => {
           const excerpt = excerptFrom(post.description);
-          const href = post.slugUrl.startsWith("/") ? post.slugUrl : `/blog/${post.slugUrl}`;
+          const href = post.slugUrl;
 
           return (
             <article
