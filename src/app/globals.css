@@ -3,6 +3,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 @import "leaflet/dist/leaflet.css";
+@import "../styles/blog-article-prose.css";
 
 * {
   font-family: "Nunito", sans-serif;
@@ -306,215 +307,14 @@ body {
   background: rgba(0, 153, 158, 0.45);
 }
 
-/* Blog article — rich text from admin editor */
-.blog-article-prose {
-  color: #334155;
-  font-size: 1.0625rem;
-  line-height: 1.85;
-  word-wrap: break-word;
-}
-
-.blog-article-prose > *:first-child {
-  margin-top: 0;
-}
-
-.blog-article-prose > *:last-child {
-  margin-bottom: 0;
-}
-
-.blog-article-prose h1,
-.blog-article-prose h2,
-.blog-article-prose h3,
-.blog-article-prose h4 {
-  color: #0b162c;
-  font-weight: 800;
-  line-height: 1.3;
-  margin-top: 2rem;
-  margin-bottom: 0.85rem;
-}
-
-.blog-article-prose h2 {
-  font-size: 1.65rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #cbecef;
-}
-
-/* Inline headings from admin editor (selected text / line only) */
-.blog-article-prose [data-rhf-heading="1"],
-.blog-article-prose .rhf-inline-h1 {
-  font-size: 1.65rem;
-  font-weight: 800;
-  line-height: 1.3;
-  color: #0b162c;
-  display: inline;
-}
-
-.blog-article-prose [data-rhf-heading="2"],
-.blog-article-prose .rhf-inline-h2 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.3;
-  color: #0b162c;
-  display: inline;
-}
-
-.blog-article-prose [data-rhf-heading="3"],
-.blog-article-prose .rhf-inline-h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  line-height: 1.3;
-  color: #0b162c;
-  display: inline;
-}
-
-.blog-article-prose h3 {
-  font-size: 1.35rem;
-}
-
-.blog-article-prose h4 {
-  font-size: 1.15rem;
-}
-
-.blog-article-prose p {
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-}
-
-.blog-article-prose a {
-  color: #00999e;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.blog-article-prose a:hover {
-  color: #007f83;
-}
-
-.blog-article-prose strong,
-.blog-article-prose b {
-  font-weight: 800;
-}
-
-/* Inline color from editor — do not force block color on spans */
-.blog-article-prose span[style*="color"] {
-  display: inline;
-}
-
-.blog-article-prose strong:not([style*="color"]),
-.blog-article-prose b:not([style*="color"]) {
-  color: #0b162c;
-}
-
-.blog-article-prose p[style*="text-align"] span[style*="color"],
-.blog-article-prose div[style*="text-align"] span[style*="color"] {
-  text-align: inherit;
-}
-
-.blog-article-prose ul,
-.blog-article-prose ol {
-  margin: 1rem 0 1.5rem;
-  padding-left: 1.5rem;
-}
-
-.blog-article-prose ul {
-  list-style-type: disc;
-}
-
-.blog-article-prose ol {
-  list-style-type: decimal;
-}
-
-.blog-article-prose li {
-  margin-bottom: 0.5rem;
-}
-
-.blog-article-prose li > ul,
-.blog-article-prose li > ol {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.blog-article-prose blockquote {
-  margin: 1.5rem 0;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid #00999e;
-  background: #f0fafb;
-  border-radius: 0 0.75rem 0.75rem 0;
-  color: #0b162c;
-  font-style: italic;
-}
-
-.blog-article-prose img {
-  max-width: 100%;
-  height: auto;
-  margin: 1.75rem auto;
-  border-radius: 0.75rem;
-  box-shadow: 0 12px 40px rgba(11, 22, 44, 0.1);
-}
-
-.blog-article-prose table {
-  width: 100%;
-  margin: 1.5rem 0;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.blog-article-prose th,
-.blog-article-prose td {
-  border: 1px solid #cbecef;
-  padding: 0.65rem 0.85rem;
-  text-align: left;
-}
-
-.blog-article-prose th {
-  background: #e7f8fa;
-  color: #0b162c;
-  font-weight: 700;
-}
-
-.blog-article-prose hr {
-  margin: 2rem 0;
-  border: none;
-  border-top: 1px solid #cbecef;
-}
-
-.blog-article-prose pre,
-.blog-article-prose code {
-  font-family: ui-monospace, monospace;
-  font-size: 0.9em;
-}
-
-.blog-article-prose pre {
-  overflow-x: auto;
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #0b162c;
-  color: #e2e8f0;
-  border-radius: 0.75rem;
-}
-
-.blog-article-prose code {
-  padding: 0.15rem 0.4rem;
-  background: #e7f8fa;
-  border-radius: 0.25rem;
-  color: #007f83;
-}
-
-.blog-article-prose iframe {
-  max-width: 100%;
-  margin: 1.5rem 0;
-  border-radius: 0.75rem;
-}
-
 /* Blog detail — You May Also Like slider */
 .blog-related-slider-wrap {
   overflow: visible;
 }
 
 .blog-related-nav-btn {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
   flex-shrink: 0;
 }
 
@@ -522,6 +322,17 @@ body {
   .blog-related-nav-btn {
     width: 3.25rem;
     height: 3.25rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .blog-related-slider-wrap {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+
+  .blog-related-slider ul.slick-dots {
+    bottom: -2rem;
   }
 }
 

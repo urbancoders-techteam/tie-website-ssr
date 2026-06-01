@@ -93,7 +93,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
         />
       )}
 
-      <div className="relative mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+      <div className="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         {displayTags.length > 0 ? (
           <div className="flex flex-wrap gap-2.5 sm:gap-3">
             {displayTags.map((tag, index) => {
@@ -117,23 +117,23 @@ export default function BlogHero({ blog }: BlogHeroProps) {
         </h1>
 
         {heroDescription ? (
-          <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-base md:text-lg">
             {heroDescription}
           </p>
         ) : null}
 
-        <div className="mt-8 flex flex-col gap-6 border-t border-white/15 pt-8 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#00999E] text-sm font-extrabold text-white sm:h-12 sm:w-12">
+        <div className="mt-6 flex flex-col gap-5 border-t border-white/15 pt-6 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:pt-8">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#00999E] text-xs font-extrabold text-white sm:h-12 sm:w-12 sm:text-sm">
               TI
             </div>
-            <div>
-              <p className="text-sm font-bold text-white sm:text-base">{DEFAULT_BLOG_AUTHOR}</p>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-white sm:text-base">{DEFAULT_BLOG_AUTHOR}</p>
               <p className="text-xs text-white/65 sm:text-sm">Taksheela Institute of Education</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm font-semibold text-white/80 sm:gap-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-white/80 sm:gap-6 sm:text-sm">
             {edition ? (
               <span className="inline-flex items-center gap-1.5">
                 <MdCalendarToday className="h-4 w-4 text-[#5EEAD4]" aria-hidden />

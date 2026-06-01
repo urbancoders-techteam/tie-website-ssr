@@ -33,6 +33,8 @@ export function normalizeApiBlog(raw: Record<string, unknown> | null | undefined
     categoryName: (raw.categoryName as string | null) ?? null,
     excerpt: heroDescription,
     heroDescription,
+    metaTitle: String(raw.metaTitle ?? "").trim(),
+    metaDescription: String(raw.metaDescription ?? "").trim(),
     heroTags: parseHeroTags(raw.heroTags),
   };
 }
