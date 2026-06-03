@@ -77,6 +77,11 @@ export interface FAQSectionProps {
    * Omit to keep `id="faq"` (campaign pages and backward-compatible links).
    */
   sectionSlug?: string;
+  /**
+   * Explicit section element id (e.g. `uk-faq` for UK country tab layout).
+   * Overrides the default `faq` / `faq-{slug}` id when set.
+   */
+  sectionId?: string;
   /** Root id for the section heading (`abroad`); defaults to `faq-heading`. */
   headingId?: string;
 }
@@ -169,15 +174,16 @@ export default function FAQSection({
   items,
   variant = "default",
   sectionSlug,
+  sectionId,
   headingId = "faq-heading",
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   /** Prefix for question/answer region ids — `faq-georgia-*` when slug set, else `faq-*` (campaigns). */
-  const idPrefix = sectionSlug ? `faq-${sectionSlug}` : "faq";
+  const idPrefix = sectionSlug ? `faq-${sectionSlug}` : sectionId ?? "faq";
 
-  /** Public section anchor: `faq-{slug}` when slug set; otherwise stable `faq` for campaigns. */
-  const sectionDomId = sectionSlug ? `faq-${sectionSlug}` : "faq";
+  /** Public section anchor: explicit `sectionId`, else `faq-{slug}`, else `faq`. */
+  const sectionDomId = sectionId ?? (sectionSlug ? `faq-${sectionSlug}` : "faq");
 
   const renderHighlight = useCallback((text: string) => <span className={`${ACCENT} font-bold`}>{text}</span>, []);
 
@@ -189,7 +195,7 @@ export default function FAQSection({
     ) : (
       <h2 className="font-sans text-xl font-[700] text-gray-900 sm:text-2xl md:text-4xl">
         <span className="relative inline-block pb-1">
-          Frequently asked <span className="text-[#00999E]">Questions</span>
+          Frequently Asked <span className="text-[#00999E]">Questions</span>
         </span>
       </h2>
     );
@@ -197,7 +203,7 @@ export default function FAQSection({
   return (
     <section
       id={sectionDomId}
-      className="scroll-mt-24 overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16"
+      className={`overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`}
       aria-labelledby={variant === "abroad" ? headingId : undefined}
     >
       <div className="mx-auto min-w-0 max-w-7xl px-4">
