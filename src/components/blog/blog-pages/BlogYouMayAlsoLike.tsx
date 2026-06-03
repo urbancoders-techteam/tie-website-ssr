@@ -58,15 +58,15 @@ function RelatedBlogCard({ blog }: { blog: ApiBlog }) {
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
         <span
-          className="mb-3 w-fit rounded-md px-2.5 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.14em]"
+          className="mb-2.5 w-fit max-w-full truncate rounded-md px-2 py-0.5 text-[0.6rem] font-extrabold uppercase tracking-[0.12em] sm:mb-3 sm:px-2.5 sm:py-1 sm:text-[0.65rem] sm:tracking-[0.14em]"
           style={{ backgroundColor: style.bg, color: style.text }}
         >
           {categoryName}
         </span>
 
-        <h3 className="line-clamp-3 min-h-[4.5rem] text-lg font-extrabold leading-snug text-[#0B162C] transition group-hover:text-[#00999E]">
+        <h3 className="line-clamp-3 text-base font-extrabold leading-snug text-[#0B162C] transition group-hover:text-[#00999E] sm:min-h-[4.5rem] sm:text-lg">
           <Link href={href}>{blog.title}</Link>
         </h3>
 
@@ -148,10 +148,10 @@ export default function BlogYouMayAlsoLike({
   const goNext = () => sliderRef.current?.slickNext();
 
   return (
-    <section className="border-t border-[#CBECEF] bg-white py-14 sm:py-16 lg:py-20">
+    <section className="border-t border-[#CBECEF] bg-white py-10 sm:py-16 lg:py-20">
       <ContainerWrapper>
-        <div className="text-center">
-          <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[#00999E] sm:text-xs">
+        <div className="px-0.5 text-center">
+          <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#00999E] sm:text-xs sm:tracking-[0.28em]">
             <span className="opacity-60" aria-hidden>
               —
             </span>{" "}
@@ -160,25 +160,29 @@ export default function BlogYouMayAlsoLike({
               —
             </span>
           </p>
-          <h2 className="mt-3 text-2xl font-black text-[#0B162C] sm:text-3xl lg:text-[2rem]">
+          <h2 className="mt-2.5 text-balance text-xl font-black leading-tight text-[#0B162C] sm:mt-3 sm:text-3xl lg:text-[2rem]">
             {sectionTitle}
           </h2>
         </div>
 
-        <div className="blog-related-slider-wrap mt-10 sm:mt-12">
+        <div className="blog-related-slider-wrap mt-8 sm:mt-12">
           {canSlide ? (
-            <div className="flex items-center gap-2 sm:gap-4 lg:gap-5">
-              <NavArrow direction="prev" onClick={goPrev} />
-              <div className="blog-related-slider min-w-0 flex-1 pb-10">
+            <div className="flex items-center gap-0 sm:gap-4 lg:gap-5">
+              <div className="hidden shrink-0 sm:block">
+                <NavArrow direction="prev" onClick={goPrev} />
+              </div>
+              <div className="blog-related-slider min-w-0 flex-1 pb-10 sm:pb-10">
                 <Slider ref={sliderRef} {...settings}>
                   {relatedBlogs.map((item) => (
-                    <div key={blogHref(item.slugUrl)} className="h-full px-1.5 outline-none sm:px-2">
+                    <div key={blogHref(item.slugUrl)} className="h-full px-1 outline-none sm:px-2">
                       <RelatedBlogCard blog={item} />
                     </div>
                   ))}
                 </Slider>
               </div>
-              <NavArrow direction="next" onClick={goNext} />
+              <div className="hidden shrink-0 sm:block">
+                <NavArrow direction="next" onClick={goNext} />
+              </div>
             </div>
           ) : (
             <div className="blog-related-slider mx-auto max-w-md pb-4">

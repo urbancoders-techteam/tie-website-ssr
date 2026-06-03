@@ -19,17 +19,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const description =
+    blog.metaDescription?.trim() ||
     blog.heroDescription?.trim() ||
     blog.excerpt?.trim() ||
     excerptFrom(blog.description, 32);
+  const pageTitle =
+    blog.metaTitle?.trim() || `${blog.title} | Taksheela Blog`;
+  const ogTitle = blog.metaTitle?.trim() || blog.title;
   const canonical = `https://www.taksheela.com/blog/${slug}`;
 
   return {
-    title: `${blog.title} | Taksheela Blog`,
+    title: pageTitle,
     description,
     alternates: { canonical },
     openGraph: {
-      title: blog.title,
+      title: ogTitle,
       description,
       url: canonical,
       siteName: "Taksheela Institute",
@@ -40,7 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
+      title: ogTitle,
       description,
       images: blog.image ? [blog.image] : undefined,
     },
@@ -62,6 +66,7 @@ export default async function BlogSlugPage({ params }: PageProps) {
     "@type": "Article",
     headline: blog.title,
     description: (
+      blog.metaDescription?.trim() ||
       blog.heroDescription?.trim() ||
       blog.excerpt?.trim() ||
       stripHtml(blog.description)

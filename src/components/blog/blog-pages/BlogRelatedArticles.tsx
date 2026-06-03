@@ -25,17 +25,17 @@ export default function BlogRelatedArticles({
 
   return (
     <section
-      className="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_4px_24px_rgba(11,22,44,0.06)] sm:p-6"
+      className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-[0_4px_24px_rgba(11,22,44,0.06)] sm:p-6"
       aria-labelledby="related-articles-heading"
     >
       <div className="flex items-center gap-2.5">
         <MdDescription className="h-5 w-5 shrink-0 text-[#00999E]" aria-hidden />
-        <h2 id="related-articles-heading" className="text-base font-bold text-[#0B162C]">
+        <h2 id="related-articles-heading" className="text-sm font-bold text-[#0B162C] sm:text-base">
           Related Articles
         </h2>
       </div>
 
-      <ul className="mt-5 space-y-5">
+      <ul className="mt-4 space-y-4 sm:mt-5 sm:space-y-5">
         {items.map((blog) => {
           const href = blogHref(blog.slugUrl);
           const formattedDate = blog.date ? formatDate(blog.date) : null;
@@ -48,7 +48,7 @@ export default function BlogRelatedArticles({
                 href={href}
                 className="group flex gap-3 rounded-lg outline-none transition focus-visible:ring-2 focus-visible:ring-[#00999E] focus-visible:ring-offset-2"
               >
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-slate-100 sm:h-[3.75rem] sm:w-[3.75rem]">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-slate-100 sm:h-[3.75rem] sm:w-[3.75rem]">
                   {blog.image ? (
                     <Image
                       src={blog.image}
@@ -66,7 +66,7 @@ export default function BlogRelatedArticles({
                 </div>
 
                 <div className="min-w-0 flex-1 pt-0.5">
-                  <p className="line-clamp-3 text-sm font-bold leading-snug text-[#0B162C] transition group-hover:text-[#00999E]">
+                  <p className="line-clamp-2 text-sm font-bold leading-snug text-[#0B162C] transition group-hover:text-[#00999E] sm:line-clamp-3">
                     {blog.title}
                   </p>
                   {meta ? (
