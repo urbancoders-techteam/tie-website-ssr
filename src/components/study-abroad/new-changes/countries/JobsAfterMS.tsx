@@ -66,7 +66,7 @@ function EmployersChips({
 
   return (
     <div className="mt-5 min-w-0 lg:mt-4">
-      <h3 className="mb-3 text-base font-extrabold text-[#002147] lg:mb-2 lg:text-[0.9rem]">
+      <h3 className="mb-3 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2 lg:text-[1rem]">
         {title}
       </h3>
       <div className="mt-3 flex flex-wrap gap-2 lg:mt-2 lg:gap-1.5" role="list">
@@ -114,7 +114,7 @@ function GraduateRoute({
 }: JobsAfterMSProps["graduateRoute"]) {
   return (
     <div className="mt-6 min-w-0 lg:mt-4">
-      <h3 className="mb-3 text-base font-extrabold text-[#002147] lg:mb-2 lg:text-[0.9rem]">
+      <h3 className="mb-3 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2 lg:text-[1rem]">
         {title}
       </h3>
       <p className="m-0 text-[0.9375rem] leading-[1.7] text-slate-500 lg:text-[0.875rem] lg:leading-[1.6]">
@@ -145,7 +145,7 @@ function SalariesTable({ title, rows }: JobsAfterMSProps["salaries"]) {
 
   return (
     <div className="mt-5 min-w-0 lg:mt-3.5">
-      <h3 className="mb-3 text-base font-extrabold text-[#002147] lg:mb-2 lg:text-[0.9rem]">
+      <h3 className="mb-3 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2 lg:text-[1rem]">
         {title}
       </h3>
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white lg:rounded-lg">

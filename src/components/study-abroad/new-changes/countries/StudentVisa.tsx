@@ -99,7 +99,7 @@ function VisaRequirements({
 
   return (
     <div className="mt-6 min-w-0 lg:mt-4">
-      <h3 className="mb-4 text-base font-extrabold text-[#002147] lg:mb-2.5 lg:text-[0.9rem]">
+      <h3 className="mb-4 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2.5 lg:text-[1rem]">
         {title}
       </h3>
       <ul className="m-0 list-none p-0">
@@ -132,7 +132,7 @@ function VisaKeyDetails({ title, rows }: VisaKeyDetailsTable) {
 
   return (
     <div className="mt-6 min-w-0 lg:mt-4">
-      <h3 className="mb-4 text-base font-extrabold text-[#002147] lg:mb-2.5 lg:text-[0.9rem]">
+      <h3 className="mb-4 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2.5 lg:text-[1rem]">
         {title}
       </h3>
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white lg:rounded-lg">

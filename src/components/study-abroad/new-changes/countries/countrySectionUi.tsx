@@ -7,11 +7,11 @@ function mergeClass(...parts: (string | undefined | false)[]) {
   return parts.filter(Boolean).join(" ");
 }
 
-/** Shared section shell: scroll offset + bottom spacing with laptop compaction. */
+/** Shared section shell: scroll offset + spacing between country page sections. */
 export function sectionShell(className?: string) {
   return mergeClass(
-    "mb-8 min-w-0 scroll-mt-[var(--uk-scroll-offset,10rem)] sm:mb-10",
-    "lg:mb-7",
+    "mb-10 min-w-0 scroll-mt-[var(--uk-scroll-offset,10rem)] sm:mb-12",
+    "lg:mb-11 xl:mb-12",
     className
   );
 }
@@ -26,8 +26,8 @@ export function SectionTitle({ children, as: Tag = "h2", className }: SectionTit
   return (
     <Tag
       className={mergeClass(
-        "text-[clamp(1.15rem,2vw,1.35rem)] font-extrabold leading-snug text-[#002147]",
-        "lg:text-[1.0625rem]",
+        "text-[clamp(1.25rem,2.2vw,1.5rem)] font-extrabold leading-snug text-[#002147]",
+        "lg:text-[1.1875rem]",
         className
       )}
     >
@@ -177,8 +177,8 @@ export function CountrySubsectionTitle({
   return (
     <h3
       className={mergeClass(
-        "mt-7 mb-4 text-[clamp(0.95rem,4vw,1rem)] font-extrabold leading-snug text-[#002147]",
-        "lg:mt-4 lg:mb-2.5 lg:text-[0.9rem]",
+        "mt-7 mb-4 text-[clamp(1.05rem,3vw,1.125rem)] font-extrabold leading-snug text-[#002147]",
+        "lg:mt-4 lg:mb-2.5 lg:text-[1rem]",
         className
       )}
     >

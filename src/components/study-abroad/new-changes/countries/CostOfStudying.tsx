@@ -211,7 +211,7 @@ function OneTimeCostsTable({
 function BudgetCtaBanner({ cta }: { cta: CostStudyBudgetCta }) {
   return (
     <CountryGradientBanner>
-      <h3 className="text-[clamp(1.1rem,2vw,1.35rem)] font-extrabold leading-snug text-white lg:text-base">
+      <h3 className="text-[clamp(1.2rem,2.2vw,1.45rem)] font-extrabold leading-snug text-white lg:text-[1.0625rem]">
         {cta.heading}
       </h3>
       <p className="mt-2 text-[0.9375rem] leading-relaxed text-white/90 lg:mt-1.5 lg:text-[0.8125rem] lg:leading-snug">

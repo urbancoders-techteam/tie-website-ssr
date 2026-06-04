@@ -122,7 +122,7 @@ export default function ScholarshipSection({
                 <CardIcon icon={card.icon} />
               </div>
               <div className="min-w-0">
-                <h3 className="text-[0.95rem] font-extrabold leading-snug text-[#0b162c] lg:text-[0.9rem]">
+                <h3 className="text-[1rem] font-extrabold leading-snug text-[#0b162c] lg:text-[0.9375rem]">
                   {card.title}
                 </h3>
                 <span className="mt-2 inline-flex rounded-full border border-[#ffe08a] bg-[#fff6cc] px-2.5 py-1 text-[0.72rem] font-bold leading-none text-[#8a5b00] lg:text-[0.68rem]">

@@ -126,7 +126,7 @@ function MastersProcess({ title, steps }: MastersApplicationProcess) {
 
   return (
     <CountryGradientBanner className="mt-5 lg:mt-3.5">
-      <p className="m-0 flex items-center gap-2 text-[0.95rem] font-extrabold leading-snug text-white lg:text-[0.9rem]">
+      <p className="m-0 flex items-center gap-2 text-[1rem] font-extrabold leading-snug text-white lg:text-[0.9375rem]">
         <MdInfoOutline
           className="h-[1.15rem] w-[1.15rem] shrink-0 text-white/90"
           aria-hidden
@@ -207,7 +207,7 @@ export default function MastersForIndian({
                 <div className="mb-2.5 flex h-9 w-9 items-center justify-center lg:mb-2 lg:h-8 lg:w-8">
                   <WhyIcon type={card.icon} />
                 </div>
-                <h4 className="text-[0.9rem] font-bold leading-snug text-[#002147] lg:text-[0.8125rem]">
+                <h4 className="text-[0.95rem] font-bold leading-snug text-[#002147] lg:text-[0.875rem]">
                   {card.title}
                 </h4>
                 <p className="mt-1.5 text-[0.8125rem] leading-snug text-slate-500 lg:mt-1 lg:text-xs lg:leading-normal">
