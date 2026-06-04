@@ -51,7 +51,7 @@ function ProgrammeTable({ title, rows }: MbaSectionProps["programmes"]) {
 
   return (
     <div className="mt-6 min-w-0 lg:mt-4">
-      <h3 className="mb-3 text-base font-extrabold text-[#002147] lg:mb-2 lg:text-[0.9rem]">
+      <h3 className="mb-3 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2 lg:text-[1rem]">
         {title}
       </h3>
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white lg:rounded-lg">
@@ -118,7 +118,7 @@ function EligibilityList({ title, items }: MbaSectionProps["eligibility"]) {
 
   return (
     <div className="mt-6 min-w-0 lg:mt-4">
-      <h3 className="mb-3 text-base font-extrabold text-[#002147] lg:mb-2 lg:text-[0.9rem]">
+      <h3 className="mb-3 text-[1.0625rem] font-extrabold text-[#002147] lg:mb-2 lg:text-[1rem]">
         {title}
       </h3>
       <ul className="m-0 list-none p-0">
@@ -148,7 +148,7 @@ function WhyBanner({ title, bullets }: MbaSectionProps["whyBanner"]) {
       role="note"
     >
       <div className="relative z-[1]">
-        <h4 className="m-0 text-[0.95rem] font-extrabold leading-snug text-white lg:text-[0.9rem]">
+        <h4 className="m-0 text-[1rem] font-extrabold leading-snug text-white lg:text-[0.9375rem]">
           {title}
         </h4>
         <ul className="m-0 mt-3.5 list-none p-0 lg:mt-3">

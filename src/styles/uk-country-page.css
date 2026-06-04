@@ -138,9 +138,14 @@
   scroll-margin-top: var(--uk-scroll-offset, 10rem);
 }
 
+/* Extra breathing room between stacked section blocks */
+.uk-country-main > section[id] + section[id] {
+  margin-top: 0.5rem;
+}
+
 .uk-country-section {
   scroll-margin-top: var(--uk-scroll-offset, 10rem);
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .uk-country-section-heading {
@@ -161,7 +166,7 @@
 }
 
 .uk-country-section-title {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   font-weight: 800;
   color: #0b162c;
   line-height: 1.35;
@@ -263,7 +268,11 @@
   }
 
   .uk-country-section {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .uk-country-main > section[id] + section[id] {
+    margin-top: 0.35rem;
   }
 
   .uk-country-section-heading {
@@ -275,7 +284,7 @@
   }
 
   .uk-country-section-title {
-    font-size: 1.0625rem;
+    font-size: 1.1875rem;
   }
 
   .uk-country-prose {

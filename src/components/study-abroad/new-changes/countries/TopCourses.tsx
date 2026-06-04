@@ -192,7 +192,7 @@ export default function TopCourses({
             <div className="mb-2.5 flex h-9 w-9 items-center justify-center lg:mb-2 lg:h-8 lg:w-8">
               <CourseIcon type={course.icon} />
             </div>
-            <h4 className="text-[0.9rem] font-bold leading-snug text-[#002147] lg:text-[0.8125rem]">
+            <h4 className="text-[0.95rem] font-bold leading-snug text-[#002147] lg:text-[0.875rem]">
               {course.title}
             </h4>
             <p className="mt-1.5 text-[0.8125rem] leading-snug text-slate-500 lg:mt-1 lg:text-xs lg:leading-normal">

@@ -139,7 +139,7 @@ export default function WhyStudy({
               <div className="mb-[0.85rem] flex h-10 w-10 items-center justify-center lg:mb-2 lg:h-8 lg:w-8">
                 <CardIcon type={card.icon} />
               </div>
-              <h3 className="text-[0.9375rem] font-bold leading-snug text-[#002147] lg:text-[0.8125rem]">
+              <h3 className="text-[1rem] font-bold leading-snug text-[#002147] lg:text-[0.875rem]">
                 {card.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#64748b] lg:mt-[0.35rem] lg:text-xs lg:leading-normal">
