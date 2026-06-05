@@ -55,9 +55,9 @@ export const staticMetaDescriptions = {
   cart:
     "Review your cart at Taksheela Institute of Education. Enroll in study abroad or MBBS programs and move closer to your international education dream.",
   mbbsAbroad:
-    "Explore the best countries for MBBS abroad for Indian students — Russia, Bangladesh, Philippines & 9 more. Compare fees, FMGE rates & NMC-approved colleges. Free counselling by Taksheela.",
+    "Explore MBBS abroad eligibility, NMC compliance rules, and UG vs PG options. Taksheela provides end-to-end admission & visa support for Indian students.",
   mbbsHub:
-    "Explore the best countries for MBBS abroad for Indian students — Russia, Bangladesh, Philippines & 9 more. Compare fees, FMGE rates & NMC-approved colleges. Free counselling by Taksheela.",
+    "Explore NMC-approved MBBS abroad options for Indian students. Compare fees, FMGE rates & top universities across 12 countries. Free counselling by Taksheela.",
   mbbsIndia:
     "Get into the best MBBS colleges in India. With full guidance, eligibility criteria & college comparison - all with Taksheela Institute of Education. Apply now!",
   refundPolicy:
@@ -89,7 +89,7 @@ export const mbbsAbroadMetaTitles: Record<string, string> = {
   nepal: "MBBS in Nepal: Fees, Eligibility & Top Colleges | Taksheela",
   philippines: "Study MBBS in Philippines | Taksheela Institute of Education",
   russia:
-    "MBBS in Russia for Indian Students 2026 — Fees, Admission & NMC Universities | Taksheela",
+    "MBBS in Russia – Fees & NMC Approved Colleges | Taksheela",
   uk: "MBBS in United Kingdom | Taksheela Institute of Education",
   usa: "MBBS in USA Consultants | Taksheela Institute of Education",
   uzbekistan: "Study MBBS in Uzbekistan | Taksheela Institute of Education",
@@ -110,11 +110,38 @@ export const immersionMetaTitles: Record<string, string> = {
   "south-east-asia": "Immersion Programs in South-East-Asia | Taksheela Institute",
 };
 
+export const studyAbroadCountryMetaTitles: Record<string, string> = {
+  ireland: "Study in Ireland – Universities, Visa & Scholarships",
+  uk: "Study in the UK – Universities, Visa & Scholarships",
+  france: "Study in France With Taksheela – Universities & Visa Guide",
+  australia: "Study in Australia – Courses, Visa & University Guide",
+  italy: "Study in Italy – Scholarships & Top Universities | Taksheela",
+  canada: "Study in Canada with Taksheela – Admissions & Visa Support",
+  germany: "Study in Germany – Top Universities & Visa Guide | Taksheela",
+};
+
+export const studyAbroadCountryMetaDescriptions: Record<string, string> = {
+  australia:
+    "Study in Australia with Taksheela. Explore top-ranked universities, popular courses, scholarship options, visa support & admission guidance for Indian students.",
+  canada:
+    "Study in Canada with expert support for university selection, student visas, scholarships, affordable education, and career opportunities for Indian students.",
+  france:
+    "Study in France with guidance on top universities, scholarships, student visas, affordable tuition, and global career opportunities for students.",
+  germany:
+    "Study in France with Taksheela & get guidance on top universities, scholarships, student visas, affordable tuition, & global career opportunities for students.",
+  ireland:
+    "Discover top universities in Ireland with Taksheela & get expert guidance for admissions, scholarships, student visas, & excellent global career opportunities.",
+  italy:
+    "Study in Italy with Taksheela. Top universities, English-taught programs, affordable tuition & EU degree recognition — with full visa & admission support.",
+  uk:
+    "Discover top UK universities, course options, tuition costs & post-study work visa. Taksheela provides expert admission & visa guidance for Indian students.",
+};
+
 export const staticMetaTitles = {
   cart: "Cart | Study Abroad Counselling Services | Taksheela",
   internationalRelationIndia: "Study in India | Affordable World-Class Education | TIE",
   mbbsAbroad:
-    "MBBS Abroad 2026-27 for Indian Students — Best Countries, Fees & NMC Colleges | Taksheela",
+    "MBBS Abroad – Fees, Admission & Colleges | Taksheela",
   mbbsHub:
     "MBBS Abroad 2026-27 | Fees & Admission | Taksheela",
   mbbsIndia: "MBBS in India | Top Colleges & Eligibility | Taksheela",
