@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 function hasMetadataCanonical(pathname: string): boolean {
   const normalized = pathname.replace(/\/+$/, '') || '/';
   if (normalized === '/blog') return true;
+  if (normalized === '/mbbs') return true;
   if (/^\/mbbs\/abroad\/[^/]+$/.test(normalized)) return true;
   return false;
 }
@@ -19,7 +20,7 @@ const CanonicalTag = () => {
   const canonicalUrl = `${baseUrl}${normalizedPath}`;
 
   return (
-    <link rel="canonical" href={canonicalUrl} />
+    <link key="canonical" rel="canonical" href={canonicalUrl} />
   );
 };
 
