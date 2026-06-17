@@ -1,30 +1,31 @@
 import type {
   IntroductionGalleryItem,
   IntroductionStatItem,
-} from "@/components/study-abroad/new-changes/countries/IntroductionSection";
-import type { OverviewRow } from "@/components/study-abroad/new-changes/countries/OverviewSection";
-import type { CostStudyTuitionTables } from "@/components/study-abroad/new-changes/countries/CostOfStudying";
+} from "@/components/study-abroad/new-changes/countries/components/IntroductionSection";
+import type { OverviewRow } from "@/components/study-abroad/new-changes/countries/components/OverviewSection";
+import type { CostStudyTuitionTables } from "@/components/study-abroad/new-changes/countries/components/CostOfStudying";
 import type {
   MastersApplicationProcess,
   MastersUniversitiesTable,
   MastersWhyCard,
-} from "@/components/study-abroad/new-changes/countries/MastersForIndian";
+} from "@/components/study-abroad/new-changes/countries/components/MastersForIndian";
 import type {
   TopCourseCard,
   UniversityByCourseRow,
-} from "@/components/study-abroad/new-changes/countries/TopCourses";
-import type { JobsAfterMSProps } from "@/components/study-abroad/new-changes/countries/JobsAfterMS";
-import type { StudentVisaProps } from "@/components/study-abroad/new-changes/countries/StudentVisa";
-import type { MbaSectionProps } from "@/components/study-abroad/new-changes/countries/MbaSection";
-import type { CostOfLivingProps } from "@/components/study-abroad/new-changes/countries/CostOfLiving";
-import type { ExamEligibilityRequirementProps } from "@/components/study-abroad/new-changes/countries/Exam&EligibiltyRequirement";
-import type { ScholarshipSectionProps } from "@/components/study-abroad/new-changes/countries/ScholarshipSection";
-import type { WhyStudyCard } from "@/components/study-abroad/new-changes/countries/WhyStudy";
+} from "@/components/study-abroad/new-changes/countries/components/TopCourses";
+import type { JobsAfterMSProps } from "@/components/study-abroad/new-changes/countries/components/JobsAfterMS";
+import type { StudentVisaProps } from "@/components/study-abroad/new-changes/countries/components/StudentVisa";
+import type { MbaSectionProps } from "@/components/study-abroad/new-changes/countries/components/MbaSection";
+import type { CostOfLivingProps } from "@/components/study-abroad/new-changes/countries/components/CostOfLiving";
+import type { ExamEligibilityRequirementProps } from "@/components/study-abroad/new-changes/countries/components/Exam&EligibiltyRequirement";
+import type { ScholarshipSectionProps } from "@/components/study-abroad/new-changes/countries/components/ScholarshipSection";
+import type { WhyStudyCard } from "@/components/study-abroad/new-changes/countries/components/WhyStudy";
 import type {
   CountryPageNavConfig,
   CountrySidebarLink,
+  CountryStudyPageConfig,
   CountryTopTab,
-} from "@/constants/study-abroad/countryPages/countryPageTypes";
+} from "@/lib/study-abroad/countryPageTypes";
 import { imageBaseUrl } from "@/utils/config";
 
 export const UK_COUNTRY_SLUGS = ["uk", "united-kingdom"] as const;
@@ -1100,3 +1101,45 @@ export const UK_ADMISSION_BULLETS = [
   "Updated CV for postgraduate applications",
   "Proof of funds and CAS letter for visa stage",
 ];
+
+export const UK_COUNTRY_PAGE = {
+  hero: UK_HERO,
+  nav: UK_PAGE_NAV,
+  sectionIds: {
+    intro: "uk-intro",
+    overview: "uk-study-overview",
+    whyStudy: "uk-why-study",
+    costStudy: "uk-cost",
+    costOfLiving: "uk-cost-living",
+    topCourses: "uk-courses",
+    mastersForIndian: "uk-ms",
+    studentVisa: "uk-visa",
+    jobsAfterMs: "uk-jobs",
+    mba: "uk-mba",
+    scholarships: "uk-scholarships",
+    examsEligibility: "uk-exams",
+    faq: "uk-faq",
+  },
+  sections: {
+    intro: {
+      ...UK_INTRO_CONTENT,
+      gallery: UK_INTRO_GALLERY,
+      stats: UK_INTRO_STATS,
+    },
+    overview: {
+      title: UK_OVERVIEW.title,
+      subtitle: UK_OVERVIEW.subtitle,
+      overviewData: UK_OVERVIEW.rows,
+    },
+    whyStudy: UK_WHY_STUDY,
+    costStudy: UK_COST_STUDY,
+    costOfLiving: UK_COST_OF_LIVING_SECTION,
+    topCourses: UK_TOP_COURSES,
+    mastersForIndian: UK_MASTERS_FOR_INDIAN,
+    studentVisa: UK_STUDENT_VISA,
+    jobsAfterMs: UK_JOBS_AFTER_MS,
+    mba: UK_MBA_SECTION,
+    scholarships: UK_SCHOLARSHIPS_SECTION,
+    examsEligibility: UK_EXAMS_ELIGIBILITY_SECTION,
+  },
+} satisfies CountryStudyPageConfig;

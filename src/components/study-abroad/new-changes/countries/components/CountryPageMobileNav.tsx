@@ -1,6 +1,6 @@
 "use client";
 
-import type { CountrySidebarLink } from "@/constants/study-abroad/countryPages/countryPageTypes";
+import type { CountrySidebarLink } from "@/lib/study-abroad/countryPageTypes";
 
 export type CountryPageMobileNavProps = {
   links: CountrySidebarLink[];

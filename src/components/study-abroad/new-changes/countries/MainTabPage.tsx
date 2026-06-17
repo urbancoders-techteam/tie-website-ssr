@@ -3,44 +3,74 @@
 import ContainerWrapper from "@/components/ContainerWrapper";
 // import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
-import CostOfStudying from "@/components/study-abroad/new-changes/countries/CostOfStudying";
-import JobsAfterMS from "./JobsAfterMS";
-import MbaSection from "./MbaSection";
-import ScholarshipSection from "./ScholarshipSection";
-import ExamEligibilityRequirement from "./Exam&EligibiltyRequirement";
-import CostOfLiving from "./CostOfLiving";
-import MastersForIndian from "@/components/study-abroad/new-changes/countries/MastersForIndian";
-import StudentVisa from "@/components/study-abroad/new-changes/countries/StudentVisa";
-import TopCourses from "@/components/study-abroad/new-changes/countries/TopCourses";
-import IntroductionSection from "@/components/study-abroad/new-changes/countries/IntroductionSection";
-import OverviewSection from "@/components/study-abroad/new-changes/countries/OverviewSection";
-import WhyStudy from "@/components/study-abroad/new-changes/countries/WhyStudy";
-import {
-  UK_HERO,
-  UK_INTRO_CONTENT,
-  UK_INTRO_GALLERY,
-  UK_INTRO_STATS,
-  UK_OVERVIEW,
-  UK_WHY_STUDY,
-  UK_COST_STUDY,
-  UK_COST_OF_LIVING_SECTION,
-  UK_TOP_COURSES,
-  UK_MASTERS_FOR_INDIAN,
-  UK_STUDENT_VISA,
-  UK_JOBS_AFTER_MS,
-  UK_MBA_SECTION,
-  UK_SCHOLARSHIPS_SECTION,
-  UK_EXAMS_ELIGIBILITY_SECTION,
-  UK_PAGE_NAV,
-} from "@/constants/study-abroad/countryPages/ukCountryPage";
-import type { CountryPageNavConfig } from "@/constants/study-abroad/countryPages/countryPageTypes";
+import CostOfStudying from "@/components/study-abroad/new-changes/countries/components/CostOfStudying";
+import JobsAfterMS from "./components/JobsAfterMS";
+import MbaSection from "./components/MbaSection";
+import ScholarshipSection from "./components/ScholarshipSection";
+import ExamEligibilityRequirement from "./components/Exam&EligibiltyRequirement";
+import CostOfLiving from "./components/CostOfLiving";
+import MastersForIndian from "@/components/study-abroad/new-changes/countries/components/MastersForIndian";
+import StudentVisa from "@/components/study-abroad/new-changes/countries/components/StudentVisa";
+import TopCourses from "@/components/study-abroad/new-changes/countries/components/TopCourses";
+import IntroductionSection from "@/components/study-abroad/new-changes/countries/components/IntroductionSection";
+import OverviewSection from "@/components/study-abroad/new-changes/countries/components/OverviewSection";
+import WhyStudy from "@/components/study-abroad/new-changes/countries/components/WhyStudy";
+import { UK_COUNTRY_PAGE } from "@/constants/study-abroad/countryPages/ukCountryPage";
+import type {
+  CountryHeroConfig,
+  CountryPageNavConfig,
+  CountryStudyPageConfig,
+} from "@/lib/study-abroad/countryPageTypes";
 import { useCountryPageSectionNav } from "@/hooks/useCountryPageSectionNav";
 import { useStickyChromeOffset } from "@/hooks/useStickyChromeOffset";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import CountryPageMobileNav from "./CountryPageMobileNav";
-import CountryPageSidebar from "./CountryPageSidebar";
-import OtherDestination from "./OtherDestination";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import CountryPageMobileNav from "./components/CountryPageMobileNav";
+import CountryPageSidebar from "./components/CountryPageSidebar";
+import OtherDestination from "./components/OtherDestination";
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
+
+const LG_MEDIA_QUERY = "(min-width: 1024px)";
+const SCROLL_OFFSET_GAP = 8;
+const DEFAULT_TABS_HEIGHT = 52;
+const DEFAULT_MOBILE_NAV_HEIGHT = 72;
+
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const updateMatches = () => setMatches(mq.matches);
+
+    updateMatches();
+    mq.addEventListener("change", updateMatches);
+    return () => mq.removeEventListener("change", updateMatches);
+  }, [query]);
+
+  return matches;
+}
+
+function useMeasuredHeight<T extends HTMLElement>(fallbackHeight: number) {
+  const [element, setElement] = useState<T | null>(null);
+  const [height, setHeight] = useState(fallbackHeight);
+
+  useEffect(() => {
+    if (!element) return;
+
+    const measure = () => setHeight(element.offsetHeight || fallbackHeight);
+    measure();
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(element);
+    window.addEventListener("resize", measure);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [element, fallbackHeight]);
+
+  return [setElement, height] as const;
+}
 
 export type UkCountryPageData = {
   info?: { title: string; image: string; content: string };
@@ -62,90 +92,95 @@ export type UkCountryPageData = {
 };
 
 type MainTabPageProps = {
-  pageData: UkCountryPageData;
+  pageData?: UkCountryPageData;
   slug: string;
-  /** Per-country navigation; defaults to UK. Pass a custom config for other countries later. */
+  /** Full per-country page config; defaults to UK. */
+  countryPage?: CountryStudyPageConfig;
+  /** Optional nav override when a country needs custom tab/sidebar labels. */
   nav?: CountryPageNavConfig;
-  universityData: Array<{
-    _id: string;
-    image?: string;
-    universitySortName?: string;
-  }>;
-  universityLoading: boolean;
 };
+
+type CountryHeroProps = {
+  hero: CountryHeroConfig;
+};
+
+function CountryHero({ hero }: CountryHeroProps) {
+  return (
+    <header className="uk-country-hero">
+      <ContainerWrapper className="py-5 sm:py-8 lg:py-6 xl:py-10">
+        <div className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-5">
+          <div className="flex min-w-0 gap-3 sm:gap-4 lg:gap-3">
+            <div
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0B162C] text-base font-black text-white sm:h-14 sm:w-14 lg:h-12 lg:w-12 xl:h-16 xl:w-16 xl:text-lg"
+              aria-hidden
+            >
+              {hero.badge}
+            </div>
+            <div className="min-w-0">
+              <h1 className="text-balance text-lg font-extrabold leading-snug text-[#0B162C] sm:text-xl lg:text-lg xl:text-[1.65rem]">
+                {hero.title}
+              </h1>
+              <p className="mt-1.5 text-sm text-slate-500 lg:text-[0.8125rem] lg:leading-snug xl:mt-2 xl:text-base">
+                {hero.subtitle}
+              </p>
+            </div>
+          </div>
+          <ModalTrigger
+            variant="custom"
+            text={hero.cta}
+            className="inline-flex w-full shrink-0 items-center justify-center gap-2 self-start rounded-lg bg-[#0B162C] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#143c52] sm:w-auto lg:mt-0.5 lg:px-4 lg:py-2 lg:text-xs xl:mt-1 xl:px-5 xl:py-3 xl:text-sm"
+          />
+        </div>
+      </ContainerWrapper>
+    </header>
+  );
+}
 
 export default function MainTabPage({
   pageData,
   slug,
-  nav = UK_PAGE_NAV,
+  countryPage = UK_COUNTRY_PAGE,
+  nav,
 }: MainTabPageProps) {
-  const { topTabs, sidebarLinks, sidebarCta, sidebarAriaLabel } = nav;
+  const { hero, sectionIds: countrySectionIds, sections } = countryPage;
+  const { topTabs, sidebarLinks, sidebarCta, sidebarAriaLabel } = nav ?? countryPage.nav;
   const chromeOffset = useStickyChromeOffset(128);
-  const tabsStickyTop = chromeOffset;
-  const tabsWrapRef = useRef<HTMLDivElement>(null);
-  const mobileNavRef = useRef<HTMLDivElement>(null);
-  const mainRef = useRef<HTMLDivElement>(null);
-  const [tabsBarHeight, setTabsBarHeight] = useState(52);
-  const [mobileNavHeight, setMobileNavHeight] = useState(72);
-  const [isLgUp, setIsLgUp] = useState(false);
+  const [tabsWrapRef, tabsBarHeight] =
+    useMeasuredHeight<HTMLDivElement>(DEFAULT_TABS_HEIGHT);
+  const [mobileNavRef, mobileNavHeight] =
+    useMeasuredHeight<HTMLDivElement>(DEFAULT_MOBILE_NAV_HEIGHT);
+  const isLgUp = useMediaQuery(LG_MEDIA_QUERY);
 
-  const desktopScrollOffset = chromeOffset + tabsBarHeight + 8;
-  const mobileScrollOffset = chromeOffset + mobileNavHeight + 8;
+  const desktopScrollOffset = chromeOffset + tabsBarHeight + SCROLL_OFFSET_GAP;
+  const mobileScrollOffset = chromeOffset + mobileNavHeight + SCROLL_OFFSET_GAP;
   const scrollOffset = isLgUp ? desktopScrollOffset : mobileScrollOffset;
   const sidebarStickyTop = desktopScrollOffset;
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const updateBp = () => setIsLgUp(mq.matches);
-    updateBp();
-    mq.addEventListener("change", updateBp);
-    return () => mq.removeEventListener("change", updateBp);
-  }, []);
-
-  useEffect(() => {
-    const el = tabsWrapRef.current;
-    if (!el) return;
-
-    const measureTabs = () => setTabsBarHeight(el.offsetHeight);
-    measureTabs();
-
-    const ro = new ResizeObserver(measureTabs);
-    ro.observe(el);
-    window.addEventListener("resize", measureTabs);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measureTabs);
-    };
-  }, []);
-
-  useEffect(() => {
-    const el = mobileNavRef.current;
-    if (!el) return;
-
-    const measure = () => setMobileNavHeight(el.offsetHeight);
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [isLgUp]);
-
   const faqItems = useMemo<FAQItem[]>(
-    () =>
-      (pageData.faq ?? []).map((item) => ({
+    () => {
+      if (countryPage.faqs) return countryPage.faqs;
+
+      return (pageData?.faq ?? []).map((item) => ({
         question: item.question ?? item.title ?? "",
         answer: item.answer ?? item.Desc ?? "",
-      })),
-    [pageData.faq]
+      }));
+    },
+    [countryPage.faqs, pageData?.faq]
   );
 
   const overviewSectionIds = useMemo(
-    () => sidebarLinks.filter((l) => l.inIntroGroup).map((l) => l.sectionId),
+    () => new Set(sidebarLinks.filter((l) => l.inIntroGroup).map((l) => l.sectionId)),
     [sidebarLinks]
+  );
+
+  const tabIdBySectionId = useMemo(
+    () => new Map(topTabs.map((tab) => [tab.sectionId, tab.id])),
+    [topTabs]
+  );
+
+  const overviewTabId = useMemo(
+    () => topTabs.find((tab) => tab.id === "overview")?.id ?? topTabs[0]?.id ?? "",
+    [topTabs]
   );
 
   const visibleSidebarLinks = useMemo(
@@ -171,17 +206,14 @@ export default function MainTabPage({
 
   const syncTabForSection = useCallback(
     (sectionId: string) => {
-      const directTab = topTabs.find((t) => t.sectionId === sectionId);
-      if (directTab) {
-        setActiveTabId(directTab.id);
+      const directTabId = tabIdBySectionId.get(sectionId);
+      if (directTabId) {
+        setActiveTabId(directTabId);
         return;
       }
-      if (overviewSectionIds.includes(sectionId)) {
-        const overviewTab = topTabs.find((t) => t.id === "overview") ?? topTabs[0];
-        if (overviewTab) setActiveTabId(overviewTab.id);
-      }
+      if (overviewSectionIds.has(sectionId) && overviewTabId) setActiveTabId(overviewTabId);
     },
-    [topTabs, overviewSectionIds]
+    [overviewSectionIds, overviewTabId, tabIdBySectionId]
   );
 
   const lastActiveRef = useRef(activeSectionId);
@@ -201,50 +233,41 @@ export default function MainTabPage({
     onActiveChange: handleActiveSection,
   });
 
-  const onTabClick = (tab: (typeof topTabs)[number]) => {
-    setActiveTabId(tab.id);
-    scrollToSection(tab.sectionId);
-  };
+  useEffect(() => {
+    if (!topTabs.length || topTabs.some((tab) => tab.id === activeTabId)) return;
+    setActiveTabId(topTabs[0].id);
+  }, [activeTabId, topTabs]);
+
+  useEffect(() => {
+    if (!sectionIds.length || sectionIds.includes(activeSectionId)) return;
+
+    const nextSectionId = sectionIds[0];
+    lastActiveRef.current = nextSectionId;
+    setActiveSectionId(nextSectionId);
+    syncTabForSection(nextSectionId);
+  }, [activeSectionId, sectionIds, syncTabForSection]);
+
+  const onTabClick = useCallback(
+    (tab: (typeof topTabs)[number]) => {
+      setActiveTabId(tab.id);
+      scrollToSection(tab.sectionId);
+    },
+    [scrollToSection]
+  );
 
   return (
     <div
       className="uk-country-page mt-3 sm:mt-5"
-      style={{ ["--uk-scroll-offset" as string]: `${scrollOffset}px` }}
+      style={{ ["--country-scroll-offset" as string]: `${scrollOffset}px` }}
     >
       {/* Hero */}
-      <header className="uk-country-hero">
-        <ContainerWrapper className="py-5 sm:py-8 lg:py-6 xl:py-10">
-          <div className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-5">
-            <div className="flex min-w-0 gap-3 sm:gap-4 lg:gap-3">
-              <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0B162C] text-base font-black text-white sm:h-14 sm:w-14 lg:h-12 lg:w-12 xl:h-16 xl:w-16 xl:text-lg"
-                aria-hidden
-              >
-                {UK_HERO.badge}
-              </div>
-              <div className="min-w-0">
-                <h1 className="text-balance text-lg font-extrabold leading-snug text-[#0B162C] sm:text-xl lg:text-lg xl:text-[1.65rem]">
-                  {UK_HERO.title}
-                </h1>
-                <p className="mt-1.5 text-sm text-slate-500 lg:text-[0.8125rem] lg:leading-snug xl:mt-2 xl:text-base">
-                  {UK_HERO.subtitle}
-                </p>
-              </div>
-            </div>
-            <ModalTrigger
-              variant="custom"
-              text={UK_HERO.cta}
-              className="inline-flex w-full shrink-0 items-center justify-center gap-2 self-start rounded-lg bg-[#0B162C] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#143c52] sm:w-auto lg:mt-0.5 lg:px-4 lg:py-2 lg:text-xs xl:mt-1 xl:px-5 xl:py-3 xl:text-sm"
-            />
-          </div>
-        </ContainerWrapper>
-      </header>
+      <CountryHero hero={hero} />
 
-      {/* Top tabs — desktop / laptop only */}
+      {/* Top tabs - desktop / laptop only */}
       <div
         ref={tabsWrapRef}
         className="uk-country-tabs-wrap hidden lg:block"
-        style={{ top: tabsStickyTop }}
+        style={{ top: chromeOffset }}
       >
         <ContainerWrapper className="!px-0 sm:!px-6 md:!px-6 lg:!px-5 xl:!px-8">
           <nav className="uk-country-tabs px-4 sm:px-0" aria-label={sidebarAriaLabel}>
@@ -283,125 +306,125 @@ export default function MainTabPage({
             stickyTopPx={sidebarStickyTop}
           />
 
-          <div ref={mainRef} className="uk-country-main min-w-0">
+          <div className="uk-country-main min-w-0">
             <IntroductionSection
-              id="uk-intro"
-              heading={UK_INTRO_CONTENT.heading}
-              paragraphs={UK_INTRO_CONTENT.paragraphs}
-              highlightPhrases={UK_INTRO_CONTENT.highlightPhrases}
-              gallery={UK_INTRO_GALLERY}
-              stats={UK_INTRO_STATS}
+              id={countrySectionIds.intro}
+              heading={sections.intro.heading}
+              paragraphs={sections.intro.paragraphs}
+              highlightPhrases={sections.intro.highlightPhrases}
+              gallery={sections.intro.gallery}
+              stats={sections.intro.stats}
             />
 
             <OverviewSection
-              id="uk-study-overview"
-              title={UK_OVERVIEW.title}
-              subtitle={UK_OVERVIEW.subtitle}
-              overviewData={UK_OVERVIEW.rows}
+              id={countrySectionIds.overview}
+              title={sections.overview.title}
+              subtitle={sections.overview.subtitle}
+              overviewData={sections.overview.overviewData}
             />
 
             <WhyStudy
-              id="uk-why-study"
-              title={UK_WHY_STUDY.title}
-              intro={UK_WHY_STUDY.intro}
-              cards={UK_WHY_STUDY.cards}
-              keyFact={UK_WHY_STUDY.keyFact}
-              cta={UK_WHY_STUDY.cta}
+              id={countrySectionIds.whyStudy}
+              title={sections.whyStudy.title}
+              intro={sections.whyStudy.intro}
+              cards={sections.whyStudy.cards}
+              keyFact={sections.whyStudy.keyFact}
+              cta={sections.whyStudy.cta}
             />
 
             <CostOfStudying
-              id="uk-cost"
-              title={UK_COST_STUDY.title}
-              intro={UK_COST_STUDY.intro}
-              featuredImage={UK_COST_STUDY.featuredImage}
-              tuitionTables={UK_COST_STUDY.tuitionTables}
+              id={countrySectionIds.costStudy}
+              title={sections.costStudy.title}
+              intro={sections.costStudy.intro}
+              featuredImage={sections.costStudy.featuredImage}
+              tuitionTables={sections.costStudy.tuitionTables}
             />
 
             <CostOfLiving
-              id="uk-cost-living"
-              title={UK_COST_OF_LIVING_SECTION.title}
-              intro={UK_COST_OF_LIVING_SECTION.intro}
-              featuredImage={UK_COST_OF_LIVING_SECTION.featuredImage}
-              breakdown={UK_COST_OF_LIVING_SECTION.breakdown}
+              id={countrySectionIds.costOfLiving}
+              title={sections.costOfLiving.title}
+              intro={sections.costOfLiving.intro}
+              featuredImage={sections.costOfLiving.featuredImage}
+              breakdown={sections.costOfLiving.breakdown}
             />
 
             <TopCourses
-              id="uk-courses"
-              title={UK_TOP_COURSES.title}
-              intro={UK_TOP_COURSES.intro}
-              featuredImage={UK_TOP_COURSES.featuredImage}
-              gridTitle={UK_TOP_COURSES.gridTitle}
-              courses={UK_TOP_COURSES.courses}
-              universitiesByCourse={UK_TOP_COURSES.universitiesByCourse}
-              proTip={UK_TOP_COURSES.proTip}
+              id={countrySectionIds.topCourses}
+              title={sections.topCourses.title}
+              intro={sections.topCourses.intro}
+              featuredImage={sections.topCourses.featuredImage}
+              gridTitle={sections.topCourses.gridTitle}
+              courses={sections.topCourses.courses}
+              universitiesByCourse={sections.topCourses.universitiesByCourse}
+              proTip={sections.topCourses.proTip}
             />
 
             <MastersForIndian
-              id="uk-ms"
-              title={UK_MASTERS_FOR_INDIAN.title}
-              intro={UK_MASTERS_FOR_INDIAN.intro}
-              featuredImage={UK_MASTERS_FOR_INDIAN.featuredImage}
-              whyChoose={UK_MASTERS_FOR_INDIAN.whyChoose}
-              eligibility={UK_MASTERS_FOR_INDIAN.eligibility}
-              universitiesTable={UK_MASTERS_FOR_INDIAN.universitiesTable}
-              applicationProcess={UK_MASTERS_FOR_INDIAN.applicationProcess}
+              id={countrySectionIds.mastersForIndian}
+              title={sections.mastersForIndian.title}
+              intro={sections.mastersForIndian.intro}
+              featuredImage={sections.mastersForIndian.featuredImage}
+              whyChoose={sections.mastersForIndian.whyChoose}
+              eligibility={sections.mastersForIndian.eligibility}
+              universitiesTable={sections.mastersForIndian.universitiesTable}
+              applicationProcess={sections.mastersForIndian.applicationProcess}
             />
 
             <StudentVisa
-              id="uk-visa"
-              title={UK_STUDENT_VISA.title}
-              intro={UK_STUDENT_VISA.intro}
-              steps={UK_STUDENT_VISA.steps}
-              featuredImage={UK_STUDENT_VISA.featuredImage}
-              requirements={UK_STUDENT_VISA.requirements}
-              keyDetails={UK_STUDENT_VISA.keyDetails}
-              note={UK_STUDENT_VISA.note}
+              id={countrySectionIds.studentVisa}
+              title={sections.studentVisa.title}
+              intro={sections.studentVisa.intro}
+              steps={sections.studentVisa.steps}
+              featuredImage={sections.studentVisa.featuredImage}
+              requirements={sections.studentVisa.requirements}
+              keyDetails={sections.studentVisa.keyDetails}
+              note={sections.studentVisa.note}
             />
 
             <JobsAfterMS
-              id="uk-jobs"
-              title={UK_JOBS_AFTER_MS.title}
-              intro={UK_JOBS_AFTER_MS.intro}
-              featuredImage={UK_JOBS_AFTER_MS.featuredImage}
-              employers={UK_JOBS_AFTER_MS.employers}
-              careerTip={UK_JOBS_AFTER_MS.careerTip}
-              graduateRoute={UK_JOBS_AFTER_MS.graduateRoute}
-              salaries={UK_JOBS_AFTER_MS.salaries}
+              id={countrySectionIds.jobsAfterMs}
+              title={sections.jobsAfterMs.title}
+              intro={sections.jobsAfterMs.intro}
+              featuredImage={sections.jobsAfterMs.featuredImage}
+              employers={sections.jobsAfterMs.employers}
+              careerTip={sections.jobsAfterMs.careerTip}
+              graduateRoute={sections.jobsAfterMs.graduateRoute}
+              salaries={sections.jobsAfterMs.salaries}
             />
 
             <MbaSection
-              id="uk-mba"
-              title={UK_MBA_SECTION.title}
-              intro={UK_MBA_SECTION.intro}
-              featuredImage={UK_MBA_SECTION.featuredImage}
-              programmes={UK_MBA_SECTION.programmes}
-              eligibility={UK_MBA_SECTION.eligibility}
-              whyBanner={UK_MBA_SECTION.whyBanner}
+              id={countrySectionIds.mba}
+              title={sections.mba.title}
+              intro={sections.mba.intro}
+              featuredImage={sections.mba.featuredImage}
+              programmes={sections.mba.programmes}
+              eligibility={sections.mba.eligibility}
+              whyBanner={sections.mba.whyBanner}
             />
 
             <ScholarshipSection
-              id="uk-scholarships"
-              title={UK_SCHOLARSHIPS_SECTION.title}
-              intro={UK_SCHOLARSHIPS_SECTION.intro}
-              cards={UK_SCHOLARSHIPS_SECTION.cards}
-              tip={UK_SCHOLARSHIPS_SECTION.tip}
+              id={countrySectionIds.scholarships}
+              title={sections.scholarships.title}
+              intro={sections.scholarships.intro}
+              cards={sections.scholarships.cards}
+              tip={sections.scholarships.tip}
             />
 
             <ExamEligibilityRequirement
-              id="uk-exams"
-              title={UK_EXAMS_ELIGIBILITY_SECTION.title}
-              intro={UK_EXAMS_ELIGIBILITY_SECTION.intro}
-              academicEligibility={UK_EXAMS_ELIGIBILITY_SECTION.academicEligibility}
-              englishRequirements={UK_EXAMS_ELIGIBILITY_SECTION.englishRequirements}
+              id={countrySectionIds.examsEligibility}
+              title={sections.examsEligibility.title}
+              intro={sections.examsEligibility.intro}
+              academicEligibility={sections.examsEligibility.academicEligibility}
+              englishRequirements={sections.examsEligibility.englishRequirements}
             />
 
             {faqItems.length > 0 ? (
               <FAQSection
                 items={faqItems}
                 variant="abroad"
-                sectionId="uk-faq"
+                sectionId={countrySectionIds.faq}
                 sectionSlug={slug}
-                headingId="uk-faq-heading"
+                headingId={`${countrySectionIds.faq}-heading`}
               />
             ) : null}
           </div>
@@ -411,7 +434,6 @@ export default function MainTabPage({
       <div className="mt-25">
         <OtherDestination excludeSlug={slug} />
       </div>
- 
     </div>
   );
 }

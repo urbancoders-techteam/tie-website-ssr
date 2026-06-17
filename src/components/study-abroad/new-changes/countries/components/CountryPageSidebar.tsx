@@ -1,7 +1,7 @@
 "use client";
 
 import ModalTrigger from "@/components/ModalTrigger";
-import type { CountrySidebarLink } from "@/constants/study-abroad/countryPages/countryPageTypes";
+import type { CountrySidebarLink } from "@/lib/study-abroad/countryPageTypes";
 import { useEffect, useRef } from "react";
 
 export type CountryPageSidebarProps = {

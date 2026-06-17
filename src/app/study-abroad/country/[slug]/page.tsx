@@ -7,6 +7,10 @@ import ModalTrigger from "@/components/ModalTrigger";
 import MainTabPage from "@/components/study-abroad/new-changes/countries/MainTabPage";
 import WhyStudySection from "@/components/study-abroad/country/WhyStudySection";
 import TwoColumnContent from "@/components/TwoColumnContent";
+import {
+  GERMANY_COUNTRY_PAGE,
+  isGermanyCountrySlug,
+} from "@/constants/study-abroad/countryPages/germanyCountryPage";
 import { isUKCountrySlug } from "@/constants/study-abroad/countryPages/ukCountryPage";
 import { mapJsonData } from "@/constants/map";
 import { baseUrl, imageBaseUrl } from "@/utils/config";
@@ -68,6 +72,7 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
 
   const isUK = isUKCountrySlug(slug);
+  const isGermany = isGermanyCountrySlug(slug);
 
   useEffect(() => {
     if (slug) {
@@ -116,8 +121,8 @@ export default function Page() {
     fetchData();
   }, [slug]);
 
-  if (isUK) {
-    if (!pageData) {
+  if (isUK || isGermany) {
+    if (isUK && !pageData) {
       return (
         <div className="mt-5 flex min-h-[40vh] items-center justify-center px-4">
           <Box sx={{ width: "100%", maxWidth: 400, color: "#00999e" }}>
@@ -128,10 +133,9 @@ export default function Page() {
     }
     return (
       <MainTabPage
-        pageData={pageData}
+        pageData={pageData ?? undefined}
         slug={slug}
-        universityData={universityData}
-        universityLoading={loading}
+        countryPage={isGermany ? GERMANY_COUNTRY_PAGE : undefined}
       />
     );
   }

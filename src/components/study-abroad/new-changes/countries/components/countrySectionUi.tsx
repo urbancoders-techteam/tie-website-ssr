@@ -10,7 +10,7 @@ function mergeClass(...parts: (string | undefined | false)[]) {
 /** Shared section shell: scroll offset + spacing between country page sections. */
 export function sectionShell(className?: string) {
   return mergeClass(
-    "mb-10 min-w-0 scroll-mt-[var(--uk-scroll-offset,10rem)] sm:mb-12",
+    "mb-10 min-w-0 scroll-mt-[var(--country-scroll-offset,10rem)] sm:mb-12",
     "lg:mb-11 xl:mb-12",
     className
   );

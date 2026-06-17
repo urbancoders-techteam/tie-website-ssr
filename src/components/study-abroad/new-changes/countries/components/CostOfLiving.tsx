@@ -35,12 +35,19 @@ export type CostOfLivingProps = {
   featuredImage: CostOfLivingImage;
   breakdown: {
     title: string;
+    primaryColumnLabel?: string;
+    secondaryColumnLabel?: string;
     rows: CostOfLivingRow[];
   };
   className?: string;
 };
 
-function LivingCostTable({ title, rows }: CostOfLivingProps["breakdown"]) {
+function LivingCostTable({
+  title,
+  primaryColumnLabel = "London (approx)",
+  secondaryColumnLabel = "Outside London (approx)",
+  rows,
+}: CostOfLivingProps["breakdown"]) {
   if (!rows.length) return null;
 
   const totalRowClass = "font-extrabold text-[#002147]";
@@ -53,9 +60,11 @@ function LivingCostTable({ title, rows }: CostOfLivingProps["breakdown"]) {
           <CountryTableHead>
             <tr>
               <CountryTableHeaderCell className="w-[42%]">Expense</CountryTableHeaderCell>
-              <CountryTableHeaderCell className="w-[29%]">London (approx)</CountryTableHeaderCell>
               <CountryTableHeaderCell className="w-[29%]">
-                Outside London (approx)
+                {primaryColumnLabel}
+              </CountryTableHeaderCell>
+              <CountryTableHeaderCell className="w-[29%]">
+                {secondaryColumnLabel}
               </CountryTableHeaderCell>
             </tr>
           </CountryTableHead>

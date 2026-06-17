@@ -135,7 +135,7 @@
 }
 
 .uk-country-main section[id] {
-  scroll-margin-top: var(--uk-scroll-offset, 10rem);
+  scroll-margin-top: var(--country-scroll-offset, 10rem);
 }
 
 /* Extra breathing room between stacked section blocks */
@@ -144,7 +144,7 @@
 }
 
 .uk-country-section {
-  scroll-margin-top: var(--uk-scroll-offset, 10rem);
+  scroll-margin-top: var(--country-scroll-offset, 10rem);
   margin-bottom: 3.5rem;
 }
 
@@ -228,7 +228,7 @@
   }
 
   .uk-country-main section[id] {
-    scroll-margin-top: var(--uk-scroll-offset, 6rem);
+    scroll-margin-top: var(--country-scroll-offset, 6rem);
   }
 
   .uk-country-tab {
