@@ -45,9 +45,29 @@ export function excerptFrom(html: string, maxWords = 28): string {
 }
 
 export function blogHref(slugUrl: string): string {
-  if (!slugUrl) return "/blog";
-  if (/^https?:\/\//i.test(slugUrl)) return slugUrl;
-  const slug = slugUrl.replace(/^\/+/, "");
+  if (!slugUrl?.trim()) return "/blog";
+
+  let path = slugUrl.trim();
+
+  try {
+    if (/^https?:\/\//i.test(path)) {
+      path = new URL(path).pathname;
+    }
+  } catch {
+    // keep path as-is
+  }
+
+  path = path.replace(/^\/+/, "").replace(/^blog\/?/i, "");
+  const slug =
+    path
+      .split("?")[0]
+      .split("#")[0]
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean)
+      .pop() ?? "";
+
+  if (!slug) return "/blog";
   return `/blog/${slug}`;
 }
 

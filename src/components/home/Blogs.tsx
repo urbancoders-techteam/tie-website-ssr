@@ -2,39 +2,11 @@ import ContainerWrapper from "../ContainerWrapper";
 import Link from "next/link";
 import { MdChevronRight } from "react-icons/md";
 import { fetchBlogsWeb } from "@/lib/blog/fetch";
-import { mapApiBlogToPost } from "@/lib/blog/map";
+import { blogHref, mapApiBlogToPost } from "@/lib/blog/map";
 import BlogsCarousel, { type BlogPostHome } from "./BlogsCarousel";
 
 const TEAL = "#00999E";
 const TITLE = "#0B162C";
-
-/** Home page blog carousel only — always route to on-site `/blog/[slug]`. */
-function homeBlogHref(slugUrl: string): string {
-  if (!slugUrl?.trim()) return "/blog";
-
-  let path = slugUrl.trim();
-
-  try {
-    if (/^https?:\/\//i.test(path)) {
-      path = new URL(path).pathname;
-    }
-  } catch {
-    // keep path as-is
-  }
-
-  path = path.replace(/^\/+/, "").replace(/^blog\/?/i, "");
-  const slug =
-    path
-      .split("?")[0]
-      .split("#")[0]
-      .replace(/\/+$/, "")
-      .split("/")
-      .filter(Boolean)
-      .pop() ?? "";
-
-  if (!slug) return "/blog";
-  return `/blog/${slug}`;
-}
 
 async function fetchHomeBlogs(): Promise<BlogPostHome[]> {
   const blogs = await fetchBlogsWeb();
@@ -44,7 +16,7 @@ async function fetchHomeBlogs(): Promise<BlogPostHome[]> {
       title: post.title,
       description: blog.description,
       image: post.image || "",
-      slugUrl: homeBlogHref(blog.slugUrl),
+      slugUrl: blogHref(blog.slugUrl),
       date: post.date,
       category: post.category,
       readTime: post.readTime,
