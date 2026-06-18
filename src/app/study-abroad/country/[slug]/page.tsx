@@ -4,8 +4,14 @@
 import FAQ from "@/components/FAQ";
 import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
+import MainTabPage from "@/components/study-abroad/new-changes/countries/MainTabPage";
 import WhyStudySection from "@/components/study-abroad/country/WhyStudySection";
 import TwoColumnContent from "@/components/TwoColumnContent";
+import {
+  GERMANY_COUNTRY_PAGE,
+  isGermanyCountrySlug,
+} from "@/constants/study-abroad/countryPages/germanyCountryPage";
+import { isUKCountrySlug } from "@/constants/study-abroad/countryPages/ukCountryPage";
 import { mapJsonData } from "@/constants/map";
 import { baseUrl, imageBaseUrl } from "@/utils/config";
 import { useEffect, useState } from "react";
@@ -65,6 +71,9 @@ export default function Page() {
   const [universityData, setUniversityData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const isUK = isUKCountrySlug(slug);
+  const isGermany = isGermanyCountrySlug(slug);
+
   useEffect(() => {
     if (slug) {
       const currentPageData = mapJsonData.find(
@@ -74,7 +83,6 @@ export default function Page() {
     }
   }, [slug]);
 
-  // ✅ Transform points into array
   const points =
     pageData?.whyStudy &&
     Object.keys(pageData.whyStudy)
@@ -93,16 +101,16 @@ export default function Page() {
   ];
 
   useEffect(() => {
+    if (!slug) return;
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await axios.get(
           `${baseUrl}study-abroad-universities/web/list?countryName=${slug}`
         );
-       
+
         if (response.status === 200 || response.statusText === "OK") {
           setUniversityData(response?.data?.data);
-          setLoading(false);
         }
       } catch (error) {
         console.log("error", error);
@@ -113,9 +121,27 @@ export default function Page() {
     fetchData();
   }, [slug]);
 
+  if (isUK || isGermany) {
+    if (isUK && !pageData) {
+      return (
+        <div className="mt-5 flex min-h-[40vh] items-center justify-center px-4">
+          <Box sx={{ width: "100%", maxWidth: 400, color: "#00999e" }}>
+            <LinearProgress color="inherit" />
+          </Box>
+        </div>
+      );
+    }
+    return (
+      <MainTabPage
+        pageData={pageData ?? undefined}
+        slug={slug}
+        countryPage={isGermany ? GERMANY_COUNTRY_PAGE : undefined}
+      />
+    );
+  }
+
   return (
     <div className="mt-5">
-      {/* banner section */}
       <TwoColumnContent
         heading={pageData?.info?.title || ""}
         headingAs="h1"
@@ -130,7 +156,6 @@ export default function Page() {
         }
       />
 
-      {/* why study section */}
       {pageData?.whyStudy && (
         <WhyStudySection
           data={{
@@ -141,7 +166,6 @@ export default function Page() {
         />
       )}
 
-      {/* places section */}
       {pageData?.places && (
         <Places
           data={{
@@ -151,7 +175,6 @@ export default function Page() {
         />
       )}
 
-      {/* Universities section */}
       <div className="bg-[#effdff] py-12">
         <ContainerWrapper>
           <>
@@ -159,7 +182,7 @@ export default function Page() {
               content={pageData?.universties?.heading}
               textAlign="center"
             />
-            <div className="flex justify-center flex-wrap gap-6 my-10 ">
+            <div className="my-10 flex flex-wrap justify-center gap-6">
               {loading ? (
                 <Box sx={{ width: "100%", mt: 2, color: "#00999e" }}>
                   <LinearProgress color="inherit" />
@@ -168,34 +191,32 @@ export default function Page() {
                 universityData?.map((item: any, index: number) => (
                   <Link
                     href={`/study-abroad/country/${slug}/university/${item?._id}`}
-                    className="w-[220px] h-[250px] bg-white rounded-md shadow-md flex flex-col justify-between overflow-hidden"
+                    className="flex h-[250px] w-[220px] flex-col justify-between overflow-hidden rounded-md bg-white shadow-md"
                     key={index}
                   >
-                    {/* Top section with image + name */}
                     <div className="flex flex-col items-center px-4 py-5 text-center">
-                      <div className="relative w-[120px] h-[120px] mb-2 rounded-md">
+                      <div className="relative mb-2 h-[120px] w-[120px] rounded-md">
                         {typeof item?.image === "string" &&
                         item.image.trim().length > 0 ? (
                           <Image
                             src={item.image}
                             alt={item?.universitySortName || "University image"}
                             fill
-                            className="object-cover rounded-md"
+                            className="rounded-md object-cover"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gray-100 rounded-md" />
+                          <div className="h-full w-full rounded-md bg-gray-100" />
                         )}
                       </div>
                     </div>
 
-                    {/* Bottom bar */}
-                    <div className="bg-[#00999e] text-white text-center items-center h-fit  text-sm font-semibold p-3 py-5 rounded-b-md">
+                    <div className="h-fit items-center rounded-b-md bg-[#00999e] p-3 py-5 text-center text-sm font-semibold text-white">
                       {item?.universitySortName}
                     </div>
                   </Link>
                 ))
               ) : (
-                <div className="text-center py-10">
+                <div className="py-10 text-center">
                   <h2 className="text-xl text-red-500">University not found</h2>
                 </div>
               )}
@@ -211,7 +232,7 @@ export default function Page() {
         data4={pageData?.post}
         data5={pageData?.visa}
       />
-      {/* popular recruiters section */}
+
       <div className="bg-[#effdff] py-12">
         <ContainerWrapper>
           {pageData?.recruiter && (
@@ -220,15 +241,14 @@ export default function Page() {
                 content={"Popular Recruiters"}
                 textAlign="center"
               />
-              <div className="flex justify-center flex-wrap gap-6 my-10 ">
+              <div className="my-10 flex flex-wrap justify-center gap-6">
                 {pageData?.recruiter?.map((item: any, index: number) => (
                   <div
-                    className="w-[220px] h-[250px] bg-white rounded-md shadow-md flex flex-col justify-between overflow-hidden"
+                    className="flex h-[250px] w-[220px] flex-col justify-between overflow-hidden rounded-md bg-white shadow-md"
                     key={index}
                   >
-                    {/* Top section with image + name */}
                     <div className="flex flex-col items-center px-4 py-5 text-center">
-                      <div className="relative w-full h-[120px] mb-2 rounded-md">
+                      <div className="relative mb-2 h-[120px] w-full rounded-md">
                         {typeof item?.Image === "string" &&
                         item.Image.trim().length > 0 ? (
                           <Image
@@ -238,13 +258,12 @@ export default function Page() {
                             className="object-contain rounded-md"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gray-100 rounded-md" />
+                          <div className="h-full w-full rounded-md bg-gray-100" />
                         )}
                       </div>
                     </div>
 
-                    {/* Bottom bar */}
-                    <div className="bg-[#00999e] text-white text-center items-center h-fit  text-sm font-semibold p-3 py-5 rounded-b-md">
+                    <div className="h-fit items-center rounded-b-md bg-[#00999e] p-3 py-5 text-center text-sm font-semibold text-white">
                       {item?.title?.[0]}
                     </div>
                   </div>
@@ -255,10 +274,8 @@ export default function Page() {
         </ContainerWrapper>
       </div>
 
-      {/* FAQ section */}
       <FAQ faqData={pageData?.faq} />
 
-      {/* let's start section */}
       <LetsStart />
     </div>
   );

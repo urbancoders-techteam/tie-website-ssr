@@ -1,4 +1,4 @@
-import { DEFAULT_GUIDE_HREF } from "./blogHomePageData";
+const DEFAULT_GUIDE_HREF = "/blog";
 
 export type NmcCollegeArticle = {
   title: string;

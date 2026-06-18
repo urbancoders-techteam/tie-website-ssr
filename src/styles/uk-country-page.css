@@ -1,0 +1,334 @@
+/* UK country — tabbed guide layout */
+.uk-country-page {
+  width: 100%;
+  background: #fff;
+  color: #0b162c;
+}
+
+.uk-country-hero {
+  border-bottom: 1px solid #e8f4f5;
+  background: #fff;
+}
+
+.uk-country-tabs-wrap {
+  position: sticky;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px -8px rgba(11, 22, 44, 0.08);
+}
+
+.uk-country-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.uk-country-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.uk-country-tab {
+  flex-shrink: 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.uk-country-tab:hover {
+  color: #00999e;
+}
+
+.uk-country-tab.is-active {
+  color: #00999e;
+  border-bottom-color: #00999e;
+}
+
+.uk-country-layout {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .uk-country-layout {
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1280px) {
+  .uk-country-layout {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.uk-country-sidebar-inner {
+  position: sticky;
+  z-index: 30;
+}
+
+.uk-country-sidebar-intro {
+  border-radius: 0.75rem;
+  border: 1px solid #cbecef;
+  background: #f0fafb;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.uk-country-sidebar-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 1rem 0.65rem 1.15rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  border-left: 3px solid transparent;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.uk-country-sidebar-link:hover {
+  color: #00999e;
+  background: rgba(0, 153, 158, 0.06);
+}
+
+.uk-country-sidebar-link.is-active {
+  color: #00999e;
+  border-left-color: #00999e;
+  background: rgba(0, 153, 158, 0.08);
+}
+
+.uk-country-sidebar-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0.15rem 0;
+}
+
+.uk-country-sidebar-cta {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #00999e;
+  color: #fff;
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.uk-country-sidebar-cta:hover {
+  background: #007f83;
+}
+
+.uk-country-main section[id] {
+  scroll-margin-top: var(--country-scroll-offset, 10rem);
+}
+
+/* Extra breathing room between stacked section blocks */
+.uk-country-main > section[id] + section[id] {
+  margin-top: 0.5rem;
+}
+
+.uk-country-section {
+  scroll-margin-top: var(--country-scroll-offset, 10rem);
+  margin-bottom: 3.5rem;
+}
+
+.uk-country-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.uk-country-section-heading::before {
+  content: "";
+  width: 4px;
+  min-height: 1.75rem;
+  align-self: stretch;
+  border-radius: 2px;
+  background: #00999e;
+  flex-shrink: 0;
+}
+
+.uk-country-section-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 800;
+  color: #0b162c;
+  line-height: 1.35;
+}
+
+.uk-country-prose {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #475569;
+}
+
+.uk-country-prose p + p {
+  margin-top: 1rem;
+}
+
+.uk-country-bullet-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.uk-country-bullet-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #475569;
+}
+
+.uk-country-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00999e;
+}
+
+.uk-country-panel {
+  border-radius: 0.75rem;
+  border: 1px solid #e8f4f5;
+  background: #fff;
+  padding: 1rem;
+}
+
+/* Mobile & tablet (< lg) */
+@media (max-width: 1023px) {
+  .uk-country-layout {
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+    gap: 0;
+  }
+
+  .uk-country-main {
+    min-width: 0;
+  }
+
+  .uk-country-main section[id] {
+    scroll-margin-top: var(--country-scroll-offset, 6rem);
+  }
+
+  .uk-country-tab {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 639px) {
+  .uk-country-layout {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .uk-country-hero {
+    border-bottom-width: 1px;
+  }
+}
+
+/* Laptop: tighter layout so sidebar + content fit without feeling oversized */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .uk-country-layout {
+    grid-template-columns: minmax(0, 14.25rem) minmax(0, 1fr);
+    gap: 0.875rem;
+    padding-top: 1rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .uk-country-main {
+    font-size: 0.9375rem;
+  }
+
+  .uk-country-tab {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .uk-country-section {
+    margin-bottom: 2.75rem;
+  }
+
+  .uk-country-main > section[id] + section[id] {
+    margin-top: 0.35rem;
+  }
+
+  .uk-country-section-heading {
+    margin-bottom: 0.85rem;
+  }
+
+  .uk-country-section-heading::before {
+    min-height: 1.35rem;
+  }
+
+  .uk-country-section-title {
+    font-size: 1.1875rem;
+  }
+
+  .uk-country-prose {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .uk-country-prose p + p {
+    margin-top: 0.65rem;
+  }
+
+  .uk-country-bullet-list li {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.55;
+  }
+
+  .uk-country-panel {
+    padding: 0.75rem;
+  }
+
+  .uk-country-sidebar-link {
+    padding: 0.45rem 0.65rem 0.45rem 0.8rem;
+    font-size: 0.6875rem;
+    line-height: 1.35;
+  }
+
+  .uk-country-sidebar-cta {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.75rem;
+    margin-top: 0.65rem;
+  }
+
+  .uk-country-page .uk-country-block-compact {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .uk-country-page .uk-country-block-compact h2 {
+    font-size: 1.0625rem;
+  }
+
+  .uk-country-page .uk-university-card {
+    height: 220px;
+    width: 195px;
+  }
+}

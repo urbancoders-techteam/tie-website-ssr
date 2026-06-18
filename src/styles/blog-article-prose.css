@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Blog detail — dynamic rich content (Jodit / any HTML)
+   Fluid type + container queries + scroll regions for wide embeds
+   ========================================================================== */
+
+/* Article column — centered on mobile, full width in desktop main column */
+.blog-detail-article,
+.blog-article-prose-root {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  container-type: inline-size;
+  container-name: blog-prose;
+}
+
+@media (min-width: 1024px) {
+  .blog-detail-article,
+  .blog-article-prose-root {
+    max-width: none;
+  }
+}
+
+/* ---- Prose (desktop = fixed professional scale; mobile = fluid) ---- */
+.blog-article-prose {
+  --blog-text: 1.0625rem;
+  --blog-h1: 2rem;
+  --blog-h2: 1.65rem;
+  --blog-h3: 1.35rem;
+  --blog-h4: 1.15rem;
+  --blog-space: 1.25rem;
+  --blog-block-space: 2rem;
+
+  color: #334155;
+  font-size: var(--blog-text);
+  line-height: 1.85;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
+
+@media (max-width: 1023px) {
+  .blog-article-prose {
+    --blog-text: clamp(0.9375rem, 0.35vw + 0.9rem, 1.0625rem);
+    --blog-h1: clamp(1.35rem, 2vw + 1rem, 2rem);
+    --blog-h2: clamp(1.25rem, 1.6vw + 0.95rem, 1.65rem);
+    --blog-h3: clamp(1.1rem, 1vw + 0.9rem, 1.35rem);
+    --blog-h4: clamp(1rem, 0.6vw + 0.85rem, 1.15rem);
+    --blog-space: clamp(0.75rem, 2vw, 1.25rem);
+    --blog-block-space: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.8;
+    hyphens: auto;
+  }
+}
+
+.blog-article-prose :where(*:not(table):not(thead):not(tbody):not(tr):not(td):not(th)) {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.blog-article-prose :where(p, div, li, blockquote, h1, h2, h3, h4, h5, h6, figure, section, article, header, footer, main, aside, td, th, caption) {
+  min-width: 0;
+}
+
+.blog-article-prose > *:first-child {
+  margin-top: 0;
+}
+
+.blog-article-prose > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Headings */
+.blog-article-prose :where(h1) {
+  color: #0b162c;
+  font-size: var(--blog-h1);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: var(--blog-block-space) 0 var(--blog-space);
+}
+
+.blog-article-prose :where(h2) {
+  color: #0b162c;
+  font-size: var(--blog-h2);
+  font-weight: 800;
+  line-height: 1.3;
+  margin: var(--blog-block-space) 0 var(--blog-space);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #cbecef;
+}
+
+.blog-article-prose :where(h3) {
+  color: #0b162c;
+  font-size: var(--blog-h3);
+  font-weight: 800;
+  line-height: 1.35;
+  margin: calc(var(--blog-block-space) * 0.85) 0 var(--blog-space);
+}
+
+.blog-article-prose :where(h4, h5, h6) {
+  color: #0b162c;
+  font-size: var(--blog-h4);
+  font-weight: 800;
+  line-height: 1.35;
+  margin: var(--blog-space) 0 calc(var(--blog-space) * 0.75);
+}
+
+.blog-article-prose [data-rhf-heading="1"],
+.blog-article-prose .rhf-inline-h1 {
+  font-size: var(--blog-h2);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #0b162c;
+  display: inline;
+}
+
+.blog-article-prose [data-rhf-heading="2"],
+.blog-article-prose .rhf-inline-h2 {
+  font-size: var(--blog-h3);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #0b162c;
+  display: inline;
+}
+
+.blog-article-prose [data-rhf-heading="3"],
+.blog-article-prose .rhf-inline-h3 {
+  font-size: var(--blog-h4);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #0b162c;
+  display: inline;
+}
+
+.blog-article-prose :where(p) {
+  margin: 0 0 var(--blog-space);
+}
+
+.blog-article-prose :where(a) {
+  color: #00999e;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.blog-article-prose :where(a:hover) {
+  color: #007f83;
+}
+
+.blog-article-prose :where(strong, b) {
+  font-weight: 800;
+}
+
+.blog-article-prose :where(strong:not([style*="color"]), b:not([style*="color"])) {
+  color: #0b162c;
+}
+
+.blog-article-prose :where(span[style*="color"]) {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+
+.blog-article-prose :where(ul, ol) {
+  margin: var(--blog-space) 0 calc(var(--blog-space) * 1.2);
+  padding-left: clamp(1.1rem, 4vw, 1.5rem);
+}
+
+.blog-article-prose :where(ul) {
+  list-style-type: disc;
+}
+
+.blog-article-prose :where(ol) {
+  list-style-type: decimal;
+}
+
+.blog-article-prose :where(li) {
+  margin-bottom: 0.45em;
+}
+
+.blog-article-prose :where(blockquote) {
+  margin: var(--blog-block-space) 0;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.85rem, 3vw, 1.25rem);
+  border-left: 4px solid #00999e;
+  background: #f0fafb;
+  border-radius: 0 0.75rem 0.75rem 0;
+  color: #0b162c;
+  font-style: italic;
+}
+
+/* Media */
+.blog-article-prose :where(img, picture, svg) {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: var(--blog-block-space) auto;
+  border-radius: 0.75rem;
+}
+
+.blog-article-prose :where(img) {
+  object-fit: contain;
+  box-shadow: 0 12px 40px rgba(11, 22, 44, 0.1);
+}
+
+.blog-article-prose :where(video) {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: var(--blog-block-space) 0;
+  border-radius: 0.75rem;
+}
+
+.blog-article-media-responsive {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: var(--blog-block-space) 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  aspect-ratio: 16 / 9;
+  background: #0b162c;
+}
+
+.blog-article-media-responsive :where(iframe, embed, object, video) {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border: 0;
+}
+
+/* Tables */
+.blog-article-table-scroll {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: var(--blog-block-space) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 0 1px #cbecef;
+}
+
+.blog-article-table-scroll :where(table) {
+  display: table !important;
+  width: max-content;
+  min-width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+  border-collapse: collapse;
+  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+}
+
+.blog-article-prose > table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-article-prose :where(th, td) {
+  border: 1px solid #cbecef;
+  padding: clamp(0.45rem, 1.5vw, 0.65rem) clamp(0.5rem, 2vw, 0.85rem);
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-article-prose :where(th) {
+  background: #e7f8fa;
+  color: #0b162c;
+  font-weight: 700;
+}
+
+/* Code */
+.blog-article-pre-scroll {
+  width: 100%;
+  max-width: 100%;
+  margin: var(--blog-block-space) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+}
+
+.blog-article-prose :where(pre) {
+  margin: 0;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  background: #0b162c;
+  color: #e2e8f0;
+  border-radius: 0.75rem;
+  font-family: ui-monospace, monospace;
+  font-size: clamp(0.75rem, 2vw, 0.9em);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.blog-article-prose :where(code) {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+  padding: 0.15rem 0.4rem;
+  background: #e7f8fa;
+  border-radius: 0.25rem;
+  color: #007f83;
+  overflow-wrap: anywhere;
+}
+
+.blog-article-prose :where(pre code) {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.blog-article-prose :where(hr) {
+  margin: var(--blog-block-space) 0;
+  border: none;
+  border-top: 1px solid #cbecef;
+}
+
+.blog-article-prose :where(figure) {
+  margin: var(--blog-block-space) 0;
+}
+
+.blog-article-prose :where(figcaption) {
+  margin-top: 0.5rem;
+  font-size: 0.875em;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Container query — extra tight columns (sidebar / mobile) */
+@container blog-prose (max-width: 520px) {
+  .blog-article-prose {
+    font-size: clamp(0.9rem, 3.8vw, 1rem);
+    line-height: 1.75;
+  }
+
+  .blog-article-prose :where(h2) {
+    font-size: clamp(1.15rem, 5vw, 1.35rem);
+  }
+
+  .blog-article-prose :where(ul, ol) {
+    padding-left: 1.15rem;
+  }
+}

@@ -72,11 +72,18 @@ export interface FAQSectionProps {
   items: FAQItem[];
   /** `abroad` uses TIE navy + serif title (MBBS abroad pages). Accent teal matches site theme. */
   variant?: "default" | "abroad";
+  /** Inline inside blog article — no full-bleed background or page padding. */
+  embedded?: boolean;
   /**
    * Country slug for a stable section anchor, e.g. `georgia` → `id="faq-georgia"`.
    * Omit to keep `id="faq"` (campaign pages and backward-compatible links).
    */
   sectionSlug?: string;
+  /**
+   * Explicit section element id (e.g. `uk-faq` for UK country tab layout).
+   * Overrides the default `faq` / `faq-{slug}` id when set.
+   */
+  sectionId?: string;
   /** Root id for the section heading (`abroad`); defaults to `faq-heading`. */
   headingId?: string;
 }
@@ -168,16 +175,18 @@ const FAQCard = memo(function FAQCard({
 export default function FAQSection({
   items,
   variant = "default",
+  embedded = false,
   sectionSlug,
+  sectionId,
   headingId = "faq-heading",
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   /** Prefix for question/answer region ids — `faq-georgia-*` when slug set, else `faq-*` (campaigns). */
-  const idPrefix = sectionSlug ? `faq-${sectionSlug}` : "faq";
+  const idPrefix = sectionSlug ? `faq-${sectionSlug}` : sectionId ?? "faq";
 
-  /** Public section anchor: `faq-{slug}` when slug set; otherwise stable `faq` for campaigns. */
-  const sectionDomId = sectionSlug ? `faq-${sectionSlug}` : "faq";
+  /** Public section anchor: explicit `sectionId`, else `faq-{slug}`, else `faq`. */
+  const sectionDomId = sectionId ?? (sectionSlug ? `faq-${sectionSlug}` : "faq");
 
   const renderHighlight = useCallback((text: string) => <span className={`${ACCENT} font-bold`}>{text}</span>, []);
 
@@ -186,10 +195,17 @@ export default function FAQSection({
       <h2 id={headingId} className={`text-center ${ABROAD_SECTION_TITLE}`}>
         Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
       </h2>
+    ) : embedded ? (
+      <h2
+        id={headingId}
+        className="font-sans text-xl font-extrabold text-[#0B162C] sm:text-2xl"
+      >
+        Frequently Asked <span className="text-[#00999E]">Questions</span>
+      </h2>
     ) : (
       <h2 className="font-sans text-xl font-[700] text-gray-900 sm:text-2xl md:text-4xl">
         <span className="relative inline-block pb-1">
-          Frequently asked <span className="text-[#00999E]">Questions</span>
+          Frequently Asked <span className="text-[#00999E]">Questions</span>
         </span>
       </h2>
     );
@@ -197,13 +213,23 @@ export default function FAQSection({
   return (
     <section
       id={sectionDomId}
-      className="scroll-mt-24 overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16"
-      aria-labelledby={variant === "abroad" ? headingId : undefined}
+      className={
+        embedded
+          ? "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
+          : `overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`
+      }
+      aria-labelledby={variant === "abroad" || embedded ? headingId : undefined}
     >
-      <div className="mx-auto min-w-0 max-w-7xl px-4">
+      <div className={embedded ? "min-w-0" : "mx-auto min-w-0 max-w-7xl px-4"}>
         {heading}
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+        <div
+          className={
+            embedded
+              ? "mt-6 grid grid-cols-1 gap-4"
+              : "mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
+          }
+        >
           {items.map((item, index) => (
             <FAQCard
               key={`${item.question}-${index}`}
