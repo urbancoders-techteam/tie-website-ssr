@@ -310,7 +310,9 @@ body {
 
 /* Blog detail — You May Also Like slider */
 .blog-related-slider-wrap {
-  overflow: visible;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .blog-related-nav-btn {
@@ -328,8 +330,8 @@ body {
 
 @media (max-width: 639px) {
   .blog-related-slider-wrap {
-    margin-left: -0.25rem;
-    margin-right: -0.25rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .blog-related-slider ul.slick-dots {

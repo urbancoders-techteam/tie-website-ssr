@@ -9,6 +9,8 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
   container-type: inline-size;
   container-name: blog-prose;
 }
@@ -36,6 +38,7 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  overflow-x: clip;
   overflow-wrap: anywhere;
   word-wrap: break-word;
 }

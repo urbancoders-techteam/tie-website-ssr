@@ -72,6 +72,8 @@ export interface FAQSectionProps {
   items: FAQItem[];
   /** `abroad` uses TIE navy + serif title (MBBS abroad pages). Accent teal matches site theme. */
   variant?: "default" | "abroad";
+  /** Inline inside blog article — no full-bleed background or page padding. */
+  embedded?: boolean;
   /**
    * Country slug for a stable section anchor, e.g. `georgia` → `id="faq-georgia"`.
    * Omit to keep `id="faq"` (campaign pages and backward-compatible links).
@@ -173,6 +175,7 @@ const FAQCard = memo(function FAQCard({
 export default function FAQSection({
   items,
   variant = "default",
+  embedded = false,
   sectionSlug,
   sectionId,
   headingId = "faq-heading",
@@ -192,6 +195,13 @@ export default function FAQSection({
       <h2 id={headingId} className={`text-center ${ABROAD_SECTION_TITLE}`}>
         Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
       </h2>
+    ) : embedded ? (
+      <h2
+        id={headingId}
+        className="font-sans text-xl font-extrabold text-[#0B162C] sm:text-2xl"
+      >
+        Frequently Asked <span className="text-[#00999E]">Questions</span>
+      </h2>
     ) : (
       <h2 className="font-sans text-xl font-[700] text-gray-900 sm:text-2xl md:text-4xl">
         <span className="relative inline-block pb-1">
@@ -203,13 +213,23 @@ export default function FAQSection({
   return (
     <section
       id={sectionDomId}
-      className={`overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`}
-      aria-labelledby={variant === "abroad" ? headingId : undefined}
+      className={
+        embedded
+          ? "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
+          : `overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`
+      }
+      aria-labelledby={variant === "abroad" || embedded ? headingId : undefined}
     >
-      <div className="mx-auto min-w-0 max-w-7xl px-4">
+      <div className={embedded ? "min-w-0" : "mx-auto min-w-0 max-w-7xl px-4"}>
         {heading}
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+        <div
+          className={
+            embedded
+              ? "mt-6 grid grid-cols-1 gap-4"
+              : "mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
+          }
+        >
           {items.map((item, index) => (
             <FAQCard
               key={`${item.question}-${index}`}

@@ -148,7 +148,7 @@ export default function BlogYouMayAlsoLike({
   const goNext = () => sliderRef.current?.slickNext();
 
   return (
-    <section className="border-t border-[#CBECEF] bg-white py-10 sm:py-16 lg:py-20">
+    <section className="overflow-x-clip border-t border-[#CBECEF] bg-white py-10 sm:py-16 lg:py-20">
       <ContainerWrapper>
         <div className="px-0.5 text-center">
           <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#00999E] sm:text-xs sm:tracking-[0.28em]">

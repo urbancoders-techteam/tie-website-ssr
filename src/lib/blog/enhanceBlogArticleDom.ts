@@ -36,6 +36,9 @@ function resetElementLayout(el: HTMLElement) {
     el.style.width = "";
   }
   if (el.style.minWidth) el.style.minWidth = "";
+  if (el.style.maxWidth && !el.style.maxWidth.includes("%")) {
+    el.style.maxWidth = "100%";
+  }
 }
 
 /**

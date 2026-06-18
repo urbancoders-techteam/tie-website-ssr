@@ -1,6 +1,7 @@
 import { BlogDetailPage } from "@/components/blog/blog-pages";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { fetchBlogBySlug } from "@/lib/blog/fetch";
+import { extractBlogMetaFromHtml } from "@/lib/blog/parseBlogArticleMeta";
 import { fetchRelatedBlogs } from "@/lib/blog/related";
 import { excerptFrom, stripHtml } from "@/lib/blog/map";
 import type { Metadata } from "next";
@@ -18,14 +19,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Article Not Found | Taksheela Blog" };
   }
 
+  const embeddedMeta = extractBlogMetaFromHtml(blog.description);
+
   const description =
     blog.metaDescription?.trim() ||
+    embeddedMeta.metaDescription ||
     blog.heroDescription?.trim() ||
     blog.excerpt?.trim() ||
     excerptFrom(blog.description, 32);
   const pageTitle =
-    blog.metaTitle?.trim() || `${blog.title} | Taksheela Blog`;
-  const ogTitle = blog.metaTitle?.trim() || blog.title;
+    blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
+  const ogTitle = blog.metaTitle?.trim() || embeddedMeta.metaTitle || blog.title;
   const canonical = `https://www.taksheela.com/blog/${slug}`;
 
   return {
@@ -60,6 +64,7 @@ export default async function BlogSlugPage({ params }: PageProps) {
   }
 
   const relatedBlogs = await fetchRelatedBlogs(slug, blog.categoryId, 10);
+  const embeddedMeta = extractBlogMetaFromHtml(blog.description);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -67,6 +72,7 @@ export default async function BlogSlugPage({ params }: PageProps) {
     headline: blog.title,
     description: (
       blog.metaDescription?.trim() ||
+      embeddedMeta.metaDescription ||
       blog.heroDescription?.trim() ||
       blog.excerpt?.trim() ||
       stripHtml(blog.description)
