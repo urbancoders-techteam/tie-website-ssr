@@ -333,7 +333,13 @@ export const Header = ({ itemupdate }: any) => {
     e.preventDefault();
 
     if (subMenu.url) {
-      window.open(subMenu.url, "_blank");
+      if (subMenu.url.startsWith("http")) {
+        window.open(subMenu.url, "_blank");
+      } else {
+        router.push(subMenu.url);
+        setActiveSubMenu(subMenu.title);
+        setDrawerOpen(false);
+      }
       return;
     }
 

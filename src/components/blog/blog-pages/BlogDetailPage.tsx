@@ -2,6 +2,7 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import type { ApiBlog } from "@/lib/blog/types";
 import { splitBlogArticleWithFaqs } from "@/lib/blog/parseBlogArticleFaqs";
 import { splitBlogArticleWithMeta } from "@/lib/blog/parseBlogArticleMeta";
+import { sanitizeBlogArticleHtml } from "@/lib/blog/sanitizeBlogArticleHtml";
 import Link from "next/link";
 import BlogArticleContent from "./BlogArticleContent";
 import BlogArticleFaqSection from "./BlogArticleFaqSection";
@@ -18,7 +19,8 @@ type BlogDetailPageProps = {
 
 export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPageProps) {
   const { articleHtml: htmlWithoutMeta } = splitBlogArticleWithMeta(blog.description);
-  const { articleHtml, faqItems } = splitBlogArticleWithFaqs(htmlWithoutMeta);
+  const sanitizedHtml = sanitizeBlogArticleHtml(htmlWithoutMeta);
+  const { articleHtml, faqItems } = splitBlogArticleWithFaqs(sanitizedHtml);
 
   return (
     <article className="min-h-screen overflow-x-clip bg-white text-[#0B162C]">
@@ -32,7 +34,17 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
             <div className="min-w-0 w-full">
               <div className="blog-detail-article mx-auto w-full min-w-0 max-w-4xl">
                 <BlogArticleContent html={articleHtml} />
-                <BlogArticleFaqSection items={faqItems} />
+                {faqItems.length > 0 ? (
+                  <>
+                    <h2
+                      id="blog-article-faq-heading"
+                      className="mt-10 font-sans text-xl font-extrabold text-[#0B162C] sm:text-2xl"
+                    >
+                      Frequently Asked <span className="text-[#00999E]">Questions</span>
+                    </h2>
+                    <BlogArticleFaqSection items={faqItems} />
+                  </>
+                ) : null}
               </div>
 
               <div className="mx-auto mt-10 max-w-4xl space-y-6 lg:hidden">

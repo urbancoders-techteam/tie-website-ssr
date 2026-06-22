@@ -1,3 +1,5 @@
+import { sanitizeBlogArticleHtml } from "./sanitizeBlogArticleHtml";
+
 const LAYOUT_STYLE_PROPS =
   /(?:^|;)\s*(?:width|min-width|max-width|height|min-height|max-height|margin-left|margin-right|float|position|left|right|white-space)\s*:\s*[^;]+/gi;
 
@@ -32,7 +34,7 @@ function wrapOnce(html: string, marker: string, openRe: RegExp, openRepl: string
 export function prepareBlogArticleHtml(html: string): string {
   if (!html?.trim()) return html;
 
-  let result = html;
+  let result = sanitizeBlogArticleHtml(html);
 
   result = wrapOnce(
     result,
