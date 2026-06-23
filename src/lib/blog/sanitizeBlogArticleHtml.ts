@@ -21,19 +21,49 @@ function stripGoogleDocsArtifacts(html: string): string {
   return result;
 }
 
+/** Balance a single inline tag: drop orphaned closes and append missing closes. */
+function balanceInlineTag(html: string, tag: string): string {
+  const tagPattern = new RegExp(`(<${tag}\\b[^>]*>|</${tag}>)`, "gi");
+  let openCount = 0;
+  let result = "";
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = tagPattern.exec(html)) !== null) {
+    const token = match[0];
+    const isClose = /^<\//i.test(token);
+
+    if (isClose) {
+      if (openCount > 0) {
+        result += html.slice(lastIndex, match.index + token.length);
+        openCount--;
+        lastIndex = match.index + token.length;
+      } else {
+        result += html.slice(lastIndex, match.index);
+        lastIndex = match.index + token.length;
+      }
+    } else {
+      result += html.slice(lastIndex, match.index + token.length);
+      openCount++;
+      lastIndex = match.index + token.length;
+    }
+  }
+
+  result += html.slice(lastIndex);
+
+  if (openCount > 0) {
+    result += `</${tag}>`.repeat(openCount);
+  }
+
+  return result;
+}
+
 /** Close unbalanced inline tags so sibling React nodes are not swallowed by the parser. */
 function closeDanglingInlineTags(html: string): string {
   let result = html;
 
   for (const tag of INLINE_TAGS) {
-    const openRe = new RegExp(`<${tag}\\b[^>]*>`, "gi");
-    const closeRe = new RegExp(`</${tag}>`, "gi");
-    const openCount = (result.match(openRe) ?? []).length;
-    const closeCount = (result.match(closeRe) ?? []).length;
-
-    if (openCount > closeCount) {
-      result += `</${tag}>`.repeat(openCount - closeCount);
-    }
+    result = balanceInlineTag(result, tag);
   }
 
   return result;

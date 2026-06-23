@@ -1,7 +1,10 @@
+"use client";
+
 import { DEFAULT_BLOG_AUTHOR } from "@/lib/blog/map";
 import type { ApiBlog } from "@/lib/blog/types";
 import { formatDate } from "@/utils/methods";
 import Image from "next/image";
+import { useState } from "react";
 import {
   MdAccessTime,
   MdCalendarToday,
@@ -33,7 +36,8 @@ const TAG_STYLES = [
   },
 ];
 
-const FALLBACK_HERO_IMAGE = "/images/blog-hero-preview.jpg";
+const HERO_PLACEHOLDER_GRADIENT =
+  "bg-gradient-to-br from-[#00999E] via-[#007F83] to-[#0B162C]";
 
 type BlogHeroProps = {
   blog: ApiBlog;
@@ -47,11 +51,12 @@ function editionLabel(date?: string) {
 }
 
 export default function BlogHero({ blog }: BlogHeroProps) {
+  const [imageFailed, setImageFailed] = useState(false);
   const categoryName = blog.categoryName?.trim();
   const readTime = blog.readTime?.trim() || "5 min read";
   const formattedDate = blog.date ? formatDate(blog.date) : null;
   const edition = editionLabel(blog.date);
-  const heroImage = blog.image || FALLBACK_HERO_IMAGE;
+  const showPlaceholder = !blog.image || imageFailed;
 
   const tags = (blog.heroTags ?? [])
     .filter((tag) => tag.trim())
@@ -95,15 +100,28 @@ export default function BlogHero({ blog }: BlogHeroProps) {
           </h1>
 
           <div className="relative mt-5 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5 lg:aspect-auto lg:h-[220px] xl:h-[260px]">
-            <Image
-              src={heroImage}
-              alt={blog.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 896px"
-              unoptimized={!blog.image}
-            />
+            {showPlaceholder ? (
+              <div
+                className={`flex h-full w-full items-center justify-center ${HERO_PLACEHOLDER_GRADIENT}`}
+                role="img"
+                aria-label={blog.title}
+              >
+                <span className="rounded-2xl border border-white/20 bg-white/15 px-6 py-4 text-2xl font-black uppercase tracking-[0.22em] text-white shadow-lg backdrop-blur sm:text-3xl">
+                  TIE
+                </span>
+              </div>
+            ) : (
+              <Image
+                src={blog.image!}
+                alt={blog.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                unoptimized
+                onError={() => setImageFailed(true)}
+              />
+            )}
           </div>
 
           <div className="mt-5 flex flex-col gap-4 border-t border-[#CBECEF] pt-5 sm:mt-6 sm:gap-5 sm:pt-6 lg:mt-5 lg:flex-row lg:flex-nowrap lg:items-center lg:justify-between lg:gap-6 lg:pt-5">
