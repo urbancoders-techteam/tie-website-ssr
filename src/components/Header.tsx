@@ -42,8 +42,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { baseUrl, navURL } from "@/utils/config";
 
-const PHONE_TEL = "+919831241212";
-
 export const Header = ({ itemupdate }: any) => {
 
 
@@ -729,38 +727,6 @@ export const Header = ({ itemupdate }: any) => {
                 </List>
 
                 <Box sx={{ px: 2, pb: 2, pt: 1 }}>
-                  <Box
-                    component="a"
-                    href={`tel:${PHONE_TEL}`}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1,
-                      cursor: "pointer",
-                      userSelect: "none",
-                      mb: 1.5,
-                      color: "inherit",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <Box sx={{ width: 24, height: 24, position: "relative" }}>
-                      <Image
-                        src={"/images/phone.svg"}
-                        fill
-                        style={{ objectFit: "contain" }}
-                        alt="Phone"
-                      />
-                    </Box>
-                    <Box sx={{ lineHeight: 1 }}>
-                      <Typography sx={{ color: "grey", fontSize: "12px" }}>
-                        Say Hello!
-                      </Typography>
-                      <Typography sx={{ fontSize: "13px", fontWeight: 700 }}>
-                        +91 9831241212
-                      </Typography>
-                    </Box>
-                  </Box>
-
                   <Link href="/contact" className="custom-link" onClick={handleDrawerClose}>
                     <Button
                       fullWidth
@@ -1343,39 +1309,6 @@ export const Header = ({ itemupdate }: any) => {
                     />
                   </Badge>
                 </Link>
-
-                <Box
-                  component="a"
-                  href={`tel:${PHONE_TEL}`}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    cursor: "pointer",
-                    userSelect: "none",
-                    color: "inherit",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Box sx={{ width: 28, height: 28, position: "relative" }}>
-                    <Image
-                      src={"/images/phone.svg"}
-                      fill
-                      style={{ objectFit: "contain" }}
-                      alt="Phone"
-                    />
-                  </Box>
-                  <Box sx={{ lineHeight: 1 }}>
-                    {!isLgDown && (
-                      <Typography sx={{ color: "grey", fontSize: "12px" }}>
-                        Say Hello!
-                      </Typography>
-                    )}
-                    <Typography sx={{ fontSize: "13px", fontWeight: 600 }}>
-                      +91 9831241212
-                    </Typography>
-                  </Box>
-                </Box>
 
                 <Link href="/contact" className="custom-link">
                   <Button

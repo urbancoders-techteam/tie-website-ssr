@@ -60,10 +60,19 @@ export function enhanceBlogArticleDom(root: HTMLElement) {
     if (el.style.whiteSpace === "nowrap") {
       el.style.whiteSpace = "normal";
     }
+    el.style.fontFamily = "";
     if (el.style.fontSize && window.matchMedia("(max-width: 639px)").matches) {
       el.style.fontSize = "";
       el.style.lineHeight = "";
     }
     resetElementLayout(el);
+  });
+
+  root.querySelectorAll("font").forEach((font) => {
+    const span = document.createElement("span");
+    while (font.firstChild) {
+      span.appendChild(font.firstChild);
+    }
+    font.replaceWith(span);
   });
 }

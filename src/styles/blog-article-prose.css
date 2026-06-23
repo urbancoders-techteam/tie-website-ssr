@@ -13,6 +13,7 @@
   overflow-x: clip;
   container-type: inline-size;
   container-name: blog-prose;
+  font-family: "Nunito", sans-serif;
 }
 
 @media (min-width: 1024px) {
@@ -33,6 +34,7 @@
   --blog-block-space: 2rem;
 
   color: #334155;
+  font-family: "Nunito", sans-serif;
   font-size: var(--blog-text);
   line-height: 1.85;
   width: 100%;
@@ -72,6 +74,36 @@
 
 .blog-article-prose > *:last-child {
   margin-bottom: 0;
+}
+
+/* Match site typography — override Jodit / Google Docs inline fonts */
+.blog-article-prose :where(
+  p,
+  div,
+  li,
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  a,
+  strong,
+  em,
+  b,
+  i,
+  u,
+  td,
+  th,
+  caption,
+  label,
+  figcaption,
+  dt,
+  dd
+) {
+  font-family: "Nunito", sans-serif !important;
 }
 
 /* Headings */

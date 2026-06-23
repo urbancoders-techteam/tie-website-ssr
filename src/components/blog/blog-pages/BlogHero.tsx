@@ -64,7 +64,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
         : [];
 
   return (
-    <header className="bg-[#f8fffe] text-[#0B162C]">
+    <header className="font-sans bg-[#f8fffe] text-[#0B162C]">
       <div className="w-full px-4 py-8 sm:px-6 sm:py-9 lg:px-8 lg:py-8 xl:py-10">
         <div className="mx-auto w-full max-w-4xl">
           {displayTags.length > 0 ? (

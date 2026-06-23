@@ -23,7 +23,7 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
   const { articleHtml, faqItems } = splitBlogArticleWithFaqs(sanitizedHtml);
 
   return (
-    <article className="min-h-screen overflow-x-clip bg-white text-[#0B162C]">
+    <article className="font-sans min-h-screen overflow-x-clip bg-white text-[#0B162C]">
       <BlogHero blog={blog} />
 
       <ContainerWrapper className="overflow-x-clip py-10 sm:py-12 lg:py-14">
@@ -52,7 +52,7 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
                 <BlogRelatedArticles relatedBlogs={relatedBlogs} />
               </div>
 
-              <div className="mx-auto mt-14 w-full min-w-0 max-w-4xl rounded-2xl border border-[#CBECEF] bg-white p-8 text-center shadow-sm sm:p-10">
+              <div className="mx-auto mt-14 w-full min-w-0 max-w-4xl rounded-2xl border border-[#CBECEF] bg-white p-8 text-center font-sans shadow-sm sm:p-10">
                 <h2 className="text-balance text-xl font-extrabold text-[#0B162C] sm:text-2xl">
                   Planning your study abroad journey?
                 </h2>
