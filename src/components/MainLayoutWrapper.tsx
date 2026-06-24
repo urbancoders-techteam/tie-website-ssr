@@ -16,7 +16,7 @@ export default function MainLayoutWrapper({
   children: ReactNode;
 }) {
   const pathname = usePathname();
-  
+
   // Exclude Header/Footer for standalone pages (they have their own or are full-page)
   const excludeLayout =
     pathname === "/study-in-dubai" ||
@@ -44,7 +44,7 @@ export default function MainLayoutWrapper({
         data-site-sticky-chrome
         className="sticky top-0 z-[1100] bg-white shadow-[0_4px_24px_-4px_rgba(15,23,42,0.12)]"
       >
-        {pathname === "/" ? <HomeTopBar /> : null}
+        <HomeTopBar />
         <Suspense fallback={null}>
           <Header />
         </Suspense>

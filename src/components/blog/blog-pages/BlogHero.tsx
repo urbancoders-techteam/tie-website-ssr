@@ -69,9 +69,21 @@ export default function BlogHero({ blog }: BlogHeroProps) {
         : [];
 
   return (
-    <header className="font-sans bg-[#f8fffe] text-[#0B162C]">
-      <div className="w-full px-4 py-8 sm:px-6 sm:py-9 lg:px-8 lg:py-8 xl:py-10">
-        <div className="mx-auto w-full max-w-4xl">
+    <header className="relative overflow-hidden font-sans text-[#0B162C]">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#dff5f4] via-[#f0fbfb] to-[#f8fffe]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-20 -top-16 h-56 w-56 rounded-full bg-[#00999E]/10 blur-3xl sm:h-72 sm:w-72"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-12 -left-16 h-48 w-48 rounded-full bg-[#007F83]/8 blur-3xl sm:h-64 sm:w-64"
+        aria-hidden
+      />
+      <div className="relative w-full border-b border-[#CBECEF]/60 px-4 py-8 sm:px-6 sm:py-9 lg:px-8 lg:py-8 xl:py-10">
+        <div className="mx-auto w-full max-w-5xl">
           {displayTags.length > 0 ? (
             <div className="flex flex-wrap gap-2 sm:gap-2.5 lg:gap-2">
               {displayTags.map((tag, index) => {
@@ -99,7 +111,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
             {blog.title}
           </h1>
 
-          <div className="relative mt-5 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5 lg:aspect-auto lg:h-[220px] xl:h-[260px]">
+          <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5 lg:aspect-auto lg:h-[245px] xl:h-[290px]">
             {showPlaceholder ? (
               <div
                 className={`flex h-full w-full items-center justify-center ${HERO_PLACEHOLDER_GRADIENT}`}
