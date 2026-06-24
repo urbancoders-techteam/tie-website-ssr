@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import HomeTopBar from "@/components/HomeTopBar";
 import SiteBreadcrumbs from "@/components/SiteBreadcrumbs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,6 +44,7 @@ export default function MainLayoutWrapper({
         data-site-sticky-chrome
         className="sticky top-0 z-[1100] bg-white shadow-[0_4px_24px_-4px_rgba(15,23,42,0.12)]"
       >
+        {pathname === "/" ? <HomeTopBar /> : null}
         <Suspense fallback={null}>
           <Header />
         </Suspense>

@@ -1,4 +1,5 @@
 import type { FAQItem } from "@/components/campaign/FAQSection";
+import { sanitizeBlogArticleHtml } from "./sanitizeBlogArticleHtml";
 
 const HTML_ENTITY_MAP: Record<string, string> = {
   "&nbsp;": " ",
@@ -164,6 +165,16 @@ function findFaqSectionSplit(html: string): { articleHtml: string; faqSectionHtm
     }
   }
 
+  const paragraphRe = /<p\b[^>]*>([\s\S]*?)<\/p>/gi;
+  while ((match = paragraphRe.exec(html)) !== null) {
+    if (isFaqHeadingText(htmlToPlainText(match[1]))) {
+      return {
+        articleHtml: html.slice(0, match.index).trim(),
+        faqSectionHtml: html.slice(match.index + match[0].length).trim(),
+      };
+    }
+  }
+
   return null;
 }
 
@@ -194,14 +205,15 @@ export function splitBlogArticleWithFaqs(html: string): SplitBlogArticleResult {
     return { articleHtml: html, faqItems: [] };
   }
 
-  const split = findFaqSectionSplit(html);
+  const sanitized = sanitizeBlogArticleHtml(html);
+  const split = findFaqSectionSplit(sanitized);
   if (!split) {
-    return { articleHtml: html, faqItems: [] };
+    return { articleHtml: sanitized, faqItems: [] };
   }
 
   const faqItems = parseFaqSectionHtml(split.faqSectionHtml);
   if (faqItems.length === 0) {
-    return { articleHtml: html, faqItems: [] };
+    return { articleHtml: sanitized, faqItems: [] };
   }
 
   return {

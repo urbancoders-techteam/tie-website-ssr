@@ -74,6 +74,8 @@ export interface FAQSectionProps {
   variant?: "default" | "abroad";
   /** Inline inside blog article — no full-bleed background or page padding. */
   embedded?: boolean;
+  /** Hide the built-in heading (e.g. when rendered by a parent server component). */
+  hideHeading?: boolean;
   /**
    * Country slug for a stable section anchor, e.g. `georgia` → `id="faq-georgia"`.
    * Omit to keep `id="faq"` (campaign pages and backward-compatible links).
@@ -176,6 +178,7 @@ export default function FAQSection({
   items,
   variant = "default",
   embedded = false,
+  hideHeading = false,
   sectionSlug,
   sectionId,
   headingId = "faq-heading",
@@ -215,18 +218,22 @@ export default function FAQSection({
       id={sectionDomId}
       className={
         embedded
-          ? "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
+          ? hideHeading
+            ? "mt-6 min-w-0 overflow-x-hidden scroll-mt-24"
+            : "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
           : `overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`
       }
       aria-labelledby={variant === "abroad" || embedded ? headingId : undefined}
     >
       <div className={embedded ? "min-w-0" : "mx-auto min-w-0 max-w-7xl px-4"}>
-        {heading}
+        {!hideHeading ? heading : null}
 
         <div
           className={
             embedded
-              ? "mt-6 grid grid-cols-1 gap-4"
+              ? hideHeading
+                ? "grid grid-cols-1 gap-4"
+                : "mt-6 grid grid-cols-1 gap-4"
               : "mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
           }
         >

@@ -1,7 +1,10 @@
-import { DEFAULT_BLOG_AUTHOR, excerptFrom } from "@/lib/blog/map";
+"use client";
+
+import { DEFAULT_BLOG_AUTHOR } from "@/lib/blog/map";
 import type { ApiBlog } from "@/lib/blog/types";
 import { formatDate } from "@/utils/methods";
 import Image from "next/image";
+import { useState } from "react";
 import {
   MdAccessTime,
   MdCalendarToday,
@@ -11,21 +14,30 @@ import {
 
 const TAG_STYLES = [
   {
-    border: "border-amber-400/70",
+    border: "border-amber-300",
+    bg: "bg-amber-50",
+    text: "text-amber-800",
     Icon: MdMenuBook,
-    iconClass: "text-violet-300",
+    iconClass: "text-violet-500",
   },
   {
-    border: "border-emerald-400/70",
+    border: "border-emerald-300",
+    bg: "bg-emerald-50",
+    text: "text-emerald-800",
     Icon: MdCheckCircle,
-    iconClass: "text-emerald-400",
+    iconClass: "text-emerald-600",
   },
   {
-    border: "border-sky-400/70",
+    border: "border-sky-300",
+    bg: "bg-sky-50",
+    text: "text-sky-800",
     Icon: MdMenuBook,
-    iconClass: "text-sky-300",
+    iconClass: "text-sky-600",
   },
 ];
+
+const HERO_PLACEHOLDER_GRADIENT =
+  "bg-gradient-to-br from-[#00999E] via-[#007F83] to-[#0B162C]";
 
 type BlogHeroProps = {
   blog: ApiBlog;
@@ -39,10 +51,12 @@ function editionLabel(date?: string) {
 }
 
 export default function BlogHero({ blog }: BlogHeroProps) {
+  const [imageFailed, setImageFailed] = useState(false);
   const categoryName = blog.categoryName?.trim();
   const readTime = blog.readTime?.trim() || "5 min read";
   const formattedDate = blog.date ? formatDate(blog.date) : null;
   const edition = editionLabel(blog.date);
+  const showPlaceholder = !blog.image || imageFailed;
 
   const tags = (blog.heroTags ?? [])
     .filter((tag) => tag.trim())
@@ -54,102 +68,104 @@ export default function BlogHero({ blog }: BlogHeroProps) {
         ? [categoryName.toUpperCase()]
         : [];
 
-  const heroDescription =
-    blog.heroDescription?.trim() ||
-    blog.excerpt?.trim() ||
-    excerptFrom(blog.description, 40);
-
   return (
-    <header className="relative overflow-hidden bg-[#0B162C] text-white">
-      {blog.image ? (
-        <>
-          <Image
-            src={blog.image}
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-25"
-            sizes="100vw"
-            unoptimized
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0"
-            aria-hidden
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(11,22,44,0.92) 0%, rgba(15,45,58,0.88) 45%, rgba(0,153,158,0.35) 100%)",
-            }}
-          />
-        </>
-      ) : (
-        <div
-          className="absolute inset-0"
-          aria-hidden
-          style={{
-            background:
-              "linear-gradient(135deg, #0B162C 0%, #143C52 50%, #00999E 100%)",
-          }}
-        />
-      )}
+    <header className="font-sans bg-[#f8fffe] text-[#0B162C]">
+      <div className="w-full px-4 py-8 sm:px-6 sm:py-9 lg:px-8 lg:py-8 xl:py-10">
+        <div className="mx-auto w-full max-w-4xl">
+          {displayTags.length > 0 ? (
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 lg:gap-2">
+              {displayTags.map((tag, index) => {
+                const style = TAG_STYLES[index % TAG_STYLES.length];
+                const Icon = style.Icon;
+                return (
+                  <span
+                    key={`${tag}-${index}`}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.12em] sm:px-3 sm:py-1 sm:text-[0.68rem] lg:px-3 lg:py-1 lg:text-[0.65rem] ${style.border} ${style.bg} ${style.text}`}
+                  >
+                    <Icon
+                      className={`h-3.5 w-3.5 shrink-0 lg:h-3.5 lg:w-3.5 ${style.iconClass}`}
+                      aria-hidden
+                    />
+                    {tag}
+                  </span>
+                );
+              })}
+            </div>
+          ) : null}
 
-      <div className="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-        {displayTags.length > 0 ? (
-          <div className="flex flex-wrap gap-2.5 sm:gap-3">
-            {displayTags.map((tag, index) => {
-              const style = TAG_STYLES[index % TAG_STYLES.length];
-              const Icon = style.Icon;
-              return (
-                <span
-                  key={`${tag}-${index}`}
-                  className={`inline-flex items-center gap-1.5 rounded-full border bg-white/5 px-3 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.12em] backdrop-blur-sm sm:px-3.5 sm:py-1.5 sm:text-[0.7rem] ${style.border}`}
-                >
-                  <Icon className={`h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 ${style.iconClass}`} aria-hidden />
-                  {tag}
+          <h1
+            className={`text-pretty text-left text-2xl font-black leading-tight tracking-tight break-words sm:text-[1.75rem] lg:text-[1.875rem] lg:leading-snug xl:text-[2.125rem] xl:leading-tight ${displayTags.length > 0 ? "mt-4 sm:mt-5 lg:mt-4" : ""}`}
+          >
+            {blog.title}
+          </h1>
+
+          <div className="relative mt-5 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5 lg:aspect-auto lg:h-[220px] xl:h-[260px]">
+            {showPlaceholder ? (
+              <div
+                className={`flex h-full w-full items-center justify-center ${HERO_PLACEHOLDER_GRADIENT}`}
+                role="img"
+                aria-label={blog.title}
+              >
+                <span className="rounded-2xl border border-white/20 bg-white/15 px-6 py-4 text-2xl font-black uppercase tracking-[0.22em] text-white shadow-lg backdrop-blur sm:text-3xl">
+                  TIE
                 </span>
-              );
-            })}
-          </div>
-        ) : null}
-
-        <h1 className="mt-6 text-balance text-2xl font-black leading-tight tracking-tight sm:mt-7 sm:text-3xl lg:text-[2.35rem] lg:leading-[1.15]">
-          {blog.title}
-        </h1>
-
-        {heroDescription ? (
-          <p className="mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-base md:text-lg">
-            {heroDescription}
-          </p>
-        ) : null}
-
-        <div className="mt-6 flex flex-col gap-5 border-t border-white/15 pt-6 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:pt-8">
-          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#00999E] text-xs font-extrabold text-white sm:h-12 sm:w-12 sm:text-sm">
-              TI
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold text-white sm:text-base">{DEFAULT_BLOG_AUTHOR}</p>
-              <p className="text-xs text-white/65 sm:text-sm">Taksheela Institute of Education</p>
-            </div>
+              </div>
+            ) : (
+              <Image
+                src={blog.image!}
+                alt={blog.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                unoptimized
+                onError={() => setImageFailed(true)}
+              />
+            )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-white/80 sm:gap-6 sm:text-sm">
-            {edition ? (
-              <span className="inline-flex items-center gap-1.5">
-                <MdCalendarToday className="h-4 w-4 text-[#5EEAD4]" aria-hidden />
-                {edition}
-              </span>
-            ) : formattedDate ? (
-              <span className="inline-flex items-center gap-1.5">
-                <MdCalendarToday className="h-4 w-4 text-[#5EEAD4]" aria-hidden />
-                {formattedDate}
-              </span>
-            ) : null}
+          <div className="mt-5 flex flex-col gap-4 border-t border-[#CBECEF] pt-5 sm:mt-6 sm:gap-5 sm:pt-6 lg:mt-5 lg:flex-row lg:flex-nowrap lg:items-center lg:justify-between lg:gap-6 lg:pt-5">
+            <div className="flex min-w-0 items-center gap-3 lg:max-w-[55%]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#00999E] text-xs font-extrabold text-white lg:h-11 lg:w-11">
+                TI
+              </div>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold text-[#0B162C] lg:text-[0.95rem]">
+                  {DEFAULT_BLOG_AUTHOR}
+                </p>
+                <p className="truncate text-xs text-slate-500 lg:text-[0.8rem]">
+                  Taksheela Institute of Education
+                </p>
+              </div>
+            </div>
 
-            <span className="inline-flex items-center gap-1.5">
-              <MdAccessTime className="h-4 w-4 text-[#5EEAD4]" aria-hidden />
-              {readTime} read
-            </span>
+            <div className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-600 lg:justify-end lg:gap-x-5 lg:text-[0.8rem]">
+              {edition ? (
+                <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                  <MdCalendarToday
+                    className="h-3.5 w-3.5 shrink-0 text-[#00999E] lg:h-4 lg:w-4"
+                    aria-hidden
+                  />
+                  {edition}
+                </span>
+              ) : formattedDate ? (
+                <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                  <MdCalendarToday
+                    className="h-3.5 w-3.5 shrink-0 text-[#00999E] lg:h-4 lg:w-4"
+                    aria-hidden
+                  />
+                  {formattedDate}
+                </span>
+              ) : null}
+
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                <MdAccessTime
+                  className="h-3.5 w-3.5 shrink-0 text-[#00999E] lg:h-4 lg:w-4"
+                  aria-hidden
+                />
+                {readTime}
+              </span>
+            </div>
           </div>
         </div>
       </div>

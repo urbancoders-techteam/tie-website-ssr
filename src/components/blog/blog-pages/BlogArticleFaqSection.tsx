@@ -1,5 +1,3 @@
-"use client";
-
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
 
 type BlogArticleFaqSectionProps = {
@@ -13,6 +11,7 @@ export default function BlogArticleFaqSection({ items }: BlogArticleFaqSectionPr
     <FAQSection
       items={items}
       embedded
+      hideHeading
       sectionId="blog-article-faq"
       headingId="blog-article-faq-heading"
     />

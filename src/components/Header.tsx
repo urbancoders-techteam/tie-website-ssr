@@ -42,7 +42,9 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { baseUrl, navURL } from "@/utils/config";
 
-const PHONE_TEL = "+919831241212";
+function getSubMenuHref(subMenu: { link?: string; url?: string }) {
+  return subMenu.url ?? subMenu.link ?? "/";
+}
 
 export const Header = ({ itemupdate }: any) => {
 
@@ -331,19 +333,15 @@ export const Header = ({ itemupdate }: any) => {
 
   const handleSubMenuClick = (e: any, subMenu: any) => {
     e.preventDefault();
+    const href = getSubMenuHref(subMenu);
 
-    if (subMenu.url) {
-      window.open(subMenu.url, "_blank");
-      return;
-    }
-
-    if (subMenu.link && subMenu.id) {
-      if (subMenu.link.startsWith("http")) {
-        window.open(subMenu.link, "_blank");
+    if (subMenu.id && (subMenu.link || subMenu.url)) {
+      if (href.startsWith("http")) {
+        window.open(href, "_blank");
         return;
       }
 
-      if (location === subMenu.link) {
+      if (location === href) {
         const section = document.getElementById(subMenu.id);
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
@@ -352,7 +350,7 @@ export const Header = ({ itemupdate }: any) => {
         }
       } else {
         router.push(
-          `${subMenu.link}?scrollTo=${
+          `${href}?scrollTo=${
             subMenu.id
           }&subMenuTitle=${encodeURIComponent(subMenu.title)}`
         );
@@ -361,12 +359,13 @@ export const Header = ({ itemupdate }: any) => {
       return;
     }
 
-    if (subMenu.link) {
-      if (subMenu.link.startsWith("http")) {
-        window.open(subMenu.link, "_blank");
+    if (subMenu.url || subMenu.link) {
+      if (href.startsWith("http")) {
+        window.open(href, "_blank");
       } else {
-        router.push(subMenu.link);
+        router.push(href);
         setActiveSubMenu(subMenu.title);
+        setDrawerOpen(false);
       }
       return;
     }
@@ -403,7 +402,9 @@ export const Header = ({ itemupdate }: any) => {
       if (location === "/") {
         setActiveSubMenu("");
       } else {
-        const activeMenu = homeSubMenues.find((menu) => menu.link === location);
+        const activeMenu = homeSubMenues.find(
+          (menu) => getSubMenuHref(menu) === location
+        );
         setActiveSubMenu(activeMenu ? activeMenu.title : "");
       }
     }
@@ -628,7 +629,7 @@ export const Header = ({ itemupdate }: any) => {
                                 }}
                               >
                                 <Link
-                                  href={subItem.link || "/"}
+                                  href={getSubMenuHref(subItem)}
                                   key={subItem.title}
                                   className="custom-link"
                                   onClick={(e) => handleSubMenuClick(e, subItem)}
@@ -723,38 +724,6 @@ export const Header = ({ itemupdate }: any) => {
                 </List>
 
                 <Box sx={{ px: 2, pb: 2, pt: 1 }}>
-                  <Box
-                    component="a"
-                    href={`tel:${PHONE_TEL}`}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1,
-                      cursor: "pointer",
-                      userSelect: "none",
-                      mb: 1.5,
-                      color: "inherit",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <Box sx={{ width: 24, height: 24, position: "relative" }}>
-                      <Image
-                        src={"/images/phone.svg"}
-                        fill
-                        style={{ objectFit: "contain" }}
-                        alt="Phone"
-                      />
-                    </Box>
-                    <Box sx={{ lineHeight: 1 }}>
-                      <Typography sx={{ color: "grey", fontSize: "12px" }}>
-                        Say Hello!
-                      </Typography>
-                      <Typography sx={{ fontSize: "13px", fontWeight: 700 }}>
-                        +91 9831241212
-                      </Typography>
-                    </Box>
-                  </Box>
-
                   <Link href="/contact" className="custom-link" onClick={handleDrawerClose}>
                     <Button
                       fullWidth
@@ -849,7 +818,7 @@ export const Header = ({ itemupdate }: any) => {
                           }}
                         >
                           <Link
-                            href={subMenu?.link || "/"}
+                            href={getSubMenuHref(subMenu)}
                             className="custom-link"
                             onClick={(e) => handleSubMenuClick(e, subMenu)}
                             style={{
@@ -1337,39 +1306,6 @@ export const Header = ({ itemupdate }: any) => {
                     />
                   </Badge>
                 </Link>
-
-                <Box
-                  component="a"
-                  href={`tel:${PHONE_TEL}`}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    cursor: "pointer",
-                    userSelect: "none",
-                    color: "inherit",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Box sx={{ width: 28, height: 28, position: "relative" }}>
-                    <Image
-                      src={"/images/phone.svg"}
-                      fill
-                      style={{ objectFit: "contain" }}
-                      alt="Phone"
-                    />
-                  </Box>
-                  <Box sx={{ lineHeight: 1 }}>
-                    {!isLgDown && (
-                      <Typography sx={{ color: "grey", fontSize: "12px" }}>
-                        Say Hello!
-                      </Typography>
-                    )}
-                    <Typography sx={{ fontSize: "13px", fontWeight: 600 }}>
-                      +91 9831241212
-                    </Typography>
-                  </Box>
-                </Box>
 
                 <Link href="/contact" className="custom-link">
                   <Button

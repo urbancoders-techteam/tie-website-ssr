@@ -1,9 +1,11 @@
-const LAYOUT_STYLE_PROPS =
-  /(?:^|;)\s*(?:width|min-width|max-width|height|min-height|max-height|margin-left|margin-right|float|position|left|right|white-space)\s*:\s*[^;]+/gi;
+import { sanitizeBlogArticleHtml } from "./sanitizeBlogArticleHtml";
+
+const INLINE_STYLE_PROPS_TO_STRIP =
+  /(?:^|;)\s*(?:width|min-width|max-width|height|min-height|max-height|margin-left|margin-right|float|position|left|right|white-space|font-family|font)\s*:\s*[^;]+/gi;
 
 function stripLayoutStyles(styleValue: string): string {
   return styleValue
-    .replace(LAYOUT_STYLE_PROPS, "")
+    .replace(INLINE_STYLE_PROPS_TO_STRIP, "")
     .replace(/^\s*;\s*|\s*;\s*;+/g, ";")
     .replace(/^;|;$/g, "")
     .trim();
@@ -32,7 +34,7 @@ function wrapOnce(html: string, marker: string, openRe: RegExp, openRepl: string
 export function prepareBlogArticleHtml(html: string): string {
   if (!html?.trim()) return html;
 
-  let result = html;
+  let result = sanitizeBlogArticleHtml(html);
 
   result = wrapOnce(
     result,
@@ -65,6 +67,8 @@ export function prepareBlogArticleHtml(html: string): string {
 
   const tags = "img|table|div|p|span|iframe|video|embed|object|section|article|figure|td|th";
   result = cleanTagInlineStyles(result, tags);
+
+  result = result.replace(/<font\b[^>]*>/gi, "<span>").replace(/<\/font>/gi, "</span>");
 
   return result;
 }
