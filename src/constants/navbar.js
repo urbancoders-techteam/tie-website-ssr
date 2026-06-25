@@ -7,10 +7,6 @@ export const navbarData = [
         link: "/aboutus",
       },
       {
-        title: "Blogs",
-        link: "/blog",
-      },
-      {
         title: "Taksheela Edge",
         link: "/",
         id: "taksheela-edge-section",
@@ -107,7 +103,6 @@ export const navbarData = [
 
 export const homeSubMenues = [
   { title: "About Us", link: "/aboutus" },
-  { title: "Blogs", link: "/blog" },
   { title: "Taksheela Edge", link: "/", id: "taksheela-edge-section" },
   { title: "Taksheela Insights", link: "/", id: "taksheela-insights-section" },
 ];
