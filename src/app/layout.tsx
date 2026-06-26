@@ -2,7 +2,6 @@
 import "@/app/globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { headers } from "next/headers";
 import Script from "next/script";
 import "leaflet/dist/leaflet.css";
 import CanonicalTag from "@/components/CanonicalTag";
@@ -11,7 +10,6 @@ import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 import CampaignGoogleAdsGtag from "@/components/campaign/CampaignGoogleAdsGtag";
-import { isThankYouRoute } from "@/lib/thankYouRoutes";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.taksheela.com"),
@@ -26,15 +24,11 @@ export const viewport = {
   shrinkToFit: false,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: ReactNode;
 }) {
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") ?? "";
-  const isThankYouPage = isThankYouRoute(pathname);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -43,14 +37,6 @@ export default async function RootLayout({
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NPRSLZJR');`}
         </Script>
         {/* End Google Tag Manager */}
-
-        {isThankYouPage ? (
-          <>
-            {/* Google Tag Manager (noscript) */}
-            <GoogleTagManagerNoScript />
-            {/* End Google Tag Manager (noscript) */}
-          </>
-        ) : null}
 
         {/* Google tag (gtag.js) - Google Ads */}
         <CampaignGoogleAdsGtag />
@@ -99,13 +85,9 @@ export default async function RootLayout({
         </Script>
       </head>
       <body>
-        {!isThankYouPage ? (
-          <>
-            {/* Google Tag Manager (noscript) */}
-            <GoogleTagManagerNoScript />
-            {/* End Google Tag Manager (noscript) */}
-          </>
-        ) : null}
+        {/* Google Tag Manager (noscript) */}
+        <GoogleTagManagerNoScript />
+        {/* End Google Tag Manager (noscript) */}
 
         <MainLayoutWrapper>{children}</MainLayoutWrapper>
       </body>
