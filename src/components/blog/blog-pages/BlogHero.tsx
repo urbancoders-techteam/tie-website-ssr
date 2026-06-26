@@ -111,7 +111,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
             {blog.title}
           </h1>
 
-          <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5 lg:aspect-auto lg:h-[245px] xl:h-[290px]">
+          <div className="relative mt-5 aspect-[3/2] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-white shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 sm:aspect-[4/3] lg:mt-5 lg:aspect-auto lg:h-[400px] xl:h-[480px]">
             {showPlaceholder ? (
               <div
                 className={`flex h-full w-full items-center justify-center ${HERO_PLACEHOLDER_GRADIENT}`}

@@ -97,6 +97,7 @@ type FAQCardProps = {
   onToggle: () => void;
   idPrefix: string;
   variant: "default" | "abroad";
+  embedded?: boolean;
   renderHighlight: (text: string) => ReactNode;
 };
 
@@ -107,6 +108,7 @@ const FAQCard = memo(function FAQCard({
   onToggle,
   idPrefix,
   variant,
+  embedded = false,
   renderHighlight,
 }: FAQCardProps) {
   const qId = `${idPrefix}-question-${index}`;
@@ -145,7 +147,7 @@ const FAQCard = memo(function FAQCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="space-y-3 border-t border-gray-100 px-5 pb-4 pt-0 text-sm leading-relaxed text-gray-600 md:text-base">
+          <div className={`space-y-3 px-5 pb-4 pt-0 text-sm leading-relaxed text-gray-600 md:text-base ${embedded ? "text-justify" : ""} ${embedded ? "" : "border-t border-gray-100"}`}>
             {item.answerBullets?.length ? (
               <>
                 {item.answerIntro ? <p className="mb-0">{item.answerIntro}</p> : null}
@@ -246,6 +248,7 @@ export default function FAQSection({
               onToggle={() => setOpenIndex((prev) => (prev === index ? null : index))}
               idPrefix={idPrefix}
               variant={variant}
+              embedded={embedded}
               renderHighlight={renderHighlight}
             />
           ))}

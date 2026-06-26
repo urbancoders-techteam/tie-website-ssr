@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ThankYouRouteLayout from "@/components/ThankYouRouteLayout";
 
 export const metadata: Metadata = {
   title: "Thank You | Taksheela Institute",
@@ -6,10 +7,12 @@ export const metadata: Metadata = {
   robots: "noindex, follow",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function ThankYouLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return <ThankYouRouteLayout>{children}</ThankYouRouteLayout>;
 }
