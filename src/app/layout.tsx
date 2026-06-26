@@ -6,8 +6,10 @@ import Script from "next/script";
 import "leaflet/dist/leaflet.css";
 import CanonicalTag from "@/components/CanonicalTag";
 import EducationalOrganizationSchema from "@/components/EducationalOrganizationSchema";
+import GoogleTagManagerNoScript from "@/components/GoogleTagManagerNoScript";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
+import CampaignGoogleAdsGtag from "@/components/campaign/CampaignGoogleAdsGtag";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.taksheela.com"),
@@ -35,6 +37,9 @@ export default function RootLayout({
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NPRSLZJR');`}
         </Script>
         {/* End Google Tag Manager */}
+
+        {/* Google tag (gtag.js) - Google Ads */}
+        <CampaignGoogleAdsGtag />
 
         <CanonicalTag />
         <SchemaMarkup />
@@ -81,14 +86,7 @@ export default function RootLayout({
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NPRSLZJR"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+        <GoogleTagManagerNoScript />
         {/* End Google Tag Manager (noscript) */}
 
         <MainLayoutWrapper>{children}</MainLayoutWrapper>

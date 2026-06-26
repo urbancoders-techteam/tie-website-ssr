@@ -1,8 +1,6 @@
 import ThankYouCard from "@/components/ThankYouCard";
 import CampaignLeadFormConversion from "@/components/campaign/CampaignLeadFormConversion";
 
-export const dynamic = "force-static";
-
 export default function UzbekistanCampaignThankYouPage() {
   return (
     <>

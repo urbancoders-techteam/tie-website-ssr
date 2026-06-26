@@ -1,7 +1,7 @@
 import { sanitizeBlogArticleHtml } from "./sanitizeBlogArticleHtml";
 
 const INLINE_STYLE_PROPS_TO_STRIP =
-  /(?:^|;)\s*(?:width|min-width|max-width|height|min-height|max-height|margin-left|margin-right|float|position|left|right|white-space|font-family|font)\s*:\s*[^;]+/gi;
+  /(?:^|;)\s*(?:width|min-width|max-width|height|min-height|max-height|margin-left|margin-right|float|position|left|right|white-space|font-family|font|text-align)\s*:\s*[^;]+/gi;
 
 function stripLayoutStyles(styleValue: string): string {
   return styleValue
