@@ -83,8 +83,7 @@ export function mapApiBlogToPost(blog: ApiBlog, index = 0): BlogPost {
 
   return {
     title: blog.title,
-    description:
-      blog.heroDescription?.trim() || blog.excerpt?.trim() || plainDescription,
+    description: plainDescription,
     category: categoryLabel,
     categoryId: blog.categoryId ?? undefined,
     author: DEFAULT_BLOG_AUTHOR,

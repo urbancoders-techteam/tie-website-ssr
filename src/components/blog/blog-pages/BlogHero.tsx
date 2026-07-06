@@ -58,15 +58,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
   const edition = editionLabel(blog.date);
   const showPlaceholder = !blog.image || imageFailed;
 
-  const tags = (blog.heroTags ?? [])
-    .filter((tag) => tag.trim())
-    .map((tag) => tag.trim());
-  const displayTags =
-    tags.length > 0
-      ? tags
-      : categoryName
-        ? [categoryName.toUpperCase()]
-        : [];
+  const displayTags = categoryName ? [categoryName.toUpperCase()] : [];
 
   return (
     <header className="relative overflow-hidden font-sans text-[#0B162C]">

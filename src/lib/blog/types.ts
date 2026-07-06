@@ -1,10 +1,7 @@
 export type ApiBlog = {
   title: string;
-  excerpt?: string;
-  heroDescription?: string;
   metaTitle?: string;
   metaDescription?: string;
-  heroTags?: string[];
   description: string;
   slugUrl: string;
   image: string | null;

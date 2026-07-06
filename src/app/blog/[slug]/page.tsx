@@ -24,8 +24,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description =
     blog.metaDescription?.trim() ||
     embeddedMeta.metaDescription ||
-    blog.heroDescription?.trim() ||
-    blog.excerpt?.trim() ||
     excerptFrom(blog.description, 32);
   const pageTitle =
     blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
@@ -73,8 +71,6 @@ export default async function BlogSlugPage({ params }: PageProps) {
     description: (
       blog.metaDescription?.trim() ||
       embeddedMeta.metaDescription ||
-      blog.heroDescription?.trim() ||
-      blog.excerpt?.trim() ||
       stripHtml(blog.description)
     ).slice(0, 200),
     image: blog.image || undefined,
