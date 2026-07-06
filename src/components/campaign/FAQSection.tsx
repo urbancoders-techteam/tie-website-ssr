@@ -3,6 +3,10 @@
 import { useCallback, useState, type ReactNode, Fragment, memo } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { ABROAD_SECTION_ACCENT, ABROAD_SECTION_TITLE } from "@/constants/abroadSectionTheme";
+import {
+  MBBS_HUB_SECTION_TITLE,
+  MBBS_HUB_SECTION_UNDERLINE,
+} from "@/constants/mbbsHubSectionTheme";
 
 export interface FAQItem {
   question: string;
@@ -70,8 +74,8 @@ function formatItemNumber(n: number) {
 
 export interface FAQSectionProps {
   items: FAQItem[];
-  /** `abroad` uses TIE navy + serif title (MBBS abroad pages). Accent teal matches site theme. */
-  variant?: "default" | "abroad";
+  /** `abroad` uses TIE navy + serif title (MBBS abroad pages). `hub` matches `/mbbs` hub sections. */
+  variant?: "default" | "abroad" | "hub";
   /** Inline inside blog article — no full-bleed background or page padding. */
   embedded?: boolean;
   /** Hide the built-in heading (e.g. when rendered by a parent server component). */
@@ -88,6 +92,11 @@ export interface FAQSectionProps {
   sectionId?: string;
   /** Root id for the section heading (`abroad`); defaults to `faq-heading`. */
   headingId?: string;
+  /**
+   * How many FAQs to show before the expand control. Embedded sections show all by default.
+   * Pass `0` to always show every item with no expand button.
+   */
+  initialVisibleCount?: number;
 }
 
 type FAQCardProps = {
@@ -96,7 +105,7 @@ type FAQCardProps = {
   isOpen: boolean;
   onToggle: () => void;
   idPrefix: string;
-  variant: "default" | "abroad";
+  variant: "default" | "abroad" | "hub";
   embedded?: boolean;
   renderHighlight: (text: string) => ReactNode;
 };
@@ -165,7 +174,7 @@ const FAQCard = memo(function FAQCard({
                 ) : null}
               </>
             ) : (
-              <p className="mb-0 break-words">
+              <p className="mb-0 pt-2 break-words">
                 {renderAnswer(item.answer ?? "", item.highlightTerms, renderHighlight)}
               </p>
             )}
@@ -184,8 +193,25 @@ export default function FAQSection({
   sectionSlug,
   sectionId,
   headingId = "faq-heading",
+  initialVisibleCount = embedded ? 0 : 8,
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const hasExpandControl = initialVisibleCount > 0 && items.length > initialVisibleCount;
+  const visibleItems = hasExpandControl && !showAll ? items.slice(0, initialVisibleCount) : items;
+
+  const handleToggleShowAll = () => {
+    setShowAll((prev) => {
+      const next = !prev;
+      if (!next) {
+        setOpenIndex((current) =>
+          current !== null && current >= initialVisibleCount ? null : current
+        );
+      }
+      return next;
+    });
+  };
 
   /** Prefix for question/answer region ids — `faq-georgia-*` when slug set, else `faq-*` (campaigns). */
   const idPrefix = sectionSlug ? `faq-${sectionSlug}` : sectionId ?? "faq";
@@ -196,7 +222,14 @@ export default function FAQSection({
   const renderHighlight = useCallback((text: string) => <span className={`${ACCENT} font-bold`}>{text}</span>, []);
 
   const heading =
-    variant === "abroad" ? (
+    variant === "hub" ? (
+      <>
+        <h2 id={headingId} className={`text-center ${MBBS_HUB_SECTION_TITLE}`}>
+          Frequently Asked Questions
+        </h2>
+        <div className={`${MBBS_HUB_SECTION_UNDERLINE} mx-auto`} />
+      </>
+    ) : variant === "abroad" ? (
       <h2 id={headingId} className={`text-center ${ABROAD_SECTION_TITLE}`}>
         Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
       </h2>
@@ -225,7 +258,7 @@ export default function FAQSection({
             : "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
           : `overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`
       }
-      aria-labelledby={variant === "abroad" || embedded ? headingId : undefined}
+      aria-labelledby={variant === "abroad" || variant === "hub" || embedded ? headingId : undefined}
     >
       <div className={embedded ? "min-w-0" : "mx-auto min-w-0 max-w-7xl px-4"}>
         {!hideHeading ? heading : null}
@@ -239,7 +272,7 @@ export default function FAQSection({
               : "mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
           }
         >
-          {items.map((item, index) => (
+          {visibleItems.map((item, index) => (
             <FAQCard
               key={`${item.question}-${index}`}
               item={item}
@@ -253,6 +286,18 @@ export default function FAQSection({
             />
           ))}
         </div>
+
+        {hasExpandControl ? (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={handleToggleShowAll}
+              className="cursor-pointer rounded-full bg-[#00999E] px-6 py-2.5 text-base font-medium text-white transition hover:bg-[#007a7f] sm:px-8 sm:py-3 sm:text-lg"
+            >
+              {showAll ? "Show Less" : "Explore All Questions"}
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

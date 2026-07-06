@@ -1,4 +1,5 @@
 import ContainerWrapper from "../ContainerWrapper";
+import MbbsHubSectionHeader from "./MbbsHubSectionHeader";
 
 type WhyChooseCard = {
   icon: string;
@@ -50,16 +51,10 @@ export default function WhyChooseTaksheela() {
     <section className="bg-[#f3f6fb] py-12 md:py-16">
       <ContainerWrapper>
         <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <h2 className="text-[30px] md:text-5xl font-semibold leading-tight text-[#00999E]">
-              Why Choose Taksheela?
-            </h2>
-            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#f0b42f]" />
-            <p className="mx-auto mt-4 max-w-3xl text-sm md:text-[18px] leading-relaxed text-[#687b98]">
-              Taksheela is not just an MBBS study abroad consultancy — we are your medical career
-              partner, from the day you call us to the day you wear your white coat.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="Why Choose Taksheela?"
+            description="Taksheela is not just an MBBS study abroad consultancy — we are your medical career partner, from the day you call us to the day you wear your white coat. Selecting reputable study MBBS abroad consultants is the most important step in your medical journey."
+          />
 
           <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:pb-0 lg:grid-cols-4">
             {cards.map((card) => (

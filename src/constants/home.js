@@ -42,7 +42,7 @@ export const ourserviceshomedata = [
     title: "STUDY ABROAD",
     path: "/study-abroad",
     description:
-      "End-to-end guidance for UG, PG & PhD admissions in USA, UK, Canada, Germany, Australia & more. SOP, visa, scholarships — all covered.",
+      "Study abroad consultants India — student with globe End-to-end guidance for UG, PG & PhD admissions in USA, UK, Canada, Germany, Australia & more. SOP, visa, scholarships, all covered.",
   },
   {
     background: imbg,
@@ -50,7 +50,7 @@ export const ourserviceshomedata = [
     title: "IMMERSION",
     path: "/immersion",
     description:
-      "Short-term global programs (7–21 days) in Thailand, Malaysia, Dubai, Germany & France — industry exposure, university visits & cultural immersion.",
+      "Short-term global programs (7–21 days) in Thailand, Malaysia, Dubai, Germany & France: industry exposure, university visits & cultural immersion.",
   },
   {
     background: mbbg,
@@ -58,7 +58,7 @@ export const ourserviceshomedata = [
     title: "STUDY IN INDIA",
     path: "/international-relation",
     description:
-      "Helping Indian HEIs build global partnerships, MoUs, faculty exchanges and international student mobility programs with world-class universities.",
+      "Group immersion experience abroad Academic writing and international engagement Helping Indian HEIs build global partnerships, MoUs, faculty exchanges and international student mobility programs with world-class universities.",
   },
   {
     background: tpbg,
@@ -83,7 +83,7 @@ export const taksheelaEdge = {
   eyebrow: "TAKSHEELA EDGE",
   title: "What Makes Us the Best Study Abroad Consultants in India",
   subtitle:
-    "Taksheela isn't just a consultancy — we are a full-spectrum global education partner trusted by students, parents and institutions across India.",
+    "As one of the leading abroad education consultants in India, Taksheela isn't just a consultancy, we are a full-spectrum global education partner trusted by students, parents and institutions across India.",
   cta: {
     label: "Talk to an Expert Now",
     href: "https://wa.me/919831241212",
@@ -94,7 +94,7 @@ export const taksheelaEdge = {
       icon: "trophy",
       heading: "Platinum Consultancy Status",
       subheading:
-        "Premier partner with leading universities in UK, USA, Canada and Europe — giving our students direct advantages in admissions, scholarships and processing speed.",
+        "Premier partners with leading universities in the UK, USA, Canada and Europe, giving our students direct advantages in admissions, scholarships and processing speed.",
     },
     {
       id: "tech",
@@ -108,28 +108,28 @@ export const taksheelaEdge = {
       icon: "users",
       heading: "Pinnacle Expert Squad",
       subheading:
-        "Our team's deep expertise in global education guides students in logical course and university selection — fostering genuinely informed decisions, not sales pitches.",
+        "Our team's deep expertise in global education guides students in logical course and university selection, fostering genuinely informed decisions, not sales pitches.",
     },
     {
       id: "partnerships",
       icon: "handshake",
       heading: "Extensive Partnerships",
       subheading:
-        "Established connections with 500+ global universities, language schools and institutions — enabling priority processing and exclusive scholarship access.",
+        "Established connections with 500+ global universities, language schools and institutions, enabling priority processing and exclusive scholarship access.",
     },
     {
       id: "documentation",
       icon: "clipboardCheck",
       heading: "Zero-Error Documentation",
       subheading:
-        "Our dedicated team meticulously reviews every SOP, LOR, transcript and visa document before submission — near-zero rejection rates for our students.",
+        "Our dedicated team meticulously reviews every SOP, LOR, transcript and visa document before submission, near-zero rejection rates for our students.",
     },
     {
       id: "presence",
       icon: "globe",
       heading: "Pan-India + Dubai Presence",
       subheading:
-        "Offices in Kolkata, Delhi NCR, Mumbai, Bangalore, Bhubaneswar and Dubai — walk in anytime or connect online for expert support wherever you are.",
+        "Offices in Kolkata, Delhi NCR, Mumbai, Bangalore, Bhubaneswar and Dubai, walk in anytime or connect online for expert support wherever you are.",
     },
   ],
 };
@@ -145,7 +145,7 @@ export const trustTaksheelaIntro = {
   eyebrow: "THE TAKSHEELA DIFFERENCE",
   title: "Why 5,000+ Indian Students Trust Taksheela to Study Abroad",
   description:
-    "From shortlisting universities to visa filing and pre-departure briefings, Taksheela combines certified counsellors, transparent processes, and a technology-backed journey so you can plan your future abroad with confidence.",
+    "From shortlisting universities to visa filing and pre-departure briefings, Taksheela delivers trusted overseas education counselling in India, combining certified counsellors, transparent processes, and a technology-backed journey so you can plan your future abroad with confidence.",
   ctaLabel: "Book Free Counselling Session",
   ctaHref: "https://wa.me/919831241212",
 };
@@ -200,7 +200,7 @@ export const globalReachIntro = {
   eyebrow: "GLOBAL REACH",
   title: "Top Study Abroad Destinations for Indian Students",
   subtitle:
-    "From tuition-free Germany to PR-pathway Canada — we cover the full global map of higher education.",
+    "From tuition-free Germany to PR-pathway Canada, as experienced foreign education consultants in India we cover the full global map of higher education.",
 };
 
 /** Study-abroad destination cards */
@@ -745,7 +745,7 @@ export const faqHome = {
   eyebrow: "GOT QUESTIONS?",
   title: "Frequently Asked Questions",
   description:
-    "Answers to the most common questions from Indian students and parents about studying abroad, MBBS abroad, test prep and the Global Immersion Program.",
+    "As experienced foreign education consultants in India, we answer the most common questions from Indian students and parents about studying abroad, MBBS abroad, test prep and the Global Immersion Program.",
   cta: { label: "Ask Our Counsellors Directly", href: "https://wa.me/919831241212" },
   items: [
     {

@@ -95,7 +95,7 @@ export default function Page() {
       <FAQHome />
       <BookCouncilBanner
         redirectPath="/thankyou"
-        description="Book your FREE counselling session today. 5,000+ students did — and never looked back."
+        description="Book your FREE counselling session today with one of India's most trusted overseas education consultants in India. 5,000+ students did, and never looked back."
       />
       <Testimonial />
       {/* <TaksheelaInsights /> */}

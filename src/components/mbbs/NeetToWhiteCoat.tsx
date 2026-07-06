@@ -1,4 +1,5 @@
 import ContainerWrapper from "../ContainerWrapper";
+import MbbsHubSectionHeader from "./MbbsHubSectionHeader";
 
 type JourneyStep = {
   id: number;
@@ -62,16 +63,11 @@ export default function NeetToWhiteCoat() {
     <section className="py-12 md:py-16">
       <ContainerWrapper>
         <div className="mx-auto max-w-5xl">
-          <div className="text-center">
-            <h2 className="text-[30px] leading-tight md:text-5xl font-semibold text-[#00999E]">
-              From NEET to White Coat - 8 Simple Steps
-            </h2>
-            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#f0b42f]" />
-            <p className="mx-auto mt-4 max-w-2xl text-sm md:text-[18px] leading-relaxed text-[#6c7d97]">
-              Taksheela guides you through every stage of the MBBS abroad journey.
-              Nothing is left to chance, and nothing is left to you alone.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="From NEET to White Coat - 8 Simple Steps"
+            description="Taksheela guides you through every stage of the MBBS abroad journey. Nothing is left to chance, and nothing is left to you alone."
+            descriptionClassName="max-w-2xl"
+          />
 
           <div className="relative mt-10 md:mt-12 max-w-3xl mx-auto">
             <div className="absolute left-[15px] top-4 bottom-4 w-px bg-[#b9c7da] md:left-[18px]" />

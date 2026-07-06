@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import ModalTrigger from "@/components/ModalTrigger";
+import MbbsHubSectionHeader from "@/components/mbbs/MbbsHubSectionHeader";
 import { countryData } from "@/constants/mbbs";
 import { hasMbbsAbroadDetailPage } from "@/constants/mbbs/abroadCountryAccess";
 
@@ -242,17 +243,11 @@ export default function CountryWeWorkWith() {
     <section className="bg-white py-12 md:py-16">
       <ContainerWrapper>
         <div className="max-w-[1240px] mx-auto">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-semibold text-[#00999E]">
-              Countries We Work With
-            </h2>
-            <div className="h-1 w-28 bg-[#F4C542] rounded-full mx-auto mt-3" />
-            <p className="text-[#5D6678] text-sm md:text-xl leading-relaxed max-w-4xl mx-auto mt-5">
-              Taksheela works only with the best medical colleges abroad for Indian students —
-              each destination selected for NMC compliance, cost-effectiveness, academic quality,
-              and student safety. Find your pathway below.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="Countries We Work With"
+            description="Taksheela works only with the best medical colleges abroad for Indian students — each destination selected for NMC compliance, cost-effectiveness, academic quality, and student safety. Find your pathway below. Study MBBS abroad consultants help verify these institutions for long-term safety."
+            descriptionClassName="max-w-4xl"
+          />
 
           <div className="lg:hidden mt-10 -mx-1 px-1 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex gap-4 pb-1">

@@ -227,11 +227,7 @@ export default function OurServices() {
           eyebrow="OUR SERVICES"
           title="One Platform. Every Path to Global Education."
           subtitle={
-            <>
-              <a href="/study-abroad" className="underline hover:text-[#00999E] transition-colors">Study Abroad</a>, MBBS, Immersion or Test Prep — Taksheela Institute of
-              Education is India&apos;s most trusted single partner for
-              international education from India.
-            </>
+            <><a href="/study-abroad" className="underline hover:text-[#00999E] transition-colors">Study Abroad</a>, MBBS, Immersion or Test Prep: Taksheela Institute of Education is among India&apos;s most trusted overseas education consultants in India, your single partner for international education from India</>
           }
           eyebrowClassName="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#00a88f] sm:mb-3.5 sm:text-[0.7rem] md:tracking-[0.32em]"
           titleClassName="text-balance text-2xl font-bold leading-[1.15] tracking-tight text-[#0f2744] sm:text-3xl md:text-[2rem] md:leading-[1.2] lg:text-[1.85rem] xl:text-[2.125rem] 2xl:text-[2.5rem]"
