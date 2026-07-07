@@ -1,3 +1,5 @@
+"use client";
+
 import ContainerWrapper from "@/components/ContainerWrapper";
 import { MdSearch } from "react-icons/md";
 
