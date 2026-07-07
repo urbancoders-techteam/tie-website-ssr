@@ -46,3 +46,17 @@ export type PopularPostItem = {
   meta: string;
   href: string;
 };
+
+export type BlogListParams = {
+  page?: number;
+  limit?: number;
+  categoryId?: string;
+  search?: string;
+};
+
+export type PaginatedBlogsResult = {
+  blogs: ApiBlog[];
+  count: number;
+  totalPage: number;
+  currentPage: number;
+};

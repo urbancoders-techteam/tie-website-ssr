@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import ContainerWrapper from "../ContainerWrapper";
+import MbbsHubSectionHeader from "./MbbsHubSectionHeader";
 
 type CriteriaRow = {
   label: string;
@@ -106,16 +107,11 @@ export default function EligibilityCriteria() {
     <section className="bg-[#f4f6f9] py-12 md:py-14">
       <ContainerWrapper>
         <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-semibold text-[#00999E]">
-              Eligibility Criteria
-            </h2>
-            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#f0b42f]" />
-            <p className="mx-auto mt-4 max-w-2xl text-sm md:text-[17px] leading-relaxed text-[#61708a]">
-              Standard requirements for MBBS abroad - for students from India,
-              Nepal, and Bangladesh.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="Eligibility Criteria"
+            description="Standard requirements for international medical programs are essential to evaluate. Families should carefully review the total cost of studying MBBS abroad before finalising their admission destination."
+            descriptionClassName="max-w-2xl"
+          />
 
           <div className="mt-8 border-b border-[#d8dee8]">
             <div className="flex items-center gap-8 md:gap-10">

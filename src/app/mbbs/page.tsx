@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import HeadingTypography from "@/components/Heading";
 import MainContainer from "@/components/MainContainer";
 // import HeroSection from "@/components/mbbs/HeroSection";
 import ModalTrigger from "@/components/ModalTrigger";
@@ -7,7 +6,7 @@ import { imageBaseUrl } from "@/utils/config";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
-import FAQ from "@/components/FAQ";
+import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
 import { faqData } from "@/constants/mbbs";
 import LetsStart from "@/components/immersion/LetsStart";
 import ContainerWrapper from "@/components/ContainerWrapper";
@@ -20,7 +19,9 @@ import EligibilityCriteria from "@/components/mbbs/EligibilityCriteria";
 import NeetToWhiteCoat from "@/components/mbbs/NeetToWhiteCoat";
 import WhyChooseTaksheela from "@/components/mbbs/WhyChooseTaksheela";
 import TaksheelaSolution from "@/components/mbbs/TaksheelaSolution";
+import MbbsHubSectionHeader from "@/components/mbbs/MbbsHubSectionHeader";
 import MbbsRegistrationIntervalModal from "@/components/mbbs/MbbsRegistrationIntervalModal";
+import { MBBS_HUB_BODY_TEXT } from "@/constants/mbbsHubSectionTheme";
 import {
   mbbsHubOnPageSeo,
   staticMetaDescriptions,
@@ -32,8 +33,12 @@ const SITE_URL = "https://www.taksheela.com";
 const MBBS_META_TITLE = staticMetaTitles.mbbsHub;
 const MBBS_META_DESCRIPTION = staticMetaDescriptions.mbbsHub;
 
-/** First 9 FAQs match the default accordion on this page (see FAQ component). */
-const MBBS_HUB_FAQ_FOR_SCHEMA = faqData.slice(0, 9);
+const mbbsHubFaqItems: FAQItem[] = faqData.map((item) => ({
+  question: item.title,
+  answer: item.Desc,
+}));
+
+const MBBS_HUB_FAQ_FOR_SCHEMA = faqData;
 
 export const metadata: Metadata = {
   title: MBBS_META_TITLE,
@@ -231,7 +236,7 @@ export default function Page() {
             <span className="text-[#5dd4d9]">1.18 lakh</span> MBBS seats in India. Taksheela guides students from
             India, Nepal & Bangladesh into NMC-approved medical universities across{" "}
             <span className="text-[#5dd4d9]">12 MBBS in foreign countries</span> — with fees starting at just{" "}
-            <span className="text-[#5dd4d9]">₹3 lakh per year</span>.
+            <span className="text-[#5dd4d9]">₹3 lakh per year</span>. Pursuing MBBS abroad for Indian students has become a vital strategy to secure a medical career.
           </>
         }
         stats={mbbsHeroStats}
@@ -248,11 +253,11 @@ export default function Page() {
       <MainContainer
         com1={
           <div className="space-y-4 p-4">
-            <HeadingTypography content="What is MBBS?" />
-            <p className="text-gray-600 leading-relaxed text-justify">
+            <MbbsHubSectionHeader title="What is MBBS?" align="left" />
+            <p className={`${MBBS_HUB_BODY_TEXT} text-justify`}>
               MBBS — Bachelor of Medicine, Bachelor of Surgery — is an undergraduate medical degree that equips students with the clinical knowledge, surgical foundations, and ethical grounding to become qualified physicians. Recognised globally, an MBBS degree is the launchpad for a lifelong career in healthcare, whether you practice in India, the UK, Canada, or anywhere else.
             </p>
-            <p className="text-gray-600 leading-relaxed text-justify">
+            <p className={`${MBBS_HUB_BODY_TEXT} text-justify`}>
               The program typically spans 5.5 to 6 years, combining classroom instruction, laboratory training, and hospital-based clinical rotations. All NMC-compliant programs include a minimum 54-month curriculum plus a 12-month internship — the baseline requirement for FMGE/NExT eligibility.
             </p>
           </div>
@@ -278,8 +283,8 @@ export default function Page() {
         dir="row-reverse"
         com1={
           <div className="w-full space-y-3 px-4">
-            <HeadingTypography content="MBBS in INDIA" />
-            <p className="text-[#525560] text-base leading-relaxed">
+            <MbbsHubSectionHeader title="MBBS in INDIA" align="left" />
+            <p className={MBBS_HUB_BODY_TEXT}>
               MBBS in India is a great choice given its world-class curriculum,
               seasoned faculty, diverse patient population, and global
               recognition. The overall duration of MBBS in India is about 5.5
@@ -325,13 +330,10 @@ export default function Page() {
       <section className="bg-[#f5f7fb] py-12 md:py-14">
         <ContainerWrapper>
           <div className="max-w-7xl mx-auto">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-5xl font-semibold text-[#00999E]">Why Study MBBS Abroad?</h2>
-              <div className="w-24 h-1 bg-[#f4c542] mx-auto rounded-full mt-3" />
-              <p className="text-[#5d6678] text-base md:text-xl mt-4 max-w-3xl mx-auto leading-relaxed">
-                Despite the advantages of studying at home, limiting factors make MBBS abroad an increasingly practical and strategic choice for aspirants from India, Nepal, and Bangladesh.
-              </p>
-            </div>
+            <MbbsHubSectionHeader
+              title="Why Study MBBS Abroad?"
+              description="Despite the advantages of studying at home, limiting factors make the prospect of pursuing MBBS in foreign countries an increasingly practical and strategic choice for aspirants from India, Nepal, and Bangladesh. Choosing an MBBS course in foreign countries allows students to bypass the intense competition for domestic seats while still meeting NMC requirements."
+            />
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-10">
               {[
@@ -434,12 +436,12 @@ export default function Page() {
 
       <WhyChooseTaksheela />
 
-      {/* FAQ Section */}
-      <section className="bg-[#effdff]">
-        <ContainerWrapper>
-          <FAQ faqData={faqData} keepAnswersInDom />
-        </ContainerWrapper>
-      </section>
+      <FAQSection
+        items={mbbsHubFaqItems}
+        variant="hub"
+        sectionSlug="mbbs-hub"
+        headingId="mbbs-hub-faq-heading"
+      />
 
       <LetsStart />
 

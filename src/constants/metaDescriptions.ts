@@ -74,7 +74,7 @@ export const staticMetaDescriptions = {
 
 /** /mbbs hub on-page SEO copy (H1 + hero image alt). */
 export const mbbsHubOnPageSeo = {
-  h1: "MBBS Abroad 2026-27 — Best Countries, NMC Colleges & Fees for Indian Students",
+  h1: "MBBS Abroad for Indian Students — Best Countries, NMC Colleges & Fees (2026-27)",
   heroImageAlt: "MBBS abroad 2026-27 — NMC-approved universities for Indian students",
 } as const;
 

@@ -11,7 +11,7 @@ export const faqData = [
   },
   {
     title: "What entrance exams do I need to take to study MBBS abroad?",
-    Desc: "NEET is mandatory for Indian students who wish to eventually practice medicine in India. Beyond NEET, most budget destinations — Russia, Philippines, Kazakhstan, Bangladesh, Kyrgyzstan, Uzbekistan, Nepal — do not require any additional entrance exam. Premium destinations like Germany require language proficiency (B2/C1 German), while UK, Australia, and Canada may require IELTS/TOEFL and aptitude tests such as BMAT, UCAT, or MCAT.",
+    Desc: "NEET is mandatory for Indian students who wish to eventually practice medicine in India. Beyond NEET, most budget destinations — Russia, Philippines, Kazakhstan, Bangladesh, Kyrgyzstan, Uzbekistan, Nepal — do not require any additional entrance exam. Premium destinations like Germany require language proficiency (B2/C1 German), while the UK, Australia, and Canada may require IELTS/TOEFL and aptitude tests such as BMAT, UCAT, or MCAT. Working with study MBBS abroad consultants ensures you are well-prepared for any specific requirements of your chosen destination.",
   },
   {
     title: "How long does it take to complete MBBS abroad?",
@@ -32,7 +32,7 @@ export const faqData = [
   },
   {
     title: "What are the living costs for students abroad? (India, Nepal, Bangladesh context)",
-    Desc: "Living costs vary significantly by country and city. Budget destinations — Kyrgyzstan, Uzbekistan, Bangladesh, Nepal — average ₹8,000 to ₹15,000 per month including accommodation, food, and transport. For Nepali students: multiply by approximately 1.6 for NPR equivalent. For Bangladeshi students: multiply by approximately 1.35 for BDT equivalent. Mid-range destinations like Russia, Kazakhstan, and Philippines average ₹12,000 to ₹22,000 per month. Premium destinations — UK, USA, Canada, Australia — range from ₹60,000 to ₹1.5 lakh per month.",
+    Desc: "Living costs vary significantly by country and city. Budget destinations — Kyrgyzstan, Uzbekistan, Bangladesh, Nepal — average ₹8,000 to ₹15,000 per month including accommodation, food, and transport. For Nepali students: multiply by approximately 1.6 for NPR equivalent. For Bangladeshi students: multiply by approximately 1.35 for BDT equivalent. Mid-range destinations like Russia, Kazakhstan, and Philippines average ₹12,000 to ₹22,000 per month. Premium destinations — UK, USA, Canada, Australia — range from ₹60,000 to ₹1.5 lakh per month. Understanding the cost of MBBS abroad is key to financial planning.",
   },
   {
     title: "Can students from Nepal and Bangladesh apply for MBBS abroad through Taksheela?",

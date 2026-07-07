@@ -1,6 +1,7 @@
 "use client";
 
 import ContainerWrapper from "@/components/ContainerWrapper";
+import MbbsHubSectionHeader from "@/components/mbbs/MbbsHubSectionHeader";
 
 type Row = {
   code: string;
@@ -167,17 +168,19 @@ export default function CountryComparison() {
     <section className="py-12 md:py-16">
       <ContainerWrapper>
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-semibold text-[#00999E]">
-              MBBS Abroad Country Comparison
-            </h2>
-            <div className="h-1 w-28 bg-[#F4C542] rounded-full mx-auto mt-3" />
-            <p className="text-[#626C7C] text-sm sm:text-base md:text-xl leading-relaxed max-w-5xl mx-auto mt-5">
-              Choosing the best countries for doing MBBS depends on your budget, NEET score, and
-              licensing goals. Here&apos;s a data-driven comparison of all 12 destinations — fees,
-              FMGE rates, NMC status, and medium of instruction.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="MBBS Abroad Country Comparison"
+            description={
+              <>
+                Choosing the best countries for MBBS abroad depends on your budget, NEET score, and licensing goals.
+                Here&apos;s a data-driven comparison of all 12 destinations — fees, FMGE rates, NMC status, and medium
+                of instruction. Many students now research the cost of MBBS abroad to plan their medical education
+                finances effectively, especially when comparing a full MBBS course in foreign countries against domestic
+                private college costs.
+              </>
+            }
+            descriptionClassName="max-w-5xl"
+          />
 
           <div className="mt-10 rounded-[10px] border border-[#D9E2EF] overflow-x-auto lg:overflow-visible bg-white shadow-sm">
             <table className="w-full min-w-[980px] rounded-[10px] lg:min-w-0 table-auto lg:table-fixed text-[12px] sm:text-[13px] lg:text-[12px] xl:text-sm">

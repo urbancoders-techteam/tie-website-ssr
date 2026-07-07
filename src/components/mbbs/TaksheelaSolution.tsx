@@ -1,4 +1,5 @@
 import ContainerWrapper from "../ContainerWrapper";
+import MbbsHubSectionHeader from "./MbbsHubSectionHeader";
 
 type SolutionCard = {
   id: string;
@@ -50,16 +51,10 @@ export default function TaksheelaSolution() {
     <section className="bg-[#f3f6fb] py-12 md:py-16">
       <ContainerWrapper>
         <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <h2 className="text-[30px] md:text-5xl font-semibold leading-tight text-[#00999E]">
-              The Taksheela Solution
-            </h2>
-            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#f0b42f]" />
-            <p className="mx-auto mt-4 max-w-3xl text-sm md:text-[18px] leading-relaxed text-[#687b98]">
-              Every challenge you face has a clear path forward. Here is how our expert
-              counsellors solve each one - for students from India, Nepal, and Bangladesh.
-            </p>
-          </div>
+          <MbbsHubSectionHeader
+            title="The Taksheela Solution"
+            description="Every challenge you face has a clear path forward. Here is how our expert counsellors solve each one - for students from India, Nepal, and Bangladesh."
+          />
 
           <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0 lg:grid-cols-3">
             {solutionCards.map((card) => (

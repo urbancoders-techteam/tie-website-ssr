@@ -26,7 +26,6 @@ async function fetchHomeBlogs(): Promise<BlogPostHome[]> {
 
 export default async function Blogs() {
   const scrollData = await fetchHomeBlogs();
-
   return (
     <section id="blog-section" className="w-full bg-white py-12 md:py-16 lg:py-20">
       <ContainerWrapper>
