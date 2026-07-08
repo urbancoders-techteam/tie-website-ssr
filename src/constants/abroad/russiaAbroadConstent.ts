@@ -18,6 +18,25 @@ export type AbroadQuickFactItem = {
   mValue?: string;
 };
 
+/** Copy for the Quick Facts section heading/subtitle (`QuickFactsAbroad`). */
+export type AbroadQuickFactsSectionContent = {
+  eyebrow: string;
+  /** Text before the accent title part (includes trailing dash if needed). */
+  titleLead: string;
+  /** Accent part rendered in red (e.g. "Quick Facts"). */
+  titleAccent: string;
+  /** Subtitle line under the title. */
+  subtitle: string;
+};
+
+export const russiaAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
+  eyebrow: "At A Glance",
+  titleLead: "MBBS in Russia for Indian Students —",
+  titleAccent: "Quick Facts",
+  subtitle:
+    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Russia 2026-27.",
+};
+
 /** Generic quick facts when a country page does not pass a `facts` prop (other destinations). */
 export const abroadDefaultQuickFactsContent: AbroadQuickFactItem[] = [
   {

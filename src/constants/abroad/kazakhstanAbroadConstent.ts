@@ -7,6 +7,7 @@ import { imageBaseUrl } from "@/utils/config";
 import type {
   AbroadCtaBannerContent,
   AbroadQuickFactItem,
+  AbroadQuickFactsSectionContent,
   AbroadWhyChooseMbbsContent,
   AbroadWhyChooseMbbsItem,
   AbroadWhyChooseMbbsSectionContent,
@@ -2251,6 +2252,14 @@ export const kazakhstanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   primaryCtaLabel: "Book Free Counselling",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
+};
+
+export const kazakhstanAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
+  eyebrow: "At A Glance",
+  titleLead: "MBBS in Kazakhstan for Indian Students —",
+  titleAccent: "Quick Facts",
+  subtitle:
+    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Kazakhstan 2026-27.",
 };
 
 export const kazakhstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [

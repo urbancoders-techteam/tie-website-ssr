@@ -12,6 +12,7 @@ import type { AbroadCountry } from "@/components/mbbs/abroadCountries/AbroadHero
 import {
   abroadDefaultQuickFactsContent,
   type AbroadQuickFactItem,
+  type AbroadQuickFactsSectionContent,
 } from "@/constants/abroad/russiaAbroadConstent";
 
 export type { AbroadQuickFactItem };
@@ -20,6 +21,8 @@ interface QuickFactsAbroadProps {
   country: AbroadCountry;
   /** Per-country cards from `*AbroadConstent` (e.g. `russiaAbroadQuickFactsContent`). */
   facts?: AbroadQuickFactItem[];
+  /** Per-country section copy from `*AbroadConstent` (e.g. `russiaAbroadQuickFactsSectionContent`). */
+  section?: AbroadQuickFactsSectionContent;
 }
 
 const MOBILE_CARDS_PER_PAGE = 4;
@@ -158,22 +161,26 @@ function QuickFactsMobileAutoplayGrid({ facts }: { facts: AbroadQuickFactItem[] 
   );
 }
 
-export default function QuickFactsAbroad({ country, facts }: QuickFactsAbroadProps) {
+export default function QuickFactsAbroad({ country, facts, section }: QuickFactsAbroadProps) {
   const quickFacts = facts ?? abroadDefaultQuickFactsContent;
+  const eyebrow = section?.eyebrow ?? "At A Glance";
+  const titleLead = section?.titleLead ?? `MBBS in ${country.title} for Indian Students —`;
+  const titleAccent = section?.titleAccent ?? "Quick Facts";
+  const subtitle =
+    section?.subtitle ??
+    `Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in ${country.title} 2026-27.`;
 
   return (
     <section className="bg-[#F4F6FB] py-12 md:py-16" id="quick-facts-abroad">
       <ContainerWrapper>
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <p className={ABROAD_SECTION_EYEBROW}>At A Glance</p>
+            <p className={ABROAD_SECTION_EYEBROW}>{eyebrow}</p>
             <h2 className={`${ABROAD_SECTION_TITLE} max-md:text-[22px] max-md:leading-snug`}>
-              MBBS in {country.title} —{" "}
-              <span className={ABROAD_SECTION_ACCENT}>Quick Facts</span>
+              {titleLead} <span className={ABROAD_SECTION_ACCENT}>{titleAccent}</span>
             </h2>
             <p className={`${ABROAD_SECTION_SUBTITLE} max-md:text-sm max-md:leading-snug`}>
-              Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in{" "}
-              {country.title} 2026-27.
+              {subtitle}
             </p>
           </div>
 

@@ -96,7 +96,7 @@ export default function Page() {
       />
 
       <OverviewAbroad country={country} overview={abroadCopy.overview} mediaImageSrc={overviewMediaSrc} />
-      <QuickFactsAbroad country={country} facts={abroadCopy.quickFacts} />
+      <QuickFactsAbroad country={country} facts={abroadCopy.quickFacts} section={abroadCopy.quickFactsSection} />
       <CommonFearsSection country={country} fears={abroadCopy.fears} />
       <WhyChooseMbbs country={country} content={abroadCopy.whyChooseMbbs} />
       <EligibilityCriteraAbroad country={country} eligibility={abroadCopy.eligibility} />

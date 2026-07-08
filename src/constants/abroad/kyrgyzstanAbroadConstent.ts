@@ -6,6 +6,7 @@
 import type {
   AbroadCtaBannerContent,
   AbroadQuickFactItem,
+  AbroadQuickFactsSectionContent,
   AbroadWhyChooseMbbsContent,
   AbroadWhyChooseMbbsItem,
   AbroadWhyChooseMbbsSectionContent,
@@ -1857,6 +1858,14 @@ export const kyrgyzstanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   primaryCtaLabel: "Book Free Counselling",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
+};
+
+export const kyrgyzstanAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
+  eyebrow: "At A Glance",
+  titleLead: "MBBS in Kyrgyzstan for Indian Students —",
+  titleAccent: "Quick Facts",
+  subtitle:
+    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Kyrgyzstan 2026-27.",
 };
 
 export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [

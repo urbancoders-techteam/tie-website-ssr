@@ -139,7 +139,7 @@ export default function WhyChooseMbbs({ country, content }: WhyChooseMbbsProps) 
             <h2 className={ABROAD_SECTION_TITLE}>
               {section.titleLead}
               <span className={ABROAD_SECTION_ACCENT}>{title}</span>
-              {section.titleTrail}
+              {" "}{section.titleTrail}
             </h2>
             <p className={ABROAD_SECTION_SUBTITLE}>{interpolateCountryTitle(section.subtitle, title)}</p>
           </div>

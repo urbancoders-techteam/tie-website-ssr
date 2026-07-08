@@ -53,7 +53,7 @@ export default function CommonFearsSection({ country, fears }: CommonFearsSectio
           <div className="text-center">
             <p className={ABROAD_SECTION_EYEBROW}>{interpolateCountryTitle(section.eyebrow, title)}</p>
             <h2 className={ABROAD_SECTION_TITLE}>
-              {section.titleLead}
+              {section.titleLead} {" "}
               {title}
               {section.titleMiddle}
               <span className={ABROAD_SECTION_ACCENT}>{section.titleAccent}</span>
