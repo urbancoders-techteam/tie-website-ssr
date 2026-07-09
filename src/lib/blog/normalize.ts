@@ -15,5 +15,6 @@ export function normalizeApiBlog(raw: Record<string, unknown> | null | undefined
     categoryName: (raw.categoryName as string | null) ?? null,
     metaTitle: String(raw.metaTitle ?? "").trim(),
     metaDescription: String(raw.metaDescription ?? "").trim(),
+    keywords: String(raw.keywords ?? "").trim(),
   };
 }
