@@ -5,17 +5,7 @@ import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 import { baseUrl } from "@/utils/config";
 import WebinarSlider from "../slider/WebinarSlider";
-import { Metadata } from "next";
 import { formatDate } from "@/utils/methods";
-
-
-
-export const metadata: Metadata = {
-  title: "Webinars & Events - Taksheela Institute",
-  description:
-    "Stay updated with upcoming webinars, workshops, and educational events hosted by Taksheela Institute. Engage with experts and explore global academic opportunities.",
-};
-
 
 interface EventData {
   title: string;
@@ -24,7 +14,8 @@ interface EventData {
   date: string;
 }
 
-
+/** Match home page ISR (`revalidate = 300`). Avoid `cache: "no-store"` so `/` can prerender. */
+const EVENT_FETCH_REVALIDATE_SECONDS = 300;
 
 const fetchEvents = async (): Promise<EventData[]> => {
   try {
@@ -33,12 +24,9 @@ const fetchEvents = async (): Promise<EventData[]> => {
       headers: {
         "Content-Type": "application/json",
       },
-      // event.image is a pre-signed S3 URL with short expiry.
-      // Disable Next caching so we don't render expired signatures.
-      cache: "no-store",
+      // event.image may be a pre-signed S3 URL; keep ISR window short enough to refresh.
+      next: { revalidate: EVENT_FETCH_REVALIDATE_SECONDS },
     });
-
-    console.log('res', res)
 
     const json = await res.json();
     return (json?.data || [])?.map((item: any) => ({
@@ -55,8 +43,6 @@ const fetchEvents = async (): Promise<EventData[]> => {
 
 export default async function WebinarEvent() {
   const eventData = await fetchEvents();
-
-  console.log('eventData', eventData)
 
   return (
     <section className="bg-[#effdff] py-12 w-full overflow-hidden">
