@@ -7,6 +7,7 @@ import { imageBaseUrl } from "@/utils/config";
 import type {
   AbroadCtaBannerContent,
   AbroadQuickFactItem,
+  AbroadQuickFactsSectionContent,
   AbroadWhyChooseMbbsContent,
   AbroadWhyChooseMbbsItem,
   AbroadWhyChooseMbbsSectionContent,
@@ -56,12 +57,12 @@ export type AbroadHeroContent = {
 export const georgiaAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "GE MBBS in Georgia 2026-27 - Admissions Open",
   headline: {
-    line1: "Study MBBS in Georgia",
-    line2Accent: "English MD Pathway in",
-    line3: "the Caucasus — Europe’s Doorstep.",
+    line1: "MBBS in Georgia for Indian Students:",
+    line2Accent: "English MD Pathway",
+    line3: "in the Caucasus — Europe's Doorstep",
   },
   description:
-    "Georgia offers English-medium 6-year MD programmes, NMC-screened universities, and total costs typically ₹36–49 lakhs — far below most Indian private medical colleges. Tbilisi and Batumi combine European lifestyle, growing Indian student communities, and clinical training aligned with global licensing pathways including FMGE/NExT.",
+    "Georgia offers English-medium 6-year MD programmes, NMC-screened universities, and total costs typically ₹36–49 lakhs — one of the most affordable options when you look at the overall cost of studying MBBS in Georgia compared to most Indian private medical colleges. Tbilisi and Batumi combine European lifestyle, growing Indian student communities, and clinical training aligned with global licensing pathways including FMGE/NExT.",
   descriptionMaxLength: 260,
   cta: {
     primaryText: "Book Free Counselling ->",
@@ -119,8 +120,9 @@ export const georgiaAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
   heading: "Why Georgia is South Asia's Fastest-Growing MBBS Destination",
   paragraphs: [
-    "Georgia — a progressive nation bridging Eastern Europe and Western Asia — has become the top-growth MBBS destination for Indian, Nepali, and Bangladeshi students. The country offers a WHO and NMC-approved medical degree, delivered entirely in English, under the European Bologna education framework.",
+    "Georgia — a progressive nation bridging Eastern Europe and Western Asia — has become the top-growth MBBS destination for Indian, Nepali, and Bangladeshi students. The country offers a WHO and NMC-approved medical degree, delivered entirely in English, under the European Bologna education framework. For many families comparing options abroad, the cost of studying MBBS in Georgia remains one of the biggest draws.",
     "According to data from India's Ministry of External Affairs and the National Statistics Office of Georgia (2024–25), over 15,000 Indian students are enrolled in Georgian universities, with 85–90% in the MD (MBBS-equivalent) program.",
+    "This steady rise reflects growing confidence in MBBS in Georgia for Indian students as a credible, NMC-recognised pathway.",
     "That's a 400%+ growth since 2019. The degree qualifies graduates for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
   ],
   officialData: {
@@ -228,7 +230,7 @@ export const georgiaAbroadFearsContent: AbroadFearsContent = {
       icon: "💳",
       title: "SBI, BoB, HDFC Credila, Avanse — All Available",
       description:
-        "Major nationalised banks and NBFCs offer education loans for NMC-approved MBBS in Georgia. Taksheela helps you build a lender-ready document file for faster sanction.",
+        "Major nationalised banks and NBFCs offer education loans for NMC-approved MBBS in Georgia. Taksheela helps you build a lender-ready document file for faster sanction. Understanding the true cost of studying MBBS in Georgia upfront makes loan planning far easier.",
     },
   ],
 };
@@ -238,7 +240,7 @@ export const georgiaAbroadFearsContent: AbroadFearsContent = {
 export const georgiaAbroadEligibilityContent: AbroadEligibilityContent = {
   eyebrow: "Who Can Apply",
   titleLead: "Eligibility Criteria for MBBS in ",
-  titleTrail: "",
+  titleTrail: "for Indian Students",
   subtitle:
     "Requirements for students from India, Nepal, and Bangladesh — based on NMC (India) guidelines, NCEQE (Georgia) standards, and individual university policies.",
   tabIndian: "IN Indian Students",
@@ -493,10 +495,10 @@ export type AbroadCostBreakdownContent = {
 
 export const georgiaAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
   eyebrow: "Financial planning",
-  titlePrimary: "MBBS in Georgia",
-  titleAccent: "— Complete Fee Structure & Cost of Living",
+  titlePrimary: "Study MBBS in Georgia ",
+  titleAccent: "Fee Structure & Cost of Living",
   subtitle:
-    "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2025–26.",
+    "Here we break down Georgia MBBS fees for Indian students, along with monthly living costs, so families can plan the full 6-year budget confidently. For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2025–26.",
   tuitionTableTitle: "University tuition (indicative)",
   tuitionColAnnual: "Annual Tuition",
   tuitionColSixYear: "6-Year Total",
@@ -890,7 +892,7 @@ export const georgiaAbroadCompleteComparisonContent: AbroadCompleteComparisonCon
   titlePrimary: "MBBS in Georgia vs MBBS in India",
   titleAccent: "— 2025–26 Comparison",
   subtitle:
-    "Quick contrast on entrance, cost, instruction, and licensing — Georgia column reflects the 2025–26 programme snapshot; India & regional columns for wider context.",
+    "Quick contrast on entrance, cost, instruction, and licensing — Georgia column reflects the 2025–26 programme snapshot; India & regional columns for wider context. This comparison highlights how the MBBS study in Georgia fee structure stacks up against Indian and regional alternatives.",
   blockHeading: "Georgia · India — key parameters · Bangladesh & Philippines (reference)",
   colParameter: "Parameter",
   colFeatured: "🇬🇪 MBBS in Georgia",
@@ -1289,7 +1291,7 @@ export const georgiaAbroadEducationLoanContent: AbroadEducationLoanContent = {
   eyebrow: "Financing your MBBS",
   title: "Education Loans for MBBS in Georgia",
   intro:
-    "Financing a Georgian MBBS is straightforward. Multiple nationalised banks, private lenders, and government schemes are available. Taksheela helps you build a lender-ready document file.",
+    "Financing a Georgian MBBS is straightforward. Multiple nationalised banks, private lenders, and government schemes are available. Knowing the study MBBS in Georgia fee structure in advance helps you choose the right loan amount and lender. Taksheela helps you build a lender-ready document file.",
   nationalised: {
     title: "Nationalised Banks (India)",
     description: "Best for lower interest rates; collateral often required above ₹7.5L",
@@ -2193,7 +2195,7 @@ export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "Is MBBS in Georgia valid in India? Can I practise medicine in India after graduating from Georgia?",
       answer:
-        "Yes — provided you study at an NMC-approved Georgian university, complete the full 6-year program (including the mandatory 12-month clinical internship in Georgia), and subsequently clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before obtaining State Medical Council registration. Taksheela only recommends NMC-approved institutions.",
+        "Yes — provided you study at an NMC-approved Georgian university, complete the full 6-year program (including the mandatory 12-month clinical internship in Georgia), and subsequently clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before obtaining State Medical Council registration. Taksheela only recommends NMC-approved institutions. This makes MBBS in Georgia for Indian students a genuinely viable, NMC-compliant pathway back to practising medicine in India.",
     },
     {
       question: "Is NEET mandatory for MBBS in Georgia for Indian students?",
@@ -2204,7 +2206,7 @@ export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "What is the total cost of MBBS in Georgia in Indian Rupees, Nepali Rupees (NPR), and Bangladeshi Taka (BDT)?",
       answer:
-        "Total 6-year all-inclusive cost: INR: ₹39–70 lakhs (tuition + hostel + food + insurance + visa + personal expenses). Nepal NPR: approximately NPR 62–112 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 53–95 lakh (₹ × ~1.35). Budget university (like CIU at $2,200/year): total around ₹25–35L all-in. Premium institutions (around $6,000–6,200/year): total ₹50–70L all-in. No capitation. No donation. Zero hidden fees.",
+        "Total 6-year all-inclusive cost: INR: ₹39–70 lakhs (tuition + hostel + food + insurance + visa + personal expenses). Nepal NPR: approximately NPR 62–112 lakh (₹ × ~1.6). Bangladesh BDT: approximately BDT 53–95 lakh (₹ × ~1.35). Budget university (like CIU at $2,200/year): total around ₹25–35L all-in. Premium institutions (around $6,000–6,200/year): total ₹50–70L all-in. No capitation. No donation. Zero hidden fees. These figures reflect current Georgia MBBS fees for Indian students across budget and premium universities.",
     },
     {
       question: "Can students from Nepal and Bangladesh study MBBS in Georgia?",
@@ -2219,7 +2221,7 @@ export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Is MBBS in Georgia better than Russia, Kyrgyzstan, or Bangladesh for Indian students?",
       answer:
-        "Georgia has three key advantages over most alternatives: (1) 100% English medium — unlike Russia or Kyrgyzstan where a second language is required for clinical years. (2) European Bologna Process alignment — making the degree more globally portable. (3) Warmer climate than Russia or Kyrgyzstan, with better cultural adjustment for South Asian students. Fees are slightly higher than Russia's budget options but comparable to mid-range Russian universities. Compared to Bangladesh, Georgia offers more English-medium university options and a larger Indian student community. The right choice depends on your budget, career goals, and personal preferences — Taksheela provides personalised advice based on your specific profile.",
+        "Georgia has three key advantages over most alternatives: (1) 100% English medium — unlike Russia or Kyrgyzstan where a second language is required for clinical years. (2) European Bologna Process alignment — making the degree more globally portable. (3) Warmer climate than Russia or Kyrgyzstan, with better cultural adjustment for South Asian students. Fees are slightly higher than Russia's budget options but comparable to mid-range Russian universities. Compared to Bangladesh, Georgia offers more English-medium university options and a larger Indian student community. Comparing the study MBBS in Georgia fee structure with Russia and Kyrgyzstan shows Georgia offers similar affordability with the added benefit of full English instruction. The right choice depends on your budget, career goals, and personal preferences — Taksheela provides personalised advice based on your specific profile.",
     },
     {
       question: "What is the NExT exam and how does it affect Georgian MBBS graduates?",
@@ -2249,7 +2251,7 @@ export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Are there scholarships available for MBBS in Georgia?",
       answer:
-        "Yes — several routes exist. University merit scholarships (10–25% fee waiver for strong academic profiles), the Government of India's Central Sector Interest Subsidy (CSIS) scheme for EWS students, the Padho Pardesh Scheme for minority community students, and limited Georgian government scholarships via NCEQE. Taksheela identifies which schemes you are eligible for and assists with application documentation. Scholarship availability and seat quotas change yearly — always verify deadlines with the issuing body.",
+        "Yes — several routes exist. University merit scholarships (10–25% fee waiver for strong academic profiles), the Government of India's Central Sector Interest Subsidy (CSIS) scheme for EWS students, the Padho Pardesh Scheme for minority community students, and limited Georgian government scholarships via NCEQE. Taksheela identifies which schemes you are eligible for and assists with application documentation. Together, these routes can meaningfully reduce the overall cost of studying MBBS in Georgia for eligible students. Scholarship availability and seat quotas change yearly — always verify deadlines with the issuing body.",
     },
   ],
 };
@@ -2257,10 +2259,18 @@ export const georgiaAbroadFaqPageContent: AbroadFaqPageContent = {
 export const georgiaAbroadCtaBannerContent: AbroadCtaBannerContent = {
   countryLabel: "Georgia",
   subtitle:
-    "Book your free counselling session. Get a personalised university shortlist, fee breakdown, and eligibility confirmation in 24 hours.",
+    "Book your free counselling session. Get a personalised university shortlist, fee breakdown, and eligibility confirmation in 24 hours. Start your MBBS in Georgia for Indian students journey today with Taksheela's expert guidance.",
   primaryCtaLabel: "Book Free Counselling",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
+};
+
+export const georgiaAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
+  eyebrow: "At A Glance",
+  titleLead: "MBBS in Georgia for Indian Students —",
+  titleAccent: "Quick Facts",
+  subtitle:
+    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Georgia 2026-27, along with a clear look at Georgia MBBS fees for Indian students planning their 2026-27 intake.",
 };
 
 export const georgiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
@@ -2355,7 +2365,7 @@ const georgiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "3–5× Cheaper Than Indian Private MBBS",
     description:
-      "Total 6-year investment in Georgia: NPR 34–77 lakh. Private MBBS in India: NPR 80L–1.2Cr (plus capitation). Same NMC-recognised degree. Zero donation demanded in Georgia.",
+      "Total 6-year investment in Georgia: NPR 34–77 lakh. Private MBBS in India: NPR 80L–1.2Cr (plus capitation). Same NMC-recognised degree. Zero donation demanded in Georgia. This is exactly why Georgia MBBS fees for Indian students compare so favourably against domestic private colleges.",
   },
   {
     icon: "💰",
@@ -2416,7 +2426,7 @@ const georgiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
 const georgiaAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent = {
   eyebrow: "Why English MD in {country}?",
   titleLead: "10 Evidence-Backed Reasons to Study MBBS in ",
-  titleTrail: "?",
+  titleTrail: "for Indian Students",
   subtitle:
     "Not marketing. Data-backed reasons why 13,000+ Indian students have already made this choice — and why students from Nepal and Bangladesh are following fast.",
 };

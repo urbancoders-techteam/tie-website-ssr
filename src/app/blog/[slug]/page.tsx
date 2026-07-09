@@ -29,10 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
   const ogTitle = blog.metaTitle?.trim() || embeddedMeta.metaTitle || blog.title;
   const canonical = `https://www.taksheela.com/blog/${slug}`;
+  const keywords = blog.keywords
+    ?.split(",")
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
 
   return {
     title: pageTitle,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: { canonical },
     openGraph: {
       title: ogTitle,

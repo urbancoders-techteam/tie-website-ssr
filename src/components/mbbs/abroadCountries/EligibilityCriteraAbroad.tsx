@@ -46,7 +46,7 @@ export default function EligibilityCriteraAbroad({ country, eligibility }: Eligi
             <h2 className={ABROAD_SECTION_TITLE}>
               {content.titleLead}
               <span className={ABROAD_SECTION_ACCENT}>{title}</span>
-              {content.titleTrail}
+               {" "} {content.titleTrail}
             </h2>
             <p className={ABROAD_SECTION_SUBTITLE}>{subtitle}</p>
           </div>

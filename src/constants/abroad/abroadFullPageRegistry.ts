@@ -19,6 +19,7 @@ import type {
   AbroadOurStoriesContent,
   AbroadOverviewContent,
   AbroadQuickFactItem,
+  AbroadQuickFactsSectionContent,
   AbroadRegulatoryFrameworkContent,
   AbroadScholarshipsContent,
   AbroadTeachingMethodologyContent,
@@ -50,6 +51,7 @@ import {
   russiaAbroadCareerOpportunitiesContent,
   russiaAbroadWhyChooseTaksheelaContent,
   russiaAbroadQuickFactsContent,
+  russiaAbroadQuickFactsSectionContent,
   russiaAbroadWhyChooseMbbsContent,
   russiaAbroadAccommodationClimateContent,
   russiaAbroadEducationLoanContent,
@@ -76,6 +78,7 @@ import {
   georgiaAbroadCareerOpportunitiesContent,
   georgiaAbroadWhyChooseTaksheelaContent,
   georgiaAbroadQuickFactsContent,
+  georgiaAbroadQuickFactsSectionContent,
   georgiaAbroadWhyChooseMbbsContent,
   georgiaAbroadAccommodationClimateContent,
   georgiaAbroadEducationLoanContent,
@@ -102,6 +105,7 @@ import {
   kazakhstanAbroadCareerOpportunitiesContent,
   kazakhstanAbroadWhyChooseTaksheelaContent,
   kazakhstanAbroadQuickFactsContent,
+  kazakhstanAbroadQuickFactsSectionContent,
   kazakhstanAbroadWhyChooseMbbsContent,
   kazakhstanAbroadAccommodationClimateContent,
   kazakhstanAbroadEducationLoanContent,
@@ -128,6 +132,7 @@ import {
   uzbekistanAbroadCareerOpportunitiesContent,
   uzbekistanAbroadWhyChooseTaksheelaContent,
   uzbekistanAbroadQuickFactsContent,
+  uzbekistanAbroadQuickFactsSectionContent,
   uzbekistanAbroadWhyChooseMbbsContent,
   uzbekistanAbroadAccommodationClimateContent,
   uzbekistanAbroadEducationLoanContent,
@@ -154,6 +159,7 @@ import {
   kyrgyzstanAbroadCareerOpportunitiesContent,
   kyrgyzstanAbroadWhyChooseTaksheelaContent,
   kyrgyzstanAbroadQuickFactsContent,
+  kyrgyzstanAbroadQuickFactsSectionContent,
   kyrgyzstanAbroadWhyChooseMbbsContent,
   kyrgyzstanAbroadAccommodationClimateContent,
   kyrgyzstanAbroadEducationLoanContent,
@@ -181,6 +187,7 @@ export type AbroadFullPageCopy = {
   career: AbroadTeachingMethodologyContent;
   whyTaksheela: AbroadWhyChooseTaksheelaContent;
   faq: AbroadFaqPageContent;
+  quickFactsSection: AbroadQuickFactsSectionContent;
   quickFacts: AbroadQuickFactItem[];
   whyChooseMbbs: AbroadWhyChooseMbbsContent;
   eligibility: AbroadEligibilityContent;
@@ -210,6 +217,7 @@ function russiaFullPage(): AbroadFullPageCopy {
     career: russiaAbroadCareerOpportunitiesContent,
     whyTaksheela: russiaAbroadWhyChooseTaksheelaContent,
     faq: russiaAbroadFaqPageContent,
+    quickFactsSection: russiaAbroadQuickFactsSectionContent,
     quickFacts: russiaAbroadQuickFactsContent,
     whyChooseMbbs: russiaAbroadWhyChooseMbbsContent,
     eligibility: russiaAbroadEligibilityContent,
@@ -239,6 +247,7 @@ function georgiaFullPage(): AbroadFullPageCopy {
     career: georgiaAbroadCareerOpportunitiesContent,
     whyTaksheela: georgiaAbroadWhyChooseTaksheelaContent,
     faq: georgiaAbroadFaqPageContent,
+    quickFactsSection: georgiaAbroadQuickFactsSectionContent,
     quickFacts: georgiaAbroadQuickFactsContent,
     whyChooseMbbs: georgiaAbroadWhyChooseMbbsContent,
     eligibility: georgiaAbroadEligibilityContent,
@@ -268,6 +277,7 @@ function kazakhstanFullPage(): AbroadFullPageCopy {
     career: kazakhstanAbroadCareerOpportunitiesContent,
     whyTaksheela: kazakhstanAbroadWhyChooseTaksheelaContent,
     faq: kazakhstanAbroadFaqPageContent,
+    quickFactsSection: kazakhstanAbroadQuickFactsSectionContent,
     quickFacts: kazakhstanAbroadQuickFactsContent,
     whyChooseMbbs: kazakhstanAbroadWhyChooseMbbsContent,
     eligibility: kazakhstanAbroadEligibilityContent,
@@ -297,6 +307,7 @@ function uzbekistanFullPage(): AbroadFullPageCopy {
     career: uzbekistanAbroadCareerOpportunitiesContent,
     whyTaksheela: uzbekistanAbroadWhyChooseTaksheelaContent,
     faq: uzbekistanAbroadFaqPageContent,
+    quickFactsSection: uzbekistanAbroadQuickFactsSectionContent,
     quickFacts: uzbekistanAbroadQuickFactsContent,
     whyChooseMbbs: uzbekistanAbroadWhyChooseMbbsContent,
     eligibility: uzbekistanAbroadEligibilityContent,
@@ -326,6 +337,7 @@ function kyrgyzstanFullPage(): AbroadFullPageCopy {
     career: kyrgyzstanAbroadCareerOpportunitiesContent,
     whyTaksheela: kyrgyzstanAbroadWhyChooseTaksheelaContent,
     faq: kyrgyzstanAbroadFaqPageContent,
+    quickFactsSection: kyrgyzstanAbroadQuickFactsSectionContent,
     quickFacts: kyrgyzstanAbroadQuickFactsContent,
     whyChooseMbbs: kyrgyzstanAbroadWhyChooseMbbsContent,
     eligibility: kyrgyzstanAbroadEligibilityContent,
