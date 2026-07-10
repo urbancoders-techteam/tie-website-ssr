@@ -37,7 +37,14 @@ export default function AbroadMbbsCtaBanner({ content, sectionSlug, redirectPath
           id={headingId}
           className="font-serif text-[1.35rem] font-semibold leading-snug text-white sm:text-2xl md:text-[2.5rem] md:leading-tight"
         >
-          Ready to Begin Your MBBS in <span className="font-semibold text-black">{content.countryLabel}</span> Journey?
+          {content.heading ? (
+            content.heading
+          ) : (
+            <>
+              Ready to Begin Your MBBS in{" "}
+              <span className="font-semibold text-black">{content.countryLabel}</span> Journey?
+            </>
+          )}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/95 sm:text-base">
           {content.subtitle}

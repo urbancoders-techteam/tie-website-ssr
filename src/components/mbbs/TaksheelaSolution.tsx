@@ -34,7 +34,7 @@ const solutionCards: SolutionCard[] = [
   },
   {
     id: "05",
-    title: "Verified, Transparent Counselling",
+    title: "Verified, Transparent Counseling",
     description:
       "Complete fee breakdowns, university profiles, and current student reviews - shared upfront. Nothing hidden. Nothing misleading.",
   },

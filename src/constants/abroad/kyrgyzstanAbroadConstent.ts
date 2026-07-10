@@ -159,8 +159,8 @@ export const kyrgyzstanAbroadFearsContent: AbroadFearsContent = {
     subtitle:
       "Honest breakdown of the concerns every student carries — and exactly how Taksheela resolves each one.",
   },
-  painTitle: "⚠️ Common Pain Points",
-  solutionTitle: "✅ Taksheela's Solutions",
+  painTitle: "Common Pain Points",
+  solutionTitle: "Taksheela's Solutions",
   painPoints: [
     {
       icon: "❄️",
@@ -1211,7 +1211,7 @@ export const kyrgyzstanAbroadEducationLoanContent: AbroadEducationLoanContent = 
   eyebrow: "Education Loans",
   title: "How to Finance MBBS in Kyrgyzstan — Education Loan Guide",
   intro:
-    "MBBS in Kyrgyzstan qualifies for education loans from major Indian banks. With total costs typically in the ₹28–51 lakh range, structured education-loan planning helps families manage payments comfortably over time.",
+    "This programme qualifies for education loans from major Indian banks. With total costs typically in the ₹28–51 lakh range, structured education-loan planning helps families manage payments comfortably over time.",
   nationalised: {
     title: "Nationalised Bank Loans (SBI, BoB, Canara)",
     description:
@@ -1245,7 +1245,7 @@ export const kyrgyzstanAbroadEducationLoanContent: AbroadEducationLoanContent = 
 
 /** Same shape as `AbroadTeachingMethodologyContent` so one component can render both sections. */
 export const kyrgyzstanAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyContent = {
-  eyebrow: "After graduation",
+  eyebrow: "After Graduation",
   titlePrimary: "Career Pathways After MBBS in",
   titleAccent: "Kyrgyzstan",
   intro:

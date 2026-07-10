@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import {
   mbbsAbroadMetaDescriptions,
+  mbbsAbroadMetaKeywords,
   mbbsAbroadMetaTitles,
 } from "@/constants/metaDescriptions";
 import {
@@ -29,11 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const description = mbbsAbroadMetaDescriptions[slugKey];
   const title = mbbsAbroadMetaTitles[slugKey];
+  const keywords = mbbsAbroadMetaKeywords[slugKey];
   const canonicalPath = `/mbbs/abroad/${slugKey}`;
 
   return {
     ...(title ? { title } : {}),
     ...(description ? { description } : {}),
+    ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: `${SITE_ORIGIN}${canonicalPath}`,
     },

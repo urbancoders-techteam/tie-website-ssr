@@ -121,8 +121,7 @@ export const georgiaAbroadOverviewContent: AbroadOverviewContent = {
   heading: "Why Georgia is South Asia's Fastest-Growing MBBS Destination",
   paragraphs: [
     "Georgia — a progressive nation bridging Eastern Europe and Western Asia — has become the top-growth MBBS destination for Indian, Nepali, and Bangladeshi students. The country offers a WHO and NMC-approved medical degree, delivered entirely in English, under the European Bologna education framework. For many families comparing options abroad, the cost of studying MBBS in Georgia remains one of the biggest draws.",
-    "According to data from India's Ministry of External Affairs and the National Statistics Office of Georgia (2024–25), over 15,000 Indian students are enrolled in Georgian universities, with 85–90% in the MD (MBBS-equivalent) program.",
-    "This steady rise reflects growing confidence in MBBS in Georgia for Indian students as a credible, NMC-recognised pathway.",
+    "According to data from India's Ministry of External Affairs and the National Statistics Office of Georgia (2024–25), over 15,000 Indian students are enrolled in Georgian universities, with 85–90% in the MD (MBBS-equivalent) program. This steady rise reflects growing confidence in MBBS in Georgia for Indian students as a credible, NMC-recognised pathway.",
     "That's a 400%+ growth since 2019. The degree qualifies graduates for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
   ],
   officialData: {
@@ -148,7 +147,7 @@ export const georgiaAbroadOverviewContent: AbroadOverviewContent = {
 export const georgiaAbroadFearsContent: AbroadFearsContent = {
   section: {
     eyebrow: "Challenges & Solutions",
-    titleLead: "What Students Worry About",
+    titleLead: "What Students Worry About — ",
     titleMiddle: " — ",
     titleAccent: "And Exactly How Taksheela Solves It",
     titleTrail: "",
@@ -366,7 +365,7 @@ export const georgiaAbroadAdmissionProcessContent: AbroadAdmissionProcessContent
   titleAccent: "— Admission Process",
   titleTrail: "",
   subtitle:
-    "No donation, no separate entrance exam beyond NEET. Fully merit-based, fully guided by Taksheela from first consultation to first day of class..",
+    "No donation, no separate entrance exam beyond NEET. Fully merit-based, fully guided by Taksheela from first consultation to first day of class.",
   steps: [
     {
       title: "Free Counselling Session",
@@ -1211,7 +1210,7 @@ export const georgiaAbroadScholarshipsContent: AbroadScholarshipsContent = {
   eyebrow: "Financial aid",
   title: "Scholarships for MBBS in Georgia",
   subtitle:
-    "Georgian MBBS is already among the world's most affordable medical degrees. These scholarship routes can reduce costs further. Taksheela helps identify and apply for eligible schemes.",
+    "Georgian MBBS is already among the world's most affordable medical degrees. These scholarship routes can reduce costs further, further lowering the overall cost of studying MBBS in Georgia for eligible students. Taksheela helps identify and apply for eligible schemes.",
   cards: [
     {
       iconKey: "building",
@@ -1405,7 +1404,7 @@ export const georgiaAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheelaCon
   titlePrimary: "Why Choose Taksheela for",
   titleAccent: "MBBS in Georgia?",
   subtitle:
-    "Not just a consultancy — your end-to-end medical career partner from NEET score to Georgian medical licence. Here is what makes Taksheela genuinely different.",
+    "Not just a consultancy — your end-to-end medical career partner from NEET score to Georgian medical licence. Taksheela has guided thousands of students through MBBS in Georgia admissions — from NMC verification to visa approval. Here is what makes Taksheela genuinely different.",
   items: [
     {
       icon: "🎯",
@@ -2048,7 +2047,7 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
 export const georgiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
   eyebrow: "WHERE TO STUDY",
   titlePrimary: "Medical Universities in Georgia",
-  titleAccent: "as per latest MBBS sheet",
+  titleAccent: "as Per the Latest MBBS Sheet",
   intro:
     "Updated from the provided Georgia MBBS comparison sheet: FMGE pass rate, ranking, intake windows, INR fee bands, and USD yearly tuition.",
   cardWatermarkCode: "GE",
@@ -2377,7 +2376,7 @@ const georgiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🌐",
     title: "100% English — No Language Exam Required",
     description:
-      "Unlike Russia, China, or Kyrgyzstan, Georgian universities teach the entire MD program in English. No IELTS, no TOEFL — just your NEET score and Class 12 marks",
+      "Unlike Russia, China, or Kyrgyzstan, Georgian universities teach the entire MD program in English. No IELTS, no TOEFL — just your NEET score and Class 12 marks.",
   },
   {
     icon: "🎓",

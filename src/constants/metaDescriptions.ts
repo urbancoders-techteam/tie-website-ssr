@@ -27,6 +27,40 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
     "Complete guide to MBBS in Uzbekistan for Indian students 2026-27. Uzbekistan MBBS fees for Indian students from ₹2.5L/year, NMC-approved medical universities in Uzbekistan, English-medium & free counselling. MBBS fees in Uzbekistan for Indian students: ₹19–45 lakhs total.",
 };
 
+/** Optional SEO keywords for `/mbbs/abroad/[slug]` pages. */
+export const mbbsAbroadMetaKeywords: Record<string, string[]> = {
+  russia: [
+    "MBBS education in Russia",
+    "MBBS in Russia for Indian students",
+    "MBBS fees in Russia for Indian students",
+    "Russia MBBS fees in Indian rupees",
+  ],
+  georgia: [
+    "MBBS in Georgia for Indian students",
+    "Georgia MBBS fees for Indian students",
+    "cost of studying MBBS in Georgia",
+    "study MBBS in Georgia fee structure",
+  ],
+  uzbekistan: [
+    "Uzbekistan MBBS fees for indian students",
+    "MBBS in Uzbekistan for indian students",
+    "MBBS fees in Uzbekistan for indian students",
+    "Medical universities in Uzbekistan",
+  ],
+  kazakhstan: [
+    "Kazakhstan MBBS fees for indian students",
+    "MBBS in Kazakhstan for indian students",
+    "MBBS in Kazakhstan fees for indian students",
+    "cost of MBBS in Kazakhstan for indian students",
+  ],
+  kyrgyzstan: [
+    "MBBS in Kyrgyzstan fees in indian rupees",
+    "MBBS in Kyrgyzstan",
+    "Kyrgyzstan MBBS college",
+    "fees of MBBS in Kyrgyzstan",
+  ],
+};
+
 export const testMetaDescriptions: Record<string, string> = {
   gmat:
     "Taksheela Institute Of Education offers expert GMAT coaching, test prep guidance, and personalized study plans to help you achieve high scores and success.",

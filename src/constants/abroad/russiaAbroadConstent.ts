@@ -31,7 +31,7 @@ export type AbroadQuickFactsSectionContent = {
 
 export const russiaAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
   eyebrow: "At A Glance",
-  titleLead: "MBBS in Russia for Indian Students —",
+  titleLead: "MBBS in Russia —",
   titleAccent: "Quick Facts",
   subtitle:
     "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Russia 2026-27.",
@@ -234,9 +234,9 @@ export type AbroadHeroContent = {
 };
 
 export const russiaAbroadHeroContent: AbroadHeroContent = {
-  eyebrow: "RU MBBS in Russia 2026-27 - Admissions Open",
+  eyebrow: "MBBS Education in Russia 2026-27 - Admissions Open",
   headline: {
-    line1: "Study MBBS in Russia —",
+    line1: "Study MBBS in Russia:",
     line2Accent: "Where Affordability Meets Global Medical Excellence.",
     line3: "",
   },
@@ -296,7 +296,7 @@ export type AbroadOverviewContent = {
 
 export const russiaAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
-  heading: "Overview of MBBS in Russia",
+  heading: "Overview of MBBS Education in Russia",
   paragraphs: [
     "Russia stands as the world's single most popular destination for Indian medical students abroad — a fact confirmed by India's Ministry of External Affairs (MEA) in the December 2025 Winter Session of Parliament, which recorded over 100000 Indian students currently enrolled in Russian medical programs.",
     "Russian medical universities carry over two centuries of scientific heritage. Institutions like Sechenov University (est. 1758) and Kazan State Medical University (est. 1814) have trained physicians who practice across the globe. State subsidies keep fees far below Indian private medical colleges, while the 6-year English-medium curriculum fully satisfies NMC's guidelines for FMGE/NExT eligibility.",
@@ -660,7 +660,7 @@ export const russiaAbroadEligibilityContent: AbroadEligibilityContent = {
   titleLead: "Eligibility Criteria for MBBS in ",
   titleTrail: "",
   subtitle:
-    "Requirements for students from India, Nepal and Bangladesh - based on NMC guidelines and university requirements.",
+    "Requirements for MBBS in Russia for Indian students, Nepali and Bangladeshi aspirants — based on NMC guidelines and university requirements.",
   tabIndian: "IN Indian Students",
   tabNpbd: "NP BD Nepal & Bangladesh",
   indian: [
@@ -737,7 +737,7 @@ export const russiaAbroadEligibilityContent: AbroadEligibilityContent = {
       heading: "Special Note - Nepali Students",
       title: "Why Russia is the Right Choice for Nepal Students",
       points: [
-        "No IELTS /TOEFL required for Nepali students line -- replace 10 featured universities with 50+ universities and then the rest.",
+        "No IELTS /TOEFL required for Nepali students — 50+ universities available without language test requirement.",
         "NEET or equivalent accepted - valid NEET score or Nepali national medical entry test both qualify for admission.",
         "Fees in NPR - total 6-year program ~ NPR 24- 96 Lakh (Rs. 15 to 60L). NPR/INR rate, varies by university).",
         "Established Nepali communities at Kazan KSMU, NSMU Arkhangelsk, and Tver TSMU - peer support from Day 1.",
@@ -846,7 +846,7 @@ export const russiaAbroadAdmissionProcessContent: AbroadAdmissionProcessContent 
   titleAccent: "— Admission Process",
   titleTrail: "",
   subtitle:
-    "No donation, no entrance test beyond NEET, no management quota. Fully merit-based and completely guided by Taksheela from start to arrival.",
+    "No donation, no entrance test beyond NEET, no management quota. Admission is fully merit-based and completely guided by Taksheela from start to arrival, ensuring you have total clarity on the MBBS fees in Russia for Indian students before you commit",
   steps: [
     {
       title: "Free Counselling Session",
@@ -910,8 +910,8 @@ export const russiaAbroadConsiderBeforeContent: AbroadConsiderBeforeContent = {
     "An unbiased view of the genuine advantages and real challenges — so you make a fully informed decision.",
   advantagesTitle: "Strong Advantages",
   advantages: [
-    "Fees are often 3–5× lower than Indian private medical colleges, with state-subsidised tuition at many public universities.",
-    "No donation or capitation — merit-based admission to universities listed under NMC’s current guidelines.",
+    "MBBS fees in Russia for Indian students are often 3–5× lower than Indian private medical colleges, with state-subsidised tuition at many public universities.",
+    "No donation or capitation — merit-based admission to universities listed under NMC's current guidelines.",
     "50+ NMC-compliant options; degrees recognised for FMGE/NExT when other requirements are met.",
     "100000+ Indian students in Russia (MEA parliamentary data, 2025) — established peer communities in major cities.",
     "English-medium 6-year programmes structured to align with NMC norms for abroad MBBS.",
@@ -969,7 +969,7 @@ export type AbroadCostBreakdownContent = {
 
 export const russiaAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
   eyebrow: "Financial planning",
-  titlePrimary: "MBBS in Russia",
+  titlePrimary: "Russia MBBS Fees in Indian Rupees",
   titleAccent: "— Complete Cost Breakdown",
   subtitle:
     "For Nepal: multiply ₹ by ~1.6 for NPR. For Bangladesh: multiply ₹ by ~1.35 for BDT. All figures are approximate for 2025–26.",
@@ -1185,7 +1185,7 @@ export const russiaAbroadMbbsSyllabusContent: AbroadMbbsSyllabusContent = {
   titlePrimary: "MBBS Syllabus in Russia",
   titleAccent: "— Year by Year",
   subtitle:
-    "The 6-year MD Physician program — meeting NMC's minimum 54-month academic requirement plus 12-month internship.",
+    "The 6-year MD Physician program — a complete MBBS education in Russia meeting NMC's minimum 54-month academic requirement plus 12-month internship.",
   years: [
     {
       yearLabel: "Year 1",
@@ -1651,7 +1651,7 @@ export const russiaAbroadEducationLoanContent: AbroadEducationLoanContent = {
   nationalised: {
     title: "Nationalised Banks (India)",
     description:
-      "Major Indian public-sector banks offer IBA-aligned overseas education loan products for MBBS abroad, including Russia, subject to eligibility, margin money, and collateral as per policy.",
+      "Major Indian public-sector banks offer IBA-aligned overseas education loan products designed to cover MBBS fees in Russia for Indian students, subject to eligibility, margin money, and collateral as per policy.",
     bullets: [
       "SBI Global Ed-Vantage — up to ₹1.5 crore (eligibility-based)",
       "Bank of Baroda Baroda Scholar scheme for study abroad",
@@ -1677,7 +1677,7 @@ export const russiaAbroadEducationLoanContent: AbroadEducationLoanContent = {
   support: {
     title: "Taksheela Loan Documentation Support",
     description:
-      "Our team helps you organise a lender-ready file: provisional admission / offer letter, fee structure and payment schedule, course duration letter, KYC and co-borrower proofs, and university contact for verification — so you can approach banks or NBFCs with fewer back-and-forth queries.",
+      "Our team helps you organise a lender-ready file: provisional admission / offer letter, fee structure and payment schedule showing the complete Russia MBBS fees in Indian rupees, course duration letter, KYC and co-borrower proofs, and university contact for verification — so you can approach banks or NBFCs with fewer back-and-forth queries.",
   },
 };
 
@@ -1689,7 +1689,7 @@ export const russiaAbroadCareerOpportunitiesContent: AbroadTeachingMethodologyCo
   titlePrimary: "Career Opportunities After MBBS in",
   titleAccent: "Russia",
   intro:
-    "An NMC-compliant Russian MBBS degree, combined with FMGE/NExT clearance, opens genuine pathways in India and globally.",
+    "An NMC-compliant MBBS education in Russia, combined with FMGE/NExT clearance, opens genuine pathways in India and globally.",
   items: [
     {
       icon: "🏥",
@@ -1834,7 +1834,7 @@ export const russiaAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkCo
   titlePrimary: "NMC Gazette Rules &",
   titleAccent: "Russia Compliance",
   subtitle:
-    "These 6 NMC rules determine whether your Russian MBBS degree can be used to practice medicine in India. All Taksheela-recommended universities comply with all 6.",
+    "These 6 NMC rules determine whether your Russian MBBS degree can be used to practice medicine in India. All Taksheela-recommended institutions satisfy these 6 requirements, maintaining the eligibility of MBBS in Russia for Indian students.",
   rules: [
     {
       icon: "📅",
@@ -2357,7 +2357,7 @@ export const russiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = 
   titlePrimary: "Top 10 Medical Universities in Russia",
   titleAccent: "for Indian Students 2026-27",
   intro:
-    "Hand-picked NMC-compliant, WHO-listed institutions with transparent fee bands, FMGE track signals, and city fit — filter by Moscow, value, or FMGE strength to shortlist faster.",
+    "Hand-picked NMC-compliant, WHO-listed institutions with transparent fee bands, FMGE track signals, and city fit — filter by Moscow, value, or FMGE strength to shortlist the ideal MBBS in Russia for Indian students faster.",
   cardWatermarkCode: "RU",
   filters: [
     { id: "all", label: "All Universities" },
@@ -2483,10 +2483,10 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Which are the best NMC-approved universities in Russia for Indian students in 2025?",
       answer:
-        "The top 10 Taksheela-recommended NMC-compliant universities: (1) Kazan KSMU (est.1814, Kazan), (2) RUDN University (est.1960, Moscow, World Rank 923), (3) Pirogov RNRMU (est.1906, Moscow), (4) Moscow State MSMU, (5) Sechenov University (est.1758, oldest in Russia), (6) NSMU (est.1932, Arkhangelsk), (7) Tver TSMU (est.1936, 170km from Moscow), (8) SPSPMU (est.1925, St Petersburg), (9) BSMU (est.1932, Ufa), (10) ISMU (est.1918, Irkutsk). All WHO-listed and NMC-compliant.",
+        "For MBBS in Russia for Indian students, the top 10 Taksheela-recommended NMC-compliant universities are: (1) Kazan KSMU (est.1814, Kazan), (2) RUDN University (est.1960, Moscow, World Rank 923), (3) Pirogov RNRMU (est.1906, Moscow), (4) Moscow State MSMU, (5) Sechenov University (est.1758, oldest in Russia), (6) NSMU (est.1932, Arkhangelsk), (7) Tver TSMU (est.1936, 170km from Moscow), (8) SPSPMU (est.1925, St Petersburg), (9) BSMU (est.1932, Ufa), (10) ISMU (est.1918, Irkutsk). All WHO-listed and NMC-compliant.",
     },
     {
-      question: "Is MBBS in Russia better than Bangladesh for Indian students?",
+      question: "Is MBBS in Russia better than in Bangladesh for Indian students?",
       answer:
         "For India-return careers, Russia offers: 50+ NMC-compliant universities vs ~8-10 in Bangladesh; 100000+ Indian student community (world largest) vs much smaller in Bangladesh; RUDN at 45.45% FMGE and Tver TSMU at ~40% match or exceed Bangladesh FMGE averages; 200-year institutional heritage. Bangladesh may suit students preferring warmer climate or cultural familiarity. Taksheela provides personalised advice based on NEET score, budget, and career goals.",
     },
@@ -2499,12 +2499,12 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "What is the FMGE pass rate at RUDN University Russia in 2024?",
       answer:
-        "RUDN University recorded 45.45% FMGE pass rate in 2024 — highest among all 10 Taksheela-featured universities and significantly above the Russia average of 29.5%. RUDN holds world rank 923, attracts students from 150+ nations, and is in Moscow. Annual fees ~$11,000 (Rs 9.2L/year), total 6-year cost approximately Rs 55 lakhs. Top Taksheela recommendation for students prioritising India-return medical career.",
+        "RUDN University recorded 45.45% FMGE pass rate in 2024 — highest among all 10 Taksheela-featured universities and significantly above the Russia average of 29.5%. RUDN holds world rank 923, attracts students from 150+ nations, and is in Moscow. At ~$11,000 per year, the MBBS fees in Russia for Indian students at RUDN amount to approximately Rs 9.2L/year, with a total 6-year cost of around Rs 55 lakhs. Top Taksheela recommendation for students prioritising India-return medical career.",
     },
     {
       question: "Is MBBS in Russia valid in India? What are the requirements to practice in India?",
       answer:
-        "Yes, valid in India with four requirements: (1) Valid NEET-UG qualifying score before admission (NMC regulation, March 2019); (2) Complete minimum 54-month academic program + 12-month internship at same university hospital; (3) Pass GOZZ — Russia State Final Attestation in Russian language — to receive Russian medical licence; (4) Clear FMGE or NExT examination in India. All 10 Taksheela-featured universities satisfy requirements 2 and 3.",
+        "Yes, MBBS education in Russia is valid in India with four requirements: (1) Valid NEET-UG qualifying score before admission (NMC regulation, March 2019); (2) Complete minimum 54-month academic program + 12-month internship at same university hospital; (3) Pass GOZZ — Russia State Final Attestation in Russian language — to receive Russian medical licence; (4) Clear FMGE or NExT examination in India. All 10 Taksheela-featured universities satisfy requirements 2 and 3.",
     },
     {
       question: "Is NEET mandatory for MBBS in Russia?",
@@ -2549,6 +2549,8 @@ export const russiaAbroadFaqPageContent: AbroadFaqPageContent = {
 export type AbroadCtaBannerContent = {
   /** Shown in: Ready to Begin Your MBBS in {countryLabel} Journey? */
   countryLabel: string;
+  /** Optional full heading override (when set, replaces the default Ready to Begin… line). */
+  heading?: string;
   subtitle: string;
   primaryCtaLabel: string;
   phoneDisplay: string;
@@ -2606,7 +2608,7 @@ export const russiaAbroadQuickFactsContent: AbroadQuickFactItem[] = [
     label: "Annual Tuition (Range)",
     value: "Rs. 2.7L - Rs. 10L / year",
     mLabel: "Tuition / yr",
-    mValue: "₹2.7L–₹8L",
+    mValue: "₹2.7L–₹10L",
   },
   {
     icon: "🏠",
@@ -2650,7 +2652,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🔥",
     title: "Government-Subsidised Affordable Fees",
     description:
-      "MBBS fees in Russia for Indian students start from Rs. 2.7 lakh per year at government universities — a 6-year total of Rs. 15L to 60L versus Rs. 50L–1.5Cr at Indian private colleges. Russian government subsidises medical education structurally.",
+      "MBBS fees in Russia for Indian students start from Rs. 2.7 lakh per year at government universities — a 6-year total of Rs. 15L to 60L versus Rs. 50L–1.5Cr at Indian private colleges. The Russian government subsidises medical education structurally.",
   },
   {
     icon: "✅",
@@ -2662,7 +2664,7 @@ const russiaAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "🌐",
     title: "English-Medium Programs, No IELTS",
     description:
-      "All 10 featured universities offer MBBS entirely in English. Russian language is taught as a compulsory subject. No IELTS or TOEFL required for admission - accessible for all NEET-qualified students.",
+      "All 10 featured universities offer MBBS entirely in English. Russian language is taught as a compulsory subject. No IELTS or TOEFL required for admission — accessible for all NEET-qualified students pursuing MBBS education in Russia.",
   },
   {
     icon: "🏥",
