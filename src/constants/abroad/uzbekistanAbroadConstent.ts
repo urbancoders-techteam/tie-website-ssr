@@ -63,7 +63,7 @@ export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
   },
   description:
     "Uzbekistan is Central Asia's fastest-rising destination for international medical education, and it has quickly become one of the most searched options for MBBS in Uzbekistan for Indian students planning their 2026–27 admissions. NMC-approved, English-medium, zero donation — with fees starting at ₹2.5 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
-  descriptionMaxLength: 380,
+  descriptionMaxLength: 520,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",

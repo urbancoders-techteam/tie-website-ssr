@@ -67,7 +67,7 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
   },
   description:
     "Choosing MBBS in Kyrgyzstan means choosing one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes with annual fees from ₹3.7 lakhs and total six-year costs typically in the ₹28–51 lakh band (university-dependent). Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB.",
-  descriptionMaxLength: 320,
+  descriptionMaxLength: 500,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",
