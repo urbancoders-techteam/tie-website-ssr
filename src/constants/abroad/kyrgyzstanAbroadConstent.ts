@@ -63,11 +63,11 @@ export const kyrgyzstanAbroadHeroContent: AbroadHeroContent = {
   headline: {
     line1: "Study MBBS in",
     line2Accent: "Kyrgyzstan",
-    line3: "Central Asia's Most Affordable Path to a Global Medical Degree",
+    line3: "— Central Asia's Most Affordable Path to a Global Medical Degree",
   },
   description:
-    "Kyrgyzstan is one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes with annual fees from ₹3.7 lakhs and total six-year costs typically in the ₹28–51 lakh band (university-dependent). Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB. For students from India, Nepal, and Bangladesh who need quality plus affordability, Kyrgyzstan remains a practical pathway.",
-  descriptionMaxLength: 260,
+    "Choosing MBBS in Kyrgyzstan means choosing one of the world's most budget-friendly MBBS abroad destinations — offering NMC-approved, English-medium programmes with annual fees from ₹3.7 lakhs and total six-year costs typically in the ₹28–51 lakh band (university-dependent). Over 16,000 Indian students are currently enrolled. Zero donation, zero capitation, and a globally recognised degree that qualifies graduates for FMGE, NExT, USMLE, and PLAB.",
+  descriptionMaxLength: 320,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",
@@ -124,7 +124,7 @@ export const kyrgyzstanAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
   heading: "MBBS in Kyrgyzstan — A Complete Picture for 2026–27",
   paragraphs: [
-    "Kyrgyzstan — a landlocked Central Asian republic nestled in the Tian Shan mountain range — has steadily grown into one of the most preferred MBBS abroad destinations for South Asian students. With over 10 medical universities operating under the Kyrgyz Ministries of Health and Education, and more than 16,000 Indian students currently enrolled across these institutions, the country has built a mature, well-supported ecosystem for international medical education.",
+    "Kyrgyzstan — a landlocked Central Asian republic nestled in the Tian Shan mountain range — has steadily grown into one of the most preferred MBBS abroad destinations for South Asian students. With over 10 Kyrgyzstan MBBS college options operating under the Kyrgyz Ministries of Health and Education, and more than 16,000 Indian students currently enrolled across these institutions, the country has built a mature, well-supported ecosystem for international medical education.",
     "What makes Kyrgyzstan stand out is a combination that is genuinely rare at the global level: NMC compliance, English-medium instruction, zero donation fees, and a six-year programme cost structure that generally remains in the ₹28–51 lakh band across major options. For families in India, Nepal, and Bangladesh where aspiring doctors cannot access government seats or afford ₹80 lakh–₹1.5 crore private college donations, Kyrgyzstan transforms an otherwise closed door into a fully open, legitimate pathway.",
     "The academic calendar runs on the European semester model. Clinical training begins from Year 3 at affiliated government hospitals, providing meaningful patient exposure in real hospital environments. Kyrgyz language and Russian are introduced from Year 1 as compulsory subjects, equipping students to communicate with local patients during rotations — meeting NMC's language requirement naturally through the curriculum design.",
     "All NMC-approved Kyrgyz universities are listed on the World Directory of Medical Schools (WDOMS) maintained by FAIMER. Degrees are recognised by WHO, ECFMG, and WFME — enabling graduates to pursue FMGE/NExT in India, USMLE in the USA, and PLAB in the UK. For students from Nepal and Bangladesh, the programme represents one of the most cost-effective and globally portable medical degrees available anywhere in the world.",
@@ -216,7 +216,7 @@ export const kyrgyzstanAbroadFearsContent: AbroadFearsContent = {
       icon: "🔍",
       title: "Batch-Size-Aware University Matching",
       description:
-        "Taksheela evaluates each university's international student intake, student-teacher ratio, and hospital affiliation before recommending it. We never recommend solely on the basis of low fees.",
+        "Taksheela evaluates each Kyrgyzstan MBBS college's international student intake, student-teacher ratio, and hospital affiliation before recommending it. We never recommend solely on the basis of low fees.",
     },
     {
       icon: "🏦",
@@ -231,8 +231,8 @@ export const kyrgyzstanAbroadFearsContent: AbroadFearsContent = {
 
 export const kyrgyzstanAbroadEligibilityContent: AbroadEligibilityContent = {
   eyebrow: "Who Can Apply",
-  titleLead: "Who Can Apply — Requirements by Country",
-  titleTrail: " 2026–27",
+  titleLead: "Who Can Apply — Requirements by Country · ",
+  titleTrail: "2026–27",
   subtitle:
     "Eligibility based on NMC's 2025 FMGL guidelines and Kyrgyz university requirements for 2026–27 admissions.",
   tabIndian: "🇮🇳 Indian Students",
@@ -371,8 +371,8 @@ export const kyrgyzstanAbroadEligibilityContent: AbroadEligibilityContent = {
 export const kyrgyzstanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent =
   {
   eyebrow: "Step by Step",
-  titleLead: "Step-by-Step: How to Secure MBBS Admission in ",
-  titleAccent: "Kyrgyzstan 2026",
+  titleLead: "How to Secure MBBS Admission in ",
+  titleAccent: "2026",
   titleTrail: "",
   subtitle:
     "A straightforward, donation-free process from first enquiry to first day of classes — typically completed in 4–6 weeks.",
@@ -439,7 +439,7 @@ export const kyrgyzstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent 
     "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
   advantagesTitle: "Strong Advantages",
   advantages: [
-    "Annual fees from approximately ₹3.7L — total 6-year investment generally ₹28–51 lakhs (university-dependent), with zero capitation or donation when you choose verified NMC-listed universities.",
+    "Annual fees from approximately ₹3.7L — total 6-year investment generally ₹28–51 lakhs (university-dependent), with zero capitation or donation when you choose verified NMC-listed universities. See the full MBBS in Kyrgyzstan fees in Indian Rupees breakdown below.",
     "English-medium instruction at NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission at typical partner universities.",
     "NMC and WHO recognition for listed institutions — degrees can qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams when individual requirements are met.",
     "5,000+ Indian students enrolled — established South Asian communities in Bishkek and Osh with Indian food options, festivals, and peer support.",
@@ -499,10 +499,10 @@ export type AbroadCostBreakdownContent = {
 
 export const kyrgyzstanAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
   eyebrow: "Cost & Fees",
-  titlePrimary: "MBBS Kyrgyzstan Fees 2026–27",
+  titlePrimary: "Fees of MBBS in Kyrgyzstan 2026–27",
   titleAccent: "— Complete Breakdown in Rupees",
   subtitle:
-    "Total programme cost including tuition, hostel, and estimated living — a university-wise comparison for students from India, Nepal, and Bangladesh.",
+    "Total programme cost including tuition, hostel, and estimated living — a university-wise comparison of MBBS in Kyrgyzstan fees in Indian Rupees for students from India, Nepal, and Bangladesh.",
   tuitionTableTitle: "University-wise cost (indicative)",
   tuitionColAnnual: "Annual Tuition",
   tuitionColSixYear: "6-Year Total",
@@ -1811,17 +1811,17 @@ export const kyrgyzstanAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Is MBBS from Kyrgyzstan valid in India?",
       answer:
-        "Yes. Degrees from NMC-listed Kyrgyz medical universities are valid in India. Graduates must pass the FMGE or NExT (National Exit Test) to obtain NMC registration and a licence to practise medicine in India. All universities listed on this page are NMC-approved and WDOMS-listed.",
+        "Yes. Degrees from NMC-listed Kyrgyz medical universities are valid in India. Graduates must pass the FMGE or NExT (National Exit Test) to obtain NMC registration and a licence to practise medicine in India. Every Kyrgyzstan MBBS college listed on this page is NMC-approved and WDOMS-listed.",
     },
     {
       question: "Is NEET compulsory for MBBS in Kyrgyzstan?",
       answer:
-        "Yes, for Indian students. As per NMC's FMGL Regulations 2021, all Indian students pursuing MBBS at foreign universities must hold a valid NEET-UG qualifying score at the time of admission. Acceptable NEET scores are from 2024, 2025, or 2026. There is no minimum score threshold set by Kyrgyz universities — only the NMC qualifying percentile is required.",
+        "Yes, for Indian students. As per NMC's FMGL Regulations 2021, all Indian students pursuing MBBS in Kyrgyzstan or any foreign university must hold a valid NEET-UG qualifying score at the time of admission. Acceptable NEET scores are from 2024, 2025, or 2026. There is no minimum score threshold set by Kyrgyz universities — only the NMC qualifying percentile is required.",
     },
     {
       question: "What is the total cost of MBBS in Kyrgyzstan in INR?",
       answer:
-        "The total cost of a 6-year MBBS in Kyrgyzstan generally ranges from approximately ₹28 lakhs to ₹51 lakhs depending on the university and city. Typical current benchmarks: Osh/Jalal-Abad State around ₹28–36L, KSMA around ₹42L, and ISM/IHSM around ₹39–51L. Annual fees start from about ₹3.7L, with hostel and living costs added on top.",
+        "The fees of MBBS in Kyrgyzstan for a 6-year programme generally range from approximately ₹28 lakhs to ₹51 lakhs depending on the university and city. Typical current benchmarks: Osh/Jalal-Abad State around ₹28–36L, KSMA around ₹42L, and ISM/IHSM around ₹39–51L. Annual fees start from about ₹3.7L, and once you factor in hostel and living costs, the complete MBBS in Kyrgyzstan fees in Indian Rupees picture becomes easy to plan around.",
     },
     {
       question: "How many Indian students are currently studying in Kyrgyzstan?",
@@ -1855,17 +1855,17 @@ export const kyrgyzstanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   countryLabel: "Kyrgyzstan",
   subtitle:
     "Speak with a Taksheela counsellor today. Honest advice, verified data, and complete support from application to arrival. September 2026 intake seats are filling — apply early.",
-  primaryCtaLabel: "Book Free Counselling",
+  primaryCtaLabel: "Book Free Counselling Call",
   phoneDisplay: "+91 9831241212",
   phoneTel: "+919831241212",
 };
 
 export const kyrgyzstanAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
-  eyebrow: "At A Glance",
-  titleLead: "MBBS in Kyrgyzstan for Indian Students —",
+  eyebrow: "At a Glance",
+  titleLead: "MBBS in Kyrgyzstan —",
   titleAccent: "Quick Facts",
   subtitle:
-    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Kyrgyzstan 2026-27.",
+    "Key data every student from India, Nepal and Bangladesh needs — including MBBS in Kyrgyzstan fees in Indian Rupees — before applying for 2026-27.",
 };
 
 export const kyrgyzstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
@@ -1960,13 +1960,13 @@ const kyrgyzstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "Lowest Total MBBS Cost in Central Asia",
     description:
-      "Total six-year programme costs start from ₹28 lakhs and rarely exceed ₹51 lakhs — including tuition, hostel, and living. This is 70% cheaper than private MBBS in India and far below European destinations.",
+      "Total six-year programme costs start from ₹28 lakhs and rarely exceed ₹51 lakhs, reflecting some of the lowest fees of MBBS in Kyrgyzstan across Central Asia — including tuition, hostel, and living. This is 70% cheaper than private MBBS in India and far below European destinations.",
   },
   {
     icon: "✅",
     title: "14+ NMC, WHO & FAIMER Approved Universities",
     description:
-      "Kyrgyzstan offers one of the largest pools of NMC-compliant medical universities globally. All approved institutions are listed on WDOMS (FAIMER), enabling FMGE, NExT, USMLE, and PLAB eligibility after graduation.",
+      "Kyrgyzstan offers one of the largest pools of NMC-compliant Kyrgyzstan MBBS college options globally. All approved institutions are listed on WDOMS (FAIMER), enabling FMGE, NExT, USMLE, and PLAB eligibility after graduation.",
   },
   {
     icon: "🌐",
