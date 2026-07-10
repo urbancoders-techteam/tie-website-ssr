@@ -64,13 +64,13 @@ export type AbroadHeroContent = {
 export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "Admissions Open · 2026–27 Intake",
   headline: {
-    line1: "Study MBBS in",
+    line1: "MBBS in",
     line2Accent: "Kazakhstan",
-    line3: "— Where Affordability Meets World-Class Medical Training.",
+    line3: "for Indian Students — Where Affordability Meets World-Class Medical Training.",
   },
   description:
-    "NMC and WHO-approved medical degree in English, from ₹3.5L per year. 9,000+ Indian students already enrolled. Zero capitation. Zero donation. End-to-end guidance from Taksheela.",
-  descriptionMaxLength: 260,
+    "NMC and WHO-approved medical degree in English, from ₹3.5L per year, making this one of the most trusted paths for MBBS in Kazakhstan for Indian students who want a globally recognised medical career. 9,000+ Indian students already enrolled. Zero capitation. Zero donation. End-to-end guidance from Taksheela.",
+  descriptionMaxLength: 380,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",
@@ -125,9 +125,9 @@ export type AbroadOverviewContent = {
 
 export const kazakhstanAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
-  heading: "Why Kazakhstan is Rising as South Asia's Premier MBBS Destination",
+  heading: "Why MBBS in Kazakhstan for Indian Students Is Becoming the Top Choice",
   paragraphs: [
-    "Kazakhstan — Central Asia's largest and most economically dynamic nation — has steadily cemented its position as one of the most dependable destinations for medical education among students from India, Nepal, and Bangladesh. Sitting at the geographical and cultural crossroads of Europe and Asia, Kazakhstan offers a unique combination: NMC-approved, WHO-listed medical degrees delivered in English, at annual fees as low as ₹3 lakhs, inside university campuses equipped with modern hospitals and simulation laboratories.",
+    "Kazakhstan — Central Asia's largest and most economically dynamic nation — has steadily cemented its position as one of the most dependable destinations for medical education among students from India, Nepal, and Bangladesh. Sitting at the geographical and cultural crossroads of Europe and Asia, Kazakhstan offers a unique combination: NMC-approved, WHO-listed medical degrees delivered in English, at annual fees as low as ₹3 lakhs, inside university campuses equipped with modern hospitals and simulation laboratories. Families comparing Kazakhstan MBBS fees for Indian students across Central Asia consistently find this affordability hard to match.",
     "According to the Ministry of Science and Higher Education of Kazakhstan (2024–25 data), over 35,000+ international students pursue medical programs in Kazakhstan annually, with Indian students constituting approximately 48% of this pool — translating to over 9,500+ Indian students enrolled across Kazakh medical universities in the current academic cycle. This figure has grown steadily even as other Central Asian destinations have fluctuated due to geopolitical and regulatory shifts.",
     "Kazakhstan's 10+ NMC-approved medical universities are governed by the Ministry of Healthcare and the Ministry of Education and Science of Kazakhstan. They follow a standardised 6-year (5+1) curriculum aligned with NMC's requirements under the Gazette of India, including English as the primary medium of instruction, mandatory clinical exposure from Year 3, and a compulsory 12-month internship. Degrees from these institutions are recognised by WHO, NMC (India), FAIMER, ECFMG, and UNESCO — giving graduates pathways to practice in India (after NExT), the UK (PLAB), the USA (USMLE), the Gulf, and beyond.",
   ],
@@ -248,7 +248,7 @@ export const kazakhstanAbroadFearsContent: AbroadFearsContent = {
 export const kazakhstanAbroadEligibilityContent: AbroadEligibilityContent = {
   eyebrow: "Who Can Apply",
   titleLead: "Eligibility Criteria for MBBS in ",
-  titleTrail: " 2026–27",
+  titleTrail: "for Indian Students 2026–27",
   subtitle:
     "Requirements for students from India, Nepal, and Bangladesh — based on NMC guidelines, Kazakhstan Ministry of Education standards, and individual university requirements.",
   tabIndian: "IN Indian Students",
@@ -515,11 +515,11 @@ export type AbroadCostBreakdownContent = {
 
 export const kazakhstanAbroadCostBreakdownContent: AbroadCostBreakdownContent =
   {
-    eyebrow: "Financial planning",
-    titlePrimary: "MBBS in Kazakhstan",
+    eyebrow: "Financial Planning",
+    titlePrimary: "Kazakhstan MBBS fees for Indian students",
     titleAccent: "— Complete Fee Structure & Cost of Living",
     subtitle:
-      "Estimated totals for Nepal and Bangladesh are provided below. All figures are approximate for 2026–27.",
+      "Estimated totals for Nepal and Bangladesh are provided below. All figures are approximate for 2026–27, giving families a transparent view of the cost of MBBS in Kazakhstan for Indian students so they can plan their finances early.",
     tuitionTableTitle: "University tuition (indicative)",
     tuitionColAnnual: "Annual Tuition",
     tuitionColSixYear: "6-Year Total",
@@ -894,9 +894,9 @@ export type AbroadCompleteComparisonContent = {
 
 export const kazakhstanAbroadCompleteComparisonContent: AbroadCompleteComparisonContent =
   {
-    eyebrow: "Side by side",
-    titlePrimary: "MBBS in Kazakhstan vs MBBS in India",
-    titleAccent: "— 2026–27 Comparison",
+    eyebrow: "Side By Side",
+    titlePrimary: "MBBS in Kazakhstan Fees for Indian Students vs MBBS in India",
+    titleAccent: ": A 2026–27 Comparison",
     subtitle:
       "Data-structured comparison for students asking whether MBBS in Kazakhstan fits versus India — transparent, decision-friendly context; Bangladesh & Philippines columns for regional reference.",
     blockHeading:
@@ -1273,7 +1273,7 @@ export const kazakhstanAbroadScholarshipsContent: AbroadScholarshipsContent = {
   eyebrow: "Financial Aid",
   title: "Scholarships for MBBS in Kazakhstan",
   subtitle:
-    "Kazakhstan MBBS is already among the world's most budget-friendly medical degrees. These scholarship routes can reduce costs further for eligible students.",
+    "Kazakhstan MBBS is already among the world's most budget-friendly medical degrees. These scholarship routes can reduce the cost of MBBS in Kazakhstan for Indian students even further for eligible students.",
   cards: [
     {
       iconKey: "building",
@@ -1351,10 +1351,10 @@ export type AbroadEducationLoanContent = {
 
 export const kazakhstanAbroadEducationLoanContent: AbroadEducationLoanContent =
   {
-    eyebrow: "Financing your MBBS",
+    eyebrow: "Financing Your MBBS",
     title: "Education Loans for MBBS in Kazakhstan",
     intro:
-      "Financing a Kazakh MBBS is well-supported by Indian banks and NBFCs. Taksheela helps you build a lender-ready document file for faster loan processing.",
+      "Financing an MBBS is well-supported by Indian banks and NBFCs. Taksheela helps you build a lender-ready document file so managing MBBS in Kazakhstan fees for Indian students through EMIs becomes simple and predictable.",
     nationalised: {
       title: "Nationalised Banks (India)",
       description:
@@ -2178,13 +2178,13 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "Is MBBS in Kazakhstan valid in India? Can I practise medicine in India after graduating?",
       answer:
-        "Yes — provided you complete your degree at an NMC-approved Kazakh university, finish the full 6-year program including the mandatory 12-month clinical internship in Kazakhstan, and then clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before receiving permanent medical registration. Taksheela only recommends NMC-approved institutions verified against the current official list.",
+        "Yes — provided you complete your degree at an NMC-approved Kazakh university, finish the full 6-year program including the mandatory 12-month clinical internship in Kazakhstan, and then clear India's NExT (National Exit Test). After NExT, you must complete a 12-month internship at an NMC-recognised hospital in India before receiving permanent medical registration. Taksheela only recommends NMC-approved institutions verified against the current official list. This regulated pathway is exactly why so many families choose MBBS in Kazakhstan for Indian students as a dependable, globally recognised route into medicine.",
     },
     {
       question:
         "What is the total cost of MBBS in Kazakhstan in Indian Rupees, NPR, and BDT?",
       answer:
-        "Total 6-year all-inclusive cost (2026–27): Indian Rupees: ₹35-48  lakhs (tuition + hostel + food + insurance + visa + personal). This is among the lowest total costs for any NMC-approved MBBS destination globally. Nepal NPR: approximately NPR 55–77 lakh. Bangladesh BDT: approximately BDT 45–64 lakh. Budget universities like SKMA and Kokshetau State University fall at the lower end. Premium options like KazNMU or Al-Farabi are at the higher end but still far cheaper than Indian private MBBS. Zero capitation. Zero donation.",
+        "Total 6-year all-inclusive cost (2026–27): Indian Rupees: ₹35-48 lakhs (tuition + hostel + food + insurance + visa + personal). This is among the lowest total costs for any NMC-approved MBBS destination globally. Nepal NPR: approximately NPR 55–77 lakh. Bangladesh BDT: approximately BDT 45–64 lakh. Budget universities like SKMA and Kokshetau State University fall at the lower end. Premium options like KazNMU or Al-Farabi are at the higher end but still far cheaper than Indian private MBBS. Zero capitation. Zero donation. This makes the overall cost of MBBS in Kazakhstan for Indian students one of the most competitive among NMC-approved options worldwide.",
     },
     {
       question: "Is NEET mandatory for MBBS in Kazakhstan for Indian students?",
@@ -2195,13 +2195,13 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
       question:
         "Which are the best NMC-approved universities in Kazakhstan for Indian students?",
       answer:
-        "Top Taksheela-recommended NMC-compliant universities: (1) Kazakh National Medical University (KazNMU, est. 1930, Almaty — flagship institution), (2) Al-Farabi Kazakh National University (KazNU, est. 1934, Almaty), (3) Astana Medical University (AMU, est. 2009, Astana), (4) Kazakh Russian Medical University (KRMU, est. 2003, Almaty), (5) South Kazakhstan Medical Academy (SKMA, est. 1979, Shymkent — most affordable), (6) Karaganda Medical University (KarMU, est. 1950), (7) Kokshetau State University (KSU), (8) Semey Medical University (est. 1952), (9) West Kazakhstan Marat Ospanov Medical University (WKMU, Aktobe). All WHO-listed, NMC-approved — verify current list before fees.",
+        "Top Taksheela-recommended NMC-compliant universities: (1) Kazakh National Medical University (KazNMU, est. 1930, Almaty — flagship institution), (2) Al-Farabi Kazakh National University (KazNU, est. 1934, Almaty), (3) Astana Medical University (AMU, est. 2009, Astana), (4) Kazakh Russian Medical University (KRMU, est. 2003, Almaty), (5) South Kazakhstan Medical Academy (SKMA, est. 1979, Shymkent — most affordable), (6) Karaganda Medical University (KarMU, est. 1950), (7) Kokshetau State University (KSU), (8) Semey Medical University (est. 1952), (9) West Kazakhstan Marat Ospanov Medical University (WKMU, Aktobe). All WHO-listed, NMC-approved — verify current list before fees. Comparing Kazakhstan MBBS fees for Indian students across these institutions helps families choose the best fit for their budget.",
     },
     {
       question:
         "Is MBBS in Kazakhstan better than Russia or Georgia for Indian students?",
       answer:
-        "Kazakhstan vs Russia: Kazakhstan fees are comparable to Russia's budget options (₹3–5L/year vs ₹2.7–8L/year in Russia). Kazakhstan has no GOZZ state exam requirement, unlike Russia. Both require a second language for clinical years. Kazakhstan has a Muslim-majority culture with halal food readily available — an advantage for many South Asian students. Kazakhstan vs Georgia: Georgia offers 100% English medium with no second language for clinical years and milder winters. Kazakhstan is cheaper overall. The right choice depends on budget, climate preference, career goals, and cultural fit — Taksheela provides personalised comparisons based on your specific profile.",
+        "Kazakhstan vs Russia: Kazakhstan fees are comparable to Russia's budget options (₹3–5L/year vs ₹2.7–8L/year in Russia). Kazakhstan has no GOZZ state exam requirement, unlike Russia. Both require a second language for clinical years. Kazakhstan has a Muslim-majority culture with halal food readily available — an advantage for many South Asian students. Kazakhstan vs Georgia: Georgia offers 100% English medium with no second language for clinical years and milder winters. Kazakhstan is cheaper overall, and on most comparisons, MBBS in Kazakhstan fees for Indian students work out lower than equivalent programs in Russia or Georgia. The right choice depends on budget, climate preference, career goals, and cultural fit — Taksheela provides personalised comparisons based on your specific profile.",
     },
     {
       question:
@@ -2259,7 +2259,7 @@ export const kazakhstanAbroadQuickFactsSectionContent: AbroadQuickFactsSectionCo
   titleLead: "MBBS in Kazakhstan for Indian Students —",
   titleAccent: "Quick Facts",
   subtitle:
-    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Kazakhstan 2026-27.",
+    "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Kazakhstan 2026-27, including a clear picture of MBBS in Kazakhstan fees for Indian students across universities.",
 };
 
 export const kazakhstanAbroadQuickFactsContent: AbroadQuickFactItem[] = [
@@ -2354,7 +2354,7 @@ const kazakhstanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "One of the Most Affordable MBBS Destinations Globally",
     description:
-      "Annual tuition ranges from ₹3.5L to ₹5L, making Kazakhstan among the lowest-cost NMC-approved medical education destinations. Total 6-year investment: ₹35-48  lakhs — compared to ₹80L–₹1.2Cr at Indian private colleges, with zero donation.",
+      "Annual tuition ranges from ₹3.5L to ₹5L, making Kazakhstan among the lowest-cost NMC-approved medical education destinations. Total 6-year investment: ₹35-48 lakhs — compared to ₹80L–₹1.2Cr at Indian private colleges, with zero donation. Year after year, Kazakhstan MBBS fees for Indian students remain among the most competitive in the world.",
   },
   {
     icon: "✅",
@@ -2418,7 +2418,7 @@ const kazakhstanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent =
     titleLead: "10 Compelling Reasons to Study MBBS in ",
     titleTrail: "",
     subtitle:
-      "Evidence-backed reasons why 9,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree.",
+      "Evidence-backed reasons why 9,000+ Indian students and growing numbers from Nepal and Bangladesh have chosen Kazakhstan for their medical degree. A major reason is the affordable cost of MBBS in Kazakhstan for Indian students compared to other global destinations.",
   };
 
 export const kazakhstanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent =

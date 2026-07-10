@@ -57,13 +57,13 @@ export type AbroadHeroContent = {
 export const uzbekistanAbroadHeroContent: AbroadHeroContent = {
   eyebrow: "Admissions Open · 2026–27 Batch",
   headline: {
-    line1: "Study",
-    line2Accent: "MBBS in Uzbekistan",
-    line3: "Where Ancient Scholarship Meets Modern Medicine",
+    line1: "MBBS in",
+    line2Accent: "Uzbekistan",
+    line3: "for Indian Students — Where Ancient Scholarship Meets Modern Medicine",
   },
   description:
-    "Uzbekistan is Central Asia's fastest-rising destination for international medical education. NMC-approved, English-medium, zero donation — with fees starting at ₹2.5 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
-  descriptionMaxLength: 320,
+    "Uzbekistan is Central Asia's fastest-rising destination for international medical education, and it has quickly become one of the most searched options for MBBS in Uzbekistan for Indian students planning their 2026–27 admissions. NMC-approved, English-medium, zero donation — with fees starting at ₹2.5 lakhs per year and a globally recognised degree at the end of it. A proven pathway for students from India, Nepal, and Bangladesh who refuse to compromise on quality or affordability.",
+  descriptionMaxLength: 520,
   cta: {
     primaryText: "Book Free Counselling →",
     secondaryText: "View Universities",
@@ -118,12 +118,12 @@ export type AbroadOverviewContent = {
 
 export const uzbekistanAbroadOverviewContent: AbroadOverviewContent = {
   eyebrow: "Overview",
-  heading: "MBBS in Uzbekistan — A Complete Picture for 2026–27",
+  heading: "MBBS in Uzbekistan for Indian Students — A Complete Picture for 2026–27",
   paragraphs: [
-    "Uzbekistan, the doubly landlocked Central Asian republic home to the ancient Silk Road cities of Samarkand, Bukhara, and Tashkent, has quietly become one of the most reliable MBBS abroad destinations for South Asian students. With seven medical institutes operating under the Ministry of Health — five of which are recognised by India's National Medical Commission (NMC) — the country combines genuine academic credibility with a cost structure that is genuinely accessible.",
+    "Uzbekistan, the doubly landlocked Central Asian republic home to the ancient Silk Road cities of Samarkand, Bukhara, and Tashkent, has quietly become one of the most reliable MBBS abroad destinations for South Asian students. With seven medical universities in Uzbekistan operating under the Ministry of Health — five of which are recognised by India's National Medical Commission (NMC) — the country combines genuine academic credibility with a cost structure that is genuinely accessible.",
     "Unlike private colleges in India, admission is merit-based and entirely transparent. There is no donation, no capitation fee, and no management quota. Students who meet the eligibility criteria — 50% PCB in Class 12 and a valid NEET qualifying score — can apply directly, receive an admission letter within 48 hours in many cases, and depart after visa processing.",
     "The 6-year programme (5 academic years + 1 mandatory internship) is taught in English at all NMC-approved universities. Uzbek language is introduced from Year 1 as a compulsory subject, enabling students to communicate meaningfully with local patients during clinical rotations from Year 3 onwards — meeting the NMC's language requirement without any special preparation.",
-    "For Indian students who missed a government seat, Nepali students seeking globally recognised credentials, and Bangladeshi students exploring affordable MBBS abroad options, Uzbekistan in 2026 offers the clearest value proposition in Central Asia: real education, real hospitals, global recognition, and a total cost that fits within a practical budget.",
+    "For Indian students who missed a government seat, Nepali students seeking globally recognised credentials, and Bangladeshi students exploring affordable MBBS abroad options, Uzbekistan in 2026 remains the clearest value proposition in Central Asia for MBBS in Uzbekistan for Indian students: real education, real hospitals, global recognition, and a total cost that fits within a practical budget.",
   ],
   officialData: {
     leadBold: "Official snapshot (Uzbekistan MoH / NMC list, 2026–27):",
@@ -186,7 +186,7 @@ export const uzbekistanAbroadFearsContent: AbroadFearsContent = {
       icon: "💳",
       title: "Fee payment in foreign currency",
       description:
-        "Paying fees in USD and managing international remittances confuses many families, especially first-generation study abroad students.",
+        "Paying fees in USD and managing international remittances confuses many families, especially first-generation study abroad students trying to understand the Uzbekistan MBBS fees for Indian students.",
     },
   ],
   solutions: [
@@ -342,7 +342,6 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
         "English proficiency tests are not required for admission to English-medium MBBS programs in Uzbekistan.",
     },
   ],
- 
   specialNotes: [
     {
       code: "NP",
@@ -383,9 +382,9 @@ export const uzbekistanAbroadEligibilityContent: AbroadEligibilityContent = {
 
 export const uzbekistanAbroadAdmissionProcessContent: AbroadAdmissionProcessContent = {
   eyebrow: "Admission Process",
-  titleLead: "Step-by-Step Admission Process for MBBS in ",
-  titleAccent: "2026–27",
-  titleTrail: "",
+  titleLead: "Step-by-Step MBBS in ",
+  titleAccent: "for Indian Students Admission Process",
+  titleTrail: " 2026–27",
   subtitle:
     "A transparent, donation-free process from application to arrival in Uzbekistan — typically completed in 4 to 6 weeks.",
   steps: [
@@ -511,8 +510,8 @@ export type AbroadCostBreakdownContent = {
 
 export const uzbekistanAbroadCostBreakdownContent: AbroadCostBreakdownContent = {
   eyebrow: "Cost & Fees",
-  titlePrimary: "MBBS Uzbekistan Fees",
-  titleAccent: "2026–27 — Complete Breakdown in Rupees",
+  titlePrimary: "MBBS Fees in Uzbekistan for Indian Students",
+  titleAccent: "(2026–27) — Complete Breakdown in Rupees",
   subtitle:
     "Total cost of MBBS in Uzbekistan including tuition, hostel, food, and living — university-wise comparison for Indian students. For Nepal: multiply ₹ by ~2.2 for NPR. For Bangladesh: multiply ₹ by ~1.8 for BDT.",
   tuitionTableTitle: "University tuition (indicative, USD → ₹ approx.)",
@@ -869,7 +868,7 @@ export const uzbekistanAbroadCompleteComparisonContent: AbroadCompleteComparison
   titlePrimary: "Studying MBBS in India vs Uzbekistan",
   titleAccent: "— 2026 Comparison",
   subtitle:
-    "A factual comparison to help Indian students and their families make an informed, pressure-free decision. Reference columns add regional context.",
+    "A factual comparison to help Indian students and their families make an informed, pressure-free decision about MBBS fees in Uzbekistan for Indian students and overall value versus studying at home. Reference columns add regional context.",
   blockHeading: "India (private) · Uzbekistan · Govt India & regional reference",
   colParameter: "Parameter",
   colFeatured: "🇺🇿 MBBS in Uzbekistan",
@@ -1147,7 +1146,7 @@ export const uzbekistanAbroadScholarshipsContent: AbroadScholarshipsContent = {
   eyebrow: "Scholarships",
   title: "Scholarship & Fee Concession Opportunities",
   subtitle:
-    "While MBBS in Uzbekistan is already highly affordable, there are additional financial support avenues available to deserving students.",
+    "While Uzbekistan MBBS fees for Indian students are already highly affordable, there are additional financial support avenues available to deserving students.",
   cards: [
     {
       iconKey: "graduation",
@@ -1223,7 +1222,7 @@ export const uzbekistanAbroadEducationLoanContent: AbroadEducationLoanContent = 
   eyebrow: "Education Loans",
   title: "Financing Your MBBS in Uzbekistan — Education Loan Guide",
   intro:
-    "MBBS in Uzbekistan qualifies for education loans from major Indian banks. The total cost of ₹19–45 lakhs makes loan repayment very manageable on a doctor's salary.",
+    "MBBS in Uzbekistan qualifies for education loans from major Indian banks, easing Uzbekistan MBBS fees for Indian students even further. The total cost of ₹19–45 lakhs makes loan repayment very manageable on a doctor's salary.",
   nationalised: {
     title: "Nationalised bank loans",
     description:
@@ -1321,7 +1320,7 @@ export const uzbekistanAbroadWhyChooseTaksheelaContent: AbroadWhyChooseTaksheela
   titlePrimary: "Why Students from India, Nepal & Bangladesh Trust",
   titleAccent: "Taksheela",
   subtitle:
-    "Taksheela Institute of Education is a Kolkata-headquartered study abroad consultancy with offices across major Indian cities, specialising in MBBS abroad placements since our founding.",
+    "Taksheela Institute of Education is a Kolkata-headquartered study abroad consultancy with offices across major Indian cities, specialising in MBBS in Uzbekistan for Indian students' placements since our founding.",
   items: [
     {
       icon: "🔍",
@@ -1451,15 +1450,15 @@ export type TopUniHeaderTag = {
 
 export type TopUniFmgeBlock =
   | {
-      type: "text";
-      text: string;
-    }
+    type: "text";
+    text: string;
+  }
   | {
-      type: "bar";
-      barLabel: string;
-      /** 0–100 width for the red progress bar */
-      barPercent: number;
-    };
+    type: "bar";
+    barLabel: string;
+    /** 0–100 width for the red progress bar */
+    barPercent: number;
+  };
 
 /** One row in the 2×2 stats grid — labels match the reference (Annual fees, Medium, Departments, etc.). */
 export type TopUniStatCell = {
@@ -1755,7 +1754,7 @@ export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesConten
   titlePrimary: "NMC-Approved Medical Universities in Uzbekistan",
   titleAccent: "2026–27",
   intro:
-    "All universities listed below are government-run, NMC-recognised, and offer English-medium MBBS with clinical training in affiliated teaching hospitals. Fees are approximate and subject to annual revision; confirm the latest structure with Taksheela before payment.",
+    "All universities listed below are government-run, NMC-recognised, and offer English-medium MBBS with clinical training in affiliated teaching hospitals. MBBS fees in Uzbekistan for Indian students are approximate and subject to annual revision; confirm the latest structure with Taksheela before payment.",
   cardWatermarkCode: "UZ",
   filters: [
     { id: "all", label: "All Universities" },
@@ -1848,17 +1847,17 @@ export const uzbekistanAbroadFaqPageContent: AbroadFaqPageContent = {
     {
       question: "Is MBBS from Uzbekistan valid in India?",
       answer:
-        "Yes. Degrees from NMC-listed Uzbek medical universities are recognised in India. After graduation, students must pass the FMGE or NExT licensing examination to obtain NMC registration and practise medicine in India. All five universities listed on this page are NMC-approved.",
+        "Yes. Degrees from NMC-listed Uzbek medical universities are recognised in India, and this recognition is one of the main reasons why MBBS in Uzbekistan for Indian Students has become a popular choice each year. After graduation, students must pass the FMGE or NExT licensing examination to obtain NMC registration and practise medicine in India. All five universities listed on this page are NMC-approved.",
     },
     {
       question: "Is NEET compulsory for MBBS in Uzbekistan?",
       answer:
-        "Yes, for Indian students. As per NMC's Foreign Medical Graduate Licentiate (FMGL) Regulations 2021, all Indian students pursuing MBBS abroad must hold a valid NEET-UG qualifying score at the time of admission. The score must be from 2024, 2025, or 2026. Note: There is no minimum NEET score requirement set by Uzbek universities — only NMC's minimum qualifying percentile applies.",
+        "Yes, for Indian students. As per NMC's Foreign Medical Graduate Licentiate (FMGL) Regulations 2021, all Indian students pursuing MBBS abroad must hold a valid NEET-UG qualifying score at the time of admission, and this applies across all recognised medical universities in Uzbekistan. The score must be from 2024, 2025, or 2026. Note: There is no minimum NEET score requirement set by Uzbek universities — only NMC's minimum qualifying percentile applies.",
     },
     {
       question: "What is the total cost of MBBS in Uzbekistan?",
       answer:
-        "The total cost of a 6-year MBBS in Uzbekistan ranges from approximately ₹19 lakhs to ₹45 lakhs depending on the university. This includes tuition fees (USD 2,300–3,500/yr), hostel (USD 600–800/yr), and estimated living expenses (USD 100–120/month). Indian mess is available at additional cost of approximately USD 1,200/year. No donation or capitation fee applies.",
+        "The total cost of a 6-year MBBS fee in Uzbekistan for Indian students ranges from approximately ₹19 lakhs to ₹45 lakhs depending on the university. This includes tuition fees (USD 2,300–3,500/yr), hostel (USD 600–800/yr), and estimated living expenses (USD 100–120/month). Families comparing Uzbekistan MBBS fees for Indian students across universities should also budget Indian mess at additional cost of approximately USD 1,200/year. No donation or capitation fee applies.",
     },
     {
       question: "Is Uzbekistan safe for Indian students?",
@@ -1898,8 +1897,8 @@ export const uzbekistanAbroadCtaBannerContent: AbroadCtaBannerContent = {
 };
 
 export const uzbekistanAbroadQuickFactsSectionContent: AbroadQuickFactsSectionContent = {
-  eyebrow: "At A Glance",
-  titleLead: "MBBS in Uzbekistan for Indian Students —",
+  eyebrow: "At a Glance",
+  titleLead: "MBBS in Uzbekistan —",
   titleAccent: "Quick Facts",
   subtitle:
     "Key data every student from India, Nepal and Bangladesh needs before applying for MBBS in Uzbekistan 2026-27.",
@@ -1997,7 +1996,7 @@ const uzbekistanAbroadWhyChooseMbbsReasons: AbroadWhyChooseMbbsItem[] = [
     icon: "💸",
     title: "Genuinely Affordable Fees — No Hidden Costs",
     description:
-      "Annual tuition starts at USD $2.5K (approx. ₹2.5 lakhs), making the 6-year total ₹25-35 lakhs — far below private MBBS in India. Government-funded universities keep costs structurally low year after year.",
+      "Annual tuition starts at USD $2.5K (approx. ₹2.5 lakhs), making the 6-year total ₹25-35 lakhs — far below private MBBS in India, and a key reason MBBS fees in Uzbekistan for Indian students remain so competitive. Government-funded universities keep costs structurally low year after year.",
   },
   {
     icon: "✅",
@@ -2048,7 +2047,7 @@ const uzbekistanAbroadWhyChooseMbbsSection: AbroadWhyChooseMbbsSectionContent = 
   titleLead: "8 Compelling Reasons to Study MBBS in ",
   titleTrail: "",
   subtitle:
-    "Evidence-backed reasons why Uzbekistan is the right MBBS abroad choice for students from India, Nepal and Bangladesh in 2026.",
+    "Evidence-backed reasons why the medical universities in Uzbekistan are the right MBBS abroad choice for students from India, Nepal and Bangladesh in 2026.",
 };
 
 export const uzbekistanAbroadWhyChooseMbbsContent: AbroadWhyChooseMbbsContent = {

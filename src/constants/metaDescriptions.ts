@@ -10,9 +10,9 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
   germany:
     "Explore MBBS in Germany with Taksheela Institute Of Education. Get end-to-end support, from application to visa, for a successful medical career abroad.",
   kazakhstan:
-    "Taksheela Institute Of Education offers expert guidance for MBBS in Kazakhstan with admission support, affordable fees and complete study abroad assistance.",
+    "Complete guide to MBBS in Kazakhstan for Indian students 2026-27. Kazakhstan MBBS fees for Indian students from ₹3.5L/year, NMC-approved universities, English-medium & free counselling. Cost of MBBS in Kazakhstan for Indian students: ₹35–48 lakhs total.",
   kyrgyzstan:
-    "Study MBBS in Kyrgyzstan with Taksheela Institute Of Education. Get expert guidance on admissions, affordable fees, and a smooth study abroad journey.",
+    "Complete guide to MBBS in Kyrgyzstan 2026-27. Fees of MBBS in Kyrgyzstan from ₹3.7L/year, NMC-approved Kyrgyzstan MBBS college options, English-medium & free counselling. MBBS in Kyrgyzstan fees in Indian Rupees: ₹28–51 lakhs total.",
   nepal:
     "Study MBBS in Nepal with Taksheela Institute of Education. Get expert guidance on admissions, eligibility, fees, and top medical universities in Nepal.",
   philippines:
@@ -24,7 +24,7 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
   usa:
     "Explore MBBS in USA with Taksheela Institute of Education. Get expert guidance on eligibility, admission process, fees, and top medical universities in the USA.",
   uzbekistan:
-    "Study MBBS in Uzbekistan with Taksheela Institute Of Education. Get expert guidance on admissions, affordable fees, top universities and visa support.",
+    "Complete guide to MBBS in Uzbekistan for Indian students 2026-27. Uzbekistan MBBS fees for Indian students from ₹2.5L/year, NMC-approved medical universities in Uzbekistan, English-medium & free counselling. MBBS fees in Uzbekistan for Indian students: ₹19–45 lakhs total.",
 };
 
 export const testMetaDescriptions: Record<string, string> = {
@@ -84,15 +84,18 @@ export const mbbsAbroadMetaTitles: Record<string, string> = {
   canada: "MBBS in Canada | Top Medical Universities | Taksheela",
   georgia: "Admission Guide for MBBS in Georgia | Taksheela Institute",
   germany: "Study MBBS in Germany | Taksheela Institute of Education",
-  kazakhstan: "Study MBBS in Kazakhstan | Taksheela Institute of Education",
-  kyrgyzstan: "Study MBBS in Kyrgyzstan | Taksheela Institute of Education",
+  kazakhstan:
+    "MBBS in Kazakhstan for Indian Students – Fees & Cost | Taksheela",
+  kyrgyzstan:
+    "MBBS in Kyrgyzstan – Fees in Indian Rupees & Colleges | Taksheela",
   nepal: "MBBS in Nepal: Fees, Eligibility & Top Colleges | Taksheela",
   philippines: "Study MBBS in Philippines | Taksheela Institute of Education",
   russia:
     "MBBS in Russia – Fees & NMC Approved Colleges | Taksheela",
   uk: "MBBS in United Kingdom | Taksheela Institute of Education",
   usa: "MBBS in USA Consultants | Taksheela Institute of Education",
-  uzbekistan: "Study MBBS in Uzbekistan | Taksheela Institute of Education",
+  uzbekistan:
+    "MBBS in Uzbekistan for Indian Students – Fees & NMC Universities | Taksheela",
 };
 
 export const testMetaTitles: Record<string, string> = {
