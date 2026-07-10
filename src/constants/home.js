@@ -303,7 +303,7 @@ export const medicalEducationAbroad = {
   eyebrow: "MEDICAL EDUCATION ABROAD",
   title: "Pursue MBBS Abroad from ₹20 Lakhs — Fully NMC Recognised",
   description:
-    "Transparent counselling, NMC-listed universities, end-to-end application & visa support, and coaching partners who prepare you for FMGE & NExT — all through one trusted team at Taksheela.",
+    "Transparent counselling, NMC-listed universities, end-to-end application & visa support, and coaching partners who prepare you for FMGE & NExT: all through one trusted team at Taksheela.",
   heroImage: NMCHomeImage,
   watermark: "MBBS",
   primaryCta: { label: "Compare MBBS Programs ›", href: "/mbbs" },
@@ -418,7 +418,7 @@ export const globalImmersionHome = {
       countryCode: "DE",
       countryName: "Germany",
       description:
-        "Berlin & Munich — applied research labs, engineering immersions, and curated industry visits with certificate.",
+        "Berlin & Munich — applied research labs, engineering immersions, and curated industry visits with certificates.",
       tags: ["TU Munich", "Siemens/BMW", "Certificate"],
       price: "From ₹1,20,000",
       image: germanyHomeImage,
@@ -450,7 +450,7 @@ export const studyInIndiaHome = {
   titleHighlight: "Study in India",
   titleAfter: " Program",
   description:
-    "Structured pathways for South Asian students to pursue degrees and exchange opportunities at Indian universities — with admissions guidance, documentation support, visa counselling and on-campus liaison through Taksheela’s institutional network.",
+    "Structured pathways for South Asian students to pursue degrees and exchange opportunities at Indian universities, with admissions guidance, documentation support, visa counselling and on-campus liaison through Taksheela's institutional network.",
   programs: [
     {
       id: "saarc-af",
@@ -543,7 +543,7 @@ export const testPrepSectionHome = {
   title:
     "Score High. Get Admitted. With India's Best Test Prep Coaching.",
   description:
-    "Structured modules, expert trainers, and full-length mocks — built to lift your score fast. Choose your exam and see how we help you hit your target with personalised plans and proven methods.",
+    "Structured modules, expert trainers, and full-length mocks: built to lift your score fast. Choose your exam and see how we help you hit your target with personalised plans and proven methods.",
   heroImage:
     "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
   tests: [
@@ -635,7 +635,7 @@ export const globalDegreeJourney = {
   eyebrow: "HOW IT WORKS",
   title: "Your Journey to a Global Degree in 5 Steps",
   subtitle:
-    "We handle all the complexity so you can focus on your future.",
+    "With expert overseas education counselling in India, we handle all the complexity so you can focus on your future.",
   cta: {
     label: "Start Your Journey Today",
     href: "https://wa.me/919831241212",
@@ -691,7 +691,7 @@ export const whereYouAreHome = {
   locations: [
     {
       id: "kol",
-      headline: "IN Kolkata",
+      headline: "Kolkata (IN)",
       address:
         "Salt Lake, Sector V — full-stack study abroad counselling, test prep & visa support.",
       href: "/consultants-study-abroad-kolkata",
@@ -699,7 +699,7 @@ export const whereYouAreHome = {
     },
     {
       id: "del",
-      headline: "IN Delhi NCR",
+      headline: "Delhi NCR (IN)",
       address:
         "Noida / Gurugram — walk-in sessions for UG, PG & MBA abroad; IELTS & GRE batches.",
       href: "/study-abroad-consultants-delhi-ncr",
@@ -707,7 +707,7 @@ export const whereYouAreHome = {
     },
     {
       id: "mum",
-      headline: "IN Mumbai",
+      headline: "Mumbai (IN)",
       address:
         "Western suburbs — premium counselling for USA, UK, Canada & EU admissions.",
       href: "/study-abroad-consultants-mumbai",
@@ -715,7 +715,7 @@ export const whereYouAreHome = {
     },
     {
       id: "blr",
-      headline: "IN Bangalore",
+      headline: "Bangalore (IN)",
       address:
         "Koramangala — tech & STEM-focused shortlisting; partner university connects.",
       href: "/study-abroad-consultants-bangalore",
@@ -723,7 +723,7 @@ export const whereYouAreHome = {
     },
     {
       id: "bbsr",
-      headline: "IN Bhubaneswar",
+      headline: "Bhubaneswar (IN)",
       address:
         "Eastern India hub — affordable pathways, scholarships & visa filing under one roof.",
       href: "/study-abroad-consultants-bhubaneswar",
@@ -731,7 +731,7 @@ export const whereYouAreHome = {
     },
     {
       id: "dxb",
-      headline: "AE Dubai",
+      headline: "Dubai (AE)",
       address:
         "Business Bay — Middle East desk for Indian students & institutional partnerships.",
       href: "/study-in-dubai",
@@ -758,7 +758,7 @@ export const faqHome = {
       id: "cost",
       question: "How much does it cost to study abroad from India?",
       answer:
-        "Total cost depends on country, course and lifestyle—typically tuition plus living for the full program. We help you compare realistic budgets, explore scholarships and education loans, and plan finances before you commit to a destination.",
+        "Total cost depends on country, course and lifestyle, typically tuition plus living for the full program. We help you compare realistic budgets, explore scholarships and education loans, and plan finances before you commit to a destination.",
     },
     {
       id: "mbbs-india",

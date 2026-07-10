@@ -13,7 +13,7 @@ import HomeSectionHeader from "./HomeSectionHeader";
 const SECTION_EYEBROW = "TRIUMPH TALES";
 const SECTION_TITLE = "What Our Students Say About Taksheela";
 const SECTION_SUB =
-  "5,000+ students placed globally across 30+ countries. Here is what some of them have to say.";
+  "As trusted abroad education consultants in India, Taksheela has placed 5,000+ students globally across 30+ countries. Here is what some of them have to say.";
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState<TestimonialViewModel[]>([]);

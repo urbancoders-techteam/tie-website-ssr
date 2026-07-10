@@ -77,7 +77,7 @@ export const kazakhstanAbroadHeroContent: AbroadHeroContent = {
     secondaryHref: "#top-universities",
   },
   quickStats: [
-    { label: "Annual Fees From", value: "₹3.5L" },
+    { label: "Annual Fees", value: "From ₹3.5L" },
     { label: "Total Duration", value: "6 Yrs" },
     { label: "Indian Students", value: "9K+" },
     { label: "NMC-Approved Unis", value: "10+" },
@@ -155,7 +155,7 @@ export const kazakhstanAbroadOverviewContent: AbroadOverviewContent = {
 export const kazakhstanAbroadFearsContent: AbroadFearsContent = {
   section: {
     eyebrow: "Common Fears & Real Answers",
-    titleLead: "What Students Worry About Before Choosing Kazakhstan",
+    titleLead: "What Students Worry About Before Choosing ",
     titleMiddle: " — ",
     titleAccent: "And How Taksheela Resolves It",
     titleTrail: "",
@@ -455,7 +455,7 @@ export const kazakhstanAbroadConsiderBeforeContent: AbroadConsiderBeforeContent 
       "Taksheela believes in full transparency. Here is an honest view of genuine advantages and real challenges — so your decision is fully informed, not just motivated by marketing.",
     advantagesTitle: "Strong Advantages",
     advantages: [
-      "Annual fees as low as ₹3.5L — total 6-year investment ₹35-48  lakhs, with zero capitation or donation at any Kazakh medical university.",
+      "Annual fees as low as ₹3.5L — total 6-year investment ₹35-48 lakhs, with zero capitation or donation at any Kazakh medical university.",
       "100% English-medium instruction at all NMC-listed universities — no separate language exam (IELTS/TOEFL) required for admission.",
       "NMC and WHO recognition across 10+ universities — degrees qualify for NExT (India), PLAB (UK), USMLE (USA), and Gulf licensing exams.",
       "9,000+ Indian students enrolled — well-established South Asian communities in Almaty and Astana with Indian food, festivals, and peer support.",
@@ -1558,7 +1558,7 @@ export type AbroadRegulatoryFrameworkContent = {
 
 export const kazakhstanAbroadRegulatoryFrameworkContent: AbroadRegulatoryFrameworkContent =
   {
-    eyebrow: "Regulatory framework",
+    eyebrow: "Regulatory Framework",
     titlePrimary: "NMC Gazette Rules &",
     titleAccent: "Kazakhstan Compliance",
     subtitle:
@@ -2247,6 +2247,7 @@ export const kazakhstanAbroadFaqPageContent: AbroadFaqPageContent = {
 
 export const kazakhstanAbroadCtaBannerContent: AbroadCtaBannerContent = {
   countryLabel: "Kazakhstan",
+  heading: "Is MBBS in Kazakhstan for Indian Students the Right Choice?",
   subtitle:
     "Book your free counselling session. Get a personalised university shortlist, complete fee breakdown, and eligibility confirmation within 24 hours.",
   primaryCtaLabel: "Book Free Counselling",

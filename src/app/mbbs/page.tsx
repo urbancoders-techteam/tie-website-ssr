@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   title: MBBS_META_TITLE,
   description: MBBS_META_DESCRIPTION,
   keywords: [
-    "MBBS abroad",
-    "MBBS abroad 2026",
-    "NMC approved MBBS abroad",
-    "MBBS abroad fees",
-    "MBBS abroad for Indian students",
-    "MBBS Nepal Bangladesh",
-    "MBBS in Russia",
-    "study MBBS abroad Taksheela",
+    "MBBS abroad for indian students",
+    "MBBS in foreign countries",
+    "MBBS study abroad consultancy",
+    "study MBBS abroad consultants",
+    "cost of MBBS abroad",
+    "cost of studying MBBS abroad",
+    "MBBS course in foreign countries",
+    "Medical colleges abroad for indian students",
   ],
   robots: {
     index: true,
@@ -255,7 +255,7 @@ export default function Page() {
           <div className="space-y-4 p-4">
             <MbbsHubSectionHeader title="What is MBBS?" align="left" />
             <p className={`${MBBS_HUB_BODY_TEXT} text-justify`}>
-              MBBS — Bachelor of Medicine, Bachelor of Surgery — is an undergraduate medical degree that equips students with the clinical knowledge, surgical foundations, and ethical grounding to become qualified physicians. Recognised globally, an MBBS degree is the launchpad for a lifelong career in healthcare, whether you practice in India, the UK, Canada, or anywhere else.
+              MBBS — Bachelor of Medicine, Bachelor of Surgery — is an undergraduate medical degree that equips students with the clinical knowledge, surgical foundations, and ethical grounding to become qualified physicians. Recognised globally, this degree serves as the launchpad for a lifelong career in healthcare, making MBBS abroad for Indian students a highly sought-after pathway to medical practice in India, the UK, Canada, or anywhere else.
             </p>
             <p className={`${MBBS_HUB_BODY_TEXT} text-justify`}>
               The program typically spans 5.5 to 6 years, combining classroom instruction, laboratory training, and hospital-based clinical rotations. All NMC-compliant programs include a minimum 54-month curriculum plus a 12-month internship — the baseline requirement for FMGE/NExT eligibility.
@@ -383,14 +383,14 @@ export default function Page() {
 
             <div className="grid md:grid-cols-2 gap-x-8 gap-y-3 mt-10 text-[#1f2937]">
               {[
-                "Lower total cost - ₹18-50L abroad vs ₹50L-1.5Cr at Indian private colleges",
-                "No separate entrance exam - most countries admit on NEET score and 12th marks alone",
-                "English-medium instruction - Russia, Philippines, Kazakhstan, Kyrgyzstan, Bangladesh and more",
-                "World-class clinical exposure - diverse patient populations, modern simulation labs",
-                "Globally recognised degrees - WHO-listed, NMC-compliant, practice anywhere",
-                "NMC-compliant internship - 12-month internship at the same university, FMGE-eligible",
-                "No capitation or donation fees - merit-based admission, fully transparent pricing",
-                "Skip the drop year cycle - secure your seat this session, begin on schedule",
+                "Lower total cost - ₹18-50L abroad vs ₹50L-1.5Cr at Indian private colleges.",
+                "No separate entrance exam - most countries admit on NEET score and 12th marks alone.",
+                "English-medium instruction - Russia, Philippines, Kazakhstan, Kyrgyzstan, Bangladesh and more.",
+                "World-class clinical exposure - diverse patient populations, modern simulation labs.",
+                "Globally recognised degrees - WHO-listed, NMC-compliant, practice anywhere.",
+                "NMC-compliant internship - 12-month internship at the same university, FMGE-eligible.",
+                "No capitation or donation fees - merit-based admission, fully transparent pricing.",
+                "Skip the drop year cycle - secure your seat this session, begin on schedule.",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-2.5">
                   <span className="text-[#00999E] text-xl leading-none mt-0.5">✓</span>

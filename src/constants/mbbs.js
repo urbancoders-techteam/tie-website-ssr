@@ -7,7 +7,7 @@ export const faqData = [
   },
   {
     title: "Why should I consider studying MBBS abroad?",
-    Desc: "Studying MBBS abroad is no longer a fallback — it is a strategic career decision. With 23 lakh students competing for 1.18 lakh seats in India, the odds are brutal. Abroad, you access NMC-approved universities at a fraction of Indian private college costs — ₹18 to 30 lakh total versus ₹50 lakh to 1.5 crore domestically — in full English, with globally recognised degrees. Over 30,000 Indian students made this choice in 2024 alone.",
+    Desc: "Studying MBBS in foreign countries is no longer a fallback — it is a strategic career decision. With 23 lakh students competing for 1.18 lakh seats in India, the odds are brutal. Abroad, you access NMC-approved universities at a fraction of Indian private college costs — ₹18 to 30 lakh total versus ₹50 lakh to 1.5 crore domestically — in full English, with globally recognised degrees. Over 30,000 Indian students made this choice in 2024 alone.",
   },
   {
     title: "What entrance exams do I need to take to study MBBS abroad?",
@@ -15,20 +15,20 @@ export const faqData = [
   },
   {
     title: "How long does it take to complete MBBS abroad?",
-    Desc: "Most programs are 5 to 6 years including the mandatory internship. Russia, Bangladesh, Kyrgyzstan, Kazakhstan, and Uzbekistan run 6-year programs with a 1-year clinical internship. The Philippines runs a 5-year BS+MD program. The UK is a 5-year MBBChB. The USA offers a 4-year MD for post-undergraduate students. As per NMC guidelines, a minimum of 54 months of study plus 12 months of internship is required for FMGE eligibility.",
+    Desc: "Most MBBS courses in foreign countries run 5 to 6 years including the mandatory internship. Russia, Bangladesh, Kyrgyzstan, Kazakhstan, and Uzbekistan run 6-year programs with a 1-year clinical internship. The Philippines runs a 5-year BS+MD program. The UK is a 5-year MBBChB. The USA offers a 4-year MD for post-undergraduate students. As per NMC guidelines, a minimum of 54 months of study plus 12 months of internship is required for FMGE eligibility.",
   },
   {
-    title: "Are the degrees recognized internationally?",
-    Desc: "Yes. Degrees from WHO-listed, NMC-compliant universities are recognised globally. To practice in India: FMGE/NExT required. For the UK: PLAB exam. For the USA: USMLE Steps 1, 2, and 3. For Australia: AMC exam. Taksheela helps you select universities that best prepare you for these licensing pathways based on your long-term career destination.",
+    title: "Are the degrees recognised internationally?",
+    Desc: "Yes. Degrees from WHO-listed, NMC-compliant universities are recognised globally. To practice in India: FMGE/NExT required. For the UK: PLAB exam. For the USA: USMLE Steps 1, 2, and 3. For Australia: AMC exam. Taksheela helps select Medical colleges abroad for Indian students that best prepare you for these licensing pathways based on your long-term career destination.",
   },
   {
     title: "What is the medium of instruction?",
-    Desc: "Russia, Philippines, Kazakhstan, Kyrgyzstan, Uzbekistan, Bangladesh, and Nepal all offer MBBS programs fully in English. Germany requires German language proficiency at B2/C1 level for clinical years. UK, USA, Canada, and Australia are entirely English-medium. For most budget destinations popular among Indian, Nepali, and Bangladeshi students, English is the sole medium — no local language is required.",
+    Desc: "Russia, Philippines, Kazakhstan, Kyrgyzstan, Uzbekistan, Bangladesh, and Nepal are among the most popular countries for MBBS abroad, offering the programs fully in English. Germany requires German language proficiency at B2/C1 level for clinical years. UK, USA, Canada, and Australia are entirely English-medium. For most budget destinations popular among Indian, Nepali, and Bangladeshi students, English is the sole medium — no local language is required.",
   },
 
   {
     title: "Are scholarships available for international students?",
-    Desc: "Several universities in Russia, Kazakhstan, and Germany offer merit-based scholarships or tuition waivers for academically strong international students. Germany's public university system itself operates at near-zero tuition for all students — essentially a scholarship-level cost built into the system. Taksheela advises on available scholarship options during the counselling process and assists with scholarship applications where applicable.",
+    Desc: "Several universities in Russia, Kazakhstan, and Germany offer merit-based scholarships or tuition waivers for academically strong international students. Germany's public university system itself operates at near-zero tuition for all students — essentially a scholarship-level cost built into the system. Our MBBS study abroad consultancy advises on available scholarship options during the counseling process and assists with scholarship applications where applicable.",
   },
   {
     title: "What are the living costs for students abroad? (India, Nepal, Bangladesh context)",
