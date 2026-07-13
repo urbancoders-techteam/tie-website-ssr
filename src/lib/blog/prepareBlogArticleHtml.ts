@@ -22,6 +22,27 @@ function cleanTagInlineStyles(html: string, tagNames: string): string {
   });
 }
 
+/** Remove nowrap only inside style="..." — never from article/code text content. */
+function stripNowrapFromStyleAttributes(html: string): string {
+  return html.replace(
+    /(\sstyle=)(["'])([^"']*)\2/gi,
+    (full, prefix: string, quote: string, styles: string) => {
+      if (!/white-space\s*:\s*nowrap/i.test(styles)) return full;
+
+      const cleaned = styles
+        .replace(/(?:^|;)\s*white-space\s*:\s*nowrap\s*/gi, ";")
+        .replace(/^\s*;\s*|\s*;\s*;+/g, ";")
+        .replace(/^;|;$/g, "")
+        .trim();
+
+      if (!cleaned) {
+        return "";
+      }
+      return `${prefix}${quote}${cleaned}${quote}`;
+    }
+  );
+}
+
 function wrapOnce(html: string, marker: string, openRe: RegExp, openRepl: string, closeRe: RegExp, closeRepl: string) {
   if (new RegExp(marker, "i").test(html)) return html;
   return html.replace(openRe, openRepl).replace(closeRe, closeRepl);
@@ -35,6 +56,10 @@ export function prepareBlogArticleHtml(html: string): string {
   if (!html?.trim()) return html;
 
   let result = sanitizeBlogArticleHtml(html);
+
+  // Word/Docs paste: non-breaking spaces prevent wrapping and clip list text
+  result = result.replace(/&nbsp;/gi, " ").replace(/\u00a0/g, " ");
+  result = stripNowrapFromStyleAttributes(result);
 
   result = wrapOnce(
     result,
@@ -65,7 +90,8 @@ export function prepareBlogArticleHtml(html: string): string {
 
   result = result.replace(/\s(width|height)=["'][^"']*["']/gi, "");
 
-  const tags = "img|table|div|p|span|iframe|video|embed|object|section|article|figure|td|th";
+  const tags =
+    "img|table|div|p|span|li|ul|ol|iframe|video|embed|object|section|article|figure|td|th";
   result = cleanTagInlineStyles(result, tags);
 
   result = result.replace(/<font\b[^>]*>/gi, "<span>").replace(/<\/font>/gi, "</span>");

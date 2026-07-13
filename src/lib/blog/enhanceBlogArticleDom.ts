@@ -2,6 +2,19 @@ const TABLE_WRAP = "blog-article-table-scroll";
 const MEDIA_WRAP = "blog-article-media-responsive";
 const PRE_WRAP = "blog-article-pre-scroll";
 
+const TABLE_TAGS = new Set([
+  "TABLE",
+  "THEAD",
+  "TBODY",
+  "TFOOT",
+  "TR",
+  "TD",
+  "TH",
+  "COL",
+  "COLGROUP",
+  "CAPTION",
+]);
+
 function wrapElement(el: Element, className: string) {
   if (el.parentElement?.classList.contains(className)) return;
   const wrap = document.createElement("div");
@@ -41,6 +54,21 @@ function resetElementLayout(el: HTMLElement) {
   }
 }
 
+/** Only strip layout locks that already exist — never invent new inline styles. */
+function clearWrapLocks(el: HTMLElement) {
+  const ws = el.style.whiteSpace;
+  if (ws === "nowrap" || ws === "pre" || ws === "pre-wrap") {
+    el.style.removeProperty("white-space");
+  }
+  if (el.style.minWidth) {
+    el.style.removeProperty("min-width");
+  }
+}
+
+function isTableRelated(el: Element) {
+  return TABLE_TAGS.has(el.tagName) || Boolean(el.closest("table"));
+}
+
 /**
  * Client-side pass for any editor markup the server regex did not catch.
  */
@@ -57,15 +85,44 @@ export function enhanceBlogArticleDom(root: HTMLElement) {
   root.querySelectorAll("img").forEach((img) => resetElementLayout(img as HTMLElement));
 
   root.querySelectorAll<HTMLElement>("[style]").forEach((el) => {
-    if (el.style.whiteSpace === "nowrap") {
-      el.style.whiteSpace = "normal";
+    if (!isTableRelated(el)) {
+      clearWrapLocks(el);
     }
     el.style.fontFamily = "";
     if (el.style.fontSize && window.matchMedia("(max-width: 639px)").matches) {
       el.style.fontSize = "";
       el.style.lineHeight = "";
     }
-    resetElementLayout(el);
+    if (!isTableRelated(el)) {
+      resetElementLayout(el);
+    }
+  });
+
+  // List text wrap: only touch existing inline locks; skip tables; clean NBSP in text
+  root.querySelectorAll("li").forEach((li) => {
+    const el = li as HTMLElement;
+
+    if (el.hasAttribute("style")) {
+      clearWrapLocks(el);
+    }
+
+    el.querySelectorAll<HTMLElement>("[style]").forEach((child) => {
+      if (isTableRelated(child)) return;
+      clearWrapLocks(child);
+      if (child.style.width && !child.style.width.includes("%")) {
+        child.style.width = "";
+      }
+    });
+
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+    textNodes.forEach((node) => {
+      if (node.parentElement && isTableRelated(node.parentElement)) return;
+      if (node.nodeValue && /\u00a0/.test(node.nodeValue)) {
+        node.nodeValue = node.nodeValue.replace(/\u00a0/g, " ");
+      }
+    });
   });
 
   root.querySelectorAll("font").forEach((font) => {
