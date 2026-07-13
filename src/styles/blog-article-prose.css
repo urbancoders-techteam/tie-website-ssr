@@ -46,9 +46,10 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: clip;
+  overflow-x: hidden;
   overflow-wrap: anywhere;
   word-wrap: break-word;
+  word-break: break-word;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -208,8 +209,16 @@
 }
 
 .blog-article-prose :where(ul, ol) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   margin: var(--blog-space) 0 calc(var(--blog-space) * 1.2);
-  padding-left: clamp(1.1rem, 4vw, 1.5rem);
+  padding-inline-start: clamp(1.35rem, 4.5vw, 1.75rem);
+  list-style-position: outside;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal !important;
 }
 
 .blog-article-prose :where(ul) {
@@ -221,7 +230,51 @@
 }
 
 .blog-article-prose :where(li) {
-  margin-bottom: 0.45em;
+  display: list-item;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-bottom: 0.55em;
+  padding-inline-start: 0.35rem;
+  box-sizing: border-box;
+  text-align: left;
+  overflow: visible;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+  line-height: 1.75;
+}
+
+/* Force wrap on every nested node — editor often injects nowrap / nbsp spans */
+.blog-article-prose :where(li *:not(ul):not(ol):not(li):not(table):not(thead):not(tbody):not(tr):not(td):not(th)) {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: auto !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  word-wrap: break-word !important;
+}
+
+.blog-article-prose :where(li > p),
+.blog-article-prose :where(li > div) {
+  display: block;
+  margin: 0 0 0.35em;
+  max-width: 100%;
+  text-align: left;
+}
+
+.blog-article-prose :where(li > p:last-child),
+.blog-article-prose :where(li > div:last-child) {
+  margin-bottom: 0;
+}
+
+.blog-article-prose :where(li > ul, li > ol) {
+  display: block;
+  width: 100%;
+  margin: 0.4em 0 0.35em;
+  padding-inline-start: clamp(1.1rem, 3.5vw, 1.4rem);
 }
 
 .blog-article-prose :where(blockquote) {
@@ -390,6 +443,10 @@
   }
 
   .blog-article-prose :where(ul, ol) {
-    padding-left: 1.15rem;
+    padding-inline-start: 1.25rem;
+  }
+
+  .blog-article-prose :where(li) {
+    padding-inline-start: 0.25rem;
   }
 }

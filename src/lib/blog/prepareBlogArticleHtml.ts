@@ -36,6 +36,10 @@ export function prepareBlogArticleHtml(html: string): string {
 
   let result = sanitizeBlogArticleHtml(html);
 
+  // Word/Docs paste: non-breaking spaces prevent wrapping and clip list text
+  result = result.replace(/&nbsp;/gi, " ").replace(/\u00a0/g, " ");
+  result = result.replace(/white-space\s*:\s*nowrap\s*;?/gi, "");
+
   result = wrapOnce(
     result,
     "blog-article-table-scroll",
@@ -65,7 +69,8 @@ export function prepareBlogArticleHtml(html: string): string {
 
   result = result.replace(/\s(width|height)=["'][^"']*["']/gi, "");
 
-  const tags = "img|table|div|p|span|iframe|video|embed|object|section|article|figure|td|th";
+  const tags =
+    "img|table|div|p|span|li|ul|ol|iframe|video|embed|object|section|article|figure|td|th";
   result = cleanTagInlineStyles(result, tags);
 
   result = result.replace(/<font\b[^>]*>/gi, "<span>").replace(/<\/font>/gi, "</span>");

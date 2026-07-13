@@ -57,15 +57,42 @@ export function enhanceBlogArticleDom(root: HTMLElement) {
   root.querySelectorAll("img").forEach((img) => resetElementLayout(img as HTMLElement));
 
   root.querySelectorAll<HTMLElement>("[style]").forEach((el) => {
-    if (el.style.whiteSpace === "nowrap") {
-      el.style.whiteSpace = "normal";
-    }
+    el.style.removeProperty("white-space");
+    el.style.whiteSpace = "normal";
+    el.style.removeProperty("min-width");
     el.style.fontFamily = "";
     if (el.style.fontSize && window.matchMedia("(max-width: 639px)").matches) {
       el.style.fontSize = "";
       el.style.lineHeight = "";
     }
     resetElementLayout(el);
+  });
+
+  // List text must wrap — replace leftover NBSP and kill nowrap on every node
+  root.querySelectorAll("li").forEach((li) => {
+    const el = li as HTMLElement;
+    el.style.removeProperty("white-space");
+    el.style.whiteSpace = "normal";
+    el.style.removeProperty("min-width");
+    el.style.maxWidth = "100%";
+
+    el.querySelectorAll<HTMLElement>("*").forEach((child) => {
+      child.style.removeProperty("white-space");
+      child.style.whiteSpace = "normal";
+      child.style.removeProperty("min-width");
+      if (child.style.width && !child.style.width.includes("%")) {
+        child.style.width = "";
+      }
+    });
+
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+    textNodes.forEach((node) => {
+      if (node.nodeValue && /\u00a0/.test(node.nodeValue)) {
+        node.nodeValue = node.nodeValue.replace(/\u00a0/g, " ");
+      }
+    });
   });
 
   root.querySelectorAll("font").forEach((font) => {
