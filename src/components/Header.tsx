@@ -323,8 +323,8 @@ export const Header = ({ itemupdate }: any) => {
       setSelectedParentMenu("international-relation");
     else if (location === "/immersion" || location.startsWith("/immersion/"))
       setSelectedParentMenu("Immersion");
-    else if (location === "/blog" || location.startsWith("/blog/"))
-      setSelectedParentMenu("Blog");
+    else if (location === "/blogs" || location.startsWith("/blogs/"))
+      setSelectedParentMenu("Blogs");
     else if (location === "/mbbs" || location.startsWith("/mbbs/"))
       setSelectedParentMenu("mbbs");
     else setSelectedParentMenu(null);
@@ -678,13 +678,13 @@ export const Header = ({ itemupdate }: any) => {
                     <>
                       <Box sx={{ py: 0.75 }}>
                         <Link
-                          href="/blog"
+                          href="/blogs"
                           className="custom-link"
                           onClick={handleDrawerClose}
                           style={{ display: "block" }}
                         >
                           <HoverTypography sx={{ fontSize: "16px", fontWeight: 600 }}>
-                            Blog
+                            Blogs
                           </HoverTypography>
                         </Link>
                       </Box>
@@ -725,13 +725,13 @@ export const Header = ({ itemupdate }: any) => {
                       </Box>
                       <Box sx={{ py: 0.75 }}>
                         <Link
-                          href="/blog"
+                          href="/blogs"
                           className="custom-link"
                           onClick={handleDrawerClose}
                           style={{ display: "block" }}
                         >
                           <HoverTypography sx={{ fontSize: "16px", fontWeight: 600 }}>
-                            Blog
+                            Blogs
                           </HoverTypography>
                         </Link>
                       </Box>
@@ -1222,17 +1222,17 @@ export const Header = ({ itemupdate }: any) => {
                 </div>
 
                 <Link
-                  href="/blog"
+                  href="/blogs"
                   className="custom-link"
                   style={
                     NavLinkCss({
                       isActive:
-                        isParentMenuSelected("Blog") ||
-                        location === "/blog" ||
-                        location.startsWith("/blog/"),
+                        isParentMenuSelected("Blogs") ||
+                        location === "/blogs" ||
+                        location.startsWith("/blogs/"),
                     }) as React.CSSProperties
                   }
-                  onClick={() => setSelectedParentMenu("Blog")}
+                  onClick={() => setSelectedParentMenu("Blogs")}
                 >
                   <HoverTypography
                     sx={{
@@ -1240,12 +1240,12 @@ export const Header = ({ itemupdate }: any) => {
                       fontWeight: 500,
                     }}
                     isActive={
-                      isParentMenuSelected("Blog") ||
-                      location === "/blog" ||
-                      location.startsWith("/blog/")
+                      isParentMenuSelected("Blogs") ||
+                      location === "/blogs" ||
+                      location.startsWith("/blogs/")
                     }
                   >
-                    Blog
+                    Blogs
                   </HoverTypography>
                 </Link>
 
