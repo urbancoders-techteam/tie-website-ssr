@@ -10,7 +10,7 @@ export default function BlogNotFound() {
           This blog post may have been removed or the link is incorrect.
         </p>
         <Link
-          href="/blog"
+          href="/blogs"
           className="mt-8 inline-flex rounded-xl bg-[#00999E] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#007F83]"
         >
           Back to Blog

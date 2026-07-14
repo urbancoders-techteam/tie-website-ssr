@@ -68,7 +68,7 @@ export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPa
                     Book Free Counselling
                   </Link>
                   <Link
-                    href="/blog"
+                    href="/blogs"
                     className="inline-flex w-full items-center justify-center rounded-xl border-2 border-[#00999E] px-6 py-3 text-sm font-bold text-[#00999E] transition hover:bg-[#00999E]/5 sm:w-auto"
                   >
                     More Articles

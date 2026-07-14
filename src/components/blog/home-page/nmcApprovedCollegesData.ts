@@ -1,4 +1,4 @@
-const DEFAULT_GUIDE_HREF = "/blog";
+const DEFAULT_GUIDE_HREF = "/blogs";
 
 export type NmcCollegeArticle = {
   title: string;
@@ -15,7 +15,7 @@ export type NmcCollegeArticle = {
 export const nmcApprovedCollegesContent = {
   eyebrow: "MBBS Abroad",
   heading: "MBBS Abroad: NMC-Approved Colleges & Costs",
-  viewAllHref: "/blog",
+  viewAllHref: "/blogs",
   viewAllLabel: "All MBBS Articles",
 };
 

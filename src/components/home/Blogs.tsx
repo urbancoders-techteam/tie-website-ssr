@@ -54,7 +54,7 @@ export default async function Blogs() {
               </div>
               <div className="flex justify-center lg:justify-end lg:shrink-0">
                 <Link
-                  href="/blog"
+                  href="/blogs"
                   className="inline-flex items-center gap-0.5 rounded-lg border-2 px-5 py-2.5 text-sm font-semibold transition hover:bg-[#00999E]/5 sm:text-base"
                   style={{ borderColor: TEAL, color: TEAL }}
                 >
