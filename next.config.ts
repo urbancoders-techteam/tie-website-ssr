@@ -18,6 +18,21 @@ const nextConfig: NextConfig = {
         destination: "https://portal.taksheela.com/login",
         permanent: true,
       },
+      {
+        source: "/blog",
+        destination: "/blogs",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/blogs/:slug",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug/",
+        destination: "/blogs/:slug",
+        permanent: true,
+      },
       // Hub-only MBBS countries (no detail page — cards stay on /mbbs with Enquire now)
       ...[
         "bangladesh",

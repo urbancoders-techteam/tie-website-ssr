@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pageTitle =
     blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
   const ogTitle = blog.metaTitle?.trim() || embeddedMeta.metaTitle || blog.title;
-  const canonical = `https://www.taksheela.com/blog/${slug}`;
+  const canonical = `https://www.taksheela.com/blogs/${slug}`;
   const keywords = blog.keywords
     ?.split(",")
     .map((keyword) => keyword.trim())

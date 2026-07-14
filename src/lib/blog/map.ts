@@ -45,7 +45,7 @@ export function excerptFrom(html: string, maxWords = 28): string {
 }
 
 export function blogHref(slugUrl: string): string {
-  if (!slugUrl?.trim()) return "/blog";
+  if (!slugUrl?.trim()) return "/blogs";
 
   let path = slugUrl.trim();
 
@@ -57,7 +57,7 @@ export function blogHref(slugUrl: string): string {
     // keep path as-is
   }
 
-  path = path.replace(/^\/+/, "").replace(/^blog\/?/i, "");
+  path = path.replace(/^\/+/, "").replace(/^blogs?\/?/i, "");
   const slug =
     path
       .split("?")[0]
@@ -67,8 +67,8 @@ export function blogHref(slugUrl: string): string {
       .filter(Boolean)
       .pop() ?? "";
 
-  if (!slug) return "/blog";
-  return `/blog/${slug}`;
+  if (!slug) return "/blogs";
+  return `/blogs/${slug}`;
 }
 
 export function mapApiBlogToPost(blog: ApiBlog, index = 0): BlogPost {

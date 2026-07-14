@@ -2,7 +2,7 @@ import BlogHomePage from "@/components/blog/home-page/BlogHomePage";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-const BLOG_URL = "https://www.taksheela.com/blog";
+const BLOG_URL = "https://www.taksheela.com/blogs";
 
 export const metadata: Metadata = {
   title:
