@@ -181,7 +181,7 @@ export default function page() {
                     </div>
                     <div className="mt-8 flex justify-center">
                         <a
-                            href="https://www.taksheela.com/contact"
+                            href="https://taksheela.com/contact"
                             className="inline-flex items-center justify-center rounded-full bg-[#00999E] px-8 py-3 text-white text-sm sm:text-base font-semibold shadow-md transition hover:bg-[#00777E]"
                         >
                             Contact Us for Admission & Visa Support

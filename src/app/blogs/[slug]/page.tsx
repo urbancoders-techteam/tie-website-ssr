@@ -3,23 +3,55 @@ import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { fetchBlogBySlug } from "@/lib/blog/fetch";
 import { extractBlogMetaFromHtml } from "@/lib/blog/parseBlogArticleMeta";
 import { fetchRelatedBlogs } from "@/lib/blog/related";
-import { excerptFrom, stripHtml } from "@/lib/blog/map";
+import { blogHref, excerptFrom, stripHtml } from "@/lib/blog/map";
+import { stripTrailingNumericSuffix } from "@/lib/blog/numberedSlugRedirect";
+import { getSeoBlogRedirectDestination } from "@/lib/blog/seoBlogRedirects";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+/**
+ * 1) SEO spreadsheet exact mappings (incl. force → /blogs).
+ * 2) Else orphan numbered URLs: clean slug if live, else /blogs.
+ * Live blogs whose real slugUrl ends in a number are unchanged (exact match first).
+ */
+async function redirectMissingBlogSlug(slug: string): Promise<never | null> {
+  const seoDestination = getSeoBlogRedirectDestination(slug);
+  if (seoDestination) {
+    permanentRedirect(seoDestination);
+  }
+
+  const cleanSlug = stripTrailingNumericSuffix(slug);
+  if (!cleanSlug) return null;
+
+  const cleanBlog = await fetchBlogBySlug(cleanSlug);
+  if (cleanBlog) {
+    permanentRedirect(blogHref(cleanBlog.slugUrl || cleanSlug));
+  }
+
+  permanentRedirect("/blogs");
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  const seoDestination = getSeoBlogRedirectDestination(slug);
+  if (seoDestination) {
+    permanentRedirect(seoDestination);
+  }
+
   const blog = await fetchBlogBySlug(slug);
 
   if (!blog) {
+    await redirectMissingBlogSlug(slug);
     return { title: "Article Not Found | Taksheela Blog" };
   }
 
   const embeddedMeta = extractBlogMetaFromHtml(blog.description);
+  const pathSlug = blog.slugUrl?.trim() || slug;
 
   const description =
     blog.metaDescription?.trim() ||
@@ -28,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pageTitle =
     blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
   const ogTitle = blog.metaTitle?.trim() || embeddedMeta.metaTitle || blog.title;
-  const canonical = `https://www.taksheela.com/blogs/${slug}`;
+  const canonical = `https://taksheela.com${blogHref(pathSlug)}`;
   const keywords = blog.keywords
     ?.split(",")
     .map((keyword) => keyword.trim())
@@ -60,9 +92,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogSlugPage({ params }: PageProps) {
   const { slug } = await params;
+
+  const seoDestination = getSeoBlogRedirectDestination(slug);
+  if (seoDestination) {
+    permanentRedirect(seoDestination);
+  }
+
   const blog = await fetchBlogBySlug(slug);
 
   if (!blog) {
+    await redirectMissingBlogSlug(slug);
     notFound();
   }
 
@@ -89,7 +128,7 @@ export default async function BlogSlugPage({ params }: PageProps) {
       name: "Taksheela Institute",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
       },
     },
   };

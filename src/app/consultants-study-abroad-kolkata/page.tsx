@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute Logo",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Looking for study abroad consultants in Kolkata? Taksheela Institute offers expert guidance for admissions, test prep, & achieving your global education dreams.",
     images: [
-      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",

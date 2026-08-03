@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute Logo",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Discover Taksheela Institute—trusted experts in study abroad, immigration, test prep, and counseling. Empowering students for global education success.",
     images: [
-      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",

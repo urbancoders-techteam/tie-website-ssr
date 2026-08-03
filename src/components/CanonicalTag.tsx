@@ -13,7 +13,7 @@ function hasMetadataCanonical(pathname: string): boolean {
 
 const CanonicalTag = () => {
   const pathname = usePathname();
-  const baseUrl = 'https://www.taksheela.com';
+  const baseUrl = 'https://taksheela.com';
 
   if (!pathname || hasMetadataCanonical(pathname)) return null;
   const normalizedPath =

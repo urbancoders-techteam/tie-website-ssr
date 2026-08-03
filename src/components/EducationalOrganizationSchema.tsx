@@ -3,10 +3,10 @@ export default function EducationalOrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "@id": "https://www.taksheela.com/#organization",
+    "@id": "https://taksheela.com/#organization",
     name: "Taksheela Institute of Education",
-    url: "https://www.taksheela.com",
-    logo: "https://www.taksheela.com/images/TIE_LOGO.png",
+    url: "https://taksheela.com",
+    logo: "https://taksheela.com/images/TIE_LOGO.png",
     email: "info@taksheela.com",
     address: [
       {
