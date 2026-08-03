@@ -1,4 +1,4 @@
-ï»¿import FAQ from "@/components/FAQ";
+import FAQ from "@/components/FAQ";
 import LetsStart from "@/components/immersion/LetsStart";
 import GlobalCombination from "@/components/study-abroad/GlobalCombination";
 import Milestones from "@/components/study-abroad/Milestones";
@@ -38,7 +38,7 @@ export default function page() {
                                 </h1>
 
                                 <p className="mt-10 text-gray-700 leading-relaxed text-base">
-                                    Get expert guidance from trusted study abroad consultants in <br/> Bangalore â€”start
+                                    Get expert guidance from trusted study abroad consultants in <br/> Bangalore —start
                                      your global education journey today. Apply now.
                                 </p>
 
@@ -181,7 +181,7 @@ export default function page() {
                     </div>
                     <div className="mt-8 flex justify-center">
                         <a
-                            href="https://www.taksheela.com/contact"
+                            href="https://taksheela.com/contact"
                             className="inline-flex items-center justify-center rounded-full bg-[#00999E] px-8 py-3 text-white text-sm sm:text-base font-semibold shadow-md transition hover:bg-[#00777E]"
                         >
                             Contact Us for Admission & Visa Support
@@ -211,7 +211,7 @@ export default function page() {
                   reverse={false}
                 description={
                     <>
-                        Your global education journey starts here! At Taksheela, we are dedicated study abroad consultants in Bangalore, helping students explore top universities worldwide. From choosing the right course to securing admission, our expert team ensures a smooth, stress-free process. With personalized guidance and a student-first approach, we turn your dreams into reality. DonGÃ‡Ã–t waitGÃ‡Ã¶book your free counseling session today and step confidently toward a bright future abroad!
+                        Your global education journey starts here! At Taksheela, we are dedicated study abroad consultants in Bangalore, helping students explore top universities worldwide. From choosing the right course to securing admission, our expert team ensures a smooth, stress-free process. With personalized guidance and a student-first approach, we turn your dreams into reality. DonGÇÖt waitGÇöbook your free counseling session today and step confidently toward a bright future abroad!
                     
                         <div className="pt-6">
                             <a

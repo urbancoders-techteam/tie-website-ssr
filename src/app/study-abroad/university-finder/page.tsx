@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     title: 'Find Top Universities Abroad—Personalized Results | Taksheela UniversityFinder',
     description:
       "Use Taksheela’s UniversityFinder to get personalized recommendations for overseas universities in USA, UK, Canada & more. Explore options and start your journey today!",
-    url: 'https://www.taksheela.com/study-abroad/university-finder',
+    url: 'https://taksheela.com/study-abroad/university-finder',
     type: 'website',
     images: [
       {
-        url: 'https://www.taksheela.com/images/university-finder-og.jpg',
+        url: 'https://taksheela.com/images/university-finder-og.jpg',
         width: 1200,
         height: 630,
         alt: 'Find Top Universities Abroad',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'Find Top Universities Abroad—Personalized Results | Taksheela UniversityFinder',
     description:
       "Use Taksheela’s UniversityFinder to get personalized recommendations for overseas universities in USA, UK, Canada & more. Explore options and start your journey today!",
-    images: ['https://www.taksheela.com/images/university-finder-og.jpg'],
+    images: ['https://taksheela.com/images/university-finder-og.jpg'],
   },
 };
 

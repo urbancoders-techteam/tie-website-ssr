@@ -44,11 +44,11 @@ export const metadata: Metadata = {
     title: "Best Study Abroad & Test Prep Experts | Taksheela Institute",
     description:
       "Explore Taksheela Institute for expert study abroad, immigration, Counselling and test prep services—your gateway to global education!",
-    url: "https://www.taksheela.com/",
+    url: "https://taksheela.com/",
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     description:
       "Explore Taksheela Institute for expert study abroad, immigration, counselling and test prep services—your gateway to global education!",
     images: [
-      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",

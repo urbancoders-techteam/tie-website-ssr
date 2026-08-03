@@ -1,4 +1,4 @@
-﻿// âœ… Server Component (no 'use client')
+// ✅ Server Component (no 'use client')
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import FAQ from "@/components/FAQ";
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute Logo",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Looking for study abroad consultants in Kolkata? Taksheela Institute offers expert guidance for admissions, test prep, & achieving your global education dreams.",
     images: [
-      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",
@@ -118,7 +118,7 @@ export default function StudyAbroadPage() {
             </p>
             <p className="mt-4 text-gray-700 leading-relaxed text-base">
               Whether you want to study for a degree, a special course, or
-              further education, we focus on youâ€”giving the right guidance to
+              further education, we focus on you—giving the right guidance to
               match your dreams.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function StudyAbroadPage() {
           {/* Right: Content */}
           <div className="flex-3">
             <HeadingTypography
-              content="End-to-End Study Abroad Support — From Counseling to Visa"
+              content="End-to-End Study Abroad Support � From Counseling to Visa"
               as="h2"
             />
             <p className="text-gray-800 text-lg leading-relaxed mt-5">
@@ -277,7 +277,7 @@ export default function StudyAbroadPage() {
         description={
           <>
             <p>
-              We are more than just education consultantsâ€”we are your partners
+              We are more than just education consultants—we are your partners
               in building a bright future! As top study abroad consultants in
               Kolkata, we help students like you find the best opportunities to
               study in different countries.{" "}

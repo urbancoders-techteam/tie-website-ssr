@@ -13,7 +13,7 @@ import {
 import { isMbbsAbroadHubOnlySlug } from "@/constants/mbbs/abroadCountryAccess";
 import { buildFaqPageSchema } from "@/lib/faqPageSchema";
 
-const SITE_ORIGIN = "https://www.taksheela.com";
+const SITE_ORIGIN = "https://taksheela.com";
 
 type Props = {
   children: ReactNode;

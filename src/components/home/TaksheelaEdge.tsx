@@ -59,7 +59,7 @@
 //         </div>
 //         <div className="mt-10 w-full flex justify-center">
 //           <a
-//             href="https://www.taksheela.com/contact"
+//             href="https://taksheela.com/contact"
 //             className="bg-[#00999E] hover:bg-[#00777E] text-white px-8 py-3 rounded-full font-semibold text-base sm:text-lg shadow-md transition"
 //           >
 //             Talk to an Expert Now
