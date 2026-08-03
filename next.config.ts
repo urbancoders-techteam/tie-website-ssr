@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { expandSeoBlogRedirects } from "./src/lib/blog/seoBlogRedirects";
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -18,6 +19,8 @@ const nextConfig: NextConfig = {
         destination: "https://portal.taksheela.com/login",
         permanent: true,
       },
+      // SEO sheet: specific noindex blog URLs → required 301 targets (before /blog/:slug)
+      ...expandSeoBlogRedirects(),
       {
         source: "/blog",
         destination: "/blogs",
