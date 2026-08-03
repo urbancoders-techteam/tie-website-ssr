@@ -7,11 +7,12 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import HeadingTypography from "@/components/Heading";
 import NationalityBrochureDownload from "@/components/internation-relation/IndianUniversity/NationalifyBrochureDownload";
 import ModalTrigger from "@/components/ModalTrigger";
+import { isMongoObjectId } from "@/lib/indiaUniversitySeoRedirects";
 import { imageBaseUrl } from "@/utils/config";
 import { Box, LinearProgress } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import {
   JSXElementConstructor,
   Key,
@@ -22,29 +23,67 @@ import {
   useState,
 } from "react";
 
-
 export default function UniversityDetailsPage() {
-  const { slug } = useParams<{ slug: string;}>();
+  const { slug } = useParams<{ slug: string }>();
+  const router = useRouter();
 
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (slug) {
-      indianUniversitiesDetails(slug)
-        .then((res) => {
-          setData(res?.data ?? res); 
-        })
-        .catch((err) => {
-          console.error("Error fetching data:", err);
-        })
-        .finally(() => setLoading(false));
+    if (!slug) return;
+
+    let cancelled = false;
+    setLoading(true);
+
+    indianUniversitiesDetails(slug)
+      .then((res) => {
+        if (cancelled) return;
+        const university = res?.data ?? res;
+        setData(university);
+
+        // Legacy ObjectId URL → SEO slug (next.config has 301 for known SEO IDs)
+        const pathSlug = Array.isArray(slug) ? slug[0] : slug;
+        if (
+          university?.slug &&
+          pathSlug &&
+          isMongoObjectId(pathSlug) &&
+          university.slug !== pathSlug
+        ) {
+          router.replace(`/international-relation/india/${university.slug}`);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, router]);
+
+  useEffect(() => {
+    if (!data?.slug) return;
+    const canonicalPath = `/international-relation/india/${data.slug}`;
+
+    let link = document.querySelector(
+      'link[rel="canonical"][data-india-uni="1"]',
+    ) as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      link.setAttribute("data-india-uni", "1");
+      document.head.appendChild(link);
     }
-  }, [slug]);
+    link.href = `https://taksheela.com${canonicalPath}`;
+  }, [data?.slug]);
 
   if (loading) {
     return (
-     <Box sx={{ width: '100%', mt: 2, color: '#00999e' }}>
+      <Box sx={{ width: "100%", mt: 2, color: "#00999e" }}>
         <LinearProgress color="inherit" />
       </Box>
     );
@@ -59,6 +98,7 @@ export default function UniversityDetailsPage() {
       </div>
     );
   }
+
   const universityDetails = [
     {
       id: 1,
@@ -107,8 +147,7 @@ export default function UniversityDetailsPage() {
 
   return (
     <>
-     <BreadcrumbSchema />
-      {/* Banner */}
+      <BreadcrumbSchema />
       <div
         className="relative bg-cover bg-center w-full "
         style={{
@@ -117,15 +156,11 @@ export default function UniversityDetailsPage() {
       >
         <ContainerWrapper>
           <div className="flex flex-col md:flex-row items-center justify-between w-full  px-4 py-12 md:py-20">
-            {/* Left Side (Text + CTA) */}
             <div className="w-full md:w-1/2 text-white text-center md:text-left">
               <h1 className="text-3xl md:text-6xl font-bold">{data?.name}</h1>
-
-              {/* CTA button */}
               <ModalTrigger />
             </div>
 
-            {/* Right Side (Paper-like card) */}
             <div className="w-full md:w-[40%] mt-10 md:mt-0 bg-white bg-opacity-90 p-6 rounded-2xl shadow-lg text-justify text-gray-800">
               <p className="text-sm sm:text-base">{data.description}</p>
             </div>
@@ -133,7 +168,6 @@ export default function UniversityDetailsPage() {
         </ContainerWrapper>
       </div>
 
-      {/* University Details */}
       <ContainerWrapper className="py-12">
         <HeadingTypography content="University Details" textAlign="center" />
         <div className="flex justify-center items-center w-full flex-wrap px-4 gap-5 py-10">
@@ -180,7 +214,6 @@ export default function UniversityDetailsPage() {
         </div>
       </ContainerWrapper>
 
-      {/* why */}
       <ContainerWrapper className="bg-[#effdff] py-12 text-center">
         <HeadingTypography
           content="Why Choose This University?"
@@ -201,14 +234,12 @@ export default function UniversityDetailsPage() {
             </div>
           ))}
 
-          {/* ModalTrigger centered */}
           <div className="w-full  flex justify-center">
             <ModalTrigger />
           </div>
         </div>
       </ContainerWrapper>
 
-      {/* Eligibility and Fee Structure of some popular courses */}
       <ContainerWrapper className="py-12">
         <HeadingTypography
           content="Eligibility and Fee Structure of some popular courses"
@@ -219,7 +250,6 @@ export default function UniversityDetailsPage() {
 
       <ContainerWrapper className="bg-[#effdff] text-center">
         <div className="flex flex-col md:flex-row  justify-between gap-10 w-full p-12">
-          {/* Image */}
           {data?.locationDetails?.image && (
             <div className="w-full md:w-1/2">
               <Image
@@ -232,7 +262,6 @@ export default function UniversityDetailsPage() {
             </div>
           )}
 
-          {/* Text */}
           <div className="w-full md:w-1/2 text-left">
             <HeadingTypography
               content={` ${data?.locationDetails?.name}`}
@@ -280,41 +309,37 @@ export default function UniversityDetailsPage() {
         </div>
       </ContainerWrapper>
 
-      {/* know more */}
       <ContainerWrapper className="py-12">
         <HeadingTypography content="Know More" textAlign="center" />
         <div className="flex flex-wrap justify-center gap-6 mt-10">
-          {data?.knowMore?.map((item: any) =>{
-
-            return     (
-            <Link
-              key={item?._id}
-              href={item?.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-[250px] h-[250px] bg-white rounded-md shadow-xl hover:bg-[#effdff] transition cursor-pointer flex flex-col justify-center items-center text-center no-underline"
-            >
-              <div className="w-full px-2 mb-4">
-                <h3 className="text-xl font-semibold text-teal-600">
-                  {item?.label}
-                </h3>
-              </div>
-
-              {item?.image && (
-                <div className="relative  mb-2">
-                  <Image
-                    src={ item?.image}
-                    alt={item?.title || "University image"}
-                    width={100}
-                    height={100}
-                
-                  />
+          {data?.knowMore?.map((item: any) => {
+            return (
+              <Link
+                key={item?._id}
+                href={item?.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-[250px] h-[250px] bg-white rounded-md shadow-xl hover:bg-[#effdff] transition cursor-pointer flex flex-col justify-center items-center text-center no-underline"
+              >
+                <div className="w-full px-2 mb-4">
+                  <h3 className="text-xl font-semibold text-teal-600">
+                    {item?.label}
+                  </h3>
                 </div>
-              )}
-            </Link>
-          )
-          }
-       )}
+
+                {item?.image && (
+                  <div className="relative  mb-2">
+                    <Image
+                      src={item?.image}
+                      alt={item?.title || "University image"}
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                )}
+              </Link>
+            );
+          })}
         </div>
       </ContainerWrapper>
       <ContainerWrapper className="pb-12 text-center">
@@ -322,6 +347,4 @@ export default function UniversityDetailsPage() {
       </ContainerWrapper>
     </>
   );
-};
-
-
+}

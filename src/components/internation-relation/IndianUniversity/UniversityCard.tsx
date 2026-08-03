@@ -69,9 +69,9 @@ const UniversityCards = () => {
     <div className="flex justify-center flex-wrap gap-6 my-8">
       {universities.map((item: any, index: number) => (
         <Link
-          href={`/international-relation/india/${item?._id}`}
+          href={`/international-relation/india/${item?.slug || item?._id}`}
           className="w-[200px] h-[250px] bg-white rounded-md shadow-md flex flex-col justify-between overflow-hidden"
-          key={index}
+          key={item?.slug || item?._id || index}
         >
           {/* Top section with image + name */}
           <div className="flex flex-col items-center px-4 py-5 text-center">
