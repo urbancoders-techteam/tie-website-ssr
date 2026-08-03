@@ -13,20 +13,33 @@ export const indianUniversities = async () => {
 
 export const indianUniversitiesDetails = async (id: string) => {
   try {
+    const slugOrId = String(id ?? "").trim();
+    if (!slugOrId) {
+      console.error("indianUniversitiesDetails: missing slug/id");
+      return null;
+    }
 
     const response = await fetch(
-      `${baseUrl}indian-universities/web/${id}`,
-
+      `${baseUrl}indian-universities/web/${encodeURIComponent(slugOrId)}`,
     );
 
     if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`);
+      const body = await response.text().catch(() => "");
+      console.error(
+        "indianUniversitiesDetails failed",
+        response.status,
+        response.statusText,
+        body,
+      );
+      throw new Error(
+        `Error fetching data: ${response.status} ${response.statusText}`,
+      );
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Failed to fetch immersion country data:", error);
+    console.error("Failed to fetch indian university details:", error);
     return null;
   }
 };
