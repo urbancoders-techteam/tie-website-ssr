@@ -36,7 +36,7 @@ export default function UniversityDetailsPage() {
     let cancelled = false;
     setLoading(true);
 
-    indianUniversitiesDetails(slug)
+    indianUniversitiesDetails(Array.isArray(slug) ? slug[0] : slug)
       .then((res) => {
         if (cancelled) return;
         const university = res?.data ?? res;
