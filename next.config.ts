@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { expandSeoBlogRedirects } from "./src/lib/blog/seoBlogRedirects";
+import { expandSeoIndiaUniversityRedirects } from "./src/lib/indiaUniversitySeoRedirects";
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -21,6 +22,8 @@ const nextConfig: NextConfig = {
       },
       // SEO sheet: specific noindex blog URLs → required 301 targets (before /blog/:slug)
       ...expandSeoBlogRedirects(),
+      // SEO sheet: India university ObjectId URLs → SEO slugs
+      ...expandSeoIndiaUniversityRedirects(),
       {
         source: "/blog",
         destination: "/blogs",
