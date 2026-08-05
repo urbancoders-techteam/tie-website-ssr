@@ -84,10 +84,10 @@ export const SEO_BLOG_NOINDEX_REDIRECTS: SeoBlogRedirect[] = [
     source: "/blog/why-your-ielts-mock-test-score-is-not-improving-9",
     destination: "/blogs/why-your-ielts-mock-test-score-is-not-improving",
   },
-  {
-    source: "/blog/why-study-abroad-counselling-is-essential-for-every-student",
-    destination: "/blogs",
-  },
+  // {
+  //   source: "/blog/why-study-abroad-counselling-is-essential-for-every-student",
+  //   destination: "/blogs",
+  // },
   {
     source: "/blog/top-reasons-to-choose-go8-universities-in-australia-34",
     destination: "/blogs",
