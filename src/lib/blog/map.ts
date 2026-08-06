@@ -98,10 +98,34 @@ export function mapApiBlogToPost(blog: ApiBlog, index = 0): BlogPost {
   };
 }
 
+function isOthersCategoryName(name: string | null | undefined): boolean {
+  return String(name ?? "").trim().toLowerCase() === "others";
+}
+
+/** Keep "Others" last in category filters and dropdowns. */
+export function sortBlogCategoriesOthersLast(
+  categories: ApiBlogCategory[],
+): ApiBlogCategory[] {
+  const others: ApiBlogCategory[] = [];
+  const rest: ApiBlogCategory[] = [];
+
+  for (const category of categories) {
+    if (isOthersCategoryName(category.name)) {
+      others.push(category);
+    } else {
+      rest.push(category);
+    }
+  }
+
+  return [...rest, ...others];
+}
+
 export function mapCategoriesToTabs(categories: ApiBlogCategory[]): BlogCategoryTab[] {
+  const sortedCategories = sortBlogCategoriesOthersLast(categories);
+
   return [
     { id: "all", label: "All Posts", dotColor: TAB_COLORS[0] },
-    ...categories.map((cat, index) => ({
+    ...sortedCategories.map((cat, index) => ({
       id: cat._id,
       label: cat.name,
       dotColor: TAB_COLORS[(index + 1) % TAB_COLORS.length],

@@ -1,4 +1,5 @@
 import { baseUrl } from "@/utils/config";
+import { sortBlogCategoriesOthersLast } from "./map";
 import { normalizeApiBlog } from "./normalize";
 import type {
   ApiBlog,
@@ -144,7 +145,7 @@ export async function fetchBlogCategoriesWeb(): Promise<ApiBlogCategory[]> {
     });
 
     const json = await parseJsonResponse<{ data?: ApiBlogCategory[] }>(res);
-    return json?.data ?? [];
+    return sortBlogCategoriesOthersLast(json?.data ?? []);
   } catch (error) {
     console.warn("fetchBlogCategoriesWeb failed", error);
     return [];

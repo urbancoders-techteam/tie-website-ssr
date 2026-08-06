@@ -82,7 +82,7 @@ export default function BlogHeroSearch({
             </label>
           </div>
         </ContainerWrapper>
-      </div>
+      </div>ev
     </section>
   );
 }
