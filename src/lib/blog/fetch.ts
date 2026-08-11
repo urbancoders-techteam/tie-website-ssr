@@ -114,9 +114,28 @@ export async function fetchBlogsWebPaginated(
   }
 }
 
+/** All published blogs (paginated API) — used by sitemap and listing helpers. */
+export async function fetchAllPublishedBlogsWeb(
+  categoryId?: string,
+): Promise<{ blogs: ApiBlog[]; count: number }> {
+  const limit = 100;
+  let page = 1;
+  let totalPage = 1;
+  const blogs: ApiBlog[] = [];
+
+  while (page <= totalPage) {
+    const result = await fetchBlogsWebPaginated({ categoryId, page, limit });
+    blogs.push(...result.blogs);
+    totalPage = Math.max(result.totalPage, 1);
+    page += 1;
+  }
+
+  return { blogs, count: blogs.length };
+}
+
 /** Unauthenticated GET — list blogs for website (non-paginated convenience wrapper) */
 export async function fetchBlogsWeb(categoryId?: string): Promise<ApiBlog[]> {
-  const { blogs } = await fetchBlogsWebPaginated({ categoryId, page: 1, limit: 100 });
+  const { blogs } = await fetchAllPublishedBlogsWeb(categoryId);
   return blogs;
 }
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.taksheela.com/sitemap.xml
+Sitemap: https://taksheela.com/sitemap.xml
