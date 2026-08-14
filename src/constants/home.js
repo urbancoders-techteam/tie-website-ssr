@@ -11,7 +11,7 @@ const tpbg = imageBaseUrl + "hometestprepbg.svg";
 
 // Overview Images
 const st = homePageBaseUrl + "study-abroad-home.png";
-const im = imageBaseUrl + "homeBanner/immersion.jpg";
+const im = homePageBaseUrl + "immerssion-home.png";
 const ie = homePageBaseUrl + "international-engagement-home.png";
 const mbbs = homePageBaseUrl + "mbbs-home.jpg";
 
