@@ -48,13 +48,13 @@ export default function TrustTaksheela() {
       <ContainerWrapper>
         <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-8 xl:gap-10 2xl:gap-12">
           {/* Left: image + badge */}
-          <div className="relative mx-auto w-full max-w-md shrink-0 sm:max-w-lg lg:mx-0 lg:max-w-[min(100%,28rem)] lg:flex-[0_0_42%] xl:max-w-[min(100%,32rem)] xl:flex-[0_0_44%]">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-100 sm:aspect-[5/6] lg:aspect-[3/4] lg:max-h-[min(300px,38vh)] xl:max-h-[min(340px,42vh)] 2xl:max-h-[min(420px,50vh)]">
+          <div className="relative mx-auto w-full max-w-md shrink-0 sm:max-w-lg lg:mx-0 lg:max-w-[min(100%,30rem)] lg:flex-[0_0_42%] xl:max-w-[min(100%,34rem)] xl:flex-[0_0_44%]">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-100 sm:aspect-[5/6] lg:aspect-[3/4] lg:max-h-[min(420px,48vh)] xl:max-h-[min(460px,50vh)] 2xl:max-h-[min(520px,54vh)]">
               <Image
                 src={trustTaksheelaHero.image}
                 alt="Student working on study abroad planning with Taksheela"
                 fill
-                className="object-cover "
+                className="object-cover"
                 sizes="(max-width: 1023px) 100vw, 42vw"
                 priority={false}
               />

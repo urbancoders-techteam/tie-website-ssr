@@ -1,15 +1,15 @@
-import { homePageBaseUrl } from "@/utils/config";
+import { homePageImageUrl } from "@/utils/config";
 
-const countryUkImage = homePageBaseUrl + "Uk-home.jpg";
-const countryIrelandImage = homePageBaseUrl + "Ireland-home.jpg";
+const countryUkImage = homePageImageUrl + "Uk-home.jpg";
+const countryIrelandImage = homePageImageUrl + "Ireland-home.jpg";
 const countryAustraliaImage = "/images/australia.jpg";
-const countryFranceImage = homePageBaseUrl + "france-home.jpg";
-const countryGermanyImage = homePageBaseUrl + "germany-home.jpg";
-const countryCanadaImage = homePageBaseUrl + "canada-home.jpg";
-const countryHungaryImage = homePageBaseUrl + "Hungary-home.jpg";
-const countryItalyImage = homePageBaseUrl + "Italy-home.jpg";
-const countryNetherlandsImage = homePageBaseUrl + "netherland-home.jpg";
-const countrySwedenImage = homePageBaseUrl + "Sweden-home.jpg";
+const countryFranceImage = homePageImageUrl + "france-home.jpg";
+const countryGermanyImage = homePageImageUrl + "germany-home.jpg";
+const countryCanadaImage = homePageImageUrl + "canada-home.jpg";
+const countryHungaryImage = homePageImageUrl + "Hungary-home.jpg";
+const countryItalyImage = homePageImageUrl + "Italy-home.jpg";
+const countryNetherlandsImage = homePageImageUrl + "netherland-home.jpg";
+const countrySwedenImage = homePageImageUrl + "Sweden-home.jpg";
 
 export type ScholarshipCountry = {
   country: string;
