@@ -2,7 +2,7 @@ import BlogHomePage from "@/components/blog/home-page/BlogHomePage";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-const BLOG_URL = "https://taksheela.com/blogs";
+const BLOG_URL = "https://www.taksheela.com/blogs";
 
 export const metadata: Metadata = {
   title:
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "Compare Russia, Georgia, Kazakhstan, Uzbekistan and Kyrgyzstan for MBBS abroad fees, eligibility, NMC/NExT rules and admission guidance.",
     images: [
-      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",

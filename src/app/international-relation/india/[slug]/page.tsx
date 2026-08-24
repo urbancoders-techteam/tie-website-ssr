@@ -78,7 +78,7 @@ export default function UniversityDetailsPage() {
       link.setAttribute("data-india-uni", "1");
       document.head.appendChild(link);
     }
-    link.href = `https://taksheela.com${canonicalPath}`;
+    link.href = `https://www.taksheela.com${canonicalPath}`;
   }, [data?.slug]);
 
   if (loading) {

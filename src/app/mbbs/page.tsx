@@ -28,8 +28,8 @@ import {
   staticMetaTitles,
 } from "@/constants/metaDescriptions";
 
-const MBBS_URL = "https://taksheela.com/mbbs";
-const SITE_URL = "https://taksheela.com";
+const MBBS_URL = "https://www.taksheela.com/mbbs";
+const SITE_URL = "https://www.taksheela.com";
 const MBBS_META_TITLE = staticMetaTitles.mbbsHub;
 const MBBS_META_DESCRIPTION = staticMetaDescriptions.mbbsHub;
 

@@ -5,7 +5,7 @@ import { BREADCRUMB_SEGMENT_LABELS } from "@/constants/breadcrumbSegmentLabels";
 
 const BreadcrumbSchema = () => {
   const pathname = usePathname();
-  const baseUrl = "https://taksheela.com";
+  const baseUrl = "https://www.taksheela.com";
   const segments = pathname.split("/").filter(Boolean);
 
   const breadcrumbItems = [

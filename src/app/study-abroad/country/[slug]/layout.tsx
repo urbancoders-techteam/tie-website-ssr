@@ -5,7 +5,7 @@ import {
   studyAbroadCountryMetaTitles,
 } from "@/constants/metaDescriptions";
 
-const SITE_ORIGIN = "https://taksheela.com";
+const SITE_ORIGIN = "https://www.taksheela.com";
 
 type Props = {
   children: ReactNode;

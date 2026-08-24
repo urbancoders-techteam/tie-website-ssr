@@ -117,7 +117,7 @@ export default function page() {
                         </p>
                         <div className="mt-6 flex justify-start">
                             <a
-                                href="https://taksheela.com/contact"
+                                href="https://www.taksheela.com/contact"
                                 className="inline-flex items-center justify-center rounded-full bg-[#00999E] px-8 py-3 text-white text-sm sm:text-base font-semibold shadow-md transition hover:bg-[#00777E]"
                             >
                                 Connect With Us
@@ -231,7 +231,7 @@ export default function page() {
                     
                       <div className="pt-6">
                         <a
-                          href="https://taksheela.com/contact"
+                          href="https://www.taksheela.com/contact"
                           className="inline-flex items-center justify-center rounded-full bg-[#00999E] px-8 py-3 text-white text-sm sm:text-base font-semibold shadow-md transition hover:bg-[#00777E]"
                         >
                           Apply to Top Global Universities

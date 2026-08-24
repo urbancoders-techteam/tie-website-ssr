@@ -2,16 +2,17 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 /**
- * Canonical hosts are non-www.
- * www → apex (and www.dev → dev) with 301, preserving path + query.
+ * Production canonical host is www (matches GSC www property).
+ * Apex → www with 301, preserving path + query.
+ * Staging: www.dev → dev (non-www), same as before.
  * Never leak internal Node ports (3000/3001) into Location.
  */
-const WWW_TO_CANONICAL: Record<string, string> = {
-  "www.taksheela.com": "https://taksheela.com",
+const HOST_TO_CANONICAL: Record<string, string> = {
+  "taksheela.com": "https://www.taksheela.com",
   "www.dev.taksheela.com": "https://dev.taksheela.com",
 };
 
-const CANONICAL_HOSTS = new Set(["taksheela.com", "dev.taksheela.com"]);
+const CANONICAL_HOSTS = new Set(["www.taksheela.com", "dev.taksheela.com"]);
 
 function getRequestHostname(request: NextRequest): string {
   const forwardedHost = request.headers.get("x-forwarded-host");
@@ -33,9 +34,9 @@ function buildOriginRedirect(
 export function middleware(request: NextRequest) {
   const hostname = getRequestHostname(request);
 
-  const wwwCanonical = WWW_TO_CANONICAL[hostname];
-  if (wwwCanonical) {
-    return buildOriginRedirect(request, wwwCanonical);
+  const canonicalOrigin = HOST_TO_CANONICAL[hostname];
+  if (canonicalOrigin) {
+    return buildOriginRedirect(request, canonicalOrigin);
   }
 
   // Safety net: proxy forwards canonical host with an internal port in Host.

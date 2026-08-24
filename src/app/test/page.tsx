@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     title: "Expert Study Abroad Test Preparation | Taksheela Institute",
     description:
       "Get expert study abroad test preparation at Taksheela Institute. Achieve top scores with personalized guidance for exams like IELTS, TOEFL, SAT, and more.",
-    url: "https://taksheela.com/test",
+    url: "https://www.taksheela.com/test",
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute Logo",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description:
       "Get expert study abroad test preparation at Taksheela Institute. Achieve top scores with personalized guidance for exams like IELTS, TOEFL, SAT, and more.",
     images: [
-      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",

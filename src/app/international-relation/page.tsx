@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Taksheela Institute | International Relations & Study Abroad",
     description:
       "Explore global opportunities with Taksheela Institute—expert guidance in international relations, study abroad consulting, and overseas education solutions.",
-    url: "https://taksheela.com/international-relation",
+    url: "https://www.taksheela.com/international-relation",
     siteName: "Taksheela Institute",
     type: "website",
   },

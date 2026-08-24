@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pageTitle =
     blog.metaTitle?.trim() || embeddedMeta.metaTitle || `${blog.title} | Taksheela Blog`;
   const ogTitle = blog.metaTitle?.trim() || embeddedMeta.metaTitle || blog.title;
-  const canonical = `https://taksheela.com${blogHref(pathSlug)}`;
+  const canonical = `https://www.taksheela.com${blogHref(pathSlug)}`;
   const keywords = blog.keywords
     ?.split(",")
     .map((keyword) => keyword.trim())
@@ -128,7 +128,7 @@ export default async function BlogSlugPage({ params }: PageProps) {
       name: "Taksheela Institute",
       logo: {
         "@type": "ImageObject",
-        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
       },
     },
   };

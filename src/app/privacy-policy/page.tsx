@@ -109,7 +109,7 @@ const PrivacyPolicy = () => {
               <>
                 refers to Taksheela Institute of Education, accessible from{" "}
                 <a
-                  href="https://taksheela.com"
+                  href="https://www.taksheela.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 underline"
@@ -365,17 +365,17 @@ const PrivacyPolicy = () => {
         <ul className="w-[95%] mx-auto list-disc pl-5 space-y-2 text-[16px] text-black font-normal leading-relaxed">
           <li>By email:
             <a
-              href="https://taksheela.com/contact"
+              href="https://www.taksheela.com/contact"
               className="text-blue-600 underline"
             >&nbsp;info@taksheela.com</a> 
             </li>  
           <li>By visiting this page on our website:&nbsp;
             <a
-              href="https://taksheela.com/contact"
+              href="https://www.taksheela.com/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 underline"
-              >https://taksheela.com/contact
+              >https://www.taksheela.com/contact
             </a>
           </li>
           <li>By phone number: +919331169690</li>
