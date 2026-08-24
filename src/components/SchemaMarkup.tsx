@@ -6,9 +6,9 @@ const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Taksheela Institute Of Education",
-    "image": "https://taksheela.com/images/TIE_LOGO.png",
-    "@id": "https://taksheela.com/",
-    "url": "https://taksheela.com/",
+    "image": "https://www.taksheela.com/images/TIE_LOGO.png",
+    "@id": "https://www.taksheela.com/",
+    "url": "https://www.taksheela.com/",
     "telephone": "+91-9831241212",
     "priceRange": "Varies",
     "address": {

@@ -54,12 +54,12 @@ export const metadata: Metadata = {
     title: 'Study Abroad with Taksheela Institute – Your Trusted Guide',
     description:
       'Discover top study abroad programs with Taksheela Institute. Get expert guidance, valuable insights, & personalized admission support for your global education.',
-    url: 'https://taksheela.com/study-abroad',
+    url: 'https://www.taksheela.com/study-abroad',
     siteName: 'Taksheela Institute',
     type: 'website',
     images: [
       {
-        url: 'https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png',
+        url: 'https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png',
         width: 1200,
         height: 630,
         alt: 'Taksheela Institute Logo',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description:
       'Explore study abroad opportunities with personalized help from Taksheela Institute.',
     images: [
-      'https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png',
+      'https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png',
     ],
     site: '@TIE_Taksheela',
     creator: '@TIE_Taksheela',

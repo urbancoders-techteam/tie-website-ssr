@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     title: "Get in Touch with Taksheela Institute | We're Here to Help",
     description:
       "Contact Taksheela Institute for expert support and guidance. We're here to help with all your education, career queries, and ensure your success every step.",
-    url: "https://taksheela.com/contact",
+    url: "https://www.taksheela.com/contact",
     siteName: "Taksheela Institute",
     images: [
       {
-        url: "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+        url: "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
         width: 1200,
         height: 630,
         alt: "Taksheela Institute Logo",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description:
       "Contact Taksheela Institute for expert support and guidance. We're here to help with all your education, career queries, and ensure your success every step.",
     images: [
-      "https://taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
+      "https://www.taksheela.com/static/media/TIE_LOGO.242b5d5230b25dd9bcb6.png",
     ],
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",
