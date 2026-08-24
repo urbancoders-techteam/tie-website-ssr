@@ -32,7 +32,7 @@ npm run start:prod
 
 ## Environment variables used
 
-- `NEXT_PUBLIC_IMAGE_URL`
+- `NEXT_PUBLIC_HOME_PAGE_IMAGE_URL`
 - `NEXT_PUBLIC_BASE_URL`
 - `NEXT_PUBLIC_NAV_URL`
 - `NEXT_PUBLIC_RAZORPAY_KEY`

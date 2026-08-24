@@ -1,4 +1,4 @@
-import { homePageBaseUrl, imageBaseUrl } from "@/utils/config";
+import { homePageImageUrl, imageBaseUrl } from "@/utils/config";
 // import mbbsStudent from "@/assets/mbbs_student.png"
 
 const stbg = imageBaseUrl + "homestudybg.svg";
@@ -10,30 +10,30 @@ const tpbg = imageBaseUrl + "hometestprepbg.svg";
 // const tp = imageBaseUrl + "hometest.svg";
 
 // Overview Images
-const st = homePageBaseUrl + "study-abroad-home.png";
-const im = homePageBaseUrl + "immerssion-home.png";
-const ie = homePageBaseUrl + "international-engagement-home.png";
-const mbbs = homePageBaseUrl + "mbbs-home.jpg";
+const st = homePageImageUrl + "study-abroad-home.png";
+const im = homePageImageUrl + "immerssion-home.png";
+const ie = homePageImageUrl + "international-engagement-home.png";
+const mbbs = homePageImageUrl + "mbbs-home.jpg";
 
 // Global Reach country images
-const countryUkImage = homePageBaseUrl + "Uk-home.jpg";
-const countryIrelandImage = homePageBaseUrl + "Ireland-home.jpg";
+const countryUkImage = homePageImageUrl + "Uk-home.jpg";
+const countryIrelandImage = homePageImageUrl + "Ireland-home.jpg";
 const countryAustraliaImage = "/images/australia.jpg";
-const countryFranceImage = homePageBaseUrl + "france-home.jpg";
-const countryGermanyImage = homePageBaseUrl + "germany-home.jpg";
-const countryCanadaImage = homePageBaseUrl + "canada-home.jpg";
-const countryHungaryImage = homePageBaseUrl + "Hungary-home.jpg";
-const countryDenmarkImage = homePageBaseUrl + "Denmark-home.jpg";
-const countryItalyImage = homePageBaseUrl + "Italy-home.jpg";
-const countryMaltaImage = homePageBaseUrl + "Malta-home.jpg";
-const countryNetherlandsImage = homePageBaseUrl + "netherland-home.jpg";
-const countrySwedenImage = homePageBaseUrl + "Sweden-home.jpg";
-const countryBelgiumImage = homePageBaseUrl + "Belgium-home.jpg";
-const thailandHomeImage = homePageBaseUrl + "thailand.avif";
-const germanyHomeImage = homePageBaseUrl + "germany-home.jpg";
-const franceHomeImage = homePageBaseUrl + "france-home.jpg";
+const countryFranceImage = homePageImageUrl + "france-home.jpg";
+const countryGermanyImage = homePageImageUrl + "germany-home.jpg";
+const countryCanadaImage = homePageImageUrl + "canada-home.jpg";
+const countryHungaryImage = homePageImageUrl + "Hungary-home.jpg";
+const countryDenmarkImage = homePageImageUrl + "Denmark-home.jpg";
+const countryItalyImage = homePageImageUrl + "Italy-home.jpg";
+const countryMaltaImage = homePageImageUrl + "Malta-home.jpg";
+const countryNetherlandsImage = homePageImageUrl + "netherland-home.jpg";
+const countrySwedenImage = homePageImageUrl + "Sweden-home.jpg";
+const countryBelgiumImage = homePageImageUrl + "Belgium-home.jpg";
+const thailandHomeImage = homePageImageUrl + "thailand.avif";
+const germanyHomeImage = homePageImageUrl + "germany-home.jpg";
+const franceHomeImage = homePageImageUrl + "france-home.jpg";
 
-const NMCHomeImage = homePageBaseUrl + "NMC-home.png";
+const NMCHomeImage = homePageImageUrl + "NMC-home.png";
 
 export const ourserviceshomedata = [
   {
@@ -136,7 +136,7 @@ export const taksheelaEdge = {
 
 /** Why trust us — home section (TrustTaksheela) */
 export const trustTaksheelaHero = {
-  image: imageBaseUrl + "homeedge.jpg",
+  image: homePageImageUrl + "home-taksheela-diffrences.jpg",
   badgeValue: "15+",
   badgeLabel: "YEARS TRUSTED",
 };
