@@ -8,6 +8,7 @@ function hasMetadataCanonical(pathname: string): boolean {
   if (/^\/blogs\/[^/]+$/.test(normalized)) return true;
   if (normalized === '/mbbs') return true;
   if (/^\/mbbs\/abroad\/[^/]+$/.test(normalized)) return true;
+  if (/^\/study-abroad\/country\/[^/]+$/.test(normalized)) return true;
   return false;
 }
 
