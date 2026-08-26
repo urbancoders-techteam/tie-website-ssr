@@ -6,9 +6,9 @@ const BLOG_URL = "https://www.taksheela.com/blogs";
 
 export const metadata: Metadata = {
   title:
-    "MBBS Abroad 2026 in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan — Fees, Eligibility & Admission Guide | Taksheela",
+    "Taksheela Institute of Education Blogs: Guides & Expert Tips",
   description:
-    "Planning MBBS abroad in 2026? Compare NMC-approved universities in Russia, Georgia, Kazakhstan, Uzbekistan & Kyrgyzstan. Full fee breakdown (₹11L–₹51L), NExT rules, eligibility & step-by-step admission process. Free counselling by Taksheela — India's trusted MBBS abroad experts.",
+    "Explore Taksheela's latest study abroad blogs, covering MBBS abroad, admissions, scholarships, visas, country guides, and expert tips for students.",
   keywords: [
     "MBBS abroad 2026",
     "MBBS in Russia",

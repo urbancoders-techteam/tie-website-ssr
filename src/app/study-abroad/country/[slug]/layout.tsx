@@ -4,8 +4,8 @@ import {
   studyAbroadCountryMetaDescriptions,
   studyAbroadCountryMetaTitles,
 } from "@/constants/metaDescriptions";
-
-const SITE_ORIGIN = "https://www.taksheela.com";
+import { getPreferredCountrySlug } from "@/lib/study-abroad/preferredCountrySlug";
+import { SITE_ORIGIN } from "@/lib/sitemap/siteOrigin";
 
 type Props = {
   children: ReactNode;
@@ -15,18 +15,15 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const slugKey = slug.toLowerCase();
+  const preferredSlug = getPreferredCountrySlug(slug) ?? slug;
   const title = studyAbroadCountryMetaTitles[slugKey];
   const description = studyAbroadCountryMetaDescriptions[slugKey];
-
-  if (!title && !description) {
-    return {};
-  }
 
   return {
     ...(title ? { title } : {}),
     ...(description ? { description } : {}),
     alternates: {
-      canonical: `${SITE_ORIGIN}/study-abroad/country/${slugKey}`,
+      canonical: `${SITE_ORIGIN}/study-abroad/country/${preferredSlug}`,
     },
   };
 }

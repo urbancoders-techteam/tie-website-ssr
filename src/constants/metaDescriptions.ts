@@ -24,7 +24,7 @@ export const mbbsAbroadMetaDescriptions: Record<string, string> = {
   usa:
     "Explore MBBS in USA with Taksheela Institute of Education. Get expert guidance on eligibility, admission process, fees, and top medical universities in the USA.",
   uzbekistan:
-    "Complete guide to MBBS in Uzbekistan for Indian students 2026-27. Uzbekistan MBBS fees for Indian students from ₹2.5L/year, NMC-approved medical universities in Uzbekistan, English-medium & free counselling. MBBS fees in Uzbekistan for Indian students: ₹19–45 lakhs total.",
+    "Explore MBBS in Uzbekistan for Indian students, including top universities, fees, eligibility, admission process, and benefits of studying medicine abroad.",
 };
 
 /** Optional SEO keywords for `/mbbs/abroad/[slug]` pages. */
@@ -129,7 +129,7 @@ export const mbbsAbroadMetaTitles: Record<string, string> = {
   uk: "MBBS in United Kingdom | Taksheela Institute of Education",
   usa: "MBBS in USA Consultants | Taksheela Institute of Education",
   uzbekistan:
-    "MBBS in Uzbekistan for Indian Students – Fees & NMC Universities | Taksheela",
+    "MBBS in Uzbekistan for Indian Students | Taksheela",
 };
 
 export const testMetaTitles: Record<string, string> = {
