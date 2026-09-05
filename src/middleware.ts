@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getPreferredCountrySlug } from "@/lib/study-abroad/preferredCountrySlug";
 
 /**
  * Production canonical host is www (matches GSC www property).
@@ -13,6 +14,7 @@ const HOST_TO_CANONICAL: Record<string, string> = {
 };
 
 const CANONICAL_HOSTS = new Set(["www.taksheela.com", "dev.taksheela.com"]);
+const COUNTRY_PAGE_PATH = /^\/study-abroad\/country\/([^/]+)\/?$/;
 
 function getRequestHostname(request: NextRequest): string {
   const forwardedHost = request.headers.get("x-forwarded-host");
@@ -43,6 +45,18 @@ export function middleware(request: NextRequest) {
   const rawHost = request.headers.get("host")?.toLowerCase() ?? "";
   if (CANONICAL_HOSTS.has(hostname) && /:\d+$/.test(rawHost)) {
     return buildOriginRedirect(request, `https://${hostname}`);
+  }
+
+  const pathname = request.nextUrl.pathname;
+  const countryMatch = pathname.match(COUNTRY_PAGE_PATH);
+  if (countryMatch) {
+    const slug = countryMatch[1];
+    const preferredSlug = getPreferredCountrySlug(slug);
+    if (preferredSlug && slug !== preferredSlug) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/study-abroad/country/${preferredSlug}`;
+      return NextResponse.redirect(url, 301);
+    }
   }
 
   const response = NextResponse.next();

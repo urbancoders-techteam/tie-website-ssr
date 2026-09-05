@@ -84,9 +84,6 @@ export default function StudyAbroadPage() {
     <>
       {/* SEO Semantic Structure (screen reader-friendly) */}
       <BreadcrumbSchema />
-      <h1 className="sr-only">
-        Achieve Your Dreams of Studying Abroad with Taksheela Institute
-      </h1>
       <h2 className="sr-only">Success Stories: Hear from Our Students</h2>
       <h2 className="sr-only">Our Comprehensive Study Abroad Services</h2>
       <h3 className="sr-only">Expert Guidance for Admission Processes</h3>

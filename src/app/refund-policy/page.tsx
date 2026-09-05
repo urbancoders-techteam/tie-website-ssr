@@ -19,7 +19,7 @@ const RefundPolicy = () => {
             Thank you for choosing Taksheela Institute of Education for your educational needs. We strive to provide the highest quality services to our customers. If you are not entirely satisfied with your purchase, we&apos;re here to help.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-10 mb-4">Cancellation and Refund Policy</h3>
+          <h2 className="text-2xl font-semibold mt-10 mb-4">Cancellation and Refund Policy</h2>
           <ul className="list-disc space-y-3 ml-6">
             <li className="text-base text-gray-800">
               Customers can cancel their subscription within 7 days of the initial purchase for a full refund.
@@ -35,7 +35,7 @@ const RefundPolicy = () => {
             </li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-10 mb-4">Service Quality Guarantee</h3>
+          <h2 className="text-2xl font-semibold mt-10 mb-4">Service Quality Guarantee</h2>
           <ul className="list-disc space-y-3 ml-6">
             <li className="text-base text-gray-800">
               If customers are dissatisfied with the quality of our services, they can request a refund within 7 days of the service delivery.
@@ -51,7 +51,7 @@ const RefundPolicy = () => {
             </li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-10 mb-4">Non-Refundable Services</h3>
+          <h2 className="text-2xl font-semibold mt-10 mb-4">Non-Refundable Services</h2>
           <ul className="list-disc space-y-3 ml-6">
             <li className="text-base text-gray-800">
               Certain services, such as personalised coaching sessions or customised course materials, may not be eligible for refunds due to their nature.
