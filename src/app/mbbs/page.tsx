@@ -97,15 +97,15 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const mbbsicon1 = imageBaseUrl + "mbbsIcon1.svg";
-  const mbbsicon2 = imageBaseUrl + "mbbsIcon2.svg";
+  const mbbsicon1 = imageBaseUrl + "mbbs/icons/certificate_icon.png";
+  const mbbsicon2 = imageBaseUrl + "mbbs/icons/university_icon.png";
 
-  const mbbsicons1 = imageBaseUrl + "mbbsIcon1.svg";
-  const mbbsicons2 = imageBaseUrl + "mbbsIcon2.svg";
-  const mbbsicons3 = imageBaseUrl + "mbbsIcon3.svg";
+  const mbbsicons1 = imageBaseUrl + "mbbs/icons/certificate_icon.png";
+  const mbbsicons2 = imageBaseUrl + "mbbs/icons/university_icon.png";
+  const mbbsicons3 = imageBaseUrl + "mbbs/icons/approval_icon.png";
 
-  const heroImage = imageBaseUrl + "mbbsCollege/India/mbbsIndiahero.png";
-  const collegeImage = imageBaseUrl + "mbbsCollege/India/mbbsIndia.webp";
+  const heroImage = imageBaseUrl + "mbbs/mbbs_hero_img.png";
+  const collegeImage = imageBaseUrl + "mbbs/mbbsIndia.webp";
 
   const images = [
     {

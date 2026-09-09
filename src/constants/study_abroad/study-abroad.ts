@@ -203,7 +203,7 @@ export type StudyAbroadFilmstripItem = {
 /** Study-abroad page only: filmstrip below WhatTaksheela (separate from WhatTaksheela UI) */
 export const studyAbroadAfterWhatTaksheelaFilmstrip: StudyAbroadFilmstripItem[] = [
   {
-    src: studyAbroadBaseUrl + "main-page/wsa-img1.avif",
+    src: studyAbroadBaseUrl + "main-page/University_library.jpg",
     alt: "Students collaborating outdoors on campus",
     label: "University Library",
     icon: "library",
@@ -221,13 +221,13 @@ export const studyAbroadAfterWhatTaksheelaFilmstrip: StudyAbroadFilmstripItem[] 
     icon: "departure",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/graduation-day.jpg",
+    src: studyAbroadBaseUrl + "main-page/graduation_day.jpg",
     alt: "Graduates celebrating in caps and gowns",
     label: "Graduation Day",
     icon: "graduation",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/campus-life.jpg",
+    src: studyAbroadBaseUrl + "main-page/campus_life.jpg",
     alt: "Two students studying together with laptops",
     label: "Campus Life",
     icon: "campus",
