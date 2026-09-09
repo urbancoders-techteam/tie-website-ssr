@@ -7,7 +7,7 @@ export type WhyStudyAbroadFeature = {
 };
 
 
-const whyStudyAbroadImage1 = studyAbroadBaseUrl + "main-page/wsa-img1.avif";
+const whyStudyAbroadImage1 = studyAbroadBaseUrl + "main-page/wsa_img1.jpg";
 const whyStudyAbroadImage2 = studyAbroadBaseUrl + "main-page/wsa-img2.avif";
 
 export const whyStudyAbroadContent = {

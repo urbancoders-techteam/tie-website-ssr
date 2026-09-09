@@ -53,17 +53,17 @@ export default function WhyStudyAbroad() {
               </div>
 
               {/* Floating card — top inset, inside main image bounds */}
-              <div className="pointer-events-none absolute left-2.5 top-2.5 z-[3] w-[min(calc(100%-1.25rem),200px)] sm:left-3 sm:top-3 sm:w-[210px]">
-                <div className="pointer-events-auto rounded-xl border border-gray-100/90 bg-white p-3 shadow-[0_16px_36px_rgba(7,27,58,0.14)] sm:rounded-[1.125rem] sm:p-4">
-                  <div className="flex items-start gap-2.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#d9f2f0] text-[#0fb3a9] shadow-inner sm:h-10 sm:w-10">
-                      <FiGlobe className="h-5 w-5 sm:h-[22px] sm:w-[22px]" aria-hidden />
+              <div className="pointer-events-none absolute left-2 top-2 z-[3] w-[min(calc(100%-1rem),152px)] sm:left-2.5 sm:top-2.5 sm:w-[164px]">
+                <div className="pointer-events-auto rounded-lg border border-gray-100/90 bg-white px-2 py-1.5 shadow-[0_10px_24px_rgba(7,27,58,0.12)] sm:rounded-xl sm:px-2.5 sm:py-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#d9f2f0] text-[#0fb3a9] shadow-inner sm:h-8 sm:w-8">
+                      <FiGlobe className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
                     </span>
-                    <div className="min-w-0 pt-0.5">
-                      <p className="text-[15px] font-extrabold leading-tight tracking-tight text-[#0fb3a9] sm:text-base">
+                    <div className="min-w-0">
+                      <p className="text-[12px] font-extrabold leading-tight tracking-tight text-[#0fb3a9] sm:text-[13px]">
                         {floatingCard.value} {floatingCard.valueLabel}
                       </p>
-                      <p className="mt-1 text-[11px] font-medium leading-snug text-[#6b7c8d] sm:text-xs">
+                      <p className="mt-0.5 text-[9px] font-medium leading-snug text-[#6b7c8d] sm:text-[10px]">
                         {floatingCard.subtitle}
                       </p>
                     </div>
