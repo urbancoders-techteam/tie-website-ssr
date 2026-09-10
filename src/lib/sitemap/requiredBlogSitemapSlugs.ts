@@ -1,0 +1,43 @@
+/**
+ * Live blog URLs that must always be in /sitemap.xml (SEO audit).
+ * Newly uploaded published blogs still come from GET /blogs/web/sitemap;
+ * this list is merged so these slugs are never dropped.
+ */
+export const REQUIRED_BLOG_SITEMAP_SLUGS = [
+  "university-selection-guide-for-students-in-kolkata",
+  "study-abroad-journey-a-complete-guide-for-students-from-bhubaneswar",
+  "the-ultimate-study-abroad-checklist-every-student-should-complete-before-departure",
+  "study-abroad-application-process-made-simple-for-first-time-applicants",
+  "student-visa-process-explained-for-students-planning-to-study-abroad",
+  "everything-you-need-to-know-about-study-abroad-counselling-for-indian-students",
+  "best-universities-in-georgia-for-mbbs-with-highest-indian-student-enrolment",
+  "russia-mbbs-fees-in-indian-rupees-complete-budget-planning-guide-for-2026",
+  "questions-every-parent-should-ask-before-sending-their-child-for-mbbs-abroad",
+  "kyrgyzstan-mbbs-vs-private-medical-colleges-in-india-which-is-more-affordable",
+  "can-indian-students-work-part-time-while-studying-mbbs-in-kazakhstan",
+  "top-medical-universities-in-uzbekistan-for-students-with-low-neet-scores-in-2026",
+  "ielts-vs-toefl-a-comprehensive-comparison",
+  "gre-vs-gate-which-exam-is-right-for-you",
+  "is-psw-a-driving-force-for-students-to-choose-the-country-the-course-they-will-study",
+  "why-europe-is-the-new-study-abroad-attraction-for-students-from-nepal",
+  "the-silent-crisis-parents-are-facing-the-burden-of-over-scheduling-their-kid",
+  "fall-2025-or-spring-2026-make-the-right-choice",
+  "study-in-west-bengal-culture-meets-education",
+  "why-study-abroad-counselling-is-essential-for-every-student",
+  "ai-just-got-accepted-into-your-childs-classroom-but-whos-training-it",
+  "global-immersion-your-competitive-edge-in-2025-taksheela",
+  "ai-in-sop-writing-7-mistakes-to-avoid",
+  "the-end-of-an-era-reimagining-gre-gmat-and-sat",
+  "europes-role-in-achieving-sdg-13-climate-goals",
+  "why-australias-group-of-eight-universities-are-worth-the-investment-in-2025",
+  "norway-2025-free-education-or-hidden-costs",
+  "global-education-revolution-why-japan-south-korea-lead",
+  "the-china-exit-why-african-students-are-now-choosing-india-over-beijing",
+  "global-citizens-how-sic-k-12-schools-foster-international-mindsets",
+  "uk-student-visas-2025-whats-new",
+  "digital-sat-2025-new-adaptive-testing-format-how-to-ace-it",
+  "sic-india-fueling-student-innovation-entrepreneurship",
+  "global-rankings-impact-universities-leading-in-sdg-implementation",
+  "germany-2025-a-guide-for-international-students",
+  "indias-role-in-advancing-sdgs-through-ir-studies",
+] as const;

@@ -460,7 +460,7 @@ export const studyInIndiaHome = {
       description:
         "Engineering, medical and scholarship-aligned pathways with partner HEIs — mentoring from application to enrolment and orientation in India.",
       tags: ["Engineering", "Medical", "Scholarship"],
-      image: studyInIndiaImagesBaseUrl + "Afganistan-home.png",
+      image: studyInIndiaImagesBaseUrl + "Afghanistan_home.jpg",
     },
     {
       id: "saarc-bd",
@@ -470,7 +470,7 @@ export const studyInIndiaHome = {
       description:
         "MoU-led programmes, streamlined admissions and certificate-backed short courses — ideal for students seeking credible Indian credentials.",
       tags: ["MoU Programs", "Admissions", "Certificate"],
-      image: studyInIndiaImagesBaseUrl + "Bangladesh-home.png",
+      image: studyInIndiaImagesBaseUrl + "Bangladesh_home.jpg",
     },
     {
       id: "saarc-bt",

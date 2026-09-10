@@ -2,9 +2,9 @@ import HeadingTypography from "@/components/Heading";
 import Image from "next/image";
 import ModalTrigger from "../ModalTrigger";
 import ContainerWrapper from "../ContainerWrapper";
+import { testPrepImageUrl } from "@/utils/config";
 
-const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-const TestImage = imageBaseUrl + "testprep.png";
+const testImage = `${testPrepImageUrl}testprep.jpg`;
 
 const TestBanner = () => {
   return (
@@ -21,7 +21,7 @@ const TestBanner = () => {
           </div>
 
           <Image
-            src={TestImage}
+            src={testImage}
             alt="Test Prep"
             width={600}
             height={300}

@@ -19,7 +19,7 @@ const forParentsImage = studyAbroadBaseUrl + "main-page/ParentSection.png";
 
 export const forParentsContent = {
   eyebrow: "For parents",
-  heading: "A Message to Parents: Your Questions, Answered with Complete Transparency.",
+  heading: "A Message to Parents: Your Questions, Answered with Complete Transparency",
   description:
     "We know sending your child abroad is a big decision. Taksheela walks with families through every concern — safety, costs, visas, and outcomes — with clear timelines, documented processes, and honest guidance so you always know what comes next.",
   heroImageSrc: forParentsImage,
