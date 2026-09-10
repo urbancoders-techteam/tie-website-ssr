@@ -3,8 +3,11 @@ import { absoluteUrl } from "@/lib/sitemap/siteOrigin";
 import { STATIC_SITEMAP_PATHS } from "@/lib/sitemap/staticPaths";
 import type { MetadataRoute } from "next";
 
-/** Refresh sitemap when blogs/CMS data change (ISR — same cadence as blog pages). */
-export const revalidate = 300;
+/**
+ * Always rebuild so newly uploaded published blogs appear on /sitemap.xml.
+ * Blog URLs come from GET /blogs/web/sitemap (slug + date), not the heavy listing API.
+ */
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [blogPaths, indianUniversityPaths] = await Promise.all([

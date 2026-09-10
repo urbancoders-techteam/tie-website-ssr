@@ -14,6 +14,7 @@ import type {
  */
 export const PUBLIC_BLOG_API = {
   blogsList: "blogs/web",
+  blogsSitemap: "blogs/web/sitemap",
   blogBySlug: (slug: string) => `blogs/by-slugurl/${encodeURIComponent(slug.trim())}`,
   categories: "blog-category/web",
 } as const;
