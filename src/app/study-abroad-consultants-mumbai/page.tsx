@@ -1,16 +1,22 @@
-import FAQ from "@/components/FAQ";
 import LetsStart from "@/components/immersion/LetsStart";
 import GlobalCombination from "@/components/study-abroad/GlobalCombination";
 import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
 import TwoColumnContent from "@/components/TwoColumnContent";
-import { cardData, mumbaiServices, mumbaiFAQ } from "@/constants/delhi-ncr";
+import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
+import { mumbaiCardData, mumbaiFAQ, mumbaiServices } from "@/constants/mumbai";
 import React from "react";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import Image from "next/image";
 import HeadingTypography from "@/components/Heading";
 import { Metadata } from "next";
 import ModalTrigger from "@/components/ModalTrigger";
+
+const mumbaiFaqItems: FAQItem[] = mumbaiFAQ.map((item) => ({
+  question: item.title,
+  answer: item.Desc,
+  highlightTerms: item.highlightTerms,
+}));
 
 
 export const metadata: Metadata = {
@@ -23,63 +29,58 @@ export default function page() {
         <>
             <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
                 <ContainerWrapper>
-                    <div className=" grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
-                        {/* Left Content */}
-                        <div className="flex justify-center items-center relative z-10">
-                            <div>
-                                <h1
-                                    className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px]  leading-snug"
-                                    style={{ color: "rgba(0, 0, 0, 0.7)", textAlign: "left" }}
-                                >
-                                    <span className="text-[#00999E] ">
-                                    Top Study Abroad Consultants&nbsp;
-                                    </span>
-                                       in Mumbai Helping Study Worldwide
+                    <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-10">
+                        <div className="relative z-10 flex items-center">
+                            <div className="w-full max-w-xl">
+                                <h1 className="font-poppins text-left text-[22px] font-bold leading-snug text-black/80 sm:text-[32px] md:text-[38px] lg:text-[44px]">
+                                    <span className="text-[#00999E]">
+                                        Leading Study Abroad Consultants
+                                    </span>{" "}
+                                    in Mumbai Guiding Your Success Globally
                                 </h1>
 
-                                <p className="mt-10 text-gray-700 leading-relaxed text-base">
-                                   Start your study abroad journey with experienced overseas education<br/>
-                                   consultants in Mumbai—get personalized guidance today.
+                                <p className="mt-6 text-base leading-relaxed text-gray-800 sm:mt-8 sm:text-lg">
+                                    Embark on your overseas education journey with
+                                    Mumbai’s most trusted consultants. Achieve your
+                                    academic dreams through dedicated, personalized,
+                                    and reliable guidance for students and families.
                                 </p>
 
-                                <div className=" items-end justify-center flex">
-                                    {/* You can add CTA button here if needed */}
-                                    <ModalTrigger text="Book A Counselling Session" />
+                                <div className="mt-6 flex justify-start sm:mt-8">
+                                    <ModalTrigger text="Book a Free Counselling Session" />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Right Image */}
-                        <div className="flex justify-center items-center p-2 sm:p-3 lg:p-4">
-                            <div className="w-full relative aspect-[12/9] overflow-hidden z-0">
+                        <div className="flex items-center justify-center">
+                            <div className="relative z-0 aspect-[4/3] w-full max-h-[420px] sm:max-h-[480px]">
                                 <Image
                                     src="/images/photos7.jpg"
-                                    alt="Global Immersion Banner"
+                                    alt="Students exploring global opportunities"
                                     fill
-                                    className="object-contain scale-135 pointer-events-none"
+                                    className="object-contain object-center"
                                     priority
-                                    sizes="100vw" 
+                                    sizes="(max-width: 640px) 100vw, 50vw"
                                 />
                             </div>
                         </div>
                     </div>
                 </ContainerWrapper>
             </div>
+
             <ContainerWrapper className=" py-12">
                 <div className="flex flex-col lg:flex-row items-center gap-8">
                     {/* Text Section */}
                       <div className="flex-1">
                           <HeadingTypography
-                             content="Top-Rated Foreign Education Consultants in Mumbai for Overseas Studies
-  !"
+                             content="Foreign Education Consultants in Mumbai for Overseas Studies!"
                               textAlign="left"
                               as="h2"
                           />
-                        <p className="mt-4 text-gray-700 leading-relaxed text-base">
-                                Dreaming of an international education but unsure how to move forward? Our dedicated team is here to simplify the journey. As experienced overseas education consultants in Mumbai, we assist students in identifying suitable courses, universities, and countries that match their future plans </p>
-                        <p className="mt-4 text-gray-700 leading-relaxed text-base">
-                                   From admissions and paperwork to scholarship options and visa processing, we manage each step with care. Whether you plan to study in the UK, USA, Canada, Australia, or Europe, our personalized guidance ensures a smooth and well-planned study abroad experience.
-
+                        <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
+                        Dreaming of an international education but unsure how to move forward? Our dedicated team is here to simplify the journey. As experienced <span className="font-bold">abroad education consultants in Mumbai</span>, we assist students in identifying suitable courses, universities, and countries that match their future plans. </p>
+                        <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
+                        From admissions and paperwork to scholarship options and visa processing, we manage each step with care. Whether you plan to study in the UK, USA, Canada, Australia, or Europe, our personalized guidance ensures a smooth and well-planned study abroad experience.
                         </p>
                     </div>
 
@@ -112,8 +113,8 @@ export default function page() {
                     {/* Right: Content */}
                     <div className="flex-3">
                         <HeadingTypography content="Reasons to Study Abroad with Us?" as="h2" />
-                        <p className="text-gray-800 text-lg leading-relaxed">
-                            Choosing the right guidance is essential for a successful study abroad journey. As trusted overseas education consultants in Mumbai, we focus on understanding your academic background and career goals to recommend the most suitable countries, universities, and courses. Our expert team supports you with applications, documentation, timelines, and visa procedures, ensuring a smooth and transparent process. With deep knowledge of international education pathways, we help students make informed decisions that lead to long-term academic and professional success. {" "}
+                        <p className="mt-4 text-gray-800 text-lg leading-relaxed text-justify">
+                        Choosing the right guidance is essential for a successful study abroad journey. As trusted <span className="font-bold">overseas education consultants in Mumbai</span>, we focus on understanding your academic background and career goals to recommend the most suitable countries, universities, and courses. Our expert team supports you with applications, documentation, timelines, and visa procedures, ensuring a smooth and transparent process. With deep knowledge of international education pathways, we help students make informed decisions that lead to long-term academic and professional success.
                         </p>
                         <div className="mt-6 flex justify-start">
                             <a
@@ -128,35 +129,37 @@ export default function page() {
             </div>
 
             <ContainerWrapper className="py-12">
-                <HeadingTypography content="What Sets Us Apart as Overseas Education Experts" textAlign="center" as="h2" />
+                <HeadingTypography content="What Sets Our Abroad Consultancy in Mumbai Apart" textAlign="center" as="h2" />
                 <p className="mt-4 text-center font-medium">
-                    
-                     Trusted foreign education consultants in Mumbai offering expert guidance for global university admissions, paperwork, and visa processing.:
+                Trusted <span className="font-bold">foreign education consultants in Mumbai</span> offering expert guidance for global university admissions, paperwork, and visa processing.
                 </p>
             </ContainerWrapper>
 
             <ContainerWrapper className="py-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {cardData.map((item, index) => (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {mumbaiCardData.map((item, index) => (
                         <div
                             key={item.id || index}
-                            className="group flex flex-col items-center justify-center text-center p-6 bg-gray-100 hover:bg-[#00999E] transition-all duration-300 h-[380px] rounded-lg"
+                            className="group flex h-[420px] flex-col items-center rounded-lg bg-gray-100 p-6 text-center transition-all duration-300 hover:bg-[#00999E] sm:h-[440px]"
                         >
-                            <div className="mb-4 shadow-2xl rounded-full p-5 bg-white group-hover:bg-[#007f82] transition-all duration-300">
+                            <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-white p-4 shadow-2xl transition-all duration-300 group-hover:bg-[#007f82]">
                                 <Image
                                     src={item.icon}
-                                    alt="Card icon"
-                                    width={50}
-                                    height={50}
-                                    className="transition-all duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-200"
+                                    alt={`${item.title} icon`}
+                                    width={48}
+                                    height={48}
+                                    className="h-12 w-12 object-contain transition-all duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-200"
                                 />
                             </div>
-                            <h2 className="text-[#00999e] font-bold text-xl transition-all duration-300 group-hover:text-white">
+                            <h2 className="shrink-0 text-lg font-bold text-[#00999e] transition-all duration-300 group-hover:text-white sm:text-xl">
                                 {item?.title}
                             </h2>
-                            <p className="mt-4 text-base font-medium transition-all duration-300 group-hover:text-white">
-                                {item.about}
-                            </p>
+                            <div className="mt-3 min-h-0 flex-1 overflow-y-auto pr-1">
+                                <p
+                                    className="text-sm font-medium leading-relaxed text-gray-700 transition-all duration-300 group-hover:text-white sm:text-[15px]"
+                                    dangerouslySetInnerHTML={{ __html: item.about }}
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -164,9 +167,9 @@ export default function page() {
 
             <div className="bg-[#eef9fb] py-12">
                 <ContainerWrapper>
-                    <HeadingTypography content="Consultancy Services We Offer Mumbai" textAlign="center" />
+                    <HeadingTypography content="Consultancy Services We Offer in Mumbai" textAlign="center" />
                     <p className="mt-4 text-center font-medium text-gray-700">
-                        End-to-end study abroad support tailored for students in Mumbai.
+                    End-to-end study abroad support tailored for students in Mumbai through a reliable <span className="font-bold">abroad consultancy in Mumbai</span>.
                     </p>
                       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                           {mumbaiServices.map((service) => (
@@ -194,16 +197,15 @@ export default function page() {
               </div>
 
               <TwoColumnContent
-                 heading="What Sets Us Apart as Overseas Education Experts"
+                 heading="Helping Mumbai Students Choose the Right University"
                  headingAs="h2"
                  imageUrl={"/images/photos8.jpg"}
                 bgColor={true}
                 reverse={true}
                 description={
-                    <>
-                Selecting the right international university plays a vital role in your academic success. Taksheela Institute Of Education, recognized among reliable abroad education consultants in Mumbai, offers expert advice, personalized counseling, and end-to-end assistance for students planning to study overseas. Our dedicated support system is focused on guiding you smoothly through every stage of your study abroad process, including:
-.{" "}
-                    </>
+                    <p className="text-justify">
+                Selecting the right international university plays a vital role in your academic success. Taksheela Institute Of Education, recognized as one of the best <span className="font-bold">abroad education consultants in Mumbai</span>, offers expert advice, personalized counseling, and end-to-end assistance for students planning to study overseas. Our dedicated support system is focused on guiding you smoothly through every stage of your study abroad process, including:
+                    </p>
                 }
             />
               <TwoColumnContent
@@ -214,8 +216,9 @@ export default function page() {
                 reverse={false}
                 description={
                     <>
-                       Kickstart your international education journey with expert guidance from Taksheela, one of the leading abroad education consultants in Mumbai. Our dedicated team helps students identify the best universities and programs worldwide, manage applications, and navigate admissions smoothly. With personalized counseling and a student-focused approach, we make studying abroad achievable and stress-free. Take the first step toward your global future—book your free consultation today and move confidently toward success.
-                    
+                    <p className="text-justify">
+                    Kickstart your international education journey with expert guidance from Taksheela, the leading <span className="font-bold">abroad consultancy in Mumbai</span>. Our dedicated team helps students identify the best universities and programs worldwide, manage applications, and navigate admissions smoothly. With personalized counseling and a student-focused approach, we make studying abroad achievable and stress-free. Take the first step toward your global future, book your free consultation today and move confidently toward success.
+                    </p>
                       <div className="pt-6">
                         <a
                           href="https://wa.me/+919831241212"
@@ -230,7 +233,7 @@ export default function page() {
             <Milestones />
             <Roadmap />
             <GlobalCombination />
-            <FAQ faqData={mumbaiFAQ} />
+            <FAQSection items={mumbaiFaqItems} />
             <LetsStart />
         </>
     );

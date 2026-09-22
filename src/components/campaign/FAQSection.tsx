@@ -74,6 +74,8 @@ function formatItemNumber(n: number) {
 
 export interface FAQSectionProps {
   items: FAQItem[];
+  /** Custom section title. When omitted, uses the default "Frequently Asked Questions" copy. */
+  heading?: string;
   /** `abroad` uses TIE navy + serif title (MBBS abroad pages). `hub` matches `/mbbs` hub sections. */
   variant?: "default" | "abroad" | "hub";
   /** Inline inside blog article — no full-bleed background or page padding. */
@@ -187,6 +189,7 @@ const FAQCard = memo(function FAQCard({
 
 export default function FAQSection({
   items,
+  heading: customHeading,
   variant = "default",
   embedded = false,
   hideHeading = false,
@@ -221,29 +224,47 @@ export default function FAQSection({
 
   const renderHighlight = useCallback((text: string) => <span className={`${ACCENT} font-bold`}>{text}</span>, []);
 
+  const themedCustomHeading = customHeading ? (
+    <span className={variant === "abroad" ? ABROAD_SECTION_ACCENT : "text-[#00999E]"}>
+      {customHeading}
+    </span>
+  ) : null;
+
   const heading =
     variant === "hub" ? (
       <>
         <h2 id={headingId} className={`text-center ${MBBS_HUB_SECTION_TITLE}`}>
-          Frequently Asked Questions
+          {customHeading ?? "Frequently Asked Questions"}
         </h2>
         <div className={`${MBBS_HUB_SECTION_UNDERLINE} mx-auto`} />
       </>
     ) : variant === "abroad" ? (
       <h2 id={headingId} className={`text-center ${ABROAD_SECTION_TITLE}`}>
-        Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
+        {themedCustomHeading ?? (
+          <>
+            Frequently asked <span className={ABROAD_SECTION_ACCENT}>Questions</span>
+          </>
+        )}
       </h2>
     ) : embedded ? (
       <h2
         id={headingId}
         className="font-sans text-xl font-extrabold text-[#0B162C] sm:text-2xl"
       >
-        Frequently Asked <span className="text-[#00999E]">Questions</span>
+        {themedCustomHeading ?? (
+          <>
+            Frequently Asked <span className="text-[#00999E]">Questions</span>
+          </>
+        )}
       </h2>
     ) : (
       <h2 className="font-sans text-xl font-[700] text-gray-900 sm:text-2xl md:text-4xl">
         <span className="relative inline-block pb-1">
-          Frequently Asked <span className="text-[#00999E]">Questions</span>
+          {themedCustomHeading ?? (
+            <>
+              Frequently Asked <span className="text-[#00999E]">Questions</span>
+            </>
+          )}
         </span>
       </h2>
     );
