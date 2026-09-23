@@ -273,7 +273,7 @@ export default function StudyAbroadPage() {
               Whether you want to study arts, medicine, or any other subject, our team is here to guide you every step of the way. At Taksheela, we focus on excellence, trust, and personalized support to help you succeed.
             </p>
             <p>
-              Don't wait! Your dream university is within reach. Book your free consultation today and take the first step toward an exciting future abroad!
+              Don&apos;t wait! Your dream university is within reach. Book your free consultation today and take the first step toward an exciting future abroad!
             </p>
             <div className="pt-6">
               <a

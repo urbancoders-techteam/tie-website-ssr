@@ -92,7 +92,7 @@ export default function page() {
               as="h2"
             />
             <p className="mt-4 text-base leading-relaxed text-gray-700 text-justify">
-            Are you planning to study in another country but feeling confused about the right steps? Our experts are here to guide you. As a trusted <span className="font-bold">overseas consultancy in Bangalore</span>, we help students choose the perfect course, university, and country based on their goals. From application support to documentation, scholarships, and visa assistance, we make your study abroad journey simple and stress-free. Whether you're aiming for higher studies in the UK, Canada, Australia, the USA, or Europe, our counselors ensure you receive clear, personalized guidance at every stage. With us, your dream of international education becomes easier and achievable.
+            Are you planning to study in another country but feeling confused about the right steps? Our experts are here to guide you. As a trusted <span className="font-bold">overseas consultancy in Bangalore</span>, we help students choose the perfect course, university, and country based on their goals. From application support to documentation, scholarships, and visa assistance, we make your study abroad journey simple and stress-free. Whether you&apos;re aiming for higher studies in the UK, Canada, Australia, the USA, or Europe, our counselors ensure you receive clear, personalized guidance at every stage. With us, your dream of international education becomes easier and achievable.
             </p>
           </div>
 
