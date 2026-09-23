@@ -11,6 +11,7 @@ import Image from "next/image";
 import HeadingTypography from "@/components/Heading";
 import { Metadata } from "next";
 import ConsultantHero from "@/components/study-abroad/ConsultantHero";
+import { ConsultantFeatureCardGrid } from "@/components/study-abroad/ConsultantFeatureCard";
 
 const mumbaiFaqItems: FAQItem[] = mumbaiFAQ.map((item) => ({
   question: item.title,
@@ -113,33 +114,7 @@ export default function page() {
             </ContainerWrapper>
 
             <ContainerWrapper className="py-12">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {mumbaiCardData.map((item, index) => (
-                        <div
-                            key={item.id || index}
-                            className="group flex h-[420px] flex-col items-center rounded-lg bg-gray-100 p-6 text-center transition-all duration-300 hover:bg-[#00999E] sm:h-[440px]"
-                        >
-                            <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-white p-4 shadow-2xl transition-all duration-300 group-hover:bg-[#007f82]">
-                                <Image
-                                    src={item.icon}
-                                    alt={`${item.title} icon`}
-                                    width={48}
-                                    height={48}
-                                    className="h-12 w-12 object-contain transition-all duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-200"
-                                />
-                            </div>
-                            <h2 className="shrink-0 text-lg font-bold text-[#00999e] transition-all duration-300 group-hover:text-white sm:text-xl">
-                                {item?.title}
-                            </h2>
-                            <div className="mt-3 min-h-0 flex-1 overflow-y-auto pr-1">
-                                <p
-                                    className="text-sm font-medium leading-relaxed text-gray-700 transition-all duration-300 group-hover:text-white sm:text-[15px]"
-                                    dangerouslySetInnerHTML={{ __html: item.about }}
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <ConsultantFeatureCardGrid items={mumbaiCardData} />
             </ContainerWrapper>
 
             <div className="bg-[#eef9fb] py-12">

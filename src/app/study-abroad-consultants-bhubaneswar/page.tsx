@@ -3,6 +3,7 @@ import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
 import ConsultantHero from "@/components/study-abroad/ConsultantHero";
+import { ConsultantFeatureCardGrid } from "@/components/study-abroad/ConsultantFeatureCard";
 import GlobalCombination from "@/components/study-abroad/GlobalCombination";
 import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
@@ -109,31 +110,7 @@ export default function page() {
             </ContainerWrapper>
 
             <ContainerWrapper className="py-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {bhubaneswarCardData.map((item, index) => (
-                        <div
-                            key={item.id || index}
-                            className="group flex flex-col items-center justify-center text-center p-6 bg-gray-100 hover:bg-[#00999E] transition-all duration-300 h-[380px] rounded-lg"
-                        >
-                            <div className="mb-4 shadow-2xl rounded-full p-5 bg-white group-hover:bg-[#007f82] transition-all duration-300">
-                                <Image
-                                    src={item.icon}
-                                    alt="Card icon"
-                                    width={50}
-                                    height={50}
-                                    className="transition-all duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-200"
-                                />
-                            </div>
-                            <h2 className="text-[#00999e] font-bold text-xl transition-all duration-300 group-hover:text-white">
-                                {item?.title}
-                            </h2>
-                            <p
-                                className="mt-4 text-justify text-base font-medium transition-all duration-300 group-hover:text-white"
-                                dangerouslySetInnerHTML={{ __html: item.about }}
-                            />
-                        </div>
-                    ))}
-                </div>
+                <ConsultantFeatureCardGrid items={bhubaneswarCardData} />
             </ContainerWrapper>
 
             <div className="bg-[#eef9fb] py-12">

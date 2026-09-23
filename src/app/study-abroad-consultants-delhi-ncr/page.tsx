@@ -10,7 +10,8 @@ import React from "react";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import Image from "next/image";
 import { Metadata } from "next";
-import ModalTrigger from "@/components/ModalTrigger";
+import ConsultantHero from "@/components/study-abroad/ConsultantHero";
+import { ConsultantFeatureCardGrid } from "@/components/study-abroad/ConsultantFeatureCard";
 
 const delhiNcrFaqItems: FAQItem[] = delhiNCRFAQ.map((item) => ({
   question: item.title,
@@ -26,45 +27,21 @@ export const metadata: Metadata = {
 export default function page() {
   return (
     <div className="[&_p]:text-justify">
-      <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
-        <ContainerWrapper>
-          <div className=" grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
-            {/* Left Content */}
-            <div className="flex justify-center items-center">
-              <div>
-                <h1
-                  className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px]  leading-snug"
-                  style={{ color: "rgba(0, 0, 0, 0.7)", textAlign: "left" }}
-                >
-                  <span className="text-[#00999E] ">
-                    Top Study Abroad&nbsp;
-                  </span>
-                  Consultants in Delhi NCR & Greater Noida
-                </h1>
-                
+      <ConsultantHero
+        title={
+          <>
+            <span className="text-[#00999E]">Top Study Abroad</span>{" "}
+            Consultants in Delhi NCR & Greater Noida
+          </>
+        }
+        image={{
+          src: "/images/photos5.jpg",
+          alt: "Top study abroad consultants in Delhi NCR",
+          width: 396,
+          height: 198,
+        }}
+      />
 
-                <div className="my-4 sm:my-10  items-end justify-center flex">
-                  {/* You can add CTA button here if needed */}
-                   <ModalTrigger text="Book A Counselling Session" />
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="flex justify-center items-center">
-              <div className="w-full h-[250px] sm:h-[300px] lg:h-[450px] relative">
-                <Image
-                  src={imageBaseUrl + "GirlImageImmigration.svg"}
-                  alt="Global Immersion Banner"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </ContainerWrapper>
-      </div>
       <ContainerWrapper className=" py-12">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Text Section */}
@@ -92,6 +69,7 @@ export default function page() {
           </div>
         </div>
       </ContainerWrapper>
+      
       <div className="bg-[#effdff]">
         <ContainerWrapper className="flex flex-col lg:flex-row  gap-12 mb-16 py-12">
           {/* Left: Image */}
@@ -137,31 +115,7 @@ export default function page() {
       </ContainerWrapper>
 
       <ContainerWrapper className="py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {cardData.map((item, index) => (
-            <div
-              key={item.id || index}
-              className="group flex flex-col items-center justify-center text-center p-6 bg-gray-100 hover:bg-[#00999E] transition-all duration-300 h-[380px] rounded-lg"
-            >
-              <div className="mb-4 shadow-2xl rounded-full p-5 bg-white group-hover:bg-[#007f82] transition-all duration-300">
-                <Image
-                  src={item.icon}
-                  alt="Card icon"
-                  width={50}
-                  height={50}
-                  className="transition-all duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-200"
-                />
-              </div>
-              <h3 className="text-[#00999e] font-bold text-xl transition-all duration-300 group-hover:text-white">
-                {item?.title}
-              </h3>
-              <p
-                className="mt-4 text-justify text-base font-medium transition-all duration-300 group-hover:text-white"
-                dangerouslySetInnerHTML={{ __html: item.about }}
-              />
-            </div>
-          ))}
-        </div>
+        <ConsultantFeatureCardGrid items={cardData} />
       </ContainerWrapper>
 
       <TwoColumnContent
