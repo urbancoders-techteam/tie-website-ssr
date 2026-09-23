@@ -1,4 +1,4 @@
-import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadBaseUrl } from "@/utils/config";
 import { CategoryKey, ViewMoreItem } from "@/utils/interface";
 
 export const studyAbroadImpactCountryLinks = [
@@ -52,28 +52,28 @@ export const studyAbroadImpactStats = [
 export const milestonesData = [
   {
     id: 1,
-    icon: imageBaseUrl + "milestone1.png",
+    icon: studyAbroadBaseUrl + "milestone-1.png",
     count: 10,
     parameter: "+",
     title: "Year",
   },
   {
     id: 2,
-    icon: imageBaseUrl + "mileston2.png",
+    icon: studyAbroadBaseUrl + "milestone-2.png",
     count: 98,
     parameter: "%",
     title: "Success Rate",
   },
   {
     id: 3,
-    icon: imageBaseUrl + "mileston3.png",
+    icon: studyAbroadBaseUrl + "milestone-3.png",
     count: 1000,
     parameter: "+",
     title: "Universities",
   },
   {
     id: 4,
-    icon: imageBaseUrl + "mileston4.png",
+    icon: studyAbroadBaseUrl + "milestone-4.png",
     count: 500,
     parameter: "+",
     title: "Students Placed",

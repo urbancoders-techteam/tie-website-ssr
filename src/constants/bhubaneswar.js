@@ -1,9 +1,9 @@
-import { imageBaseUrl } from "@/utils/config";
+import { studyAbroadBaseUrl } from "@/utils/config";
 
-const icon1 = imageBaseUrl + "value1.svg";
-const icon2 = imageBaseUrl + "value2.svg";
-const icon3 = imageBaseUrl + "value3.svg";
-const icon4 = imageBaseUrl + "value4.svg";
+const icon1 = studyAbroadBaseUrl + "webicons/experts-icon.svg";
+const icon2 = studyAbroadBaseUrl + "webicons/support-icon.svg";
+const icon3 = studyAbroadBaseUrl + "webicons/experience-icon.svg";
+const icon4 = studyAbroadBaseUrl + "webicons/global-icon.svg";
 
 export const bhubaneswarCardData = [
   {
@@ -25,7 +25,7 @@ export const bhubaneswarCardData = [
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As a <span class=\"font-bold\">leading consultancy in Bhubaneswar for studying abroad</span>, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
+      "As a leading consultancy in Bhubaneswar for studying abroad, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
   },
   {
     id: 4,

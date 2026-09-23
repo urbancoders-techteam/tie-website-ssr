@@ -1,9 +1,9 @@
-import { imageBaseUrl } from "@/utils/config";
+import { studyAbroadBaseUrl } from "@/utils/config";
 
-const icon1 = imageBaseUrl + "value1.svg";
-const icon2 = imageBaseUrl + "value2.svg";
-const icon3 = imageBaseUrl + "value3.svg";
-const icon4 = imageBaseUrl + "value4.svg";
+const icon1 = studyAbroadBaseUrl + "webicons/experts-icon.svg";
+const icon2 = studyAbroadBaseUrl + "webicons/support-icon.svg";
+const icon3 = studyAbroadBaseUrl + "webicons/experience-icon.svg";
+const icon4 = studyAbroadBaseUrl + "webicons/global-icon.svg";
 
 export const bangaloreCardData = [
   {
@@ -11,7 +11,7 @@ export const bangaloreCardData = [
     icon: icon1,
     title: "Expert Guidance",
     about:
-      "Our experienced counselors stay updated on the latest admission trends, top universities, and scholarship opportunities. Whether you aim for an undergraduate degree, master’s, or MBBS, we provide the best advice to help you succeed. Our <span class=\"font-bold\">best study abroad consultants in Bangalore</span> also help you understand course requirements and application timelines.",
+      "Our experienced counselors stay updated on the latest admission trends, top universities, and scholarship opportunities. Whether you aim for an undergraduate degree, master’s, or MBBS, we provide the best advice to help you succeed. Our best study abroad consultants in Bangalore also help you understand course requirements and application timelines.",
   },
   {
     id: 2,
@@ -25,14 +25,14 @@ export const bangaloreCardData = [
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As leading MBBS abroad consultants in Greater Noida, we have successfully placed many students in top international universities. Our success stories speak for themselves. Students seeking a <span class=\"font-bold\">consultancy for abroad studies in Bangalore</span> can benefit from structured support throughout their application journey.",
+      "As leading MBBS abroad consultants in Greater Noida, we have successfully placed many students in top international universities. Our success stories speak for themselves. Students seeking a consultancy for abroad studies in Bangalore can benefit from structured support throughout their application journey.",
   },
   {
     id: 4,
     icon: icon4,
     title: "Local Expertise with a Global Vision",
     about:
-      "Based in Greater Noida, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education. As the <span class=\"font-bold\">leading study abroad consultants in Bangalore</span>, we focus on making international education more accessible and easier to understand.",
+      "Based in Greater Noida, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education. As the leading study abroad consultants in Bangalore, we focus on making international education more accessible and easier to understand.",
   },
 ];
 
@@ -49,7 +49,7 @@ export const bangaloreServices = [
     icon: icon2,
     title: "University Selection Support",
     about:
-      "Discover top universities worldwide and choose the right program to match your academic and career aspirations. Our <span class=\"font-bold\">overseas consultancy in Bangalore</span> helps you compare options based on courses, entry requirements, location, and future opportunities.",
+      "Discover top universities worldwide and choose the right program to match your academic and career aspirations. Our overseas consultancy in Bangalore helps you compare options based on courses, entry requirements, location, and future opportunities.",
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ export const bangaloreServices = [
     icon: icon4,
     title: "Scholarships & Funding Solutions",
     about:
-      "Learn about scholarships, financial aid, and other funding opportunities to make your international education affordable. Our <span class=\"font-bold\">consultancy for abroad studies in Bangalore</span> can help you understand available funding options and application requirements.",
+      "Learn about scholarships, financial aid, and other funding opportunities to make your international education affordable. Our consultancy for abroad studies in Bangalore can help you understand available funding options and application requirements.",
   },
 ];
 
