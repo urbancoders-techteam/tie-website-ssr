@@ -15,17 +15,17 @@ import ModalTrigger from "@/components/ModalTrigger";
 const delhiNcrFaqItems: FAQItem[] = delhiNCRFAQ.map((item) => ({
   question: item.title,
   answer: item.Desc,
-  highlightTerms: item.highlightTerms,
 }));
 
 export const metadata: Metadata = {
   title: "Study Abroad Counselors in Delhi NCR & Noida | Taksheela",
-  description:"Discover top Study Abroad Consultants in Delhi NCR & Greater Noida. Get expert guidance to make your overseas education journey simple and stress-free." 
+  description:"Discover top Study Abroad Consultants in Delhi NCR & Greater Noida. Get expert guidance to make your overseas education journey simple and stress-free.",
+  keywords:"top study abroad consultants in delhi, overseas education consultants in delhi ncr, overseas education consultants in greater noida, study abroad consultants in noida"
 };
 
 export default function page() {
   return (
-    <>
+    <div className="[&_p]:text-justify">
       <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
         <ContainerWrapper>
           <div className=" grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
@@ -41,6 +41,7 @@ export default function page() {
                   </span>
                   Consultants in Delhi NCR & Greater Noida
                 </h1>
+                
 
                 <div className="my-4 sm:my-10  items-end justify-center flex">
                   {/* You can add CTA button here if needed */}
@@ -71,10 +72,10 @@ export default function page() {
               <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-[#00999e] text-left">
                 ~Turning Overseas Education Aspirations into Reality~
               </h2>
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
-            Do you dream of studying in another country but don&apos;t know where to start? Don&apos;t worry—we are here to help! At Taksheela, one of the <span className="font-bold">top study abroad consultants in Delhi</span> NCR and Greater Noida, we guide students like you to get into the best universities around the world. Our experienced study abroad consultants in Greater Noida make everything easy, whether you want to study medicine, business, or any other subject.
+            <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
+            Do you dream of studying in another country but don&apos;t know where to start? Don&apos;t worry—we are here to help! At Taksheela, one of the top study abroad consultants in Delhi NCR and Greater Noida, we guide students like you to get into the best universities around the world. Our experienced study abroad consultants in Greater Noida make everything easy, whether you want to study medicine, business, or any other subject.
             </p>
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
+            <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
             From choosing the right course to getting admission and a visa, we take care of everything—so you can focus on your studies. With us, your dream of studying abroad can come true!
             </p>
           </div>
@@ -110,8 +111,8 @@ export default function page() {
             <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-[#00999e] text-left">
               About Taksheela Institute of Education
             </h2>
-            <p className="text-gray-800 text-lg leading-relaxed">
-            At Taksheela, we believe that education is the key to a successful future. If you dream of studying abroad, we are here to make it happen! As experienced <span className="font-bold">overseas education consultants in Greater Noida</span>, we have helped many students like you find the best universities and courses around the world. We focus on your goals and provide personalized guidance at every step. From choosing the right course to securing admissions and visas, we ensure you have the best support to make informed decisions about your future. With us, studying abroad is not just a dream—it&apos;s a reality waiting for you!
+            <p className="mt-4 text-gray-800 text-lg leading-relaxed text-justify">
+            At Taksheela, we believe that education is the key to a successful future. If you dream of studying abroad, we are here to make it happen! As experienced overseas education consultants in Greater Noida, we have helped many students like you find the best universities and courses around the world. We focus on your goals and provide personalized guidance at every step. From choosing the right course to securing admissions and visas, we ensure you have the best support to make informed decisions about your future. With us, studying abroad is not just a dream—it&apos;s a reality waiting for you!
 
             </p>
             <div className="mt-6 flex justify-start">
@@ -130,8 +131,8 @@ export default function page() {
         <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-[#00999e] text-center">
           ~What Sets Taksheela Apart?~
         </h2>
-        <p className="mt-4 text-center font-medium">
-        Studying abroad is a life-changing opportunity. It opens doors to top universities, better career prospects, and global exposure. But the process can feel overwhelming. That&apos;s where we come in! As one of the <span className="font-bold">top study abroad consultants in Delhi</span> NCR, we make your journey simple, smooth, and stress-free.
+        <p className="mt-4 text-justify font-medium">
+        Studying abroad is a life-changing opportunity. It opens doors to top universities, better career prospects, and global exposure. But the process can feel overwhelming. That&apos;s where we come in! As one of the top study abroad consultants in Delhi NCR, we make your journey simple, smooth, and stress-free.
         </p>
       </ContainerWrapper>
 
@@ -155,7 +156,7 @@ export default function page() {
                 {item?.title}
               </h3>
               <p
-                className="mt-4 text-base font-medium transition-all duration-300 group-hover:text-white"
+                className="mt-4 text-justify text-base font-medium transition-all duration-300 group-hover:text-white"
                 dangerouslySetInnerHTML={{ __html: item.about }}
               />
             </div>
@@ -172,9 +173,9 @@ export default function page() {
         bgColor={true}
         reverse={true}
         description={
-          <>
-            Delhi NCR is a growing city with great schools, colleges, and a bright student community. It is a place full of opportunities for students who dream big! As one of the <span className="font-bold">top study abroad consultants in Delhi</span> NCR, we help students like you find the best universities, scholarships, and admission opportunities in different countries. If you want to study abroad but don&apos;t know how to start, don&apos;t worry! We are here to guide you at every step and make your journey smooth and easy.{" "}
-          </>
+          <p className="text-justify">
+            Delhi NCR is a growing city with great schools, colleges, and a bright student community. It is a place full of opportunities for students who dream big! As one of the top study abroad consultants in Delhi NCR, we help students like you find the best universities, scholarships, and admission opportunities in different countries. If you want to study abroad but don&apos;t know how to start, don&apos;t worry! We are here to guide you at every step and make your journey smooth and easy.{" "}
+          </p>
         }
       />
         <TwoColumnContent
@@ -185,7 +186,9 @@ export default function page() {
           reverse={false}
         description={
           <>
-            We help students in Greater Noida, as trusted <span className="font-bold">overseas education consultants in Greater Noida</span>, follow their dreams of studying in other countries. Our team makes the process easy and stress-free. With our expert advice and student-first approach, we guide you at every step—from choosing the best university to getting your admission. Let Taksheela be your trusted partner on this journey! Ready to take the first step? Book a free counseling session today and start planning your future with confidence!
+            <p className="text-justify">
+              We help students in Greater Noida, as trusted overseas education consultants in Greater Noida, follow their dreams of studying in other countries. Our team makes the process easy and stress-free. With our expert advice and student-first approach, we guide you at every step—from choosing the best university to getting your admission. Let Taksheela be your trusted partner on this journey! Ready to take the first step? Book a free counseling session today and start planning your future with confidence!
+            </p>
             <div className="pt-6">
               <a
                 href="https://wa.me/+919831241212"
@@ -205,6 +208,6 @@ export default function page() {
         heading="Common Questions About Studying Abroad"
       />
       <LetsStart />
-    </>
+    </div>
   );
 }

@@ -55,7 +55,7 @@ export const cardData = [
     icon: icon1,
     title: "Expert Guidance",
     about:
-      "Our experienced counselors are among the <span class=\"font-bold\">leading overseas education consultants in Delhi</span> NCR. We guide students on universities, admissions, scholarships, undergraduate, master's, and MBBS programs.",
+      "Our experienced counselors are among the leading overseas education consultants in Delhi NCR. We guide students on universities, admissions, scholarships, undergraduate, master's, and MBBS programs.",
   },
   {
     id: 2,
@@ -69,7 +69,7 @@ export const cardData = [
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As leading <span class=\"font-bold\">study abroad consultants in Noida</span> and Greater Noida, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
+      "As leading study abroad consultants in Noida and Greater Noida, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
   },
   {
     id: 4,

@@ -4,7 +4,7 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
-import ModalTrigger from "@/components/ModalTrigger";
+import ConsultantHero from "@/components/study-abroad/ConsultantHero";
 import GlobalCombination from "@/components/study-abroad/GlobalCombination";
 import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
@@ -21,7 +21,6 @@ import Image from "next/image";
 const kolkataFaqItems: FAQItem[] = kolkateFAQ.map((item) => ({
   question: item.title,
   answer: item.Desc,
-  highlightTerms: item.highlightTerms,
 }));
 
 export const metadata: Metadata = {
@@ -72,42 +71,21 @@ export default function StudyAbroadPage() {
     <>
       <BreadcrumbSchema />
 
-      <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
-        <ContainerWrapper>
-          <div className=" grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
-            {/* Left Content */}
-            <div className="flex justify-center items-center">
-              <div>
-                <h1
-                  className="font-poppins font-semibold text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px] leading-snug"
-                  style={{ color: "rgba(0, 0, 0, 0.7)", textAlign: "left" }}
-                >
-                  <span className="text-[#00999E]">Most Trusted</span>{" "}
-                  Study Abroad Consultants in Kolkata
-                </h1>
-
-                <div className="my-4 sm:my-10  items-end justify-center flex">
-                  {/* You can add CTA button here if needed */}
-                  <ModalTrigger text="Book A Counselling Session" />
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="flex justify-center items-center">
-              <div className="w-full h-[250px] sm:h-[300px] lg:h-[450px] relative">
-                <Image
-                  src={imageBaseUrl + "GirlImageImmigration.svg"}
-                  alt="Global Immersion Banner"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </ContainerWrapper>
-      </div>
+      <div className="[&_p]:text-justify">
+      <ConsultantHero
+        title={
+          <>
+            <span className="text-[#00999E]">Most Trusted</span>{" "}
+            Study Abroad Consultants in Kolkata
+          </>
+        }
+        image={{
+          src: imageBaseUrl + "GirlImageImmigration.svg",
+          alt: "Global Immersion Banner",
+          width: 800,
+          height: 600,
+        }}
+      />
       <ContainerWrapper className=" py-12">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Text Section */}
@@ -117,10 +95,10 @@ export default function StudyAbroadPage() {
               textAlign="left"
               as="h2"
             />
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
-              At Taksheela, we believe that every student should have the chance to study abroad. As trusted <span className="font-bold">study abroad consultants in Kolkata</span>, we guide you at every step, making it easier to study in other countries while supporting your learning and growth.
+            <p className="mt-4 text-justify text-gray-700 leading-relaxed text-base">
+              At Taksheela, we believe that every student should have the chance to study abroad. As trusted study abroad consultants in Kolkata, we guide you at every step, making it easier to study in other countries while supporting your learning and growth.
             </p>
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
+            <p className="mt-4 text-justify text-gray-700 leading-relaxed text-base">
               Whether you want to study for a degree, a special course, or further education, we focus on you, giving the right guidance to match your dreams.
             </p>
           </div>
@@ -158,11 +136,11 @@ export default function StudyAbroadPage() {
               content="End-to-End Study Abroad Support — From Counseling to Visa"
               as="h2"
             />
-            <p className="text-gray-800 text-lg leading-relaxed mt-5">
+            <p className="mt-5 text-justify text-lg leading-relaxed text-gray-800">
               Choosing the right path for your international education is an important decision. Our experienced team understands that every student has unique aspirations. We provide personalized guidance to help you choose the best country, university, and course that aligns with your career goals.
             </p>
-            <p className="text-gray-800 text-lg leading-relaxed mt-5">
-              With our deep knowledge of education around the world, we help you make smart choices that lead to lifelong success. Our <span className="font-bold">best study abroad consultants in Kolkata</span> support you through each stage of the process.
+            <p className="mt-5 text-justify text-lg leading-relaxed text-gray-800">
+              With our deep knowledge of education around the world, we help you make smart choices that lead to lifelong success. Our best study abroad consultants in Kolkata support you through each stage of the process.
             </p>
             <div className="mt-6 flex">
               <a
@@ -183,10 +161,10 @@ export default function StudyAbroadPage() {
           textAlign="center"
           as="h2"
         />
-        <p className="mt-4 text-center font-medium">
-          Picking the right country and institution is a big decision. Taksheela is here to help you with honest and trusted advice. As expert <span className="font-bold">overseas education consultants in Kolkata</span>, we guide you based on your interests and career dreams. Our team gives full details about top universities, admission steps, and the latest rules for studying abroad.
+        <p className="mt-4 text-justify font-medium">
+          Picking the right country and institution is a big decision. Taksheela is here to help you with honest and trusted advice. As expert overseas education consultants in Kolkata, we guide you based on your interests and career dreams. Our team gives full details about top universities, admission steps, and the latest rules for studying abroad.
         </p>
-        <p> Our complete services include: </p>
+        <p className="text-justify"> Our complete services include: </p>
       </ContainerWrapper>
 
       <ContainerWrapper className="pb-12">
@@ -210,7 +188,7 @@ export default function StudyAbroadPage() {
 
               {/* Description */}
               <p
-                className="mt-3 text-sm text-gray-600 leading-relaxed 
+                className="mt-3 text-justify text-sm text-gray-600 leading-relaxed 
                       group-hover:text-gray-700 transition-all duration-500"
               >
                 {item.about}
@@ -226,7 +204,7 @@ export default function StudyAbroadPage() {
           textAlign="center"
           as="h2"
         />
-        <p className="mt-4 text-center font-medium">
+        <p className="mt-4 text-justify font-medium">
           Kolkata is a city full of history, culture, and great education. It&apos;s a place where students dream big, and we are here to help make those dreams come true. We are proud to serve this dynamic community by:
         </p>
       </ContainerWrapper>
@@ -250,7 +228,7 @@ export default function StudyAbroadPage() {
               <h3 className="text-[#00999e] font-bold text-xl transition-all duration-300 group-hover:text-white">
                 {item?.title}
               </h3>
-              <p className="mt-4 text-base font-medium transition-all duration-300 group-hover:text-white">
+              <p className="mt-4 text-justify text-base font-medium transition-all duration-300 group-hover:text-white">
                 {item.about}
               </p>
             </div>
@@ -266,13 +244,13 @@ export default function StudyAbroadPage() {
         reverse={false}
         description={
           <>
-            <p>
-              We are more than just education consultants, we are your partners in building a bright future! As the <span className="font-bold">best overseas education consultants in Kolkata</span>, we help students like you find the best opportunities to study in different countries.
+            <p className="text-justify">
+              We are more than just education consultants, we are your partners in building a bright future! As the best overseas education consultants in Kolkata, we help students like you find the best opportunities to study in different countries.
             </p>
-            <p className="py-6">
+            <p className="py-6 text-justify">
               Whether you want to study arts, medicine, or any other subject, our team is here to guide you every step of the way. At Taksheela, we focus on excellence, trust, and personalized support to help you succeed.
             </p>
-            <p>
+            <p className="text-justify">
               Don&apos;t wait! Your dream university is within reach. Book your free consultation today and take the first step toward an exciting future abroad!
             </p>
             <div className="pt-6">
@@ -291,6 +269,7 @@ export default function StudyAbroadPage() {
       <GlobalCombination sectionHeadingAs="h2" />
       <FAQSection items={kolkataFaqItems} />
       <LetsStart />
+      </div>
     </>
   );
 }

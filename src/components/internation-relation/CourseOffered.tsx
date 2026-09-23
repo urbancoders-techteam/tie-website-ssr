@@ -1,8 +1,6 @@
 "use client";
 
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import Image from "next/image";
 import { IndiaPopular } from "@/constants/internation-relation";

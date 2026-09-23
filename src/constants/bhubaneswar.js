@@ -25,7 +25,7 @@ export const bhubaneswarCardData = [
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As a <span class=\"font-bold\">leading consultancy in Bhubaneswar for studying abroad</span>, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
+      "As a leading consultancy in Bhubaneswar for studying abroad, we have successfully placed many students in top international universities. Our success stories speak for themselves.",
   },
   {
     id: 4,

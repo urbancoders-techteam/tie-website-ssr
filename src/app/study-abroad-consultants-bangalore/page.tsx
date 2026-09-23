@@ -14,12 +14,11 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import Image from "next/image";
 import HeadingTypography from "@/components/Heading";
 import { Metadata } from "next";
-import ModalTrigger from "@/components/ModalTrigger";
+import ConsultantHero from "@/components/study-abroad/ConsultantHero";
 
 const bangaloreFaqItems: FAQItem[] = bangaloreFAQ.map((item) => ({
   question: item.title,
   answer: item.Desc,
-  highlightTerms: item.highlightTerms,
 }));
 
 export const metadata: Metadata = {
@@ -36,52 +35,24 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <>
-      <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
-        <ContainerWrapper>
-          <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2">
-            <div className="relative z-10 flex items-center">
-              <div className="w-full max-w-xl">
-                <h1 className="font-poppins text-left text-[20px] font-semibold leading-snug text-black/70 sm:text-[30px] md:text-[35px] lg:text-[40px]">
-                  <span className="text-[#00999E]">
-                    Study Abroad Consultants in Bangalore
-                  </span>{" "}
-                  | Trusted Overseas Education & Visa Experts
-                </h1>
-                <p className="mt-6 text-base leading-relaxed text-gray-700 sm:mt-8">
-                  Get expert guidance from the <span className="font-bold">best consultancy for abroad studies in Bangalore</span> and start your global education journey today. <span className="font-bold">Apply now.</span>
-                </p>
-           
-
-                <p className="mt-6 text-base leading-relaxed text-gray-700 sm:mt-8">
-                  Get expert guidance from a trusted{" "}
-                  <span className="font-bold">
-                    consultancy for abroad studies in Bangalore
-                  </span>
-                  —start your global education journey today.
-                </p>
-
-                <div className="mt-6 flex justify-start sm:mt-8">
-                  <ModalTrigger text="Book A Counselling Session" />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center">
-              <div className="relative z-0 aspect-[12/9] w-full overflow-hidden">
-                <Image
-                  src="/images/photos5.jpg"
-                  alt="Best study abroad consultants in Bangalore"
-                  fill
-                  className="pointer-events-none scale-125 object-contain"
-                  priority
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </div>
-        </ContainerWrapper>
-      </div>
+    <div className="[&_p]:text-justify">
+      <ConsultantHero
+        title={
+          <>
+            <span className="text-[#00999E]">Best Study Abroad Consultants</span>{" "}
+            in Bangalore | Study Visa Experts
+          </>
+        }
+        description={[
+          "Get expert guidance from the best consultancy for abroad studies in Bangalore and start your global education journey today. Apply now.",
+        ]}
+        image={{
+          src: "/images/photos5.jpg",
+          alt: "Best study abroad consultants in Bangalore",
+          width: 396,
+          height: 198,
+        }}
+      />
 
       <ContainerWrapper className="py-12">
         <div className="flex flex-col items-center gap-8 lg:flex-row">
@@ -92,7 +63,7 @@ export default function page() {
               as="h2"
             />
             <p className="mt-4 text-base leading-relaxed text-gray-700 text-justify">
-            Are you planning to study in another country but feeling confused about the right steps? Our experts are here to guide you. As a trusted <span className="font-bold">overseas consultancy in Bangalore</span>, we help students choose the perfect course, university, and country based on their goals. From application support to documentation, scholarships, and visa assistance, we make your study abroad journey simple and stress-free. Whether you&apos;re aiming for higher studies in the UK, Canada, Australia, the USA, or Europe, our counselors ensure you receive clear, personalized guidance at every stage. With us, your dream of international education becomes easier and achievable.
+            Are you planning to study in another country but feeling confused about the right steps? Our experts are here to guide you. As a trusted overseas consultancy in Bangalore, we help students choose the perfect course, university, and country based on their goals. From application support to documentation, scholarships, and visa assistance, we make your study abroad journey simple and stress-free. Whether you&apos;re aiming for higher studies in the UK, Canada, Australia, the USA, or Europe, our counselors ensure you receive clear, personalized guidance at every stage. With us, your dream of international education becomes easier and achievable.
             </p>
           </div>
 
@@ -124,7 +95,7 @@ export default function page() {
           <div className="flex-3">
             <HeadingTypography content="Why Choose Us?" as="h2" />
             <p className="mt-4 text-lg leading-relaxed text-gray-800 text-justify">
-              Our <span className="font-bold">best study abroad consultants in Bangalore</span> professionally assist students in exploring top global universities, ensuring a seamless experience with application processes, documentation, and visa support.
+              Our best study abroad consultants in Bangalore professionally assist students in exploring top global universities, ensuring a seamless experience with application processes, documentation, and visa support.
             </p>
        
             <div className="mt-6 flex justify-start">
@@ -145,8 +116,8 @@ export default function page() {
           textAlign="center"
           as="h2"
         />
-        <p className="mt-4 text-center font-medium">
-          Choosing the right guidance can transform your study abroad plans into a smooth and confident journey. As a reliable <span className="font-bold">consultancy for abroad studies in Bangalore</span>, we take the time to understand your goals and recommend the best countries, universities, and programs for your future. Our team supports you through applications, documentation, timelines, and visa procedures, ensuring every step is clear and manageable. With strong expertise in global education pathways, we help you make smart academic decisions that shape long-term success. With our support, your international education goals move from aspiration to achievement.
+        <p className="mt-4 text-justify font-medium">
+          Choosing the right guidance can transform your study abroad plans into a smooth and confident journey. As a reliable consultancy for abroad studies in Bangalore, we take the time to understand your goals and recommend the best countries, universities, and programs for your future. Our team supports you through applications, documentation, timelines, and visa procedures, ensuring every step is clear and manageable. With strong expertise in global education pathways, we help you make smart academic decisions that shape long-term success. With our support, your international education goals move from aspiration to achievement.
         </p>
    
       </ContainerWrapper>
@@ -172,7 +143,7 @@ export default function page() {
               </h2>
               <div className="mt-3 min-h-0 flex-1 overflow-y-auto pr-1">
                 <p
-                  className="text-sm font-medium leading-relaxed text-gray-700 transition-all duration-300 group-hover:text-white sm:text-[15px]"
+                  className="text-justify text-sm font-medium leading-relaxed text-gray-700 transition-all duration-300 group-hover:text-white sm:text-[15px]"
                   dangerouslySetInnerHTML={{ __html: item.about }}
                 />
               </div>
@@ -187,12 +158,8 @@ export default function page() {
             content="Consultancy Services We Offer in Bangalore"
             textAlign="center"
           />
-          <p className="mt-4 text-center font-medium text-gray-700">
-            End-to-end study abroad support from the{" "}
-            <span className="font-bold">
-              best study abroad consultants in Bangalore
-            </span>
-            .
+          <p className="mt-4 text-justify font-medium text-gray-700">
+            End-to-end study abroad support from the best study abroad consultants in Bangalore.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {bangaloreServices.map((service) => (
@@ -212,7 +179,7 @@ export default function page() {
                   {service.title}
                 </h3>
                 <p
-                  className="mt-2 leading-relaxed text-gray-700"
+                  className="mt-2 text-justify leading-relaxed text-gray-700"
                   dangerouslySetInnerHTML={{ __html: service.about }}
                 />
               </div>
@@ -236,9 +203,9 @@ export default function page() {
         bgColor={true}
         reverse={true}
         description={
-          <>
-            Choosing the right university abroad is crucial. Taksheela Institute of Education, as the <span className="font-bold">best consultancy for abroad studies in Bangalore</span>, provides expert guidance, personalized counseling, and complete support for your study abroad journey. Our services are designed to help you with:
-          </>
+          <p className="text-justify">
+            Choosing the right university abroad is crucial. Taksheela Institute of Education, as the best consultancy for abroad studies in Bangalore, provides expert guidance, personalized counseling, and complete support for your study abroad journey. Our services are designed to help you with:
+          </p>
         }
       />
       <TwoColumnContent
@@ -249,7 +216,9 @@ export default function page() {
         reverse={false}
         description={
           <>
-            Your global education journey starts here! At Taksheela, we are dedicated <span className="font-bold">study abroad consultants in Bangalore</span>, helping students explore top universities worldwide. From choosing the right course to securing admission, our expert team ensures a smooth, stress-free process. With personalized guidance and a student-first approach, we turn your dreams into reality. Don’t wait, book your free counseling session today and step confidently toward a bright future abroad!
+            <p className="text-justify">
+              Your global education journey starts here! At Taksheela, we are dedicated study abroad consultants in Bangalore, helping students explore top universities worldwide. From choosing the right course to securing admission, our expert team ensures a smooth, stress-free process. With personalized guidance and a student-first approach, we turn your dreams into reality. Don’t wait, book your free counseling session today and step confidently toward a bright future abroad!
+            </p>
             <div className="pt-6">
               <a
                 href="https://wa.me/+919831241212"
@@ -266,6 +235,6 @@ export default function page() {
       <GlobalCombination />
       <FAQSection items={bangaloreFaqItems} />
       <LetsStart />
-    </>
+    </div>
   );
 }

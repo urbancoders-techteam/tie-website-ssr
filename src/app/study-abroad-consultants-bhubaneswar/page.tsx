@@ -2,7 +2,7 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
 import HeadingTypography from "@/components/Heading";
 import LetsStart from "@/components/immersion/LetsStart";
-import ModalTrigger from "@/components/ModalTrigger";
+import ConsultantHero from "@/components/study-abroad/ConsultantHero";
 import GlobalCombination from "@/components/study-abroad/GlobalCombination";
 import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
@@ -14,7 +14,6 @@ import Image from "next/image";
 const bhubaneswarFaqItems: FAQItem[] = bhubaneswarFAQ.map((item) => ({
   question: item.title,
   answer: item.Desc,
-  highlightTerms: item.highlightTerms,
 }));
 
 export const metadata: Metadata = {
@@ -24,49 +23,23 @@ export const metadata: Metadata = {
 
 export default function page() {
     return (
-        <>
-            <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
-                <ContainerWrapper>
-                    <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2">
-                        <div className="relative z-10 flex items-center">
-                            <div className="w-full max-w-xl">
-                                <h1 className="font-poppins text-left text-[20px] font-semibold leading-snug text-black/70 sm:text-[30px] md:text-[35px] lg:text-[40px]">
-                                    <span className="text-[#00999E]">
-                                        Study Abroad Consultants
-                                    </span>{" "}
-                                    in Bhubaneswar for Your Global Dreams
-                                </h1>
-
-                                <p className="mt-6 text-base leading-relaxed text-gray-700 sm:mt-8">
-                                    Plan your international education with experienced{" "}
-                                    <span className="font-bold">
-                                        study abroad consultants in Bhubaneswar
-                                    </span>
-                                    . From university shortlisting to applications and visas,
-                                    we guide you at every step.
-                                </p>
-
-                                <div className="mt-6 flex justify-start sm:mt-8">
-                                    <ModalTrigger text="Book A Counselling Session" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center justify-center p-2 sm:p-3 lg:p-4">
-                            <div className="relative z-0 aspect-[12/9] w-full overflow-hidden">
-                                <Image
-                                    src="/images/photos6.jpg"
-                                    alt="Study abroad counselling support for students in Bhubaneswar"
-                                    fill
-                                    className="pointer-events-none scale-135 object-contain"
-                                    priority
-                                    sizes="(max-width: 640px) 100vw, 50vw"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </ContainerWrapper>
-            </div>
+        <div className="[&_p]:text-justify">
+            <ConsultantHero
+                title={
+                    <>
+                        <span className="text-[#00999E]">Study Abroad Consultants</span>{" "}
+                        in Bhubaneswar for Your Global Dreams
+                    </>
+                }
+                description="Plan your future abroad with experienced study abroad consultants in Bhubaneswar—get expert guidance now."
+                image={{
+                    src: "/images/photos6.jpg",
+                    alt: "Study abroad counselling support for students in Bhubaneswar",
+                    width: 3780,
+                    height: 1890,
+                }}
+            />
+            
             <ContainerWrapper className=" py-12">
                 <div className="flex flex-col lg:flex-row items-center gap-8">
                     {/* Text Section */}
@@ -113,7 +86,7 @@ export default function page() {
                     <div className="flex-3">
                         <HeadingTypography content="Reasons to Choose Our Expert Consultancy Services" as="h2" />
                         <p className="text-gray-800 text-lg leading-relaxed text-justify">
-                            Choosing the right path for studying abroad is an important decision. Our team provides expert guidance, personalized counseling, and complete support to make your international education journey smooth and successful. Our <span className="font-bold">overseas education consultants in Bhubaneswar</span> help students understand their options and plan each stage carefully. Our services include:{" "}
+                            Choosing the right path for studying abroad is an important decision. Our team provides expert guidance, personalized counseling, and complete support to make your international education journey smooth and successful. Our overseas education consultants in Bhubaneswar help students understand their options and plan each stage carefully. Our services include:{" "}
                         </p>
                         <div className="mt-6 flex justify-start">
                             <a
@@ -129,8 +102,8 @@ export default function page() {
 
             <ContainerWrapper className="py-12">
                 <HeadingTypography content="Why We Are Your Top Choice for Overseas Education?" textAlign="center" as="h2" />
-                <p className="mt-4 text-center font-medium">
-                    Trusted <span className="font-bold">study abroad consultants in Bhubaneswar</span> guiding students to top international universities with seamless applications, documentation, scholarships, and visa assistance.
+                <p className="mt-4 text-justify font-medium">
+                    Trusted study abroad consultants in Bhubaneswar guiding students to top international universities with seamless applications, documentation, scholarships, and visa assistance.
 
                 </p>
             </ContainerWrapper>
@@ -155,7 +128,7 @@ export default function page() {
                                 {item?.title}
                             </h2>
                             <p
-                                className="mt-4 text-base font-medium transition-all duration-300 group-hover:text-white"
+                                className="mt-4 text-justify text-base font-medium transition-all duration-300 group-hover:text-white"
                                 dangerouslySetInnerHTML={{ __html: item.about }}
                             />
                         </div>
@@ -166,7 +139,7 @@ export default function page() {
             <div className="bg-[#eef9fb] py-12">
                 <ContainerWrapper>
                     <HeadingTypography content="Consultancy Services We Offer in Bhubaneswar" textAlign="center" />
-                    <p className="mt-4 text-center font-medium text-gray-700">
+                    <p className="mt-4 text-justify font-medium text-gray-700">
                         End-to-end study abroad support tailored for students in Bhubaneswar.
                     </p>
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -179,7 +152,7 @@ export default function page() {
                                     <Image src={service.icon} alt={service.title} width={36} height={36} />
                                 </div>
                                 <h3 className="text-lg font-semibold text-[#00999e]">{service.title}</h3>
-                                <p className="mt-2 text-gray-700 leading-relaxed">{service.about}</p>
+                                <p className="mt-2 text-justify text-gray-700 leading-relaxed">{service.about}</p>
                             </div>
                         ))}
                     </div>
@@ -203,7 +176,7 @@ export default function page() {
                 description={
                     <>
                         <p className="mt-2 text-gray-700 leading-relaxed text-justify">
-                            Choosing the right support can make your study abroad journey smooth and stress-free. As trusted <span className="font-bold">overseas education consultants in Bhubaneswar.</span>, we understand your academic ambitions and guide you to the best countries, universities, and courses for your future. Our experienced team assists with applications, documentation, scholarships, and visa procedures, ensuring every step is simple and manageable. With in-depth knowledge of global education pathways, we provide personalized guidance to help you make informed decisions for long-term success. 
+                            Choosing the right support can make your study abroad journey smooth and stress-free. As trusted overseas education consultants in Bhubaneswar, we understand your academic ambitions and guide you to the best countries, universities, and courses for your future. Our experienced team assists with applications, documentation, scholarships, and visa procedures, ensuring every step is simple and manageable. With in-depth knowledge of global education pathways, we provide personalized guidance to help you make informed decisions for long-term success. 
                         </p>
                        
                         <p className="text-gray-700 leading-relaxed text-justify">Partner with us and turn your dream of international education into a rewarding reality with a consultancy in Bhubaneswar for studying abroad that understands your goals.</p>
@@ -219,9 +192,9 @@ export default function page() {
                 reverse={false}
                 description={
                     <>
-                       <p>Your international education journey begins with us! At Taksheela, we are reliable study abroad consultants in Bhubaneswar, guiding students to top universities around the world. From selecting the ideal course to completing applications and securing admissions, our experienced team ensures a seamless and stress-free process. With personalized support and a student-focused approach, we help turn your study abroad dreams into reality.</p>
+                       <p className="text-justify">Your international education journey begins with us! At Taksheela, we are reliable study abroad consultants in Bhubaneswar, guiding students to top universities around the world. From selecting the ideal course to completing applications and securing admissions, our experienced team ensures a seamless and stress-free process. With personalized support and a student-focused approach, we help turn your study abroad dreams into reality.</p>
 
-                      <p> Take the first step toward your global future—schedule your free counseling session today and move confidently toward achieving your academic goals abroad.</p>
+                      <p className="text-justify">Take the first step toward your global future—schedule your free counseling session today and move confidently toward achieving your academic goals abroad.</p>
                         <div className="pt-6">
                             <a
                                 href="https://www.taksheela.com/contact"
@@ -238,6 +211,6 @@ export default function page() {
             <GlobalCombination />
             <FAQSection items={bhubaneswarFaqItems} />
             <LetsStart />
-        </>
+        </div>
     );
 }

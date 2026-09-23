@@ -15,7 +15,15 @@ const MilestonesCard = ({ icon, count, parameter, title }: Props) => {
 
   return (
     <div className="flex flex-col h-80 mx-2 items-center justify-center p-2  hover:bg-[#5cd2d6] text-center cursor-pointer">
-      <Image src={icon} alt={title} width={200} height={800} className="mb-4" />
+      <div className="relative mb-4 h-40 w-40 shrink-0">
+        <Image
+          src={icon}
+          alt={title}
+          fill
+          className="object-contain"
+          sizes="160px"
+        />
+      </div>
       <h3 className="text-4xl font-bold ">
         {animatedCount}
         <span>{parameter}</span>

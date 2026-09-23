@@ -10,7 +10,7 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import Image from "next/image";
 import HeadingTypography from "@/components/Heading";
 import { Metadata } from "next";
-import ModalTrigger from "@/components/ModalTrigger";
+import ConsultantHero from "@/components/study-abroad/ConsultantHero";
 
 const mumbaiFaqItems: FAQItem[] = mumbaiFAQ.map((item) => ({
   question: item.title,
@@ -21,52 +21,29 @@ const mumbaiFaqItems: FAQItem[] = mumbaiFAQ.map((item) => ({
 
 export const metadata: Metadata = {
     title: "Study Abroad Consultants in Mumbai for USA, UK, Canada",
-    description: "Get personalized guidance from top study abroad consultants in Mumbai. Taksheela Institute helps with course selection, admissions, and visas. Enquire now.."
+    description: "Get personalized guidance from top study abroad consultants in Mumbai. Taksheela Institute helps with course selection, admissions, and visas. Enquire now..",
+    keywords: "abroad consultancy in mumbai, abroad education consultants mumbai, overseas education consultants in mumbai, foreign education consultants in mumbai, study abroad consultants in mumbai"
 };
 
 export default function page() {
     return (
         <>
-            <div className="w-full bg-[#1090cb1a] py-12 px-4 sm:px-10">
-                <ContainerWrapper>
-                    <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-10">
-                        <div className="relative z-10 flex items-center">
-                            <div className="w-full max-w-xl">
-                                <h1 className="font-poppins text-left text-[22px] font-bold leading-snug text-black/80 sm:text-[32px] md:text-[38px] lg:text-[44px]">
-                                    <span className="text-[#00999E]">
-                                        Leading Study Abroad Consultants
-                                    </span>{" "}
-                                    in Mumbai Guiding Your Success Globally
-                                </h1>
-
-                                <p className="mt-6 text-base leading-relaxed text-gray-800 sm:mt-8 sm:text-lg">
-                                    Embark on your overseas education journey with
-                                    Mumbai’s most trusted consultants. Achieve your
-                                    academic dreams through dedicated, personalized,
-                                    and reliable guidance for students and families.
-                                </p>
-
-                                <div className="mt-6 flex justify-start sm:mt-8">
-                                    <ModalTrigger text="Book a Free Counselling Session" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center justify-center">
-                            <div className="relative z-0 aspect-[4/3] w-full max-h-[420px] sm:max-h-[480px]">
-                                <Image
-                                    src="/images/photos7.jpg"
-                                    alt="Students exploring global opportunities"
-                                    fill
-                                    className="object-contain object-center"
-                                    priority
-                                    sizes="(max-width: 640px) 100vw, 50vw"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </ContainerWrapper>
-            </div>
+            <ConsultantHero
+                title={
+                    <>
+                        <span className="text-[#00999E]">Top Abroad Consultancy</span>{" "}
+                        in Mumbai Helping Students Study Worldwide
+                    </>
+                }
+                description="Start your study abroad journey with experienced overseas education consultants in Mumbai—get personalised guidance today."
+                ctaText="Book a Free Counselling Session"
+                image={{
+                    src: "/images/photos7.jpg",
+                    alt: "Students exploring global opportunities",
+                    width: 3780,
+                    height: 1890,
+                }}
+            />
 
             <ContainerWrapper className=" py-12">
                 <div className="flex flex-col lg:flex-row items-center gap-8">
