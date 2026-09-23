@@ -1,0 +1,72 @@
+# Taksheela
+
+> Taksheela Institute of Education provides study abroad counselling, MBBS abroad admissions support, university partnerships, global immersion programs, and test preparation for students.
+
+## Core
+
+- [Homepage](https://www.taksheela.com/)
+
+## Study Abroad
+
+- [Study abroad overview](https://www.taksheela.com/study-abroad)
+- [Courses overview](https://www.taksheela.com/study-abroad/courses)
+- [Study in Dubai](https://www.taksheela.com/study-in-dubai)
+
+### Countries
+
+- [USA](https://www.taksheela.com/study-abroad/country/USA)
+- [UK](https://www.taksheela.com/study-abroad/country/UK)
+- [Canada](https://www.taksheela.com/study-abroad/country/Canada)
+- [Australia](https://www.taksheela.com/study-abroad/country/Australia)
+- [Germany](https://www.taksheela.com/study-abroad/country/Germany)
+- [France](https://www.taksheela.com/study-abroad/country/France)
+- [Ireland](https://www.taksheela.com/study-abroad/country/Ireland)
+- [Italy](https://www.taksheela.com/study-abroad/country/Italy)
+- [New Zealand](https://www.taksheela.com/study-abroad/country/New-Zealand)
+- [Singapore](https://www.taksheela.com/study-abroad/country/Singapore)
+- [Dubai](https://www.taksheela.com/study-abroad/country/Dubai)
+
+### Courses
+
+- [Engineering](https://www.taksheela.com/study-abroad/courses/enginnering)
+- [CS & IT](https://www.taksheela.com/study-abroad/courses/csit)
+- [Health Science](https://www.taksheela.com/study-abroad/courses/healthscience)
+- [Social Science](https://www.taksheela.com/study-abroad/courses/socialscience)
+- [Business Management](https://www.taksheela.com/study-abroad/courses/bussinessmanagement)
+- [Physical Science](https://www.taksheela.com/study-abroad/courses/physicalscience)
+- [Fine Art](https://www.taksheela.com/study-abroad/courses/fineart)
+- [Journalism](https://www.taksheela.com/study-abroad/courses/journalism)
+- [Designing](https://www.taksheela.com/study-abroad/courses/designing)
+
+## MBBS Abroad
+
+- [MBBS overview](https://www.taksheela.com/mbbs)
+- [MBBS in India](https://www.taksheela.com/mbbs/india)
+- [MBBS abroad](https://www.taksheela.com/mbbs/abroad)
+- [MBBS in Russia](https://www.taksheela.com/mbbs/abroad/russia)
+- [MBBS in Georgia](https://www.taksheela.com/mbbs/abroad/georgia)
+- [MBBS in Kazakhstan](https://www.taksheela.com/mbbs/abroad/kazakhstan)
+- [MBBS in Kyrgyzstan](https://www.taksheela.com/mbbs/abroad/kyrgyzstan)
+- [MBBS in Uzbekistan](https://www.taksheela.com/mbbs/abroad/uzbekistan)
+
+## Test Prep
+
+- [Test prep](https://www.taksheela.com/test)
+- [IELTS](https://www.taksheela.com/test/ielts)
+- [TOEFL](https://www.taksheela.com/test/toefl)
+- [PTE](https://www.taksheela.com/test/pte)
+- [GRE](https://www.taksheela.com/test/gre)
+- [GMAT](https://www.taksheela.com/test/gmat)
+- [SAT](https://www.taksheela.com/test/sat)
+
+## City Pages
+
+- [Kolkata](https://www.taksheela.com/consultants-study-abroad-kolkata)
+- [Delhi NCR](https://www.taksheela.com/study-abroad-consultants-delhi-ncr)
+- [Mumbai](https://www.taksheela.com/study-abroad-consultants-mumbai)
+- [Bangalore](https://www.taksheela.com/study-abroad-consultants-bangalore)
+- [Bhubaneswar](https://www.taksheela.com/study-abroad-consultants-bhubaneswar)
+
+## Blog
+
+- [Blogs](https://www.taksheela.com/blogs)
