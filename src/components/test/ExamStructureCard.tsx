@@ -17,28 +17,26 @@ const ExamStructureCard: React.FC<ExamStructureCardProps> = ({ data, onClick }) 
   return (
     <div
       onClick={onClick}
-      className="relative w-[230px] h-[250px] bg-white rounded-[10px] shadow-md p-4 overflow-hidden cursor-pointer group transition-all duration-500"
+      className="group relative h-[250px] w-[230px] cursor-pointer overflow-hidden rounded-[10px] bg-white p-4 shadow-md transition-all duration-500"
     >
-      {/* Image */}
       <div className="flex justify-center pt-4">
         <Image
           src={data?.image}
           alt={data?.title}
           width={150}
           height={150}
-          className="rounded-full object-contain"
+          className="object-contain"
         />
       </div>
 
-      {/* Content Overlay */}
-      <div className="absolute bottom-0 left-0 w-full bg-[#0A9DA2] text-white rounded-[10px] px-4 py-3 h-12 group-hover:h-full transition-all duration-500 overflow-y-auto">
-        <h3 className="text-center font-medium text-lg">{data?.title}</h3>
+      <div className="absolute bottom-0 left-0 h-12 w-full overflow-y-auto rounded-[10px] bg-[#0A9DA2] px-4 py-3 text-white transition-all duration-500 group-hover:h-full">
+        <h3 className="text-center text-lg font-medium">{data?.title}</h3>
 
-        <div className="mt-2 text-sm text-center font-normal">
+        <div className="mt-2 text-center text-sm font-normal">
           {data?.content && <p className="mb-2">{data.content}</p>}
 
           {data?.items && (
-            <ul className="list-disc text-left ml-4 space-y-1 font-poppins">
+            <ul className="ml-4 list-disc space-y-1 text-left font-poppins">
               {data.items.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}

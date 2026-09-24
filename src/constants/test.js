@@ -1,10 +1,10 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
 
-const ChooseUsImg1 = imageBaseUrl + "testchoose1.svg";
-const ChooseUsImg2 = imageBaseUrl + "testchoose2.svg";
-const ChooseUsImg3 = imageBaseUrl + "testchoose3.svg";
-const ChooseUsImg4 = imageBaseUrl + "testchoose4.svg";
-const ChooseUsImg5 = imageBaseUrl + "ChooseUsImg05.svg";
+const ChooseUsImg1 = studyAbroadBaseUrl + "webicons/campus-icon.png";
+const ChooseUsImg2 = studyAbroadBaseUrl + "webicons/doctor-icon.svg";
+const ChooseUsImg3 = studyAbroadBaseUrl + "webicons/experience-icon.svg";
+const ChooseUsImg4 = studyAbroadBaseUrl + "webicons/support-icon.svg";
+const ChooseUsImg5 = studyAbroadBaseUrl + "webicons/experts-icon.svg";
 
 export const whyChooseUsData = [
   {
@@ -12,36 +12,35 @@ export const whyChooseUsData = [
     content: [
       "Experience a supportive and motivating atmosphere that fosters learning and growth.",
     ],
-    image: ChooseUsImg5,
+    image: ChooseUsImg1,
   },
-
   {
     title: "Expert Guidance",
     content: [
       "Benefit from our experienced instructors who provide personalized attention.",
     ],
-    image: ChooseUsImg1,
+    image: ChooseUsImg2,
   },
   {
     title: "Proven Results",
     content: [
       "Join a community of successful test-takers who have achieved their goals.",
     ],
-    image: ChooseUsImg2,
+    image: ChooseUsImg3,
   },
   {
     title: "Comprehensive Resources",
     content: [
       "Access a wealth of study materials and practice tests to optimize your preparation.",
     ],
-    image: ChooseUsImg3,
+    image: ChooseUsImg4,
   },
   {
     title: "Flexible Learning",
     content: [
       "Enjoy flexible schedules and learning formats tailored to your needs.",
     ],
-    image: ChooseUsImg4,
+    image: ChooseUsImg5,
   },
 ];
 
@@ -52,10 +51,10 @@ const testprep4 = imageBaseUrl + "testprep4.png";
 const testprep5 = imageBaseUrl + "testprep5.png";
 const testprep6 = imageBaseUrl + "testprep6.png";
 
-const testexam1 = imageBaseUrl + "testexam1.svg";
-const testexam2 = imageBaseUrl + "testexam2.svg";
-const testexam3 = imageBaseUrl + "tesrexam3.svg";
-const testexam4 = imageBaseUrl + "testexam4.svg";
+const testexam1 = studyAbroadBaseUrl + "webicons/listening.png";
+const testexam2 = studyAbroadBaseUrl + "webicons/study-skills.png";
+const testexam3 = studyAbroadBaseUrl + "webicons/writing.png";
+const testexam4 = studyAbroadBaseUrl + "webicons/speaking.png";
 
 export const OurTestData = [
   {
