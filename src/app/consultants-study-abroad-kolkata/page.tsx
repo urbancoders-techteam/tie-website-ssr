@@ -15,7 +15,7 @@ import {
   kolkataServices,
   kolkateFAQ,
 } from "@/constants/kolkata";
-import { imageBaseUrl, navURL, studyAbroadBaseUrl } from "@/utils/config";
+import { navURL, studyAbroadBaseUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 
