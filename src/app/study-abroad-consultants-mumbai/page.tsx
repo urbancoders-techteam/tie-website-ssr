@@ -56,7 +56,7 @@ export default function page() {
                               as="h2"
                           />
                         <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
-                        Dreaming of an international education but unsure how to move forward? Our dedicated team is here to simplify the journey. As experienced <span className="font-bold">abroad education consultants in Mumbai</span>, we assist students in identifying suitable courses, universities, and countries that match their future plans. </p>
+                        Dreaming of an international education but unsure how to move forward? Our dedicated team is here to simplify the journey. As experienced abroad education consultants in Mumbai, we assist students in identifying suitable courses, universities, and countries that match their future plans. </p>
                         <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
                         From admissions and paperwork to scholarship options and visa processing, we manage each step with care. Whether you plan to study in the UK, USA, Canada, Australia, or Europe, our personalized guidance ensures a smooth and well-planned study abroad experience.
                         </p>
@@ -92,7 +92,7 @@ export default function page() {
                     <div className="flex-3">
                         <HeadingTypography content="Reasons to Study Abroad with Us?" as="h2" />
                         <p className="mt-4 text-gray-800 text-lg leading-relaxed text-justify">
-                        Choosing the right guidance is essential for a successful study abroad journey. As trusted <span className="font-bold">overseas education consultants in Mumbai</span>, we focus on understanding your academic background and career goals to recommend the most suitable countries, universities, and courses. Our expert team supports you with applications, documentation, timelines, and visa procedures, ensuring a smooth and transparent process. With deep knowledge of international education pathways, we help students make informed decisions that lead to long-term academic and professional success.
+                        Choosing the right guidance is essential for a successful study abroad journey. As trusted overseas education consultants in Mumbai, we focus on understanding your academic background and career goals to recommend the most suitable countries, universities, and courses. Our expert team supports you with applications, documentation, timelines, and visa procedures, ensuring a smooth and transparent process. With deep knowledge of international education pathways, we help students make informed decisions that lead to long-term academic and professional success.
                         </p>
                         <div className="mt-6 flex justify-start">
                             <a
@@ -109,7 +109,7 @@ export default function page() {
             <ContainerWrapper className="py-12">
                 <HeadingTypography content="What Sets Our Abroad Consultancy in Mumbai Apart" textAlign="center" as="h2" />
                 <p className="mt-4 text-center font-medium">
-                Trusted <span className="font-bold">foreign education consultants in Mumbai</span> offering expert guidance for global university admissions, paperwork, and visa processing.
+                Trusted foreign education consultants in Mumbai offering expert guidance for global university admissions, paperwork, and visa processing.
                 </p>
             </ContainerWrapper>
 
@@ -121,7 +121,7 @@ export default function page() {
                 <ContainerWrapper>
                     <HeadingTypography content="Consultancy Services We Offer in Mumbai" textAlign="center" />
                     <p className="mt-4 text-center font-medium text-gray-700">
-                    End-to-end study abroad support tailored for students in Mumbai through a reliable <span className="font-bold">abroad consultancy in Mumbai</span>.
+                    End-to-end study abroad support tailored for students in Mumbai through a reliable abroad consultancy in Mumbai.
                     </p>
                       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                           {mumbaiServices.map((service) => (
@@ -156,7 +156,7 @@ export default function page() {
                 reverse={true}
                 description={
                     <p className="text-justify">
-                Selecting the right international university plays a vital role in your academic success. Taksheela Institute Of Education, recognized as one of the best <span className="font-bold">abroad education consultants in Mumbai</span>, offers expert advice, personalized counseling, and end-to-end assistance for students planning to study overseas. Our dedicated support system is focused on guiding you smoothly through every stage of your study abroad process, including:
+                Selecting the right international university plays a vital role in your academic success. Taksheela Institute Of Education, recognized as one of the best abroad education consultants in Mumbai, offers expert advice, personalized counseling, and end-to-end assistance for students planning to study overseas. Our dedicated support system is focused on guiding you smoothly through every stage of your study abroad process, including:
                     </p>
                 }
             />
@@ -169,7 +169,7 @@ export default function page() {
                 description={
                     <>
                     <p className="text-justify">
-                    Kickstart your international education journey with expert guidance from Taksheela, the leading <span className="font-bold">abroad consultancy in Mumbai</span>. Our dedicated team helps students identify the best universities and programs worldwide, manage applications, and navigate admissions smoothly. With personalized counseling and a student-focused approach, we make studying abroad achievable and stress-free. Take the first step toward your global future, book your free consultation today and move confidently toward success.
+                    Kickstart your international education journey with expert guidance from Taksheela, the leading abroad consultancy in Mumbai. Our dedicated team helps students identify the best universities and programs worldwide, manage applications, and navigate admissions smoothly. With personalized counseling and a student-focused approach, we make studying abroad achievable and stress-free. Take the first step toward your global future, book your free consultation today and move confidently toward success.
                     </p>
                       <div className="pt-6">
                         <a
