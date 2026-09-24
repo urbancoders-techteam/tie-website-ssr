@@ -4,7 +4,7 @@ import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
 import TwoColumnContent from "@/components/TwoColumnContent";
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
-import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadBaseUrl } from "@/utils/config";
 import { cardData, delhiNCRFAQ } from "@/constants/delhi-ncr";
 import React from "react";
 import ContainerWrapper from "@/components/ContainerWrapper";
