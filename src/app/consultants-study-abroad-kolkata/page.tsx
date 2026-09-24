@@ -15,7 +15,7 @@ import {
   kolkataServices,
   kolkateFAQ,
 } from "@/constants/kolkata";
-import { imageBaseUrl, navURL } from "@/utils/config";
+import { imageBaseUrl, navURL, studyAbroadBaseUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -81,7 +81,7 @@ export default function StudyAbroadPage() {
           </>
         }
         image={{
-          src: imageBaseUrl + "GirlImageImmigration.svg",
+          src: studyAbroadBaseUrl + "TIE_website banner-02.jpg",
           alt: "Global Immersion Banner",
           width: 800,
           height: 600,
@@ -217,7 +217,9 @@ export default function StudyAbroadPage() {
       <TwoColumnContent
         heading="Plan Your Future with Overseas Education Consultants in Kolkata"
         headingAs="h2"
-        imageUrl={imageBaseUrl + "mbbsabroad.png"}
+        imageUrl={"/images/photos9.jpg"}
+        imageWidth={1774}
+        imageHeight={887}
         bgColor={true}
         reverse={false}
         description={

@@ -4,7 +4,7 @@ import Milestones from "@/components/study-abroad/Milestones";
 import Roadmap from "@/components/study-abroad/WorlClassEducationAssist";
 import TwoColumnContent from "@/components/TwoColumnContent";
 import FAQSection, { type FAQItem } from "@/components/campaign/FAQSection";
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
 import { cardData, delhiNCRFAQ } from "@/constants/delhi-ncr";
 import React from "react";
 import ContainerWrapper from "@/components/ContainerWrapper";
@@ -135,7 +135,7 @@ export default function page() {
         <TwoColumnContent
          heading="Start Your Study Abroad Application with Confidence"
          headingAs="h2"
-          imageUrl={imageBaseUrl + "mbbsabroad.png"}
+          imageUrl={studyAbroadBaseUrl + "explore-delhi.jpg"}
           bgColor={false}
           reverse={false}
         description={

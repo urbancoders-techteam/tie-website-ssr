@@ -12,6 +12,8 @@ interface TwoColumnContentProps {
   bgColor?: boolean;
   reverse?: boolean;
   headingAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 export default function TwoColumnContent({
@@ -21,6 +23,8 @@ export default function TwoColumnContent({
   bgColor =false,
   reverse = false,
   headingAs = "h3",
+  imageWidth,
+  imageHeight,
 }: TwoColumnContentProps) {
   const hasImage = typeof imageUrl === "string" && imageUrl.trim().length > 0;
 
@@ -42,19 +46,36 @@ export default function TwoColumnContent({
 
           {/* Image Section */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
-              {hasImage ? (
-                <Image
-                  src={imageUrl}
-                  alt={heading}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              ) : (
-                <div className="w-full h-full bg-gray-100" />
-              )}
-            </div>
+            {imageWidth && imageHeight ? (
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                {hasImage ? (
+                  <Image
+                    src={imageUrl}
+                    alt={heading}
+                    width={imageWidth}
+                    height={imageHeight}
+                    className="h-auto w-full"
+                    priority
+                  />
+                ) : (
+                  <div className="h-64 w-full bg-gray-100" />
+                )}
+              </div>
+            ) : (
+              <div className="relative h-64 w-full overflow-hidden rounded-lg shadow-lg md:h-96">
+                {hasImage ? (
+                  <Image
+                    src={imageUrl}
+                    alt={heading}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                ) : (
+                  <div className="h-full w-full bg-gray-100" />
+                )}
+              </div>
+            )}
           </div>
         </div>
       </ContainerWrapper>

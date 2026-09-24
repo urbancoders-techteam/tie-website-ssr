@@ -183,6 +183,7 @@ export default function page() {
           </p>
         }
       />
+      
       <TwoColumnContent
         heading="Your Global Education Awaits?"
         headingAs="h2"

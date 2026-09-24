@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ContainerWrapper from "../ContainerWrapper";
 import { CategoryKey } from "@/utils/interface";
 import { viewmoredata } from "@/constants/study_abroad/study-abroad";
-import { imageBaseUrl } from "@/utils/config";
+import { studyAbroadBaseUrl } from "@/utils/config";
 import HeadingTypography from "../Heading";
 
 type RoadmapProps = {
@@ -16,16 +16,15 @@ type RoadmapProps = {
 };
 
 const Roadmap = ({ sectionHeadingAs = "h3" }: RoadmapProps) => {
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<CategoryKey | null>(
     null
   );
 
-  const serviceImages = [
-    ["service1.svg", "service11.svg"],
-    ["service2.svg", "service22.svg"],
-    ["service3.svg", "service33.svg"],
-    ["service4.svg", "service44.svg"],
+  const serviceIcons = [
+    "counselling-icon.svg",
+    "career-mapping-icon.svg",
+    "laptop-icon.svg",
+    "setting-icon.svg",
   ];
 
   const labels = [
@@ -61,11 +60,7 @@ const Roadmap = ({ sectionHeadingAs = "h3" }: RoadmapProps) => {
               className="relative z-10 flex flex-col items-center"
             >
               {/* Card */}
-              <div
-                className="relative w-[230px] h-[200px] bg-white shadow transition hover:bg-[#00999e] hover:text-white group flex flex-col items-center justify-center text-center"
-                onMouseEnter={() => setHoveredStep(index)}
-                onMouseLeave={() => setHoveredStep(null)}
-              >
+              <div className="relative w-[230px] h-[200px] bg-white shadow transition hover:bg-[#00999e] hover:text-white group flex flex-col items-center justify-center text-center">
                 {/* Top-left corner */}
                 <div className="absolute top-0 left-0 w-[20px] h-[20px] border-t-2 border-l-2 border-[#00999e] group-hover:border-white" />
 
@@ -75,14 +70,11 @@ const Roadmap = ({ sectionHeadingAs = "h3" }: RoadmapProps) => {
                 {/* Content: image and label */}
                 <div className="flex flex-col items-center">
                   <Image
-                    src={`${imageBaseUrl}${
-                      hoveredStep === index
-                        ? serviceImages[index][1]
-                        : serviceImages[index][0]
-                    }`}
-                    alt="Hexagon_Image"
+                    src={`${studyAbroadBaseUrl}webicons/${serviceIcons[index]}`}
+                    alt={labels[index]}
                     width={100}
                     height={100}
+                    className="h-[100px] w-[100px] object-contain transition duration-300 group-hover:brightness-0 group-hover:invert"
                   />
                   <p className="font-bold pt-4">{labels[index]}</p>
                 </div>
