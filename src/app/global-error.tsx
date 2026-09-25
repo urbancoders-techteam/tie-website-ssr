@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 
 const PAGE_TITLE =
   "Best Study Abroad & Test Prep Experts | Taksheela Institute";
@@ -74,7 +75,7 @@ export default function GlobalError({
             >
               Try again
             </button>
-            <a
+            <Link
               href="/"
               style={{
                 borderRadius: 12,
@@ -87,7 +88,7 @@ export default function GlobalError({
               }}
             >
               Go to homepage
-            </a>
+            </Link>
           </div>
         </main>
       </body>
