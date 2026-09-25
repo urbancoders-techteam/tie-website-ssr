@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import ContainerWrapper from "@/components/ContainerWrapper";
 
 export default function Error({
@@ -30,12 +31,12 @@ export default function Error({
           >
             Try again
           </button>
-          <a
+          <Link
             href="/"
             className="inline-flex rounded-xl border border-[#00999E] px-6 py-3 text-sm font-bold text-[#00999E] transition hover:bg-[#00999E]/10"
           >
             Go to homepage
-          </a>
+          </Link>
         </div>
       </ContainerWrapper>
     </div>
