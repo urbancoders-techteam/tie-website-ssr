@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ContainerWrapper from "../ContainerWrapper";
 import { CategoryKey } from "@/utils/interface";
 import { viewmoredata } from "@/constants/study_abroad/study-abroad";
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { imageBaseUrl } from "@/utils/config";
 import HeadingTypography from "../Heading";
 
 type RoadmapProps = {
@@ -70,7 +70,7 @@ const Roadmap = ({ sectionHeadingAs = "h3" }: RoadmapProps) => {
                 {/* Content: image and label */}
                 <div className="flex flex-col items-center">
                   <Image
-                    src={`${studyAbroadBaseUrl}webicons/${serviceIcons[index]}`}
+                    src={`${imageBaseUrl}webicons/${serviceIcons[index]}`}
                     alt={labels[index]}
                     width={100}
                     height={100}

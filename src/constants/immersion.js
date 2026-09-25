@@ -39,10 +39,10 @@ export const ZoneData = [
   // },
 ];
 
-const icon1 = imageBaseUrl + "immersion/Benefitsimg1.svg";
-const icon2 = imageBaseUrl + "immersion/Benefitsimg2.svg";
-const icon3 = imageBaseUrl + "immersion/Benefitsimg3.svg";
-const icon4 = imageBaseUrl + "immersion/Benefitsimg4.svg";
+const icon1 = imageBaseUrl + "webicons/global-icon.svg";
+const icon2 = imageBaseUrl + "webicons/support-icon.svg";
+const icon3 = imageBaseUrl + "webicons/experience-icon.svg";
+const icon4 = imageBaseUrl + "webicons/global-icon.svg";
 
 export const immersionBenefits = [
   {
