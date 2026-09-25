@@ -1,9 +1,9 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { imageBaseUrl } from "@/utils/config";
 
-const icon1 = studyAbroadBaseUrl + "webicons/experts-icon.svg";
-const icon2 = studyAbroadBaseUrl + "webicons/support-icon.svg";
-const icon3 = studyAbroadBaseUrl + "webicons/experience-icon.svg";
-const icon4 = studyAbroadBaseUrl + "webicons/global-icon.svg";
+const icon1 = imageBaseUrl + "webicons/experts-icon.svg";
+const icon2 = imageBaseUrl + "webicons/support-icon.svg";
+const icon3 = imageBaseUrl + "webicons/experience-icon.svg";
+const icon4 = imageBaseUrl + "webicons/global-icon.svg";
 
 export const mumbaiCardData = [
   {

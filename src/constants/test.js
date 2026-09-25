@@ -1,10 +1,10 @@
-import { imageBaseUrl, studyAbroadBaseUrl } from "@/utils/config";
+import { imageBaseUrl } from "@/utils/config";
 
-const ChooseUsImg1 = studyAbroadBaseUrl + "webicons/campus-icon.png";
-const ChooseUsImg2 = studyAbroadBaseUrl + "webicons/doctor-icon.svg";
-const ChooseUsImg3 = studyAbroadBaseUrl + "webicons/experience-icon.svg";
-const ChooseUsImg4 = studyAbroadBaseUrl + "webicons/support-icon.svg";
-const ChooseUsImg5 = studyAbroadBaseUrl + "webicons/experts-icon.svg";
+const ChooseUsImg1 = imageBaseUrl + "webicons/campus-icon.png";
+const ChooseUsImg2 = imageBaseUrl + "webicons/doctor-icon.svg";
+const ChooseUsImg3 = imageBaseUrl + "webicons/experience-icon.svg";
+const ChooseUsImg4 = imageBaseUrl + "webicons/support-icon.svg";
+const ChooseUsImg5 = imageBaseUrl + "webicons/experts-icon.svg";
 
 export const whyChooseUsData = [
   {
@@ -51,10 +51,10 @@ const testprep4 = imageBaseUrl + "testprep4.png";
 const testprep5 = imageBaseUrl + "testprep5.png";
 const testprep6 = imageBaseUrl + "testprep6.png";
 
-const testexam1 = studyAbroadBaseUrl + "webicons/listening.png";
-const testexam2 = studyAbroadBaseUrl + "webicons/study-skills.png";
-const testexam3 = studyAbroadBaseUrl + "webicons/writing.png";
-const testexam4 = studyAbroadBaseUrl + "webicons/speaking.png";
+const testexam1 = imageBaseUrl + "webicons/listening.png";
+const testexam2 = imageBaseUrl + "webicons/study-skills.png";
+const testexam3 = imageBaseUrl + "webicons/writing.png";
+const testexam4 = imageBaseUrl + "webicons/speaking.png";
 
 export const OurTestData = [
   {
