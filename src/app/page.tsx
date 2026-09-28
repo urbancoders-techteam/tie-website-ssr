@@ -67,6 +67,11 @@ export const metadata: Metadata = {
     site: "@TIE_Taksheela",
     creator: "@TIE_Taksheela",
   },
+  verification: {
+    other: {
+      "facebook-domain-verification": "l4obyi53zexvonm8y3o6zyji9np05c",
+    },
+  },
 };
 
 export default function Page() {
