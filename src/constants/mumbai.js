@@ -11,28 +11,28 @@ export const mumbaiCardData = [
     icon: icon1,
     title: "Expert Guidance",
     about:
-      "Our experienced counsellors stay updated on the latest admission trends, top universities, and scholarship opportunities. Whether you aim for an undergraduate degree, master’s, or MBBS, we provide the best advice to help you succeed with the right <span class=\"font-bold\">abroad consultancy in Mumbai</span>.",
+      "Our experienced counsellors stay updated on the latest admission trends, top universities, and scholarship opportunities. Whether you aim for an undergraduate degree, master’s, or MBBS, we provide the best advice to help you succeed with the right abroad consultancy in Mumbai.",
   },
   {
     id: 2,
     icon: icon2,
     title: "Personalized Support",
     about:
-      "Every student is unique. We take time to understand your interests, strengths, and career goals, offering tailored guidance to match your academic journey. Our <span class=\"font-bold\">abroad education consultants in Mumbai</span> help you make informed choices based on your individual needs.",
+      "Every student is unique. We take time to understand your interests, strengths, and career goals, offering tailored guidance to match your academic journey. Our abroad education consultants in Mumbai help you make informed choices based on your individual needs.",
   },
   {
     id: 3,
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As <span class=\"font-bold\">leading MBBS abroad consultants in Mumbai</span>, we have successfully placed many students in top international universities. Our success stories speak for themselves and reflect the value of dependable support throughout the admission process.",
+      "As leading MBBS abroad consultants in Mumbai, we have successfully placed many students in top international universities. Our success stories speak for themselves and reflect the value of dependable support throughout the admission process.",
   },
   {
     id: 4,
     icon: icon4,
     title: "Local Expertise with a Global Vision",
     about:
-      "Based in Mumbai, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education with support from <span class=\"font-bold\">overseas education consultants in Mumbai</span>.",
+      "Based in Mumbai, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education with support from overseas education consultants in Mumbai.",
   },
 ];
 
