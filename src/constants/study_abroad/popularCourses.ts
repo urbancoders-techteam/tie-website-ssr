@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 
 export type PopularCourseItem = {
   id: string;
@@ -6,7 +6,7 @@ export type PopularCourseItem = {
   imgSrc: string;
 };
 
-const mainPageBaseUrl = studyAbroadBaseUrl + "main-page/"
+const mainPageBaseUrl = studyAbroadImageUrl + "main-page/"
 
 export const popularCoursesContent = {
   eyebrow: "Popular courses",

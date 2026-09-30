@@ -1,4 +1,4 @@
-import { imageBaseUrl, internationalRelationUrl, webIconsUrl } from "@/utils/config";
+import { imageBaseUrl, internationalRelationImageUrl, webIconsUrl } from "@/utils/config";
 
 export const benefits = [
   {
@@ -80,28 +80,28 @@ export const programsData = [
 
 
 // University Logo --------------------------------------------------------
-const img = internationalRelationUrl + "university-logo/University-of-Guelph.webp";
-const img2 = internationalRelationUrl + "university-logo/Virginia-Commonwealth-University.svg";
-const img3 = internationalRelationUrl + "university-logo/Worcester-Polytechnic-Institute.jpg";
-const img4 = internationalRelationUrl + "university-logo/Skyline-University-College.jpg";
-const img5 = internationalRelationUrl + "university-logo/Mariano-Marcos-State-University.png";
-const img6 = internationalRelationUrl + "university-logo/Rajamangala-University-Of-Technology-Thanyaburi.png";
-const img7 = internationalRelationUrl + "university-logo/Asian-Institute-Of-Technology.jpeg";
-const img8 = internationalRelationUrl + "university-logo/Yuan-Ze-University.png";
-const img9 = internationalRelationUrl + "university-logo/Chang-Gung-University.png";
-const img10 = internationalRelationUrl + "university-logo/Tsinghua_University.webp";
-const img11 = internationalRelationUrl + "university-logo/National-Chengchi-University.jpeg";
-const img12 = internationalRelationUrl + "university-logo/Asia-University-Taiwan.webp";
-const img13 = internationalRelationUrl + "university-logo/National-Chin-Yi-University-of-Technology.jpeg";
-const img14 = internationalRelationUrl + "university-logo/Lincoln-University-College-Logo-Vector.png";
-const img15 = internationalRelationUrl + "university-logo/International-University.png";  
-const img16 = internationalRelationUrl + "university-logo/Universiti-Teknologi-Malaysia.png";
-const img17 = internationalRelationUrl + "university-logo/Universiti-Malaysia-Pahang-Al-Sultan-Abdullah.jpg";
-const img18 = internationalRelationUrl + "university-logo/SEGI-University.png";
-const img19 = internationalRelationUrl + "university-logo/Mahsa-University.png";
-const img21 = internationalRelationUrl + "university-logo/University_of_New_Mexico.png";
-const img22 = internationalRelationUrl + "university-logo/Universiti_Tenaga_Nasional.png";
-const img23 = internationalRelationUrl + "university-logo/University_of_Indonesia.webp";
+const img = internationalRelationImageUrl + "university-logo/University-of-Guelph.webp";
+const img2 = internationalRelationImageUrl + "university-logo/Virginia-Commonwealth-University.svg";
+const img3 = internationalRelationImageUrl + "university-logo/Worcester-Polytechnic-Institute.jpg";
+const img4 = internationalRelationImageUrl + "university-logo/Skyline-University-College.jpg";
+const img5 = internationalRelationImageUrl + "university-logo/Mariano-Marcos-State-University.png";
+const img6 = internationalRelationImageUrl + "university-logo/Rajamangala-University-Of-Technology-Thanyaburi.png";
+const img7 = internationalRelationImageUrl + "university-logo/Asian-Institute-Of-Technology.jpeg";
+const img8 = internationalRelationImageUrl + "university-logo/Yuan-Ze-University.png";
+const img9 = internationalRelationImageUrl + "university-logo/Chang-Gung-University.png";
+const img10 = internationalRelationImageUrl + "university-logo/Tsinghua_University.webp";
+const img11 = internationalRelationImageUrl + "university-logo/National-Chengchi-University.jpeg";
+const img12 = internationalRelationImageUrl + "university-logo/Asia-University-Taiwan.webp";
+const img13 = internationalRelationImageUrl + "university-logo/National-Chin-Yi-University-of-Technology.jpeg";
+const img14 = internationalRelationImageUrl + "university-logo/Lincoln-University-College-Logo-Vector.png";
+const img15 = internationalRelationImageUrl + "university-logo/International-University.png";  
+const img16 = internationalRelationImageUrl + "university-logo/Universiti-Teknologi-Malaysia.png";
+const img17 = internationalRelationImageUrl + "university-logo/Universiti-Malaysia-Pahang-Al-Sultan-Abdullah.jpg";
+const img18 = internationalRelationImageUrl + "university-logo/SEGI-University.png";
+const img19 = internationalRelationImageUrl + "university-logo/Mahsa-University.png";
+const img21 = internationalRelationImageUrl + "university-logo/University_of_New_Mexico.png";
+const img22 = internationalRelationImageUrl + "university-logo/Universiti_Tenaga_Nasional.png";
+const img23 = internationalRelationImageUrl + "university-logo/University_of_Indonesia.webp";
 
 export const PartnerUniversitiesData = [
   {

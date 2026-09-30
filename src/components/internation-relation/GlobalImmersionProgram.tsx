@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { imageBaseUrl } from "@/utils/config";
+import { immersionImageUrl } from "@/utils/config";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 import { Metadata } from "next";
 import Link from "next/link";
 
-const ImmigrationImg1 = `${imageBaseUrl}immersion/immersion_img1.jpg`;
+const ImmigrationImg1 = `${immersionImageUrl}immersion_img1.jpg`;
 
 export const metadata: Metadata = {
   title: "Global Immersion Programme - Taksheela",

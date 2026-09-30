@@ -1,10 +1,10 @@
-import { imageBaseUrl } from "@/utils/config";
+import { internationalRelationImageUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 
-const img = `${imageBaseUrl}International-relation/internationalisation.png`;
+const img = `${internationalRelationImageUrl}internationalisation.png`;
 
 export const dynamic = "force-static";
 

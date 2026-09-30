@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 import { CategoryKey, ViewMoreItem } from "@/utils/interface";
 
 export const studyAbroadImpactCountryLinks = [
@@ -52,28 +52,28 @@ export const studyAbroadImpactStats = [
 export const milestonesData = [
   {
     id: 1,
-    icon: studyAbroadBaseUrl + "milestone-1.png",
+    icon: studyAbroadImageUrl + "milestone-1.png",
     count: 10,
     parameter: "+",
     title: "Year",
   },
   {
     id: 2,
-    icon: studyAbroadBaseUrl + "milestone-2.png",
+    icon: studyAbroadImageUrl + "milestone-2.png",
     count: 98,
     parameter: "%",
     title: "Success Rate",
   },
   {
     id: 3,
-    icon: studyAbroadBaseUrl + "milestone-3.png",
+    icon: studyAbroadImageUrl + "milestone-3.png",
     count: 1000,
     parameter: "+",
     title: "Universities",
   },
   {
     id: 4,
-    icon: studyAbroadBaseUrl + "milestone-4.png",
+    icon: studyAbroadImageUrl + "milestone-4.png",
     count: 500,
     parameter: "+",
     title: "Students Placed",
@@ -203,31 +203,31 @@ export type StudyAbroadFilmstripItem = {
 /** Study-abroad page only: filmstrip below WhatTaksheela (separate from WhatTaksheela UI) */
 export const studyAbroadAfterWhatTaksheelaFilmstrip: StudyAbroadFilmstripItem[] = [
   {
-    src: studyAbroadBaseUrl + "main-page/University_library.jpg",
+    src: studyAbroadImageUrl + "main-page/University_library.jpg",
     alt: "Students collaborating outdoors on campus",
     label: "University Library",
     icon: "library",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/wsa-img2.avif",
+    src: studyAbroadImageUrl + "main-page/wsa-img2.avif",
     alt: "Team study session around a table with laptops",
     label: "Group Discussions",
     icon: "discussions",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/diparture-day.jpg",
+    src: studyAbroadImageUrl + "main-page/diparture-day.jpg",
     alt: "University campus with historic brick building",
     label: "Departure Day",
     icon: "departure",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/graduation_day.jpg",
+    src: studyAbroadImageUrl + "main-page/graduation_day.jpg",
     alt: "Graduates celebrating in caps and gowns",
     label: "Graduation Day",
     icon: "graduation",
   },
   {
-    src: studyAbroadBaseUrl + "main-page/campus_life.jpg",
+    src: studyAbroadImageUrl + "main-page/campus_life.jpg",
     alt: "Two students studying together with laptops",
     label: "Campus Life",
     icon: "campus",

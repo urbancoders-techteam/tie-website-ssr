@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 
 export type WhyStudyAbroadFeature = {
   id: string;
@@ -7,8 +7,8 @@ export type WhyStudyAbroadFeature = {
 };
 
 
-const whyStudyAbroadImage1 = studyAbroadBaseUrl + "main-page/wsa_img1.jpg";
-const whyStudyAbroadImage2 = studyAbroadBaseUrl + "main-page/wsa-img2.avif";
+const whyStudyAbroadImage1 = studyAbroadImageUrl + "main-page/wsa_img1.jpg";
+const whyStudyAbroadImage2 = studyAbroadImageUrl + "main-page/wsa-img2.avif";
 
 export const whyStudyAbroadContent = {
   eyebrow: "Why study abroad?",

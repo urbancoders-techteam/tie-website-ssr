@@ -1,9 +1,9 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 
-const realStudentsJourneysImage1 = studyAbroadBaseUrl + "main-page/rsj-img1.webp";
-const realStudentsJourneysImage2 = studyAbroadBaseUrl + "main-page/rsj-img2.avif";
-const realStudentsJourneysImage3 = studyAbroadBaseUrl + "main-page/rsj-img3.jpg";
-const realStudentsJourneysImage4 = studyAbroadBaseUrl + "main-page/rsj-img4.jpg";
+const realStudentsJourneysImage1 = studyAbroadImageUrl + "main-page/rsj-img1.webp";
+const realStudentsJourneysImage2 = studyAbroadImageUrl + "main-page/rsj-img2.avif";
+const realStudentsJourneysImage3 = studyAbroadImageUrl + "main-page/rsj-img3.jpg";
+const realStudentsJourneysImage4 = studyAbroadImageUrl + "main-page/rsj-img4.jpg";
 
 export const realStudentsJourneysContent = {
   eyebrow: "Real student journeys",

@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 
 export type ForParentsFeatureIcon =
   | "shield"
@@ -15,7 +15,7 @@ export type ForParentsFeature = {
   description: string;
 };
 
-const forParentsImage = studyAbroadBaseUrl + "main-page/ParentSection.png";
+const forParentsImage = studyAbroadImageUrl + "main-page/ParentSection.png";
 
 export const forParentsContent = {
   eyebrow: "For parents",

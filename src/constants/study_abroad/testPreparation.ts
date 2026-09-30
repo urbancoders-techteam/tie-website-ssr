@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 
 export type TestPreparationCategoryId = "academic" | "english";
 
@@ -16,7 +16,7 @@ export type TestPreparationCategory = {
   exams: TestPreparationExam[];
 };
 
-const testPreparationImage = studyAbroadBaseUrl + "main-page/test-preparation.jpg";
+const testPreparationImage = studyAbroadImageUrl + "main-page/test-preparation.jpg";
 
 export const testPreparationContent = {
   eyebrow: "Test Preparation",
