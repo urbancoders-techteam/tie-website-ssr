@@ -22,10 +22,10 @@ export default function OurStory() {
           {/* Text Section */}
           <div className="flex-1">
             <HeadingTypography content="Our Story" textAlign="left" />
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
+            <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify">
               Welcome to TIE, where dreams transform into global opportunities. As a leading study abroad consultancy, we believe education transcends borders. Our commitment is unlocking doors to international education, fostering academic and personal growth. With a focus on excellence, integrity, and a student-centric approach, we pave the way for global citizens ready to thrive in an interconnected world.
             </p>
-            <p className="mt-4 text-gray-700 leading-relaxed text-base">
+            <p className="mt-4 text-gray-700 leading-relaxed text-base text-justify ">
               Join us on a journey where education knows no boundaries, and the world becomes your campus.
             </p>
           </div>

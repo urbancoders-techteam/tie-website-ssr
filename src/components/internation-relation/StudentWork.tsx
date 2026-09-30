@@ -31,13 +31,13 @@ export default function StudentWork() {
               key={index}
               className="bg-white w-[260px] h-[280px] rounded-xl shadow-md flex flex-col items-center p-4"
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden mb-4">
+              <div className="w-24 h-24 overflow-hidden mb-4">
                 <Image
                   src={work.Image}
                   alt={work.title}
                   width={100}
                   height={100}
-                  className="object-cover rounded-full"
+                  className="object-cover"
                 />
               </div>
               <div

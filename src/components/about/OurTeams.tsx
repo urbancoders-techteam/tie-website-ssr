@@ -47,7 +47,7 @@ const OurTeam = () => {
 
               <div className="text-left w-full">
                 <p className="font-semibold mb-2">{member.greeting}</p>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed text-justify">
                   {member.message}
                 </p>
               </div>

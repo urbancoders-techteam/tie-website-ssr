@@ -1,7 +1,7 @@
 // app/components/international-relation/InternshipOpportunities.tsx
 
 import { Metadata } from "next";
-import { imageBaseUrl } from "@/utils/config";
+import { internationalRelationUrl } from "@/utils/config";
 import TwoColumnContent from "../TwoColumnContent";
 
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-static";
 
-const img = imageBaseUrl + "International-Relation/IndiaPage/internship.jpg";
+const img = internationalRelationUrl + "internship.jpg";
 
 export default function InternshipOpportunities() {
   return (

@@ -5,7 +5,7 @@ import HeadingTypography from "../Heading";
 import { Metadata } from "next";
 import Link from "next/link";
 
-const ImmigrationImg1 = `${imageBaseUrl}International-Relation/IndiaPage/globalImmersion.png`;
+const ImmigrationImg1 = `${imageBaseUrl}immersion/immersion_img1.jpg`;
 
 export const metadata: Metadata = {
   title: "Global Immersion Programme - Taksheela",
@@ -50,7 +50,7 @@ export default function ImmersionProgramme() {
               src={ImmigrationImg1}
               alt="Global Immersion"
               fill
-              className="object-cover"
+              className="object-fill"
               priority
             />
           </div>
