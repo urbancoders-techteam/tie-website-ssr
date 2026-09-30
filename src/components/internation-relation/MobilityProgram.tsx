@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { imageBaseUrl } from "@/utils/config";
+import { internationalRelationImageUrl } from "@/utils/config";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 import { Metadata } from "next";
 
-const ImmigrationImg1 = `${imageBaseUrl}International-relation/mobility-program.jpg`;
+const ImmigrationImg1 = `${internationalRelationImageUrl}mobility-program.jpg`;
 
 export const metadata: Metadata = {
   title: "Student Mobility Program - Taksheela",

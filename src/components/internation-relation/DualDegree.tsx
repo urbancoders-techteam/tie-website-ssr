@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { Metadata } from "next";
-import { imageBaseUrl } from "@/utils/config";
+import { internationalRelationImageUrl } from "@/utils/config";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 
-const img = `${imageBaseUrl}International-relation/dual-degree.jpeg`;
+const img = `${internationalRelationImageUrl}dual-degree.jpeg`;
 
 export const metadata: Metadata = {
   title: "Dual Degree & Twinning Programmes - Taksheela",
