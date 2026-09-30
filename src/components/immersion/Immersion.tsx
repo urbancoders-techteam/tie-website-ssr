@@ -4,7 +4,7 @@ import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 import { Metadata } from "next";
 
-const ImmigrationImg1 =  imageBaseUrl + "immersion/immersionwhat.png";
+const ImmigrationImg1 =  imageBaseUrl + "immersion/immersion_img2.jpg ";
 
 export const metadata: Metadata = {
   title: "Student Mobility Program - Taksheela",

@@ -28,15 +28,7 @@ export const ZoneData = [
     Image: "/images/europe.png",
     path: "/immersion/europe",
   },
-  // {
-  //   title: "North America",                                                           // Required Later
-  //   items: [
-  //     "Canada and the US are home to large Indian populations.",
-  //     "Indians working across various sectors like IT, healthcare, finance, and education.",
-  //   ],
-  //   Image: northamerica,
-  //   path: "/immersion/north-america",
-  // },
+  
 ];
 
 const icon1 = imageBaseUrl + "webicons/global-icon.svg";

@@ -1,4 +1,4 @@
-import { studyAbroadBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
 export type WhoCanApplyTheme = "teal" | "navy" | "orange";
 
 export type WhoCanApplyCard = {
@@ -14,9 +14,9 @@ export type WhoCanApplyCard = {
 };
 
 
-const whoCanApplyImage1 = studyAbroadBaseUrl + "main-page/bachlors-abroad.jpg";
-const whoCanApplyImage2 = studyAbroadBaseUrl + "main-page/masters-abroad.jpg";
-const whoCanApplyImage3 = studyAbroadBaseUrl + "main-page/career-upgrade.jpg";
+const whoCanApplyImage1 = studyAbroadImageUrl + "main-page/bachlors-abroad.jpg";
+const whoCanApplyImage2 = studyAbroadImageUrl + "main-page/masters-abroad.jpg";
+const whoCanApplyImage3 = studyAbroadImageUrl + "main-page/career-upgrade.jpg";
 
 export const whoCanApplyContent = {
   eyebrow: "Who can apply?",

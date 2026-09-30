@@ -1,4 +1,4 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, internationalRelationImageUrl, webIconsUrl } from "@/utils/config";
 
 export const benefits = [
   {
@@ -31,27 +31,27 @@ export const benefits = [
 export const StudyInIndiaData = [
   {
     id: 1,
-    icon: `${imageBaseUrl}International-Relation/IndiaPage/less.png`,
+    icon: `${webIconsUrl}goal-icon.svg`,
     about: "Up to 70% Less Costly Than Europe/US",
   },
   {
     id: 2,
-    icon: `${imageBaseUrl}International-Relation/IndiaPage/global.png`,
+    icon: `${webIconsUrl}global-icon.svg`,
     about: "1,100+ Globally recognized Universities & 42,000+ Colleges",
   },
   {
     id: 3,
-    icon: `${imageBaseUrl}International-Relation/IndiaPage/scholarship.png`,
+    icon: `${webIconsUrl}alumni-icon.png`,
     about: "Up to 100% scholarships on tuition fees for international students",
   },
   {
     id: 4,
-    icon: `${imageBaseUrl}International-Relation/IndiaPage/course.png`,
+    icon: `${webIconsUrl}experience-icon.svg`,
     about: "2,500+ Courses – Wide-ranging programs across disciplines.",
   },
   {
     id: 5,
-    icon: `${imageBaseUrl}International-Relation/IndiaPage/cultural.png`,
+    icon: `${webIconsUrl}experts-icon.svg`,
     about:
       "50,000+ International Students – From 160+ countries, ensuring cultural diversity.",
   },
@@ -62,54 +62,46 @@ export const programsData = [
     title: "Dual Degree Programmes",
     content:
       "Earn two degrees from two institutions by completing an integrated curriculum.",
-    icon: `${imageBaseUrl}immersion/Benefitsimg1.svg`,
+    icon: `${webIconsUrl}double-degree.png`,
   },
   {
     title: "Joint Degree Programmes",
     content:
       "Receive a single degree jointly awarded by partnered universities.",
-    icon: `${imageBaseUrl}immersion/Benefitsimg2.svg`,
+    icon: `${webIconsUrl}student-degree.png`,
   },
   {
     title: "Twinning Programmes",
     content:
       "Complete part of your studies in India and the rest at an international university, gaining global exposure.",
-    icon: `${imageBaseUrl}immersion/Benefitsimg3.svg`,
+    icon: `${webIconsUrl}digital-twin.png`,
   },
 ];
 
-const img = imageBaseUrl + "International-Relation/University/guelph.png";
-const img2 =
-  imageBaseUrl +
-  "International-Relation/University/VCU_Seal_sans_logotype.svg.png";
-const img3 = imageBaseUrl + "International-Relation/University/worcester.png";
-const img4 = imageBaseUrl + "International-Relation/University/suc-logo.png";
-const img5 = imageBaseUrl + "International-Relation/University/1Seal.png";
-const img6 =
-  imageBaseUrl + "International-Relation/University/images%20(4).png";
-const img7 = imageBaseUrl + "International-Relation/University/asiaInstitu.png";
-const img8 = imageBaseUrl + "International-Relation/University/yuan.png";
-const img9 = imageBaseUrl + "International-Relation/University/cgu_logo_01.png";
-const img10 = imageBaseUrl + "International-Relation/University/tisan.png";
-const img11 =
-  imageBaseUrl +
-  "International-Relation/University/National_Chung_Cheng_University_logo.svg.png";
-const img12 = imageBaseUrl + "International-Relation/University/asia.png";
-const img13 = imageBaseUrl + "International-Relation/University/cinyi.png";
-const img14 = imageBaseUrl + "International-Relation/University/lincoln.png";
-const img15 =
-  imageBaseUrl + "International-Relation/University/institution-inti.png";
-const img16 = imageBaseUrl + "International-Relation/University/UTM-LOGO.png";
-const img17 = imageBaseUrl + "International-Relation/University/LogoUMPSA.png";
-const img18 =
-  imageBaseUrl +
-  "International-Relation/University/SEGi-University-logo-2023_4C-1022x334-1.png";
-const img19 =
-  imageBaseUrl + "International-Relation/University/mahsa_university_logo.png";
-const img20 = imageBaseUrl + "International-Relation/University/UTHM_Logo.png";
-const img21 = imageBaseUrl + "International-Relation/IndiaPage/UNM.png";
-const img22 = imageBaseUrl + "International-Relation/IndiaPage/UNITEN.png";
-const img23 = imageBaseUrl + "International-Relation/IndiaPage/UI.png";
+
+// University Logo --------------------------------------------------------
+const img = internationalRelationImageUrl + "university-logo/University-of-Guelph.webp";
+const img2 = internationalRelationImageUrl + "university-logo/Virginia-Commonwealth-University.svg";
+const img3 = internationalRelationImageUrl + "university-logo/Worcester-Polytechnic-Institute.jpg";
+const img4 = internationalRelationImageUrl + "university-logo/Skyline-University-College.jpg";
+const img5 = internationalRelationImageUrl + "university-logo/Mariano-Marcos-State-University.png";
+const img6 = internationalRelationImageUrl + "university-logo/Rajamangala-University-Of-Technology-Thanyaburi.png";
+const img7 = internationalRelationImageUrl + "university-logo/Asian-Institute-Of-Technology.jpeg";
+const img8 = internationalRelationImageUrl + "university-logo/Yuan-Ze-University.png";
+const img9 = internationalRelationImageUrl + "university-logo/Chang-Gung-University.png";
+const img10 = internationalRelationImageUrl + "university-logo/Tsinghua_University.webp";
+const img11 = internationalRelationImageUrl + "university-logo/National-Chengchi-University.jpeg";
+const img12 = internationalRelationImageUrl + "university-logo/Asia-University-Taiwan.webp";
+const img13 = internationalRelationImageUrl + "university-logo/National-Chin-Yi-University-of-Technology.jpeg";
+const img14 = internationalRelationImageUrl + "university-logo/Lincoln-University-College-Logo-Vector.png";
+const img15 = internationalRelationImageUrl + "university-logo/International-University.png";  
+const img16 = internationalRelationImageUrl + "university-logo/Universiti-Teknologi-Malaysia.png";
+const img17 = internationalRelationImageUrl + "university-logo/Universiti-Malaysia-Pahang-Al-Sultan-Abdullah.jpg";
+const img18 = internationalRelationImageUrl + "university-logo/SEGI-University.png";
+const img19 = internationalRelationImageUrl + "university-logo/Mahsa-University.png";
+const img21 = internationalRelationImageUrl + "university-logo/University_of_New_Mexico.png";
+const img22 = internationalRelationImageUrl + "university-logo/Universiti_Tenaga_Nasional.png";
+const img23 = internationalRelationImageUrl + "university-logo/University_of_Indonesia.webp";
 
 export const PartnerUniversitiesData = [
   {
@@ -158,7 +150,7 @@ export const PartnerUniversitiesData = [
     Image: img9,
   },
   {
-    title: "Tsinghua University ",
+    title: "Tsinghua University",
     path: "https://www.tsinghua.edu.cn/en/",
     Image: img10,
   },
@@ -168,7 +160,7 @@ export const PartnerUniversitiesData = [
     Image: img11,
   },
   {
-    title: " Asia University Taiwan",
+    title: "Asia University Taiwan",
     path: "https://web.asia.edu.tw/",
     Image: img12,
   },
@@ -188,7 +180,7 @@ export const PartnerUniversitiesData = [
     Image: img15,
   },
   {
-    title: "Universiti Teknologi Malaysia ",
+    title: "Universiti Of Teknologi Malaysia",
     path: "https://www.utm.my/",
     Image: img16,
   },
@@ -208,11 +200,6 @@ export const PartnerUniversitiesData = [
     Image: img19,
   },
   {
-    title: "University of Teknologi Malaysia",
-    path: "https://www.utm.my/",
-    Image: img20,
-  },
-  {
     title: "University of New Mexico",
     path: "https://www.unm.edu/",
     Image: img21,
@@ -223,24 +210,24 @@ export const PartnerUniversitiesData = [
     Image: img22,
   },
   {
-    title: " University of Indonesia",
+    title: "University of Indonesia",
     path: "https://www.ui.ac.id/en/",
     Image: img23,
   },
 ];
 
-const ChooseUsImg1 = imageBaseUrl + "ChooseUsImg1.svg";
-const ChooseUsImg2 = imageBaseUrl + "ChooseUsImg2.svg";
-const ChooseUsImg3 = imageBaseUrl + "ChooseUsImg3.svg";
-const ChooseUsImg4 = imageBaseUrl + "ChooseUsImg4.svg";
-const ChooseUsImg5 = imageBaseUrl + "ChooseUsImg5.svg";
+const ChooseUsImg1 = webIconsUrl + "university_2.png";
+const ChooseUsImg2 = webIconsUrl + "money-transfer.png";
+const ChooseUsImg3 = webIconsUrl + "global_commuication.png";
+const ChooseUsImg4 = webIconsUrl + "university_1.png";
+const ChooseUsImg5 = webIconsUrl + "calendar.png";
 
 export const studentWorkData = [
   {
     title:
       "Students from Indian HEIs can study at one of our <b>partner institutions</b> within India or abroad for a portion of their program or as part of an internship.",
 
-    Image: ChooseUsImg3,
+    Image: ChooseUsImg1,
   },
   {
     title: `We ensure <b>smooth credit transfers</b> and compliance with <b>AICTE guidelines</b>.`,
@@ -248,7 +235,7 @@ export const studentWorkData = [
   },
   {
     title: `The programme includes both <b>physical and virtual exchange opportunities</b>, making global learning accessible.`,
-    Image: ChooseUsImg1,
+    Image: ChooseUsImg3,
   },
   {
     title: `Students return to their <b>parent institution</b> to complete their degree requirements.`,

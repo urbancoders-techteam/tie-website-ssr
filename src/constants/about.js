@@ -1,9 +1,11 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, webIconsUrl } from "@/utils/config";
+import sheetal from "../../public/images/Sheetal_Jalan.png";
+import sumit from "../../public/images/Sumit_Jalan.png";
 
-const serviceIcon1 = imageBaseUrl + "value1.svg";
-const serviceIcon2 = imageBaseUrl + "value2.svg";
-const serviceIcon3 = imageBaseUrl + "value3.svg";
-const serviceIcon4 = imageBaseUrl + "value4.svg";
+const serviceIcon1 = webIconsUrl + "excellence.png";
+const serviceIcon2 = webIconsUrl + "Integrity.png";
+const serviceIcon3 = webIconsUrl + "study-skills.png";
+const serviceIcon4 = webIconsUrl + "citizenship.png";
 
 export const ourServices = [
   {
@@ -33,12 +35,7 @@ export const ourServices = [
 ];
 
 const icon1 = imageBaseUrl + "teamImg1.png";
-const icon2 = imageBaseUrl + "teamImg2.png";
 const icon3 = imageBaseUrl + "teamImg3.png";
-const richika = imageBaseUrl + "richika.jfif";
-const sheetal = imageBaseUrl + "sheetal.jfif";
-const sumit = imageBaseUrl + "teams/Sumit.png";
-// const background = imageBaseUrl + "temaBg.svg";
 
 export const ourTeams = [
   {
@@ -49,15 +46,6 @@ export const ourTeams = [
     greeting: "Dear Explorers,",
     message:
       "In the early 20th century, Ford manufactured cars in only black. Today, such one-size-fits-all thinking is outdated. Similarly, when embarking on our overseas journey, despite choosing a top player in the industry, we realized the importance of offering a world-class customized solution to each student, respecting their unique dreams and aspirations. At Taksheela, our goal is to inspire every student to attain what they truly desire and deserve!",
-  },
-  {
-    id: 2,
-    icon: icon2,
-    name: "Richika Singhi, Co-Founder",
-    image: richika,
-    greeting: "Dear Students,",
-    message: `Welcome to a journey that opens the door to a world of possibilities ! 
-        As founders, our vision is simple yet profound — to empower you with the wings of knowledge and experience so that you may soar beyond the confines of traditional education. It's about immersing yourself in new cultures, embracing diversity, and sculpting a global perspective that will shape the rest of your life. So, let the world be your classroom, and let your education be the catalyst for a future without borders! `,
   },
   {
     id: 3,

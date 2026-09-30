@@ -6,7 +6,7 @@ import { imageBaseUrl } from "@/utils/config";
 import ContainerWrapper from "../ContainerWrapper";
 import HeadingTypography from "../Heading";
 
-const img = `${imageBaseUrl}International-Relation/IndiaPage/dualdegree.png`;
+const img = `${imageBaseUrl}International-relation/dual-degree.jpeg`;
 
 export const metadata: Metadata = {
   title: "Dual Degree & Twinning Programmes - Taksheela",

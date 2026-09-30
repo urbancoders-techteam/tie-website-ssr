@@ -15,7 +15,7 @@ import {
   kolkataServices,
   kolkateFAQ,
 } from "@/constants/kolkata";
-import { navURL, studyAbroadBaseUrl } from "@/utils/config";
+import { navURL, studyAbroadImageUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -81,7 +81,7 @@ export default function StudyAbroadPage() {
           </>
         }
         image={{
-          src: studyAbroadBaseUrl + "TIE_website banner-02.jpg",
+          src: studyAbroadImageUrl + "TIE_website banner-02.jpg",
           alt: "Global Immersion Banner",
           width: 800,
           height: 600,
