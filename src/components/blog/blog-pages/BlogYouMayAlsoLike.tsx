@@ -4,7 +4,6 @@ import ContainerWrapper from "@/components/ContainerWrapper";
 import { blogHref } from "@/lib/blog/map";
 import type { ApiBlog } from "@/lib/blog/types";
 import { formatDate } from "@/utils/methods";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
@@ -37,41 +36,34 @@ function RelatedBlogCard({ blog }: { blog: ApiBlog }) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#E8F4F5] bg-white shadow-[0_8px_30px_rgba(11,22,44,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,153,158,0.12)]">
-      <Link href={href} className="block">
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-          {blog.image ? (
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              fill
-              className="object-cover transition duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 90vw, 380px"
-              unoptimized
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center bg-gradient-to-br from-[#0B162C] via-[#174D5A] to-[#00999E]">
-              <span className="text-sm font-extrabold uppercase tracking-widest text-white/90">
-                {categoryName}
-              </span>
-            </div>
-          )}
-        </div>
+      <Link href={href} className="block shrink-0">
+        {blog.image ? (
+          // Native img follows the file's real ratio, so the card has no crop and no bars.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={blog.image} alt={blog.title} className="block h-auto w-full" />
+        ) : (
+          <div className="flex aspect-[16/10] w-full items-center justify-center bg-gradient-to-br from-[#0B162C] via-[#174D5A] to-[#00999E]">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-white/90">
+              {categoryName}
+            </span>
+          </div>
+        )}
       </Link>
 
-      <div className="flex flex-1 flex-col p-4 sm:p-6">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
         <span
-          className="mb-2.5 w-fit max-w-full truncate rounded-md px-2 py-0.5 text-[0.6rem] font-extrabold uppercase tracking-[0.12em] sm:mb-3 sm:px-2.5 sm:py-1 sm:text-[0.65rem] sm:tracking-[0.14em]"
+          className="mb-2 w-fit max-w-full truncate rounded-md px-2 py-0.5 text-[0.6rem] font-extrabold uppercase tracking-[0.12em]"
           style={{ backgroundColor: style.bg, color: style.text }}
         >
           {categoryName}
         </span>
 
-        <h3 className="line-clamp-3 text-base font-extrabold leading-snug text-[#0B162C] transition group-hover:text-[#00999E] sm:min-h-[4.5rem] sm:text-lg">
+        <h3 className="line-clamp-3 text-sm font-extrabold leading-snug text-[#0B162C] transition group-hover:text-[#00999E] sm:min-h-[3.75rem] sm:text-base">
           <Link href={href}>{blog.title}</Link>
         </h3>
 
         {meta ? (
-          <p className="mt-4 text-sm font-medium text-slate-500">{meta}</p>
+          <p className="mt-2.5 text-xs font-medium text-slate-500">{meta}</p>
         ) : null}
       </div>
     </article>
@@ -119,16 +111,23 @@ export default function BlogYouMayAlsoLike({
   const settings: Settings = {
     dots: canSlide,
     arrows: false,
-    infinite: relatedBlogs.length > 3,
+    infinite: relatedBlogs.length > 4,
     speed: 450,
-    slidesToShow: Math.min(3, relatedBlogs.length),
+    slidesToShow: Math.min(4, relatedBlogs.length),
     slidesToScroll: 1,
-    autoplay: relatedBlogs.length > 3,
+    autoplay: relatedBlogs.length > 4,
     autoplaySpeed: 4500,
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: Math.min(3, relatedBlogs.length),
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: Math.min(2, relatedBlogs.length),
           slidesToScroll: 1,
