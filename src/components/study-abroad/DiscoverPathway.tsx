@@ -1,4 +1,4 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, internationalRelationImageUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 import ContainerWrapper from "../ContainerWrapper";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Explore India's NEP 2020 vision for global education through internationalisation at home.",
 };
 
-const img = imageBaseUrl + "countryintro.svg";
+const img = internationalRelationImageUrl + "internationalisation.png";
 
 export default function DiscoverPathway() {
   return (
