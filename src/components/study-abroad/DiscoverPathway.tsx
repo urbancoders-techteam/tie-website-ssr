@@ -1,4 +1,4 @@
-import { imageBaseUrl, internationalRelationImageUrl } from "@/utils/config";
+import { internationalRelationImageUrl } from "@/utils/config";
 import { Metadata } from "next";
 import Image from "next/image";
 import ContainerWrapper from "../ContainerWrapper";
