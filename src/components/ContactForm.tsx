@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, SubmitEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -33,7 +33,7 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     setLoading(true);
 

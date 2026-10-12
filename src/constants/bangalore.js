@@ -25,14 +25,14 @@ export const bangaloreCardData = [
     icon: icon3,
     title: "Proven Track Record",
     about:
-      "As leading MBBS abroad consultants in Greater Noida, we have successfully placed many students in top international universities. Our success stories speak for themselves. Students seeking a consultancy for abroad studies in Bangalore can benefit from structured support throughout their application journey.",
+      "As leading MBBS abroad consultants in Bangalore, we have successfully placed many students in top international universities. Our success stories speak for themselves. Students seeking a consultancy for abroad studies in Bangalore can benefit from structured support throughout their application journey.",
   },
   {
     id: 4,
     icon: icon4,
     title: "Local Expertise with a Global Vision",
     about:
-      "Based in Greater Noida, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education. As the leading study abroad consultants in Bangalore, we focus on making international education more accessible and easier to understand.",
+      "Based in Bangalore, we understand the needs of students here. We provide valuable insights on the best study options and help you explore the advantages of global education. As the leading study abroad consultants in Bangalore, we focus on making international education more accessible and easier to understand.",
   },
 ];
 
