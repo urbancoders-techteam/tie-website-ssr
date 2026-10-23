@@ -56,7 +56,8 @@ export default function BlogHero({ blog }: BlogHeroProps) {
   const readTime = blog.readTime?.trim() || "5 min read";
   const formattedDate = blog.date ? formatDate(blog.date) : null;
   const edition = editionLabel(blog.date);
-  const showPlaceholder = !blog.image || imageFailed;
+  const heroImage = blog.image;
+  const showPlaceholder = !heroImage || imageFailed;
 
   const displayTags = categoryName ? [categoryName.toUpperCase()] : [];
 
@@ -104,7 +105,7 @@ export default function BlogHero({ blog }: BlogHeroProps) {
           </h1>
 
           <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#CBECEF] bg-[#E7F8FA] shadow-[0_16px_40px_rgba(0,153,158,0.12)] sm:mt-6 lg:mt-5">
-            {showPlaceholder ? (
+            {showPlaceholder || !heroImage ? (
               <div
                 className={`flex h-full w-full items-center justify-center ${HERO_PLACEHOLDER_GRADIENT}`}
                 role="img"
@@ -114,15 +115,15 @@ export default function BlogHero({ blog }: BlogHeroProps) {
                   TIE
                 </span>
               </div>
-            ) : blog.image.startsWith("data:") ? (
+            ) : heroImage.startsWith("data:") ? (
               <img
-                src={blog.image}
+                src={heroImage}
                 alt={blog.title}
                 className="h-full w-full object-contain object-center"
               />
             ) : (
               <Image
-                src={blog.image}
+                src={heroImage}
                 alt={blog.title}
                 fill
                 priority
