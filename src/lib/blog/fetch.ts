@@ -144,7 +144,7 @@ export async function fetchBlogsWeb(categoryId?: string): Promise<ApiBlog[]> {
 export async function fetchBlogBySlug(slug: string): Promise<ApiBlog | null> {
   try {
     const res = await fetch(`${baseUrl}${PUBLIC_BLOG_API.blogBySlug(slug)}`, {
-      next: { revalidate: BLOG_FETCH_REVALIDATE_SECONDS },
+      cache: "no-store",
       headers: jsonHeaders,
     });
 

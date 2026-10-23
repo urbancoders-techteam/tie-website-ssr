@@ -16,5 +16,13 @@ export function normalizeApiBlog(raw: Record<string, unknown> | null | undefined
     metaTitle: String(raw.metaTitle ?? "").trim(),
     metaDescription: String(raw.metaDescription ?? "").trim(),
     keywords: String(raw.keywords ?? "").trim(),
+    faqs: Array.isArray(raw.faqs)
+      ? raw.faqs.flatMap((item) => {
+          if (!item || typeof item !== "object") return [];
+          const question = String((item as { question?: unknown }).question ?? "").trim();
+          const answer = String((item as { answer?: unknown }).answer ?? "").trim();
+          return question && answer ? [{ question, answer }] : [];
+        })
+      : [],
   };
 }

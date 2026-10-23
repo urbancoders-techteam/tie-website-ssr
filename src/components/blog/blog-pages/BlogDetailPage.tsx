@@ -1,6 +1,5 @@
 import ContainerWrapper from "@/components/ContainerWrapper";
 import type { ApiBlog } from "@/lib/blog/types";
-import { splitBlogArticleWithFaqs } from "@/lib/blog/parseBlogArticleFaqs";
 import { splitBlogArticleWithMeta } from "@/lib/blog/parseBlogArticleMeta";
 import { sanitizeBlogArticleHtml } from "@/lib/blog/sanitizeBlogArticleHtml";
 import Link from "next/link";
@@ -19,9 +18,10 @@ type BlogDetailPageProps = {
 
 export default function BlogDetailPage({ blog, relatedBlogs = [] }: BlogDetailPageProps) {
   const { articleHtml: htmlWithoutMeta } = splitBlogArticleWithMeta(blog.description);
-  const sanitizedHtml = sanitizeBlogArticleHtml(htmlWithoutMeta);
-  const { articleHtml, faqItems } = splitBlogArticleWithFaqs(sanitizedHtml);
-
+  const articleHtml = sanitizeBlogArticleHtml(htmlWithoutMeta);
+  const faqItems = (blog.faqs || [])
+    .filter((item) => item.question?.trim() && item.answer?.trim())
+    .map((item) => ({ question: item.question.trim(), answer: item.answer.trim() }));
   return (
     <article className="font-sans min-h-screen overflow-x-clip bg-white text-[#0B162C]">
       <BlogHero blog={blog} />

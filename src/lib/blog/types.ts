@@ -10,6 +10,7 @@ export type ApiBlog = {
   readTime?: string | null;
   categoryId?: string | null;
   categoryName?: string | null;
+  faqs?: Array<{ question: string; answer: string }>;
 };
 
 export type ApiBlogCategory = {
