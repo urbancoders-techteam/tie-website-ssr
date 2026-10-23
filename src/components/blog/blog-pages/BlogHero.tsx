@@ -114,9 +114,15 @@ export default function BlogHero({ blog }: BlogHeroProps) {
                   TIE
                 </span>
               </div>
+            ) : blog.image.startsWith("data:") ? (
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="h-full w-full object-contain object-center"
+              />
             ) : (
               <Image
-                src={blog.image!}
+                src={blog.image}
                 alt={blog.title}
                 fill
                 priority
