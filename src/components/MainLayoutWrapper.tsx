@@ -31,6 +31,8 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/mbbs/abroad/kyrgyzstan/campaign/") ||
     pathname === "/mbbs/abroad/uzbekistan/campaign" ||
     pathname?.startsWith("/mbbs/abroad/uzbekistan/campaign/") ||
+    pathname === "/study-abroad/dubai-lp" ||
+    pathname?.startsWith("/study-abroad/dubai-lp/") ||
     pathname === "/thankyou";
 
   if (excludeLayout) {

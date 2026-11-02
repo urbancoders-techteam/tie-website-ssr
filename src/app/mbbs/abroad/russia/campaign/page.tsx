@@ -1,4 +1,4 @@
-import RussiaCampaignContent from "@/components/campaign/russia/RussiaCampaignPage";
+import RussiaCampaignContent from "@/components/campaign/mbbs-campaign/russia/RussiaCampaignPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

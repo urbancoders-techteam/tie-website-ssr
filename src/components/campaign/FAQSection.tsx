@@ -77,7 +77,7 @@ export interface FAQSectionProps {
   /** Custom section title. When omitted, uses the default "Frequently Asked Questions" copy. */
   heading?: string;
   /** `abroad` uses TIE navy + serif title (MBBS abroad pages). `hub` matches `/mbbs` hub sections. */
-  variant?: "default" | "abroad" | "hub";
+  variant?: "default" | "abroad" | "hub" | "dubai";
   /** Inline inside blog article — no full-bleed background or page padding. */
   embedded?: boolean;
   /** Hide the built-in heading (e.g. when rendered by a parent server component). */
@@ -107,7 +107,7 @@ type FAQCardProps = {
   isOpen: boolean;
   onToggle: () => void;
   idPrefix: string;
-  variant: "default" | "abroad" | "hub";
+  variant: "default" | "abroad" | "hub" | "dubai";
   embedded?: boolean;
   renderHighlight: (text: string) => ReactNode;
 };
@@ -126,7 +126,7 @@ const FAQCard = memo(function FAQCard({
   const aId = `${idPrefix}-answer-${index}`;
 
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+    <div className={`min-w-0 overflow-hidden rounded-xl border bg-white shadow-sm transition duration-300 ${variant === "dubai" ? "border-[#E6D9C4] hover:-translate-y-0.5 hover:border-[#C6A35A] hover:shadow-[0_16px_36px_-24px_rgba(198,163,90,0.7)]" : "border-gray-200"}`}>
       <button
         type="button"
         onClick={onToggle}
@@ -135,7 +135,7 @@ const FAQCard = memo(function FAQCard({
         aria-controls={aId}
         id={qId}
       >
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-gray-600">
+        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium ${variant === "dubai" ? "bg-[#122033] text-[#E8D5A3]" : "bg-gray-100 text-gray-600"}`}>
           {formatItemNumber(index + 1)}
         </span>
         <span
@@ -145,7 +145,7 @@ const FAQCard = memo(function FAQCard({
         >
           {item.question}
         </span>
-        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${ACCENT}`} aria-hidden>
+        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${variant === "dubai" ? "text-[#C6A35A]" : ACCENT}`} aria-hidden>
           {isOpen ? <FaMinus className="h-4 w-4" /> : <FaPlus className="h-4 w-4" />}
         </span>
       </button>
@@ -222,10 +222,15 @@ export default function FAQSection({
   /** Public section anchor: explicit `sectionId`, else `faq-{slug}`, else `faq`. */
   const sectionDomId = sectionId ?? (sectionSlug ? `faq-${sectionSlug}` : "faq");
 
-  const renderHighlight = useCallback((text: string) => <span className={`${ACCENT} font-bold`}>{text}</span>, []);
+  const renderHighlight = useCallback(
+    (text: string) => (
+      <span className={`${variant === "dubai" ? "text-[#A7843E]" : ACCENT} font-bold`}>{text}</span>
+    ),
+    [variant]
+  );
 
   const themedCustomHeading = customHeading ? (
-    <span className={variant === "abroad" ? ABROAD_SECTION_ACCENT : "text-[#00999E]"}>
+    <span className={variant === "abroad" ? ABROAD_SECTION_ACCENT : variant === "dubai" ? "text-[#122033]" : "text-[#00999E]"}>
       {customHeading}
     </span>
   ) : null;
@@ -277,7 +282,7 @@ export default function FAQSection({
           ? hideHeading
             ? "mt-6 min-w-0 overflow-x-hidden scroll-mt-24"
             : "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
-          : `overflow-x-hidden bg-[#f9fafb] py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"}`
+          : `overflow-x-hidden py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"} ${variant === "dubai" ? "bg-[#FBF8F3]" : "bg-[#f9fafb]"}`
       }
       aria-labelledby={variant === "abroad" || variant === "hub" || embedded ? headingId : undefined}
     >

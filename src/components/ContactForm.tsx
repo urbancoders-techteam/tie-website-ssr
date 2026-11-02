@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { baseUrl } from "@/utils/config";
@@ -38,15 +37,18 @@ const ContactForm = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${baseUrl}student/schedule-meeting`, formData);
+      const source = window.location.href;
+      const time = new Date().toLocaleString();
+      const res = await axios.post(`${baseUrl}student/schedule-meeting`, {
+        ...formData,
+        source,
+        time,
+      });
 
       if (!res.data?.success) {
         toast.error("Failed to schedule meeting");
         return;
       }
-
-      const source = window.location.href;
-      const time = new Date().toLocaleString();
 
       try {
         const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
@@ -69,22 +71,6 @@ const ContactForm = () => {
       } catch (neodoveErr) {
         console.error("Neodove lead sync failed", neodoveErr);
       }
-
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-      if (!serviceId || !templateId || !publicKey) {
-        toast.error("Email service is not configured");
-        return;
-      }
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        { ...formData, from_name: "TIE", source, time },
-        { publicKey }
-      );
 
       toast.success("Message sent successfully");
       setFormData({ name: "", email: "", message: "", phone: "", from_name: "TIE" });

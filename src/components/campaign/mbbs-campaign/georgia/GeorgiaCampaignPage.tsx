@@ -1,20 +1,20 @@
 import BookCouncilBanner from "@/components/BookCouncilBanner";
-import CampaignNavbar from "@/components/campaign/CampaignNavbar";
-import type { CampaignNavLink } from "@/components/campaign/CampaignNavbar";
-import CampaignFooter from "@/components/campaign/CampaignFooter";
+import CampaignNavbar from "@/components/campaign/mbbs-campaign/CampaignNavbar";
+import type { CampaignNavLink } from "@/components/campaign/mbbs-campaign/CampaignNavbar";
+import CampaignFooter from "@/components/campaign/mbbs-campaign/CampaignFooter";
 import CustomHeroSection from "@/components/custom-component/CustomHeroSection";
 import { renderCampaignHeroTitle } from "@/components/custom-component/renderCampaignHeroTitle";
-import OverviewSection from "@/components/campaign/OverviewSection";
-import CampaignTabs, { GEORGIA_CAMPAIGN_TABS } from "@/components/campaign/CampaignTabs";
-import QuickFactsSection from "@/components/campaign/QuickFactsSection";
-import WhyChooseRussiaSection from "@/components/campaign/WhyChooseRussiaSection";
-import EligibilityCriteriaSection from "@/components/campaign/EligibilityCriteriaSection";
-import AdmissionProcessSection from "@/components/campaign/AdmissionProcessSection";
-import DocumentsRequiredSection from "@/components/campaign/DocumentsRequiredSection";
-import UniversitiesSection from "@/components/campaign/UniversitiesSection";
+import OverviewSection from "@/components/campaign/mbbs-campaign/OverviewSection";
+import CampaignTabs, { GEORGIA_CAMPAIGN_TABS } from "@/components/campaign/mbbs-campaign/CampaignTabs";
+import QuickFactsSection from "@/components/campaign/mbbs-campaign/QuickFactsSection";
+import WhyChooseRussiaSection from "@/components/campaign/mbbs-campaign/WhyChooseRussiaSection";
+import EligibilityCriteriaSection from "@/components/campaign/mbbs-campaign/EligibilityCriteriaSection";
+import AdmissionProcessSection from "@/components/campaign/mbbs-campaign/AdmissionProcessSection";
+import DocumentsRequiredSection from "@/components/campaign/mbbs-campaign/DocumentsRequiredSection";
+import UniversitiesSection from "@/components/campaign/mbbs-campaign/UniversitiesSection";
 import FAQSection from "@/components/campaign/FAQSection";
-import WhatStudentsSaySection from "@/components/campaign/WhatStudentsSaySection";
-import ScrollToTopButton from "@/components/campaign/ScrollToTopButton";
+import WhatStudentsSaySection from "@/components/campaign/mbbs-campaign/WhatStudentsSaySection";
+import ScrollToTopButton from "@/components/campaign/mbbs-campaign/ScrollToTopButton";
 import {
   GEORGIA_OVERVIEW_CONTENT,
   GEORGIA_TESTIMONIALS,

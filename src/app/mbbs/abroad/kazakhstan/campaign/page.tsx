@@ -1,4 +1,4 @@
-import KazakhstanCampaignPage from "@/components/campaign/kazakhstan/KazakhstanCampaignPage";
+import KazakhstanCampaignPage from "@/components/campaign/mbbs-campaign/kazakhstan/KazakhstanCampaignPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
