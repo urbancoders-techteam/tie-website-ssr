@@ -1,5 +1,5 @@
 import ThankYouCard from "@/components/ThankYouCard";
-import CampaignLeadFormConversion from "@/components/campaign/CampaignLeadFormConversion";
+import CampaignLeadFormConversion from "@/components/campaign/mbbs-campaign/CampaignLeadFormConversion";
 
 export default function RussiaCampaignThankYouPage() {
   return (

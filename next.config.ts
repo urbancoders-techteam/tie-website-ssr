@@ -92,6 +92,31 @@ const nextConfig: NextConfig = {
         destination: "/mbbs/abroad/uzbekistan/campaign",
         permanent: true,
       },
+      {
+        source: "/study-abroad/dubai-lp/",
+        destination: "/study-abroad/dubai-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/campaign/dubai",
+        destination: "/study-abroad/dubai-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/campaign/dubai/",
+        destination: "/study-abroad/dubai-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/campaign/dubai/thankyou",
+        destination: "/study-abroad/dubai-lp/thankyou",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/campaign/dubai/thankyou/",
+        destination: "/study-abroad/dubai-lp/thankyou",
+        permanent: true,
+      },
       // SEO: 301s for legacy / broken URLs (client SEO audit)
       {
         source: "/study-abroad/universityFinder",

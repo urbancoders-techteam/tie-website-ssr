@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
-import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
 /** Last path segment only, e.g. `/mbbs/abroad/georgia` → `georgia` */
@@ -22,11 +21,13 @@ const RegisterForm = ({
   showBrochure = false,
   floating = true,
   variant = "light",
+  redirectPath = "/thankyou",
 }: {
   brochureUrl?: any;
   showBrochure?: boolean;
   floating?: boolean;
   variant?: "light" | "dark";
+  redirectPath?: string;
 }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -58,12 +59,16 @@ const RegisterForm = ({
     onSubmit: async (values: any) => {
       setLoading(true);
       try {
-        const res = await axios.post(`${baseUrl}student/schedule-meeting`, values);
+        const source = window.location.href;
+        const time = new Date().toLocaleString();
+        const res = await axios.post(`${baseUrl}student/schedule-meeting`, {
+          ...values,
+          from_name: "TIE",
+          source,
+          time,
+        });
 
         if (res.data.success) {
-          const source = window.location.href;
-          const time = new Date().toLocaleString();
-
           try {
             const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
             if (!neodoveUrl) {
@@ -86,27 +91,10 @@ const RegisterForm = ({
             console.error("Neodove lead sync failed", neodoveErr);
           }
 
-          const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-          const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-          if (serviceId && templateId && publicKey) {
-            try {
-              await emailjs.send(
-                serviceId,
-                templateId,
-                { ...values, from_name: "TIE", source, time },
-                { publicKey }
-              );
-            } catch {
-              // Email is best-effort; don't block form success flow.
-            }
-          }
-
           toast.success("Successfully created Unlock Your Dreams");
           setShowDownloadButton(true);
           formik.resetForm();
-          router.push("/thankyou");
+          router.push(redirectPath);
         } else {
           toast.error("Failed to schedule meeting");
           formik.resetForm();
