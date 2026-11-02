@@ -1,4 +1,4 @@
-import GeorgiaCampaignPage from "@/components/campaign/georgia/GeorgiaCampaignPage";
+import GeorgiaCampaignPage from "@/components/campaign/mbbs-campaign/georgia/GeorgiaCampaignPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

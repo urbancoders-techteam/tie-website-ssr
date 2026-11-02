@@ -8,7 +8,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
-import emailjs from "@emailjs/browser";
 import { baseUrl } from "@/utils/config";
 
 /** Last path segment only, e.g. `/mbbs/abroad/georgia` → `georgia` */
@@ -62,12 +61,16 @@ const RegistrationModal = ({
     onSubmit: async (values: any) => {
       setLoading(true);
       try {
-        const res = await axios.post(`${baseUrl}student/schedule-meeting`, values);
+        const source = window.location.href;
+        const time = new Date().toLocaleString();
+        const res = await axios.post(`${baseUrl}student/schedule-meeting`, {
+          ...values,
+          from_name: "TIE",
+          source,
+          time,
+        });
 
         if (res.data.success) {
-          const source = window.location.href;
-          const time = new Date().toLocaleString();
-
           try {
             const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
             if (!neodoveUrl) {
@@ -89,22 +92,6 @@ const RegistrationModal = ({
           } catch (neodoveErr) {
             console.error("Neodove lead sync failed", neodoveErr);
           }
-
-          const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-          const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-          const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-          if (!serviceId || !templateId || !publicKey) {
-            toast.error("Email service is not configured");
-            return;
-          }
-
-          await emailjs.send(
-            serviceId,
-            templateId,
-            { ...values, from_name: "TIE", source, time },
-            { publicKey }
-          );
 
           toast.success("Successfully created Unlock Your Dreams");
           onSubmitSuccess?.();

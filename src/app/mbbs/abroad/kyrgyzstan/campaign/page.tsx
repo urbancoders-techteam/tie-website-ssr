@@ -1,4 +1,4 @@
-import KyrgyzstanCampaignPage from "@/components/campaign/kyrgyzstan/KyrgyzstanCampaignPage";
+import KyrgyzstanCampaignPage from "@/components/campaign/mbbs-campaign/kyrgyzstan/KyrgyzstanCampaignPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
