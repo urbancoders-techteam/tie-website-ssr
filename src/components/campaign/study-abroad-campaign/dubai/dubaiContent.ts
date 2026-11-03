@@ -1,4 +1,5 @@
 import type { FAQItem } from "@/components/campaign/FAQSection";
+import { webIconsUrl } from "@/utils/config";
 
 export const DUBAI_THANKYOU = "/study-abroad/dubai-lp/thankyou";
 export const DUBAI_CONTAINER = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
@@ -160,14 +161,17 @@ export const RANKED_UNI_INTRO = [
   "This overview covers the best universities in Dubai, their unique offerings, the overall cost to study in Dubai from India, academic strengths, and why they are attractive for both Indian and international students. Fees below are typical yearly ranges, not a quote.",
 ];
 
+const DUBAI_UNI_LOGO_BASE = `${webIconsUrl}dubai/campaign`;
+
+
 export const RANKED_UNI_LOGOS = [
-  "Manipal University Dubai",
-  "University of Wollongong in Dubai",
-  "University of Birmingham Dubai",
-  "Heriot-Watt University",
-  "Middlesex University",
-  "American University in Dubai",
-  "SP Jain School of Global Management",
+  { name: "Manipal University Dubai", src: `${DUBAI_UNI_LOGO_BASE}/Manipal_University_Dubai.png` },
+  { name: "University of Wollongong in Dubai", src: `${DUBAI_UNI_LOGO_BASE}/University_of_Wollongong_in_Dubai.png` },
+  { name: "University of Birmingham Dubai", src: `${DUBAI_UNI_LOGO_BASE}/University_of_Birmingham_Dubai.jpg` },
+  { name: "Heriot-Watt University", src: `${DUBAI_UNI_LOGO_BASE}/Heriot_Watt_University.webp` },
+  { name: "Middlesex University", src: `${DUBAI_UNI_LOGO_BASE}/Middlesex_University.avif` },
+  { name: "American University in Dubai", src: `${DUBAI_UNI_LOGO_BASE}/American_University_In_Dubai.png` },
+  { name: "SP Jain School of Global Management", src: `${DUBAI_UNI_LOGO_BASE}/SP_Jain_School_of_Global_Management.jpg` },
 ];
 
 export const RANKED_UNI_HEADERS = [
@@ -222,13 +226,6 @@ export const RANKED_UNI_ROWS = [
   ],
 ];
 
-export const RANKED_UNI_TIPS = [
-  "If you’re on a budget, start with MAHE Dubai, which is an offshore campus, or Middlesex, and still look at funding options.",
-  "For a globally recognized degree, University of Birmingham, Heriot-Watt, and UOWD are the options worth comparing for return on the fee.",
-  "Choose the university for the quality of the course, not only the tuition. Business, tech, and healthcare are taught to a different standard at each campus.",
-  "Speak to a study in Dubai counsellor about part-time work, visa processing, and recognition of the university before you take the next step.",
-];
-
 export const SCHOLARSHIP_INTRO =
   "When looking into study in Dubai for Indian students, one of the most often asked questions involves the total amount of money needed to study in Dubai, and then how to cope with the total cost to study in Dubai from India. Luckily, Dubai’s education system provides a number of scholarships and education loans which are intended to tackle these issues related to money, primarily aimed at Indian students looking to study in Dubai after the 12th grade, or after higher studies.";
 
@@ -251,42 +248,6 @@ export const SCHOLARSHIP_ROWS = [
     "Aimed at students from outside Dubai, including Indians, covering a broad range of programs to support cultural diversity and global learning.",
   ],
 ];
-
-export const SCHOLARSHIP_TIPS = [
-  "Apply early to meet deadlines and increase your chances.",
-  "Showcase not just grades, but also leadership, extracurriculars, and work experience.",
-];
-
-export const SCHOLARSHIP_STEPS = [
-  {
-    title: "Start Your Research Early",
-    tone: "white" as const,
-    body: "Once you decide to study in Dubai—whether after 12th or for higher education—it’s important to start looking for scholarships as soon as possible. Early planning gives you time to explore different options and prepare strong applications.",
-  },
-  {
-    title: "Maintain a Strong Academic Profile",
-    tone: "teal" as const,
-    body: "Scholarships in Dubai often focus on merit. Keep your academic performance consistent and take part in activities that show your abilities, leadership, and dedication.",
-  },
-  {
-    title: "Write a Clear and Convincing Personal Statement",
-    tone: "white" as const,
-    body: "In your personal statement, explain why you want to study in Dubai. Highlight your educational goals, career ambitions, and the qualities that make you a good candidate for the scholarship.",
-  },
-  {
-    title: "Gather Strong Recommendation Letters",
-    tone: "teal" as const,
-    body: "Request recommendation letters from teachers, mentors, or employers who know your strengths well and can provide positive feedback about your achievements and character.",
-  },
-  {
-    title: "Seek Support from Experts",
-    tone: "white" as const,
-    body: "Consider getting help from experienced study abroad consultants for Dubai. Their guidance on preparing documents, checking applications, and getting ready for interviews can boost your chances of success.",
-  },
-];
-
-export const SCHOLARSHIP_NOTE =
-  "Dubai offers a variety of scholarships for Indian students, including merit-based, need-based, and program-specific options. These scholarships not only ease tuition costs but also consider leadership and extracurricular achievements. Apply early and seek expert guidance to improve your chances of securing financial support for your studies.";
 
 export const LIVING_COST_INTRO =
   "If you are going to study in Dubai for Indian students after 12th, it is equally important to consider the cost of living in Dubai as it is to understand your tuition fees. Many students usually ask questions like “how much money is needed to study in Dubai?” or “what is the total cost to study in Dubai from India?” In order to make responsible decisions and properly budget your money, you must fully understand the living expenses that will come in addition to your education.";
