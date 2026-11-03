@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   DUBAI_CONTAINER,
   RANKED_UNI_HEADERS,
   RANKED_UNI_INTRO,
   RANKED_UNI_LOGOS,
   RANKED_UNI_ROWS,
-  RANKED_UNI_TIPS,
 } from "./dubaiContent";
 import DubaiCta from "./DubaiCta";
-import DubaiNoteCard from "./DubaiNoteCard";
 import DubaiReveal from "./DubaiReveal";
 import DubaiSectionHeading from "./DubaiSectionHeading";
 import DubaiTable from "./DubaiTable";
@@ -109,26 +108,32 @@ export default function DubaiTopRankedUniversities() {
                 transition: animate ? "transform 600ms ease" : "none",
               }}
             >
-              {slides.map((name, slideIndex) => (
+              {slides.map((logo, slideIndex) => (
                 <li
-                  key={`${name}-${slideIndex}`}
+                  key={`${logo.name}-${slideIndex}`}
                   aria-hidden={slideIndex < index || slideIndex >= index + visible}
-                  className="flex min-h-[88px] items-center justify-center px-2"
+                  className="flex min-h-[104px] items-center justify-center px-2"
                   style={{ width: `${100 / slides.length}%` }}
                 >
-                  <span className="flex h-16 w-full items-center justify-center rounded-2xl border border-[#E6D9C4] bg-white px-3 text-center text-[11px] font-extrabold uppercase leading-4 tracking-wide text-[#122033] shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#C6A35A]">
-                    {name}
+                  <span className="flex h-20 w-full items-center justify-center rounded-2xl border border-[#E6D9C4] bg-white px-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#C6A35A]">
+                    <Image
+                      src={logo.src}
+                      alt={logo.name}
+                      width={160}
+                      height={64}
+                      className="h-12 w-auto max-w-full object-contain"
+                    />
                   </span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-3 flex justify-center gap-2">
-            {RANKED_UNI_LOGOS.map((name, dotIndex) => (
+            {RANKED_UNI_LOGOS.map((logo, dotIndex) => (
               <button
-                key={name}
+                key={logo.name}
                 type="button"
-                aria-label={`Show ${name}`}
+                aria-label={`Show ${logo.name}`}
                 aria-current={dotIndex === active ? "true" : undefined}
                 onClick={() => {
                   setAnimate(true);
@@ -141,8 +146,6 @@ export default function DubaiTopRankedUniversities() {
         </div>
 
         <DubaiTable className="mt-8 overflow-x-auto" headers={RANKED_UNI_HEADERS} rows={RANKED_UNI_ROWS} minWidth={820} />
-
-        <DubaiNoteCard title="Quick University Selection Tips" items={[...RANKED_UNI_TIPS]} />
 
         <DubaiCta href="#counselling" className="mt-8">Talk to Our Trusted Study in Dubai Consultants Today</DubaiCta>
         </DubaiReveal>
