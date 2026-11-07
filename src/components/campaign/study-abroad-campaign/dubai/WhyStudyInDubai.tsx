@@ -1,7 +1,12 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   LuBadgePercent,
   LuBriefcase,
   LuCalendarClock,
+  LuChevronLeft,
+  LuChevronRight,
   LuFileCheck2,
   LuGlobe,
   LuGraduationCap,
@@ -12,61 +17,135 @@ import DubaiReveal from "./DubaiReveal";
 import DubaiSectionHeading from "./DubaiSectionHeading";
 
 const WHY_ICONS = [LuGraduationCap, LuWallet, LuBadgePercent, LuCalendarClock, LuBriefcase, LuFileCheck2, LuGlobe];
+const SLIDE_MS = 7000;
 
 export default function WhyStudyInDubai() {
+  const count = WHY_DUBAI_POINTS.length;
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (paused || reducedMotion) return;
+    let timer = 0;
+    const schedule = () => {
+      timer = window.setTimeout(() => {
+        if (document.hidden) {
+          schedule();
+          return;
+        }
+        setIndex((current) => (current + 1) % count);
+      }, SLIDE_MS);
+    };
+    schedule();
+    return () => window.clearTimeout(timer);
+  }, [count, index, paused, reducedMotion]);
+
+  const goTo = (next: number) => {
+    setIndex((next + count) % count);
+  };
+
   return (
     <section id="why-dubai" className="scroll-mt-28 bg-[#FBF8F3] py-12 lg:py-16">
       <div className={DUBAI_CONTAINER}>
         <DubaiReveal className="flex flex-col gap-4 border-b border-[#E6D9C4] pb-8">
           <DubaiSectionHeading title="Why Study in Dubai?" align="left" />
-            {WHY_DUBAI_INTRO.map((paragraph) => (
-              <p key={paragraph} className="text-sm leading-7 text-[#3E4A5A] sm:text-[15px]">{paragraph}</p>
-            ))}
+          {WHY_DUBAI_INTRO.map((paragraph) => (
+            <p key={paragraph} className="max-w-3xl text-sm leading-7 text-[#3E4A5A] sm:text-[15px]">
+              {paragraph}
+            </p>
+          ))}
         </DubaiReveal>
 
-        <ol className="mt-8 space-y-4">
-          {WHY_DUBAI_POINTS.map((point, index) => {
-            const Icon = WHY_ICONS[index] ?? LuGraduationCap;
-            return (
-            <DubaiReveal
-              as="li"
-              key={point.title}
-              delay={index * 70}
-              className="rounded-2xl border border-[#E6D9C4] bg-white p-5 shadow-[0_16px_40px_-28px_rgba(18,32,51,0.45)] transition duration-300 hover:-translate-y-1 hover:border-[#C6A35A] hover:shadow-[0_22px_44px_-24px_rgba(198,163,90,0.55)] sm:p-6"
-            >
-              <div className="flex items-start gap-4">
-                <span className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-2xl bg-[#122033] text-[#E8D5A3]">
-                  <Icon className="h-4 w-4" aria-hidden />
-                  <span className="text-[10px] font-bold leading-none">{index + 1}</span>
-                </span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-bold text-[#122033] sm:text-xl">{point.title}</h3>
-                  <div className="mt-3 space-y-3 text-sm leading-7 text-[#3E4A5A]">
+        <div
+          className="mt-8"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
+          <div className="grid" aria-roledescription="carousel" aria-label="Why study in Dubai">
+            {WHY_DUBAI_POINTS.map((point, pointIndex) => {
+              const Icon = WHY_ICONS[pointIndex] ?? LuGraduationCap;
+              const active = pointIndex === index;
+              const stats = "stats" in point ? point.stats : undefined;
+              const pills = "pills" in point ? point.pills : undefined;
+              const steps = "steps" in point ? point.steps : undefined;
+              const after = "after" in point ? point.after : undefined;
+
+              return (
+                <article
+                  key={point.title}
+                  inert={active ? undefined : true}
+                  aria-hidden={!active}
+                  style={{ gridColumn: "1", gridRow: "1" }}
+                  className={`flex h-full flex-col rounded-2xl border border-[#E6D9C4] bg-white p-5 shadow-[0_16px_40px_-28px_rgba(18,32,51,0.45)] transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:p-7 ${
+                    active ? "z-10 opacity-100" : "pointer-events-none opacity-0"
+                  }`}
+                >
+                  <div className="flex min-h-[4.5rem] items-start gap-4">
+                    <span className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl bg-[#122033] text-[#E8D5A3]">
+                      <Icon className="h-5 w-5" aria-hidden />
+                      <span className="mt-1 text-[10px] font-bold leading-none">
+                        {String(pointIndex + 1).padStart(2, "0")}
+                      </span>
+                    </span>
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#A7843E]">
+                        Reason {String(pointIndex + 1).padStart(2, "0")} of {String(count).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-1 text-lg font-bold leading-snug text-[#122033] sm:text-2xl">{point.title}</h3>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 max-w-3xl flex-1 space-y-3 text-sm leading-7 text-[#3E4A5A] sm:text-[15px]">
                     {point.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
                   </div>
 
-                  {point.stats && (
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                      {point.stats.map((stat) => (
-                        <div key={stat.label} className="rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-4 py-3">
-                          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#A7843E]">
-                            {stat.label}
-                          </p>
-                          <p className="mt-1 text-base font-extrabold text-[#122033]">{stat.value}</p>
-                          <p className="mt-1 text-xs leading-5 text-slate-600">{stat.note}</p>
+                  {stats && (
+                    <div className="mt-5 grid grid-cols-2 items-stretch gap-3 lg:grid-cols-4">
+                      {stats.map((stat) => (
+                        <div key={stat.label} className="flex flex-col rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-3.5 py-2.5">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#A7843E]">{stat.label}</p>
+                          <p className="mt-1 text-sm font-extrabold leading-snug text-[#122033] sm:text-base">{stat.value}</p>
+                          <p className="mt-1 text-xs leading-4 text-slate-600">{stat.note}</p>
                         </div>
                       ))}
                     </div>
                   )}
 
-                  {point.pills && (
-                    <ul className="mt-4 flex flex-wrap gap-2">
-                      {point.pills.map((item) => (
+                  {steps && (
+                    <ol className="mt-5 grid grid-cols-2 items-stretch gap-3 lg:grid-cols-4">
+                      {steps.map((step, stepIndex) => (
+                        <li
+                          key={step}
+                          className="rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-3 py-2.5 text-sm font-semibold leading-snug text-[#122033]"
+                        >
+                          <span className="mb-1 block text-xs font-bold text-[#A7843E]">
+                            {String(stepIndex + 1).padStart(2, "0")}
+                          </span>
+                          {step}
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+
+                  {pills && (
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {pills.map((item) => (
                         <li
                           key={item}
-                          className="rounded-full border border-[#C6A35A]/40 bg-[#F7F1E6] px-3 py-1 text-xs font-semibold text-[#8C6A32]"
+                          className="rounded-full border border-[#C6A35A]/40 bg-[#F7F1E6] px-3 py-1.5 text-xs font-semibold text-[#8C6A32]"
                         >
                           {item}
                         </li>
@@ -74,27 +153,71 @@ export default function WhyStudyInDubai() {
                     </ul>
                   )}
 
-                  {point.steps && (
-                    <ol className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                      {point.steps.map((step, stepIndex) => (
-                        <li key={step} className="rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-3 py-3 text-sm font-semibold text-[#122033]">
-                          <span className="mb-1 block text-xs font-bold text-[#A7843E]">0{stepIndex + 1}</span>
-                          {step}
-                        </li>
-                      ))}
-                    </ol>
-                  )}
+                  {after && <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">{after}</p>}
+                </article>
+              );
+            })}
+          </div>
 
-                  {"after" in point && point.after && (
-                    <p className="mt-4 text-sm leading-7 text-slate-700">{point.after}</p>
-                  )}
-                </div>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8C6A32]" aria-live="polite">
+              {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+            </p>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Previous reason"
+                onClick={() => goTo(index - 1)}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6D9C4] bg-white text-[#122033] transition hover:border-[#C6A35A] hover:text-[#8C6A32]"
+              >
+                <LuChevronLeft className="h-4 w-4" aria-hidden />
+              </button>
+              <div className="flex items-center gap-1.5 px-1" role="tablist" aria-label="Choose a reason">
+                {WHY_DUBAI_POINTS.map((point, dotIndex) => (
+                  <button
+                    key={point.title}
+                    type="button"
+                    role="tab"
+                    aria-label={point.title}
+                    aria-selected={dotIndex === index}
+                    onClick={() => goTo(dotIndex)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      dotIndex === index ? "w-7 bg-[#C6A35A]" : "w-2 bg-[#E6D9C4] hover:bg-[#C6A35A]/60"
+                    }`}
+                  />
+                ))}
               </div>
-            </DubaiReveal>
-            );
-          })}
-        </ol>
+              <button
+                type="button"
+                aria-label="Next reason"
+                onClick={() => goTo(index + 1)}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6D9C4] bg-white text-[#122033] transition hover:border-[#C6A35A] hover:text-[#8C6A32]"
+              >
+                <LuChevronRight className="h-4 w-4" aria-hidden />
+              </button>
+            </div>
+          </div>
+
+          {!reducedMotion && (
+            <div className="mt-3 h-1 overflow-hidden rounded-full bg-[#E6D9C4]" aria-hidden>
+              <div
+                key={`${index}-${paused}`}
+                className="h-full origin-left bg-[#C6A35A]"
+                style={{
+                  width: paused ? "100%" : undefined,
+                  animation: paused ? "none" : `dubai-why-progress ${SLIDE_MS}ms linear forwards`,
+                }}
+              />
+            </div>
+          )}
+        </div>
       </div>
+      <style>{`
+        @keyframes dubai-why-progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
     </section>
   );
 }

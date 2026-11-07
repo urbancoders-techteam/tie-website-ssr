@@ -32,7 +32,13 @@ export default function DubaiCampaignPage() {
           variant="dubai"
         />
       </main>
-      <Footer />
+      <Footer
+        theme={{
+          background: "#122033",
+          accent: "#C6A35A",
+          onAccent: "#122033",
+        }}
+      />
       <a
         href={`https://wa.me/${DUBAI_PHONE.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I want to know about studying in Dubai.")}`}
         target="_blank"
