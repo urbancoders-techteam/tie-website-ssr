@@ -18,10 +18,8 @@ const COURSES = [
   "Not sure yet",
 ];
 
-function pathEndpoint() {
-  const parts = window.location.pathname.split("/").filter(Boolean);
-  return parts.length > 0 ? parts[parts.length - 1]! : "";
-}
+const NEODOVE_LEADS_URL =
+  "https://b1a00be1-4e52-42ec-a144-06930be8193d.neodove.com/integration/custom/a5a4938a-bfcf-417a-ae92-edc0c27ded2e/leads";
 
 export default function DubaiLeadForm({
   title = "Get Your Free Counselling",
@@ -71,21 +69,17 @@ export default function DubaiLeadForm({
         return;
       }
       try {
-        const neodoveUrl = process.env.NEXT_PUBLIC_NEODOVE_LEADS_URL;
-        if (neodoveUrl) {
-          await axios.post(
-            neodoveUrl,
-            {
-              name: values.name,
-              mobile: parseInt(values.phone, 10),
-              email: values.email,
-              detail1: message,
-              detail2: `${source} | ${time}`,
-              location: pathEndpoint(),
-            },
-            { headers: { "Content-Type": "application/json" } }
-          );
-        }
+        await axios.post(
+          NEODOVE_LEADS_URL,
+          {
+            name: values.name,
+            mobile: parseInt(values.phone, 10),
+            email: values.email,
+            detail1: message,
+            detail2: `${values.city} | ${source} | ${time}`,
+          },
+          { headers: { "Content-Type": "application/json" } }
+        );
       } catch (error) {
         console.error("Neodove lead sync failed", error);
       }
