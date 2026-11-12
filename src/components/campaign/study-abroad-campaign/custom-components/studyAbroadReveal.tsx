@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
-export default function DubaiReveal({
+export default function StudyAbroadReveal({
   as,
   className = "",
   delay = 0,

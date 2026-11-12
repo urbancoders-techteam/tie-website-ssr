@@ -1,20 +1,20 @@
-type DubaiSectionHeadingProps = {
+type StudyAbroadSectionHeadingProps = {
   title: string;
-  kicker?: string;
+  kicker: string;
   align?: "center" | "left";
   size?: "md" | "lg";
   tone?: "ink" | "light";
   className?: string;
 };
 
-export default function DubaiSectionHeading({
+export default function StudyAbroadSectionHeading({
   title,
-  kicker = "Dubai",
+  kicker,
   align = "center",
   size = "lg",
   tone = "ink",
   className = "",
-}: DubaiSectionHeadingProps) {
+}: StudyAbroadSectionHeadingProps) {
   const centered = align === "center";
   const light = tone === "light";
 

@@ -98,6 +98,46 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/study-abroad/germany-lp/",
+        destination: "/study-abroad/germany-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/germany-lp/thankyou/",
+        destination: "/study-abroad/germany-lp/thankyou",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/uk-lp/",
+        destination: "/study-abroad/uk-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/uk-lp/thankyou/",
+        destination: "/study-abroad/uk-lp/thankyou",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/ireland-lp/",
+        destination: "/study-abroad/ireland-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/ireland-lp/thankyou/",
+        destination: "/study-abroad/ireland-lp/thankyou",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/new-zealand-lp/",
+        destination: "/study-abroad/new-zealand-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/new-zealand-lp/thankyou/",
+        destination: "/study-abroad/new-zealand-lp/thankyou",
+        permanent: true,
+      },
+      {
         source: "/study-abroad/campaign/dubai",
         destination: "/study-abroad/dubai-lp",
         permanent: true,
