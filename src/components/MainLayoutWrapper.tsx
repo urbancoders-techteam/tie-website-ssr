@@ -33,6 +33,14 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/mbbs/abroad/uzbekistan/campaign/") ||
     pathname === "/study-abroad/dubai-lp" ||
     pathname?.startsWith("/study-abroad/dubai-lp/") ||
+    pathname === "/study-abroad/germany-lp" ||
+    pathname?.startsWith("/study-abroad/germany-lp/") ||
+    pathname === "/study-abroad/uk-lp" ||
+    pathname?.startsWith("/study-abroad/uk-lp/") ||
+    pathname === "/study-abroad/ireland-lp" ||
+    pathname?.startsWith("/study-abroad/ireland-lp/") ||
+    pathname === "/study-abroad/new-zealand-lp" ||
+    pathname?.startsWith("/study-abroad/new-zealand-lp/") ||
     pathname === "/thankyou";
 
   if (excludeLayout) {

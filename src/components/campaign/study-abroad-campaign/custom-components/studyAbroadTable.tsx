@@ -1,4 +1,4 @@
-type DubaiTableProps = {
+type StudyAbroadTableProps = {
   headers: readonly string[];
   rows: readonly (readonly string[])[];
   minWidth?: number;
@@ -7,14 +7,14 @@ type DubaiTableProps = {
   className?: string;
 };
 
-export default function DubaiTable({
+export default function StudyAbroadTable({
   headers,
   rows,
   minWidth,
   centerColumns = [],
   labelWidthClass,
   className = "overflow-x-auto",
-}: DubaiTableProps) {
+}: StudyAbroadTableProps) {
   return (
     <div className={`${className} rounded-2xl border-2 border-[#C6A35A]`}>
       <table
@@ -37,7 +37,10 @@ export default function DubaiTable({
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={row[0]} className={`align-top transition-colors duration-200 hover:bg-[#F7F1E6] ${rowIndex % 2 === 1 ? "bg-[#FBF8F3]" : "bg-white"}`}>
+            <tr
+              key={row[0]}
+              className={`align-top transition-colors duration-200 hover:bg-[#F7F1E6] ${rowIndex % 2 === 1 ? "bg-[#FBF8F3]" : "bg-white"}`}
+            >
               {row.map((cell, index) => (
                 <td
                   key={`${row[0]}-${index}`}
