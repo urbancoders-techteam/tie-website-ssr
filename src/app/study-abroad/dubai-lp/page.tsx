@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DubaiCampaignPage from "@/components/campaign/study-abroad-campaign/dubai/DubaiCampaignPage";
+import DubaiCampaignPage from "@/components/campaign/study-abroad-campaign/DubaiCampaignPage";
 
 export const metadata: Metadata = {
   title: "Study in Dubai | Universities, Fees & Admissions | Taksheela",

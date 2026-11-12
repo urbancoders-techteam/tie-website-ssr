@@ -4,16 +4,22 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HomeTopBar from "@/components/HomeTopBar";
-import { DUBAI_CONTAINER, DUBAI_NAV } from "./dubaiContent";
+import type { StudyAbroadNavItem } from "./studyAbroadTypes";
 
-export default function DubaiCampaignHeader() {
+export default function StudyAbroadHeader({
+  containerClass,
+  nav,
+}: {
+  containerClass: string;
+  nav: readonly StudyAbroadNavItem[];
+}) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50">
       <HomeTopBar />
       <div className="border-b border-[#E6D9C4]/80 bg-white/95 shadow-[0_10px_28px_-20px_rgba(198,163,90,0.55)] backdrop-blur">
-        <div className={`${DUBAI_CONTAINER} flex h-[68px] items-center justify-between gap-6`}>
+        <div className={`${containerClass} flex h-[68px] items-center justify-between gap-6`}>
           <Link href="/" className="shrink-0" aria-label="Taksheela Institute of Education">
             <Image
               src="/images/TIE_LOGO.png"
@@ -26,15 +32,15 @@ export default function DubaiCampaignHeader() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Page sections">
-            {DUBAI_NAV.map((item, index) => (
+            {nav.map((item, index) => (
               <a
                 key={item.href}
                 href={item.href}
                 style={{
-                  animation: "dubai-nav-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both",
+                  animation: "study-abroad-nav-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both",
                   animationDelay: `${90 + index * 70}ms`,
                 }}
-                className="dubai-nav-link relative px-3 py-2 text-[13.5px] font-semibold tracking-[0.01em] text-[#0f2744] transition-colors duration-300 ease-out hover:text-[#C6A35A] focus-visible:text-[#C6A35A]"
+                className="study-abroad-nav-link relative px-3 py-2 text-[13.5px] font-semibold tracking-[0.01em] text-[#0f2744] transition-colors duration-300 ease-out hover:text-[#C6A35A] focus-visible:text-[#C6A35A]"
               >
                 {item.label}
               </a>
@@ -78,7 +84,7 @@ export default function DubaiCampaignHeader() {
             aria-label="Page sections"
             aria-hidden={!open}
           >
-            {DUBAI_NAV.map((item, index) => (
+            {nav.map((item, index) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -98,11 +104,11 @@ export default function DubaiCampaignHeader() {
       <div className="h-0.5 bg-gradient-to-r from-[#C6A35A] via-[#E8D5A3] to-[#122033]" aria-hidden />
 
       <style>{`
-        @keyframes dubai-nav-in {
+        @keyframes study-abroad-nav-in {
           from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .dubai-nav-link::after {
+        .study-abroad-nav-link::after {
           content: "";
           position: absolute;
           left: 12px;
@@ -115,15 +121,15 @@ export default function DubaiCampaignHeader() {
           transform-origin: left center;
           transition: transform 0.3s ease;
         }
-        .dubai-nav-link:hover::after,
-        .dubai-nav-link:focus-visible::after {
+        .study-abroad-nav-link:hover::after,
+        .study-abroad-nav-link:focus-visible::after {
           transform: scaleX(1);
         }
         @media (prefers-reduced-motion: reduce) {
-          @keyframes dubai-nav-in {
+          @keyframes study-abroad-nav-in {
             from, to { opacity: 1; transform: none; }
           }
-          .dubai-nav-link::after {
+          .study-abroad-nav-link::after {
             transition: none;
           }
         }

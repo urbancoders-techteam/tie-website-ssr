@@ -1,26 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  LuBadgePercent,
-  LuBriefcase,
-  LuCalendarClock,
-  LuChevronLeft,
-  LuChevronRight,
-  LuFileCheck2,
-  LuGlobe,
-  LuGraduationCap,
-  LuWallet,
-} from "react-icons/lu";
-import { DUBAI_CONTAINER, WHY_DUBAI_INTRO, WHY_DUBAI_POINTS } from "./dubaiContent";
-import DubaiReveal from "./DubaiReveal";
-import DubaiSectionHeading from "./DubaiSectionHeading";
+import { LuChevronLeft, LuChevronRight, LuGraduationCap } from "react-icons/lu";
+import { STUDY_ABROAD_ICONS } from "./studyAbroadIcons";
+import StudyAbroadReveal from "./studyAbroadReveal";
+import StudyAbroadSectionHeading from "./studyAbroadSectionHeading";
+import type { StudyAbroadCampaignData } from "./studyAbroadTypes";
 
-const WHY_ICONS = [LuGraduationCap, LuWallet, LuBadgePercent, LuCalendarClock, LuBriefcase, LuFileCheck2, LuGlobe];
 const SLIDE_MS = 7000;
 
-export default function WhyStudyInDubai() {
-  const count = WHY_DUBAI_POINTS.length;
+export default function StudyAbroadWhy({
+  containerClass,
+  why,
+}: {
+  containerClass: string;
+  why: StudyAbroadCampaignData["why"];
+}) {
+  const count = why.points.length;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -34,7 +30,7 @@ export default function WhyStudyInDubai() {
   }, []);
 
   useEffect(() => {
-    if (paused || reducedMotion) return;
+    if (paused || reducedMotion || count === 0) return;
     let timer = 0;
     const schedule = () => {
       timer = window.setTimeout(() => {
@@ -50,20 +46,21 @@ export default function WhyStudyInDubai() {
   }, [count, index, paused, reducedMotion]);
 
   const goTo = (next: number) => {
+    if (count === 0) return;
     setIndex((next + count) % count);
   };
 
   return (
-    <section id="why-dubai" className="scroll-mt-28 bg-[#FBF8F3] py-12 lg:py-16">
-      <div className={DUBAI_CONTAINER}>
-        <DubaiReveal className="flex flex-col gap-4 border-b border-[#E6D9C4] pb-8">
-          <DubaiSectionHeading title="Why Study in Dubai?" align="left" />
-          {WHY_DUBAI_INTRO.map((paragraph) => (
+    <section id={why.id} className="scroll-mt-28 bg-[#FBF8F3] py-12 lg:py-16">
+      <div className={containerClass}>
+        <StudyAbroadReveal className="flex flex-col gap-4 border-b border-[#E6D9C4] pb-8">
+          <StudyAbroadSectionHeading title={why.title} kicker={why.kicker} align="left" />
+          {why.intro.map((paragraph) => (
             <p key={paragraph} className="max-w-3xl text-sm leading-7 text-[#3E4A5A] sm:text-[15px]">
               {paragraph}
             </p>
           ))}
-        </DubaiReveal>
+        </StudyAbroadReveal>
 
         <div
           className="mt-8"
@@ -72,14 +69,10 @@ export default function WhyStudyInDubai() {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          <div className="grid" aria-roledescription="carousel" aria-label="Why study in Dubai">
-            {WHY_DUBAI_POINTS.map((point, pointIndex) => {
-              const Icon = WHY_ICONS[pointIndex] ?? LuGraduationCap;
+          <div className="grid" aria-roledescription="carousel" aria-label={why.carouselLabel}>
+            {why.points.map((point, pointIndex) => {
+              const Icon = STUDY_ABROAD_ICONS[point.icon] ?? LuGraduationCap;
               const active = pointIndex === index;
-              const stats = "stats" in point ? point.stats : undefined;
-              const pills = "pills" in point ? point.pills : undefined;
-              const steps = "steps" in point ? point.steps : undefined;
-              const after = "after" in point ? point.after : undefined;
 
               return (
                 <article
@@ -112,9 +105,9 @@ export default function WhyStudyInDubai() {
                     ))}
                   </div>
 
-                  {stats && (
+                  {point.stats && (
                     <div className="mt-5 grid grid-cols-2 items-stretch gap-3 lg:grid-cols-4">
-                      {stats.map((stat) => (
+                      {point.stats.map((stat) => (
                         <div key={stat.label} className="flex flex-col rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-3.5 py-2.5">
                           <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#A7843E]">{stat.label}</p>
                           <p className="mt-1 text-sm font-extrabold leading-snug text-[#122033] sm:text-base">{stat.value}</p>
@@ -124,9 +117,9 @@ export default function WhyStudyInDubai() {
                     </div>
                   )}
 
-                  {steps && (
+                  {point.steps && (
                     <ol className="mt-5 grid grid-cols-2 items-stretch gap-3 lg:grid-cols-4">
-                      {steps.map((step, stepIndex) => (
+                      {point.steps.map((step, stepIndex) => (
                         <li
                           key={step}
                           className="rounded-xl border border-[#E6D9C4] bg-[#FBF8F3] px-3 py-2.5 text-sm font-semibold leading-snug text-[#122033]"
@@ -140,9 +133,9 @@ export default function WhyStudyInDubai() {
                     </ol>
                   )}
 
-                  {pills && (
+                  {point.pills && (
                     <ul className="mt-5 flex flex-wrap gap-2">
-                      {pills.map((item) => (
+                      {point.pills.map((item) => (
                         <li
                           key={item}
                           className="rounded-full border border-[#C6A35A]/40 bg-[#F7F1E6] px-3 py-1.5 text-xs font-semibold text-[#8C6A32]"
@@ -153,7 +146,7 @@ export default function WhyStudyInDubai() {
                     </ul>
                   )}
 
-                  {after && <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">{after}</p>}
+                  {point.after && <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">{point.after}</p>}
                 </article>
               );
             })}
@@ -173,7 +166,7 @@ export default function WhyStudyInDubai() {
                 <LuChevronLeft className="h-4 w-4" aria-hidden />
               </button>
               <div className="flex items-center gap-1.5 px-1" role="tablist" aria-label="Choose a reason">
-                {WHY_DUBAI_POINTS.map((point, dotIndex) => (
+                {why.points.map((point, dotIndex) => (
                   <button
                     key={point.title}
                     type="button"
@@ -205,7 +198,7 @@ export default function WhyStudyInDubai() {
                 className="h-full origin-left bg-[#C6A35A]"
                 style={{
                   width: paused ? "100%" : undefined,
-                  animation: paused ? "none" : `dubai-why-progress ${SLIDE_MS}ms linear forwards`,
+                  animation: paused ? "none" : `study-abroad-why-progress ${SLIDE_MS}ms linear forwards`,
                 }}
               />
             </div>
@@ -213,7 +206,7 @@ export default function WhyStudyInDubai() {
         </div>
       </div>
       <style>{`
-        @keyframes dubai-why-progress {
+        @keyframes study-abroad-why-progress {
           from { width: 0%; }
           to { width: 100%; }
         }
