@@ -29,7 +29,7 @@ export async function fetchRelatedBlogs(
     ? await fetchBlogsWebPaginated({ categoryId, page: 1, limit: pageSize })
     : { blogs: [] };
 
-  let pool = sameCategoryResult.blogs.filter((b) => normalizeSlug(b.slugUrl) !== current);
+  const pool = sameCategoryResult.blogs.filter((b) => normalizeSlug(b.slugUrl) !== current);
 
   if (pool.length < limit) {
     const recent = await fetchBlogsWebPaginated({ page: 1, limit: pageSize });
