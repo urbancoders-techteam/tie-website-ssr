@@ -1,22 +1,11 @@
 export const navbarData = [
   {
     menu: { name: "Home", link: "/" },
-    subMenu: [
-      {
-        title: "About Us",
-        link: "/aboutus",
-      },
-      {
-        title: "Taksheela Edge",
-        link: "/",
-        id: "taksheela-edge-section",
-      },
-      {
-        title: "Taksheela Insights",
-        link: "/",
-        id: "taksheela-insights-section",
-      },
-    ],
+    subMenu: [],
+  },
+  {
+    menu: { name: "About Us", link: "/aboutus" },
+    subMenu: [],
   },
 
   {
@@ -99,12 +88,6 @@ export const navbarData = [
       },
     ],
   },
-];
-
-export const homeSubMenues = [
-  { title: "About Us", link: "/aboutus" },
-  { title: "Taksheela Edge", link: "/", id: "taksheela-edge-section" },
-  { title: "Taksheela Insights", link: "/", id: "taksheela-insights-section" },
 ];
 
 export const studyAbroadsubMenues = [

@@ -53,7 +53,7 @@ export default function SiteBreadcrumbs() {
   const pathname = usePathname() ?? "/";
   const segments = pathname.split("/").filter(Boolean);
 
-  if (segments.length === 0) {
+  if (segments.length === 0 || pathname === "/aboutus") {
     return null;
   }
 
