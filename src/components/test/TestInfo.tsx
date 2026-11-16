@@ -85,7 +85,7 @@ const TestInfo: React.FC<TestInfoProps> = ({ testInfo }) => {
               alt={testInfo?.title}
               width={350}
               height={200}
-              className="max-w-[90%] md:max-w-full object-contain"
+              className="md:max-w-full object-contain"
             />
           </div>
         </div>

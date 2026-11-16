@@ -356,11 +356,11 @@ const FULL_PAGE_BY_SLUG: Record<string, () => AbroadFullPageCopy> = {
 
 /** Hero media keyed by slug for full-layout abroad pages. */
 const ABROAD_HERO_MEDIA_SRC: Record<string, string> = {
-  russia: `${imageBaseUrl}mbbsCollege/russia/BgRussia-abroad.jpg`,
-  georgia: `${imageBaseUrl}mbbsCollege/georgia/BgGeorgia-abroad.jpg`,
-  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/BgKazakhstan-abroad.jpg`,
-  uzbekistan: `${imageBaseUrl}mbbsCollege/uzbekistan/BgUzbekistan-abroad.jpg`,
-  kyrgyzstan: `${imageBaseUrl}mbbsCollege/kyrgyzstan/BgKyrgystan-abroad.jpg`,
+  russia: `${imageBaseUrl}mbbs/abroad/banner/MBBS in Russia Banner.png`,
+  georgia: `${imageBaseUrl}mbbs/abroad/banner/MBBS in Georgia Banner.png`,
+  kazakhstan: `${imageBaseUrl}mbbs/abroad/banner/MBBS in Kazakhstan Banner.png`,
+  uzbekistan: `${imageBaseUrl}mbbs/abroad/banner/MBBS in Uzbekistan Banner.png`,
+  kyrgyzstan: `${imageBaseUrl}mbbs/abroad/banner/MBBS in Kyrgyzstan Banner.png`,
 };
 
 function withRegistryHeroMedia(slug: string, hero: AbroadHeroContent): AbroadHeroContent {
@@ -380,11 +380,11 @@ export function getAbroadFullPageCopy(slug: string): AbroadFullPageCopy | null {
 
 /** Optional overview image path keyed by slug — extend when adding a country. */
 const ABROAD_OVERVIEW_MEDIA_SRC: Record<string, string> = {
-  russia: `${imageBaseUrl}mbbsCollege/russia/russia-overview.jpg`,
-  georgia: `${imageBaseUrl}mbbsCollege/georgia/georgia-overview.jpg`,
-  kazakhstan: `${imageBaseUrl}mbbsCollege/kazakhstan/Kazakhstan-overview.jpg`,
-  uzbekistan: `${imageBaseUrl}mbbsCollege/uzbekistan/uzbekstan-overview.jpg`,
-  kyrgyzstan: `${imageBaseUrl}mbbsCollege/kyrgyzstan/kyrigistan-overview.jpg`,
+  russia: `${imageBaseUrl}mbbs/abroad/MBBS in Russia.png`,
+  georgia: `${imageBaseUrl}mbbs/abroad/MBBS in Georgia.png`,
+  kazakhstan: `${imageBaseUrl}mbbs/abroad/MBBS in Kazakhstan.png`,
+  uzbekistan: `${imageBaseUrl}mbbs/abroad/MBBS in Uzbekistan.png`,
+  kyrgyzstan: `${imageBaseUrl}mbbs/abroad/MBBS in Kyrgyzstan.png`,
 };
 
 export function getAbroadOverviewMediaSrc(slug: string): string | undefined {

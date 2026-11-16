@@ -44,12 +44,12 @@ export const whyChooseUsData = [
   },
 ];
 
-const testprep1 = imageBaseUrl + "testprep1.png";
-const testprep2 = imageBaseUrl + "testprep2.png";
-const testprep3 = imageBaseUrl + "testprep3.png";
-const testprep4 = imageBaseUrl + "testprep4.png";
-const testprep5 = imageBaseUrl + "testprep5.png";
-const testprep6 = imageBaseUrl + "testprep6.png";
+const testprep1 = imageBaseUrl + "study-abroad/test-prep/Score High on IELTS.png";
+const testprep2 = imageBaseUrl + "study-abroad/test-prep/Focused TOEFL coaching session.png";
+const testprep3 = imageBaseUrl + "study-abroad/test-prep/Score High in PTE.png";
+const testprep4 = imageBaseUrl + "study-abroad/test-prep/Collaborative GRE Prep With Expert Guidance.png";
+const testprep5 = imageBaseUrl + "study-abroad/test-prep/Expert-led GMAT prep session.png";
+const testprep6 = imageBaseUrl + "study-abroad/test-prep/Focused SAT Study Session.png";
 
 const testexam1 = imageBaseUrl + "webicons/listening.png";
 const testexam2 = imageBaseUrl + "webicons/study-skills.png";

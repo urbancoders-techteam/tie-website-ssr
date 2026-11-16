@@ -71,7 +71,7 @@ export const immersionSlugData = [
     h1: "Study & Explore: Middle East Immersion Program",
     content:
       "<p>The <strong>Middle East</strong>, with key cities like <strong>Dubai and Sharjah</strong>, offers a unique landscape for <strong>global immersion </strong>. <strong>Dubai</strong>, a hub of <strong>innovation, business, and diversity</strong>, attracts professionals and entrepreneurs worldwide. <strong>Sharjah</strong>, the cultural capital, fosters <strong>art, literature, and academia</strong>, enriching cross-cultural experiences. Together, these cities create a dynamic environment for <strong>global business, cultural exchange, and international collaboration</strong>. With a blend of <strong>modern opportunities and rich traditions</strong>, the region is an ideal destination for those seeking <strong>international exposure, networking, and professional growth</strong> in a thriving <strong>global economy</strong>.</p>",
-    image: imageBaseUrl + "immersion/MiddleEastCollage.png",
+    image: imageBaseUrl + "immersion/Middle East.png",
     srTitle: "Middle East Immersion Program | Global Exposure with Taksheela",
     srDesc:
       "Join Taksheela’s Middle East Immersion Program to explore culture, education, and innovation. Gain real-world experience and global perspective in top MENA hubs.",
@@ -82,7 +82,7 @@ export const immersionSlugData = [
     h1: "Experience Global Learning in South East Asia",
     content:
       "<p><strong>Thailand and Malaysia</strong> offer a <strong>vibrant and diverse environment for global immersion</strong>, combining <strong>economic growth, cultural richness, and business opportunities</strong>. <strong>Thailand</strong>, a key player in ASEAN, is known for its <strong>booming tourism, manufacturing, and startup ecosystem</strong>, making it a hotspot for <strong>international trade and investment</strong>. <strong>Malaysia</strong>, with its <strong>multicultural society and strong economic infrastructure</strong>, serves as a bridge between <strong>Eastern and Western markets</strong>, offering exposure to <strong>finance, technology, and sustainable development</strong>. Both countries provide a unique blend of <strong>modern innovation and traditional values</strong>, making them ideal for <strong>cross-cultural learning, business expansion, and international networking</strong>.</p>",
-    image: imageBaseUrl + "immersion/CollagePosterSouth1.png",
+    image: imageBaseUrl + "immersion/South East Asia.png",
     srTitle: "Southeast Asia Immersion Program | Taksheela Institute",
     srDesc:
       "Join Taksheela’s Southeast Asia Immersion Program for real-world exposure, cultural exchange, and immersive academic learning across dynamic ASEAN countries.",
