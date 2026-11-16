@@ -4,6 +4,7 @@ import CollaborativeResearch from "@/components/internation-relation/Collaborati
 import DualDegree from "@/components/internation-relation/DualDegree";
 import ImmersionProgramme from "@/components/internation-relation/GlobalImmersionProgram";
 import InternationalisationHome from "@/components/internation-relation/InternationalizationHome";
+import EngagementTabs from "@/components/internation-relation/EngagementTabs";
 import StudentRecruitment from "@/components/internation-relation/InternationStudentRecruitment";
 import InternshipOpportunities from "@/components/internation-relation/InternshipOpportunities";
 import MobilityProgramme from "@/components/internation-relation/MobilityProgram";
@@ -66,6 +67,7 @@ export default function Page() {
         <h3>Internship Opportunities</h3>
         <h3>How Our Student Exchange Programme Works?</h3>
       </div>
+      <EngagementTabs />
       <InternationalisationHome />
       <Benefits />
       <Regulatory />
