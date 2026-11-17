@@ -2,13 +2,9 @@
 "use client";
 
 import CloseIcon from "@mui/icons-material/Close";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   AppBar,
   Avatar,
   Badge,
@@ -24,24 +20,17 @@ import {
   useTheme,
 } from "@mui/material";
 
-import {
-  mbbsSubMenues,
-  navbarData,
-  studyAbroadsubMenues,
-} from "@/constants/navbar";
+import { navbarData } from "@/constants/navbar";
+import UniversityMenu from "@/components/navigation/UniversityMenu";
 import Popover from "@mui/material/Popover";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import axios from "axios";
 import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { baseUrl, navURL } from "@/utils/config";
-
-function getSubMenuHref(subMenu: { link?: string; url?: string }) {
-  return subMenu.url ?? subMenu.link ?? "/";
-}
 
 export const Header = ({ itemupdate }: any) => {
 
@@ -68,31 +57,12 @@ export const Header = ({ itemupdate }: any) => {
     }
   }, []);
 
-  const router = useRouter();
   const location = usePathname();
   const searchParams = useSearchParams();
   const scrollTo = searchParams.get("scrollTo");
-  const subMenuTitle = searchParams.get("subMenuTitle");
-  const [activeSubMenu, setActiveSubMenu] = useState("");
 
   const [cartList, setCartList] = useState<any>([]);
 
-
-  const [expanded, setExpanded] = useState(null);
-
-  const handleAccordionChange = (index: any) => {
-    setExpanded(expanded === index ? null : index);
-  };
-
-  useEffect(() => {
-    navbarData.forEach((menuItem, index) => {
-      if (
-        menuItem.subMenu.some((subItem) => location === subItem.link)
-      ) {
-        setExpanded(index as any);
-      }
-    });
-  }, [location]);
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -135,25 +105,6 @@ export const Header = ({ itemupdate }: any) => {
   const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLgDown = useMediaQuery(theme.breakpoints.down("lg"));
-  const [studyAbroadOpen, setStudyAbroadOpen] = useState(false);
-  const [mbbsOpen, setMbbsOpen] = useState(false);
-
-  // Close all submenus on route change so they don't stay open on other pages
-  useEffect(() => {
-    setStudyAbroadOpen(false);
-    setMbbsOpen(false);
-  }, [location]);
-
-  // Close all submenus when clicking outside (backup for missed mouseLeave)
-  useEffect(() => {
-    const closeAllSubmenus = () => {
-      setStudyAbroadOpen(false);
-      setMbbsOpen(false);
-    };
-    document.addEventListener("click", closeAllSubmenus);
-    return () => document.removeEventListener("click", closeAllSubmenus);
-  }, []);
-
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -233,36 +184,6 @@ export const Header = ({ itemupdate }: any) => {
     // marginBottom: "-4px",
   });
 
-  // Fast submenu: quick open animation, immediate close on leave
-  const submenuDropDownSx = {
-    animation: "headerSubmenuIn 0.1s ease-out",
-    "@keyframes headerSubmenuIn": {
-      from: { opacity: 0, transform: "translateY(-4px)" },
-      to: { opacity: 1, transform: "translateY(0)" },
-    },
-  };
-
-  const closeAllDesktopSubmenus = () => {
-    setStudyAbroadOpen(false);
-    setMbbsOpen(false);
-  };
-
-  const handleStudyAbroadEnter = () => {
-    closeAllDesktopSubmenus();
-    setStudyAbroadOpen(true);
-  };
-  const handleStudyAbroadLeave = () => {
-    setStudyAbroadOpen(false);
-  };
-
-  const handleMBBSEnter = () => {
-    closeAllDesktopSubmenus();
-    setMbbsOpen(true);
-  };
-  const handleMBBSLeave = () => {
-    setMbbsOpen(false);
-  };
-
   const [selectedParentMenu, setSelectedParentMenu] = useState<any>("Home");
 
   // Sync selected menu with current pathname so correct item shows active + bottom underline
@@ -293,77 +214,17 @@ export const Header = ({ itemupdate }: any) => {
   const isParentMenuSelected = (parentMenu: string | null) =>
     selectedParentMenu === parentMenu;
 
-  const handleSubMenuClick = (e: any, subMenu: any) => {
-    e.preventDefault();
-    const href = getSubMenuHref(subMenu);
-
-    if (subMenu.id && (subMenu.link || subMenu.url)) {
-      if (href.startsWith("http")) {
-        window.open(href, "_blank");
-        return;
-      }
-
-      if (location === href) {
-        const section = document.getElementById(subMenu.id);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-          setActiveSubMenu(subMenu.title);
-          setDrawerOpen(false);
-        }
-      } else {
-        router.push(
-          `${href}?scrollTo=${
-            subMenu.id
-          }&subMenuTitle=${encodeURIComponent(subMenu.title)}`
-        );
-        setDrawerOpen(false);
-      }
-      return;
-    }
-
-    if (subMenu.url || subMenu.link) {
-      if (href.startsWith("http")) {
-        window.open(href, "_blank");
-      } else {
-        router.push(href);
-        setActiveSubMenu(subMenu.title);
-        setDrawerOpen(false);
-      }
-      return;
-    }
-
-    if (subMenu.id) {
-      if (location === "/" || location === "/international-relation") {
-        const section = document.getElementById(subMenu.id);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-          setActiveSubMenu(subMenu.title);
-        }
-      } else {
-        router.push(
-          `/?scrollTo=${subMenu.id}&subMenuTitle=${encodeURIComponent(
-            subMenu.title
-          )}`
-        );
-      }
-      return;
-    }
-  };
-
   useEffect(() => {
     if (scrollTo) {
       setTimeout(() => {
         const section = document.getElementById(scrollTo);
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
-          setActiveSubMenu(subMenuTitle as any);
         }
       }, 500);
       window.history.replaceState({}, document.title);
-    } else {
-      setActiveSubMenu("");
     }
-  }, [location, scrollTo, subMenuTitle]);
+  }, [location, scrollTo]);
 
   return (
     <>
@@ -526,102 +387,16 @@ export const Header = ({ itemupdate }: any) => {
                   </IconButton>
                 </Box>
                 <List sx={{ padding: "0px 20px" }}>
-                  {navbarData.map((menuItem, index) => (
-                    <Accordion
-                      key={index}
-                      disableGutters
-                      elevation={0}
-                      expanded={menuItem.subMenu.length > 0 && expanded === index}
-                      onChange={
-                        menuItem.subMenu.length > 0
-                          ? () => handleAccordionChange(index)
-                          : undefined
-                      }
-                      sx={{
-                        borderBottom: "none",
-                        boxShadow: "none",
-                        "&:before": { display: "none" },
-                      }}
-                    >
-                      <AccordionSummary
-                        sx={{ px: 0 }}
-                        expandIcon={
-                          menuItem.subMenu.length > 0 ? (
-                            <ExpandMoreIcon sx={{ zIndex: 100 }} />
-                          ) : undefined
-                        }
-                      >
-                        <Box onClick={() => router.push(menuItem.menu.link)}>
-                          <Typography
-                            sx={{
-                              fontSize: "16px",
-                      
-                              margin: "0px !important",
-                              padding: "0px !important",
-                              display: "flex",
-                              alignItems: "center",
-                              lineHeight: "1",
-                            }}
-                          >
-                            {menuItem.menu.name}
-                          </Typography>
-                        </Box>
-                      </AccordionSummary>
-                      <AccordionDetails sx={{ fontSize: "12px", p: 0 }}>
-                        {menuItem.subMenu.map((subItem, subIndex) => {
-                          const isActive = activeSubMenu === subItem.title;
-
-                          return (
-                            <Box
-                              key={subIndex}
-                              sx={{
-                                borderBottom:
-                                  subIndex < menuItem.subMenu.length - 1
-                                    ? "1px solid #00999e"
-                                    : "none",
-                                py: 0.75,
-                                // px: 2,
-                              }}
-                            >
-                              <Typography
-                                component="div"
-                                sx={{
-                                  // fontSize: "12px",
-                                  color: isActive ? "#00999e" : "inherit",
-                                  fontWeight: isActive ? "bold" : "normal",
-                                }}
-                              >
-                                <Link
-                                  href={getSubMenuHref(subItem)}
-                                  key={subItem.title}
-                                  className="custom-link"
-                                  onClick={(e) => handleSubMenuClick(e, subItem)}
-                                  style={{
-                                    color:
-                                      activeSubMenu === subItem.title
-                                        ? "#00999E"
-                                        : "",
-                                  }}
-                                >
-                                  <HoverTypography
-                                    fontSize="12px"
-                                    border="4px solid white"
-                                    style={{
-                                      color:
-                                        activeSubMenu === subItem.title
-                                          ? "blue"
-                                          : "inherit",
-                                    }}
-                                  >
-                                    {subItem.title}
-                                  </HoverTypography>
-                                </Link>
-                              </Typography>
-                            </Box>
-                          );
-                        })}
-                      </AccordionDetails>
-                    </Accordion>
+                  {navbarData.map(menuItem => menuItem.menu.name === "University" ? (
+                    <UniversityMenu key="university" mobile onNavigate={handleDrawerClose} />
+                  ) : (
+                    <Box key={menuItem.menu.link} sx={{ py: 1.5 }}>
+                      <Link href={menuItem.menu.link} className="custom-link" onClick={handleDrawerClose}>
+                        <HoverTypography isActive={location === menuItem.menu.link} sx={{ fontSize: "16px", fontWeight: 500 }}>
+                          {menuItem.menu.name}
+                        </HoverTypography>
+                      </Link>
+                    </Box>
                   ))}
                   <Box sx={{ py: 0.75 }}>
                     <Link
@@ -672,18 +447,7 @@ export const Header = ({ itemupdate }: any) => {
                     </>
                   ) : (
                     <>
-                      <Box sx={{ py: 0.75 }}>
-                        <Link
-                          href={`/mbbs`}
-                          className="custom-link"
-                          onClick={handleDrawerClose}
-                          style={{ display: "block" }}
-                        >
-                          <HoverTypography sx={{ fontSize: "16px", fontWeight: 600 }}>
-                            MBBS
-                          </HoverTypography>
-                        </Link>
-                      </Box>
+
                       <Box sx={{ py: 0.75 }}>
                         <Link
                           href="/blogs"
@@ -744,7 +508,6 @@ export const Header = ({ itemupdate }: any) => {
                 flexGrow={1}
                 paddingTop={1}
                 paddingBottom={1}
-                onMouseLeave={closeAllDesktopSubmenus}
                 sx={{
                   "& a.custom-link": { textDecoration: "none" },
                   minWidth: 0,
@@ -778,87 +541,8 @@ export const Header = ({ itemupdate }: any) => {
                   </HoverTypography>
                 </Link>
 
-                <div
-                  onMouseEnter={handleStudyAbroadEnter}
-                  onMouseLeave={handleStudyAbroadLeave}
-                  className="relative"
-                >
-                  <Link
-                    href="/study-abroad"
-                    className="custom-link"
-                    style={
-                      NavLinkCss({
-                        isActive:
-                          isParentMenuSelected("study-abroad") ||
-                          location === "/study-abroad" ||
-                          location.startsWith("/study-abroad/"),
-                      }) as React.CSSProperties
-                    }
-                    onClick={() => setSelectedParentMenu("study-abroad")}
-                  >
-                    <HoverTypography
-                      sx={{
-                        fontSize: isLgDown ? "13px" : "14px",
-                        fontWeight: 500,
-                      }}
-                      isActive={
-                        isParentMenuSelected("study-abroad") ||
-                        location === "/study-abroad" ||
-                        location.startsWith("/study-abroad/")
-                      }
-                    >
-                      Study Abroad
-                    </HoverTypography>
-                  </Link>
-                  {studyAbroadOpen && (
-                    <Box
-                      position="absolute"
-                      left="0"
-                      bgcolor="white"
-                      boxShadow={3}
-                      zIndex={999999}
-                      sx={submenuDropDownSx}
-                    >
-                      {studyAbroadsubMenues?.map((subMenu, index) => (
-                        <Box
-                          key={subMenu.title}
-                          sx={{
-                            borderBottom:
-                              index < (studyAbroadsubMenues?.length ?? 1) - 1
-                                ? "0.2px solid #00999e"
-                                : "none",
-                            py: 0.5,
-                            px: 1.5,
-                          }}
-                        >
-                          <Link
-                            href={subMenu?.link}
-                            className="custom-link"
-                            style={{
-                              color: location === subMenu.link ? "#00999e" : "",
-                            }}
-                          >
-                            <HoverTypography
-                              fontSize={{
-                                xs: "10px",
-                                sm: "10px",
-                                md: "13px",
-                                lg: "15px",
-                              }}
-                              component="span"
-                              style={{
-                                color: location === subMenu.link ? "#00999e" : "",
-                              }}
-                              sx={{ fontSize: "13px" }}
-                            >
-                              {subMenu?.title}
-                            </HoverTypography>
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
-                </div>
+                <UniversityMenu />
+
 
                 <Link
                   href="/test"
@@ -873,88 +557,6 @@ export const Header = ({ itemupdate }: any) => {
                     Test Prep
                   </HoverTypography>
                 </Link>
-
-                <div
-                  onMouseEnter={handleMBBSEnter}
-                  onMouseLeave={handleMBBSLeave}
-                  className="relative"
-                >
-                  <Link
-                    href="/mbbs"
-                    className="custom-link"
-                    style={
-                      NavLinkCss({
-                        isActive:
-                          isParentMenuSelected("mbbs") ||
-                          location === "/mbbs" ||
-                          location.startsWith("/mbbs/"),
-                      }) as React.CSSProperties
-                    }
-                    onClick={() => setSelectedParentMenu("mbbs")}
-                  >
-                    <HoverTypography
-                      sx={{
-                        fontSize: isLgDown ? "13px" : "14px",
-                        fontWeight: 500,
-                      }}
-                      isActive={
-                        isParentMenuSelected("mbbs") ||
-                        location === "/mbbs" ||
-                        location.startsWith("/mbbs/")
-                      }
-                    >
-                      MBBS
-                    </HoverTypography>
-                  </Link>
-                  {mbbsOpen && (
-                    <Box
-                      position="absolute"
-                      left="0"
-                      bgcolor="white"
-                      boxShadow={3}
-                      zIndex={999999}
-                      sx={submenuDropDownSx}
-                    >
-                      {mbbsSubMenues?.map((subMenu, index) => (
-                        <Box
-                          key={subMenu.title}
-                          sx={{
-                            borderBottom:
-                              index < (mbbsSubMenues?.length ?? 1) - 1
-                                ? "0.2px solid #00999e"
-                                : "none",
-                            py: 0.5,
-                            px: 1.5,
-                          }}
-                        >
-                          <Link
-                            href={subMenu?.link}
-                            className="custom-link"
-                            style={{
-                              color: location === subMenu.link ? "#00999e" : "",
-                            }}
-                          >
-                            <HoverTypography
-                              fontSize={{
-                                xs: "10px",
-                                sm: "10px",
-                                md: "13px",
-                                lg: "15px",
-                              }}
-                              component="span"
-                              style={{
-                                color: location === subMenu.link ? "#00999e" : "",
-                              }}
-                              sx={{ fontSize: "13px" }}
-                            >
-                              {subMenu?.title}
-                            </HoverTypography>
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
-                </div>
 
                 <Link
                   href="/international-relation"
@@ -1079,31 +681,7 @@ export const Header = ({ itemupdate }: any) => {
                       )}
                     </PopupState>
                   </Box>
-                ) : (
-                  <>
-                      <Link
-                        href={`${navURL}login`}
-                        className="custom-link"
-                        style={NavLinkCss({ isActive: false }) as React.CSSProperties}
-                      >
-                          <HoverTypography
-                            fontSize={{
-                              xs: "10px",
-                              sm: "10px",
-                              md: "13px",
-                              lg: "20px",
-                            }}
-                            sx={{
-                              fontSize: isLgDown ? "13px" : "14px",
-                              fontWeight: 500,
-                            }}
-                            isActive={false}
-
-                          >
-                            Login
-                          </HoverTypography>
-                        </Link></>
-                )}
+                ) : null}
               </Stack>
             )}
             {!isSmScreen && !isMediumScreen && (
@@ -1137,6 +715,7 @@ export const Header = ({ itemupdate }: any) => {
                   </Button>
                 </Link>
 
+                {!token && (<Button component={Link} href={navURL + "login"} variant="outlined" sx={{ borderColor: "#00999E", color: "#007c80", borderRadius: "999px", textTransform: "none", fontWeight: 700, px: 2.5, py: 0.9, "&:hover": { backgroundColor: "#effdff", borderColor: "#007c80" } }}>Login</Button>)}
                 <Link href={`/cart`} className="custom-link">
                   <Badge badgeContent={cartList?.length} color="secondary">
                     <ShoppingCartIcon

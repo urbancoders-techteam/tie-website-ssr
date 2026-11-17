@@ -9,48 +9,12 @@ export const navbarData = [
   },
 
   {
-    menu: { name: "Study Abroad", link: "/study-abroad" },
-    subMenu: [
-      {
-        title: "Countries",
-        link: "/study-abroad/country",
-        id: "countries-section",
-      },
-      {
-        title: "University Finder",
-        link: `/study-abroad/university-finder`,
-        id: "university-finder-section",
-      },
-    ],
+    menu: { name: "University", link: "/mbbs" },
+    subMenu: [],
   },
   {
     menu: { name: "Test Prep", link: "/test" },
     subMenu: [],
-  },
-  {
-    menu: { name: "MBBS", link: "/mbbs" },
-    subMenu: [
-      {
-        title: "Russia",
-        link: "/mbbs/abroad/russia",
-      },
-      {
-        title: "Georgia",
-        link: "/mbbs/abroad/georgia",
-      },
-      {
-        title: "Kazakhstan",
-        link: "/mbbs/abroad/kazakhstan",
-      },
-      {
-        title: "Kyrgyzstan",
-        link: "/mbbs/abroad/kyrgyzstan",
-      },
-      {
-        title: "Uzbekistan",
-        link: "/mbbs/abroad/uzbekistan",
-      },
-    ],
   },
   {
     menu: { name: "International Engagement", link: "/international-relation" },
