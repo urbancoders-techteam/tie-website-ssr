@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
 import { indianUniversities } from "@/apis/indianUniversity.api";
@@ -10,6 +11,7 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import SchoolIcon from "@mui/icons-material/School";
 
 const UniversityCards = () => {
+  const slider = useRef<Slider>(null);
   const [universities, setUniversities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -66,11 +68,23 @@ const UniversityCards = () => {
 
   // Data list
   return (
-    <div className="flex justify-center flex-wrap gap-6 my-8">
+    <section aria-label="Associated Indian universities" aria-roledescription="carousel" className="mx-auto my-8 w-full max-w-7xl px-4 sm:px-10 md:px-8">
+      <div className="mb-4 flex justify-end gap-2">
+        <button type="button" aria-label="Previous universities" onClick={() => slider.current?.slickPrev()} className="h-10 w-10 rounded-full border border-[#00999e] text-xl text-[#00999e] hover:bg-[#effdff]">‹</button>
+        <button type="button" aria-label="Next universities" onClick={() => slider.current?.slickNext()} className="h-10 w-10 rounded-full border border-[#00999e] text-xl text-[#00999e] hover:bg-[#effdff]">›</button>
+      </div>
+      <Slider className="-mx-7" ref={slider} slidesToShow={Math.min(5, universities.length)} slidesToScroll={1} infinite={universities.length > 5} arrows={false} autoplay autoplaySpeed={4000} speed={500} pauseOnHover pauseOnFocus
+        responsive={[
+          { breakpoint: 1536, settings: { slidesToShow: Math.min(4, universities.length), infinite: universities.length > 4 } },
+          { breakpoint: 1024, settings: { slidesToShow: Math.min(3, universities.length), infinite: universities.length > 3 } },
+          { breakpoint: 768, settings: { slidesToShow: Math.min(2, universities.length), infinite: universities.length > 2 } },
+          { breakpoint: 480, settings: { slidesToShow: 1, infinite: universities.length > 1 } },
+        ]}>
       {universities.map((item: any, index: number) => (
+        <div key={item?.slug || item?._id || index} className="px-7 pb-3">
         <Link
           href={`/international-relation/india/${item?.slug || item?._id}`}
-          className="w-[200px] h-[250px] bg-white rounded-md shadow-md flex flex-col justify-between overflow-hidden"
+          className="w-full bg-white rounded-md shadow-md flex flex-col overflow-hidden"
           key={item?.slug || item?._id || index}
         >
           {/* Top section with image + name */}
@@ -80,18 +94,20 @@ const UniversityCards = () => {
                 src={item?.image}
                 alt={item?.name}
                 fill
-                className="object-cover rounded-md"
+                className="object-contain rounded-md"
               />
             </div>
           </div>
 
           {/* Bottom bar */}
-          <div className="bg-[#00999e] text-white text-center items-center h-20 text-sm font-semibold p-3 rounded-b-md">
+          <div className="bg-[#00999e] text-white text-center text-sm font-semibold leading-snug px-3 py-3 rounded-b-md">
             {item?.name}
           </div>
         </Link>
+        </div>
       ))}
-    </div>
+      </Slider>
+    </section>
   );
 };
 
