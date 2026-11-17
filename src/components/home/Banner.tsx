@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import RegisterForm from "./RegisterForm";
 import ContainerWrapper from "../ContainerWrapper";
-import ModalTrigger from "../ModalTrigger";
 import { baseUrl } from "@/utils/config";
 import fallbackBannerImage from "@/assets/doctor.png";
 
@@ -120,7 +119,7 @@ function BannerFallback() {
         <BannerSlide item={FALLBACK_BANNER} priority />
       </div>
       <div className="block bg-[#0B162C] px-4 pb-10 pt-5 md:hidden">
-        <RegisterForm floating={false} variant="dark" />
+        <RegisterForm floating={false} variant="dark" heading="Book Free Demo" />
       </div>
     </>
   );
@@ -170,26 +169,10 @@ function BannerSlide({ item, priority = false }: { item: BannerItem; priority?: 
 
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 md:text-[13px]">{body}</p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <ModalTrigger
-                  variant="custom"
-                  className="rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[#0B1B22] shadow-sm transition hover:bg-white/90"
-                >
-                  {/* <span className="md:hidden">Explore Destinations &rsaquo;</span> */}
-                  <span >Start Coaching &rsaquo;</span>
-                </ModalTrigger>
-                <ModalTrigger
-                  variant="custom"
-                  className="rounded-md border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  <span className="md:hidden">Schedule A Meeting</span>
-                  <span className="hidden md:inline">Book Free Demo</span>
-                </ModalTrigger>
-              </div>
             </div>
 
             <div className="hidden w-[340px] shrink-0 items-center justify-center md:flex lg:w-[360px]">
-              <RegisterForm floating={false} />
+              <RegisterForm floating={false} heading="Book Free Demo" />
             </div>
           </div>
         </ContainerWrapper>
@@ -283,7 +266,7 @@ export default function Banner() {
       </div>
       {/* Mobile-only: keep the form as a separate, clean block (no overlap) */}
       <div className="block bg-[#0B162C] px-4 pb-10 pt-5 md:hidden">
-        <RegisterForm floating={false} variant="dark" />
+        <RegisterForm floating={false} variant="dark" heading="Book Free Demo" />
       </div>
     </>
   );

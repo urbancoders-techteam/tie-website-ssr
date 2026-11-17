@@ -21,12 +21,14 @@ const RegisterForm = ({
   showBrochure = false,
   floating = true,
   variant = "light",
+  heading = "Register Now",
   redirectPath = "/thankyou",
 }: {
   brochureUrl?: any;
   showBrochure?: boolean;
   floating?: boolean;
   variant?: "light" | "dark";
+  heading?: string;
   redirectPath?: string;
 }) => {
   const [showDownloadButton, setShowDownloadButton] = useState(false);
@@ -126,13 +128,13 @@ const RegisterForm = ({
       {variant === "dark" ? (
         <div className="px-4 pt-2 sm:px-5">
           <h2 className="text-base font-extrabold text-white sm:text-lg">
-            Register Now <span className="font-semibold text-white/70">— Free Consultation</span>
+            {heading} <span className="font-semibold text-white/70">— Free Consultation</span>
           </h2>
           <p className="mt-1 text-xs text-white/70 sm:text-sm">5,000+ students guided. Let us guide you too.</p>
         </div>
       ) : (
         <h2 className="rounded-t-[20px] bg-[#00999E] py-2.5 text-center text-base font-semibold text-white sm:py-3 sm:text-lg">
-          Register Now
+          {heading}
         </h2>
       )}
 

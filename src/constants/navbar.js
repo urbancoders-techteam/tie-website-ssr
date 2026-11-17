@@ -12,11 +12,6 @@ export const navbarData = [
     menu: { name: "Study Abroad", link: "/study-abroad" },
     subMenu: [
       {
-        title: "Test Prep",
-        link: "/test",
-        id: "test-prep-section",
-      },
-      {
         title: "Countries",
         link: "/study-abroad/country",
         id: "countries-section",
@@ -27,6 +22,10 @@ export const navbarData = [
         id: "university-finder-section",
       },
     ],
+  },
+  {
+    menu: { name: "Test Prep", link: "/test" },
+    subMenu: [],
   },
   {
     menu: { name: "MBBS", link: "/mbbs" },
@@ -60,7 +59,6 @@ export const navbarData = [
 ];
 
 export const studyAbroadsubMenues = [
-  { title: "Test Prep", link: "/test" },
   { title: "Countries", link: "/study-abroad/country" },
   {
     title: "University Finder",

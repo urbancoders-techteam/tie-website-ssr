@@ -271,11 +271,11 @@ export const Header = ({ itemupdate }: any) => {
     else if (location === "/aboutus") setSelectedParentMenu("About Us");
     else if (
       location === "/study-abroad" ||
-      location.startsWith("/study-abroad/") ||
-      location === "/test" ||
-      location.startsWith("/test/")
+      location.startsWith("/study-abroad/")
     )
       setSelectedParentMenu("study-abroad");
+    else if (location === "/test" || location.startsWith("/test/"))
+      setSelectedParentMenu("Test Prep");
     else if (
       location === "/international-relation" ||
       location.startsWith("/international-relation/")
@@ -791,9 +791,7 @@ export const Header = ({ itemupdate }: any) => {
                         isActive:
                           isParentMenuSelected("study-abroad") ||
                           location === "/study-abroad" ||
-                          location.startsWith("/study-abroad/") ||
-                          location === "/test" ||
-                          location.startsWith("/test/"),
+                          location.startsWith("/study-abroad/"),
                       }) as React.CSSProperties
                     }
                     onClick={() => setSelectedParentMenu("study-abroad")}
@@ -806,9 +804,7 @@ export const Header = ({ itemupdate }: any) => {
                       isActive={
                         isParentMenuSelected("study-abroad") ||
                         location === "/study-abroad" ||
-                        location.startsWith("/study-abroad/") ||
-                        location === "/test" ||
-                        location.startsWith("/test/")
+                        location.startsWith("/study-abroad/")
                       }
                     >
                       Study Abroad
@@ -863,6 +859,20 @@ export const Header = ({ itemupdate }: any) => {
                     </Box>
                   )}
                 </div>
+
+                <Link
+                  href="/test"
+                  className="custom-link"
+                  style={NavLinkCss({ isActive: isParentMenuSelected("Test Prep") }) as React.CSSProperties}
+                  onClick={() => setSelectedParentMenu("Test Prep")}
+                >
+                  <HoverTypography
+                    isActive={isParentMenuSelected("Test Prep")}
+                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
+                  >
+                    Test Prep
+                  </HoverTypography>
+                </Link>
 
                 <div
                   onMouseEnter={handleMBBSEnter}

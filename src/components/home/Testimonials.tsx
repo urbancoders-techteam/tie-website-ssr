@@ -18,15 +18,24 @@ const SECTION_SUB =
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState<TestimonialViewModel[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState(false);
 
   const fetchTestimonials = async () => {
+    setLoading(true);
+    setError(false);
     try {
+      if (!baseUrl) throw new Error("Testimonials API URL is not configured");
       const response = await fetch(`${baseUrl}testimonial/web`, {
         method: "POST",
         cache: "no-store",
+        signal: AbortSignal.timeout(15000),
       });
 
+      if (!response.ok) throw new Error(`Testimonials request failed: ${response.status}`);
       const result = await response.json();
+      if (!result?.success || !Array.isArray(result.data)) {
+        throw new Error("Invalid testimonials response");
+      }
       const raw: TestimonialWebRaw[] = Array.isArray(result?.data)
         ? result.data
         : [];
@@ -34,8 +43,8 @@ const Testimonial = () => {
         normalizeWebTestimonial(row as TestimonialWebRaw)
       );
       setTestimonials(result?.success ? normalized : []);
-    } catch (error) {
-      console.error("Failed to fetch testimonials", error);
+    } catch {
+      setError(true);
       setTestimonials([]);
     } finally {
       setLoading(false);
@@ -67,6 +76,19 @@ const Testimonial = () => {
             }}
           >
             <CircularProgress sx={{ color: "#00a88f" }} />
+          </div>
+        ) : error ? (
+          <div className="py-10 text-center" role="status">
+            <p className="text-lg text-slate-600">
+              Testimonials could not be loaded. Please try again.
+            </p>
+            <button
+              type="button"
+              onClick={fetchTestimonials}
+              className="mt-4 rounded-full bg-[#00999E] px-6 py-2 font-semibold text-white transition hover:bg-[#007c80] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00999E]"
+            >
+              Retry
+            </button>
           </div>
         ) : testimonials.length > 0 ? (
           <TestimonialSlider testimonials={testimonials} />
