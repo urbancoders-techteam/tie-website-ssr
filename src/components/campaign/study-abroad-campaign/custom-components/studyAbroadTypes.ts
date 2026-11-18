@@ -112,6 +112,13 @@ export type StudyAbroadCampaignData = {
   theme: {
     pageBackground: string;
     text: string;
+    accent?: string;
+    accentHover?: string;
+    accentSoft?: string;
+    accentMuted?: string;
+    onAccent?: string;
+    buttonBorder?: string;
+    ink?: string;
     footer: {
       background: string;
       accent: string;
@@ -130,7 +137,7 @@ export type StudyAbroadCampaignData = {
     image: string;
     kicker: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     description: string;
     chips: { icon: StudyAbroadIcon; label: string }[];
     ctas?: StudyAbroadCta[];
@@ -142,7 +149,9 @@ export type StudyAbroadCampaignData = {
     kicker: string;
     title: string;
     intro: string[];
+    introAlign?: "center" | "left";
     carouselLabel: string;
+    background?: string;
     points: StudyAbroadWhyPoint[];
   };
   connect: StudyAbroadConnect;

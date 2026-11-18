@@ -12,7 +12,7 @@ export default function StudyAbroadCta({
   return (
     <a
       href={href}
-      className={`study-abroad-cta inline-flex items-center justify-center rounded-full bg-[#C6A35A] px-6 py-2.5 text-sm font-semibold text-[#122033] shadow-[0_14px_30px_-16px_rgba(198,163,90,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#D4B56E] ${className}`}
+      className={`study-abroad-cta inline-flex items-center justify-center rounded-full border-2 border-[var(--sa-button-border,transparent)] bg-[var(--sa-accent,#C6A35A)] px-6 py-2.5 text-sm font-semibold text-[var(--sa-on-accent,#122033)] shadow-[0_14px_30px_-16px_color-mix(in_srgb,var(--sa-accent,#C6A35A)_95%,transparent)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--sa-accent-hover,#D4B56E)] ${className}`}
     >
       {children}
     </a>

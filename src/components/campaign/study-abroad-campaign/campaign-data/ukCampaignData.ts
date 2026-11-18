@@ -1,8 +1,16 @@
 import type { StudyAbroadCampaignData } from "@/components/campaign/study-abroad-campaign/custom-components/studyAbroadTypes";
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadImageUrl } from "@/utils/config";
 
 const place = `${imageBaseUrl}CountryPlaces/uk`;
 const uni = `${imageBaseUrl}CountryUniversities/uk`;
+
+const heroImage = `${studyAbroadImageUrl}campaign/united-kingdom/uk-hero-banner.jpg`;
+
+const universityLogo1 = `${studyAbroadImageUrl}campaign/united-kingdom/Imperial_College_London.webp`;
+const universityLogo2 = `${studyAbroadImageUrl}campaign/united-kingdom/University_of_Oxford.webp`;
+const universityLogo3 = `${studyAbroadImageUrl}campaign/united-kingdom/University_of_Cambridge_logo.png`;
+const universityLogo4 = `${studyAbroadImageUrl}campaign/united-kingdom/University_College_London.svg`;
+const universityLogo5 = `${studyAbroadImageUrl}campaign/united-kingdom/University_Of_Edinburgh.jpg`;
 
 export const ukCampaignData: StudyAbroadCampaignData = {
   containerClass: "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
@@ -14,27 +22,26 @@ export const ukCampaignData: StudyAbroadCampaignData = {
   phone: "+919831241212",
   phoneDisplay: "+91 98312 41212",
   email: "info@taksheela.com",
-  whatsappMessage: "Hi, I want to know about studying in the UK.",
+  whatsappMessage: "Hi, I want to know about studying in the United Kingdom.",
   leadForm: {
-    thankYouPath: "/study-abroad/uk-lp/thankyou",
-    formLabel: "UK study abroad campaign",
+    thankYouPath: "/study-abroad/united-kingdom-lp/thankyou",
+    formLabel: "United Kingdom study abroad campaign",
     defaultTitle: "Get Your Free Counselling",
     submitLabel: "Get Free Counselling",
     submittingLabel: "Submitting...",
     courses: [
-      "Business / MBA",
-      "Computer science / IT",
-      "Data science",
+      "Business & Finance",
+      "Computer Science & AI",
       "Engineering",
-      "Health and life sciences",
-      "Law",
+      "Data Science",
+      "Health & Life Sciences",
       "Foundation pathway",
       "Not sure yet",
     ],
   },
   header: {
     nav: [
-      { href: "#why-uk", label: "Study in the UK" },
+      { href: "#why-united-kingdom", label: "Study in the United Kingdom" },
       { href: "#universities", label: "Universities" },
       { href: "#fees", label: "Fees" },
       { href: "#scholarships", label: "Scholarships" },
@@ -42,72 +49,89 @@ export const ukCampaignData: StudyAbroadCampaignData = {
     ],
   },
   hero: {
-    image: `${imageBaseUrl}CountryBanner/uk.png`,
+    image: heroImage,
     kicker: "United Kingdom",
-    title: "Study in the UK",
-    subtitle: "One-year master’s and a two-year Graduate Route",
+    title: "Study in the United Kingdom",
+    subtitle: "One-year master’s, globally recognised degrees, and a Graduate visa",
     description:
-      "English-medium degrees, September as the main intake, and a Graduate Route that lets you stay and work for up to two years after a master’s.",
+      "Explore British qualifications that have international recognition, industry experience and vibrant campus life. Compare your preferred courses, universities, scholarships and budgets annually with Taksheela.",
     formAnchorId: "counselling",
     chips: [
-      { icon: "calendarRange", label: "September main intake" },
-      { icon: "bookOpen", label: "1-year master’s" },
-      { icon: "briefcase", label: "2-year Graduate Route" },
+      { icon: "graduationCap", label: "Globally recognised degrees" },
+      { icon: "calendarClock", label: "One-year master’s" },
+      { icon: "briefcase", label: "Graduate visa options" },
     ],
   },
   why: {
-    id: "why-uk",
-    kicker: "UK",
-    title: "Why Study in the UK?",
-    carouselLabel: "Why study in the UK",
+    id: "why-united-kingdom",
+    kicker: "United Kingdom",
+    title: "Why Study in the United Kingdom?",
+    carouselLabel: "Why study in the United Kingdom",
     intro: [
-      "The UK is one of the most common choices for Indian students: a familiar academic structure, degrees taught in English, and a one-year master’s that is shorter than in the US or Australia.",
-      "The Graduate Route lets international graduates stay and work in the UK for up to two years after a bachelor’s or master’s, and up to three years after a PhD.",
+      "Seven reasons Indian students consider the United Kingdom for undergraduate and postgraduate education:",
     ],
     points: [
       {
         icon: "graduationCap",
-        title: "Degrees that are recognised worldwide",
+        title: "Globally recognised degrees and leading universities",
         paragraphs: [
-          "UK universities are a standard reference for employers and for further study. Teaching is in English, so Indian students do not need a local language before they start.",
+          "United Kingdom universities award internationally recognised qualifications and offer strong research, academic and employer networks. Leading institutions include Oxford, Cambridge, Imperial College London, UCL and Edinburgh.",
         ],
       },
       {
         icon: "calendarClock",
-        title: "A master’s is often one year",
+        title: "One-year master’s programmes can save time",
         paragraphs: [
-          "Most taught master’s programmes run for one academic year, usually from September. That cuts tuition and living time compared with a two-year master’s.",
+          "Many taught master’s programmes in the United Kingdom are usually one-year programmes. Those shorter courses can reduce the cost of living compared with longer postgraduate degrees.",
         ],
-        stats: [
-          { label: "Bachelor’s", value: "£10,000–£20,000", note: "Per year, typical international range" },
-          { label: "Master’s", value: "£13,000–£26,000", note: "Per year for a one-year MSc or MA" },
-          { label: "MBA", value: "£25,000–£60,000+", note: "Per year at business schools" },
-          { label: "Living", value: "£900–£1,400", note: "Per month, higher in London" },
+      },
+      {
+        icon: "badgePercent",
+        title: "Scholarships can reduce study costs",
+        paragraphs: [
+          "Students can look into scholarships such as Chevening, GREAT, Commonwealth Scholarships, and university merit scholarships. Some awards have very strict selection criteria.",
         ],
-        after: "These are typical ranges, not a quote. London is often 30–50% more expensive than other UK cities.",
+        pills: ["Chevening", "GREAT", "Commonwealth Scholarships", "University merit scholarships"],
+      },
+      {
+        icon: "bookOpen",
+        title: "Flexible course choices and admissions pathways",
+        paragraphs: [
+          "Universities offer subject combinations, foundation routes and a range of undergraduate and postgraduate courses. Admissions depend on academic results, English proficiency and course-specific requirements; flexibility is not guaranteed.",
+        ],
       },
       {
         icon: "briefcase",
-        title: "Graduate Route after the degree",
+        title: "Industry exposure and placement opportunities",
         paragraphs: [
-          "After the course you can apply to stay and work, or look for work, for two years (three after a PhD). During study, the student visa allows part-time work in term time.",
+          "The United Kingdom has large-scale employers in fields such as finance, technology, engineering, life sciences, and creative arts. Some programmes include a placement year or industry-based projects, depending on the course.",
         ],
-        pills: ["Business", "Computer science", "Engineering", "Data science", "Health sciences"],
+        pills: ["Finance", "Technology", "Engineering", "Life sciences", "Creative arts"],
       },
       {
-        icon: "globe",
-        title: "Intakes and the student visa",
+        icon: "fileCheck",
+        title: "Part-time work and an eligible graduate route",
         paragraphs: [
-          "The main intake is September or October. A smaller January intake exists for some courses. The visa is the UK Student visa. The application fee is about £363, plus the Immigration Health Surcharge of about £776 a year.",
+          "Eligible degree-level Student visa holders can usually work up to 20 hours per week during term and full-time in qualifying vacations. Graduate visa permission is normally two years for applications by 31 December 2026, 18 months from 1 January 2027, and three years for eligible doctoral graduates. Check current official rules before applying.",
         ],
-        steps: ["University shortlisting", "SOP and documents", "Scholarship check", "CAS, visa, and IHS"],
+        stats: [
+          { label: "Term-time work", value: "Up to 20 hours", note: "A week, plus full-time in qualifying vacations" },
+          { label: "Graduate visa", value: "2 years / 18 months", note: "Two years until 31 Dec 2026; 18 months from 1 Jan 2027" },
+        ],
+      },
+      {
+        icon: "users",
+        title: "A multicultural, English-speaking learning environment",
+        paragraphs: [
+          "Study and daily life offer opportunities to improve communication, connect with international classmates and join alumni networks. Student support, transport and housing options vary by city and university.",
+        ],
       },
     ],
   },
   connect: {
     image: `${place}/uk1.png`,
     nightImage: `${place}/uk5.png`,
-    kicker: "UK",
+    kicker: "United Kingdom",
     title: "Connect With Us",
     description: "A counsellor can walk you through universities, scholarships, and the September or January intake.",
     formTitle: "Get Your Free Counselling",
@@ -117,129 +141,266 @@ export const ukCampaignData: StudyAbroadCampaignData = {
   },
   courses: {
     id: "fees",
-    kicker: "UK",
-    title: "Top Courses to Study in the UK",
+    kicker: "United Kingdom",
+    title: "Top Courses to Study in the United Kingdom",
     background: "#ffffff",
     intro: [
-      "Indian students most often shortlist business, computing, engineering, data, and health. A taught master’s is usually one year.",
-      "Fees below are typical yearly ranges for international students, not a quote for one university.",
+      "Indicative annual international tuition is £15,000–£35,000+ for bachelor’s degrees and £16,000–£40,000+ for master’s degrees. The amounts below are broad planning bands, not programme-specific quotes.",
     ],
-    headers: ["Course", "Highlights", "Cities families shortlist", "Fee / year (£)", "Fee / year (₹)"],
+    headers: ["Course", "Highlights", "Top institutions", "Fee / year (£)", "Fee / year (₹)"],
     minWidth: 880,
     centerColumns: [3, 4],
-    cta: { href: "#counselling", label: "Connect with our trusted study in UK consultants today" },
+    cta: { href: "#counselling", label: "Connect with our trusted study in United Kingdom consultants today" },
     rows: [
-      ["Business and management", "One-year MSc routes. A full MBA is a separate, higher band.", "London, Manchester, Warwick", "13,000–26,000", "About ₹14–28 lakh"],
-      ["MBA", "Most UK MBAs run for one year. The course table on the UK guide starts higher than a standard MSc.", "London, Warwick, Oxford, Cambridge", "35,000–65,000+", "About ₹38–71 lakh"],
-      ["Computer science", "Software, cybersecurity, and cloud. Imperial, UCL, Manchester, and Bristol are the names on the guide.", "London, Manchester, Bristol", "24,000–30,000", "About ₹26–33 lakh"],
-      ["Data science", "The guide lists Imperial, UCL, Edinburgh, and Warwick for data and AI.", "London, Edinburgh, Warwick", "22,000–32,000", "About ₹24–35 lakh"],
-      ["Engineering", "Mechanical, civil, and electrical, often with a placement. Imperial, Southampton, Sheffield, and Bath are on the guide.", "Southampton, Sheffield, Birmingham", "20,000–30,000", "About ₹22–33 lakh"],
-      ["Law (LLM)", "A one-year LLM. Qualifying to practise is a separate step.", "London, Glasgow", "22,000–35,000", "About ₹24–38 lakh"],
+      [
+        "Business & Finance",
+        "Finance, accounting, management and strategy",
+        "Oxford; Cambridge; UCL",
+        "£15,000–£40,000+",
+        "₹18.71–49.89+ lakh",
+      ],
+      [
+        "Computer Science & AI",
+        "Software, AI, cybersecurity and computing",
+        "Imperial; Oxford; Cambridge",
+        "£15,000–£40,000+",
+        "₹18.71–49.89+ lakh",
+      ],
+      [
+        "Engineering",
+        "Mechanical, electrical, civil and design",
+        "Imperial; Cambridge; Edinburgh",
+        "£15,000–£40,000+",
+        "₹18.71–49.89+ lakh",
+      ],
+      [
+        "Data Science",
+        "Statistics, machine learning and analytics",
+        "UCL; Imperial; Edinburgh",
+        "£15,000–£40,000+",
+        "₹18.71–49.89+ lakh",
+      ],
+      [
+        "Health & Life Sciences",
+        "Biomedical sciences, public health and research",
+        "Oxford; Cambridge; UCL",
+        "£15,000–£40,000+",
+        "₹18.71–49.89+ lakh",
+      ],
     ],
   },
   universities: {
     id: "universities",
-    kicker: "UK",
-    title: "Universities Indian Students Shortlist",
+    kicker: "United Kingdom",
+    title: "Top Universities in the United Kingdom",
     background: "#F7F1E6",
     introAlign: "left",
     intro: [
-      "These are universities already listed on the Taksheela UK guide. Fees are typical international master’s ranges from that guide, not a quote. Oxford, Cambridge, Imperial, UCL, Edinburgh, and Manchester publish higher bands on some courses.",
+      "Confirm programme and academic-year fees on official websites. The ranges below are planning figures, not a quote for one course.",
     ],
-    headers: ["University", "Often shortlisted for", "Typical master’s fee", "Notes"],
-    minWidth: 820,
-    cta: { href: "#counselling", label: "Talk to our trusted study in UK consultants today" },
+    headers: ["University", "Popular Courses / Best Programs", "Tuition Fees (per year)", "Highlights"],
+    minWidth: 920,
+    cta: { href: "#counselling", label: "Talk to our trusted study in United Kingdom consultants today" },
     logos: [
-      { name: "University of Bristol", src: `${uni}/bristol.png` },
-      { name: "University of Leeds", src: `${uni}/leeds.png` },
-      { name: "University of Glasgow", src: `${uni}/glasgow.png` },
-      { name: "University of Birmingham", src: `${uni}/birmingham.png` },
-      { name: "Imperial College London", src: `${uni}/imperial.png` },
-      { name: "Queen Mary University of London", src: `${uni}/queenmary.png` },
-      { name: "University of Edinburgh", src: `${uni}/edinburgh.png` },
+      { name: "Imperial College London", src: universityLogo1 },
+      { name: "University of Oxford", src: universityLogo2 },
+      { name: "University of Cambridge", src: universityLogo3 },
+      { name: "University College London (UCL)", src: universityLogo4 },
+      { name: "University of Edinburgh", src: universityLogo5 },
     ],
     rows: [
-      ["University of Bristol", "Computer science is the course the UK guide names Bristol for", "£13,000–£26,000", "Typical international master’s band. Computer science on the guide sits nearer £24,000–£30,000."],
-      ["University of Leeds", "Business, engineering, media", "£13,000–£26,000", "Typical international master’s band. Living costs are below London."],
-      ["University of Glasgow", "Computing, engineering, finance", "£18,000–£24,000", "Master’s fee band on the UK guide. Scotland."],
-      ["University of Birmingham", "Data, engineering, business, healthcare", "£18,000–£24,000", "Master’s fee band on the UK guide."],
-      ["Imperial College London", "Engineering, computing, science", "£30,000–£38,000", "QS 6 on the Taksheela UK guide. London living costs apply."],
-      ["Queen Mary University of London", "Business, law, science", "£13,000–£26,000", "Typical international master’s band. Budget London rent on top of tuition."],
-      ["University of Edinburgh", "Data, AI, finance, business analytics", "£22,000–£28,000", "QS 27 on the Taksheela UK guide. Scotland."],
+      [
+        "Imperial College London",
+        "Engineering, computing, AI, business, life sciences",
+        "£42,700–£45,500",
+        "Strong focus on science, technology, research and innovation",
+      ],
+      [
+        "University of Oxford",
+        "Humanities, computer science, economics, medicine",
+        "£39,620–£66,580",
+        "Broad academic disciplines and research-intensive teaching",
+      ],
+      [
+        "University of Cambridge",
+        "Engineering, natural sciences, economics, mathematics",
+        "£30,798–£46,872",
+        "Collegiate education and research reputation",
+      ],
+      [
+        "University College London (UCL)",
+        "Data science, architecture, engineering, health sciences",
+        "£35,400–£42,700",
+        "Broad interdisciplinary programmes in London",
+      ],
+      [
+        "University of Edinburgh",
+        "AI, informatics, business, engineering, life sciences",
+        "£28,000–£36,800",
+        "Research-led university and international student community",
+      ],
     ],
   },
   scholarship: {
     id: "scholarships",
-    kicker: "UK",
-    title: "Scholarships for Indian Students",
+    kicker: "United Kingdom",
+    title: "Scholarships & Education Loans",
     background: "#ffffff",
     labelWidthClass: "w-[42%] sm:w-[30%]",
     intro: [
-      "Most UK scholarship rounds open with admissions, often between October and February for the September intake. Chevening needs work experience. Many campus awards are automatic if your marks qualify.",
+      "Scholarships are competitive and subject to award conditions. Education loans are a separate funding option and depend on lender eligibility, collateral, repayment and documentation requirements.",
     ],
-    headers: ["Scholarship", "Details"],
+    headers: ["Type of Scholarship", "Details"],
     rows: [
-      ["Chevening", "UK government award. Tuition, a living allowance, and travel. For professionals with leadership experience, usually at least two years of work."],
-      ["Commonwealth Scholarship", "Master’s and PhD funding for eligible Commonwealth countries, including India. Tuition, airfare, and a stipend."],
-      ["GREAT Scholarships (India)", "About £10,000 for one year, with the British Council and participating UK universities, for Indian master’s students."],
-      ["University merit awards", "Examples on the UK guide include Edinburgh (£5,000–£10,000), Warwick (£3,000–£10,000), and Manchester Global Futures (£3,000–£6,000)."],
-      ["Early-acceptance reductions", "Some universities cut the fee by about £2,000–£8,000 if you accept the offer before their deadline."],
+      [
+        "Chevening Scholarships",
+        "United Kingdom government-funded postgraduate scholarships for eligible applicants; review country, course and leadership criteria.",
+      ],
+      [
+        "GREAT Scholarships",
+        "Selected postgraduate scholarships offered through participating United Kingdom universities and country-specific campaigns.",
+      ],
+      [
+        "Commonwealth Scholarships",
+        "Funding routes for eligible applicants from Commonwealth countries and specific study schemes.",
+      ],
+      [
+        "University Merit Scholarships",
+        "Institution-specific tuition discounts or awards based on academic achievement, course and applicant profile.",
+      ],
+      [
+        "Education Loans",
+        "Students can compare education loans covering eligible tuition and living costs; approval, interest and terms depend on the lender.",
+      ],
     ],
   },
   costOfLiving: {
     id: "cost-of-living",
-    kicker: "UK",
-    title: "Cost of Living in the UK",
+    kicker: "United Kingdom",
+    title: "Cost of Living in the United Kingdom: A Detailed Guide for Indian Students Planning to Study Abroad",
     background: "#FBF8F3",
-    minWidth: 760,
+    minWidth: 880,
     centerColumns: [1, 2],
     intro: [
-      "London is typically 30–50% more expensive than other UK cities. Figures below turn the monthly ranges on the Taksheela UK guide into a year. They are planning ranges, not a quote.",
+      "Overall annual living-cost bands are £10,800–£17,100 outside London and £16,020–£24,600 in London. Individual categories below are illustrative budgeting allocations. They should not be summed to reproduce the totals.",
     ],
-    headers: ["Expense", "London / year", "Other cities / year", "Notes"],
+    headers: ["Expense Category", "Average Annual Cost (£)", "Average Annual Cost (₹)", "Notes"],
     rows: [
-      ["University housing", "£10,800–£16,800", "£6,000–£10,200", "About £900–£1,400 a month in London"],
-      ["Private rent", "£12,000–£21,600", "£5,400–£9,000", "About £1,000–£1,800 a month in London"],
-      ["Food and groceries", "£2,400–£3,840", "£1,800–£3,120", "Cooking at home keeps this down"],
-      ["Local transport", "£1,200–£1,800", "£400–£900", "A student bus pass is cheaper than daily tickets"],
-      ["Immigration Health Surcharge", "£776", "£776", "Charged per year of the visa, on top of the £363 visa fee"],
+      [
+        "Accommodation",
+        "£6,000–£12,000",
+        "₹7.48–14.97 lakh",
+        "Location, housing type and shared/private arrangements matter.",
+      ],
+      [
+        "Food & Groceries",
+        "£1,800–£3,000",
+        "₹2.24–3.74 lakh",
+        "Cooking at home versus dining out affects spending.",
+      ],
+      [
+        "Local Transportation",
+        "£600–£1,500",
+        "₹0.75–1.87 lakh",
+        "Student transport passes and journey patterns differ.",
+      ],
+      [
+        "Utilities & Internet",
+        "£600–£1,800",
+        "₹0.75–2.24 lakh",
+        "Some student accommodation includes utilities.",
+      ],
+      [
+        "Personal & Other Expenses",
+        "£1,200–£3,000",
+        "₹1.50–3.74 lakh",
+        "Phone, supplies, clothing and leisure.",
+      ],
+      [
+        "Health Surcharge / Visa / Travel",
+        "Check current official charges",
+        "Not included in living total",
+        "Budget separately; amounts depend on visa length and travel.",
+      ],
+      [
+        "Total Living – Outside London",
+        "£10,800–£17,100",
+        "₹13.47–21.33 lakh",
+        "Overall annual estimate; do not add the rows above to this total.",
+      ],
+      [
+        "Total Living – London",
+        "£16,020–£24,600",
+        "₹19.98–30.68 lakh",
+        "Overall annual estimate; do not add the rows above to this total.",
+      ],
     ],
+    note: "Conversion used for planning: £1 ≈ ₹124.71 (12 November 2026). Actual rates vary. Category estimates are illustrative, while the total living ranges are planning bands. Tuition is additional.",
   },
   faq: {
-    heading: "Frequently Asked Questions – Study in the UK",
+    heading: "Frequently Asked Question – Study In the United Kingdom",
     sectionId: "faqs",
     initialVisibleCount: 0,
     variant: "dubai",
     items: [
       {
-        question: "How long is a master’s in the UK?",
-        answer: "Most taught master’s programmes are one academic year, starting in September. Some courses, including research degrees and certain MBAs, run longer.",
-        highlightTerms: ["one academic year"],
+        question: "Why should Indian students choose the United Kingdom?",
+        answer:
+          "The United Kingdom offers globally recognised degrees, numerous subject choices, research opportunities and access to international employers and alumni networks.",
+        highlightTerms: ["globally recognised degrees"],
       },
       {
-        question: "What does a UK degree usually cost?",
-        answer: "A typical international bachelor’s is about £10,000–£20,000 a year. A typical master’s is about £13,000–£26,000 for the year. London and specialist courses, including many MBAs, cost more.",
-        highlightTerms: ["£13,000–£26,000"],
+        question: "Can I study in the United Kingdom after Class 12?",
+        answer:
+          "Yes. Bachelor’s admissions consider Class 12 qualifications, required subject grades and English proficiency; some courses require extra tests or a foundation route.",
+        highlightTerms: ["Class 12"],
       },
       {
-        question: "Can I stay and work after studying?",
-        answer: "The Graduate Route allows up to two years after a bachelor’s or master’s, and up to three years after a PhD, to work or look for work.",
-        highlightTerms: ["two years"],
+        question: "How much does it cost to study in the United Kingdom?",
+        answer:
+          "Annual undergraduate tuition is about £15,000–£35,000+ and postgraduate tuition about £16,000–£40,000+, plus living costs and visa-related expenses.",
+        highlightTerms: ["£15,000–£35,000+", "£16,000–£40,000+"],
       },
       {
-        question: "When should I apply?",
-        answer: "The main intake is September or October. Apply in the previous autumn or winter if you also want a scholarship. A January intake exists for some courses only.",
-        highlightTerms: ["September"],
+        question: "What are the living costs in London and outside London?",
+        answer:
+          "Living costs are approximately £16,020–£24,600 per year for London and £10,800–£17,100 outside London. Your actual accommodation and lifestyle choices determine expenses.",
+        highlightTerms: ["£16,020–£24,600", "£10,800–£17,100"],
       },
       {
-        question: "What English score do universities ask for?",
-        answer: "Most courses ask for IELTS about 6.0–7.0, or PTE. Some accept a medium-of-instruction letter. The offer letter states the score for that course.",
-        highlightTerms: ["6.0–7.0"],
+        question: "Can students work part-time during studies?",
+        answer:
+          "Eligible degree-level students are typically permitted to work up to 20 hours weekly during term. Vacation work allowances and restrictions depend on visa conditions.",
+        highlightTerms: ["20 hours"],
       },
       {
-        question: "What does the visa cost?",
-        answer: "The student visa application is about £363, plus the Immigration Health Surcharge of about £776 for each year of the visa.",
-        highlightTerms: ["£363", "£776"],
+        question: "Are one-year master’s degrees available?",
+        answer:
+          "Yes. Many taught master’s programmes in the United Kingdom are designed for one-year full-time completion; some courses are longer.",
+        highlightTerms: ["one-year"],
+      },
+      {
+        question: "Which scholarships can I apply for?",
+        answer:
+          "Potential options include Chevening, GREAT, Commonwealth and university-specific merit scholarships. Always review award eligibility and deadlines.",
+        highlightTerms: ["Chevening", "GREAT", "Commonwealth"],
+      },
+      {
+        question: "What are the most popular courses in the United Kingdom?",
+        answer:
+          "Popular fields include business and finance, computer science and AI, engineering, data science, and health and life sciences.",
+      },
+      {
+        question: "Can I stay in the United Kingdom after graduation?",
+        answer:
+          "Eligible graduates may consider the Graduate visa. A rule change applies from 2027; assess current Home Office rules when planning.",
+        highlightTerms: ["Graduate visa", "2027"],
+      },
+      {
+        question: "How can Taksheela help with United Kingdom applications?",
+        answer:
+          "Taksheela offers profile evaluation, university and course shortlisting, UCAS/SOP/LOR support, scholarship and loan guidance, CAS and visa documentation assistance, and pre-departure guidance.",
+        highlightTerms: ["UCAS/SOP/LOR"],
       },
     ],
   },

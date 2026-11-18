@@ -11,13 +11,20 @@ import StudyAbroadMotion from "./custom-components/studyAbroadMotion";
 import StudyAbroadScholarship from "./custom-components/studyAbroadScholarship";
 import StudyAbroadUniversities from "./custom-components/studyAbroadUniversities";
 import StudyAbroadWhy from "./custom-components/studyAbroadWhy";
+import { campaignAccentStyle } from "./custom-components/studyAbroadTheme";
 
 export default function NewZealandCampaignPage() {
   const data = newZealandCampaignData;
   const whatsappHref = `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(data.whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen scroll-smooth" style={{ background: data.theme.pageBackground, color: data.theme.text }}>
+    <div className="relative min-h-screen scroll-smooth" style={campaignAccentStyle(data.theme)}>
+    <div
+      className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${data.hero.image})` }}
+      aria-hidden={true}
+    />
+    <div className="relative z-10">
       <StudyAbroadHeader containerClass={data.containerClass} nav={data.header.nav} />
       <main>
         <StudyAbroadHero containerClass={data.containerClass} hero={data.hero} leadForm={data.leadForm} />
@@ -29,6 +36,7 @@ export default function NewZealandCampaignPage() {
           phone={data.phone}
           phoneDisplay={data.phoneDisplay}
           email={data.email}
+          transparent={true}
         />
         <StudyAbroadCourses containerClass={data.containerClass} courses={data.courses} />
         <StudyAbroadUniversities containerClass={data.containerClass} universities={data.universities} />
@@ -40,6 +48,7 @@ export default function NewZealandCampaignPage() {
           phone={data.phone}
           phoneDisplay={data.phoneDisplay}
           email={data.email}
+          transparent={true}
         />
         <StudyAbroadCostOfLiving containerClass={data.containerClass} costOfLiving={data.costOfLiving} />
         <FAQSection
@@ -61,6 +70,7 @@ export default function NewZealandCampaignPage() {
         <FaWhatsapp className="h-7 w-7" aria-hidden />
       </a>
       <StudyAbroadMotion />
+    </div>
     </div>
   );
 }

@@ -108,13 +108,33 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/study-abroad/uk-lp",
+        destination: "/study-abroad/united-kingdom-lp",
+        permanent: true,
+      },
+      {
         source: "/study-abroad/uk-lp/",
-        destination: "/study-abroad/uk-lp",
+        destination: "/study-abroad/united-kingdom-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/uk-lp/thankyou",
+        destination: "/study-abroad/united-kingdom-lp/thankyou",
         permanent: true,
       },
       {
         source: "/study-abroad/uk-lp/thankyou/",
-        destination: "/study-abroad/uk-lp/thankyou",
+        destination: "/study-abroad/united-kingdom-lp/thankyou",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/united-kingdom-lp/",
+        destination: "/study-abroad/united-kingdom-lp",
+        permanent: true,
+      },
+      {
+        source: "/study-abroad/united-kingdom-lp/thankyou/",
+        destination: "/study-abroad/united-kingdom-lp/thankyou",
         permanent: true,
       },
       {
