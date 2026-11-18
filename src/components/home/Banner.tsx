@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
+import Link from "next/link";
 import RegisterForm from "./RegisterForm";
 import ContainerWrapper from "../ContainerWrapper";
 import ModalTrigger from "../ModalTrigger";
@@ -12,6 +13,7 @@ import fallbackBannerImage from "@/assets/doctor.png";
 interface BannerItem {
   id: string;
   category?: string;
+  href?: string;
   title: string;
   content: string;
   image: string;
@@ -41,11 +43,26 @@ const FALLBACK_BODY =
 const FALLBACK_BANNER: BannerItem = {
   id: "fallback-banner",
   category: "MBBS ABROAD",
+  href: "/mbbs",
   title: "Become globally recognised doctor <span>from ₹20 Lakhs</span>",
   content:
     "End-to-end MBBS abroad support across Russia, Georgia, Kazakhstan, Kyrgyzstan & Uzbekistan with transparent fees, visa guidance and trusted university admissions.",
   image: fallbackBannerImage.src,
 };
+
+function getCategoryHref(category?: string): string | undefined {
+  const normalizedCategory = category?.trim().toLowerCase() ?? "";
+
+  if (normalizedCategory.includes("study abroad")) return "/study-abroad";
+  if (normalizedCategory.includes("mbbs")) return "/mbbs";
+  if (normalizedCategory.includes("immersion")) return "/immersion";
+  if (normalizedCategory.includes("international engagement")) {
+    return "/international-relation";
+  }
+  if (normalizedCategory.includes("test")) return "/test";
+
+  return undefined;
+}
 
 function BannerArrow({
   onClick,
@@ -75,6 +92,7 @@ function mapApiRowToBanner(row: ApiBannerRow): BannerItem | null {
   return {
     id: row._id,
     category: row.category ?? row.title ?? undefined,
+    href: getCategoryHref(row.category ?? row.title),
     title: row.title ?? row.content ?? "",
     content: row.content ?? row.subContent ?? "",
     image,
@@ -130,10 +148,21 @@ function BannerSlide({ item, priority = false }: { item: BannerItem; priority?: 
         <ContainerWrapper>
           <div className="relative flex w-full items-center justify-between gap-6">
             <div className="w-full md:w-[55%] lg:w-1/2">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide text-white">
-                <span className="inline-block h-2 w-2 rounded-full bg-[#00B2B8]" />
-                {category}
-              </div>
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  aria-label={`Explore ${category}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide text-white transition hover:border-white/35 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <span className="inline-block h-2 w-2 rounded-full bg-[#00B2B8]" />
+                  {category}
+                </Link>
+              ) : (
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide text-white">
+                  <span className="inline-block h-2 w-2 rounded-full bg-[#00B2B8]" />
+                  {category}
+                </div>
+              )}
 
               <div className="mt-4">
                 <BannerHeroTitle title={item.title} />

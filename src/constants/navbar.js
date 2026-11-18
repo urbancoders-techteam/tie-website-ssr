@@ -1,22 +1,11 @@
 export const navbarData = [
   {
     menu: { name: "Home", link: "/" },
-    subMenu: [
-      {
-        title: "About Us",
-        link: "/aboutus",
-      },
-      {
-        title: "Taksheela Edge",
-        link: "/",
-        id: "taksheela-edge-section",
-      },
-      {
-        title: "Taksheela Insights",
-        link: "/",
-        id: "taksheela-insights-section",
-      },
-    ],
+    subMenu: [],
+  },
+  {
+    menu: { name: "About Us", link: "/aboutus" },
+    subMenu: [],
   },
 
   {
@@ -66,45 +55,8 @@ export const navbarData = [
   },
   {
     menu: { name: "International Engagement", link: "/international-relation" },
-    subMenu: [
-      {
-        title: "International Student Recruitment",
-        link: "/international-relation",
-        id: "international-student-recruitment",
-      },
-      {
-        title: "Global Immersion",
-        link: "/international-relation",
-        id: "global-immersion",
-      },
-      {
-        title: "Student Exchange Semester Abroad",
-        link: "/international-relation",
-        id: "student-exchange-semester-abroad",
-      },
-      {
-        title: "Collaborative Research & Seminars",
-        link: "/international-relation",
-        id: "collaborative-research-seminars",
-      },
-      {
-        title: "Dual degree & Twinning Programmes",
-        link: "/international-relation",
-        id: "twinning-programmes",
-      },
-      {
-        title: "Internship Opportunities",
-        link: "/international-relation",
-        id: "internship-opportunities",
-      },
-    ],
+    subMenu: [],
   },
-];
-
-export const homeSubMenues = [
-  { title: "About Us", link: "/aboutus" },
-  { title: "Taksheela Edge", link: "/", id: "taksheela-edge-section" },
-  { title: "Taksheela Insights", link: "/", id: "taksheela-insights-section" },
 ];
 
 export const studyAbroadsubMenues = [

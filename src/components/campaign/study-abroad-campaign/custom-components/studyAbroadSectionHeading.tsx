@@ -23,13 +23,13 @@ export default function StudyAbroadSectionHeading({
       <p
         className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] ${
           centered ? "justify-center" : ""
-        } ${light ? "text-[#E8D5A3]" : "text-[#A7843E]"}`}
+        } ${light ? "text-[var(--sa-accent-soft,#E8D5A3)]" : "text-[var(--sa-accent-muted,#A7843E)]"}`}
       >
-        <span className={`h-px w-8 ${light ? "bg-[#E8D5A3]" : "bg-[#C6A35A]"}`} aria-hidden />
-        <span className={`h-1.5 w-1.5 rotate-45 ${light ? "bg-[#E8D5A3]" : "bg-[#C6A35A]"}`} aria-hidden />
+        <span className={`h-px w-8 ${light ? "bg-[var(--sa-accent-soft,#E8D5A3)]" : "bg-[var(--sa-accent,#C6A35A)]"}`} aria-hidden />
+        <span className={`h-1.5 w-1.5 rotate-45 ${light ? "bg-[var(--sa-accent-soft,#E8D5A3)]" : "bg-[var(--sa-accent,#C6A35A)]"}`} aria-hidden />
         {kicker}
-        <span className={`h-1.5 w-1.5 rotate-45 ${light ? "bg-[#E8D5A3]" : "bg-[#C6A35A]"}`} aria-hidden />
-        <span className={`h-px w-8 ${light ? "bg-[#E8D5A3]" : "bg-[#C6A35A]"}`} aria-hidden />
+        <span className={`h-1.5 w-1.5 rotate-45 ${light ? "bg-[var(--sa-accent-soft,#E8D5A3)]" : "bg-[var(--sa-accent,#C6A35A)]"}`} aria-hidden />
+        <span className={`h-px w-8 ${light ? "bg-[var(--sa-accent-soft,#E8D5A3)]" : "bg-[var(--sa-accent,#C6A35A)]"}`} aria-hidden />
       </p>
       <h2
         className={`mt-3 font-extrabold tracking-tight ${

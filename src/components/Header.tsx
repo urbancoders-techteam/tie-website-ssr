@@ -25,9 +25,6 @@ import {
 } from "@mui/material";
 
 import {
-  homeSubMenues,
-  immersionSubMenues,
-  iRSubMenues,
   mbbsSubMenues,
   navbarData,
   studyAbroadsubMenues,
@@ -138,29 +135,20 @@ export const Header = ({ itemupdate }: any) => {
   const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLgDown = useMediaQuery(theme.breakpoints.down("lg"));
-  const [homeSubMenuOpen, setHomeSubMenuOpen] = useState(false);
   const [studyAbroadOpen, setStudyAbroadOpen] = useState(false);
   const [mbbsOpen, setMbbsOpen] = useState(false);
-  const [immersionOpen, setImmersionOpen] = useState(false);
-  const [iROpen, setIROpen] = useState(false);
 
   // Close all submenus on route change so they don't stay open on other pages
   useEffect(() => {
-    setHomeSubMenuOpen(false);
     setStudyAbroadOpen(false);
     setMbbsOpen(false);
-    setImmersionOpen(false);
-    setIROpen(false);
   }, [location]);
 
   // Close all submenus when clicking outside (backup for missed mouseLeave)
   useEffect(() => {
     const closeAllSubmenus = () => {
-      setHomeSubMenuOpen(false);
       setStudyAbroadOpen(false);
       setMbbsOpen(false);
-      setImmersionOpen(false);
-      setIROpen(false);
     };
     document.addEventListener("click", closeAllSubmenus);
     return () => document.removeEventListener("click", closeAllSubmenus);
@@ -255,21 +243,8 @@ export const Header = ({ itemupdate }: any) => {
   };
 
   const closeAllDesktopSubmenus = () => {
-    setHomeSubMenuOpen(false);
     setStudyAbroadOpen(false);
     setMbbsOpen(false);
-    setImmersionOpen(false);
-    setIROpen(false);
-  };
-
-  // Ensure only ONE submenu is open at a time (fixes sticky/multiple-open cases)
-  const handleHomeMouseEnter = () => {
-    closeAllDesktopSubmenus();
-    setHomeSubMenuOpen(true);
-  };
-
-  const handleHomeMouseLeave = () => {
-    setHomeSubMenuOpen(false);
   };
 
   const handleStudyAbroadEnter = () => {
@@ -288,27 +263,12 @@ export const Header = ({ itemupdate }: any) => {
     setMbbsOpen(false);
   };
 
-  const handleImmersionEnter = () => {
-    closeAllDesktopSubmenus();
-    setImmersionOpen(true);
-  };
-  const handleImmersionLeave = () => {
-    setImmersionOpen(false);
-  };
-
-  const handleIREnter = () => {
-    closeAllDesktopSubmenus();
-    setIROpen(true);
-  };
-  const handleIRLeave = () => {
-    setIROpen(false);
-  };
-
   const [selectedParentMenu, setSelectedParentMenu] = useState<any>("Home");
 
   // Sync selected menu with current pathname so correct item shows active + bottom underline
   useEffect(() => {
-    if (location === "/" || location === "/aboutus") setSelectedParentMenu("Home");
+    if (location === "/") setSelectedParentMenu("Home");
+    else if (location === "/aboutus") setSelectedParentMenu("About Us");
     else if (
       location === "/study-abroad" ||
       location.startsWith("/study-abroad/") ||
@@ -401,14 +361,7 @@ export const Header = ({ itemupdate }: any) => {
       }, 500);
       window.history.replaceState({}, document.title);
     } else {
-      if (location === "/") {
-        setActiveSubMenu("");
-      } else {
-        const activeMenu = homeSubMenues.find(
-          (menu) => getSubMenuHref(menu) === location
-        );
-        setActiveSubMenu(activeMenu ? activeMenu.title : "");
-      }
+      setActiveSubMenu("");
     }
   }, [location, scrollTo, subMenuTitle]);
 
@@ -578,8 +531,12 @@ export const Header = ({ itemupdate }: any) => {
                       key={index}
                       disableGutters
                       elevation={0}
-                      expanded={expanded === index}
-                      onChange={() => handleAccordionChange(index)}
+                      expanded={menuItem.subMenu.length > 0 && expanded === index}
+                      onChange={
+                        menuItem.subMenu.length > 0
+                          ? () => handleAccordionChange(index)
+                          : undefined
+                      }
                       sx={{
                         borderBottom: "none",
                         boxShadow: "none",
@@ -588,7 +545,11 @@ export const Header = ({ itemupdate }: any) => {
                     >
                       <AccordionSummary
                         sx={{ px: 0 }}
-                        expandIcon={<ExpandMoreIcon sx={{ zIndex: 100 }} />}
+                        expandIcon={
+                          menuItem.subMenu.length > 0 ? (
+                            <ExpandMoreIcon sx={{ zIndex: 100 }} />
+                          ) : undefined
+                        }
                       >
                         <Box onClick={() => router.push(menuItem.menu.link)}>
                           <Typography
@@ -789,95 +750,33 @@ export const Header = ({ itemupdate }: any) => {
                   minWidth: 0,
                 }}
               >
-                <div
-                  onMouseEnter={handleHomeMouseEnter}
-                  onMouseLeave={handleHomeMouseLeave}
-                  className="relative"
+                <Link
+                  href="/"
+                  className="custom-link"
+                  style={NavLinkCss({ isActive: isParentMenuSelected("Home") }) as React.CSSProperties}
+                  onClick={() => setSelectedParentMenu("Home")}
                 >
-                  <Link
-                    href="/"
-                    className="custom-link"
-                    style={
-                      NavLinkCss({
-                        isActive:
-                          isParentMenuSelected("Home") ||
-                          location === "/" ||
-                          location === "/aboutus",
-                      }) as React.CSSProperties
-                    }
-                    onClick={() => setSelectedParentMenu("Home")}
+                  <HoverTypography
+                    isActive={isParentMenuSelected("Home")}
+                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
                   >
-                    <HoverTypography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "10px",
-                        md: "13px",
-                        lg: "20px",
-                      }}
-                      isActive={isParentMenuSelected("Home")}
-                      sx={{
-                        fontSize: isLgDown ? "13px" : "14px",
-                        fontWeight: 500,
-                      }}
-                    >
-                      Home
-                    </HoverTypography>
-                  </Link>
+                    Home
+                  </HoverTypography>
+                </Link>
 
-                  {homeSubMenuOpen && (
-                    <Box
-                      position="absolute"
-                      left="0"
-                      bgcolor="white"
-                      boxShadow={3}
-                      zIndex={999999}
-                      sx={submenuDropDownSx}
-                    >
-                      {homeSubMenues?.map((subMenu, index) => (
-                        <Box
-                          key={subMenu.title}
-                          sx={{
-                            borderBottom:
-                              index < (homeSubMenues?.length ?? 1) - 1
-                                ? "0.2px solid #00999e"
-                                : "none",
-                            py: 0.5,
-                            px: 1.5,
-                          }}
-                        >
-                          <Link
-                            href={getSubMenuHref(subMenu)}
-                            className="custom-link"
-                            onClick={(e) => handleSubMenuClick(e, subMenu)}
-                            style={{
-                              color:
-                                activeSubMenu === subMenu.title ? "#00999E" : "",
-                            }}
-                          >
-                            <HoverTypography
-                              fontSize={{
-                                xs: "10px",
-                                sm: "10px",
-                                md: "13px",
-                                lg: "15px",
-                              }}
-                              sx={{
-                                lineHeight: "1.5",
-                                fontSize: "13px",
-                                color:
-                                  activeSubMenu === subMenu.title
-                                    ? "#00999E"
-                                    : "#000",
-                              }}
-                            >
-                              {subMenu.title}
-                            </HoverTypography>
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
-                </div>
+                <Link
+                  href="/aboutus"
+                  className="custom-link"
+                  style={NavLinkCss({ isActive: isParentMenuSelected("About Us") }) as React.CSSProperties}
+                  onClick={() => setSelectedParentMenu("About Us")}
+                >
+                  <HoverTypography
+                    isActive={isParentMenuSelected("About Us")}
+                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
+                  >
+                    About Us
+                  </HoverTypography>
+                </Link>
 
                 <div
                   onMouseEnter={handleStudyAbroadEnter}
@@ -1047,179 +946,33 @@ export const Header = ({ itemupdate }: any) => {
                   )}
                 </div>
 
-                <div
-                  onMouseEnter={handleIREnter}
-                  onMouseLeave={handleIRLeave}
-                  className="relative"
+                <Link
+                  href="/international-relation"
+                  className="custom-link"
+                  style={NavLinkCss({ isActive: isParentMenuSelected("international-relation") }) as React.CSSProperties}
+                  onClick={() => setSelectedParentMenu("international-relation")}
                 >
-                  <Link
-                    href="/international-relation"
-                    className="custom-link"
-                    style={
-                      NavLinkCss({
-                        isActive:
-                          isParentMenuSelected("international-relation") ||
-                          location === "/international-relation" ||
-                          location.startsWith("/international-relation/"),
-                      }) as React.CSSProperties
-                    }
-                    onClick={() => setSelectedParentMenu("international-relation")}
+                  <HoverTypography
+                    isActive={isParentMenuSelected("international-relation")}
+                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
                   >
-                    <HoverTypography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "10px",
-                        md: "13px",
-                        lg: "20px",
-                      }}
-                      sx={{
-                        fontSize: isLgDown ? "13px" : "14px",
-                        fontWeight: 500,
-                      }}
-                      isActive={
-                        isParentMenuSelected("international-relation") ||
-                        location === "/international-relation" ||
-                        location.startsWith("/international-relation/")
-                      }
-                    >
-                      International Engagement
-                    </HoverTypography>
-                  </Link>
-                  {iROpen && (
-                    <Box
-                      position="absolute"
-                      left="0"
-                      bgcolor="white"
-                      boxShadow={3}
-                      zIndex={999999}
-                      sx={submenuDropDownSx}
-                    >
-                      {iRSubMenues?.map((subMenu, index) => (
-                        <Box
-                          key={subMenu.title}
-                          sx={{
-                            borderBottom:
-                              index < (iRSubMenues?.length ?? 1) - 1
-                                ? "0.2px solid #00999e"
-                                : "none",
-                            py: 0.5,
-                            px: 1.5,
-                          }}
-                        >
-                          <Link
-                            href={subMenu.link}
-                            className="custom-link"
-                            onClick={(e) => handleSubMenuClick(e, subMenu)}
-                            style={{
-                              color:
-                                activeSubMenu === subMenu.title ? "#00999E" : "",
-                            }}
-                          >
-                            <HoverTypography
-                              fontSize={{
-                                xs: "10px",
-                                sm: "10px",
-                                md: "13px",
-                                lg: "15px",
-                              }}
-                              sx={{
-                                fontSize: "13px",
-                                color:
-                                  activeSubMenu === subMenu.title
-                                    ? "#00999E"
-                                    : "#000",
-                              }}
-                            >
-                              {subMenu.title}
-                            </HoverTypography>
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
-                </div>
+                    International Engagement
+                  </HoverTypography>
+                </Link>
 
-                <div
-                  onMouseEnter={handleImmersionEnter}
-                  onMouseLeave={handleImmersionLeave}
-                  className="relative"
+                <Link
+                  href="/immersion"
+                  className="custom-link"
+                  style={NavLinkCss({ isActive: isParentMenuSelected("Immersion") }) as React.CSSProperties}
+                  onClick={() => setSelectedParentMenu("Immersion")}
                 >
-                  <Link
-                    href="/immersion"
-                    className="custom-link"
-                    style={
-                      NavLinkCss({
-                        isActive:
-                          isParentMenuSelected("Immersion") ||
-                          location === "/immersion" ||
-                          location.startsWith("/immersion/"),
-                      }) as React.CSSProperties
-                    }
-                    onClick={() => setSelectedParentMenu("Immersion")}
+                  <HoverTypography
+                    isActive={isParentMenuSelected("Immersion")}
+                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
                   >
-                    <HoverTypography
-                      sx={{
-                        fontSize: isLgDown ? "13px" : "14px",
-                        fontWeight: 500,
-                      }}
-                      isActive={
-                        isParentMenuSelected("Immersion") ||
-                        location === "/immersion" ||
-                        location.startsWith("/immersion/")
-                      }
-                    >
-                      Immersion
-                    </HoverTypography>
-                  </Link>
-
-                  {immersionOpen && (
-                    <Box
-                      position="absolute"
-                      left="0"
-                      bgcolor="white"
-                      boxShadow={3}
-                      zIndex={999999}
-                      sx={submenuDropDownSx}
-                    >
-                      {immersionSubMenues.map((subMenu, index) => (
-                        <Box
-                          key={subMenu.title}
-                          sx={{
-                            borderBottom:
-                              index < immersionSubMenues.length - 1
-                                ? "0.2px solid #00999e"
-                                : "none",
-                            py: 0.5,
-                            px: 1.5,
-                          }}
-                        >
-                          <Link
-                            href={subMenu.link}
-                            className="custom-link"
-                            style={{
-                              color: location === subMenu.link ? "#00999e" : "",
-                            }}
-                          >
-                            <HoverTypography
-                              fontSize={{
-                                xs: "10px",
-                                sm: "10px",
-                                md: "13px",
-                                lg: "15px",
-                              }}
-                              style={{
-                                color: location === subMenu.link ? "#00999e" : "",
-                              }}
-                              sx={{ fontSize: "13px" }}
-                            >
-                              {subMenu.title}
-                            </HoverTypography>
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
-                </div>
+                    Immersion
+                  </HoverTypography>
+                </Link>
 
                 <Link
                   href="/blogs"
@@ -1354,15 +1107,6 @@ export const Header = ({ itemupdate }: any) => {
                   minWidth: { md: 250, lg: 340 },
                 }}
               >
-                <Link href={`/cart`} className="custom-link">
-                  <Badge badgeContent={cartList?.length} color="secondary">
-                    <ShoppingCartIcon
-                      color="action"
-                      sx={{ fontSize: isLgDown ? 22 : 24 }}
-                    />
-                  </Badge>
-                </Link>
-
                 <Link href="/contact" className="custom-link">
                   <Button
                     variant="contained"
@@ -1381,6 +1125,15 @@ export const Header = ({ itemupdate }: any) => {
                   >
                     Free Consultation
                   </Button>
+                </Link>
+
+                <Link href={`/cart`} className="custom-link">
+                  <Badge badgeContent={cartList?.length} color="secondary">
+                    <ShoppingCartIcon
+                      color="action"
+                      sx={{ fontSize: isLgDown ? 22 : 24 }}
+                    />
+                  </Badge>
                 </Link>
               </Stack>
             )}

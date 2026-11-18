@@ -89,12 +89,16 @@ export default function StudyAbroadUniversities({
 
   return (
     <section id={universities.id} className="scroll-mt-28 py-12 lg:py-16" style={{ background: universities.background }}>
-      <div className={`${containerClass} text-center`}>
+      <div className={containerClass}>
         <StudyAbroadReveal>
-          <StudyAbroadSectionHeading title={universities.title} kicker={universities.kicker} />
+          <StudyAbroadSectionHeading
+            title={universities.title}
+            kicker={universities.kicker}
+            align={universities.introAlign === "left" ? "left" : "center"}
+          />
           <div
-            className={`mx-auto mt-4 max-w-6xl space-y-3 text-sm leading-7 text-slate-700 sm:text-[15px] ${
-              universities.introAlign === "left" ? "text-left" : "text-center"
+            className={`mt-4 max-w-6xl space-y-3 text-sm leading-7 text-slate-700 sm:text-[15px] ${
+              universities.introAlign === "left" ? "text-left" : "mx-auto text-center"
             }`}
           >
             {universities.intro.map((paragraph) => (
@@ -119,7 +123,7 @@ export default function StudyAbroadUniversities({
                     className="flex min-h-[104px] items-center justify-center px-2"
                     style={{ width: `${100 / slides.length}%` }}
                   >
-                    <span className="flex h-20 w-full items-center justify-center rounded-2xl border border-[#E6D9C4] bg-white px-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#C6A35A]">
+                    <span className="flex h-20 w-full items-center justify-center rounded-2xl border border-[#E6D9C4] bg-white px-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--sa-accent,#C6A35A)]">
                       <Image
                         src={logo.src}
                         alt={logo.name}
@@ -143,7 +147,7 @@ export default function StudyAbroadUniversities({
                     setAnimate(true);
                     setIndex(dotIndex);
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${dotIndex === active ? "w-6 bg-[#C6A35A]" : "w-2 bg-[#E6D9C4]"}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${dotIndex === active ? "w-6 bg-[var(--sa-accent,#C6A35A)]" : "w-2 bg-[#E6D9C4]"}`}
                 />
               ))}
             </div>
@@ -156,6 +160,11 @@ export default function StudyAbroadUniversities({
             minWidth={universities.minWidth}
             centerColumns={universities.centerColumns}
           />
+          {universities.note && (
+            <p className="mx-auto mt-4 max-w-5xl text-center text-sm leading-7 text-slate-600 sm:text-[15px]">
+              {universities.note}
+            </p>
+          )}
 
           {universities.cta && (
             <StudyAbroadCta href={universities.cta.href} className="mt-8">

@@ -2350,12 +2350,12 @@ export const indianCollegeData = [
   },
 ];
 
-const eligibilitya1 = imageBaseUrl + "eligibility1.png";
-const eligibilitya2 = imageBaseUrl + "eligibility2.png";
-const eligibilitya3 = imageBaseUrl + "eligibility3.png";
-const eligibilitya4 = imageBaseUrl + "eligibility4.png";
-const eligibilitya5 = imageBaseUrl + "eligibility5.png";
-const eligibilitya6 = imageBaseUrl + "eligibility6.png";
+const eligibilitya1 = imageBaseUrl + "mbbs/icons/Age.png";
+const eligibilitya2 = imageBaseUrl + "mbbs/icons/Educational Qualifications.png";
+const eligibilitya3 = imageBaseUrl + "mbbs/icons/Minimum Marks.png";
+const eligibilitya4 = imageBaseUrl + "mbbs/icons/Entrance Exams.png";
+const eligibilitya5 = imageBaseUrl + "mbbs/icons/Language Proficiency.png";
+const eligibilitya6 = imageBaseUrl + "mbbs/icons/Visa Requirements.png";
 export const abroadEligibilityAbroadData = [
   {
     title: "Age",
