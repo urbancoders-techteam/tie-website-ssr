@@ -91,15 +91,15 @@ export default function StudyAbroadLeadForm({
   };
 
   const field =
-    "h-10 w-full rounded-md border border-[#E6D9C4] bg-[#FBF8F3] px-3 text-sm text-[#122033] outline-none transition placeholder:text-slate-400 focus:border-[#C6A35A] focus:bg-white focus:ring-2 focus:ring-[#C6A35A]/30";
+    "h-10 w-full rounded-md border border-[#E6D9C4] bg-[#FBF8F3] px-3 text-sm text-[#122033] outline-none transition placeholder:text-slate-400 focus:border-[var(--sa-accent,#C6A35A)] focus:bg-white focus:ring-2 focus:ring-[color-mix(in_srgb,var(--sa-accent,#C6A35A)_30%,transparent)]";
 
   return (
     <form
       id={id}
       onSubmit={onSubmit}
-      className="w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#E6D9C4] bg-white text-[#122033] shadow-[0_24px_60px_-24px_rgba(7,17,28,0.65)]"
+      className="w-full max-w-[420px] overflow-hidden rounded-2xl border-2 border-[var(--sa-accent,#E6D9C4)] bg-white text-[#122033] shadow-[0_24px_60px_-24px_rgba(7,17,28,0.65)]"
     >
-      <h2 className="bg-[#122033] px-4 py-3 text-center text-base font-semibold text-[#E8D5A3] sm:text-lg">
+      <h2 className="bg-[var(--sa-ink,#122033)] px-4 py-3 text-center text-base font-semibold text-[var(--sa-accent-soft,#E8D5A3)] sm:text-lg">
         {title ?? config.defaultTitle}
       </h2>
       <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 sm:p-5">
@@ -136,7 +136,7 @@ export default function StudyAbroadLeadForm({
         <button
           type="submit"
           disabled={loading}
-          className="study-abroad-cta col-span-full mx-auto mt-1 block rounded-full bg-[#C6A35A] px-6 py-2.5 text-sm font-semibold text-[#122033] transition duration-300 hover:-translate-y-0.5 hover:bg-[#D4B56E] disabled:translate-y-0 disabled:opacity-60"
+          className="study-abroad-cta col-span-full mx-auto mt-1 block rounded-full border-2 border-[var(--sa-button-border,transparent)] bg-[var(--sa-accent,#C6A35A)] px-6 py-2.5 text-sm font-semibold text-[var(--sa-on-accent,#122033)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--sa-accent-hover,#D4B56E)] disabled:translate-y-0 disabled:opacity-60"
         >
           {loading ? config.submittingLabel : config.submitLabel}
         </button>

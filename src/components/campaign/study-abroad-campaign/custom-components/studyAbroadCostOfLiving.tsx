@@ -32,6 +32,11 @@ export default function StudyAbroadCostOfLiving({
             centerColumns={costOfLiving.centerColumns}
             labelWidthClass={costOfLiving.labelWidthClass}
           />
+          {costOfLiving.note && (
+            <p className="mx-auto mt-4 max-w-5xl text-center text-sm leading-7 text-slate-600 sm:text-[15px]">
+              {costOfLiving.note}
+            </p>
+          )}
         </StudyAbroadReveal>
       </div>
     </section>

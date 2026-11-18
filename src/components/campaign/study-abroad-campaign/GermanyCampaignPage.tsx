@@ -17,7 +17,13 @@ export default function GermanyCampaignPage() {
   const whatsappHref = `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(data.whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen scroll-smooth" style={{ background: data.theme.pageBackground, color: data.theme.text }}>
+    <div className="relative min-h-screen scroll-smooth" style={{ color: data.theme.text }}>
+    <div
+      className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${data.hero.image})` }}
+      aria-hidden={true}
+    />
+    <div className="relative z-10">
       <StudyAbroadHeader containerClass={data.containerClass} nav={data.header.nav} />
       <main>
         <StudyAbroadHero containerClass={data.containerClass} hero={data.hero} leadForm={data.leadForm} />
@@ -29,6 +35,7 @@ export default function GermanyCampaignPage() {
           phone={data.phone}
           phoneDisplay={data.phoneDisplay}
           email={data.email}
+          transparent={true}
         />
         <StudyAbroadCourses containerClass={data.containerClass} courses={data.courses} />
         <StudyAbroadUniversities containerClass={data.containerClass} universities={data.universities} />
@@ -40,6 +47,7 @@ export default function GermanyCampaignPage() {
           phone={data.phone}
           phoneDisplay={data.phoneDisplay}
           email={data.email}
+          transparent={true}
         />
         <StudyAbroadCostOfLiving containerClass={data.containerClass} costOfLiving={data.costOfLiving} />
         <FAQSection
@@ -62,5 +70,7 @@ export default function GermanyCampaignPage() {
       </a>
       <StudyAbroadMotion />
     </div>
+    </div>
+
   );
 }

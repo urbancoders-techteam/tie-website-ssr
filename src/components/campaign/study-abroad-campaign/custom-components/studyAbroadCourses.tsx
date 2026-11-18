@@ -15,11 +15,15 @@ export default function StudyAbroadCourses({
     <section id={courses.id} className="scroll-mt-28 py-12 lg:py-16" style={{ background: courses.background }}>
       <div className={containerClass}>
         <StudyAbroadReveal>
-          <StudyAbroadSectionHeading title={courses.title} kicker={courses.kicker} />
+          <StudyAbroadSectionHeading
+            title={courses.title}
+            kicker={courses.kicker}
+            align={courses.introAlign === "left" ? "left" : "center"}
+          />
           {courses.intro.length > 0 && (
             <div
-              className={`mx-auto mt-4 max-w-6xl space-y-3 text-sm leading-7 text-slate-700 sm:text-[15px] ${
-                courses.introAlign === "left" ? "text-left" : "text-center"
+              className={`mt-4 max-w-6xl space-y-3 text-sm leading-7 text-slate-700 sm:text-[15px] ${
+                courses.introAlign === "left" ? "text-left" : "mx-auto text-center"
               }`}
             >
               {courses.intro.map((paragraph) => (

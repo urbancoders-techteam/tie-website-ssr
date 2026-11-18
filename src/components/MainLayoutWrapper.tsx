@@ -37,6 +37,8 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/study-abroad/germany-lp/") ||
     pathname === "/study-abroad/uk-lp" ||
     pathname?.startsWith("/study-abroad/uk-lp/") ||
+    pathname === "/study-abroad/united-kingdom-lp" ||
+    pathname?.startsWith("/study-abroad/united-kingdom-lp/") ||
     pathname === "/study-abroad/ireland-lp" ||
     pathname?.startsWith("/study-abroad/ireland-lp/") ||
     pathname === "/study-abroad/new-zealand-lp" ||

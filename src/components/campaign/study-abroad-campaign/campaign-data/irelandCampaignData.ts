@@ -1,15 +1,31 @@
 import type { StudyAbroadCampaignData } from "@/components/campaign/study-abroad-campaign/custom-components/studyAbroadTypes";
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadImageUrl } from "@/utils/config";
 
 const place = `${imageBaseUrl}CountryPlaces/ireland`;
 const uni = `${imageBaseUrl}CountryUniversities/ireland`;
 
+const heroImage = `${studyAbroadImageUrl}campaign/ireland/ireland-campaign-banner.jpg`;
+
+const universityLogo1 = `${studyAbroadImageUrl}campaign/ireland/trinity-college-dublin-logo.webp`;
+const universityLogo2 = `${studyAbroadImageUrl}campaign/ireland/University-College-Dublin.jpg`;
+const universityLogo3 = `${studyAbroadImageUrl}campaign/ireland/University_College_Cork.png`;
+const universityLogo4 = `${studyAbroadImageUrl}campaign/ireland/University_Of_Galway.png`;
+const universityLogo5 = `${studyAbroadImageUrl}campaign/ireland/University_Of_Limerick.png`;
+const universityLogo6 = `${studyAbroadImageUrl}campaign/ireland/Dublin_City_University.png`;
+
 export const irelandCampaignData: StudyAbroadCampaignData = {
   containerClass: "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
   theme: {
-    pageBackground: "#FBF8F3",
+    pageBackground: "#EEF6F0",
     text: "#122033",
-    footer: { background: "#122033", accent: "#C6A35A", onAccent: "#122033" },
+    accent: "#2A8F57",
+    accentHover: "#3AA86A",
+    accentSoft: "#B3E0C0",
+    accentMuted: "#1E6B45",
+    onAccent: "#ffffff",
+    buttonBorder: "#2A8F57",
+    ink: "#164A32",
+    footer: { background: "#0C2418", accent: "#6FCB8A", onAccent: "#0C2418" },
   },
   phone: "+919831241212",
   phoneDisplay: "+91 98312 41212",
@@ -23,12 +39,12 @@ export const irelandCampaignData: StudyAbroadCampaignData = {
     submittingLabel: "Submitting...",
     courses: [
       "Computer science / IT",
-      "Data and analytics",
-      "Business",
+      "Data science / AI",
+      "Business & finance",
       "Engineering",
-      "Pharmaceutical and life sciences",
-      "Hospitality",
-      "Foundation pathway",
+      "Life sciences",
+      "Pharmaceuticals",
+      "Healthcare",
       "Not sure yet",
     ],
   },
@@ -42,17 +58,17 @@ export const irelandCampaignData: StudyAbroadCampaignData = {
     ],
   },
   hero: {
-    image: `${imageBaseUrl}CountryBanner/ireland.png`,
+    image: heroImage,
     kicker: "Ireland",
     title: "Study in Ireland",
     subtitle: "Tech, pharma, and English-taught degrees",
     description:
-      "English-medium universities, a tech and pharmaceutical industry next to campus, and a post-study stay under the Third Level Graduate Scheme.",
+      "Find internationally  recognised qualifications, top-notch universities, and career opportunities within Ireland's technological, pharmaceutical, financial, and engineering industries. Browse through various programmes, tuition costs, scholarships, and more at Taksheela.",
     formAnchorId: "counselling",
     chips: [
-      { icon: "bookOpen", label: "Taught in English" },
-      { icon: "briefcase", label: "Tech and pharma hiring" },
-      { icon: "calendarRange", label: "September main intake" },
+      { icon: "graduationCap", label: "Globally Recognised Degrees" },
+      { icon: "landmark", label: "English-Medium Campuses" },
+      { icon: "calendarClock", label: "September & January intakes" },
     ],
   },
   why: {
@@ -60,46 +76,75 @@ export const irelandCampaignData: StudyAbroadCampaignData = {
     kicker: "Ireland",
     title: "Why Study in Ireland?",
     carouselLabel: "Why study in Ireland",
+    background: "#EEF6F0",
     intro: [
-      "Ireland is a common European choice for Indian students who want an English-taught degree without moving to the UK. The Higher Education Authority has reported about 10,000 Indian students in Irish colleges.",
-      "The usual shortlist is business, engineering, computer science, healthcare, and hospitality.",
+      "English-speaking universities, foreign campuses, multinational business environments, and career opportunities after graduation are all found in Ireland. Seven reasons why you should study there include:",
     ],
     points: [
       {
         icon: "graduationCap",
-        title: "Degrees taught in English",
+        title: "Globally recognised degrees from leading universities",
         paragraphs: [
-          "Courses are in English. Universities usually ask for IELTS or TOEFL. Trinity College Dublin, UCD, and the other public universities on this page are the names families compare first.",
+          "Educate yourself at reputable universities such as Trinity College Dublin, University College Dublin and University College Cork. Six universities in the QS World University Rankings 2027 are listed below.",
+        ],
+      },
+      {
+        icon: "bookOpen",
+        title: "Study in English in a European education hub.",
+        paragraphs: [
+          "Being taught in English is one of the main benefits for Indians who would like to study abroad in Europe. There are course-related language requirements in English, which should be met.",
         ],
       },
       {
         icon: "briefcase",
-        title: "Employers sit next to the campuses",
+        title: "A strong base for technology and innovation",
         paragraphs: [
-          "Technology and pharmaceutical companies have large offices in Dublin, Cork, and Galway. That is why computing, data, engineering, and life sciences are the courses counsellors hear most often.",
+          "Ireland has a thriving technology, pharmaceutical, financial, engineering, and life sciences industry, thus enabling the students' access to research-based education and global employers.",
         ],
-        pills: ["Computer science", "Data", "Engineering", "Pharma and life sciences", "Business"],
-      },
-      {
-        icon: "wallet",
-        title: "Tuition and living in euros",
-        paragraphs: [
-          "On Taksheela’s planning ranges, international tuition is often about €10,000–€25,000 a year, and living about €900–€1,400 a month. Dublin costs more than Cork, Galway, or Limerick.",
-        ],
-        stats: [
-          { label: "Tuition", value: "€10,000–€25,000", note: "Per year, typical international range" },
-          { label: "Living", value: "€900–€1,400", note: "Per month, higher in Dublin" },
-          { label: "Work in term", value: "20 hours", note: "A week, full-time in the holidays" },
-          { label: "After study", value: "Graduate Scheme", note: "Stay to look for work after the degree" },
-        ],
+        pills: ["Technology", "Pharmaceutical", "Financial", "Engineering", "Life sciences"],
       },
       {
         icon: "calendarClock",
-        title: "Work during study, and stay after it",
+        title: "Part-time work can support student experience.",
         paragraphs: [
-          "A student permission usually allows up to 20 hours a week in term and full-time work in official holidays. After the degree, the Third Level Graduate Scheme is the route to stay and work.",
+          "Students who are eligible for Stamp 2 authorisation are allowed to work while they are studying, up to 40 hours a week during certain times, but based on immigration regulations. The part-time income is not assured.",
         ],
-        steps: ["University shortlisting", "Offer and fee deposit", "Visa and funds", "Accommodation"],
+        stats: [
+          { label: "Stamp 2 work", value: "Up to 40 hours", note: "A week during certain times, subject to immigration rules" },
+        ],
+      },
+      {
+        icon: "users",
+        title: "Graduate career pathways with international companies",
+        paragraphs: [
+          "The Irish workforce comprises firms like Google, Microsoft, Apple, Meta, Amazon, Intel, Pfizer, Accenture, and Deloitte. Career options may include software programming, data analysis, business analytics, engineering, and finance; competition for jobs can be fierce.",
+        ],
+        pills: [
+          "Software programming",
+          "Data analysis",
+          "Business analytics",
+          "Engineering",
+          "Finance",
+        ],
+      },
+      {
+        icon: "fileCheck",
+        title: "Eligible graduates can explore post-study permission",
+        paragraphs: [
+          "Ireland's Third Level Graduate Programme, or Stamp 1G, may permit the graduates to stay after completing the required qualification period, which is one year for Level 8 graduates and two years for Level 9 and above, under existing guidelines.",
+        ],
+        stats: [
+          { label: "Level 8", value: "1 year", note: "Stamp 1G after the qualification period" },
+          { label: "Level 9+", value: "2 years", note: "Stamp 1G after the qualification period" },
+        ],
+      },
+      {
+        icon: "badgePercent",
+        title: "Scholarships can help manage the overall budget.",
+        paragraphs: [
+          "Scholarship programmes include the Government of Ireland International Education Scholarship, UCD Global Excellence, Trinity Global Excellence, and university scholarships.",
+        ],
+        pills: ["GOI-IES", "UCD Global Excellence", "Trinity Global Excellence", "University scholarships"],
       },
     ],
   },
@@ -117,123 +162,282 @@ export const irelandCampaignData: StudyAbroadCampaignData = {
   courses: {
     id: "fees",
     kicker: "Ireland",
-    title: "Courses Indian Students Shortlist",
-    background: "#ffffff",
+    title: "Top Courses to Study in Ireland",
+    background: "#F5FBF7",
     intro: [
-      "Business, engineering, computer science, healthcare, and hospitality are the courses named most often for Indian students in Ireland.",
-      "The fee column is the same typical yearly band, about €10,000–€25,000. Medicine and some clinical courses sit above it. These are ranges, not a quote.",
+      "Popular courses of study in Ireland. Tuition costs and eligibility requirements differ depending on the course.",
     ],
-    headers: ["Course", "Why students pick it", "Cities", "Fee / year (€)", "Fee / year (₹)"],
+    headers: ["Course / field", "Highlights", "Top Institutions", "Fee / year (€)", "Fee / year (₹)"],
     minWidth: 880,
     centerColumns: [3, 4],
     cta: { href: "#counselling", label: "Connect with our trusted study in Ireland consultants today" },
     rows: [
-      ["Computer science and IT", "Dublin is a European base for software companies.", "Dublin, Cork, Limerick", "10,000–25,000", "About ₹9–23 lakh"],
-      ["Data and analytics", "Sits next to the technology employers already in Ireland.", "Dublin, Galway", "10,000–25,000", "About ₹9–23 lakh"],
-      ["Engineering", "Electronic, mechanical, and energy programmes at the public universities.", "Cork, Galway, Dublin", "10,000–25,000", "About ₹9–23 lakh"],
-      ["Pharmaceutical and life sciences", "Ireland has a large pharmaceutical manufacturing base. Clinical courses can sit above this band.", "Cork, Dublin", "10,000–25,000", "About ₹9–23 lakh"],
-      ["Business", "Commerce, finance, and management degrees taught in English.", "Dublin, Limerick", "10,000–25,000", "About ₹9–23 lakh"],
-      ["Hospitality", "Named on the Ireland guide alongside business, engineering, computing, and healthcare.", "Dublin", "10,000–25,000", "About ₹9–23 lakh"],
+      [
+        "Computer Science & IT",
+        "Software development, cybersecurity and cloud technologies",
+        "Trinity College Dublin",
+        "€14,500–28,500",
+        "₹15.14–29.75 lakh",
+      ],
+      [
+        "Data Science & AI",
+        "Data analytics, artificial intelligence and machine learning",
+        "University College Dublin (UCD)",
+        "€14,500–28,500",
+        "₹15.14–29.75 lakh",
+      ],
+      [
+        "Business & Finance",
+        "Business management, accounting, finance and strategy",
+        "University College Cork (UCC)",
+        "€10,300–29,000",
+        "₹10.75–30.27 lakh",
+      ],
+      [
+        "Engineering",
+        "Mechanical, civil, electrical and biomedical engineering",
+        "University of Galway",
+        "€14,500–28,500",
+        "₹15.14–29.75 lakh",
+      ],
+      [
+        "Life Sciences",
+        "Biotechnology, biomedical research and biological sciences",
+        "University of Limerick",
+        "€14,500–28,500",
+        "₹15.14–29.75 lakh",
+      ],
+      [
+        "Pharmaceuticals",
+        "Pharmaceutical science, drug development and biotechnology",
+        "Dublin City University (DCU)",
+        "€14,500–28,500",
+        "₹15.14–29.75 lakh",
+      ],
+      [
+        "Healthcare",
+        "Medicine, nursing, healthcare and allied health sciences",
+        "Trinity College Dublin",
+        "€50,135–62,500*",
+        "₹52.33–65.24 lakh",
+      ],
     ],
   },
   universities: {
     id: "universities",
     kicker: "Ireland",
-    title: "Universities on the Ireland Shortlist",
-    background: "#F7F1E6",
+    title: "Top Universities in Ireland",
+    background: "#DCEFDE",
     introAlign: "left",
     intro: [
-      "These are the universities on the Taksheela Ireland list. Tuition inside one university still moves by course, so the fee column stays the country range of about €10,000–€25,000 a year unless a clinical course is higher.",
+      "QS World University Rankings 2027. The rankings do not determine eligibility for admissions and scholarships.",
     ],
-    headers: ["University", "City", "Typical fee band", "Notes"],
-    minWidth: 820,
+    headers: ["University", "Popular Courses / Best Programs", "Tuition Fees (per year)", "Highlights"],
+    minWidth: 920,
     cta: { href: "#counselling", label: "Talk to our trusted study in Ireland consultants today" },
     logos: [
-      { name: "Trinity College Dublin", src: `${uni}/ire1.png` },
-      { name: "University College Dublin", src: `${uni}/ire2.png` },
-      { name: "University of Galway", src: `${uni}/ire3.png` },
-      { name: "University College Cork", src: `${uni}/ire4.png` },
-      { name: "Dublin City University", src: `${uni}/ire5.png` },
-      { name: "University of Limerick", src: `${uni}/ire6.png` },
-      { name: "Maynooth University", src: `${uni}/ire7.png` },
+      { name: "Trinity College Dublin", src: universityLogo1 },
+      { name: "University College Dublin", src: universityLogo2 },
+      { name: "University College Cork", src: universityLogo3 },
+      { name: "University of Galway", src: universityLogo4 },
+      { name: "University of Limerick", src: universityLogo6 },
+      { name: "Dublin City University", src: universityLogo5 },
     ],
     rows: [
-      ["Trinity College Dublin", "Dublin", "€10,000–€25,000", "The university most families ask about first. Dublin rent is the highest in the country."],
-      ["University College Dublin", "Dublin", "€10,000–€25,000", "Large public university. Business, science, and engineering are common files."],
-      ["University of Galway", "Galway", "€10,000–€25,000", "West-coast campus. Living costs are usually below Dublin."],
-      ["University College Cork", "Cork", "€10,000–€25,000", "Strong for science, engineering, and pharma-related courses."],
-      ["Dublin City University", "Dublin", "€10,000–€25,000", "Business, computing, and communications. Still a Dublin housing market."],
-      ["University of Limerick", "Limerick", "€10,000–€25,000", "Known for cooperative placements on many degrees."],
-      ["Maynooth University", "Maynooth", "€10,000–€25,000", "Close to Dublin, with rents that are often lower than the city centre."],
+      [
+        "Trinity College Dublin",
+        "Computer Science, Engineering, Business, Biomedical Sciences, Data Science",
+        "€29,570 (Engineering example)",
+        "Historic university with strong international recognition and research excellence.",
+      ],
+      [
+        "University College Dublin (UCD)",
+        "Business, Computer Science, Data Science, Engineering, Finance",
+        "University-specific fees to confirm",
+        "Research-intensive university with international partnerships and strong business and technology programmes.",
+      ],
+      [
+        "University College Cork (UCC)",
+        "Computer Science, Business, Finance, Life Sciences, Engineering",
+        "€21,700–27,000 (selected courses)",
+        "Recognised for scientific research, innovation and industry engagement.",
+      ],
+      [
+        "University of Galway",
+        "Biomedical Science, Engineering, Computer Science, Business, Environmental Science",
+        "€19,890–26,640 (selected courses)",
+        "Strong reputation for biomedical research, engineering and interdisciplinary learning.",
+      ],
+      [
+        "University of Limerick",
+        "Engineering, Business, Computer Science, Data Analytics, Health Sciences",
+        "University-specific fees to confirm",
+        "Known for cooperative education, practical learning and employer engagement.",
+      ],
+      [
+        "Dublin City University (DCU)",
+        "Computer Science, Data Science & AI, Business Studies, Finance, Engineering",
+        "€17,000–17,900 (selected courses)",
+        "Career-oriented programmes, industry partnerships and practical learning opportunities.",
+      ],
     ],
   },
   scholarship: {
     id: "scholarships",
     kicker: "Ireland",
-    title: "Scholarships for Indian Students",
-    background: "#ffffff",
+    title: "Scholarships & Education Loans",
+    background: "#F5FBF7",
     labelWidthClass: "w-[42%] sm:w-[30%]",
     intro: [
-      "Ireland awards are smaller in number than the UK list. The Government of Ireland scholarship and each university’s own merit award are the ones to check before you pay a deposit.",
+      "The universities of Ireland, along with the various funding agencies, have a number of scholarship schemes in place for international students who meet the criteria.",
     ],
-    headers: ["Scholarship", "Details"],
+    headers: ["Type of Scholarship", "Details"],
     rows: [
-      ["Government of Ireland International Education Scholarship", "A national award for international students. Places are limited, so the deadline is earlier than a normal university application."],
-      ["University merit awards", "Trinity, UCD, UCC, Galway, DCU, Limerick, and Maynooth each publish their own fee waivers. Many are decided from the application itself."],
-      ["Faculty awards", "Computing, engineering, and science departments sometimes add a separate bursary. The course page is the place to check."],
+      [
+        "Government of Ireland International Education Scholarship (GOI-IES)",
+        "An international scholarship program through the support of the government. See present eligibility requirements and award details.",
+      ],
+      [
+        "UCD Global Excellence Scholarships",
+        "Institution-specific scholarships for eligible international students at University College Dublin.",
+      ],
+      [
+        "Trinity Global Excellence Scholarships",
+        "Institution-specific scholarships for eligible international students at Trinity College Dublin.",
+      ],
+      [
+        "University-specific Scholarships",
+        "There may also be other scholarships available from individual Irish universities; eligibility requirements and amounts vary.",
+      ],
     ],
+    note: "Education loans: An Indian student applying for education loans can compare lending institutions that cover tuition and living costs. Confirm loan companies, interest rates, and amounts with the lender.",
   },
   costOfLiving: {
     id: "cost-of-living",
     kicker: "Ireland",
-    title: "Cost of Living in Ireland",
-    background: "#FBF8F3",
-    minWidth: 760,
+    title: "Cost of Living in Ireland: A Detailed Guide for Indian Students Planning to Study Abroad",
+    background: "#EEF6F0",
+    minWidth: 880,
     centerColumns: [1, 2],
     intro: [
-      "The budget planner puts living at about €900–€1,400 a month, higher in Dublin. The rows below turn the monthly cards on the Ireland guide into a year. Tuition is separate, about €10,000–€25,000 a year.",
+      "Sample cost analysis in Dublin based on the Cost of Living Guide for International Students of Trinity College Dublin (16 July 2026 edition). National planning figures may differ. Costs may vary depending on the city, accommodation agreement, and personal situations.",
     ],
-    headers: ["Expense", "Per year (₹)", "Monthly card on the guide", "Notes"],
+    headers: ["Expense Category", "Indicative annual cost (€)", "Average Annual Cost (₹)", "Notes"],
     rows: [
-      ["Accommodation", "₹3.6–7.2 lakh", "₹30,000–₹60,000", "The largest bill. Dublin sits at the top of the range."],
-      ["Food", "₹2.4–3.6 lakh", "₹20,000–₹30,000", "Cooking at home keeps this down."],
-      ["Transport", "₹60,000–₹1.2 lakh", "₹5,000–₹10,000", "A student travel card cuts bus fares."],
-      ["Other costs", "₹1.2–1.8 lakh", "₹10,000–₹15,000", "Phone, laundry, and personal costs. Insurance is extra for the visa."],
+      [
+        "Accommodation",
+        "€7,227–€16,000",
+        "₹7.54–16.70 lakh",
+        "Trinity College Dublin examples: UG residence €7,227–€13,000 (academic/calendar-year options); PG housing €9,000–€16,000. Rates and durations differ.",
+      ],
+      [
+        "Food & Groceries",
+        "€3,000–€5,000",
+        "₹3.13–5.22 lakh",
+        "Trinity guide: meals, groceries and occasional eating out.",
+      ],
+      [
+        "Local Transportation",
+        "Approx. €1,000",
+        "₹1.04 lakh",
+        "Commuting in and around Dublin; other towns may cost less.",
+      ],
+      [
+        "Utilities",
+        "€1,000–€2,000",
+        "₹1.04–2.09 lakh",
+        "Electricity, heating and internet; some rentals include bills.",
+      ],
+      [
+        "Personal / Other Living Expenses",
+        "€4,500–€5,500",
+        "₹4.70–5.74 lakh",
+        "Trinity: €2,500 miscellaneous plus €2,000–€3,000 personal and social spending.",
+      ],
+      [
+        "Health Insurance",
+        "Approx. €550",
+        "₹57,410",
+        "Trinity estimate for non-EU students; actual insurance premiums vary by policy.",
+      ],
+      [
+        "Total UG Living Expenses",
+        "€19,937–€29,050",
+        "₹20.81–30.32 lakh",
+        "Trinity College Dublin published total (2026), excluding tuition; not the sum of the standalone category extremes.",
+      ],
+      [
+        "Total PG Living Expenses",
+        "€21,050–€27,050",
+        "₹21.97–28.24 lakh",
+        "Trinity College Dublin published total (2026), excluding tuition; postgraduate fieldwork/thesis expenses may be additional.",
+      ],
     ],
+    note: "Tuition planning: Bachelor's programmes typically range from €10,300 to €29,000 and master's programmes from €12,000 to €40,000 per year. This range should not be confused with the living cost budget for Trinity College Dublin above, which does not include tuition.",
   },
   faq: {
-    heading: "Frequently Asked Questions – Study in Ireland",
+    heading: "Frequently Asked Question – Study In Ireland",
     sectionId: "faqs",
     initialVisibleCount: 0,
     variant: "dubai",
     items: [
       {
-        question: "Which courses do Indian students pick in Ireland?",
-        answer: "Business, engineering, computer science, healthcare, and hospitality. Computing and pharmaceutical sciences are common because those industries hire in Ireland.",
+        question: "What are the benefits of studying in Ireland?",
+        answer:
+          "There are world-renowned universities in Ireland, English-speaking programmes, opportunities for interaction with multinational corporations, and graduate employment prospects.",
       },
       {
-        question: "Do I need IELTS?",
-        answer: "Most courses are taught in English and ask for IELTS or TOEFL. The offer letter states the score. Some colleges accept a medium-of-instruction letter.",
-        highlightTerms: ["IELTS"],
+        question: "Can Indian students apply after Class 12?",
+        answer:
+          "Yes, subject to institutional and programme eligibility criteria. Typical examples include Class XII marks of 75-85%+ for bachelor's degree admission.",
+        highlightTerms: ["75-85%+"],
       },
       {
-        question: "How much should a family budget?",
-        answer: "Tuition is often about €10,000–€25,000 a year. Living is about €900–€1,400 a month, higher in Dublin. These are ranges, not a quote.",
-        highlightTerms: ["€10,000–€25,000", "€900–€1,400"],
+        question: "How much does undergraduate study in Ireland cost?",
+        answer:
+          "Bachelor's fees typically range between €10,300 and €29,000 per year. Trinity College Dublin estimates student living costs between €19,937 and €29,050 per year in Dublin, excluding tuition.",
+        highlightTerms: ["€10,300", "€29,000", "€19,937", "€29,050"],
       },
       {
-        question: "Can I work while I study?",
-        answer: "Yes. Term-time work is usually up to 20 hours a week, and full-time in the official holidays, if the immigration permission allows it.",
-        highlightTerms: ["20 hours"],
+        question: "How much does a master's degree cost in Ireland?",
+        answer:
+          "Master's tuition typically ranges from €12,000–€40,000 per year. Trinity College Dublin's 2026 guide estimates postgraduate living costs of €21,050–€27,050 per year in Dublin, excluding tuition.",
+        highlightTerms: ["€12,000–€40,000", "€21,050–€27,050"],
       },
       {
-        question: "Can I stay after the degree?",
-        answer: "The Third Level Graduate Scheme lets graduates stay and look for work after the course. The length depends on the level of the degree.",
-        highlightTerms: ["Third Level Graduate Scheme"],
+        question: "What are the main intakes in Ireland?",
+        answer:
+          "September is the primary intake period. Some universities and programmes offer limited intake in January/February.",
+        highlightTerms: ["September", "January/February"],
       },
       {
-        question: "Is the student visa difficult?",
-        answer: "You need an offer from a recognised college, the fee evidence the embassy asks for, insurance, and the English score. Start once the offer is in hand.",
+        question: "What language scores are needed?",
+        answer:
+          "Typical IELTS scores are 6.0-6.5+ for undergraduate programmes and 6.5+ for postgraduate programmes. Competitive programmes can require higher IELTS scores or another form of certification.",
+        highlightTerms: ["IELTS", "6.0-6.5+", "6.5+"],
+      },
+      {
+        question: "Can international students work while studying?",
+        answer:
+          "Part-time work for eligible Stamp 2 students is allowed, and they are able to work up to 40 hours per week during certain times. Conditions apply.",
+        highlightTerms: ["Stamp 2", "40 hours"],
+      },
+      {
+        question: "What are popular courses in Ireland?",
+        answer:
+          "Popular courses include computer science and IT, data science and AI, business and finance, engineering, life sciences, pharmaceuticals and healthcare.",
+      },
+      {
+        question: "Are scholarships available for Indian students?",
+        answer:
+          "GOI-IES, UCD Global Excellence, Trinity Global Excellence and many other scholarships are offered by universities. The awards are based on competition depending on certain criteria.",
+        highlightTerms: ["GOI-IES", "UCD Global Excellence", "Trinity Global Excellence"],
+      },
+      {
+        question: "What happens after graduation?",
+        answer:
+          "The eligible graduates can avail of Ireland's Third Level Graduate Programme (Stamp 1G). The length of time will be one year for level 8, two years for level 9 and above.",
+        highlightTerms: ["Stamp 1G", "level 8", "level 9"],
       },
     ],
   },

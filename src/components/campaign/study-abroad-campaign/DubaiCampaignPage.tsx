@@ -17,50 +17,59 @@ export default function DubaiCampaignPage() {
   const whatsappHref = `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(data.whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen scroll-smooth" style={{ background: data.theme.pageBackground, color: data.theme.text }}>
-      <StudyAbroadHeader containerClass={data.containerClass} nav={data.header.nav} />
-      <main>
-        <StudyAbroadHero containerClass={data.containerClass} hero={data.hero} leadForm={data.leadForm} />
-        <StudyAbroadWhy containerClass={data.containerClass} why={data.why} />
-        <StudyAbroadConnectBand
-          containerClass={data.containerClass}
-          connect={data.connect}
-          leadForm={data.leadForm}
-          phone={data.phone}
-          phoneDisplay={data.phoneDisplay}
-          email={data.email}
-        />
-        <StudyAbroadCourses containerClass={data.containerClass} courses={data.courses} />
-        <StudyAbroadUniversities containerClass={data.containerClass} universities={data.universities} />
-        <StudyAbroadScholarship containerClass={data.containerClass} scholarship={data.scholarship} />
-        <StudyAbroadConnectBand
-          containerClass={data.containerClass}
-          connect={data.connect}
-          leadForm={data.leadForm}
-          phone={data.phone}
-          phoneDisplay={data.phoneDisplay}
-          email={data.email}
-        />
-        <StudyAbroadCostOfLiving containerClass={data.containerClass} costOfLiving={data.costOfLiving} />
-        <FAQSection
-          items={data.faq.items}
-          heading={data.faq.heading}
-          sectionId={data.faq.sectionId}
-          initialVisibleCount={data.faq.initialVisibleCount}
-          variant={data.faq.variant}
-        />
-      </main>
-      <Footer theme={data.theme.footer} />
-      <a
-        href={whatsappHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_30px_-8px_rgba(37,211,102,0.85)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
-      >
-        <FaWhatsapp className="h-7 w-7" aria-hidden />
-      </a>
-      <StudyAbroadMotion />
+    <div className="relative min-h-screen scroll-smooth" style={{ color: data.theme.text }}>
+      <div
+        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${data.hero.image})` }}
+        aria-hidden={true}
+      />
+      <div className="relative z-10">
+        <StudyAbroadHeader containerClass={data.containerClass} nav={data.header.nav} />
+        <main>
+          <StudyAbroadHero containerClass={data.containerClass} hero={data.hero} leadForm={data.leadForm} />
+          <StudyAbroadWhy containerClass={data.containerClass} why={data.why} />
+          <StudyAbroadConnectBand
+            containerClass={data.containerClass}
+            connect={data.connect}
+            leadForm={data.leadForm}
+            phone={data.phone}
+            phoneDisplay={data.phoneDisplay}
+            email={data.email}
+            transparent={true}
+          />
+          <StudyAbroadCourses containerClass={data.containerClass} courses={data.courses} />
+          <StudyAbroadUniversities containerClass={data.containerClass} universities={data.universities} />
+          <StudyAbroadScholarship containerClass={data.containerClass} scholarship={data.scholarship} />
+          <StudyAbroadConnectBand
+            containerClass={data.containerClass}
+            connect={data.connect}
+            leadForm={data.leadForm}
+            phone={data.phone}
+            phoneDisplay={data.phoneDisplay}
+            email={data.email}
+            transparent={true}
+          />
+          <StudyAbroadCostOfLiving containerClass={data.containerClass} costOfLiving={data.costOfLiving} />
+          <FAQSection
+            items={data.faq.items}
+            heading={data.faq.heading}
+            sectionId={data.faq.sectionId}
+            initialVisibleCount={data.faq.initialVisibleCount}
+            variant={data.faq.variant}
+          />
+        </main>
+        <Footer theme={data.theme.footer} />
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_30px_-8px_rgba(37,211,102,0.85)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
+        >
+          <FaWhatsapp className="h-7 w-7" aria-hidden />
+        </a>
+        <StudyAbroadMotion />
+      </div>
     </div>
   );
 }

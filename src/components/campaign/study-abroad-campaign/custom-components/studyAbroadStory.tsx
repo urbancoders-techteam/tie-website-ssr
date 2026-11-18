@@ -22,7 +22,7 @@ export default function StudyAbroadStory({
               {story.pills.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-[#C6A35A]/40 bg-[#F7F1E6] px-3 py-1.5 text-xs font-semibold text-[#8C6A32]"
+                  className="rounded-full border border-[color-mix(in_srgb,var(--sa-accent,#C6A35A)_40%,transparent)] bg-[#F7F1E6] px-3 py-1.5 text-xs font-semibold text-[var(--sa-accent-muted,#8C6A32)]"
                 >
                   {item}
                 </li>
@@ -40,7 +40,7 @@ export default function StudyAbroadStory({
             <ul className="mx-auto mt-6 max-w-3xl space-y-2 text-sm leading-7 text-[#122033] sm:text-[15px]">
               {story.bullets.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C6A35A]" aria-hidden />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--sa-accent,#C6A35A)]" aria-hidden />
                   <span>{item}</span>
                 </li>
               ))}

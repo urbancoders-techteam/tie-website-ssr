@@ -99,6 +99,8 @@ export interface FAQSectionProps {
    * Pass `0` to always show every item with no expand button.
    */
   initialVisibleCount?: number;
+  /** Optional section background; overrides the variant default wash. */
+  background?: string;
 }
 
 type FAQCardProps = {
@@ -126,7 +128,7 @@ const FAQCard = memo(function FAQCard({
   const aId = `${idPrefix}-answer-${index}`;
 
   return (
-    <div className={`min-w-0 overflow-hidden rounded-xl border bg-white shadow-sm transition duration-300 ${variant === "dubai" ? "border-[#E6D9C4] hover:-translate-y-0.5 hover:border-[#C6A35A] hover:shadow-[0_16px_36px_-24px_rgba(198,163,90,0.7)]" : "border-gray-200"}`}>
+    <div className={`min-w-0 overflow-hidden rounded-xl border bg-white shadow-sm transition duration-300 ${variant === "dubai" ? "border-[#E6D9C4] hover:-translate-y-0.5 hover:border-[var(--sa-accent,#C6A35A)] hover:shadow-[0_16px_36px_-24px_color-mix(in_srgb,var(--sa-accent,#C6A35A)_70%,transparent)]" : "border-gray-200"}`}>
       <button
         type="button"
         onClick={onToggle}
@@ -135,7 +137,7 @@ const FAQCard = memo(function FAQCard({
         aria-controls={aId}
         id={qId}
       >
-        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium ${variant === "dubai" ? "bg-[#122033] text-[#E8D5A3]" : "bg-gray-100 text-gray-600"}`}>
+        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium ${variant === "dubai" ? "bg-[#122033] text-[var(--sa-accent-soft,#E8D5A3)]" : "bg-gray-100 text-gray-600"}`}>
           {formatItemNumber(index + 1)}
         </span>
         <span
@@ -145,7 +147,7 @@ const FAQCard = memo(function FAQCard({
         >
           {item.question}
         </span>
-        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${variant === "dubai" ? "text-[#C6A35A]" : ACCENT}`} aria-hidden>
+        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${variant === "dubai" ? "text-[var(--sa-accent,#C6A35A)]" : ACCENT}`} aria-hidden>
           {isOpen ? <FaMinus className="h-4 w-4" /> : <FaPlus className="h-4 w-4" />}
         </span>
       </button>
@@ -197,6 +199,7 @@ export default function FAQSection({
   sectionId,
   headingId = "faq-heading",
   initialVisibleCount = embedded ? 0 : 8,
+  background,
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -224,7 +227,7 @@ export default function FAQSection({
 
   const renderHighlight = useCallback(
     (text: string) => (
-      <span className={`${variant === "dubai" ? "text-[#A7843E]" : ACCENT} font-bold`}>{text}</span>
+      <span className={`${variant === "dubai" ? "text-[var(--sa-accent-muted,#A7843E)]" : ACCENT} font-bold`}>{text}</span>
     ),
     [variant]
   );
@@ -262,6 +265,17 @@ export default function FAQSection({
           </>
         )}
       </h2>
+    ) : variant === "dubai" ? (
+      <h2
+        id={headingId}
+        className="text-center font-sans text-xl font-[700] text-[#122033] sm:text-2xl md:text-4xl"
+      >
+        {themedCustomHeading ?? (
+          <>
+            Frequently Asked <span className="text-[#00999E]">Questions</span>
+          </>
+        )}
+      </h2>
     ) : (
       <h2 className="font-sans text-xl font-[700] text-gray-900 sm:text-2xl md:text-4xl">
         <span className="relative inline-block pb-1">
@@ -282,8 +296,9 @@ export default function FAQSection({
           ? hideHeading
             ? "mt-6 min-w-0 overflow-x-hidden scroll-mt-24"
             : "mt-10 min-w-0 overflow-x-hidden scroll-mt-24"
-          : `overflow-x-hidden py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"} ${variant === "dubai" ? "bg-[#FBF8F3]" : "bg-[#f9fafb]"}`
+          : `overflow-x-hidden py-12 sm:py-14 md:py-16${variant === "abroad" ? "" : " scroll-mt-24"} ${background ? "" : variant === "dubai" ? "bg-[#FBF8F3]" : "bg-[#f9fafb]"}`
       }
+      style={background ? { background } : undefined}
       aria-labelledby={variant === "abroad" || variant === "hub" || embedded ? headingId : undefined}
     >
       <div className={embedded ? "min-w-0" : "mx-auto min-w-0 max-w-7xl px-4"}>

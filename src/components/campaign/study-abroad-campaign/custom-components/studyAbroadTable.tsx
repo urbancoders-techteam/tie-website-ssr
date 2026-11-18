@@ -16,17 +16,17 @@ export default function StudyAbroadTable({
   className = "overflow-x-auto",
 }: StudyAbroadTableProps) {
   return (
-    <div className={`${className} rounded-2xl border-2 border-[#C6A35A]`}>
+    <div className={`${className} rounded-2xl border-2 border-[var(--sa-accent,#C6A35A)]`}>
       <table
         className="w-full border-collapse text-left text-sm shadow-[0_18px_40px_-30px_rgba(18,32,51,0.55)]"
         style={minWidth ? { minWidth } : undefined}
       >
         <thead>
-          <tr className="bg-[#122033] text-[#E8D5A3]">
+          <tr className="bg-[var(--sa-ink,#122033)] text-[var(--sa-accent-soft,#E8D5A3)]">
             {headers.map((header, index) => (
               <th
                 key={header}
-                className={`border border-[#24344A] px-3 py-3 text-center font-bold ${
+                className={`border border-[color-mix(in_srgb,var(--sa-ink,#122033)_78%,white)] px-3 py-3 text-center font-bold ${
                   index === 0 && labelWidthClass ? labelWidthClass : ""
                 }`}
               >
