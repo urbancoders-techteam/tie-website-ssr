@@ -10,8 +10,8 @@ const STATS = [
   { end: 15, label: "Years of expertise" },
 ] as const;
 
-const ITEM_DURATION_MS = 6500;
-const STAGGER_MS = 120;
+const ITEM_DURATION_MS =2000;
+const STAGGER_MS = 50;
 
 const VALUE_CLASS =
   "min-h-[1.15em] text-3xl font-extrabold tracking-tight tabular-nums antialiased sm:text-4xl md:text-[2.75rem] md:leading-none";
