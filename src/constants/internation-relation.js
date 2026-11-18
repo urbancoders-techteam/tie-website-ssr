@@ -1,4 +1,8 @@
-import { internationalRelationImageUrl, webIconsUrl } from "@/utils/config";
+import {
+  imageBaseUrl,
+  internationalRelationImageUrl,
+  webIconsUrl,
+} from "@/utils/config";
 
 export const benefits = [
   {
@@ -247,57 +251,53 @@ export const studentWorkData = [
   },
 ];
 
-// The former popular*.png objects in S3 return 403. These local assets avoid
-// repeated image-optimizer retries from the autoplay carousel.
-const Image1 = "/images/hexcourse.svg";
-const Image2 = "/images/hexcourse.svg";
-const Image3 = "/images/hexcourse.svg";
-const Image4 = "/images/hexcourse.svg";
+const courseLogo = (fileName) =>
+  `${imageBaseUrl}international-relation/coursesLogos/${encodeURIComponent(fileName)}`;
 
 export const IndiaPopular = [
   {
     id: 1,
-    Image: Image1,
+    Image: courseLogo("ENGINEERING.png"),
     title: "ENGINEERING",
   },
   {
     id: 2,
-    Image: Image2,
+    Image: courseLogo("MEDICAL & PARA MEDICAL.png"),
     title: "MEDICAL & PARA MEDICAL",
   },
   {
     id: 3,
-    Image: Image3,
+    Image: courseLogo("AGRICULTURE & ALLIED SCIENCEL.png"),
     title: "AGRICULTURE & ALLIED SCIENCEL",
   },
   {
     id: 4,
-    Image: Image4,
+    Image: courseLogo("MANAGEMENT.png"),
     title: "MANAGEMENT",
   },
   {
     id: 5,
-    Image: Image1,
+    Image: courseLogo("TOURISM & HOTEL INDUSTRY.png"),
     title: "TOURISM & HOTEL INDUSTRY",
   },
   {
     id: 6,
-    Image: Image1,
+    Image: courseLogo("SCIENCES.png"),
     title: "SCIENCES",
   },
   {
     id: 7,
-    Image: Image3,
+    Image: courseLogo("HUMANITIES & LIBERAL ARTS.png"),
     title: "HUMANITIES & LIBERAL ARTS ",
   },
   {
     id: 8,
-    Image: Image4,
+    Image: courseLogo("HEALTH SCIENCES.png"),
     title: "HEALTH SCIENCES",
   },
   {
     id: 9,
-    Image: Image1,
+    Image: courseLogo("LAW.png"),
     title: "LAW",
   },
 ];

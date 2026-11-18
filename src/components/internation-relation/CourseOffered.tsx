@@ -33,34 +33,30 @@ const CoursesOffered = () => {
   return (
     <div className="text-center mt-10 mb-16 px-4 sm:px-10 md:px-40">
       {/* Tabs - for demo, only "Popular Programs" shown */}
-      <div className="w-full bg-white shadow-md p-3">
+      {/* <div className="w-full bg-white shadow-md p-3">
         <div className="flex justify-around overflow-x-auto scrollbar-hide">
           <button className="text-[#00999e] text-base font-medium px-4 py-2 rounded-md bg-white hover:bg-[#00999e] hover:text-white transition-all duration-200">
             Popular Programs
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Slider */}
       <div className="mt-10">
         <Slider {...settings}>
           {IndiaPopular?.map((item, index) => (
             <div key={index} className="px-2 mb-6">
-              <div className="w-[220px] h-[250px] flex flex-col justify-between p-4 shadow-lg transition duration-300 hover:bg-[#63D7DB] rounded-md mx-auto">
-                <div className="w-full h-[120px] flex items-center justify-center overflow-hidden rounded">
+              <div className="w-[220px] h-[270px] flex flex-col justify-between overflow-hidden shadow-lg transition duration-300 hover:bg-[#63D7DB] rounded-md mx-auto">
+                <div className="w-full h-[190px] overflow-hidden">
                   <Image
                     src={item.Image}
                     alt={item.title}
-                    width={110}
-                    height={130}
-                    className="object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        "/images/fallback.png"; // Make sure this file exists in /public
-                    }}
+                    width={220}
+                    height={190}
+                    className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="h-[60px] flex items-center justify-center text-center">
+                <div className="h-[80px] flex items-center justify-center px-4 text-center">
                   <p className="font-bold text-base">{item.title}</p>
                 </div>
               </div>
