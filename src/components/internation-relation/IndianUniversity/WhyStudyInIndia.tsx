@@ -3,16 +3,6 @@ import Image from "next/image";
 import { IndiaWhyStudy } from "@/constants/indian-universities";
 import ContainerWrapper from "@/components/ContainerWrapper";
 import HeadingTypography from "@/components/Heading";
-import { imageBaseUrl } from "@/utils/config";
-
-
-const images = [
-  `${imageBaseUrl}StydyUSA/image1.png`,
-  `${imageBaseUrl}StydyUSA/image2.png`,
-  `${imageBaseUrl}StydyUSA/image3.png`,
-  `${imageBaseUrl}StydyUSA/image4.png`,
-  `${imageBaseUrl}StydyUSA/image5.png`,
-];
 
 const tooltipData = [
   IndiaWhyStudy.point1,
@@ -51,12 +41,12 @@ const WhyStudyInIndia = () => {
                   className={`absolute ${positions[index]} bg-white w-[180px] h-[150px] rounded-lg p-4 flex flex-col items-center justify-center shadow-lg text-center`}
                   title={item.subtitle}
                 >
-                  <div className="w-[70px] h-[70px] mb-2">
+                  <div className="w-[80px] h-[80px] mb-2">
                     <Image
-                      src={images[index]}
+                      src={item.image}
                       alt={item.title}
-                      width={70}
-                      height={70}
+                      width={80}
+                      height={80}
                       className="object-contain"
                     />
                   </div>
@@ -77,12 +67,12 @@ const WhyStudyInIndia = () => {
                 className="w-[250px] h-[180px] bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center text-center"
                 title={item.subtitle}
               >
-                <div className="w-[80px] h-[80px] mb-2">
+                <div className="w-[90px] h-[90px] mb-2">
                   <Image
-                    src={images[index]}
+                    src={item.image}
                     alt={item.title}
-                    width={80}
-                    height={80}
+                    width={90}
+                    height={90}
                     className="object-contain"
                   />
                 </div>
