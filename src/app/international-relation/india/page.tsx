@@ -21,7 +21,7 @@ export default function page() {
       <TwoColumnContent
         heading="Study in India — Top Universities for International Students"
         headingAs="h1"
-        imageUrl={imageBaseUrl + "International-Relation/University/indian_culture.jpg"}
+        imageUrl={imageBaseUrl + "international-relation/whyStudyIncountry/Study in India.png"}
         reverse={true}
         description={
           <>
