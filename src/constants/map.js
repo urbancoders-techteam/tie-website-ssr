@@ -1474,10 +1474,12 @@ const NewZealandPlace = {
 };
 
 // popular courses sectio
-const Image1 = imageBaseUrl + "popular1.png";
-const Image2 = imageBaseUrl + "popular2.png";
-const Image3 = imageBaseUrl + "popular3.png";
-const Image4 = imageBaseUrl + "popular4.png";
+// The former popular*.png objects in S3 return 403. Keep these course-card
+// illustrations local so the carousel cannot keep retrying failed upstream URLs.
+const Image1 = "/images/hexcourse.svg";
+const Image2 = "/images/hexcourse.svg";
+const Image3 = "/images/hexcourse.svg";
+const Image4 = "/images/hexcourse.svg";
 
 const USAPopular = [
   {

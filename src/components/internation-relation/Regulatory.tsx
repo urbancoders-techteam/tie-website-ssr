@@ -89,9 +89,6 @@ export default function Regulatory() {
                   link: college?.link,
                 }}
                 cardWidth="260px"
-                cardHeight="280px"
-                hoverHeight="100%"
-                initialheight="26%"
               />
             ))}
           </div>

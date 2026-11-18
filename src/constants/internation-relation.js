@@ -1,4 +1,4 @@
-import { imageBaseUrl, internationalRelationImageUrl, webIconsUrl } from "@/utils/config";
+import { internationalRelationImageUrl, webIconsUrl } from "@/utils/config";
 
 export const benefits = [
   {
@@ -247,10 +247,12 @@ export const studentWorkData = [
   },
 ];
 
-const Image1 = imageBaseUrl + "popular1.png";
-const Image2 = imageBaseUrl + "popular2.png";
-const Image3 = imageBaseUrl + "popular3.png";
-const Image4 = imageBaseUrl + "popular4.png";
+// The former popular*.png objects in S3 return 403. These local assets avoid
+// repeated image-optimizer retries from the autoplay carousel.
+const Image1 = "/images/hexcourse.svg";
+const Image2 = "/images/hexcourse.svg";
+const Image3 = "/images/hexcourse.svg";
+const Image4 = "/images/hexcourse.svg";
 
 export const IndiaPopular = [
   {
