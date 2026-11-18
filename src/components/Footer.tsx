@@ -24,7 +24,7 @@ const SOCIAL_LINKS = [
     brand: "#0A66C2",
   },
   {
-    href: "https://www.youtube.com/place/g_11bwhbdj5v/shorts",
+    href: "https://www.youtube.com/@Taksheela_TIE/featured",
     label: "YouTube",
     Icon: FaYoutube,
     brand: "#FF0033",
