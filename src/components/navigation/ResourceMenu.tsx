@@ -43,7 +43,7 @@ export default function ResourceMenu({
         aria-expanded={open}
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1 border-b-[3px] pb-1 font-medium ${
-          mobile ? "text-base" : "text-[13px] xl:text-sm"
+          mobile ? "text-base" : "text-sm xl:text-[15px]"
         } ${
           active
             ? "border-[#00999E] text-[#00999E]"

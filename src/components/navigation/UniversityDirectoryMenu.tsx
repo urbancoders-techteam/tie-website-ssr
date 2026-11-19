@@ -21,7 +21,7 @@ export default function UniversityDirectoryMenu({ mobile = false, onNavigate }: 
   }, []);
 
   return <div ref={root} className={mobile ? "py-2" : "relative"} onMouseEnter={() => { if (!mobile) setOpen(true); }} onMouseLeave={() => { if (!mobile) setOpen(false); }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false); }} onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>
-    <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className={`flex items-center gap-1 border-b-[3px] border-transparent pb-1 font-medium text-black hover:text-[#00999E] ${mobile ? "text-base" : "text-[13px] xl:text-sm"}`}>University <span aria-hidden className="text-xs">⌄</span></button>
+    <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className={`flex items-center gap-1 border-b-[3px] border-transparent pb-1 font-medium text-black hover:text-[#00999E] ${mobile ? "text-base" : "text-sm xl:text-[15px]"}`}>University <span aria-hidden className="text-xs">⌄</span></button>
     {open && <div className={mobile ? "mt-3" : "absolute left-1/2 top-full z-50 w-[720px] max-w-[90vw] -translate-x-1/2 pt-4"}>
       <div className="grid gap-4 rounded-2xl border border-[#00999E]/20 bg-white p-4 shadow-xl sm:grid-cols-[150px_180px_1fr]">
         <div className="space-y-2">{universityGroups.map((item, index) => <button key={item.label} type="button" aria-pressed={groupIndex === index} onClick={() => { setGroupIndex(index); setCountryIndex(0); setQuery(""); }} className={`w-full rounded-lg border p-3 text-left text-sm font-semibold ${groupIndex === index ? "border-[#00999E] bg-[#effdff] text-[#007c80]" : "border-slate-100 text-slate-700"}`}>{item.icon} {item.label}</button>)}</div>

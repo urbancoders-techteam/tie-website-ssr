@@ -484,7 +484,7 @@ export const Header = ({ itemupdate }: any) => {
             ) : (
               <Stack
                 direction="row"
-                spacing={isLgDown ? 2 : 3}
+                spacing={isLgDown ? 2.25 : 3.25}
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
@@ -504,7 +504,7 @@ export const Header = ({ itemupdate }: any) => {
                 >
                   <HoverTypography
                     isActive={isParentMenuSelected("Home")}
-                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
+                    sx={{ fontSize: isLgDown ? "14px" : "15px", fontWeight: 500 }}
                   >
                     Home
                   </HoverTypography>
@@ -522,7 +522,7 @@ export const Header = ({ itemupdate }: any) => {
                 >
                   <HoverTypography
                     isActive={isParentMenuSelected("Test Prep")}
-                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
+                    sx={{ fontSize: isLgDown ? "14px" : "15px", fontWeight: 500 }}
                   >
                     Test Prep
                   </HoverTypography>
@@ -535,7 +535,7 @@ export const Header = ({ itemupdate }: any) => {
                 >
                   <HoverTypography
                     isActive={isParentMenuSelected("Immersion")}
-                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
+                    sx={{ fontSize: isLgDown ? "14px" : "15px", fontWeight: 500 }}
                   >
                     Immersion
                   </HoverTypography>
