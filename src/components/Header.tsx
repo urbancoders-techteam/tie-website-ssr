@@ -23,6 +23,7 @@ import {
 import { navbarData } from "@/constants/navbar";
 import UniversityMenu from "@/components/navigation/UniversityMenu";
 import UniversityDirectoryMenu from "@/components/navigation/UniversityDirectoryMenu";
+import ResourceMenu from "@/components/navigation/ResourceMenu";
 import Popover from "@mui/material/Popover";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import axios from "axios";
@@ -388,7 +389,7 @@ export const Header = ({ itemupdate }: any) => {
                   </IconButton>
                 </Box>
                 <List sx={{ padding: "0px 20px" }}>
-                  {navbarData.map(menuItem => menuItem.menu.name === "University" ? (
+                  {navbarData.filter(menuItem => !["About Us", "International Engagement"].includes(menuItem.menu.name)).map(menuItem => menuItem.menu.name === "University" ? (
                     <Box key="university"><UniversityMenu mobile onNavigate={handleDrawerClose} /><UniversityDirectoryMenu mobile onNavigate={handleDrawerClose} /></Box>
                   ) : (
                     <Box key={menuItem.menu.link} sx={{ py: 1.5 }}>
@@ -399,6 +400,12 @@ export const Header = ({ itemupdate }: any) => {
                       </Link>
                     </Box>
                   ))}
+                  <Box sx={{ py: 1.5 }}>
+                    <Link href="/immersion" className="custom-link" onClick={handleDrawerClose}>
+                      <HoverTypography isActive={location === "/immersion"} sx={{ fontSize: "16px", fontWeight: 500 }}>Immersion</HoverTypography>
+                    </Link>
+                  </Box>
+                  <ResourceMenu mobile onNavigate={handleDrawerClose} />
                   <Box sx={{ py: 0.75 }}>
                     <Link
                       href="/contact"
@@ -413,18 +420,6 @@ export const Header = ({ itemupdate }: any) => {
                   </Box>
                   {token ? (
                     <>
-                      <Box sx={{ py: 0.75 }}>
-                        <Link
-                          href="/blogs"
-                          className="custom-link"
-                          onClick={handleDrawerClose}
-                          style={{ display: "block" }}
-                        >
-                          <HoverTypography sx={{ fontSize: "16px", fontWeight: 600 }}>
-                            Blogs
-                          </HoverTypography>
-                        </Link>
-                      </Box>
                       <Box>
                         <Link
                           href={`${navURL}dashboard/home`}
@@ -448,19 +443,6 @@ export const Header = ({ itemupdate }: any) => {
                     </>
                   ) : (
                     <>
-
-                      <Box sx={{ py: 0.75 }}>
-                        <Link
-                          href="/blogs"
-                          className="custom-link"
-                          onClick={handleDrawerClose}
-                          style={{ display: "block" }}
-                        >
-                          <HoverTypography sx={{ fontSize: "16px", fontWeight: 600 }}>
-                            Blogs
-                          </HoverTypography>
-                        </Link>
-                      </Box>
                       <Box sx={{ py: 0.75 }}>
                         <Link
                           href={`${navURL}login`}
@@ -528,20 +510,6 @@ export const Header = ({ itemupdate }: any) => {
                   </HoverTypography>
                 </Link>
 
-                <Link
-                  href="/aboutus"
-                  className="custom-link"
-                  style={NavLinkCss({ isActive: isParentMenuSelected("About Us") }) as React.CSSProperties}
-                  onClick={() => setSelectedParentMenu("About Us")}
-                >
-                  <HoverTypography
-                    isActive={isParentMenuSelected("About Us")}
-                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
-                  >
-                    About Us
-                  </HoverTypography>
-                </Link>
-
                 <UniversityMenu />
                 <UniversityDirectoryMenu />
 
@@ -559,21 +527,6 @@ export const Header = ({ itemupdate }: any) => {
                     Test Prep
                   </HoverTypography>
                 </Link>
-
-                <Link
-                  href="/international-relation"
-                  className="custom-link"
-                  style={NavLinkCss({ isActive: isParentMenuSelected("international-relation") }) as React.CSSProperties}
-                  onClick={() => setSelectedParentMenu("international-relation")}
-                >
-                  <HoverTypography
-                    isActive={isParentMenuSelected("international-relation")}
-                    sx={{ fontSize: isLgDown ? "13px" : "14px", fontWeight: 500 }}
-                  >
-                    International Engagement
-                  </HoverTypography>
-                </Link>
-
                 <Link
                   href="/immersion"
                   className="custom-link"
@@ -588,33 +541,7 @@ export const Header = ({ itemupdate }: any) => {
                   </HoverTypography>
                 </Link>
 
-                <Link
-                  href="/blogs"
-                  className="custom-link"
-                  style={
-                    NavLinkCss({
-                      isActive:
-                        isParentMenuSelected("Blogs") ||
-                        location === "/blogs" ||
-                        location.startsWith("/blogs/"),
-                    }) as React.CSSProperties
-                  }
-                  onClick={() => setSelectedParentMenu("Blogs")}
-                >
-                  <HoverTypography
-                    sx={{
-                      fontSize: isLgDown ? "13px" : "14px",
-                      fontWeight: 500,
-                    }}
-                    isActive={
-                      isParentMenuSelected("Blogs") ||
-                      location === "/blogs" ||
-                      location.startsWith("/blogs/")
-                    }
-                  >
-                    Blogs
-                  </HoverTypography>
-                </Link>
+                <ResourceMenu />
 
                 {token ? (
                   <Box
