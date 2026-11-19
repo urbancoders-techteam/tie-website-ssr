@@ -22,6 +22,7 @@ import {
 
 import { navbarData } from "@/constants/navbar";
 import UniversityMenu from "@/components/navigation/UniversityMenu";
+import UniversityDirectoryMenu from "@/components/navigation/UniversityDirectoryMenu";
 import Popover from "@mui/material/Popover";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import axios from "axios";
@@ -388,7 +389,7 @@ export const Header = ({ itemupdate }: any) => {
                 </Box>
                 <List sx={{ padding: "0px 20px" }}>
                   {navbarData.map(menuItem => menuItem.menu.name === "University" ? (
-                    <UniversityMenu key="university" mobile onNavigate={handleDrawerClose} />
+                    <Box key="university"><UniversityMenu mobile onNavigate={handleDrawerClose} /><UniversityDirectoryMenu mobile onNavigate={handleDrawerClose} /></Box>
                   ) : (
                     <Box key={menuItem.menu.link} sx={{ py: 1.5 }}>
                       <Link href={menuItem.menu.link} className="custom-link" onClick={handleDrawerClose}>
@@ -542,6 +543,7 @@ export const Header = ({ itemupdate }: any) => {
                 </Link>
 
                 <UniversityMenu />
+                <UniversityDirectoryMenu />
 
 
                 <Link

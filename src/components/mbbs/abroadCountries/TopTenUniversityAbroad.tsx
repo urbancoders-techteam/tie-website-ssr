@@ -20,6 +20,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const UNI_CAROUSEL_AUTOPLAY_MS = 4500;
+const UNIVERSITY_CARD_HEADER_PLACEHOLDER = "/images/universityViewBanner.png";
 
 const TAG_STYLES: Record<TopUniHeaderTagVariant, string> = {
   emerald: "bg-emerald-600 text-white",
@@ -59,16 +60,14 @@ function UniversityCard({ card, watermarkCode }: { card: AbroadTopUniversityCard
   return (
     <article className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-xl border border-[#E5E9F2] bg-white shadow-[0_8px_30px_rgba(15,23,42,0.08)] md:rounded-2xl">
       <div className="relative flex min-h-[200px] flex-col overflow-hidden rounded-t-xl bg-gradient-to-br from-[#0c4a6e] via-[#0a3d63] to-[#082f4d] px-4 pb-4 pt-4 text-white md:min-h-[175px] md:rounded-t-2xl lg:min-h-[150px] lg:px-3.5 lg:pb-3 lg:pt-3.5">
-        {card.imageSrc ? (
-          <Image
-            src={card.imageSrc}
-            alt=""
-            fill
-            className="object-cover opacity-[0.18]"
-            sizes="(max-width: 768px) 100vw, 28vw"
-            aria-hidden
-          />
-        ) : null}
+        <Image
+          src={UNIVERSITY_CARD_HEADER_PLACEHOLDER}
+          alt=""
+          fill
+          className="object-cover opacity-[0.22]"
+          sizes="(max-width: 768px) 100vw, 28vw"
+          aria-hidden
+        />
         {card.headerEmoji ? (
           <div
             className="absolute right-3 top-3 z-20 text-3xl opacity-90 drop-shadow-md md:text-4xl lg:text-3xl"

@@ -38,7 +38,7 @@ export default function UniversityMenu({ mobile = false, onNavigate }: { mobile?
       onKeyDown={event => { if (event.key === "Escape") { setOpen(false); trigger.current?.focus(); } }}>
       <button ref={trigger} type="button" aria-expanded={open} onClick={() => setOpen(!open)}
         className={`flex items-center gap-1 border-b-[3px] pb-1 font-medium ${mobile ? "text-base" : "text-[13px] xl:text-sm"} ${active ? "border-[#00999E] text-[#00999E]" : "border-transparent text-black hover:text-[#00999E]"}`}>
-        University <span aria-hidden className="text-xs">⌄</span>
+        Country <span aria-hidden className="text-xs">⌄</span>
       </button>
       {open && (
         <div className={mobile ? "mt-3" : "absolute left-1/2 top-full z-50 w-[600px] max-w-[90vw] -translate-x-1/2 pt-4"}>
