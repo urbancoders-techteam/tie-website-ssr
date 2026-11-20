@@ -54,6 +54,7 @@ function matchesFilter(
 }
 
 function UniversityCard({ card, watermarkCode }: { card: AbroadTopUniversityCard; watermarkCode: string }) {
+  const countrySlug: Record<string, string> = { RU: "russia", GE: "georgia", KZ: "kazakhstan", KG: "kyrgyzstan", UZ: "uzbekistan" };
   const subline =
     card.subtitle ?? `${card.abbreviation} • Est. ${card.established} • ${card.locationLine}`;
 
@@ -150,6 +151,7 @@ function UniversityCard({ card, watermarkCode }: { card: AbroadTopUniversityCard
         </div>
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-[#EEF1F7] pt-3 md:pt-3">
+          {countrySlug[watermarkCode] && <Link href={`/universities/mbbs/${countrySlug[watermarkCode]}/${card.id}`} className="text-[13px] font-semibold text-[#00999E] hover:underline">University details →</Link>}
           <Link
             href={card.applyHref}
             className="text-[13px] font-semibold text-[#00999E] transition hover:text-[#007a7d] md:text-[12px]"
