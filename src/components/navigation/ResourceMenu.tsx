@@ -50,10 +50,7 @@ export default function ResourceMenu({
             : "border-transparent text-black hover:text-[#00999E]"
         }`}
       >
-        Resource{" "}
-        <span aria-hidden className="relative -top-[2px]">
-          ⌄
-        </span>
+        Resource
       </button>
       {open && (
         <div
