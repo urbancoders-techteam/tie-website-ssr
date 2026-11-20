@@ -70,7 +70,7 @@ function ServiceContent({
 
   const descriptionClass = mobile
     ? "text-[0.8125rem] font-normal leading-[1.65] text-white sm:text-[0.875rem]"
-    : "text-[0.8125rem] font-normal leading-[1.65] text-white sm:text-[0.875rem] lg:text-[0.75rem] lg:leading-[1.55] xl:text-[0.8125rem] xl:leading-[1.62] 2xl:text-[0.875rem]";
+    : "text-[0.8125rem] font-normal leading-[1.65] text-white sm:text-[0.875rem] lg:line-clamp-4 lg:text-[0.75rem] lg:leading-[1.55] xl:text-[0.8125rem] xl:leading-[1.62] 2xl:text-[0.875rem]";
 
   const buttonClass = mobile
     ? "relative z-20 inline-flex w-fit shrink-0 items-center rounded-md border border-white/25 bg-white px-4 py-2 text-[0.8125rem] font-semibold shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-white hover:shadow-md active:scale-[0.99]"
@@ -82,7 +82,7 @@ function ServiceContent({
         <h3 className={titleClass}>{title}</h3>
         <p className={descriptionClass}>{description}</p>
       </div>
-      <div className={mobile ? "pt-1" : undefined}>
+      <div className={mobile ? "shrink-0 pt-1" : "shrink-0"}>
         <Link
           href={href}
           className={buttonClass}
@@ -254,7 +254,7 @@ export default function OurServices() {
         {/* DESKTOP / TABLET (sm and above): 2x4 mosaic grid layout */}
         <div className="overflow-hidden rounded-2xl bg-white p-px shadow-[0_4px_28px_-6px_rgba(15,39,68,0.1)] ring-1 ring-white">
           <div
-            className="hidden grid-cols-1 gap-px bg-white sm:grid sm:grid-cols-2 lg:h-[24rem] lg:w-full lg:grid-cols-4 lg:grid-rows-2 xl:h-[26rem] 2xl:h-[27rem]"
+            className="hidden grid-cols-1 gap-px bg-white sm:grid sm:grid-cols-2 lg:h-[24.5rem] lg:w-full lg:grid-cols-4 lg:grid-rows-2 xl:h-[26.5rem] 2xl:h-[27.5rem]"
           >
             {desktopSlots.map((slot) => {
               if (slot.kind === "image") {
