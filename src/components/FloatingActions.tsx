@@ -30,7 +30,7 @@ const FloatingActions = () => {
         <div className="flex gap-3">
           {/* CTA Button */}
           {showCTA && (
-            <div className=" bg-gradient-to-r from-[#00999E] to-[#00777E] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
+            <div className=" bg-gradient-to-r from-[#3f454b] to-[#111111] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
               <Icon
                 icon="mdi:close"
                 className="cursor-pointer"
@@ -47,7 +47,7 @@ const FloatingActions = () => {
           )}
           <button
             onClick={() => router.push("/study-abroad/university-finder")}
-            className="bg-[#00999E] hover:bg-[#00777E] text-white p-2 rounded-md shadow-md cursor-pointer"
+            className="bg-[#22272b] hover:bg-black text-white p-2 rounded-md shadow-md cursor-pointer"
           >
             <Icon icon="fa-solid:university" width="28" height="28" />
           </button>
