@@ -1711,7 +1711,7 @@ const kyrgyzstanUniversityData: AbroadTopUniversityCard[] = [
 
 export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = kyrgyzstanUniversityData.map((card) => ({
   ...card,
-  imageSrc: `${imageBaseUrl}mbbs/abroad/kyrgyzstan/universityBanner/${encodeURIComponent(`${card.name.replace(/—/g, "–")}.png`)}`,
+  imageSrc: `${imageBaseUrl}mbbs/abroad/kyrgyzstan/universityBanner/${encodeURIComponent(`${card.name}.png`)}`,
 }));
 
 export const kyrgyzstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
