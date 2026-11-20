@@ -27,8 +27,8 @@ type ApiBannerRow = {
   bannerImg?: string;
 };
 
-/** Mobile: slightly shorter hero so form fits on one screen. md+: fill viewport below sticky header (~80px bar + 3px border). */
-const SLIDE_HEIGHT = "h-[58vh] min-h-[300px] md:h-[calc(100dvh-83px)]";
+/** Leave room for the header and counter on desktop; keep enough height for the form. */
+const SLIDE_HEIGHT = "h-[60.32vh] min-h-[312px] md:h-[max(499px,calc(104dvh-260px))]";
 const SLICK_FULL_HEIGHT =
   "[&_.slick-slider]:relative [&_.slick-slider]:h-full [&_.slick-slider]:overflow-visible [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full";
 /** Pull dots inside the banner (slick-theme defaults to bottom:-25px, which clips below fixed-height heroes). */
@@ -171,7 +171,7 @@ function BannerSlide({ item, priority = false }: { item: BannerItem; priority?: 
 
             </div>
 
-            <div className="hidden w-[340px] shrink-0 items-center justify-center md:flex lg:w-[360px]">
+            <div className="hidden w-[340px] shrink-0 items-center justify-center md:flex lg:w-[360px] [&_form]:!gap-2 [&_form]:!p-4">
               <RegisterForm floating={false} heading="Book Free Demo" />
             </div>
           </div>
