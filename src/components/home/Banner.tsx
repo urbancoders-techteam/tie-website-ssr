@@ -28,7 +28,7 @@ type ApiBannerRow = {
 };
 
 /** Leave room for the header and counter on desktop; keep enough height for the form. */
-const SLIDE_HEIGHT = "h-[60.32vh] min-h-[312px] md:h-[max(499px,calc(104dvh-260px))]";
+const SLIDE_HEIGHT = "h-[calc(60.32vh-18px)] min-h-[294px] md:h-[max(481px,calc(104dvh-278px))]";
 const SLICK_FULL_HEIGHT =
   "[&_.slick-slider]:relative [&_.slick-slider]:h-full [&_.slick-slider]:overflow-visible [&_.slick-list]:h-full [&_.slick-track]:h-full [&_.slick-slide]:h-full [&_.slick-slide>div]:h-full";
 /** Pull dots inside the banner (slick-theme defaults to bottom:-25px, which clips below fixed-height heroes). */
