@@ -3,6 +3,8 @@ import { expandSeoBlogRedirects } from "./src/lib/blog/seoBlogRedirects";
 import { expandSeoIndiaUniversityRedirects } from "./src/lib/indiaUniversitySeoRedirects";
 
 const nextConfig: NextConfig = {
+  // Keep the dev server and production build from overwriting each other's chunks.
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   async redirects() {
     return [
       {

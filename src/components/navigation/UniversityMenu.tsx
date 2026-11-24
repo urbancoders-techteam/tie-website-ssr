@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { universityGroups } from "@/constants/navigation/university";
+import { FiArrowRight, FiGlobe, FiSearch } from "react-icons/fi";
+import MenuPathSelector from "./MenuPathSelector";
 
 export default function UniversityMenu({ mobile = false, onNavigate }: { mobile?: boolean; onNavigate?: () => void }) {
   const pathname = usePathname();
@@ -42,27 +44,18 @@ export default function UniversityMenu({ mobile = false, onNavigate }: { mobile?
       </button>
       {open && (
         <div className={mobile ? "mt-3" : "absolute left-1/2 top-full z-50 w-[600px] max-w-[90vw] -translate-x-1/2 pt-4"}>
-          <div className="grid gap-4 rounded-2xl border border-[#00999E]/20 bg-white p-4 shadow-xl sm:grid-cols-[190px_1fr]">
-            <div className="space-y-3">
-              {universityGroups.map((item, index) => (
-                <button key={item.label} type="button" aria-pressed={groupIndex === index}
-                  onClick={() => { setGroupIndex(index); setQuery(""); }}
-                  className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-5 text-left text-sm font-bold transition ${groupIndex === index ? "border-[#00999E] bg-[#effdff] text-[#007c80]" : "border-slate-100 text-slate-700 hover:border-[#00999E]/40"}`}>
-                  <span aria-hidden className="text-2xl">{item.icon}</span>{item.label}
-                </button>
-              ))}
-              <Link href="/mbbs" onClick={navigate} className="block px-2 py-2 text-sm font-semibold text-[#00999E] hover:underline">Explore MBBS Abroad →</Link>
-              <Link href="/study-abroad" onClick={navigate} className="block px-2 py-2 text-sm font-semibold text-[#00999E] hover:underline">Study Abroad →</Link>
-            </div>
-            <div className="min-w-0 rounded-xl bg-[#f6fbfc] p-4">
-              <h2 className="mb-4 text-xl font-bold text-slate-900">{group.label} Countries</h2>
+          <div className={`overflow-hidden rounded-2xl border border-[#dbe9eb] bg-white shadow-[0_20px_55px_-18px_rgba(15,39,68,0.3)] ${mobile ? "" : "grid grid-cols-[200px_minmax(0,1fr)]"}`}>
+            <MenuPathSelector selected={groupIndex} onSelect={index => { setGroupIndex(index); setQuery(""); }} onNavigate={navigate} />
+            <div className="min-w-0 p-4 sm:p-5">
+              <div className="mb-4 flex items-center gap-3"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e4f7f6] text-[#00999E]"><FiGlobe aria-hidden className="h-5 w-5" /></span><div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#00999E]">Find your destination</p><h2 className="mt-0.5 text-base font-bold text-[#102c3b]">{group.label} Countries</h2></div></div>
+              <div className="relative mb-3"><FiSearch aria-hidden className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <input type="search" aria-label={`Search ${group.label} countries`} placeholder="Search country…" value={query} onChange={event => setQuery(event.target.value)}
-                className="mb-3 w-full rounded-lg border border-[#00999E]/30 bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#00999E]" />
-              <ul className="max-h-[280px] space-y-2 overflow-y-auto pr-1">
+                className="w-full rounded-lg border border-slate-200 bg-[#f8fafb] py-2.5 pl-9 pr-3 text-sm text-slate-800 outline-none focus:border-[#00999E] focus:ring-2 focus:ring-[#00999E]/20" /></div>
+              <ul className={`grid max-h-[252px] gap-2 overflow-y-auto pr-1 ${mobile ? "grid-cols-1" : "grid-cols-2"}`}>
                 {group.countries.filter(country => country.name.toLowerCase().includes(query.trim().toLowerCase())).map(country => (
                   <li key={country.href}><Link href={country.href} onClick={navigate} aria-current={pathname === country.href ? "page" : undefined}
-                    className="flex items-center gap-3 rounded-lg border border-[#00999E]/20 bg-white p-3 text-sm font-semibold text-[#007c80] transition hover:border-[#00999E] hover:bg-[#e5fbfc] focus-visible:outline-[#00999E]">
-                    <span aria-hidden className="text-2xl">{country.flag}</span>{country.name}
+                    className="group flex min-h-[48px] items-center gap-2.5 rounded-xl border border-[#e5eeee] bg-white px-3 py-2 text-sm font-semibold text-[#24434e] transition hover:border-[#8ed5d2] hover:bg-[#f0fbfa] hover:text-[#007f83] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00999E]">
+                    <span aria-hidden className="text-xl">{country.flag}</span><span className="min-w-0 flex-1">{country.name}</span><FiArrowRight aria-hidden className="h-4 w-4 shrink-0 text-[#8ca8aa] transition group-hover:translate-x-0.5 group-hover:text-[#00999E]" />
                   </Link></li>
                 ))}
                 {!group.countries.some(country => country.name.toLowerCase().includes(query.trim().toLowerCase())) && <li className="py-4 text-sm text-slate-500">No countries found.</li>}

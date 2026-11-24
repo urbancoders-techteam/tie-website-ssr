@@ -11,6 +11,7 @@ import Link from "next/link";
 import HomeSectionHeader from "./HomeSectionHeader";
 import Slider from "react-slick";
 import type { Settings } from "react-slick";
+import Tooltip from "@mui/material/Tooltip";
 
 /** Matches design reference — vibrant teal blocks + accents */
 const TEAL = "#00a88f";
@@ -80,7 +81,13 @@ function ServiceContent({
     <div className={wrapperClass}>
       <div className="min-h-0 space-y-3 sm:space-y-3.5">
         <h3 className={titleClass}>{title}</h3>
-        <p className={descriptionClass}>{description}</p>
+        {mobile ? (
+          <p className={descriptionClass}>{description}</p>
+        ) : (
+          <Tooltip title={description} arrow placement="top" describeChild>
+            <p tabIndex={0} className={`${descriptionClass} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}>{description}</p>
+          </Tooltip>
+        )}
       </div>
       <div className={mobile ? "shrink-0 pt-1" : "shrink-0"}>
         <Link

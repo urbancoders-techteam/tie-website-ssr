@@ -116,6 +116,8 @@ export default function BlogHero({ blog }: BlogHeroProps) {
                 </span>
               </div>
             ) : heroImage.startsWith("data:") ? (
+              // Data URLs are already inline and do not need image optimization.
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={heroImage}
                 alt={blog.title}
