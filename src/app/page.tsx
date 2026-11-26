@@ -6,7 +6,6 @@ import OurServices from "@/components/home/OurServices";
 import TrustTaksheela from "@/components/home/TrustTaksheela";
 import MedicalEducation from "@/components/home/MedicalEducation";
 import GlobalDegree from "@/components/home/GlobalDegree";
-import TaksheelaEdge from "@/components/home/TaksheelaEdge";
 import WhereYouAre from "@/components/home/WhereYouAre";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -98,9 +97,7 @@ export default function Page() {
       <div id="home-test-prep"><TestPrepSectionHome /></div>
       <div id="home-why-taksheela"><TrustTaksheela /></div>
       <GlobalDegree />
-      <TaksheelaEdge />
       <WhereYouAre />
-      <div id="home-faq"><FAQHome /></div>
       <BookCouncilBanner
         redirectPath="/thankyou"
         description="Book your FREE counselling session today with one of India's most trusted overseas education consultants in India. 5,000+ students did, and never looked back."
@@ -110,6 +107,7 @@ export default function Page() {
       <WebinarEvent />
       <DownloadBrochure />
       <Blogs />
+      <div id="home-faq"><FAQHome /></div>
     </>
   );
 }

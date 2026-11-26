@@ -10,8 +10,8 @@ const tabs = [
   { label: "Global Immersion", id: "home-immersion" },
   { label: "Test Prep", id: "home-test-prep" },
   { label: "Why Taksheela", id: "home-why-taksheela" },
-  { label: "FAQs", id: "home-faq" },
   { label: "Testimonials", id: "home-testimonials" },
+  { label: "FAQs", id: "home-faq" },
 ];
 
 export default function HomeSectionTabs() {
