@@ -2,7 +2,6 @@ import type { StudyAbroadCampaignData } from "@/components/campaign/study-abroad
 import { imageBaseUrl, studyAbroadImageUrl } from "@/utils/config";
 
 const place = `${imageBaseUrl}CountryPlaces/newzealand`;
-const uni = `${imageBaseUrl}CountryUniversities/newzealand`;
 
 const heroImage = `${studyAbroadImageUrl}campaign/new-zealand/newzealand-home-banner.jpg`;
 
