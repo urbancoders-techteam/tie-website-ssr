@@ -74,8 +74,8 @@ function ServiceContent({
     : "text-[0.8125rem] font-normal leading-[1.65] text-white sm:text-[0.875rem] lg:line-clamp-4 lg:text-[0.75rem] lg:leading-[1.55] xl:text-[0.8125rem] xl:leading-[1.62] 2xl:text-[0.875rem]";
 
   const buttonClass = mobile
-    ? "relative z-20 inline-flex w-fit shrink-0 items-center rounded-md border border-white/25 bg-white px-4 py-2 text-[0.8125rem] font-semibold shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-white hover:shadow-md active:scale-[0.99]"
-    : "relative inline-flex w-fit shrink-0 items-center rounded-md bg-white px-4 py-2 text-[0.8125rem] font-semibold shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-white hover:shadow-md active:scale-[0.99] sm:px-5 sm:py-2.5 sm:text-sm lg:px-4 lg:py-2 lg:text-[0.75rem] xl:px-5 xl:py-2.5 xl:text-[0.8125rem]";
+    ? "relative z-20 inline-flex w-fit shrink-0 items-center rounded-md border border-white/25 bg-white px-4 py-2 text-[0.8125rem] font-semibold shadow-[0_4px_12px_rgba(15,39,68,0.25)] transition-[background-color,box-shadow,transform] duration-200 hover:bg-white hover:shadow-[0_6px_16px_rgba(15,39,68,0.32)] active:scale-[0.99]"
+    : "relative inline-flex w-fit shrink-0 items-center rounded-md bg-white px-4 py-2 text-[0.8125rem] font-semibold shadow-[0_4px_12px_rgba(15,39,68,0.25)] transition-[background-color,box-shadow,transform] duration-200 hover:bg-white hover:shadow-[0_6px_16px_rgba(15,39,68,0.32)] active:scale-[0.99] sm:px-5 sm:py-2.5 sm:text-sm lg:px-4 lg:py-2 lg:text-[0.75rem] xl:px-5 xl:py-2.5 xl:text-[0.8125rem]";
 
   return (
     <div className={wrapperClass}>
