@@ -26,7 +26,10 @@ import type {
   CountryStudyPageConfig,
   CountryTopTab,
 } from "@/lib/study-abroad/countryPageTypes";
-import { imageBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
+
+const germanyImage = (name: string) =>
+  `${studyAbroadImageUrl}country/germany/${encodeURIComponent(name)}.png`;
 
 export const GERMANY_COUNTRY_SLUGS = ["germany", "deutschland"] as const;
 
@@ -101,17 +104,17 @@ export const GERMANY_INTRO_CONTENT = {
 
 export const GERMANY_INTRO_GALLERY: IntroductionGalleryItem[] = [
   {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany1.png`,
+    src: germanyImage("German Universities"),
     label: "German Universities",
     icon: "building",
   },
   {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany2.png`,
+    src: germanyImage("Research & Innovation"),
     label: "Research & Innovation",
     icon: "campus",
   },
   {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany3.png`,
+    src: germanyImage("International Student Life"),
     label: "International Student Life",
     icon: "community",
   },
@@ -221,7 +224,7 @@ export const GERMANY_COST_STUDY = {
     "Understanding the cost of studying in Germany is crucial before planning your education journey. Germany is widely known for its affordable, high-quality education, particularly at public universities where tuition fees are minimal or even waived in many cases. However, students should also consider living expenses, health insurance, and other essential costs.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany4.png`,
+    src: germanyImage("German universities combine affordable education with strong research and industry exposure"),
     alt: "University campus in Germany",
     caption: "German universities combine affordable education with strong research and industry exposure",
   },
@@ -286,7 +289,7 @@ export const GERMANY_COST_OF_LIVING_SECTION = {
     "Here is a comprehensive monthly breakdown to help Indian students plan their finances before applying.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany5.png`,
+    src: germanyImage("Student accommodation and city life in Germany"),
     alt: "Student accommodation and city life in Germany",
     caption: "Student accommodation and city life in Germany",
   },
@@ -314,7 +317,7 @@ export const GERMANY_TOP_COURSES = {
     "Germany is known for its world-class education, strong industry connections, and excellent career opportunities. With affordable tuition fees and a wide range of industry-focused programmes, it remains one of the most popular study destinations for Indian students.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany2.png`,
+    src: germanyImage("Industry-focused programmes make Germany a strong destination for Indian students"),
     alt: "Students in a collaborative session at a German university",
     caption: "Industry-focused programmes make Germany a strong destination for Indian students",
   },
@@ -408,7 +411,7 @@ export const GERMANY_MASTERS_FOR_INDIAN = {
     "Germany is a leading destination for Indian students pursuing a 2-year Master's degree (MS/MSc), offering world-class education, affordable tuition fees, and excellent career prospects. With many public universities charging low or no tuition fees, strong industry connections, and access to Europe's largest economy, Germany provides an ideal environment for both academic excellence and long-term professional growth.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany3.png`,
+    src: germanyImage("German Master's programmes combine academic depth, research exposure, and industry links"),
     alt: "Masters students at a German university",
     caption: "German Master's programmes combine academic depth, research exposure, and industry links",
   },
@@ -495,7 +498,7 @@ export const GERMANY_STUDENT_VISA = {
     { number: 7, title: "Register in Germany", description: "After arrival, complete city registration (Anmeldung) and apply for your residence permit at the local Foreigners' Office." },
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany6.png`,
+    src: germanyImage("Start the German student visa process early for smoother intake planning"),
     alt: "German student visa process",
     caption: "Start the German student visa process early for smoother intake planning",
   },
@@ -538,7 +541,7 @@ export const GERMANY_JOBS_AFTER_MS = {
     "Germany offers excellent career prospects for MS graduates, driven by its strong economy, industry-focused education, and high demand for skilled professionals. With an 18-month post-study work opportunity and thriving sectors such as Engineering, IT, AI, Automotive, Finance, Renewable Energy, and Manufacturing, graduates can access rewarding careers with global companies.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany7.png`,
+    src: germanyImage("Germany offers strong graduate outcomes across engineering, technology, finance, and manufacturing"),
     alt: "Career opportunities after MS in Germany",
     caption: "Germany offers strong graduate outcomes across engineering, technology, finance, and manufacturing",
   },
@@ -604,7 +607,7 @@ export const GERMANY_MBA_SECTION = {
     "Germany is an attractive destination for Indian professionals pursuing an MBA, offering globally recognised business education, strong industry connections, and access to Europe's largest economy. With MBA programmes typically lasting 1-2 years, affordable tuition options, and excellent post-study career opportunities, Germany delivers strong value and long-term career growth.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/germany/germany8.png`,
+    src: germanyImage("German MBA programmes offer strong ROI, industry exposure, and European career access"),
     alt: "MBA classroom in Germany",
     caption: "German MBA programmes offer strong ROI, industry exposure, and European career access",
   },

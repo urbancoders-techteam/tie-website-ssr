@@ -1,14 +1,14 @@
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, studyAbroadImageUrl } from "@/utils/config";
 
 const usa = imageBaseUrl + "country/UsaInfo.svg";
 const uk = imageBaseUrl + "CountryBanner/uk.png";
-const Canada = imageBaseUrl + "CountryBanner/canada.png";
-const Ireland = imageBaseUrl + "CountryBanner/ireland.png";
-const france = imageBaseUrl + "CountryBanner/france.png";
-const italy = imageBaseUrl + "CountryBanner/italy.png";
-const Singapore = imageBaseUrl + "CountryBanner/singapore.png";
-const dubai = imageBaseUrl + "CountryBanner/dubai.png";
-const australia = imageBaseUrl + "CountryBanner/australia.png";
+const Canada = studyAbroadImageUrl + "country/canada/Canada%20banner.png";
+const Ireland = studyAbroadImageUrl + "country/ireland/Ireland%20banner.png";
+const france = studyAbroadImageUrl + "country/france/France%20banner.png";
+const italy = studyAbroadImageUrl + "country/Italy/Italy%20banner.png";
+const Singapore = studyAbroadImageUrl + "country/singapore/Singapore%20banner.png";
+const dubai = studyAbroadImageUrl + "country/dubai/Dubai%20banner.png";
+const australia = studyAbroadImageUrl + "country/australia/Australia%20banner.png";
 const germany = imageBaseUrl + "CountryBanner/germany.png";
 const newzealand = imageBaseUrl + "CountryBanner/newzealand.png";
 
@@ -3053,26 +3053,30 @@ const uk7 = imageBaseUrl + "CountryRecruiter/uk/barclays.png";
 const uk8 = imageBaseUrl + "CountryRecruiter/uk/hsbc.png";
 const uk9 = imageBaseUrl + "CountryRecruiter/uk/gsk.png";
 const uk10 = imageBaseUrl + "CountryRecruiter/uk/rr.png";
-const ire1 = imageBaseUrl + "CountryRecruiter/ireland/accenture.png";
-const ire2 = imageBaseUrl + "CountryRecruiter/ireland/google.png";
-const ire3 = imageBaseUrl + "CountryRecruiter/ireland/facebook.png";
-const ire4 = imageBaseUrl + "CountryRecruiter/ireland/deloitte.png";
-const ire5 = imageBaseUrl + "CountryRecruiter/ireland/kpmg.png";
-const ire6 = imageBaseUrl + "CountryRecruiter/ireland/pwc.png";
-const ire7 = imageBaseUrl + "CountryRecruiter/ireland/ey.png";
-const ire8 = imageBaseUrl + "CountryRecruiter/ireland/Ellipse 30.png";
-const ire9 = imageBaseUrl + "CountryRecruiter/ireland/intel.png";
-const ire10 = imageBaseUrl + "CountryRecruiter/ireland/amazon.png";
-const can1 = imageBaseUrl + "CountryRecruiter/canada/shopify.png";
-const can2 = imageBaseUrl + "CountryRecruiter/canada/google.png";
-const can3 = imageBaseUrl + "CountryRecruiter/canada/microspft.png";
-const can4 = imageBaseUrl + "CountryRecruiter/canada/ibm.png";
-const can5 = imageBaseUrl + "CountryRecruiter/canada/amazon.png";
-const can6 = imageBaseUrl + "CountryRecruiter/canada/deloitte.png";
-const can7 = imageBaseUrl + "CountryRecruiter/canada/pwc.png";
-const can8 = imageBaseUrl + "CountryRecruiter/canada/ey.png";
-const can9 = imageBaseUrl + "CountryRecruiter/canada/kpmg.png";
-const can10 = imageBaseUrl + "CountryRecruiter/canada/rbc.png";
+const irelandRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/ireland/popularRecruiters/${encodeURIComponent(name)}.png`;
+const ire1 = irelandRecruiterImage("Accenture");
+const ire2 = irelandRecruiterImage("Google");
+const ire3 = irelandRecruiterImage("Facebook");
+const ire4 = irelandRecruiterImage("Deloitte");
+const ire5 = irelandRecruiterImage("KPMG");
+const ire6 = irelandRecruiterImage("Pricewaterhouse Coopers");
+const ire7 = irelandRecruiterImage("EY Ireland");
+const ire8 = irelandRecruiterImage("Microsoft");
+const ire9 = irelandRecruiterImage("Intel");
+const ire10 = irelandRecruiterImage("Amazon");
+const canadaRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/canada/popularRecruiters/${encodeURIComponent(name)}.png`;
+const can1 = canadaRecruiterImage("Shopify");
+const can2 = canadaRecruiterImage("Google");
+const can3 = canadaRecruiterImage("Microsoft");
+const can4 = canadaRecruiterImage("IBM");
+const can5 = canadaRecruiterImage("Amazon");
+const can6 = canadaRecruiterImage("Deloitte");
+const can7 = canadaRecruiterImage("Pricewaterhouse Coopers (PwC)");
+const can8 = canadaRecruiterImage("Ernst & Young (EY)");
+const can9 = canadaRecruiterImage("KPMG");
+const can10 = canadaRecruiterImage("RBC (Royal Bank of Canada)");
 const ger1 = imageBaseUrl + "CountryRecruiter/germany/wv.png";
 const ger2 = imageBaseUrl + "CountryRecruiter/germany/bmw.png";
 const ger3 = imageBaseUrl + "CountryRecruiter/germany/simens.png";
@@ -3083,55 +3087,66 @@ const ger7 = imageBaseUrl + "CountryRecruiter/germany/deutschetelekom.png";
 const ger8 = imageBaseUrl + "CountryRecruiter/germany/bayer.png";
 const ger9 = imageBaseUrl + "CountryRecruiter/germany/deutschebank.png";
 const ger10 = imageBaseUrl + "CountryRecruiter/germany/basf.png";
-const aus1 = imageBaseUrl + "CountryRecruiter/australia/commbank.png";
-const aus2 = imageBaseUrl + "CountryRecruiter/australia/deloitte.png";
-const aus3 = imageBaseUrl + "CountryRecruiter/australia/pwc.png";
-const aus4 = imageBaseUrl + "CountryRecruiter/australia/kpmg.png";
-const aus5 = imageBaseUrl + "CountryRecruiter/australia/ey.png";
-const aus6 = imageBaseUrl + "CountryRecruiter/australia/westpac.png";
-const aus7 = imageBaseUrl + "CountryRecruiter/australia/anz.png";
-const aus8 = imageBaseUrl + "CountryRecruiter/australia/telstra.png";
-const aus9 = imageBaseUrl + "CountryRecruiter/australia/nab.png";
-const aus10 = imageBaseUrl + "CountryRecruiter/australia/bhp.png";
-const sin1 = imageBaseUrl + "CountryRecruiter/singapore/dbs.png";
-const sin2 = imageBaseUrl + "CountryRecruiter/singapore/ocbc.png";
-const sin3 = imageBaseUrl + "CountryRecruiter/singapore/uob.png";
-const sin4 = imageBaseUrl + "CountryRecruiter/singapore/singtel.png";
-const sin5 = imageBaseUrl + "CountryRecruiter/singapore/Deloitte.png";
-const sin6 = imageBaseUrl + "CountryRecruiter/singapore/pwc.png";
-const sin7 = imageBaseUrl + "CountryRecruiter/singapore/ey.png";
-const sin8 = imageBaseUrl + "CountryRecruiter/singapore/kpmg.png";
-const sin9 = imageBaseUrl + "CountryRecruiter/singapore/Gic.png";
-const sin10 = imageBaseUrl + "CountryRecruiter/singapore/capitaland.png";
-const ity1 = imageBaseUrl + "CountryRecruiter/italy/eni.png";
-const ity2 = imageBaseUrl + "CountryRecruiter/italy/unicredit.png";
-const ity3 = imageBaseUrl + "CountryRecruiter/italy/intesa.png";
-const ity4 = imageBaseUrl + "CountryRecruiter/italy/enel.png";
-const ity5 = imageBaseUrl + "CountryRecruiter/italy/fca.png";
-const ity6 = imageBaseUrl + "CountryRecruiter/italy/telecom.png";
-const ity7 = imageBaseUrl + "CountryRecruiter/italy/pt.png";
-const ity8 = imageBaseUrl + "CountryRecruiter/italy/luxottica.png";
-const ity9 = imageBaseUrl + "CountryRecruiter/italy/generali.png";
-const ity10 = imageBaseUrl + "CountryRecruiter/italy/leonardo.png";
-const frn1 = imageBaseUrl + "CountryRecruiter/france/loreal.png";
-const frn2 = imageBaseUrl + "CountryRecruiter/france/te.png";
-const frn3 = imageBaseUrl + "CountryRecruiter/france/axa.png";
-const frn4 = imageBaseUrl + "CountryRecruiter/france/bnp.png";
-const frn5 = imageBaseUrl + "CountryRecruiter/france/sg.png";
-const frn6 = imageBaseUrl + "CountryRecruiter/france/airbus.png";
-const frn7 = imageBaseUrl + "CountryRecruiter/france/ft.png";
-const frn8 = imageBaseUrl + "CountryRecruiter/france/renault.png";
-const frn9 = imageBaseUrl + "CountryRecruiter/france/danone.png";
-const frn10 = imageBaseUrl + "CountryRecruiter/france/capgemini.png";
-const dub1 = imageBaseUrl + "CountryRecruiter/dubai/emirates.png";
-const dub2 = imageBaseUrl + "CountryRecruiter/dubai/emaar.png";
-const dub3 = imageBaseUrl + "CountryRecruiter/dubai/dubai.png";
-const dub4 = imageBaseUrl + "CountryRecruiter/dubai/dpworld.png";
-const dub5 = imageBaseUrl + "CountryRecruiter/dubai/jumeirah.png";
-const dub6 = imageBaseUrl + "CountryRecruiter/dubai/dubaielectricity.png";
-const dub7 = imageBaseUrl + "CountryRecruiter/dubai/etisalat.png";
-const dub8 = imageBaseUrl + "CountryRecruiter/dubai/alfuttaim.png";
-const dub9 = imageBaseUrl + "CountryRecruiter/dubai/futtaim.png";
+const australiaRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/australia/popularRecruiters/${encodeURIComponent(name)}.png`;
+const aus1 = australiaRecruiterImage("Commonwealth Bank");
+const aus2 = australiaRecruiterImage("Deloitte");
+const aus3 = australiaRecruiterImage("Pricewaterhouse Coopers (PwC)");
+const aus4 = australiaRecruiterImage("KPMG Australia");
+const aus5 = australiaRecruiterImage("Ernst & Young (EY)");
+const aus6 = australiaRecruiterImage("Westpac Banking Corporation");
+const aus7 = australiaRecruiterImage("ANZ Banking Group");
+const aus8 = australiaRecruiterImage("Telstra Corporation");
+const aus9 = australiaRecruiterImage("National Australia Bank (NAB)");
+const aus10 = australiaRecruiterImage("BHP (BHP Group Limited)");
+const singaporeRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/singapore/popularRecruiters/${encodeURIComponent(name)}.png`;
+const sin1 = singaporeRecruiterImage("DBS Bank");
+const sin2 = singaporeRecruiterImage("OCBC Bank");
+const sin3 = singaporeRecruiterImage("United Overseas Bank (UOB)");
+const sin4 = singaporeRecruiterImage("Singtel");
+const sin5 = singaporeRecruiterImage("Deloitte");
+const sin6 = singaporeRecruiterImage("Pricewaterhouse Coopers (PwC)");
+const sin7 = singaporeRecruiterImage("Ernst & Young (EY)");
+const sin8 = singaporeRecruiterImage("KPMG");
+const sin9 = singaporeRecruiterImage("GIC Private Limited");
+const sin10 = singaporeRecruiterImage("CapitaLand");
+const italyRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/Italy/popularRecruiters/${encodeURIComponent(name)}.png`;
+const ity1 = italyRecruiterImage("Eni");
+const ity2 = italyRecruiterImage("UniCredit");
+const ity3 = italyRecruiterImage("Intesa Sanpaolo");
+const ity4 = italyRecruiterImage("Enel");
+const ity5 = italyRecruiterImage("Fiat Chrysler Automobiles");
+const ity6 = italyRecruiterImage("Telecom Italia");
+const ity7 = italyRecruiterImage("Poste Italiane");
+const ity8 = italyRecruiterImage("Luxottica Group");
+const ity9 = italyRecruiterImage("Generali Group");
+const ity10 = italyRecruiterImage("Leonardo S.p.A.");
+const franceRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/france/popularRecruiters/${encodeURIComponent(name)}.png`;
+const frn1 = franceRecruiterImage("L'Ore\u0301al");
+const frn2 = franceRecruiterImage("TotalEnergies");
+const frn3 = franceRecruiterImage("AXA Group");
+const frn4 = franceRecruiterImage("BNP Paribas");
+const frn5 = franceRecruiterImage("Socie\u0301te\u0301 Ge\u0301ne\u0301rale");
+const frn6 = franceRecruiterImage("Airbus");
+const frn7 = franceRecruiterImage("Orange S.A. (formerly France Te\u0301le\u0301com)");
+const frn8 = franceRecruiterImage("Renault Group");
+const frn9 = franceRecruiterImage(" Danone");
+const frn10 = franceRecruiterImage("Capgemini");
+const dubaiRecruiterImage = (name) =>
+  `${studyAbroadImageUrl}country/dubai/popularRecruiters/${encodeURIComponent(name)}.png`;
+const dub1 = dubaiRecruiterImage("Emirates Group");
+const dub2 = dubaiRecruiterImage("Emaar Properties");
+const dub3 = dubaiRecruiterImage("Dubai Holding");
+const dub4 = dubaiRecruiterImage("DP World");
+const dub5 = dubaiRecruiterImage("Jumeirah Group");
+const dub6 = dubaiRecruiterImage("Dubai Electricity and Water Authority");
+const dub7 = dubaiRecruiterImage("Etisalat");
+const dub8 = dubaiRecruiterImage("Majid Al Futtaim Group");
+const dub9 = dubaiRecruiterImage("Al-Futtaim Group");
+const dub10 = dubaiRecruiterImage("Emirates NBD");
 const nz1 = imageBaseUrl + "CountryRecruiter/newzealand/nz1.png";
 const nz2 = imageBaseUrl + "CountryRecruiter/newzealand/nz2.png";
 const nz3 = imageBaseUrl + "CountryRecruiter/newzealand/nz3.png";
@@ -3857,7 +3872,7 @@ const DubaiRecruiter = [
   },
   {
     id: 10,
-    Image: nz1,
+    Image: dub10,
     title: ["Emirates NBD"],
 
     // title: "Dubai"

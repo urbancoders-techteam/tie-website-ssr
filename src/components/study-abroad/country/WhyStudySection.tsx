@@ -15,7 +15,7 @@ type WhyStudyData = {
   images: string[];
 };
 
-const WhyStudySection = ({ data }: { data: WhyStudyData }) => {
+const WhyStudySection = ({ data, largerImages = false }: { data: WhyStudyData; largerImages?: boolean }) => {
   return (
     <div className="mt-10 bg-[#EFFDFF] py-10 my-10">
       <ContainerWrapper>
@@ -41,15 +41,15 @@ const WhyStudySection = ({ data }: { data: WhyStudyData }) => {
               return (
                 <div
                   key={index}
-                  className={`absolute ${positions[index]} bg-white w-[160px] h-[110px] rounded-lg p-2 flex flex-col items-center justify-center shadow-lg text-center`}
+                  className={`absolute ${positions[index]} bg-white w-[160px] ${largerImages ? "px-2 py-2" : "p-2"} rounded-lg flex flex-col items-center justify-center shadow-lg text-center`}
                   title={item.subtitle}
                 >
-                  <div className="w-[45px] h-[45px] mb-1">
+                  <div className={`relative shrink-0 mb-1 ${largerImages ? "w-[75px] h-[75px]" : "w-[45px] h-[45px]"}`}>
                     <Image
                       src={data.images[index]}
                       alt={item.title}
-                      width={45}
-                      height={45}
+                      fill
+                      sizes={largerImages ? "75px" : "45px"}
                       className="object-contain"
                     />
                   </div>
@@ -66,15 +66,15 @@ const WhyStudySection = ({ data }: { data: WhyStudyData }) => {
             {data.points.map((item, index) => (
               <div
                 key={index}
-                className="w-[250px] h-[180px] bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center text-center"
+                className={`w-[250px] ${largerImages ? "px-4 py-2" : "p-4"} bg-white rounded-lg shadow-lg flex flex-col items-center justify-center text-center`}
                 title={item.subtitle}
               >
-                <div className="w-[80px] h-[80px] mb-2">
+                <div className={`relative shrink-0 mb-2 ${largerImages ? "w-[115px] h-[115px]" : "w-[80px] h-[80px]"}`}>
                   <Image
                     src={data.images[index]}
                     alt={item.title}
-                    width={80}
-                    height={80}
+                    fill
+                    sizes={largerImages ? "115px" : "80px"}
                     className="object-contain"
                   />
                 </div>

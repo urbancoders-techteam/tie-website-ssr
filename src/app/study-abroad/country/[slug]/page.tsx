@@ -13,7 +13,7 @@ import {
 } from "@/constants/study-abroad/countryPages/germanyCountryPage";
 import { isUKCountrySlug } from "@/constants/study-abroad/countryPages/ukCountryPage";
 import { mapJsonData } from "@/constants/map";
-import { baseUrl, imageBaseUrl } from "@/utils/config";
+import { baseUrl, studyAbroadImageUrl } from "@/utils/config";
 import { useEffect, useState } from "react";
 import Places from "@/components/study-abroad/country/Places";
 import Image from "next/image";
@@ -91,14 +91,87 @@ export default function Page() {
         title: (pageData.whyStudy as Record<string, string>)[key],
       }));
 
-  const images = [
-    `${imageBaseUrl}StydyUSA/image1.png`,
-    `${imageBaseUrl}StydyUSA/image2.png`,
-    `${imageBaseUrl}StydyUSA/image3.png`,
-    `${imageBaseUrl}StydyUSA/image4.png`,
-    `${imageBaseUrl}StydyUSA/image5.png`,
-    `${imageBaseUrl}StydyUSA/image6.png`,
-  ];
+  const singaporeImageTitles = new Set([
+    "Academic Excellence",
+    "Global Connectivity",
+    "Safe Environment",
+    "Cultural Fusion",
+    "Career Opportunities",
+    "Strategic Location",
+  ]);
+  const italyImageTitles = new Set([
+    "Rich Cultural Heritage",
+    "Historical Significance",
+    "Academic Excellence",
+    "Culinary Delights",
+    "Artistic Inspiration",
+    "Vibrant Lifestyle",
+  ]);
+  const franceImageTitles = new Set([
+    "Prestigious Education",
+    "Artistic Heritage",
+    "Multicultural Environment",
+    "Gastronomic Delights",
+    "Fashion Capital",
+    "Work-Life Balance",
+  ]);
+  const canadaImageTitles = new Set([
+    "Quality Education",
+    "Welcoming Environment",
+    "Multicultural Society",
+    "Career Opportunities",
+    "High Living Standards",
+    "Cultural Diversity",
+  ]);
+  const dubaiImageTitles = new Set([
+    "Dynamic Economy",
+    "Cultural Diversity",
+    "Modern Infrastructure",
+    "Global Hub",
+    "Business Opportunities",
+    "Quality Education",
+  ]);
+  const australiaImageTitles = new Set([
+    "World-Class Education",
+    "Stunning Landscapes",
+    "Innovative Research",
+    "Diverse Culture",
+    "Employment Prospects",
+    "High Quality of Life",
+  ]);
+  const irelandImageTitles = new Set([
+    "Vibrant Campus Life",
+    "Innovation Ecosystem",
+    "Friendly Environment",
+    "Accessible Education",
+    "Strong Industry Connections",
+    "Beautiful Landscapes",
+  ]);
+  const country = slug?.toLowerCase();
+  const images = (points || []).map(({ title }) => {
+    if (country === "singapore" && singaporeImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/singapore/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "italy" && italyImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/Italy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "france" && franceImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/france/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "canada" && canadaImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/canada/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "dubai" && dubaiImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/dubai/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "australia" && australiaImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/australia/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    if (country === "ireland" && irelandImageTitles.has(title)) {
+      return `${studyAbroadImageUrl}country/ireland/whyStudy/${encodeURIComponent(title)}.png`;
+    }
+    return "/images/minicourse.svg";
+  });
 
   useEffect(() => {
     if (!slug) return;
@@ -158,6 +231,7 @@ export default function Page() {
 
       {pageData?.whyStudy && (
         <WhyStudySection
+          largerImages={["singapore", "italy", "france", "canada", "dubai", "australia", "ireland"].includes(country)}
           data={{
             title: pageData.whyStudy.title,
             points: points || [],

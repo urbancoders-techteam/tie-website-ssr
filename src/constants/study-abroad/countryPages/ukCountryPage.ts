@@ -26,7 +26,10 @@ import type {
   CountryStudyPageConfig,
   CountryTopTab,
 } from "@/lib/study-abroad/countryPageTypes";
-import { imageBaseUrl } from "@/utils/config";
+import { studyAbroadImageUrl } from "@/utils/config";
+
+const ukImage = (name: string) =>
+  `${studyAbroadImageUrl}country/uk/${encodeURIComponent(name)}.png`;
 
 export const UK_COUNTRY_SLUGS = ["uk", "united-kingdom"] as const;
 
@@ -107,17 +110,17 @@ export const UK_INTRO_CONTENT = {
 
 export const UK_INTRO_GALLERY: IntroductionGalleryItem[] = [
   {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk1.png`,
+    src: ukImage("Oxford University"),
     label: "Oxford University",
     icon: "building",
   },
   {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk2.png`,
+    src: ukImage("Campus Life"),
     label: "Campus Life",
     icon: "campus",
   },
   {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk3.png`,
+    src: ukImage("International Community"),
     label: "International Community",
     icon: "community",
   },
@@ -247,7 +250,7 @@ export const UK_COST_STUDY = {
     "Understanding the cost of studying in the UK is essential before making your decision. Tuition fees vary significantly depending on the type of institution, the city, and the programme level. Here is a comprehensive breakdown of what Indian students can expect to spend:",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk4.png`,
+    src: ukImage("University campus in the UK"),
     alt: "University campus in the UK",
     caption:
       "University campus in the UK — world-class facilities await international students",
@@ -359,7 +362,7 @@ export const UK_COST_OF_LIVING_SECTION = {
     "Here is a realistic monthly breakdown to help Indian students plan their finances before applying.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk5.png`,
+    src: ukImage("Student accommodation and city life in the UK"),
     alt: "Student accommodation and city life in the UK",
     caption: "Student accommodation and city life in the UK",
   },
@@ -418,7 +421,7 @@ export const UK_TOP_COURSES = {
     "Whether you are targeting technology, business, healthcare, or creative fields, UK institutions offer pathways with strong employability outcomes and post-study work options through the Graduate Route visa.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk2.png`,
+    src: ukImage("Indian students in a collaborative session at a UK university"),
     alt: "Indian students in a collaborative session at a UK university",
     caption:
       "Indian students in a collaborative session at a UK university",
@@ -538,7 +541,7 @@ export const UK_MASTERS_FOR_INDIAN = {
     "Indian students typically apply with a relevant bachelor's degree, English proficiency test scores, and supporting documents such as an SOP and references. Many universities also consider professional experience for MBA and specialist master's courses.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk5.png`,
+    src: ukImage("Indian students pursuing their master's degree in the UK"),
     alt: "Indian student pursuing a master's degree in the UK",
     caption: "Indian students pursuing their master's degree in the UK",
   },
@@ -681,7 +684,7 @@ export const UK_STUDENT_VISA = {
     },
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk6.png`,
+    src: ukImage("Preparing your UK student visa application with expert guidance from Taksheela"),
     alt: "UK visa guidance for Indian students",
     caption:
       "Preparing your UK student visa application with expert guidance from Taksheela",
@@ -774,7 +777,7 @@ export const UK_JOBS_AFTER_MS = {
     "One of the strongest motivations for Indian students choosing the UK for their master's degree is the clear post-study career pathway. The UK's Graduate Route visa has made it significantly easier for international graduates to find employment and build careers in the country.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk7.png`,
+    src: ukImage("UK graduates in global professional environments"),
     alt: "UK graduates exploring career opportunities after MS",
     caption: "UK graduates in global professional environments",
   },
@@ -865,7 +868,7 @@ export const UK_MBA_SECTION = {
     "With strong industry connections, diverse cohorts, and world-renowned business schools, a UK MBA can be a powerful route into consulting, finance, product, and leadership roles across the UK and Europe.",
   ],
   featuredImage: {
-    src: `${imageBaseUrl}CountryPlaces/uk/uk7.png`,
+    src: ukImage("MBA students networking at a UK business school"),
     alt: "MBA students networking at a UK business school",
     caption: "MBA students networking at a UK business school",
   },
