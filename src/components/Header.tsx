@@ -37,7 +37,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { baseUrl, navURL } from "@/utils/config";
+import { baseUrl } from "@/utils/config";
 
 function getSubMenuHref(subMenu: { link?: string; url?: string }) {
   return subMenu.url ?? subMenu.link ?? "/";
@@ -651,7 +651,7 @@ export const Header = ({ itemupdate }: any) => {
                       </Box>
                       <Box>
                         <Link
-                          href={`${navURL}dashboard/home`}
+                          href="/dashboard/home"
                         className="custom-link"
                         onClick={handleDrawerClose}
                       >
@@ -698,7 +698,7 @@ export const Header = ({ itemupdate }: any) => {
                       </Box>
                       <Box sx={{ py: 0.75 }}>
                         <Link
-                          href={`${navURL}login`}
+                          href="/login"
                           className="custom-link"
                           onClick={handleDrawerClose}
                           style={{ display: "block" }}
@@ -1048,7 +1048,7 @@ export const Header = ({ itemupdate }: any) => {
                             }}
                           >
                             <Link
-                              href={`${navURL}dashboard/home`}
+                              href="/dashboard/home"
                               className="custom-link"
                             >
                               <HoverTypography
@@ -1072,7 +1072,7 @@ export const Header = ({ itemupdate }: any) => {
                 ) : (
                   <>
                       <Link
-                        href={`${navURL}login`}
+                        href="/login"
                         className="custom-link"
                         style={NavLinkCss({ isActive: false }) as React.CSSProperties}
                       >

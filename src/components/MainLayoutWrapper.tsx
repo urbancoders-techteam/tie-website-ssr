@@ -43,7 +43,13 @@ export default function MainLayoutWrapper({
     pathname?.startsWith("/study-abroad/ireland-lp/") ||
     pathname === "/study-abroad/new-zealand-lp" ||
     pathname?.startsWith("/study-abroad/new-zealand-lp/") ||
-    pathname === "/thankyou";
+    pathname === "/thankyou" ||
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forgetpassword" ||
+    pathname === "/reset-password" ||
+    pathname === "/dashboard" ||
+    pathname?.startsWith("/dashboard/");
 
   if (excludeLayout) {
     return <>{children}</>;

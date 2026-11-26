@@ -3,7 +3,8 @@
 
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import ContainerWrapper from "@/components/ContainerWrapper";
-import { baseUrl, navURL } from "@/utils/config";
+import { setNavState } from "@/portal/navigation";
+import { baseUrl } from "@/utils/config";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -98,9 +99,8 @@ const Cart = () => {
   const handleCheckout = async () => {
     const token = sessionStorage.getItem("authToken");
     if (!token) {
-      router.push(`${navURL}login`, {
-        state: { path: "/cart" },
-      } as any);
+      setNavState({ path: "/cart" });
+      router.push("/login");
 
       return;
     }

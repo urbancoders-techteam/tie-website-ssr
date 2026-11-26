@@ -4,7 +4,6 @@ import { webIconsUrl } from "@/utils/config";
 import HeadingTypography from "../Heading";
 import ContainerWrapper from "../ContainerWrapper";
 import { benefits } from "@/constants/internation-relation";
-import { Box } from "@mui/material";
 
 const icons = [
   "ranking.png",
@@ -24,7 +23,7 @@ export const dynamic = "force-static";
 
 export default function Benefits() {
   return (
-    <Box className="bg-gray-100 py-10">
+    <div className="bg-gray-100 py-10">
     <ContainerWrapper className="my-10">
       <HeadingTypography content="Benefits" textAlign="center" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center mt-5">
@@ -51,6 +50,6 @@ export default function Benefits() {
         ))}
       </div>
     </ContainerWrapper>
-    </Box>
+    </div>
   );
 }

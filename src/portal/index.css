@@ -1,0 +1,99 @@
+/* Add this to your CSS file or style tag */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* .slick-slide{
+    margin-right: -3px;
+} */
+
+/* 
+.tag {
+    text-align: center;
+}
+  
+.slick-slide img {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+} */
+
+/* @media screen and (min-width: 700px) and (max-width: 900px) {
+    .MuiTypography-root.MuiTypography-body2.css-v1dc66-MuiTypography-root,
+    .MuiStack-root.css-tq6kd-MuiStack-root {
+      margin-left: -5px;
+    }
+  } */
+
+  @media screen and (min-width: 0px) and (max-width: 99999px) {
+    body {
+      visibility: visible;
+    }
+  }
+  
+  @media print {
+    body {
+      visibility: hidden;
+    }
+  }
+
+.MuiStack-root .css-nen11g-MuiStack-root {
+  display: "flex" !important;
+  justify-content: "center" !important;
+  align-items: "center" !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  font-size: 30px !important;
+}
+
+@media screen and (max-width: 750px) {
+  .slick-prev::before {
+    margin-left: 10px !important;
+  }
+  .slick-next::before {
+    margin-right: 10px !important   ;
+  }
+}
+
+.custom-link {
+  text-decoration: none;
+  color: black;
+}
+.slick-initialized .slick-slide {
+  display: "flex" !important;
+  justify-content: "center" !important;
+  align-items: "center" !important;
+}
+
+.counter {
+  font-size: 2em;
+  font-weight: bold;
+  color: #008080;
+  counter-reset: count;
+  animation: countUp 5s ease-in-out forwards;
+}
+
+@keyframes countUp {
+  from {
+    counter-reset: count;
+  }
+  to {
+    counter-increment: count 200;
+  }
+}
+
+
+a.active{
+  border: '1px solid black';
+}
+
+.hello{
+  z-index: 111111111 !important;
+}

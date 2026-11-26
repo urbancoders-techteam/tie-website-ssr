@@ -1,0 +1,56 @@
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    word-spacing: -0.05em;
+  }
+
+  .text-justify-hyphen-none{
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: none;
+    -webkit-hyphens: auto;
+    word-spacing: -0.05em;
+  }
+
+  .pseudo-partial-border {
+    position: relative;
+    border: none;
+    text-align: center;
+  }
+
+.pseudo-partial-border::before,
+.pseudo-partial-border::after {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  content: "";
+}
+
+.pseudo-partial-border::before {
+  left: 0;
+  top: 0;
+  border-left: 3px solid #00999e;
+  border-top: 3px solid #00999e;
+ }
+
+ .pseudo-partial-border::after {
+  right: 0;
+  bottom: 0;
+  border-right: 3px solid #00999e;
+  border-bottom: 3px solid #00999e;
+ }
+
+ .pseudo-partial-border:hover::before {
+  border-left: 3px solid white; 
+  border-top: 3px solid white; 
+}
+.pseudo-partial-border:hover::after {
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+}
+
+.hello{
+  z-index: 111111111 !important;
+}
