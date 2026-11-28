@@ -153,7 +153,7 @@ export default function Page() {
       return `${studyAbroadImageUrl}country/singapore/whyStudy/${encodeURIComponent(title)}.png`;
     }
     if (country === "italy" && italyImageTitles.has(title)) {
-      return `${studyAbroadImageUrl}country/Italy/${encodeURIComponent(title)}.png`;
+      return `${studyAbroadImageUrl}country/Italy/whyStudy/${encodeURIComponent(title)}.png`;
     }
     if (country === "france" && franceImageTitles.has(title)) {
       return `${studyAbroadImageUrl}country/france/whyStudy/${encodeURIComponent(title)}.png`;
