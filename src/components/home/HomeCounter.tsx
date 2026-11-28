@@ -38,7 +38,7 @@ export default function HomeCounter() {
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
-              className={`flex flex-col items-center justify-center px-4 py-8 text-center sm:px-6 sm:py-10 md:py-12 ${cellBorderClass(
+              className={`flex flex-col items-center justify-center px-4 py-[25px] text-center sm:px-6 sm:py-[29px] lg:py-[19px] ${cellBorderClass(
                 i
               )}`}
             >

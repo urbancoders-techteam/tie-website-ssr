@@ -103,6 +103,7 @@ gtag('js', new Date());`,
           `}
         </Script>
         <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element -- Meta's noscript tracking pixel must use a direct image request. */}
           <img
             height="1"
             width="1"

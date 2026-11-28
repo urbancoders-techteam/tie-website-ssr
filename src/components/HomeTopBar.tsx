@@ -12,7 +12,7 @@ export default function HomeTopBar() {
       role="banner"
       aria-label="Contact links"
     >
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-1.5 px-4 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-[1536px] flex-col gap-1.5 px-4 py-2 sm:flex-row sm:items-center sm:justify-end sm:gap-3 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[0.75rem] sm:text-[0.8125rem]">
           <Link
             href={`tel:${PHONE_TEL}`}

@@ -3,6 +3,7 @@
  * Types mirror Georgia/Russia; shared imports from `russiaAbroadConstent`.
  */
 
+import { imageBaseUrl } from "@/utils/config";
 import type {
   AbroadCtaBannerContent,
   AbroadQuickFactItem,
@@ -1521,10 +1522,8 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-// (Images intentionally omitted — HTML page provides no university images.)
-
 /** Universities listed on the Kyrgyzstan HTML table (7 entries). */
-export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
+const kyrgyzstanUniversityData: AbroadTopUniversityCard[] = [
   {
     id: "ksma",
     name: "Kyrgyz State Medical Academy (KSMA)",
@@ -1709,6 +1708,11 @@ export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = [
     availabilityText: "NMC Approved",
   },
 ];
+
+export const kyrgyzstanTopUniversityCards: AbroadTopUniversityCard[] = kyrgyzstanUniversityData.map((card) => ({
+  ...card,
+  imageSrc: `${imageBaseUrl}mbbs/abroad/kyrgyzstan/universityBanner/${encodeURIComponent(`${card.name}.png`)}`,
+}));
 
 export const kyrgyzstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
   eyebrow: "Top Universities",

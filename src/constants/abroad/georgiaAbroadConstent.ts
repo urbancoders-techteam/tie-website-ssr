@@ -1632,9 +1632,7 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-const geoImg = (file: string) => `${imageBaseUrl ?? ""}mbbsCollege/georgia/campaign/universities/clg_images/${file}`;
-
-export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
+const georgiaUniversityData: AbroadTopUniversityCard[] = [
   {
     id: "geomedi",
     name: "University Geomedi",
@@ -1651,7 +1649,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #2 in provided Georgia MBBS sheet",
     headerEmoji: "🏛️",
-    imageSrc: geoImg("geomedi.jpg"),
     stats: [
       { label: "FMGE (2024)", value: "29.64%" },
       { label: "6-year total", value: "₹43,83,800" },
@@ -1686,7 +1683,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Ranked #5 in provided Georgia MBBS sheet",
     subtitle: "DTMU – Tbilisi, Georgia",
     headerEmoji: "🔬",
-    imageSrc: geoImg("dtmu.jpg"),
     stats: [
       { label: "FMGE (2024)", value: "48.5%" },
       { label: "6-year total", value: "₹46,62,800" },
@@ -1720,7 +1716,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #8 in provided Georgia MBBS sheet",
     headerEmoji: "🎓",
-    imageSrc: geoImg("uog.png"),
     stats: [
       { label: "FMGE (2024)", value: "60%" },
       { label: "6-year total", value: "₹49,41,800" },
@@ -1787,7 +1782,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #29 in provided Georgia MBBS sheet",
     headerEmoji: "📚",
-    imageSrc: geoImg("isu.jpg"),
     stats: [
       { label: "FMGE (2024)", value: "Not listed" },
       { label: "6-year total", value: "₹47,46,500" },
@@ -1821,7 +1815,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #30 in provided Georgia MBBS sheet",
     headerEmoji: "🏫",
-    imageSrc: geoImg("gnuseu.jpg"),
     stats: [
       { label: "FMGE (2024)", value: "60.39%" },
       { label: "6-year total", value: "₹47,93,000" },
@@ -1855,7 +1848,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #35 in provided Georgia MBBS sheet",
     headerEmoji: "⚖️",
-    imageSrc: geoImg("ewtu.webp"),
     stats: [
       { label: "FMGE (2024)", value: "0%" },
       { label: "6-year total", value: "₹36,77,000" },
@@ -1890,7 +1882,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Ranked #39 in provided Georgia MBBS sheet",
     subtitle: "CIU – Tbilisi, Georgia",
     headerEmoji: "🌍",
-    imageSrc: geoImg("ciu.jpg"),
     stats: [
       { label: "FMGE (2024)", value: "33.02%" },
       { label: "6-year total", value: "₹46,62,800" },
@@ -1924,7 +1915,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranked #42 in provided Georgia MBBS sheet",
     headerEmoji: "🩺",
-    imageSrc: geoImg("eeu.png"),
     stats: [
       { label: "FMGE (2024)", value: "22.95%" },
       { label: "6-year total", value: "₹44,76,800" },
@@ -1958,7 +1948,6 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Ranking not listed in provided sheet",
     headerEmoji: "✨",
-    imageSrc: geoImg("alte.webp"),
     stats: [
       { label: "FMGE (2024)", value: "46.67%" },
       { label: "6-year total", value: "₹45,23,300" },
@@ -2043,6 +2032,11 @@ export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = [
     availabilityText: "Seats Available 2026-27",
   },
 ];
+
+export const georgiaTopUniversityCards: AbroadTopUniversityCard[] = georgiaUniversityData.map((card) => ({
+  ...card,
+  imageSrc: `${imageBaseUrl}mbbs/abroad/georgia/universityBanner/${encodeURIComponent(`${card.name}.png`)}`,
+}));
 
 export const georgiaAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
   eyebrow: "WHERE TO STUDY",

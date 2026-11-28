@@ -1,11 +1,11 @@
 import Banner from "@/components/home/Banner";
 import HomeCounter from "@/components/home/HomeCounter";
+import HomeSectionTabs from "@/components/home/HomeSectionTabs";
 // import FreeCounsellingBanner from "@/components/home/FreeCouncellingBanner";
 import OurServices from "@/components/home/OurServices";
 import TrustTaksheela from "@/components/home/TrustTaksheela";
 import MedicalEducation from "@/components/home/MedicalEducation";
 import GlobalDegree from "@/components/home/GlobalDegree";
-import TaksheelaEdge from "@/components/home/TaksheelaEdge";
 import WhereYouAre from "@/components/home/WhereYouAre";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -87,26 +87,27 @@ export default function Page() {
 
       <Banner />
       <HomeCounter />
-      <OurServices />
-      <GlobalReach />
-      <MedicalEducation />
-      <StudyInIndiaHome />
-      <GlobalImmersionHome />
-      <TestPrepSectionHome />
-      <TrustTaksheela />
+      <div className="h-1 bg-white" aria-hidden="true" />
+      <HomeSectionTabs />
+      <div id="home-services"><OurServices /></div>
+      <div id="home-global-reach"><GlobalReach /></div>
+      <div id="home-mbbs"><MedicalEducation /></div>
+      <div id="home-study-india"><StudyInIndiaHome /></div>
+      <div id="home-immersion"><GlobalImmersionHome /></div>
+      <div id="home-test-prep"><TestPrepSectionHome /></div>
+      <div id="home-why-taksheela"><TrustTaksheela /></div>
       <GlobalDegree />
-      <TaksheelaEdge />
       <WhereYouAre />
-      <FAQHome />
       <BookCouncilBanner
         redirectPath="/thankyou"
         description="Book your FREE counselling session today with one of India's most trusted overseas education consultants in India. 5,000+ students did, and never looked back."
       />
-      <Testimonial />
+      <div id="home-testimonials"><Testimonial /></div>
       {/* <TaksheelaInsights /> */}
       <WebinarEvent />
       <DownloadBrochure />
       <Blogs />
+      <div id="home-faq"><FAQHome /></div>
     </>
   );
 }

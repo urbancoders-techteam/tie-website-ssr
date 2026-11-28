@@ -1,8 +1,19 @@
 "use client";
 
 import { FlipCardBox } from "@/components/FlipcardBox";
+import { studyAbroadImageUrl } from "@/utils/config";
 import Slider from "react-slick";
 
+const programImageTitles = new Set([
+  "Computer Science and Engineering",
+  "Business Administration and Management",
+  "Health Sciences and Medicine",
+  "Economics and Finance",
+  "STEM",
+  "Law",
+  "Creative Arts and Design",
+  "Literature",
+]);
 
 type PopularCardProps = {
   data: {
@@ -66,7 +77,9 @@ export default function PopularCard({ data }: PopularCardProps) {
             <FlipCardBox
               data={{
                 ...item,
-                image: item.Image,
+                image: programImageTitles.has(item.title)
+                  ? `${studyAbroadImageUrl}UniversitiesToStudy/${encodeURIComponent(item.title)}.png`
+                  : item.Image,
                 title: item.title,
                 items: item.items,
               }}

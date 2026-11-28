@@ -1973,7 +1973,7 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-const ru = (n: number) => `${imageBaseUrl ?? ""}mbbsCollege/russia/rus${n}.png`;
+const ru = (name: string) => `${imageBaseUrl}mbbs/abroad/russia/universityBanner/${encodeURIComponent(`${name}.png`)}`;
 
 export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
   {
@@ -1992,7 +1992,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Top 5 in Russia",
     headerEmoji: "🏛️",
-    imageSrc: ru(1),
+    imageSrc: ru("Kazan State Medical University"),
     stats: [
       { label: "Annual fees", value: "~$5,650/yr (₹4.7L)" },
       { label: "6-year total", value: "~₹42 Lakhs" },
@@ -2028,7 +2028,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "World Rank 923 (QS)",
     subtitle: "RUDN – Moscow, Russia",
     headerEmoji: "🌍",
-    imageSrc: ru(2),
+    imageSrc: ru("Peoples' Friendship University of Russia"),
     stats: [
       { label: "Annual fees", value: "~$9,200/yr (₹7.6L)" },
       { label: "6-year total", value: "~₹52 Lakhs" },
@@ -2065,7 +2065,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Premier Moscow Medical Hub",
     subtitle: "RNRMU – Moscow, Russia",
     headerEmoji: "🔬",
-    imageSrc: ru(3),
+    imageSrc: ru("Russian National Research Medical University"),
     stats: [
       { label: "Annual fees", value: "~$8,800/yr (₹7.3L)" },
       { label: "6-year total", value: "~₹50 Lakhs" },
@@ -2101,7 +2101,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Moscow University",
     subtitle: "MSMU – Moscow, Russia",
     headerEmoji: "🏥",
-    imageSrc: ru(4),
+    imageSrc: ru("Moscow State Medical University"),
     stats: [
       { label: "Annual fees", value: "~₹4–5.5L / year" },
       { label: "6-year total", value: "~₹24–33 Lakhs" },
@@ -2143,7 +2143,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Oldest in Russia 1758",
     subtitle: "Sechenov University – Moscow, Russia",
     headerEmoji: "⭐",
-    imageSrc: ru(5),
+    imageSrc: ru("I.M. Sechenov First Moscow State Medical University"),
     stats: [
       { label: "Annual fees", value: "~$10,000/yr (₹8.4L)" },
       { label: "6-year total", value: "~₹50 Lakhs" },
@@ -2179,7 +2179,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Arctic Region Clinical Exposure",
     headerEmoji: "🧠",
-    imageSrc: ru(6),
+    imageSrc: ru("Northern State Medical University"),
     stats: [
       { label: "Annual fees", value: "~₹3–4L / year" },
       { label: "6-year total", value: "~₹18–24 Lakhs" },
@@ -2221,7 +2221,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Consistent FMGE Performer",
     subtitle: "Tver TSMU – Tver, Russia",
     headerEmoji: "📍",
-    imageSrc: ru(7),
+    imageSrc: ru("Tver State Medical University"),
     stats: [
       { label: "Annual fees", value: "~₹3.5–4.5L / year" },
       { label: "6-year total", value: "~₹21–27 Lakhs" },
@@ -2262,7 +2262,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Pediatric Focus Excellence",
     headerEmoji: "👶",
-    imageSrc: ru(8),
+    imageSrc: ru("Saint Petersburg State Pediatric Medical University"),
     stats: [
       { label: "Annual fees", value: "~$6,100/yr (₹5.0L)" },
       { label: "6-year total", value: "~₹44 Lakhs" },
@@ -2297,7 +2297,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Volga Region Hub",
     headerEmoji: "🌿",
-    imageSrc: ru(9),
+    imageSrc: ru("Bashkir State Medical University"),
     stats: [
       { label: "Annual fees", value: "~$4,500/yr (₹3.7L)" },
       { label: "6-year total", value: "~₹34 Lakhs" },
@@ -2331,7 +2331,7 @@ export const russiaTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Siberian Clinical Training",
     headerEmoji: "❄️",
-    imageSrc: ru(10),
+    imageSrc: ru("Irkutsk State Medical University"),
     stats: [
       { label: "Annual fees", value: "~$4,300/yr (₹3.6L)" },
       { label: "6-year total", value: "~₹33 Lakhs" },

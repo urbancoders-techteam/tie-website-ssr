@@ -1531,12 +1531,8 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-/** CDN assets — aligned with `mbbs.js` Uzbekistan college images (`uz1.png` … `uz10.png`). */
-const uzImg = (n: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10) =>
-  `${imageBaseUrl ?? ""}mbbsCollege/uzbekistan/uz${n}.png`;
-
 /** Six core NMC-listed universities as on the reference landing page (2026–27). */
-export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
+const uzbekistanUniversityData: AbroadTopUniversityCard[] = [
   {
     id: "tma",
     name: "Tashkent Medical Academy (TMA)",
@@ -1554,7 +1550,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Capital flagship · national academy",
     subtitle: "Tashkent State Medical University branch",
     headerEmoji: "🏛️",
-    imageSrc: uzImg(1),
     stats: [
       { label: "Annual tuition (USD)", value: "$3,100–3,500" },
       { label: "6-year total (₹)", value: "₹26–29 Lakhs" },
@@ -1589,7 +1584,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "UNESCO city · Silk Road hub",
     subtitle: "Oldest and most prestigious Uzbek medical institution",
     headerEmoji: "🕌",
-    imageSrc: uzImg(2),
     stats: [
       { label: "Annual tuition (USD)", value: "$3,000–3,400" },
       { label: "6-year total (₹)", value: "₹25–28 Lakhs" },
@@ -1624,7 +1618,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Historic Bukhara",
     subtitle: "Well-established with strong clinical affiliations",
     headerEmoji: "🏛️",
-    imageSrc: uzImg(4),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,700–3,100" },
       { label: "6-year total (₹)", value: "₹22–26 Lakhs" },
@@ -1659,7 +1652,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Fergana Valley value intake",
     subtitle: "Pioneer medical college of the Fergana Valley",
     headerEmoji: "🎓",
-    imageSrc: uzImg(3),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,500–3,000" },
       { label: "6-year total (₹)", value: "₹21–25 Lakhs" },
@@ -1694,7 +1686,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Fergana · MoH Uzbekistan",
     subtitle: "Government university, Ministry of Health UZ",
     headerEmoji: "🏫",
-    imageSrc: uzImg(6),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,300–2,800" },
       { label: "6-year total (₹)", value: "₹19–23 Lakhs" },
@@ -1729,7 +1720,6 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Warm south · winter intake",
     subtitle: "Winter intake available",
     headerEmoji: "⚖️",
-    imageSrc: uzImg(8),
     stats: [
       { label: "Annual tuition (USD)", value: "$2,500–3,000" },
       { label: "6-year total (₹)", value: "₹21–25 Lakhs" },
@@ -1748,6 +1738,11 @@ export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = [
     availabilityText: "Seats Available 2026-27",
   },
 ];
+
+export const uzbekistanTopUniversityCards: AbroadTopUniversityCard[] = uzbekistanUniversityData.map((card) => ({
+  ...card,
+  imageSrc: `${imageBaseUrl}mbbs/abroad/uzbekistan/universityBanner/${encodeURIComponent(`${card.name}.png`)}`,
+}));
 
 export const uzbekistanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent = {
   eyebrow: "Top Universities",

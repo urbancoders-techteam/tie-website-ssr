@@ -1715,10 +1715,7 @@ export type AbroadTopUniversitiesContent = {
   quickComparison?: QuickComparisonBlock;
 };
 
-const kzUni = (file: string) =>
-  `${imageBaseUrl ?? ""}mbbsCollege/kazakhstan/university/${file}`;
-
-export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
+const kazakhstanUniversityData: AbroadTopUniversityCard[] = [
   {
     id: "knmu",
     name: "Kazakh National Medical University",
@@ -1735,7 +1732,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Historic national medical university — Almaty",
     headerEmoji: "🏛️",
-    imageSrc: kzUni("knmu.jpg"),
     stats: [
       { label: "Annual fees", value: "~₹3.5–5L/yr" },
       { label: "6-year total", value: "~₹22–32L" },
@@ -1775,7 +1771,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Leading medical university — capital",
     subtitle: "AMU – Nur-Sultan, Kazakhstan",
     headerEmoji: "🔬",
-    imageSrc: kzUni("amu.webp"),
     stats: [
       { label: "Annual fees", value: "~₹3.5–5L/yr" },
       { label: "6-year total", value: "~₹22–32L" },
@@ -1814,7 +1809,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Established clinical school — Karaganda",
     headerEmoji: "🎓",
-    imageSrc: kzUni("ksmu.jpg"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–28L" },
@@ -1853,7 +1847,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Private medical university — Almaty",
     headerEmoji: "🏛️",
-    imageSrc: kzUni("krmu.webp"),
     stats: [
       { label: "Annual fees", value: "~₹3.5–5L/yr" },
       { label: "6-year total", value: "~₹22–32L" },
@@ -1892,7 +1885,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Established medical university — Semey",
     headerEmoji: "📚",
-    imageSrc: kzUni("smu.jpg"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–28L" },
@@ -1926,7 +1918,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Western Kazakhstan clinical hub",
     headerEmoji: "🏫",
-    imageSrc: kzUni("wkmu.jpg"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–28L" },
@@ -1961,7 +1952,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     rankTag: "Southern hub — milder winters",
     subtitle: "SKMA – Shymkent, Kazakhstan",
     headerEmoji: "🌍",
-    imageSrc: kzUni("skma.webp"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–26L" },
@@ -1995,7 +1985,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Northern Kazakhstan — value option",
     headerEmoji: "⚖️",
-    imageSrc: kzUni("koksu.webp"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–26L" },
@@ -2029,7 +2018,6 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     ],
     rankTag: "Northern city — verify climate fit",
     headerEmoji: "✨",
-    imageSrc: kzUni("nksu.png"),
     stats: [
       { label: "Annual fees", value: "~₹2.5–4L/yr" },
       { label: "6-year total", value: "~₹18–28L" },
@@ -2053,6 +2041,11 @@ export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = [
     availabilityText: "Seats Available 2026-27",
   },
 ];
+
+export const kazakhstanTopUniversityCards: AbroadTopUniversityCard[] = kazakhstanUniversityData.map((card) => ({
+  ...card,
+  imageSrc: `${imageBaseUrl}mbbs/abroad/kazakhstan/universityBanner/${encodeURIComponent(`${card.name}.png`)}`,
+}));
 
 export const kazakhstanAbroadTopUniversitiesContent: AbroadTopUniversitiesContent =
   {
