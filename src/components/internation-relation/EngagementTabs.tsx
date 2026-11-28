@@ -26,21 +26,23 @@ export default function EngagementTabs() {
   return (
     <nav
       aria-label="International engagement programmes"
-      className="border-y border-[#00999E]/15 bg-gradient-to-r from-[#effdff] via-white to-[#effdff] py-6 shadow-[0_8px_26px_-22px_rgba(0,153,158,0.9)]"
+      className="border-b border-[#1c555d] bg-[#102c3b] shadow-[0_5px_16px_rgba(15,39,68,0.14)]"
     >
-      <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-3 px-4 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-stretch overflow-x-auto px-4 [scrollbar-width:none] sm:px-6 lg:justify-between [&::-webkit-scrollbar]:hidden">
         {engagementTabs.map((tab, index) => (
           <button
             key={tab.targetId}
             type="button"
             onClick={() => scrollToSection(tab.targetId, index)}
-            className={`w-full rounded-full border px-5 py-2 text-sm font-bold leading-tight transition duration-200 sm:w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.5rem)] lg:w-[calc(16.666%-0.625rem)] ${
+            aria-current={activeTab === index ? "location" : undefined}
+            className={`group relative flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap px-3 py-2.5 text-center text-xs font-semibold transition-colors before:absolute before:bottom-2 before:left-0 before:top-2 before:w-px before:bg-white/20 first:before:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#73e4df] sm:text-[13px] lg:flex-1 ${
               activeTab === index
-                ? "border-[#00999E] bg-[#00999E] py-3 text-white shadow-[0_8px_16px_-8px_rgba(0,153,158,0.85)]"
-                : "border-[#18B7BC]/65 bg-white/75 text-[#087279] hover:-translate-y-0.5 hover:border-[#00999E] hover:bg-[#e5fbfc]"
+                ? "text-white"
+                : "text-slate-200 hover:bg-white/5 hover:text-white"
             }`}
           >
             {tab.label}
+            <span aria-hidden className={`absolute inset-x-3 bottom-0 h-[3px] rounded-t-full bg-[#57d8ce] transition-opacity ${activeTab === index ? "opacity-100" : "opacity-0 group-hover:opacity-50"}`} />
           </button>
         ))}
       </div>
