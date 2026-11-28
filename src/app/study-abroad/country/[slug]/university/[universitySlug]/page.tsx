@@ -7,7 +7,7 @@ import LetsStart from "@/components/immersion/LetsStart";
 import ModalTrigger from "@/components/ModalTrigger";
 import StudyAbroadFeeStructure from "@/components/study-abroad/StudyAbroadUniversity";
 import TestPackages from "@/components/test/TestPackages";
-import { baseUrl, imageBaseUrl } from "@/utils/config";
+import { baseUrl, imageBaseUrl, studyAbroadImageUrl } from "@/utils/config";
 import { Box, LinearProgress } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
@@ -15,14 +15,38 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+const canadaRecruiterImages: Record<string, string> = {
+  "toronto dominion bank (td)": "Toronto Dominion Bank",
+  "toronto dominion bank": "Toronto Dominion Bank",
+  "rbc (royal bank of canada)": "Royal Bank of Canada",
+  "royal bank of canada": "Royal Bank of Canada",
+  "cibc (canadian imperial bank of commerce)": "Canadian Imperial Bank of Commerce",
+  "canadian imperial bank of commerce": "Canadian Imperial Bank of Commerce",
+  "deloitte": "Deloitte",
+  "kpmg": "KPMG",
+  "accenture": "Accenture",
+  "siemens": "Siemens",
+  "unilever": "Unilever",
+  "hatch ltd": "Hatch Ltd",
+  "hatch ltd.": "Hatch Ltd",
+  "general motors": "General Motors",
+};
+const canadaKnowMoreImages: Record<string, string> = {
+  "placement details": "Placement Details",
+  "how to apply": " How to Apply",
+  "brochure": "Brochure",
+  "alumni": "Alumni",
+  "campus life": "Campus Life",
+};
+
 export default function UniversityDetailPage() {
   // const { slug, universitySlug } = useParams<{
   //   slug: string;
   //   universitySlug: string;
   // }>();
 
-  const { universitySlug } = useParams<{
-    // slug: string;
+  const { slug, universitySlug } = useParams<{
+    slug: string;
     universitySlug: string;
   }>();
 
@@ -145,9 +169,11 @@ export default function UniversityDetailPage() {
                   item.url ? "hover:bg-gray-100" : ""
                 } border md:border-gray-300 rounded-md transition`}
               >
-                <div className="relative w-[50px] h-[50px] mb-2">
+                <div className={`relative mb-2 ${slug?.toLowerCase() === "canada" ? "w-[75px] h-[75px]" : "w-[50px] h-[50px]"}`}>
                   <Image
-                    src={item?.image}
+                    src={slug?.toLowerCase() === "canada"
+                      ? `${studyAbroadImageUrl}country/canada/university/University%20Details/${encodeURIComponent(item.title === "Website" ? "Wbsite" : item.title)}.png`
+                      : item.image}
                     alt={item?.title || "University image"}
                     fill
                     className="object-contain rounded-md"
@@ -234,6 +260,9 @@ export default function UniversityDetailPage() {
           <HeadingTypography content="Popular Recruiters" textAlign="center" />
           <div className="flex justify-center items-center w-full flex-wrap px-4 gap-5 py-10">
             {university?.popularRecruiters?.map((item: any, index: number) => {
+              const canadaImage = typeof item?.name === "string"
+                ? canadaRecruiterImages[item.name.trim().toLowerCase()]
+                : undefined;
               const CardContent = (
                 <div
                   key={index}
@@ -241,7 +270,9 @@ export default function UniversityDetailPage() {
                 >
                   <div className="relative w-[100px] h-[100px] mb-2">
                     <Image
-                      src={item?.logo}
+                      src={slug?.toLowerCase() === "canada" && canadaImage
+                        ? `${studyAbroadImageUrl}country/canada/university/Popular%20Recruiters/${encodeURIComponent(canadaImage)}.png`
+                        : item?.logo}
                       alt={item?.name || "University image"}
                       fill
                       className="object-contain rounded-md"
@@ -277,6 +308,12 @@ export default function UniversityDetailPage() {
         <HeadingTypography content="Know More" textAlign="center" />
         <div className="flex flex-wrap justify-center gap-6 mt-10">
           {university?.knowMore?.map((item: any) => {
+            const canadaImage = typeof item?.label === "string"
+              ? canadaKnowMoreImages[item.label.trim().toLowerCase()]
+              : undefined;
+            const image = slug?.toLowerCase() === "canada" && canadaImage
+              ? `${studyAbroadImageUrl}country/canada/university/Know%20More/${encodeURIComponent(canadaImage)}.png`
+              : item?.image;
             return (
               <Link
                 key={item?._id}
@@ -291,11 +328,11 @@ export default function UniversityDetailPage() {
                   </h3>
                 </div>
 
-                {item?.image && (
+                {image && (
                   <div className="relative  mb-2">
                     <Image
-                      src={item?.image}
-                      alt={item?.title || "University image"}
+                      src={image}
+                      alt={item?.label || "University image"}
                       width={100}
                       height={100}
                     />
