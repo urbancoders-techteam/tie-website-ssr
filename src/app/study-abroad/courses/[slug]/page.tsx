@@ -104,8 +104,8 @@ Our expertise!!!"
           textAlign="center"
         />
         <div className="flex flex-wrap justify-evenly gap-8 my-10 text-center">
-          {data?.snapshot?.item?.map((item: any) => (
-            <div key={item._id} className="flex flex-col items-center w-64">
+          {data?.snapshot?.item?.map((item: any, index: number) => (
+            <div key={item._id ?? `${item.title}-${index}`} className="flex flex-col items-center w-64">
               <div className="w-36 h-36 rounded-full border-2 border-[#00999e] bg-white flex items-center justify-center shadow-md">
                 <span className="text-lg font-semibold text-[#00999e] text-center px-4">
                   {item?.count}
