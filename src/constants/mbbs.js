@@ -2247,10 +2247,12 @@ export const countryData = [
   },
 ];
 
-const eligibility1 = imageBaseUrl + "eligibility1.png";
-const eligibility2 = imageBaseUrl + "eligibility2.png";
-const eligibility3 = imageBaseUrl + "eligibility3.png";
-const eligibility4 = imageBaseUrl + "eligibility4.png";
+const indiaEligibilityImage = (name) =>
+  `${imageBaseUrl}mbbs/india-page/Eligibility%20criteria/${encodeURIComponent(name)}.png`;
+const eligibility1 = indiaEligibilityImage("Age");
+const eligibility2 = indiaEligibilityImage("Educational Qualifications");
+const eligibility3 = indiaEligibilityImage("Minimum Marks");
+const eligibility4 = indiaEligibilityImage("Entrance Exams");
 export const indianEligibilityData = [
   {
     title: "Age",
@@ -2282,16 +2284,18 @@ export const indianEligibilityData = [
   },
 ];
 
-const college1 = imageBaseUrl + "college1.png";
-const college2 = imageBaseUrl + "college2.png";
-const college3 = imageBaseUrl + "college3.png";
-const college4 = imageBaseUrl + "college4.png";
-const college5 = imageBaseUrl + "college5.png";
-const college6 = imageBaseUrl + "college6.png";
-const college7 = imageBaseUrl + "college7.png";
-const college8 = imageBaseUrl + "college8.png";
-const college9 = imageBaseUrl + "college9.png";
-const college10 = imageBaseUrl + "college10.png";
+const indiaCollegeImage = (name) =>
+  `${imageBaseUrl}mbbs/india-page/TOP%2010%20COLLEGES/${encodeURIComponent(name)}.png`;
+const college1 = indiaCollegeImage("All India Institute of Medical Sciences");
+const college2 = indiaCollegeImage("Christian Medical College");
+const college3 = indiaCollegeImage("Armed Forces Medical College");
+const college4 = indiaCollegeImage("Maulana Azad Medical College");
+const college5 = indiaCollegeImage("Grant Medical College");
+const college6 = indiaCollegeImage("King George's Medical University");
+const college7 = indiaCollegeImage("Jawaharlal Institute of Postgraduate Medical Education and Research");
+const college8 = indiaCollegeImage("Lady Hardinge Medical College");
+const college9 = indiaCollegeImage("Seth GS Medical College");
+const college10 = indiaCollegeImage("Bangalore Medical College and Research Institute ");
 
 export const indianCollegeData = [
   {

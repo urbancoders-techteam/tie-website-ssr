@@ -28,7 +28,7 @@ export default function IndiaMBBS() {
           />
           <div className="flex justify-between align-middle items-center flex-wrap mt-10">
             {indianEligibilityData?.map((eligibility, index) => {
-              return <FlipCardBox data={eligibility} key={index} />;
+              return <FlipCardBox data={eligibility} imageSize={120} key={index} />;
             })}
           </div>
         </ContainerWrapper>
@@ -44,17 +44,19 @@ export default function IndiaMBBS() {
           {indianCollegeData?.map((college, index) => (
             <div
               key={index}
-              className="w-[230px] h-[280px] relative p-4 bg-white shadow-md rounded-xl cursor-pointer overflow-hidden group"
+              className={`w-[230px] h-[250px] relative bg-white shadow-md cursor-pointer overflow-hidden group ${index === 0 ? "xl:rounded-tl-xl" : index === 4 ? "xl:rounded-tr-xl" : index === 5 ? "xl:rounded-bl-xl" : index === 9 ? "xl:rounded-br-xl" : ""}`}
             >
-              <Image
-                src={college.image}
-                alt={college.title}
-                width={150}
-                height={150}
-                className="rounded-[10%] mx-auto"
-              />
+              <div className="relative h-[calc(100%-3.5rem)] w-full">
+                <Image
+                  src={college.image}
+                  alt={college.title}
+                  fill
+                  sizes="230px"
+                  className="object-cover"
+                />
+              </div>
 
-              <div className="absolute bottom-0 left-0 w-full bg-[#0A9DA2] text-white rounded-b-xl p-2 flex flex-col items-center justify-center transition-all duration-500 ease-in-out h-14 group-hover:h-full overflow-y-auto">
+              <div className="absolute bottom-0 left-0 w-full bg-[#102c3b] text-white p-2 flex flex-col items-center justify-center transition-all duration-500 ease-in-out h-14 group-hover:h-full overflow-y-auto">
                 <h3 className="text-lg font-medium text-center">
                   {college.title}
                 </h3>

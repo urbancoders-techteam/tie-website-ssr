@@ -2,8 +2,10 @@ import Image from "next/image";
 
 export  const FlipCardBox = ({
   data,
+  imageSize = 100,
 }: {
   data: { title: string; image: string; items: string[] };
+  imageSize?: number;
 }) => {
   return (
     <div className="group w-[220px] h-[220px] [perspective:1200px] block">
@@ -13,8 +15,8 @@ export  const FlipCardBox = ({
           <Image
             src={data.image}
             alt={`${data.title} icon`}
-            width={100}
-            height={100}
+            width={imageSize}
+            height={imageSize}
             className="rounded-full mb-2 object-cover"
           />
           <h3 className="text-lg font-bold text-black">{data.title}</h3>
