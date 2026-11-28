@@ -8,7 +8,7 @@ import HeadingTypography from "@/components/Heading";
 import NationalityBrochureDownload from "@/components/internation-relation/IndianUniversity/NationalifyBrochureDownload";
 import ModalTrigger from "@/components/ModalTrigger";
 import { isMongoObjectId } from "@/lib/indiaUniversitySeoRedirects";
-import { imageBaseUrl } from "@/utils/config";
+import { imageBaseUrl, internationalRelationImageUrl } from "@/utils/config";
 import { Box, LinearProgress } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,6 +22,14 @@ import {
   useEffect,
   useState,
 } from "react";
+
+const bennettKnowMoreImages: Record<string, string> = {
+  "campus life": "Campus Life",
+  "how to apply": "How to Apply",
+  "international students": "International Students",
+  "accommodation": "Accommodation",
+  "brochure": "Brochure",
+};
 
 export default function UniversityDetailsPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -179,9 +187,11 @@ export default function UniversityDetailsPage() {
                   item.url ? "hover:bg-gray-100" : ""
                 } border md:border-gray-300 rounded-md transition`}
               >
-                <div className="relative w-[50px] h-[50px] mb-2">
+                <div className={`relative mb-2 ${slug?.toLowerCase() === "bennett-university" ? "w-[75px] h-[75px]" : "w-[50px] h-[50px]"}`}>
                   <Image
-                    src={item?.image}
+                    src={slug?.toLowerCase() === "bennett-university"
+                      ? `${internationalRelationImageUrl}india/bennett-university/University%20Details/${encodeURIComponent(item.title)}.png`
+                      : item.image}
                     alt={item?.title || "University image"}
                     fill
                     className="object-contain rounded-md"
@@ -313,6 +323,12 @@ export default function UniversityDetailsPage() {
         <HeadingTypography content="Know More" textAlign="center" />
         <div className="flex flex-wrap justify-center gap-6 mt-10">
           {data?.knowMore?.map((item: any) => {
+            const imageName = typeof item?.label === "string"
+              ? bennettKnowMoreImages[item.label.trim().toLowerCase()]
+              : undefined;
+            const image = slug?.toLowerCase() === "bennett-university" && imageName
+              ? `${internationalRelationImageUrl}india/bennett-university/Know%20More/${encodeURIComponent(imageName)}.png`
+              : item?.image;
             return (
               <Link
                 key={item?._id}
@@ -327,13 +343,14 @@ export default function UniversityDetailsPage() {
                   </h3>
                 </div>
 
-                {item?.image && (
-                  <div className="relative  mb-2">
+                {image && (
+                  <div className="relative mb-2">
                     <Image
-                      src={item?.image}
-                      alt={item?.title || "University image"}
-                      width={100}
-                      height={100}
+                      src={image}
+                      alt={item?.label || "University image"}
+                      width={175}
+                      height={175}
+                      className="object-contain"
                     />
                   </div>
                 )}
